@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:SmartGenealogy.Mobile.Pages"
+       xmlns:root="clr-namespace:SmartGenealogy.Mobile"
+       xmlns:viewmodels="clr-namespace:SmartGenealogy.Mobile.ViewModels"
+       x:DataType="viewmodels:ShellViewModel"
+       x:Class="SmartGenealogy.Mobile.Pages.MobileShell">
+    <TabBar>
+        <Tab Title="{Binding Home.Title}">
+            <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" />
+        </Tab>
+    </TabBar>
+</Shell>

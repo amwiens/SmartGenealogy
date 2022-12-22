@@ -1,0 +1,9 @@
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using SmartGenealogy.Mobile.Helpers;
+global using SmartGenealogy.Mobile.Models;
+global using SmartGenealogy.Mobile.Pages;
+global using SmartGenealogy.Mobile.ViewModels;
+global using System.Windows.Input;
+global using System.Collections.ObjectModel;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:SmartGenealogy.Mobile.Resources.Strings"
+             Title="{x:Static res:AppResource.Home}"
+             x:Name="this"
+             xmlns:viewmodels="clr-namespace:SmartGenealogy.Mobile.ViewModels"
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodels:HomeViewModel"
+             x:Class="SmartGenealogy.Mobile.Pages.HomePage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
