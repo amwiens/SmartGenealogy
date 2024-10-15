@@ -227,7 +227,7 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
             this.stateMachine.Fire(trigger);
             TState newState = this.stateMachine.State;
             var deactivated = await this.DeactivatePage(oldState, fadeDuration);
-            var activated = await this.ActivePage(newState, fadeDuration);
+            var activated = await this.ActivatePage(newState, fadeDuration);
             this.IsTransitioning = false;
             this.UpdateVisuals();
 
