@@ -43,7 +43,7 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
 
     public WorkflowPage<TState, TTrigger>? ActivePage { get; private set; }
 
-    public bool IsTransitioning { get; private set;}
+    public bool IsTransitioning { get; private set; }
 
     private void CreateWorkflowStateMachine(StateMachineDefinition<TState, TTrigger, Bindable> stateMachineDefinition)
     {
@@ -108,7 +108,8 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
         this.messenger.Publish(new NavigationMessage(activated, null));
     }
 
-    public void UpdateVisuals() { /* TODO */ } // => this.UpdateVisuals();
+    public void UpdateVisuals()
+    { /* TODO */ } // => this.UpdateVisuals();
 
     public void ClearBackNavigation() => this.stateMachine.ClearBackNavigation();
 
@@ -252,8 +253,7 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
             await this.ActivePage.OnDeactivateAsync(oldState);
             if (fadeDuration > MinimumAnimationDuration)
             {
-                // Fading out hides the control at the end of the animation
-                // this.ActivePageControl!.FadeOut(fadeDuration);
+                // Fading out hides the control at the end of the animation this.ActivePageControl!.FadeOut(fadeDuration);
             }
             else
             {
@@ -272,8 +272,7 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
         this.ActivePage = this.pageIndex[newState];
         if (fadeDuration > MinimumAnimationDuration)
         {
-            // Fading in shows the control at the beginning of the animation
-            // this.ActivePage.Control!.FadeIn(fadeDuration);
+            // Fading in shows the control at the beginning of the animation this.ActivePage.Control!.FadeIn(fadeDuration);
         }
         else
         {
@@ -294,20 +293,17 @@ public sealed class WorkflowManager<TState, TTrigger> : IDisposable
                 this.stateMachine.Dispose();
             }
 
-            // free unmanaged resources (unmanaged objects) and override finalizer
-            // set large fields to null
+            // free unmanaged resources (unmanaged objects) and override finalizer set large fields
+            // to null
             this.pageIndex.Clear();
 
             this.disposedValue = true;
         }
     }
 
-    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-    // ~WorkflowManager()
-    // {
-    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-    //     Dispose(disposing: false);
-    // }
+    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged
+    // resources ~WorkflowManager() { // Do not change this code. Put cleanup code in 'Dispose(bool
+    // disposing)' method Dispose(disposing: false); }
 
     void IDisposable.Dispose()
     {

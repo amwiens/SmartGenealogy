@@ -238,8 +238,8 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
 
         if (Monitor.IsEntered(this.lockObject))
         {
-            // The -> SAME <- thread holds the lock: Not good...
-            // Prevents OnEnter and OnLeave to deadlock the state machine by recursive invocations
+            // The -> SAME <- thread holds the lock: Not good... Prevents OnEnter and OnLeave to
+            // deadlock the state machine by recursive invocations
             this.logger.Error("The current thread is already firing a trigger.");
             throw new Exception("The current thread is already firing a trigger.");
         }
@@ -388,7 +388,7 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
 
         if (millisec < 50)
         {
-            this.logger.Warning("Cannot handle timout shorter than 50 ms, for state: " + this.State.ToString());
+            this.logger.Warning("Cannot handle timeout shorter than 50 ms, for state: " + this.State.ToString());
             return;
         }
 
@@ -451,8 +451,7 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
     {
         if (!this.IsInitialized)
         {
-            // Is this state machine properly defined?
-            // State Machine is not initialized or failed to initialize.
+            // Is this state machine properly defined? State Machine is not initialized or failed to initialize.
             if (Debugger.IsAttached) { Debugger.Break(); }
             string msg = "State Machine is not initialized or failed to initialize.";
             this.logger.Error(msg);
@@ -465,8 +464,7 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
     {
         if (this.IsInitialized)
         {
-            // Is this state machine properly defined?
-            // State Machine is not initialized or failed to initialize.
+            // Is this state machine properly defined? State Machine is not initialized or failed to initialize.
             if (Debugger.IsAttached) { Debugger.Break(); }
             string msg = "State Machine is already initialized.";
             this.logger.Error(msg);
@@ -478,7 +476,7 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
 
     protected virtual void Dispose(bool disposing)
     {
-        if ( (!this.disposedValue))
+        if (!this.disposedValue)
         {
             if (disposing)
             {
@@ -496,15 +494,13 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
     // Override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
     ~FiniteStateMachine()
     {
-        // Do not change this code.
-        // Put cleanup code in 'Dispose(bool disposing)' method
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
         this.Dispose(disposing: false);
     }
 
     public void Dispose()
     {
-        // Do not change this code.
-        // Put cleanup code, if any needed in 'Dispose(bool disposing)' method
+        // Do not change this code. Put cleanup code, if any needed in 'Dispose(bool disposing)' method
         this.Dispose(disposing: true);
         GC.SuppressFinalize(this);
     }
