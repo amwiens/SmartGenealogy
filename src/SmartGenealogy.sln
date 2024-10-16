@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Orc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.StateMachine", "SmartGenealogy.StateMachine\SmartGenealogy.StateMachine.csproj", "{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Persistence", "SmartGenealogy.Avalonia.Persistence\SmartGenealogy.Avalonia.Persistence.csproj", "{B183E46B-C113-4491-B196-EE1942172283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B183E46B-C113-4491-B196-EE1942172283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B183E46B-C113-4491-B196-EE1942172283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B183E46B-C113-4491-B196-EE1942172283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B183E46B-C113-4491-B196-EE1942172283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
