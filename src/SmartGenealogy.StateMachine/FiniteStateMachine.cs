@@ -327,6 +327,187 @@ public class FiniteStateMachine<TState, TTrigger, TTag> : IDisposable
 
     private void ExecuteTransition(TState fromState, TState toState, bool pushState = true)
     {
+        if (pushState)
+        {
+            this.navigationStack.Push(fromState);
+        }
 
+        if (!this.StateDefinitions.TryGetValue(fromState, out var stateDefinition))
+        {
+            this.logger.Error("ExecuteTransition: Invalid new state");
+            throw new Exception("ExecuteTransition: Invalid new state");
+        }
+
+        // Invoke current state leave delegate, if any
+        var leaveAction = stateDefinition.OnLeave;
+        leaveAction?.Invoke(toState);
+
+        // Cancel current timer, if running
+        this.CancelTimer();
+
+        // Update state
+        this.State = toState;
+
+        // Start new timeout timer if needed, use new state to lookup
+        if (!this.StateDefinitions.TryGetValue(toState, out var toStateDefinition))
+        {
+            this.logger.Error("ExecuteTransition: Invalid new state");
+            throw new Exception("ExecuteTransition: Invalid new state");
+        }
+
+        var timeoutDefinition = toStateDefinition.TimeoutDefinition;
+        if (timeoutDefinition is not null)
+        {
+            this.StartTimer(timeoutDefinition.ValueMillisecs);
+        }
+
+        // Invoke new state enter delegate, if any
+        var enterAction = toStateDefinition.OnEnter;
+        enterAction?.Invoke(fromState);
     }
+
+    private void CancelTimer()
+    {
+        if (this.timer is not null)
+        {
+            this.timer.Enabled = false;
+            this.timer.Stop();
+            this.timer.Elapsed -= this.OnTimerElapsed;
+            this.timer = null;
+        }
+    }
+
+    private void StartTimer(int millisec)
+    {
+        if (millisec <= 0)
+        {
+            string msg = "Timeout zero or negative, for state: " + this.State.ToString();
+            this.logger.Error(msg);
+            throw new Exception(msg);
+        }
+
+        if (millisec < 50)
+        {
+            this.logger.Warning("Cannot handle timout shorter than 50 ms, for state: " + this.State.ToString());
+            return;
+        }
+
+        this.stateTimerStart = this.State;
+        this.dateTimeTimerStart = DateTime.Now;
+        this.currentTimeoutValue = millisec;
+        if (this.timer is not null)
+        {
+            this.CancelTimer();
+        }
+
+        this.timer = new System.Timers.Timer() { AutoReset = false, Interval = millisec, };
+        this.timer.Elapsed += this.OnTimerElapsed;
+        this.timer.Start();
+    }
+
+    /// <summary>
+    /// Execute a timeout transition, when the timer elapses
+    /// </summary>
+    private void OnTimerElapsed(object? _1, ElapsedEventArgs _2)
+    {
+        // Execute Timeout Transition
+        lock (this.lockObject)
+        {
+            if (!this.stateTimerStart.Equals(this.State))
+            {
+                // Race condition: State changed while we were waiting for the lock
+                this.logger.Warning(
+                    "Race condition: State changed while we were waiting for the lock: Expected: " +
+                    this.stateTimerStart.ToString() + "   Now: " + this.State.ToString());
+                return;
+            }
+
+            if (!this.StateDefinitions.TryGetValue(this.state, out var stateDefinition))
+            {
+                this.logger.Error("OnTimerElapsed: Invalid new state");
+                throw new Exception("OnTimerElapsed: Invalid new state");
+            }
+
+            var timeoutDefinition = stateDefinition.TimeoutDefinition;
+            if (timeoutDefinition is null)
+            {
+                // Race condition: State changed while we were waiting for the lock
+                this.logger.Warning("No timeout defined for state " + this.State.ToString());
+                return;
+            }
+
+            // No validator for timeouts
+            TState fromState = this.State;
+            this.ExecuteTransition(this.State, timeoutDefinition.ToState);
+
+            // Invoke timeout delegate, if any
+            var timeoutAction = stateDefinition.OnEnter;
+            timeoutAction?.Invoke(fromState);
+        }
+    }
+
+    // Consider Conditional DEBUG
+    private void CheckInitialized()
+    {
+        if (!this.IsInitialized)
+        {
+            // Is this state machine properly defined?
+            // State Machine is not initialized or failed to initialize.
+            if (Debugger.IsAttached) { Debugger.Break(); }
+            string msg = "State Machine is not initialized or failed to initialize.";
+            this.logger.Error(msg);
+            throw new InvalidOperationException(msg);
+        }
+    }
+
+    // Consider Conditional DEBUG
+    private void CheckNotInitialized()
+    {
+        if (this.IsInitialized)
+        {
+            // Is this state machine properly defined?
+            // State Machine is not initialized or failed to initialize.
+            if (Debugger.IsAttached) { Debugger.Break(); }
+            string msg = "State Machine is already initialized.";
+            this.logger.Error(msg);
+            throw new InvalidOperationException(msg);
+        }
+    }
+
+    #region IDisposable implementation
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if ( (!this.disposedValue))
+        {
+            if (disposing)
+            {
+                // Dispose managed state (managed objects) here
+            }
+
+            // free unmanaged resources (unmanaged objects) and override finalizer
+            this.CancelTimer();
+
+            // Set large fields to null
+            this.disposedValue = true;
+        }
+    }
+
+    // Override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+    ~FiniteStateMachine()
+    {
+        // Do not change this code.
+        // Put cleanup code in 'Dispose(bool disposing)' method
+        this.Dispose(disposing: false);
+    }
+
+    public void Dispose()
+    {
+        // Do not change this code.
+        // Put cleanup code, if any needed in 'Dispose(bool disposing)' method
+        this.Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
+
+    #endregion IDisposable implementation
 }
