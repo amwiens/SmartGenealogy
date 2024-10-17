@@ -36,7 +36,7 @@ global using Avalonia.Reactive;
 global using Avalonia.Styling;
 global using Avalonia.Threading;
 
-global using SmartGenealogy.Controls.Logging;
+global using SmartGenealogy.Avalonia.Controls.Logging;
 
 global using SmartGenealogy.Avalonia.Interfaces;
 global using SmartGenealogy.Avalonia.Interfaces.Logger;
