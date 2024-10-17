@@ -36,7 +36,7 @@ global using Avalonia.Reactive;
 global using Avalonia.Styling;
 global using Avalonia.Threading;
 
-
+global using SmartGenealogy.Controls.Logging;
 
 global using SmartGenealogy.Avalonia.Interfaces;
 global using SmartGenealogy.Avalonia.Interfaces.Logger;
@@ -45,3 +45,8 @@ global using SmartGenealogy.Avalonia.Interfaces.Model;
 global using SmartGenealogy.Avalonia.Interfaces.Profiler;
 global using SmartGenealogy.Avalonia.Interfaces.Random;
 global using SmartGenealogy.Avalonia.Interfaces.UserInterface;
+
+global using SmartGenealogy.Avalonia.Mvvm.Core;
+global using SmartGenealogy.Avalonia.Mvvm.Interfaces.Animations;
+global using SmartGenealogy.Avalonia.Mvvm.Messenger;
+global using SmartGenealogy.Avalonia.Mvvm.Utilities;

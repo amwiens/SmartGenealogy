@@ -1,6 +1,4 @@
-﻿using System.IO.Pipes;
-
-namespace SmartGenealogy.Avalonia.Mvvm;
+﻿namespace SmartGenealogy.Avalonia.Mvvm;
 
 public class ApplicationBase(
     string organizationKey,
@@ -174,5 +172,134 @@ public class ApplicationBase(
         return model;
     }
 
+    public IEnumerable<IModel> GetModels()
+    {
+        List<IModel> models = [];
+        foreach (Type type in this.validatedModelTypes)
+        {
+            object model = ApplicationBase.AppHost!.Services.GetRequiredService(type);
+            bool isModel = typeof(IModel).IsAssignableFrom(model.GetType());
+            if (isModel)
+            {
+                models.Add((model as IModel)!);
+            }
+        }
 
+        return models;
+    }
+
+    protected virtual Task OnStartupBegin() => Task.CompletedTask;
+
+    protected virtual Task OnStartupComplete() => Task.CompletedTask;
+
+    protected virtual Task OnShutdownBegin() => Task.CompletedTask;
+
+    protected virtual Task OnShutdownComplete() => Task.CompletedTask;
+
+    private async Task Startup()
+    {
+        await ApplicationBase.AppHost.StartAsync();
+        await this.OnStartupBegin();
+
+        var logger = ApplicationBase.GetRequiredService<ILogger>();
+        this.Logger = logger;
+
+        if (Debugger.IsAttached && this.Logger is LogViewerWindow logViewer)
+        {
+            try
+            {
+                logViewer.Show();
+            }
+            catch (Exception) {  /* swallow */ }
+        }
+
+        this.Logger.Info("***   Startup   ***");
+        // Warming up the models:
+        // This ensures that the Application Model and all listed models are constructed.
+        this.WarmupModels();
+        IApplicationModel applicationModel = ApplicationBase.GetRequiredService<IApplicationModel>();
+        await applicationModel.Initialize();
+        await this.OnStartupComplete();
+    }
+
+    private void WarmupModels()
+    {
+        foreach (Type type in this.validatedModelTypes)
+        {
+            object model = ApplicationBase.AppHost!.Services.GetRequiredService(type);
+            if (model is not IModel)
+            {
+                throw new ApplicationException("Failed to warmup model: " + type.FullName);
+            }
+        }
+    }
+
+    public async Task Shutdown()
+    {
+        this.Logger.Info("***   Shutdown ***");
+        await this.OnShutdownBegin();
+
+        //startupWindow.Closing += (_, _) => { this.logViewer?.Close(); };
+        IApplicationModel applicationModel = ApplicationBase.GetRequiredService<IApplicationModel>();
+        await applicationModel.Shutdown();
+        await ApplicationBase.AppHost!.StopAsync();
+        await this.OnShutdownComplete();
+
+        this.ForceShutdown();
+    }
+
+    private void ForceShutdown()
+    {
+        if (this.desktop is not null)
+        {
+            this.desktop.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            this.desktop.Shutdown();
+        }
+    }
+
+    private bool IsAlreadyRunning()
+    {
+        if (OperatingSystem.IsMacOS() || OperatingSystem.IsMacCatalyst())
+        {
+            // No multiple instances on Mac
+            return false;
+        }
+        else
+        {
+            // Windows or Unix
+            try
+            {
+                string directory =
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), this.organizationKey);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                string filePath = Path.Combine(directory, string.Concat(this.applicationKey, ".lock"));
+                ApplicationBase.LockFile = File.Open(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+                if (ApplicationBase.LockFile is not null)
+                {
+                    ApplicationBase.LockFile.Lock(0, 0);
+                    return false;
+                }
+            }
+            catch { /* Swallow */ }
+
+            return true;
+        }
+    }
+
+    private void GlobalExceptionHandler(Exception? exception)
+    {
+        if (Debugger.IsAttached) { Debugger.Break(); }
+
+        if ((this.Logger is not null) && (exception is not null))
+        {
+            this.Logger.Error(exception.ToString());
+        }
+
+        // ???
+        // What can we do here?
+    }
 }
