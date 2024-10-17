@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Controls\SmartGenealogy.Avalonia.Controls.csproj" />
     <ProjectReference Include="..\SmartGenealogy.Avalonia.Interfaces\SmartGenealogy.Avalonia.Interfaces.csproj" />
   </ItemGroup>
 </Project>

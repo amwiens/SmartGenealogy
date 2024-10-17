@@ -26,5 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SmartGenealogy.Avalonia.Interfaces\SmartGenealogy.Avalonia.Interfaces.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Model\SmartGenealogy.Avalonia.Model.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Persistence\SmartGenealogy.Avalonia.Persistence.csproj" />
   </ItemGroup>
 </Project>

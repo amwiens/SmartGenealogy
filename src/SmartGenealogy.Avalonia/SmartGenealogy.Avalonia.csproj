@@ -25,6 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Controls\SmartGenealogy.Avalonia.Controls.csproj" />
     <ProjectReference Include="..\SmartGenealogy.Avalonia.Interfaces\SmartGenealogy.Avalonia.Interfaces.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Localizer\SmartGenealogy.Avalonia.Localizer.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Model\SmartGenealogy.Avalonia.Model.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Mvvm\SmartGenealogy.Avalonia.Mvvm.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Orchestrator\SmartGenealogy.Avalonia.Orchestrator.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Persistence\SmartGenealogy.Avalonia.Persistence.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Themes\SmartGenealogy.Avalonia.Themes.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.UserAdministration\SmartGenealogy.Avalonia.UserAdministration.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.StateMachine\SmartGenealogy.StateMachine.csproj" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Loc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Themes", "SmartGenealogy.Avalonia.Themes\SmartGenealogy.Avalonia.Themes.csproj", "{A57C80FD-E220-468D-A7D6-45D39F05570E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.UserAdministration", "SmartGenealogy.Avalonia.UserAdministration\SmartGenealogy.Avalonia.UserAdministration.csproj", "{F5600F5A-32D6-415E-86D8-1FA614820B03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

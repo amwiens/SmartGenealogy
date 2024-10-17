@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Interfaces\SmartGenealogy.Avalonia.Interfaces.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Model\SmartGenealogy.Avalonia.Model.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.Avalonia.Mvvm\SmartGenealogy.Avalonia.Mvvm.csproj" />
+  </ItemGroup>
+
+</Project>
