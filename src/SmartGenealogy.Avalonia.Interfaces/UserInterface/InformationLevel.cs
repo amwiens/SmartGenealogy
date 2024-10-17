@@ -4,5 +4,6 @@ public enum InformationLevel
 {
     Info,
     Warning,
-    Error
+    Error,
+    Success,
 }
