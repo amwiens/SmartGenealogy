@@ -3,79 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35323.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia", "SmartGenealogy.Avalonia\SmartGenealogy.Avalonia.csproj", "{10CF0198-B651-44E8-A6EC-C42BFE0371AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Interfaces", "SmartGenealogy.Avalonia.Interfaces\SmartGenealogy.Avalonia.Interfaces.csproj", "{5CDCC1C4-2344-454F-8101-BD8288106193}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Model", "SmartGenealogy.Avalonia.Model\SmartGenealogy.Avalonia.Model.csproj", "{F500B0C6-4B4C-4C40-A442-8F5CD23631BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Orchestrator", "SmartGenealogy.Avalonia.Orchestrator\SmartGenealogy.Avalonia.Orchestrator.csproj", "{E8EC0793-C838-484A-B44C-42A1EE6B4130}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.StateMachine", "SmartGenealogy.StateMachine\SmartGenealogy.StateMachine.csproj", "{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Persistence", "SmartGenealogy.Avalonia.Persistence\SmartGenealogy.Avalonia.Persistence.csproj", "{B183E46B-C113-4491-B196-EE1942172283}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Mvvm", "SmartGenealogy.Avalonia.Mvvm\SmartGenealogy.Avalonia.Mvvm.csproj", "{D3DCC261-6DCF-4602-8489-708E3A2EF798}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Controls", "SmartGenealogy.Avalonia.Controls\SmartGenealogy.Avalonia.Controls.csproj", "{2C02A6E1-1BE1-40C7-BCFC-40BEA5F392ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Localizer", "SmartGenealogy.Avalonia.Localizer\SmartGenealogy.Avalonia.Localizer.csproj", "{1E1A8003-7C95-4EA3-B954-102EEB422A7B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Themes", "SmartGenealogy.Avalonia.Themes\SmartGenealogy.Avalonia.Themes.csproj", "{A57C80FD-E220-468D-A7D6-45D39F05570E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.UserAdministration", "SmartGenealogy.Avalonia.UserAdministration\SmartGenealogy.Avalonia.UserAdministration.csproj", "{F5600F5A-32D6-415E-86D8-1FA614820B03}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{10CF0198-B651-44E8-A6EC-C42BFE0371AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10CF0198-B651-44E8-A6EC-C42BFE0371AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10CF0198-B651-44E8-A6EC-C42BFE0371AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10CF0198-B651-44E8-A6EC-C42BFE0371AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CDCC1C4-2344-454F-8101-BD8288106193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CDCC1C4-2344-454F-8101-BD8288106193}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CDCC1C4-2344-454F-8101-BD8288106193}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CDCC1C4-2344-454F-8101-BD8288106193}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F500B0C6-4B4C-4C40-A442-8F5CD23631BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F500B0C6-4B4C-4C40-A442-8F5CD23631BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F500B0C6-4B4C-4C40-A442-8F5CD23631BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F500B0C6-4B4C-4C40-A442-8F5CD23631BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8EC0793-C838-484A-B44C-42A1EE6B4130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8EC0793-C838-484A-B44C-42A1EE6B4130}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8EC0793-C838-484A-B44C-42A1EE6B4130}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8EC0793-C838-484A-B44C-42A1EE6B4130}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6EDEC9C-F80D-4CB6-AC05-21DAE996CDD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B183E46B-C113-4491-B196-EE1942172283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B183E46B-C113-4491-B196-EE1942172283}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B183E46B-C113-4491-B196-EE1942172283}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B183E46B-C113-4491-B196-EE1942172283}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3DCC261-6DCF-4602-8489-708E3A2EF798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3DCC261-6DCF-4602-8489-708E3A2EF798}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3DCC261-6DCF-4602-8489-708E3A2EF798}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3DCC261-6DCF-4602-8489-708E3A2EF798}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C02A6E1-1BE1-40C7-BCFC-40BEA5F392ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C02A6E1-1BE1-40C7-BCFC-40BEA5F392ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C02A6E1-1BE1-40C7-BCFC-40BEA5F392ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C02A6E1-1BE1-40C7-BCFC-40BEA5F392ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E1A8003-7C95-4EA3-B954-102EEB422A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E1A8003-7C95-4EA3-B954-102EEB422A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E1A8003-7C95-4EA3-B954-102EEB422A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E1A8003-7C95-4EA3-B954-102EEB422A7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A57C80FD-E220-468D-A7D6-45D39F05570E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5600F5A-32D6-415E-86D8-1FA614820B03}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
