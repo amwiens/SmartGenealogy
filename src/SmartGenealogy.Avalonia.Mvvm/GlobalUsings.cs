@@ -6,6 +6,7 @@ global using System.Globalization;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Diagnostics;
+global using System.IO;
 global using System.Linq;
 global using System.Reflection;
 global using System.Runtime.CompilerServices;
@@ -36,7 +37,7 @@ global using Avalonia.Reactive;
 global using Avalonia.Styling;
 global using Avalonia.Threading;
 
-global using SmartGenealogy.Avalonia.Controls.Logging;
+//global using SmartGenealogy.Avalonia.Controls.Logging;
 
 global using SmartGenealogy.Avalonia.Interfaces;
 global using SmartGenealogy.Avalonia.Interfaces.Logger;

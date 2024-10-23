@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Avalonia.Mvvm.Animations;
+﻿namespace SmartGenealogy.Avalonia.Mvvm.Interfaces.Animations;
 
 public interface IAnimationService
 {

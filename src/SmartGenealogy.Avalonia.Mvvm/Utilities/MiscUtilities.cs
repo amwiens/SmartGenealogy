@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Avalonia.Mvvm.Utilities;
+﻿using static SmartGenealogy.Avalonia.Controls.Utilities;
+
+namespace SmartGenealogy.Avalonia.Mvvm.Utilities;
 
 public static class MiscUtilities
 {
