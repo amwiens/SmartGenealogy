@@ -9,6 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Avalonia.Dia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Gif", "Avalonia.Gif\Avalonia.Gif.csproj", "{2FFA4484-28DB-4EAF-A021-4A19AC3FBC04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Core", "SmartGenealogy.Core\SmartGenealogy.Core.csproj", "{6C798E00-82E4-4C7E-95D7-B5333341E2A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native", "SmartGenealogy.Native\SmartGenealogy.Native.csproj", "{12C0053F-BB28-4F37-B24E-41C5F9438572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native.Abstractions", "SmartGenealogy.Native.Abstractions\SmartGenealogy.Native.Abstractions.csproj", "{B4FFC56B-8786-4947-973F-6D1CDD5C1C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native.macOS", "SmartGenealogy.Native.macOS\SmartGenealogy.Native.macOS.csproj", "{445D8807-C997-4B68-B1F6-7BD6E2593AFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native.Windows", "SmartGenealogy.Native.Windows\SmartGenealogy.Native.Windows.csproj", "{12F2EF26-0BF1-4B4A-8A2D-6CB3B9515A31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +37,26 @@ Global
 		{2FFA4484-28DB-4EAF-A021-4A19AC3FBC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FFA4484-28DB-4EAF-A021-4A19AC3FBC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FFA4484-28DB-4EAF-A021-4A19AC3FBC04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C798E00-82E4-4C7E-95D7-B5333341E2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C798E00-82E4-4C7E-95D7-B5333341E2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C798E00-82E4-4C7E-95D7-B5333341E2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C798E00-82E4-4C7E-95D7-B5333341E2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C0053F-BB28-4F37-B24E-41C5F9438572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C0053F-BB28-4F37-B24E-41C5F9438572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C0053F-BB28-4F37-B24E-41C5F9438572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C0053F-BB28-4F37-B24E-41C5F9438572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4FFC56B-8786-4947-973F-6D1CDD5C1C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FFC56B-8786-4947-973F-6D1CDD5C1C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FFC56B-8786-4947-973F-6D1CDD5C1C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FFC56B-8786-4947-973F-6D1CDD5C1C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{445D8807-C997-4B68-B1F6-7BD6E2593AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{445D8807-C997-4B68-B1F6-7BD6E2593AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{445D8807-C997-4B68-B1F6-7BD6E2593AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{445D8807-C997-4B68-B1F6-7BD6E2593AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F2EF26-0BF1-4B4A-8A2D-6CB3B9515A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F2EF26-0BF1-4B4A-8A2D-6CB3B9515A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F2EF26-0BF1-4B4A-8A2D-6CB3B9515A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F2EF26-0BF1-4B4A-8A2D-6CB3B9515A31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
