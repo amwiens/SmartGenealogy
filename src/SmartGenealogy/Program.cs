@@ -2,6 +2,9 @@
 
 using Avalonia;
 
+using Projektanker.Icons.Avalonia.FontAwesome;
+using Projektanker.Icons.Avalonia;
+
 namespace SmartGenealogy;
 
 class Program
@@ -10,14 +13,26 @@ class Program
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    public static void Main(string[] args)
+    {
+        BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+    }
+
+
+
+    internal static void SetupAvaloniaApp()
+    {
+        IconProvider.Current.Register<FontAwesomeIconProvider>();
+    }
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace();
+    {
+        SetupAvaloniaApp();
+        var app = AppBuilder.Configure<App>().UsePlatformDetect().WithInterFont().LogToTrace();
 
+
+
+        return app;
+    }
 }

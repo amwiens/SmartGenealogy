@@ -1,10 +1,18 @@
-<Application xmlns="https://github.com/avaloniaui"
+<Application x:Class="SmartGenealogy.App"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="SmartGenealogy.App"
+             xmlns:local="using:SmartGenealogy"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             Name="Smart Genealogy"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
+  <Application.DataTemplates>
+    <local:ViewLocator/>
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <styling:FluentAvaloniaTheme PreferUserAccentColor="True" UseSystemFontOnWindows="true"
+                                 TextVerticalAlignmentOverrideBehavior="Disabled"/>
+  </Application.Styles>
 </Application>
