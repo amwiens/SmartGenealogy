@@ -70,7 +70,7 @@ public partial class ViewModelBase : ObservableValidator
     /// Called the first time the view's LoadedEvent is fired.
     /// Sets the <see cref="ViewModelState.InitialLoaded"/> flag.
     /// </summary>
-    public virtual Task OnInitialLoadedAsync() => Task.CompletedTask;
+    protected virtual Task OnInitialLoadedAsync() => Task.CompletedTask;
 
     /// <summary>
     /// Called when the view's UnloadedEvent is fired.

@@ -15,7 +15,7 @@ public abstract partial class ProgressItemViewModelBase : ViewModelBase
     [ObservableProperty]
     private bool failed;
 
-    //public virtual bool IsCompleted => Progress.Value >= 100 || Failed;
+    public virtual bool IsCompleted => Progress.Value >= 100 || Failed;
 
-    //public ContentDialogProgressViewModelBase Progress { get; } = new();
+    public ContentDialogProgressViewModelBase Progress { get; } = new();
 }
