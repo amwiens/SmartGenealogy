@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="8.0.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
     <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.3.14" />
   </ItemGroup>

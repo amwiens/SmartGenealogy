@@ -138,9 +138,9 @@ public sealed class App : Application
         if (DesktopLifetime is null)
             return;
 
-        var mainViewModel = new MainWindowViewModel();
+        var mainViewModel = Services.GetRequiredService<MainWindowViewModel>();
 
-        var mainWindow = new MainWindow();
+        var mainWindow = Services.GetRequiredService<MainWindow>();
         mainWindow.DataContext = mainViewModel;
 
         mainWindow.ExtendClientAreaChromeHints = Program.Args.NoWindowChromeEffects
@@ -191,7 +191,7 @@ public sealed class App : Application
 
     internal static void ConfigurePageViewModels(IServiceCollection services)
     {
-
+        services.AddSingleton<MainWindowViewModel>();
     }
 
     internal static void ConfigureDialogViewModels(IServiceCollection services, Type[] exportedTypes)
@@ -211,7 +211,25 @@ public sealed class App : Application
             .SelectMany(a => a.GetExportedTypes())
             .ToArray();
 
+        var transientTypes = exportedTypes
+            .Select(t => new { t, attributes = t.GetCustomAttributes(typeof(TransientAttribute), false) })
+            .Where(
+                t1 =>
+                    t1.attributes is { Length: > 0 }
+                    && !t1.t.Name.Contains("Mock", StringComparison.OrdinalIgnoreCase))
+            .Select(t1 => new { Type = t1.t, Attribute = (TransientAttribute)t1.attributes[0] });
 
+        foreach (var typePair in transientTypes)
+        {
+            if (typePair.Attribute.InterfaceType is null)
+            {
+                services.AddTransient(typePair.Type);
+            }
+            else
+            {
+                services.AddTransient(typePair.Attribute.InterfaceType, typePair.Type);
+            }
+        }
 
         var singletonTypes = exportedTypes
             .Select(t => new { t, attributes = t.GetCustomAttributes(typeof(SingletonAttribute), false) })
@@ -262,6 +280,9 @@ public sealed class App : Application
                 }
             }
         }
+
+        ConfigurePageViewModels(services);
+        ConfigureDialogViewModels(services, exportedTypes);
 
 
 
