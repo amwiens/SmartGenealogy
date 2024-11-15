@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SmartGenealogy.Core.Models.Settings;
@@ -33,3 +34,12 @@ public class Settings
         return supportedCultures.Contains(systemCulture.Name) ? systemCulture : new CultureInfo("en-US");
     }
 }
+
+[JsonSourceGenerationOptions(
+    WriteIndented = true,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
+[JsonSerializable(typeof(Settings))]
+[JsonSerializable(typeof(bool))]
+[JsonSerializable(typeof(int))]
+[JsonSerializable(typeof(string))]
+internal partial class SettingsSerializerContext : JsonSerializerContext;
