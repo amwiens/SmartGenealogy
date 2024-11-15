@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Avalonia;
@@ -13,6 +14,10 @@ using CommandLine;
 
 using NLog;
 
+using Semver;
+
+using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models;
 using SmartGenealogy.Models;
 
 namespace SmartGenealogy;
@@ -57,12 +62,26 @@ public static class Program
 
         Args = parseResult.Value ?? new AppArgs();
 
+        if (Args.HomeDirectoryOverride is { } homeDir)
+        {
+            Compat.SetAppDataHome(homeDir);
+            GlobalConfig.HomeDir = homeDir;
+        }
+
+
+
+        if (Args.WaitForExitPid is { } waitExitPid)
+        {
+            WaitForPidExit(waitExitPid, TimeSpan.FromSeconds(30));
+        }
+
+
 
         var infoVersion = Assembly
             .GetExecutingAssembly()
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
             .InformationalVersion;
-
+        Compat.AppVersion = SemVersion.Parse(infoVersion ?? "0.0.0", SemVersionStyles.Strict);
 
         // Configure exception dialog for unhandled exceptions
         if (!Debugger.IsAttached || Args.DebugExceptionDialog)
@@ -75,14 +94,56 @@ public static class Program
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
     }
 
+
+
+    /// <summary>
+    /// Called in <see cref="BuildAvaloniaApp"/> and UI tests to setup static configurations
+    /// </summary>
+    internal static void SetupAvaloniaApp()
+    {
+
+    }
+
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
     {
+        SetupAvaloniaApp();
+
         var app = AppBuilder.Configure<App>().UsePlatformDetect().WithInterFont().LogToTrace();
 
 
 
         return app;
+    }
+
+
+
+    /// <summary>
+    /// Wait for an external process to exit,
+    /// ignores if process is not found, already exited, or throws an exception
+    /// </summary>
+    /// <param name="pid">External process PID</param>
+    /// <param name="timeout">Timeout to wait for process to exit</param>
+    private static void WaitForPidExit(int pid, TimeSpan timeout)
+    {
+        try
+        {
+            var process = Process.GetProcessById(pid);
+            process.WaitForExitAsync(new CancellationTokenSource(timeout).Token).GetAwaiter().GetResult();
+        }
+        catch (OperationCanceledException)
+        {
+            Logger.Warn("Timed out ({Timeout:g}) waiting for process {Pid} to exit", timeout, pid);
+        }
+        catch (SystemException e)
+        {
+            Logger.Warn(e, "Failed to wait for process {Pid} to exit", pid);
+        }
+        catch (Exception e)
+        {
+            Logger.Error(e, "Unexpected error during WaitForPidExit");
+            throw;
+        }
     }
 
 

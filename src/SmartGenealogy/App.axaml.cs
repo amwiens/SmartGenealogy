@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +19,10 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Platform.Storage;
+using Avalonia.Styling;
 using Avalonia.Threading;
+
+using FluentAvalonia.Interop;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,9 +31,13 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
+using NLog.Targets;
 
 using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Languages;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.Views;
 
@@ -44,7 +54,7 @@ public sealed class App : Application
 
     private readonly SemaphoreSlim onExitSemaphore = new(1, 1);
 
-    private bool IsAsyncDisposeComplete;
+    private bool isAsyncDisposeComplete;
 
     private bool isOnExitComplete;
 
@@ -82,6 +92,14 @@ public sealed class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+        SetFontFamily(GetPlatformDefaultFontFamily());
+
+        // Set design theme
+        if (Design.IsDesignMode)
+        {
+            RequestedThemeVariant = ThemeVariant.Dark;
+        }
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -117,17 +135,61 @@ public sealed class App : Application
         }
     }
 
+    /// <summary>
+    /// Set the default font family for the application.
+    /// </summary>
     private void SetFontFamily(FontFamily fontFamily)
     {
-
+        Resources["ContentControlThemeFontFamily"] = fontFamily;
     }
 
-    //public FontFamily GetPlatformDefaultFontFamily()
-    //{
+    /// <summary>
+    /// Get the default font family for the current platform and language.
+    /// </summary>
+    public FontFamily GetPlatformDefaultFontFamily()
+    {
+        try
+        {
+            var fonts = new List<string>();
 
-    //}
+            if (Cultures.Current?.Name == "ja-JP")
+            {
+                return Resources["NotoSansJP"] as FontFamily
+                    ?? throw new ApplicationException("Font NotoSansJP not found");
+            }
 
+            if (Compat.IsWindows)
+            {
+                fonts.Add(OSVersionHelper.IsWindows11() ? "Segoe UI Variable Text" : "Segoe UI");
+            }
+            else if (Compat.IsMacOS)
+            {
+                // Use Segoe fonts if installed, but we can't distribute them
+                fonts.Add("Segoe UI Variable");
+                fonts.Add("Segoe UI");
 
+                fonts.Add("San Francisco");
+                fonts.Add("Helvetica Neue");
+                fonts.Add("Helvetica");
+            }
+            else
+            {
+                return FontFamily.Default;
+            }
+
+            return new FontFamily(string.Join(",", fonts));
+        }
+        catch (Exception e)
+        {
+            Logger.Error(e);
+
+            return FontFamily.Default;
+        }
+    }
+
+    /// <summary>
+    /// Setup tasks to be run shortly before any window is shown
+    /// </summary>
     private void Setup()
     {
 
@@ -185,6 +247,29 @@ public sealed class App : Application
         Services = services.BuildServiceProvider();
 
         var settingsManager = Services.GetRequiredService<ISettingsManager>();
+
+        if (Program.Args.DataDirectoryOverride is not null)
+        {
+            var normalizedDataDirPath = Path.GetFullPath(Program.Args.DataDirectoryOverride);
+
+            if (Compat.IsWindows)
+            {
+                normalizedDataDirPath = normalizedDataDirPath.Replace("\\\\", "\\");
+            }
+
+            settingsManager.SetLibraryDirOverride(normalizedDataDirPath);
+        }
+
+        if (settingsManager.TryFindLibrary())
+        {
+            Cultures.SetSupportedCultureOrDefault(
+                settingsManager.Settings.Language,
+                settingsManager.Settings.NumberFormatMode);
+        }
+        else
+        {
+            Cultures.TrySetSupportedCulture(Settings.GetDefaultCulture());
+        }
 
 
     }
@@ -286,6 +371,12 @@ public sealed class App : Application
 
 
 
+        Config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .Build();
+
         var logConfig = ConfigureLogging();
 
         // Add logging
@@ -357,13 +448,13 @@ public sealed class App : Application
             return;
 
         // Check if we need to dispose IAsyncDisposables
-        if (IsAsyncDisposeComplete
+        if (isAsyncDisposeComplete
             || Services.GetServices<IAsyncDisposable>().ToList() is not { Count: > 0 } asyncDisposables)
             return;
 
         // Cancel shutdown for now
         e.Cancel = true;
-        IsAsyncDisposeComplete = true;
+        isAsyncDisposeComplete = true;
 
         Debug.WriteLine("OnShutdownRequested Canceled: Disposing IAsyncDisposables");
 
@@ -407,7 +498,95 @@ public sealed class App : Application
 
     private void OnExit(object? sender, EventArgs _)
     {
+        // Skip if already run
+        if (isOnExitComplete)
+        {
+            return;
+        }
 
+        // Skip if another OnExit is running
+        if (!onExitSemaphore.Wait(0))
+        {
+            // Block until the other OnExit is done to delay shutdown
+            onExitSemaphore.Wait();
+            onExitSemaphore.Release();
+            return;
+        }
+
+        try
+        {
+            const int timeoutTotalMs = 10000;
+            const int timeoutPerDisposeMs = 2000;
+
+            var timeoutTotalCts = new CancellationTokenSource(timeoutTotalMs);
+
+            var toDispose = Services.GetServices<IDisposable>().ToImmutableArray();
+
+            Logger.Debug("OnExit: Preparing to Dispose {Count} Services", toDispose.Length);
+
+            // Dispose IDisposable services
+            foreach (var disposable in toDispose)
+            {
+                Logger.Debug("OnExit: Disposing {Name}", disposable.GetType().Name);
+
+                using var instanceCts = CancellationTokenSource.CreateLinkedTokenSource(
+                    timeoutTotalCts.Token,
+                    new CancellationTokenSource(timeoutPerDisposeMs).Token);
+
+                try
+                {
+                    Task.Run(() => disposable.Dispose(), instanceCts.Token).Wait(instanceCts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    Logger.Warn("OnExit: Timeout disposing {Name}", disposable.GetType().Name);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e, "OnExit: Failed to dispose {Name}", disposable.GetType().Name);
+                }
+            }
+
+            var settingsManager = Services.GetRequiredService<ISettingsManager>();
+
+            // If RemoveFolderLinnksOnShutdown is set, delete all package junctions
+            //if (settingsManager is { IsLibraryDirSet: true, Settings.RemoveFolderLinksOnShutdown: true})
+            //{
+            //    Logger.Debug("OnExit: Removing package junctions");
+
+            //    using var instanceCts = CancellationTokenSource.CreateLinkedTokenSource(
+            //        timeoutTotalCts.Token,
+            //        new CancellationTokenSource(timeoutPerDisposeMs).Token);
+
+            //    try
+            //    {
+            //        Task.Run(() =>
+            //        {
+            //            var sharedFolders = Services.GetRequiredService<ISharedFolders>();
+            //            sharedFolders.RemoveLinksForAllPackages();
+            //        },
+            //        instanceCts.Token)
+            //            .Wait(instanceCts.Token);
+            //    }
+            //    catch (OperationCanceledException)
+            //    {
+            //        Logger.Warn("OnExit: Timeout removing package junctions");
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Logger.Error(e, "OnExit: Failed to remove package junctions");
+            //    }
+            //}
+
+            Logger.Debug("OnExit: Finished");
+        }
+        finally
+        {
+            isOnExitComplete = true;
+            onExitSemaphore.Release();
+
+            LogManager.Shutdown();
+        }
     }
 
     private static void TaskScheduler_UnobservedTaskException(
@@ -419,18 +598,18 @@ public sealed class App : Application
 
         try
         {
-            //var notificationService = Services.GetRequiredService<INotificationService>();
+            var notificationService = Services.GetRequiredService<INotificationService>();
 
-            //Dispatcher.UIThread.Invoke(() =>
-            //{
-            //    var originException = unobservedEx.InnerException ?? unobservedEx;
-            //    notificationService.ShowPersistent(
-            //        $"Unobserved Task Exception - {originException.GetType().Name}",
-            //        originException.Message);
-            //});
+            Dispatcher.UIThread.Invoke(() =>
+            {
+                var originException = unobservedEx.InnerException ?? unobservedEx;
+                notificationService.ShowPersistent(
+                    $"Unobserved Task Exception - {originException.GetType().Name}",
+                    originException.Message);
+            });
 
-            //// Consider the exception observed if we were able to show a notification
-            //e.SetObserved();
+            // Consider the exception observed if we were able to show a notification
+            e.SetObserved();
         }
         catch (Exception ex)
         {
@@ -448,6 +627,80 @@ public sealed class App : Application
         var setupBuilder = LogManager.Setup();
 
 
+
+        setupBuilder.LoadConfiguration(builder =>
+        {
+            // Filter some sources to be warn levels or above only
+            builder.ForLogger("System.*").WriteToNil(NLog.LogLevel.Warn);
+            builder.ForLogger("Microsoft.*").WriteToNil(NLog.LogLevel.Warn);
+            builder.ForLogger("Microsoft.Extensions.Http.*").WriteToNil(NLog.LogLevel.Warn);
+
+            // Disable some trace logging by default, unless overridden by app settings
+            //var typesToDisableTrace = new[]
+            //{
+            //    typeof(ConsoleViewModel),
+            //    typeof(LoadableViewModelBase),
+            //    typeof(TextEditorCompletionBehavior)
+            //};
+
+            //foreach (var type in typesToDisableTrace)
+            //{
+            //    // Skip if app settings already set a level for this type
+            //    if (
+            //        Config[$"Logging:LogLevel:{type.FullName}"] is { } levelStr
+            //        && Enum.TryParse<LogLevel>(levelStr, true, out _))
+            //    {
+            //        continue;
+            //    }
+
+            //    // Set minimum level to Debug for these types
+            //    builder.ForLogger(type.FullName).WriteToNil(NLog.LogLevel.Debug);
+            //}
+
+            // Console logging
+            builder
+                .ForLogger()
+                .FilterMinLevel(NLog.LogLevel.Trace)
+                .WriteTo(
+                    new ConsoleTarget("console")
+                    {
+                        Layout = "[${level:uppercase=true}]\t${logger:shortName=true}\t${message}",
+                        DetectConsoleAvailable = true
+                    })
+                .WithAsync();
+
+            // File logging
+            builder
+                .ForLogger()
+                .FilterMinLevel(NLog.LogLevel.Debug)
+                .WriteTo(
+                    new FileTarget("logfile")
+                    {
+                        Layout =
+                            "${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}",
+                        FileName = "${specialfolder:folder=ApplicationData}/SmartGenealogy/Logs/app.log",
+                        ArchiveOldFileOnStartup = true,
+                        ArchiveFileName =
+                            "${specialfolder:folder=ApplicationData}/SmartGenealogy/Logs/app.{#}.log",
+                        ArchiveDateFormat = "yyyy-MM-dd HH_mm_ss",
+                        ArchiveNumbering = ArchiveNumberingMode.Date,
+                        MaxArchiveFiles = 9
+                    })
+                .WithAsync();
+
+#if DEBUG
+            // LogViewer target when debug mode
+            //builder
+            //    .ForLogger()
+            //    .FilterMinLevel(NLog.LogLevel.Trace)
+            //    .WriteTo(new DataStoreLoggerTarget { Layout = "${message}" });
+#endif
+        });
+
+        // Sentry
+
+
+        LogManager.ReconfigExistingLoggers();
 
         return LogManager.Configuration;
     }

@@ -32,6 +32,11 @@ public interface ISettingsManager
     /// </summary>
     event EventHandler? Loaded;
 
+    /// <summary>
+    /// Set an override for the library directory.
+    /// </summary>
+    void SetLibraryDirOverride(DirectoryPath path);
+
 
 
     /// <summary>

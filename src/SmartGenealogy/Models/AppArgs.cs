@@ -33,4 +33,29 @@ public class AppArgs
     /// </summary>
     [Option("reset-window-position", HelpText = "Reset the saved window position back to (0,0)")]
     public bool ResetWindowPosition { get; set; }
+
+
+
+    /// <summary>
+    /// Override global app home directory
+    /// Defaults to (%APPDATA%|~/.config)/SmartGenealogy
+    /// </summary>
+    [Option("home-dir", HelpText = "Override global app home directory")]
+    public string? HomeDirectoryOverride { get; set; }
+
+    /// <summary>
+    /// Override data directory
+    /// This takes precedence over relative portable directory and global directory
+    /// </summary>
+    [Option("data-dir", HelpText = "Override data directory")]
+    public string? DataDirectoryOverride { get; set; }
+
+
+
+    /// <summary>
+    /// If provided, the app will wait for the process with this PID to exit
+    /// before starting up. Mainly used by the updater.
+    /// </summary>
+    [Option("wait-for-exit-pid", Hidden = true)]
+    public int? WaitForExitPid { get; set; }
 }

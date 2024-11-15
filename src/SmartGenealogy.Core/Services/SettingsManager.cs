@@ -80,6 +80,12 @@ public class SettingsManager(ILogger<SettingsManager> logger) : ISettingsManager
     /// <inheritdoc />
     public event EventHandler? Loaded;
 
+    /// <inheritdoc />
+    public void SetLibraryDirOverride(DirectoryPath path)
+    {
+        libraryDirOverride = path;
+    }
+
 
 
     /// <inheritdoc />

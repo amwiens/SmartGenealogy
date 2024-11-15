@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace SmartGenealogy.Core.Models.Settings;
 
@@ -15,6 +10,7 @@ public class Settings
     public string? Theme { get; set; } = "Dark";
     public string? Language { get; set; } = GetDefaultCulture().Name;
 
+    public NumberFormatMode NumberFormatMode { get; set; } = NumberFormatMode.CurrentCulture;
 
 
     public WindowSettings? WindowSettings { get; set; }
