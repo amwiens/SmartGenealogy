@@ -17,6 +17,10 @@ public class Settings
 
 
 
+    public Dictionary<NotificationKey, NotificationOption> NotificationOptions { get; set; } = new();
+
+
+
     /// <summary>
     /// Return either the system default culture, if supported, or en-US
     /// </summary>

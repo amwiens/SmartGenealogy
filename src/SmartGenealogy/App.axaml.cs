@@ -38,6 +38,7 @@ using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Languages;
+using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.Views;
 
