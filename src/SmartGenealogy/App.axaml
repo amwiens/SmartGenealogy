@@ -1,15 +1,42 @@
-<Application xmlns="https://github.com/avaloniaui"
+<Application x:Class="SmartGenealogy.App"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="SmartGenealogy.App"
              xmlns:local="using:SmartGenealogy"
-             RequestedThemeVariant="Default">
+             xmlns:idcr="using:Dock.Avalonia.Controls.Recycling"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             xmlns:labs="clr-namespace:Avalonia.Labs.Controls;assembly=Avalonia.Labs.Controls"
+             RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-    <Application.DataTemplates>
-        <local:ViewLocator/>
-    </Application.DataTemplates>
-  
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
+  <Application.DataTemplates>
+    <local:ViewLocator/>
+  </Application.DataTemplates>
+
+  <Application.Resources>
+    <ResourceDictionary>
+
+
+      <!--<idcr:ControlRecycling x:Key="ControlRecyclingKey" />-->
+      <x:Double x:Key="ContentDialogMaxWidth">700</x:Double>
+
+      <SolidColorBrush x:Key="ToolTipBackground" Color="#1E1F22" />
+      <SolidColorBrush x:Key="ToolTipForeground" Color="#9FBDC3" />
+    </ResourceDictionary>
+  </Application.Resources>
+
+  <Application.Styles>
+    <styling:FluentAvaloniaTheme PreferUserAccentColor="True" UseSystemFontOnWindows="True"
+                                 TextVerticalAlignmentOverrideBehavior="Disabled"/>
+    <!--<StyleInclude Source="avares://Dock.Avalonia/Themes/DockSimpleTheme.axaml" />
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Xaml.Interactions.Draggable/Styles.axaml" />
+    <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />-->
+
+    <!--<Style Selector="DockControl">
+      <Setter Property="(DockProperties.ControlRecycling)" Value="{StaticResource ControlRecyclingKey}" />
+    </Style>-->
+    <Style Selector="ScrollViewer">
+      <Setter Property="BringIntoViewOnFocusChange" Value="False" />
+    </Style>
+  </Application.Styles>
 </Application>

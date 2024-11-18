@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,6 +41,7 @@ using SmartGenealogy.Core.Services;
 using SmartGenealogy.Languages;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views;
 
 using Application = Avalonia.Application;
@@ -119,7 +121,8 @@ public sealed class App : Application
 
         if (Design.IsDesignMode)
         {
-
+            DesignData.DesignData.Initialize();
+            Services = DesignData.DesignData.Services;
         }
         else
         {
@@ -277,12 +280,42 @@ public sealed class App : Application
 
     internal static void ConfigurePageViewModels(IServiceCollection services)
     {
-        services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<MainWindowViewModel>(
+            provider =>
+                new MainWindowViewModel(
+                    provider.GetRequiredService<ISettingsManager>(),
+                    provider.GetRequiredService<ServiceManager<ViewModelBase>>(),
+                    provider.GetRequiredService<INotificationService>()
+                )
+        );
     }
 
     internal static void ConfigureDialogViewModels(IServiceCollection services, Type[] exportedTypes)
     {
+        // Dialog factory
+        services.AddSingleton<ServiceManager<ViewModelBase>>(provider =>
+        {
+            var serviceManager = new ServiceManager<ViewModelBase>();
 
+            var serviceManagedTypes = exportedTypes
+                .Select(
+                    t => new { t, attributes = t.GetCustomAttributes(typeof(ManagedServiceAttribute), true) })
+                .Where(t1 => t1.attributes is { Length: > 0 })
+                .Select(t1 => t1.t);
+
+            foreach (var type in serviceManagedTypes)
+            {
+                if (!type.IsAssignableTo(typeof(ViewModelBase)))
+                {
+                    throw new InvalidOperationException(
+                        $"Type {type.Name} with [ManagedService] attribute is not assignable to {nameof(ViewModelBase)}");
+                }
+
+                serviceManager.Register(type, () => (ViewModelBase)provider.GetRequiredService(type));
+            }
+
+            return serviceManager;
+        });
     }
 
     internal static IServiceCollection ConfigureServices()
@@ -550,7 +583,7 @@ public sealed class App : Application
 
             var settingsManager = Services.GetRequiredService<ISettingsManager>();
 
-            // If RemoveFolderLinnksOnShutdown is set, delete all package junctions
+            // If RemoveFolderLinksOnShutdown is set, delete all package junctions
             //if (settingsManager is { IsLibraryDirSet: true, Settings.RemoveFolderLinksOnShutdown: true})
             //{
             //    Logger.Debug("OnExit: Removing package junctions");

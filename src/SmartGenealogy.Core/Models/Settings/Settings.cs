@@ -17,6 +17,10 @@ public class Settings
 
 
 
+    public float AnimationScale { get; set; } = 1.0f;
+
+
+
     public Dictionary<NotificationKey, NotificationOption> NotificationOptions { get; set; } = new();
 
 

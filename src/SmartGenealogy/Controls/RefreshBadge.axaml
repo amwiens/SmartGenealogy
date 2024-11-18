@@ -1,0 +1,38 @@
+<controls:UserControlBase x:Class="SmartGenealogy.Controls.RefreshBadge"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
+                          xmlns:ui="using:FluentAvalonia.UI.Controls"
+                          xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                          Background="Transparent"
+                          d:DataContext="{x:Static mocks:DesignData.RefreshBadgeViewModel}"
+                          x:DataType="vm:RefreshBadgeViewModel"
+                          mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
+  <Grid Background="Transparent">
+    <Button BorderThickness="0"
+            Command="{Binding RefreshCommand}"
+            FontSize="26"
+            Foreground="{Binding ColorBrush}"
+            Margin="4"
+            Padding="2"
+            Background="Transparent"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            IsEnabled="{Binding !IsWorking}">
+      <controls:ProgressRing FontSize="14"
+                             Grid.Row="0"
+                             Height="20"
+                             BorderThickness="2"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             IsEnabled="{Binding IsWorking}"
+                             IsIndeterminate="True"
+                             IsVisible="{Binding IsWorking}"
+                             Width="20"
+                             ToolTip.Tip="{Binding CurrentToolTip}" />
+    </Button>
+  </Grid>
+</controls:UserControlBase>

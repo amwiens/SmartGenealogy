@@ -22,7 +22,7 @@ namespace SmartGenealogy.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SmartGenealogy.Languages {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SmartGenealogy.Languages.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,102 @@ namespace SmartGenealogy.Languages {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Action_Cancel {
+            get {
+                return ResourceManager.GetString("Action_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Action_Continue {
+            get {
+                return ResourceManager.GetString("Action_Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Directory.
+        /// </summary>
+        public static string Label_DataDirectory {
+            get {
+                return ResourceManager.GetString("Label_DataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is where application data (model checkpoints, web UIs, etc.) will be installed..
+        /// </summary>
+        public static string Label_DataDirectoryExplanation {
+            get {
+                return ResourceManager.GetString("Label_DataDirectoryExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience..
+        /// </summary>
+        public static string Label_FatWarning {
+            get {
+                return ResourceManager.GetString("Label_FatWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a Data Directory.
+        /// </summary>
+        public static string Label_PleaseSelectDataDirectory {
+            get {
+                return ResourceManager.GetString("Label_PleaseSelectDataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portable Mode.
+        /// </summary>
+        public static string Label_PortableMode {
+            get {
+                return ResourceManager.GetString("Label_PortableMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Portable Mode, all data and settings will be stored in the same directory as the application. You will be able to move the application with its &apos;Data&apos; folder to a different location or computer..
+        /// </summary>
+        public static string Label_PortableModeExplanation {
+            get {
+                return ResourceManager.GetString("Label_PortableModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Smart Genealogy!.
+        /// </summary>
+        public static string Text_WelcomeToSmartGenealogy {
+            get {
+                return ResourceManager.GetString("Text_WelcomeToSmartGenealogy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PLEASE EXTRACT THE APP FROM THE ZIP FILE BEFORE RUNNING SMART GENEALOGY.
+        /// </summary>
+        public static string Warning_PleaseExtractFirst {
+            get {
+                return ResourceManager.GetString("Warning_PleaseExtractFirst", resourceCulture);
             }
         }
     }
