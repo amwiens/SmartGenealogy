@@ -24,6 +24,7 @@ using Avalonia.Styling;
 using Avalonia.Threading;
 
 using FluentAvalonia.Interop;
+using FluentAvalonia.UI.Controls;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -135,7 +136,41 @@ public sealed class App : Application
 
             Setup();
 
-            ShowMainWindow();
+            // First time setup if needed
+            var settingsManager = Services.GetRequiredService<ISettingsManager>();
+            if (!settingsManager.IsEulaAccepted())
+            {
+                var setupWindow = Services.GetRequiredService<FirstLaunchSetupWindow>();
+                var setupViewModel = Services.GetRequiredService<FirstLaunchSetupViewModel>();
+                setupWindow.DataContext = setupViewModel;
+                setupWindow.ShowAsDialog = true;
+                setupWindow.ShowActivated = true;
+                setupWindow.ShowAsyncCts = new CancellationTokenSource();
+
+                setupWindow.ExtendClientAreaChromeHints = Program.Args.NoWindowChromeEffects
+                    ? ExtendClientAreaChromeHints.NoChrome
+                    : ExtendClientAreaChromeHints.PreferSystemChrome;
+
+                DesktopLifetime.MainWindow = setupWindow;
+
+                setupWindow.ShowAsyncCts.Token.Register(() =>
+                {
+                    if (setupWindow.Result == ContentDialogResult.Primary)
+                    {
+                        settingsManager.SetEulaAccepted();
+                        ShowMainWindow();
+                        DesktopLifetime.MainWindow.Show();
+                    }
+                    else
+                    {
+                        Shutdown();
+                    }
+                });
+            }
+            else
+            {
+                ShowMainWindow();
+            }
         }
     }
 

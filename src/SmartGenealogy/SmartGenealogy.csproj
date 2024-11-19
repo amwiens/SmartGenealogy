@@ -53,6 +53,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\FirstLaunchSetupWindow.axaml.cs">
+      <DependentUpon>FirstLaunchSetupWindow.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

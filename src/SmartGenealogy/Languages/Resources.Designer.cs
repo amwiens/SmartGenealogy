@@ -79,6 +79,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We&apos;re checking some hardware specifications to determine compatibility..
+        /// </summary>
+        public static string Label_CheckingHardware {
+            get {
+                return ResourceManager.GetString("Label_CheckingHardware", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Directory.
         /// </summary>
         public static string Label_DataDirectory {
@@ -97,11 +106,38 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Everything looks good!.
+        /// </summary>
+        public static string Label_EverythingLooksGood {
+            get {
+                return ResourceManager.GetString("Label_EverythingLooksGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience..
         /// </summary>
         public static string Label_FatWarning {
             get {
                 return ResourceManager.GetString("Label_FatWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s get started.
+        /// </summary>
+        public static string Label_LetsGetStarted {
+            get {
+                return ResourceManager.GetString("Label_LetsGetStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower..
+        /// </summary>
+        public static string Label_NvidiaGpuRecommended {
+            get {
+                return ResourceManager.GetString("Label_NvidiaGpuRecommended", resourceCulture);
             }
         }
         

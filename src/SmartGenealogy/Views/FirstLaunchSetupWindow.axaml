@@ -1,0 +1,48 @@
+<controls:AppWindowBase x:Class="SmartGenealogy.Views.FirstLaunchSetupWindow"
+                        xmlns="https://github.com/avaloniaui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:ui="using:FluentAvalonia.UI.Controls"
+                        xmlns:vm="using:SmartGenealogy.ViewModels"
+                        xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                        xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                        xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                        d:DataContext="{x:Static mocks:DesignData.FirstLaunchSetupViewModel}"
+                        x:DataType="vm:FirstLaunchSetupViewModel"
+                        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+                        Icon="/Assets/avalonia-logo.ico"
+                        Width="800"
+                        Height="550"
+                        Title="Smart Genealogy"
+                        CornerRadius="4"
+                        WindowStartupLocation="CenterScreen">
+
+  <Grid ColumnDefinitions="0.8*,*">
+    <StackPanel Margin="64"
+                Orientation="Vertical"
+                VerticalAlignment="Center">
+
+    </StackPanel>
+    <Grid Grid.Column="1">
+      <Grid Margin="0,15,32,32" RowDefinitions="0.6*,0.4*">
+        <!-- Texts -->
+        <StackPanel Margin="32,64,0,0">
+          <TextBlock FontSize="24" Text="{x:Static lang:Resources.Label_LetsGetStarted}" />
+          <!-- Loading icon and text -->
+          <Grid Margin="0,8,0,0" ColumnDefinitions="0.15*,*">
+            <controls:RefreshBadge VerticalAlignment="Center"
+                                   DataContext="{Binding CheckHardwareBadge}" />
+            <TextBlock FontSize="14"
+                       Grid.Column="1"
+                       Margin="8,8"
+                       Text="{Binding CheckHardwareBadge.CurrentToolTip}"
+                       TextWrapping="WrapWithOverflow"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Grid>
+
+</controls:AppWindowBase>

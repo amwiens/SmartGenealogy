@@ -72,6 +72,9 @@ public static class DesignData
     public static MainWindowViewModel MainWindowViewModel =>
         Services.GetRequiredService<MainWindowViewModel>();
 
+    public static FirstLaunchSetupViewModel FirstLaunchSetupViewModel =>
+        Services.GetRequiredService<FirstLaunchSetupViewModel>();
+
 
 
     public static SelectDataDirectoryViewModel SelectDataDirectoryViewModel =>
