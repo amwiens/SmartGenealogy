@@ -6,7 +6,7 @@
                           xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
                           xmlns:ui="using:FluentAvalonia.UI.Controls"
                           xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
-                          xmlns:controls="clr-namspace:SmartGenealogy.Controls"
+                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
                           xmlns:lang="clr-namespace:SmartGenealogy.Languages"
                           d:DataContext="{x:Static mocks:DesignData.SelectDataDirectoryViewModel}"
                           x:DataType="dialogs:SelectDataDirectoryViewModel"
@@ -95,8 +95,7 @@
                 Margin="8,0,8,0"
                 Orientation="Horizontal"
                 IsVisible="{Binding IsStatusBadgeVisible}">
-      <!--
-      <controls:RefreshBadge DataContext="{Binding ValidatorRefreshBadge}" />-->
+      <controls:RefreshBadge DataContext="{Binding ValidatorRefreshBadge}" />
       <TextBlock FontSize="14"
                  Text="{Binding DirectoryStatusText}"
                  VerticalAlignment="Center" />
