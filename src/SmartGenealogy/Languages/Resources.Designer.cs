@@ -79,6 +79,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quit.
+        /// </summary>
+        public static string Action_Quit {
+            get {
+                return ResourceManager.GetString("Action_Quit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We&apos;re checking some hardware specifications to determine compatibility..
         /// </summary>
         public static string Label_CheckingHardware {
@@ -133,6 +142,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to License Agreement..
+        /// </summary>
+        public static string Label_LicenseAgreement {
+            get {
+                return ResourceManager.GetString("Label_LicenseAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower..
         /// </summary>
         public static string Label_NvidiaGpuRecommended {
@@ -165,6 +183,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_PortableModeExplanation {
             get {
                 return ResourceManager.GetString("Label_PortableModeExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have read and agree to the.
+        /// </summary>
+        public static string Label_ReadAndAgree {
+            get {
+                return ResourceManager.GetString("Label_ReadAndAgree", resourceCulture);
             }
         }
         

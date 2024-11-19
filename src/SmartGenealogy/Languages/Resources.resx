@@ -123,6 +123,9 @@
   <data name="Action_Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="Action_Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
   <data name="Label_CheckingHardware" xml:space="preserve">
     <value>We're checking some hardware specifications to determine compatibility.</value>
   </data>
@@ -141,6 +144,9 @@
   <data name="Label_LetsGetStarted" xml:space="preserve">
     <value>Let's get started</value>
   </data>
+  <data name="Label_LicenseAgreement" xml:space="preserve">
+    <value>License Agreement.</value>
+  </data>
   <data name="Label_NvidiaGpuRecommended" xml:space="preserve">
     <value>We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower.</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="Label_PortableModeExplanation" xml:space="preserve">
     <value>In Portable Mode, all data and settings will be stored in the same directory as the application. You will be able to move the application with its 'Data' folder to a different location or computer.</value>
+  </data>
+  <data name="Label_ReadAndAgree" xml:space="preserve">
+    <value>I have read and agree to the</value>
   </data>
   <data name="Text_WelcomeToSmartGenealogy" xml:space="preserve">
     <value>Welcome to Smart Genealogy!</value>

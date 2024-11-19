@@ -40,8 +40,65 @@
                        TextWrapping="WrapWithOverflow"
                        VerticalAlignment="Center" />
           </Grid>
+
+          <!-- Gpu info -->
+          <Grid ColumnDefinitions="*,Auto"
+                Margin="8,8,0,0"
+                HorizontalAlignment="Left"
+                IsVisible="{Binding GpuInfoText,
+                Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+            <Ellipse HorizontalAlignment="Left"
+                     Margin="8,0"
+                     Fill="{DynamicResource TextFillColorPrimaryBrush}"
+                     Height="8"
+                     Width="8" />
+            <TextBlock Grid.Column="1"
+                       FontSize="14"
+                       HorizontalAlignment="Left"
+                       Text="{Binding GpuInfoText}"
+                       TextWrapping="Wrap" />
+          </Grid>
+
         </StackPanel>
+        <!-- Checkbox -->
+        <!-- <Hyperlink Command="{Binding OpenLicenseLinkCommand}" NavigateUri="">License Agreement.</Hyperlink> -->
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto"
+              HorizontalAlignment="Center">
+          <CheckBox Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    IsChecked="{Binding EulaAccepted, Mode=TwoWay}"
+                    Margin="16,0,0,0">
+            <Grid ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+              <TextBlock VerticalAlignment="Top"
+                         FontSize="14"
+                         Text="{x:Static lang:Resources.Label_ReadAndAgree}" />
+
+              <HyperlinkButton VerticalAlignment="Top"
+                               Padding="0"
+                               Margin="1,0,0,0"
+                               Classes="transparent"
+                               NavigateUri="https://smartgenealogy.org/license"
+                               Content="{x:Static lang:Resources.Label_LicenseAgreement}"
+                               Grid.Column="1" />
+            </Grid>
+          </CheckBox>
+        </Grid>
       </Grid>
+      <!-- Buttons -->
+      <UniformGrid HorizontalAlignment="Right"
+                   Margin="32,8"
+                   MaxWidth="170"
+                   VerticalAlignment="Bottom">
+        <Button Classes="danger"
+                Click="QuitButton_OnClick"
+                Content="{x:Static lang:Resources.Action_Quit}" />
+        <Button Classes="info"
+                Click="ContinueButton_OnClick"
+                Content="{x:Static lang:Resources.Action_Continue}"
+                IsEnabled="{Binding EulaAccepted, Mode=OneWay}" />
+      </UniformGrid>
     </Grid>
   </Grid>
 
