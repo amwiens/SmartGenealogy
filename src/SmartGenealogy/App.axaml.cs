@@ -322,6 +322,13 @@ public sealed class App : Application
                     provider.GetRequiredService<ServiceManager<ViewModelBase>>(),
                     provider.GetRequiredService<INotificationService>()
                 )
+                {
+                    Pages =
+                    {
+                        provider.GetRequiredService<HomeViewModel>(),
+                    },
+                    FooterPages = { provider.GetRequiredService<SettingsViewModel>() }
+                }
         );
     }
 

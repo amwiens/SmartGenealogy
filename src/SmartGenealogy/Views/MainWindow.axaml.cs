@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 
 using Avalonia;
@@ -195,7 +196,12 @@ public partial class MainWindow : AppWindowBase
         }
     }
 
-
+    private void OnImageLoadFailed(object? sender, ImageLoadFailedEventArgs e)
+    {
+        var fileName = Path.GetFileName(e.Url);
+        var displayName = string.IsNullOrEmpty(fileName) ? e.Url : fileName;
+        logger.LogWarning($"Could not load '{displayName}'\n({e.Exception.Message})");
+    }
 
     private void TryEnableMicaEffect()
     {

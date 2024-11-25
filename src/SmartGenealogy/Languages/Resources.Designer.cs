@@ -88,6 +88,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string Label_About {
+            get {
+                return ResourceManager.GetString("Label_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We&apos;re checking some hardware specifications to determine compatibility..
         /// </summary>
         public static string Label_CheckingHardware {
@@ -129,6 +138,24 @@ namespace SmartGenealogy.Languages {
         public static string Label_FatWarning {
             get {
                 return ResourceManager.GetString("Label_FatWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string Label_General {
+            get {
+                return ResourceManager.GetString("Label_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Label_Home {
+            get {
+                return ResourceManager.GetString("Label_Home", resourceCulture);
             }
         }
         
@@ -192,6 +219,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_ReadAndAgree {
             get {
                 return ResourceManager.GetString("Label_ReadAndAgree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart Genealogy.
+        /// </summary>
+        public static string Label_SmartGenealogy {
+            get {
+                return ResourceManager.GetString("Label_SmartGenealogy", resourceCulture);
             }
         }
         

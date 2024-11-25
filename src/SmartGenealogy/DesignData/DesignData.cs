@@ -17,6 +17,7 @@ using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.ViewModels.Dialogs;
+using SmartGenealogy.ViewModels.Settings;
 
 namespace SmartGenealogy.DesignData;
 
@@ -74,6 +75,15 @@ public static class DesignData
 
     public static FirstLaunchSetupViewModel FirstLaunchSetupViewModel =>
         Services.GetRequiredService<FirstLaunchSetupViewModel>();
+
+
+
+    public static SettingsViewModel SettingsViewModel => Services.GetRequiredService<SettingsViewModel>();
+
+
+
+    public static MainSettingsViewModel MainSettingsViewModel =>
+        Services.GetRequiredService<MainSettingsViewModel>();
 
 
 

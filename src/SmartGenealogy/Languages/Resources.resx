@@ -126,6 +126,9 @@
   <data name="Action_Quit" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="Label_About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Label_CheckingHardware" xml:space="preserve">
     <value>We're checking some hardware specifications to determine compatibility.</value>
   </data>
@@ -140,6 +143,13 @@
   </data>
   <data name="Label_FatWarning" xml:space="preserve">
     <value>You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience.</value>
+  </data>
+  <data name="Label_General" xml:space="preserve">
+    <value>General</value>
+    <comment>A general settings category</comment>
+  </data>
+  <data name="Label_Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Label_LetsGetStarted" xml:space="preserve">
     <value>Let's get started</value>
@@ -161,6 +171,9 @@
   </data>
   <data name="Label_ReadAndAgree" xml:space="preserve">
     <value>I have read and agree to the</value>
+  </data>
+  <data name="Label_SmartGenealogy" xml:space="preserve">
+    <value>Smart Genealogy</value>
   </data>
   <data name="Text_WelcomeToSmartGenealogy" xml:space="preserve">
     <value>Welcome to Smart Genealogy!</value>

@@ -1,0 +1,81 @@
+<controls:UserControlBase x:Class="SmartGenealogy.Views.Settings.MainSettingsPage"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:avalonia="https://github.com/projektanker/icons.avalonia"
+                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                          xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+                          xmlns:hardwareInfo="clr-namespace:SmartGenealogy.Core.Helper.HardwareInfo;assembly=SmartGenealogy.Core"
+                          xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                          xmlns:models="clr-namespace:SmartGenealogy.Models"
+                          xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
+                          xmlns:ui="using:FluentAvalonia.UI.Controls"
+                          xmlns:vmSettings="clr-namespace:SmartGenealogy.ViewModels.Settings"
+                          d:DataContext="{x:Static mocks:DesignData.MainSettingsViewModel}"
+                          d:DesignHeight="700"
+                          d:DesignWidth="800"
+                          x:CompileBindings="True"
+                          x:DataType="vmSettings:MainSettingsViewModel"
+                          Focusable="True"
+                          mc:Ignorable="d">
+
+  <controls:UserControlBase.Resources>
+
+  </controls:UserControlBase.Resources>
+
+  <controls:UserControlBase.Styles>
+    <Style Selector="sg|SpacedGrid &gt; ui|SettingsExpander">
+      <Setter Property="Margin" Value="8,0" />
+    </Style>
+  </controls:UserControlBase.Styles>
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="8,16" Spacing="8">
+      <!-- General -->
+      <sg:SpacedGrid RowDefinitions="Auto,*,*,*" RowSpacing="4">
+        <TextBlock Margin="0,0,0,4"
+                   FontWeight="Medium"
+                   Text="{x:Static lang:Resources.Label_General}" />
+      </sg:SpacedGrid>
+
+
+
+      <Grid RowDefinitions="Auto, *">
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    Orientation="Vertical">
+          <TextBlock Margin="0,8"
+                     FontSize="15"
+                     FontWeight="Bold"
+                     Text="{x:Static lang:Resources.Label_About}" />
+          <Image Width="112"
+                 Height="112"
+                 Margin="8"
+                 HorizontalAlignment="Left"
+                 Source="/Assets/avalonia-logo.ico" />
+          <TextBlock Margin="8"
+                     FontWeight="Medium"
+                     Text="{x:Static lang:Resources.Label_SmartGenealogy}" />
+          <Panel>
+            <Button Name="VersionButton"
+                    Margin="8,0,8,8"
+                    Padding="2,0,2,0"
+                    BorderThickness="0"
+                    Classes="transparent"
+                    Command="{Binding OnVersionClick}"
+                    Content="{Binding AppVersion}" />
+            <ui:TeachingTip Title="{Binding VersionFlyoutText}"
+                            IsOpen="{Binding IsVersionTapTeachingTipOpen}"
+                            PreferredPlacement="RightTop"
+                            Target="{Binding #VersionButton}" />
+          </Panel>
+        </StackPanel>
+      </Grid>
+
+      <!-- Extra space at the bottom -->
+      <Panel Margin="0,0,0,16" />
+    </StackPanel>
+  </ScrollViewer>
+</controls:UserControlBase>

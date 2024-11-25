@@ -19,8 +19,10 @@ namespace SmartGenealogy.Services;
 
 [Singleton(ImplType = typeof(NavigationService<MainWindowViewModel>),
     InterfaceType = typeof(INavigationService<MainWindowViewModel>))]
-//[Singleton(ImplType = typeof(NavigationService<SettingsViewModel>),
-//    InterfaceType = typeof(INavigationService<SettingsViewModel>))]
+[Singleton(ImplType = typeof(NavigationService<HomeViewModel>),
+    InterfaceType = typeof(INavigationService<HomeViewModel>))]
+[Singleton(ImplType = typeof(NavigationService<SettingsViewModel>),
+    InterfaceType = typeof(INavigationService<SettingsViewModel>))]
 public class NavigationService<T> : INavigationService<T>
 {
     private Frame? frame;
