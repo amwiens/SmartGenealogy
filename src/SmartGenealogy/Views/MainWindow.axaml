@@ -18,10 +18,9 @@
                         Width="1300"
                         Height="950"
                         BackRequested="TopLevel_OnBackRequested"
-                        Title="Smart Genealogy">
-  <!--BackRequested="TopLevel_OnBackRequested"
+                        Title="Smart Genealogy"
                         DockProperties.IsDragEnabled="True"
-  DockProperties.IsDropEnabled="True">-->
+                        DockProperties.IsDropEnabled="True">
 
   <Grid RowDefinitions="Auto,Auto,*">
     <Grid Name="TitleBarHost"
