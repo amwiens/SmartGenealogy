@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action_AddForAllUsers" xml:space="preserve">
+    <value>Add for All Users</value>
+  </data>
+  <data name="Action_AddForCurrentUser" xml:space="preserve">
+    <value>Add for Current User</value>
+  </data>
   <data name="Action_Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Action_Close" xml:space="preserve">
+    <value>Close</value>
   </data>
   <data name="Action_Continue" xml:space="preserve">
     <value>Continue</value>
@@ -126,11 +135,38 @@
   <data name="Action_Quit" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="Action_Relaunch" xml:space="preserve">
+    <value>Relaunch</value>
+  </data>
+  <data name="Action_RelaunchLater" xml:space="preserve">
+    <value>Relaunch Later</value>
+  </data>
+  <data name="Action_Restart" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="Action_SelectDirectory" xml:space="preserve">
+    <value>Select Directory</value>
+  </data>
   <data name="Label_About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Label_AddToStartMenu" xml:space="preserve">
+    <value>Add Smart Genealogy to the Start Menu</value>
+  </data>
+  <data name="Label_AddToStartMenu_Details" xml:space="preserve">
+    <value>Uses the current app location, you can run this again if you move the app</value>
+  </data>
+  <data name="Label_Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="Label_ChangesApplied" xml:space="preserve">
+    <value>Changes Applied</value>
+  </data>
   <data name="Label_CheckingHardware" xml:space="preserve">
     <value>We're checking some hardware specifications to determine compatibility.</value>
+  </data>
+  <data name="Label_CurrentDirectory" xml:space="preserve">
+    <value>Current directory:</value>
   </data>
   <data name="Label_DataDirectory" xml:space="preserve">
     <value>Data Directory</value>
@@ -151,6 +187,9 @@
   <data name="Label_Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Label_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="Label_LetsGetStarted" xml:space="preserve">
     <value>Let's get started</value>
   </data>
@@ -159,6 +198,9 @@
   </data>
   <data name="Label_NvidiaGpuRecommended" xml:space="preserve">
     <value>We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower.</value>
+  </data>
+  <data name="Label_OnlyAvailableOnWindows" xml:space="preserve">
+    <value>Only available on Windows</value>
   </data>
   <data name="Label_PleaseSelectDataDirectory" xml:space="preserve">
     <value>Please Select a Data Directory</value>
@@ -172,8 +214,35 @@
   <data name="Label_ReadAndAgree" xml:space="preserve">
     <value>I have read and agree to the</value>
   </data>
+  <data name="Label_RelaunchRequired" xml:space="preserve">
+    <value>Relaunch Required</value>
+  </data>
+  <data name="Label_RestartRequired" xml:space="preserve">
+    <value>Restart required</value>
+  </data>
+  <data name="Label_SelectNewDataDirectory" xml:space="preserve">
+    <value>Select new Data Directory</value>
+  </data>
+  <data name="Label_SelectNewDataDirectory_Details" xml:space="preserve">
+    <value>Does not move existing data</value>
+  </data>
   <data name="Label_SmartGenealogy" xml:space="preserve">
     <value>Smart Genealogy</value>
+  </data>
+  <data name="Label_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Label_Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
+    <value>Relaunch is required for new language option to take effect</value>
+  </data>
+  <data name="Text_RestartMayBeRequiredForSystemChanges" xml:space="preserve">
+    <value>A restart may be required for system changes to take effect.</value>
+  </data>
+  <data name="Text_RestartRequired" xml:space="preserve">
+    <value>Smart Genealogy must be restarted for the changes to take effect.</value>
   </data>
   <data name="Text_WelcomeToSmartGenealogy" xml:space="preserve">
     <value>Welcome to Smart Genealogy!</value>

@@ -61,11 +61,38 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add for All Users.
+        /// </summary>
+        public static string Action_AddForAllUsers {
+            get {
+                return ResourceManager.GetString("Action_AddForAllUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add for Current User.
+        /// </summary>
+        public static string Action_AddForCurrentUser {
+            get {
+                return ResourceManager.GetString("Action_AddForCurrentUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Action_Cancel {
             get {
                 return ResourceManager.GetString("Action_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Action_Close {
+            get {
+                return ResourceManager.GetString("Action_Close", resourceCulture);
             }
         }
         
@@ -88,6 +115,42 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relaunch.
+        /// </summary>
+        public static string Action_Relaunch {
+            get {
+                return ResourceManager.GetString("Action_Relaunch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relaunch Later.
+        /// </summary>
+        public static string Action_RelaunchLater {
+            get {
+                return ResourceManager.GetString("Action_RelaunchLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart.
+        /// </summary>
+        public static string Action_Restart {
+            get {
+                return ResourceManager.GetString("Action_Restart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Directory.
+        /// </summary>
+        public static string Action_SelectDirectory {
+            get {
+                return ResourceManager.GetString("Action_SelectDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string Label_About {
@@ -97,11 +160,56 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Smart Genealogy to the Start Menu.
+        /// </summary>
+        public static string Label_AddToStartMenu {
+            get {
+                return ResourceManager.GetString("Label_AddToStartMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses the current app location, you can run this again if you move the app.
+        /// </summary>
+        public static string Label_AddToStartMenu_Details {
+            get {
+                return ResourceManager.GetString("Label_AddToStartMenu_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appearance.
+        /// </summary>
+        public static string Label_Appearance {
+            get {
+                return ResourceManager.GetString("Label_Appearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes Applied.
+        /// </summary>
+        public static string Label_ChangesApplied {
+            get {
+                return ResourceManager.GetString("Label_ChangesApplied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We&apos;re checking some hardware specifications to determine compatibility..
         /// </summary>
         public static string Label_CheckingHardware {
             get {
                 return ResourceManager.GetString("Label_CheckingHardware", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current directory:.
+        /// </summary>
+        public static string Label_CurrentDirectory {
+            get {
+                return ResourceManager.GetString("Label_CurrentDirectory", resourceCulture);
             }
         }
         
@@ -160,6 +268,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Label_Language {
+            get {
+                return ResourceManager.GetString("Label_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s get started.
         /// </summary>
         public static string Label_LetsGetStarted {
@@ -183,6 +300,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_NvidiaGpuRecommended {
             get {
                 return ResourceManager.GetString("Label_NvidiaGpuRecommended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only available on Windows.
+        /// </summary>
+        public static string Label_OnlyAvailableOnWindows {
+            get {
+                return ResourceManager.GetString("Label_OnlyAvailableOnWindows", resourceCulture);
             }
         }
         
@@ -223,11 +349,92 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relaunch Required.
+        /// </summary>
+        public static string Label_RelaunchRequired {
+            get {
+                return ResourceManager.GetString("Label_RelaunchRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart required.
+        /// </summary>
+        public static string Label_RestartRequired {
+            get {
+                return ResourceManager.GetString("Label_RestartRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select new Data Directory.
+        /// </summary>
+        public static string Label_SelectNewDataDirectory {
+            get {
+                return ResourceManager.GetString("Label_SelectNewDataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Does not move existing data.
+        /// </summary>
+        public static string Label_SelectNewDataDirectory_Details {
+            get {
+                return ResourceManager.GetString("Label_SelectNewDataDirectory_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Smart Genealogy.
         /// </summary>
         public static string Label_SmartGenealogy {
             get {
                 return ResourceManager.GetString("Label_SmartGenealogy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string Label_System {
+            get {
+                return ResourceManager.GetString("Label_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Label_Theme {
+            get {
+                return ResourceManager.GetString("Label_Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relaunch is required for new language option to take effect.
+        /// </summary>
+        public static string Text_RelaunchRequiredToApplyLanguage {
+            get {
+                return ResourceManager.GetString("Text_RelaunchRequiredToApplyLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A restart may be required for system changes to take effect..
+        /// </summary>
+        public static string Text_RestartMayBeRequiredForSystemChanges {
+            get {
+                return ResourceManager.GetString("Text_RestartMayBeRequiredForSystemChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart Genealogy must be restarted for the changes to take effect..
+        /// </summary>
+        public static string Text_RestartRequired {
+            get {
+                return ResourceManager.GetString("Text_RestartRequired", resourceCulture);
             }
         }
         
