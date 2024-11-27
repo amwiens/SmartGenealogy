@@ -7,11 +7,96 @@
                           xmlns:ui="using:FluentAvalonia.UI.Controls"
                           xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
                           xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                          xmlns:mdxaml="https://github.com/whistyun/Markdown.Avalonia.Tight"
                           xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                          xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
                           d:DataContext="{x:Static mocks:DesignData.UpdateViewModel}"
                           x:DataType="dialogs:UpdateViewModel"
-                          x:CompileBindings="True"
-                          mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550">
+                          mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="550">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto">
 
+    <!--<TitleBar Background="{ui:ThemeResource ApplicationBackgroundBrush}">
+      <TitleBar.Header>
+        <TextBlock Margin="16,8" Text="Smart Genealogy - Update Available" />
+      </TitleBar.Header>
+    </TitleBar>-->
 
+    <TextBlock Grid.Row="0"
+               Text="{x:Static lang:Resources.Label_NewVersionAvailable}"
+               HorizontalAlignment="Center"
+               FontWeight="Thin"
+               Margin="0,16,0,0"
+               FontSize="28" />
+
+    <StackPanel Grid.Row="1"
+                Margin="0,4"
+                Orientation="Horizontal"
+                IsVisible="{Binding UpdateText, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                HorizontalAlignment="Center">
+      <TextBlock Foreground="{StaticResource ThemeGreyColor}"
+                 FontSize="18"
+                 Text="{Binding CurrentVersionText}" />
+      <fluentIcons:SymbolIcon FontSize="15"
+                              Margin="8,0"
+                              VerticalAlignment="Center"
+                              Symbol="ArrowRight"
+                              IconVariant="Filled" />
+      <TextBlock FontSize="18"
+                 Text="{Binding NewVersionText}" />
+    </StackPanel>
+
+    <TextBlock Grid.Row="1"
+               HorizontalAlignment="Center"
+               FontSize="18"
+               TextWrapping="Wrap"
+               TextAlignment="Center"
+               IsVisible="{Binding UpdateText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+               Text="{Binding UpdateText}"
+               Margin="16,32,16,0" />
+
+    <TextBlock Grid.Row="2"
+               Text="{x:Static lang:Resources.Label_ReleaseNotes}"
+               FontSize="16"
+               IsVisible="{Binding !ShowProgressBar}"
+               Margin="32,16,32,0" />
+
+    <ProgressBar Grid.Row="3"
+                 Height="200"
+                 Value="{Binding ProgressValue}"
+                 IsIndeterminate="{Binding IsProgressIndeterminate}"
+                 IsVisible="{Binding ShowProgressBar}"
+                 Margin="32" />
+
+    <Grid Grid.Row="4"
+          Margin="8"
+          IsVisible="{Binding !ShowProgressBar}">
+      <Border Margin="32,16"
+              CornerRadius="8"
+              Background="{DynamicResource ButtonBackgroundPressed}">
+        <mdxaml:MarkdownScrollViewer Margin="16"
+                                     Markdown="{Binding ReleaseNotes, Mode=OneWay}" />
+      </Border>
+    </Grid>
+
+    <ui:InfoBar Grid.Row="5"
+                Margin="64,0,64,16"
+                IsOpen="True"
+                IsClosable="False"
+                Title="{x:Static lang:Resources.Text_AppWillRelaunchAfterUpdate}" />
+
+    <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,16">
+      <Button Content="{x:Static lang:Resources.Action_RemindMeLater}"
+              Classes="info"
+              Margin="0,0,8,0"
+              FontSize="15"
+              Command="{Binding OnCloseButtonClick}"
+              IsEnabled="{Binding !InstallUpdateCommand.IsRunning}" />
+
+      <Button Content="{x:Static lang:Resources.Action_InstallNow}"
+              Classes="success"
+              Margin="8,0,0,0"
+              FontSize="15"
+              Command="{Binding InstallUpdateCommand}" />
+    </StackPanel>
+  </Grid>
 </controls:UserControlBase>

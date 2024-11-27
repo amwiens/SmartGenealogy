@@ -106,6 +106,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install Now.
+        /// </summary>
+        public static string Action_InstallNow {
+            get {
+                return ResourceManager.GetString("Action_InstallNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quit.
         /// </summary>
         public static string Action_Quit {
@@ -129,6 +138,15 @@ namespace SmartGenealogy.Languages {
         public static string Action_RelaunchLater {
             get {
                 return ResourceManager.GetString("Action_RelaunchLater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remind Me Later.
+        /// </summary>
+        public static string Action_RemindMeLater {
+            get {
+                return ResourceManager.GetString("Action_RemindMeLater", resourceCulture);
             }
         }
         
@@ -295,6 +313,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A new version of Smart Genealogy is available!.
+        /// </summary>
+        public static string Label_NewVersionAvailable {
+            get {
+                return ResourceManager.GetString("Label_NewVersionAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower..
         /// </summary>
         public static string Label_NvidiaGpuRecommended {
@@ -354,6 +381,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_RelaunchRequired {
             get {
                 return ResourceManager.GetString("Label_RelaunchRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Notes.
+        /// </summary>
+        public static string Label_ReleaseNotes {
+            get {
+                return ResourceManager.GetString("Label_ReleaseNotes", resourceCulture);
             }
         }
         
@@ -426,6 +462,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_UpdateAvailable {
             get {
                 return ResourceManager.GetString("Label_UpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The app will relaunch after updating.
+        /// </summary>
+        public static string Text_AppWillRelaunchAfterUpdate {
+            get {
+                return ResourceManager.GetString("Text_AppWillRelaunchAfterUpdate", resourceCulture);
             }
         }
         

@@ -18,7 +18,7 @@ public class UpdateHelper : IUpdateHelper
 {
     private readonly ILogger<UpdateHelper> logger;
     private readonly IHttpClientFactory httpClientFactory;
-
+    private readonly IDownloadService downloadService;
     private readonly ISettingsManager settingsManager;
 
     private readonly DebugOptions debugOptions;
@@ -41,7 +41,7 @@ public class UpdateHelper : IUpdateHelper
     public UpdateHelper(
         ILogger<UpdateHelper> logger,
         IHttpClientFactory httpClientFactory,
-
+        IDownloadService downloadService,
         IOptions<DebugOptions> debugOptions,
         ISettingsManager settingsManager)
     {

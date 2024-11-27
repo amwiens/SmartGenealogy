@@ -82,7 +82,8 @@
         <StackPanel>
           <!-- Update button -->
           <ui:NavigationViewItem Name="FooterUpdateItem"
-                                 Content="{x:Static lang:Resources.Label_UpdateAvailable}">
+                                 Content="{x:Static lang:Resources.Label_UpdateAvailable}"
+                                 Tapped="FooterUpdateItem_OnTapped">
             <!--IsVisible="{Binding IsUpdateAvailable}"
             IsEnabled="{Binding IsUpdateAvailable}"
             DataContext="{Binding UpdateViewModel}"

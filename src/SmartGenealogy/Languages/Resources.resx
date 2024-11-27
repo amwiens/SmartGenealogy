@@ -132,6 +132,9 @@
   <data name="Action_Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="Action_InstallNow" xml:space="preserve">
+    <value>Install Now</value>
+  </data>
   <data name="Action_Quit" xml:space="preserve">
     <value>Quit</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Action_RelaunchLater" xml:space="preserve">
     <value>Relaunch Later</value>
+  </data>
+  <data name="Action_RemindMeLater" xml:space="preserve">
+    <value>Remind Me Later</value>
   </data>
   <data name="Action_Restart" xml:space="preserve">
     <value>Restart</value>
@@ -196,6 +202,9 @@
   <data name="Label_LicenseAgreement" xml:space="preserve">
     <value>License Agreement.</value>
   </data>
+  <data name="Label_NewVersionAvailable" xml:space="preserve">
+    <value>A new version of Smart Genealogy is available!</value>
+  </data>
   <data name="Label_NvidiaGpuRecommended" xml:space="preserve">
     <value>We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower.</value>
   </data>
@@ -216,6 +225,9 @@
   </data>
   <data name="Label_RelaunchRequired" xml:space="preserve">
     <value>Relaunch Required</value>
+  </data>
+  <data name="Label_ReleaseNotes" xml:space="preserve">
+    <value>Release Notes</value>
   </data>
   <data name="Label_RestartRequired" xml:space="preserve">
     <value>Restart required</value>
@@ -243,6 +255,9 @@
   </data>
   <data name="TextTemplate_UpdatingPackage" xml:space="preserve">
     <value>Updating {0}</value>
+  </data>
+  <data name="Text_AppWillRelaunchAfterUpdate" xml:space="preserve">
+    <value>The app will relaunch after updating</value>
   </data>
   <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
     <value>Relaunch is required for new language option to take effect</value>

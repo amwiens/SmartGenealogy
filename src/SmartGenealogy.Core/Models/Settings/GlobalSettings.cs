@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Core.Services;
+﻿namespace SmartGenealogy.Core.Models.Settings;
 
 public record GlobalSettings
 {

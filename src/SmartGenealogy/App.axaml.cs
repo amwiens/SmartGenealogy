@@ -6,6 +6,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,8 +37,16 @@ using NLog.Config;
 using NLog.Extensions.Logging;
 using NLog.Targets;
 
+using Polly;
+using Polly.Contrib.WaitAndRetry;
+using Polly.Extensions.Http;
+using Polly.Timeout;
+
+using Refit;
+
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models.Configs;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Languages;
@@ -452,6 +462,92 @@ public sealed class App : Application
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddEnvironmentVariables()
             .Build();
+
+        services.Configure<DebugOptions>(Config.GetSection(nameof(DebugOptions)));
+
+
+
+        // Refit settings for IApiFactory
+        var defaultSystemTextJsonSettings = SystemTextJsonContentSerializer.GetDefaultJsonSerializerOptions();
+        defaultSystemTextJsonSettings.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        var apiFactoryRefitSettings = new RefitSettings
+        {
+            ContentSerializer = new SystemTextJsonContentSerializer(defaultSystemTextJsonSettings)
+        };
+
+        // HTTP Policies
+        var retryStatusCodes = new[]
+        {
+            HttpStatusCode.RequestTimeout, // 408
+            HttpStatusCode.InternalServerError, // 500
+            HttpStatusCode.BadGateway, // 502
+            HttpStatusCode.ServiceUnavailable, // 503
+            HttpStatusCode.GatewayTimeout // 504
+        };
+
+        // Default retry policy: ~30s max
+        var retryPolicy = HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .Or<TimeoutRejectedException>()
+            .OrResult(r => retryStatusCodes.Contains(r.StatusCode))
+            .WaitAndRetryAsync(
+                Backoff.DecorrelatedJitterBackoffV2(
+                    medianFirstRetryDelay: TimeSpan.FromMilliseconds(750),
+                    retryCount: 6),
+                onRetry: (result, timeSpan, retryCount, _) =>
+                {
+                    if (retryCount > 3)
+                    {
+                        Logger.Info(
+                            "Retry attempt {Count}/{Max} after {Seconds:N2}s due to {Exception}",
+                            retryCount,
+                            6,
+                            timeSpan.TotalSeconds,
+                            result.Exception?.ToString());
+                    }
+                })
+            // 10s timeout for each attempt
+            .WrapAsync(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(60)));
+
+        // Longer retry policy: ~60s max
+        var retryPolicyLonger = HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .Or<TimeoutRejectedException>()
+            .OrResult(r => retryStatusCodes.Contains(r.StatusCode))
+            .WaitAndRetryAsync(
+                Backoff.DecorrelatedJitterBackoffV2(
+                    medianFirstRetryDelay: TimeSpan.FromMilliseconds(1000),
+                    retryCount: 7),
+                onRetry: (result, timeSpan, retryCount, _) =>
+                {
+                    if (retryCount > 4)
+                    {
+                        Logger.Info(
+                            "Retry attempt {Count}/{MAX} after {Seconds:N2}s due to {Exception}",
+                            retryCount,
+                            7,
+                            timeSpan.TotalSeconds,
+                            result.Exception?.ToString());
+                    }
+                })
+            // 30s timeout for each attempt
+            .WrapAsync(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(120)));
+
+        // Shorter local retry policy: ~5s total
+        var localRetryPolicy = HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .Or<TimeoutRejectedException>()
+            .OrResult(r => retryStatusCodes.Contains(r.StatusCode))
+            .WaitAndRetryAsync(
+                Backoff.DecorrelatedJitterBackoffV2(
+                    medianFirstRetryDelay: TimeSpan.FromMilliseconds(320),
+                    retryCount: 5))
+            // 3s timeout for each attempt
+            .WrapAsync(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(3)));
+
+        // named client for update
+        services.AddHttpClient("UpdateClient").AddPolicyHandler(retryPolicy);
+
 
         var logConfig = ConfigureLogging();
 
