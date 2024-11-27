@@ -235,8 +235,14 @@
   <data name="Label_Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="Label_UnexpectedErrorOccurred" xml:space="preserve">
+    <value>An unexpected error occurred</value>
+  </data>
   <data name="Label_UpdateAvailable" xml:space="preserve">
     <value>Update Available</value>
+  </data>
+  <data name="TextTemplate_UpdatingPackage" xml:space="preserve">
+    <value>Updating {0}</value>
   </data>
   <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
     <value>Relaunch is required for new language option to take effect</value>

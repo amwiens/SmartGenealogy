@@ -86,7 +86,25 @@ public class SettingsManager(ILogger<SettingsManager> logger) : ISettingsManager
         libraryDirOverride = path;
     }
 
+    /// <inheritdoc />
+    public void RegisterOnLibraryDirSet(Action<string> handler)
+    {
+        if (IsLibraryDirSet)
+        {
+            handler(LibraryDir);
+            return;
+        }
 
+        LibraryDirChanged += Handler;
+
+        return;
+
+        void Handler(object? sender, string dir)
+        {
+            LibraryDirChanged -= Handler;
+            handler(dir);
+        }
+    }
 
     /// <inheritdoc />
     public SettingsTransaction BeginTransaction()

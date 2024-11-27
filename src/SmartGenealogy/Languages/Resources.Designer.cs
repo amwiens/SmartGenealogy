@@ -412,6 +412,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred.
+        /// </summary>
+        public static string Label_UnexpectedErrorOccurred {
+            get {
+                return ResourceManager.GetString("Label_UnexpectedErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Available.
         /// </summary>
         public static string Label_UpdateAvailable {
@@ -453,6 +462,15 @@ namespace SmartGenealogy.Languages {
         public static string Text_WelcomeToSmartGenealogy {
             get {
                 return ResourceManager.GetString("Text_WelcomeToSmartGenealogy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating {0}.
+        /// </summary>
+        public static string TextTemplate_UpdatingPackage {
+            get {
+                return ResourceManager.GetString("TextTemplate_UpdatingPackage", resourceCulture);
             }
         }
         

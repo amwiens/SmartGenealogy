@@ -17,8 +17,10 @@
     <PackageReference Include="MetadataExtractor" Version="2.9.0-rc2" />
     <PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.3.15" />
+    <PackageReference Include="NSec.Cryptography" Version="24.9.0-preview.2" />
     <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="OneOf.SourceGenerator" Version="3.0.271" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
     <PackageReference Include="RockLib.Reflection.Optimized" Version="3.0.0" />
     <PackageReference Include="Semver" Version="3.0.0" />
   </ItemGroup>

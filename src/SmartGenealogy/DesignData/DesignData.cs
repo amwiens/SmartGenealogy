@@ -62,10 +62,19 @@ public static class DesignData
         var notificationService = Services.GetRequiredService<INotificationService>();
 
 
+
+        UpdateViewModel = Services.GetRequiredService<UpdateViewModel>();
+        UpdateViewModel.CurrentVersionText = "v2.0.0";
+        UpdateViewModel.NewVersionText = "v2.0.1";
+        UpdateViewModel.ReleaseNotes = "## v2.0.1\n- Fixed a bug\n- Added a feature\n-Removed a feature";
+
         isInitialized = true;
     }
 
 
+
+    [NotNull]
+    public static UpdateViewModel? UpdateViewModel { get; private set; }
 
     public static ServiceManager<ViewModelBase> DialogFactory =>
         Services.GetRequiredService<ServiceManager<ViewModelBase>>();

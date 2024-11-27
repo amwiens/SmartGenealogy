@@ -37,7 +37,11 @@ public interface ISettingsManager
     /// </summary>
     void SetLibraryDirOverride(DirectoryPath path);
 
-
+    /// <summary>
+    /// Register a handler that fires once when LibraryDir is first set.
+    /// Will fire instantly if it is already set.
+    /// </summary>
+    void RegisterOnLibraryDirSet(Action<string> handler);
 
     /// <summary>
     /// Return a SettingsTransaction that can be used to modify Settings
