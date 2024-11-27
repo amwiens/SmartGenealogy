@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Threading;
 
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -196,5 +198,22 @@ public partial class MainWindowViewModel : ViewModelBase
         }
 
         return false;
+    }
+
+    public async Task ShowUpdateDialog()
+    {
+        var viewModel = dialogFactory.Get<UpdateViewModel>();
+        var dialog = new BetterContentDialog
+        {
+            ContentVerticalScrollBarVisibility = ScrollBarVisibility.Disabled,
+            DefaultButton = ContentDialogButton.Close,
+            IsPrimaryButtonEnabled = false,
+            IsSecondaryButtonEnabled = false,
+            IsFooterVisible = false,
+            Content = new UpdateDialog { DataContext = viewModel }
+        };
+
+        await viewModel.Preload();
+        await dialog.ShowAsync();
     }
 }

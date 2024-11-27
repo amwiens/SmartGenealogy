@@ -8,6 +8,7 @@ using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Immutable;
@@ -295,6 +296,19 @@ public partial class MainWindow : AppWindowBase
 
             Background = new ImmutableSolidColorBrush(color, 0.9);
         }
+    }
+
+
+
+    private async void FooterUpdateItem_OnTapped(object? sender, TappedEventArgs e)
+    {
+        // show update window thing
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            throw new NullReferenceException("DataContext is not MainWindowViewModel");
+        }
+
+        await vm.ShowUpdateDialog();
     }
 
 

@@ -412,6 +412,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Available.
+        /// </summary>
+        public static string Label_UpdateAvailable {
+            get {
+                return ResourceManager.GetString("Label_UpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Relaunch is required for new language option to take effect.
         /// </summary>
         public static string Text_RelaunchRequiredToApplyLanguage {

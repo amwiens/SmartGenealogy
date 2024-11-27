@@ -57,6 +57,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Dialogs\UpdateDialog.axaml.cs">
+      <DependentUpon>UpdateDialog.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FirstLaunchSetupWindow.axaml.cs">
       <DependentUpon>FirstLaunchSetupWindow.axaml</DependentUpon>
     </Compile>

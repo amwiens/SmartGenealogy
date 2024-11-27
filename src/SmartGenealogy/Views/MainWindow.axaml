@@ -80,7 +80,20 @@
 
       <ui:NavigationView.PaneFooter>
         <StackPanel>
-
+          <!-- Update button -->
+          <ui:NavigationViewItem Name="FooterUpdateItem"
+                                 Content="{x:Static lang:Resources.Label_UpdateAvailable}">
+            <!--IsVisible="{Binding IsUpdateAvailable}"
+            IsEnabled="{Binding IsUpdateAvailable}"
+            DataContext="{Binding UpdateViewModel}"
+            Tapped="FooterUpdateItem_OnTapped">-->
+            <ui:NavigationViewItem.IconSource>
+              <fluentIcons:SymbolIconSource FontSize="18"
+                                            Symbol="ArrowDownload"
+                                            IconVariant="Filled"
+                                            Foreground="LimeGreen" />
+            </ui:NavigationViewItem.IconSource>
+          </ui:NavigationViewItem>
         </StackPanel>
       </ui:NavigationView.PaneFooter>
 
