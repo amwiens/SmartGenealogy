@@ -2,18 +2,23 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Threading;
 
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
+using Avalonia.Threading;
 
 using FluentAvalonia.Styling;
 using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media;
+using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +27,7 @@ using Microsoft.Extensions.Logging;
 using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
@@ -76,6 +82,54 @@ public partial class MainWindow : AppWindowBase
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
 
         navigationService.TypedNavigation += NavigationService_OnTypedNavigation;
+
+
+
+        SetDefaultFonts();
+
+        Observable
+            .FromEventPattern<SizeChangedEventArgs>(this, nameof(SizeChanged))
+            .Where(x => x.EventArgs.PreviousSize != x.EventArgs.NewSize)
+            .Throttle(TimeSpan.FromMilliseconds(100))
+            .Select(x => x.EventArgs.NewSize)
+            .ObserveOn(SynchronizationContext.Current)
+            .Subscribe(newSize =>
+            {
+                var validWindowPosition = Screens.All.Any(screen => screen.Bounds.Contains(Position));
+
+                settingsManager.Transaction(
+                    s =>
+                    {
+                        s.WindowSettings = new WindowSettings(
+                            newSize.Width,
+                            newSize.Height,
+                            validWindowPosition ? Position.X : 0,
+                            validWindowPosition ? Position.Y : 0,
+                            WindowState == WindowState.Maximized);
+                    },
+                    ignoreMissingLibraryDir: true);
+            });
+
+        Observable
+            .FromEventPattern<PixelPointEventArgs>(this, nameof(PositionChanged))
+            .Where(x => Screens.All.Any(screen => screen.Bounds.Contains(x.EventArgs.Point)))
+            .Throttle(TimeSpan.FromMilliseconds(100))
+            .Select(x => x.EventArgs.Point)
+            .ObserveOn(SynchronizationContext.Current)
+            .Subscribe(position =>
+            {
+                settingsManager.Transaction(
+                    s =>
+                    {
+                        s.WindowSettings = new WindowSettings(
+                            Width,
+                            Height,
+                            position.X,
+                            position.Y,
+                            WindowState == WindowState.Maximized);
+                    },
+                    ignoreMissingLibraryDir: true);
+            });
     }
 
 
@@ -129,7 +183,15 @@ public partial class MainWindow : AppWindowBase
         if (DataContext is not MainWindowViewModel vm)
             return;
 
-
+        // Navigate to first page
+        Dispatcher.UIThread.Post(
+            () =>
+            navigationService.NavigateTo(
+                vm.Pages[0],
+                new BetterSlideNavigationTransition
+                {
+                    Effect = SlideNavigationTransitionEffect.FromBottom
+                }));
     }
 
     protected override void OnUnloaded(RoutedEventArgs e)
@@ -234,6 +296,19 @@ public partial class MainWindow : AppWindowBase
 
             Background = new ImmutableSolidColorBrush(color, 0.9);
         }
+    }
+
+
+
+    private async void FooterUpdateItem_OnTapped(object? sender, TappedEventArgs e)
+    {
+        // show update window thing
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            throw new NullReferenceException("DataContext is not MainWindowViewModel");
+        }
+
+        await vm.ShowUpdateDialog();
     }
 
 

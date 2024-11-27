@@ -235,6 +235,9 @@
   <data name="Label_Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="Label_UpdateAvailable" xml:space="preserve">
+    <value>Update Available</value>
+  </data>
   <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
     <value>Relaunch is required for new language option to take effect</value>
   </data>
