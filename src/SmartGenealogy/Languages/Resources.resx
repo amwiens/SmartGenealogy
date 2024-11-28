@@ -132,6 +132,12 @@
   <data name="Action_Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="Action_CopyDetails" xml:space="preserve">
+    <value>Copy Details</value>
+  </data>
+  <data name="Action_ExitApplication" xml:space="preserve">
+    <value>Exit Application</value>
+  </data>
   <data name="Action_InstallNow" xml:space="preserve">
     <value>Install Now</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="Label_Appearance" xml:space="preserve">
     <value>Appearance</value>
   </data>
+  <data name="Label_Callstack" xml:space="preserve">
+    <value>Callstack</value>
+  </data>
   <data name="Label_ChangesApplied" xml:space="preserve">
     <value>Changes Applied</value>
   </data>
@@ -180,6 +189,9 @@
   <data name="Label_DataDirectoryExplanation" xml:space="preserve">
     <value>This is where application data (model checkpoints, web UIs, etc.) will be installed.</value>
   </data>
+  <data name="Label_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="Label_EverythingLooksGood" xml:space="preserve">
     <value>Everything looks good!</value>
   </data>
@@ -192,6 +204,9 @@
   </data>
   <data name="Label_Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Label_InnerException" xml:space="preserve">
+    <value>Inner exception</value>
   </data>
   <data name="Label_Language" xml:space="preserve">
     <value>Language</value>

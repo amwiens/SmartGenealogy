@@ -20,7 +20,19 @@ public class AppArgs
     [Option("debug-exception-dialog", HelpText = "Use exception dialog while debugger is attached")]
     public bool DebugExceptionDialog { get; set; }
 
+    /// <summary>
+    /// Whether to use Sentry when a debugger is attached.
+    /// </summary>
+    [Option("debug-sentry", HelpText = "Use Sentry when debugger is attached")]
+    public bool DebugSentry { get; set; }
 
+
+
+    /// <summary>
+    /// Whether to disable Sentry.
+    /// </summary>
+    [Option("no-sentry", HelpText = "Disable Sentry")]
+    public bool NoSentry { get; set; }
 
     /// <summary>
     /// Whether to disable window chrome effects

@@ -8,4 +8,5 @@ namespace SmartGenealogy.Core.Helper.Packages;
 
 public abstract class BasePackage
 {
+    // TODO: Update class
 }

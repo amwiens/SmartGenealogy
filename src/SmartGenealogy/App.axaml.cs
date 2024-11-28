@@ -44,6 +44,8 @@ using Polly.Timeout;
 
 using Refit;
 
+using Sentry;
+
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Configs;
@@ -525,7 +527,7 @@ public sealed class App : Application
                     if (retryCount > 4)
                     {
                         Logger.Info(
-                            "Retry attempt {Count}/{MAX} after {Seconds:N2}s due to {Exception}",
+                            "Retry attempt {Count}/{Max} after {Seconds:N2}s due to {Exception}",
                             retryCount,
                             7,
                             timeSpan.TotalSeconds,
@@ -724,33 +726,33 @@ public sealed class App : Application
             var settingsManager = Services.GetRequiredService<ISettingsManager>();
 
             // If RemoveFolderLinksOnShutdown is set, delete all package junctions
-            //if (settingsManager is { IsLibraryDirSet: true, Settings.RemoveFolderLinksOnShutdown: true})
-            //{
-            //    Logger.Debug("OnExit: Removing package junctions");
+            if (settingsManager is { IsLibraryDirSet: true, Settings.RemoveFolderLinksOnShutdown: true })
+            {
+                Logger.Debug("OnExit: Removing package junctions");
 
-            //    using var instanceCts = CancellationTokenSource.CreateLinkedTokenSource(
-            //        timeoutTotalCts.Token,
-            //        new CancellationTokenSource(timeoutPerDisposeMs).Token);
+                using var instanceCts = CancellationTokenSource.CreateLinkedTokenSource(
+                    timeoutTotalCts.Token,
+                    new CancellationTokenSource(timeoutPerDisposeMs).Token);
 
-            //    try
-            //    {
-            //        Task.Run(() =>
-            //        {
-            //            var sharedFolders = Services.GetRequiredService<ISharedFolders>();
-            //            sharedFolders.RemoveLinksForAllPackages();
-            //        },
-            //        instanceCts.Token)
-            //            .Wait(instanceCts.Token);
-            //    }
-            //    catch (OperationCanceledException)
-            //    {
-            //        Logger.Warn("OnExit: Timeout removing package junctions");
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Logger.Error(e, "OnExit: Failed to remove package junctions");
-            //    }
-            //}
+                try
+                {
+                    Task.Run(() =>
+                    {
+                        var sharedFolders = Services.GetRequiredService<ISharedFolders>();
+                        sharedFolders.RemoveLinksForAllPackages();
+                    },
+                    instanceCts.Token)
+                        .Wait(instanceCts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    Logger.Warn("OnExit: Timeout removing package junctions");
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e, "OnExit: Failed to remove package junctions");
+                }
+            }
 
             Logger.Debug("OnExit: Finished");
         }
@@ -872,7 +874,21 @@ public sealed class App : Application
         });
 
         // Sentry
-
+        if (SentrySdk.IsEnabled)
+        {
+            LogManager.Configuration.AddSentry(o =>
+            {
+                o.InitializeSdk = false;
+                o.Layout = "${message}";
+                o.ShutdownTimeoutSeconds = 5;
+                o.IncludeEventDataOnBreadcrumbs = true;
+                o.BreadcrumbLayout = "${logger}: ${message}";
+                // Debug and higher are stored as breadcrumbs (default is Info)
+                o.MinimumBreadcrumbLevel = NLog.LogLevel.Debug;
+                // Error and higher is sent as event (default is Error)
+                o.MinimumEventLevel = NLog.LogLevel.Error;
+            });
+        }
 
         LogManager.ReconfigExistingLoggers();
 

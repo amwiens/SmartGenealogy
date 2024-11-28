@@ -106,6 +106,24 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Details.
+        /// </summary>
+        public static string Action_CopyDetails {
+            get {
+                return ResourceManager.GetString("Action_CopyDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit Application.
+        /// </summary>
+        public static string Action_ExitApplication {
+            get {
+                return ResourceManager.GetString("Action_ExitApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install Now.
         /// </summary>
         public static string Action_InstallNow {
@@ -205,6 +223,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Callstack.
+        /// </summary>
+        public static string Label_Callstack {
+            get {
+                return ResourceManager.GetString("Label_Callstack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changes Applied.
         /// </summary>
         public static string Label_ChangesApplied {
@@ -250,6 +277,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Label_Details {
+            get {
+                return ResourceManager.GetString("Label_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Everything looks good!.
         /// </summary>
         public static string Label_EverythingLooksGood {
@@ -282,6 +318,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_Home {
             get {
                 return ResourceManager.GetString("Label_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inner exception.
+        /// </summary>
+        public static string Label_InnerException {
+            get {
+                return ResourceManager.GetString("Label_InnerException", resourceCulture);
             }
         }
         

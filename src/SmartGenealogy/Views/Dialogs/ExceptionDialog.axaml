@@ -1,0 +1,98 @@
+<controls:AppWindowBase x:Class="SmartGenealogy.Views.Dialogs.ExceptionDialog"
+                        xmlns="https://github.com/avaloniaui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
+                        xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                        xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                        xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                        xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+                        d:DataContext="{x:Static mocks:DesignData.ExceptionViewModel}"
+                        x:DataType="dialogs:ExceptionViewModel"
+                        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+                        Icon="/Assets/avalonia-logo.ico"
+                        Width="800"
+                        Height="550"
+                        Title="Smart Genealogy - Unexpected Error">
+
+  <Grid RowDefinitions="Auto,*,Auto">
+    <Grid Grid.Row="1" RowDefinitions="Auto,*,Auto">
+      <!-- Info -->
+      <TextBlock Grid.Row="0"
+                 Theme="{DynamicResource SubtitleTextBlockStyle}"
+                 Margin="16"
+                 Text="{x:Static lang:Resources.Label_UnexpectedErrorOccurred}"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top" />
+
+      <!-- Exception details -->
+      <DockPanel Grid.Row="1">
+        <Expander VerticalAlignment="Top"
+                  Header="{Binding ExceptionType, Mode=OneWay, TargetNullValue=-, FallbackValue=Unknown Exception}"
+                  IsExpanded="True"
+                  Padding="12,12,12,12"
+                  Margin="16,0,16,0">
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel DataContext="{Binding Exception}" Spacing="4">
+              <!-- Exception Message -->
+              <TextBlock Theme="{DynamicResource BodyStrongTextBlockStyle}" Text="{x:Static lang:Resources.Label_Details}" />
+              <SelectableTextBlock Text="{Binding Message}"
+                                   TextWrapping="WrapWithOverflow"
+                                   Margin="0,0,0,8"
+                                   SelectionBrush="DodgerBlue" />
+              <!-- Callstack -->
+              <TextBlock Theme="{DynamicResource BodyStrongTextBlockStyle}" Text="{x:Static lang:Resources.Label_Callstack}" />
+              <controls:Card Margin="0,0,0,8"
+                             Background="{DynamicResource ComboBoxDropDownBackground}">
+                <SelectableTextBlock FontSize="13"
+                                     SelectionBrush="DodgerBlue"
+                                     FontFamily="Cascadia Code,Consolas,Menlo,Monospace,DejaVu Sans Mono,monospace"
+                                     TextWrapping="Wrap"
+                                     Text="{Binding StackTrace}" />
+              </controls:Card>
+              <!-- Inner exception -->
+              <TextBlock Theme="{DynamicResource BodyStrongTextBlockStyle}"
+                         IsVisible="{Binding InnerException, Converter={x:Static ObjectConverters.IsNotNull}}"
+                         Text="{x:Static lang:Resources.Label_InnerException}" />
+              <controls:Card IsVisible="{Binding InnerException, Converter={x:Static ObjectConverters.IsNotNull}}"
+                             Background="{DynamicResource ComboBoxDropDownBackground}">
+                <SelectableTextBlock FontSize="13"
+                                     SelectionBrush="DodgerBlue"
+                                     FontFamily="Cascadia Code,Consolas,Menlo,Monospace,DejaVu Sans Mono, monospace"
+                                     TextWrapping="Wrap"
+                                     Text="{Binding InnerException}" />
+              </controls:Card>
+            </StackPanel>
+          </ScrollViewer>
+        </Expander>
+      </DockPanel>
+
+      <StackPanel Spacing="12"
+                  Orientation="Horizontal"
+                  Margin="16"
+                  HorizontalAlignment="Right"
+                  Grid.Row="2">
+        <!-- Copy Button -->
+        <Button Name="CopyButton"
+                Click="CopyButton_OnClick"
+                Padding="12,8">
+          <StackPanel Spacing="6" Orientation="Horizontal">
+            <fluentIcons:SymbolIcon FontSize="15"
+                                    Symbol="Copy"
+                                    Margin="0,1,0,0"
+                                    VerticalAlignment="Center" />
+            <TextBlock Text="{x:Static lang:Resources.Action_CopyDetails}" />
+          </StackPanel>
+        </Button>
+
+        <!-- Close Button -->
+        <Button Name="ExitButton"
+                IsDefault="True"
+                Content="{x:Static lang:Resources.Action_ExitApplication}"
+                Click="ExitButton_OnClick"
+                Padding="12,8" />
+      </StackPanel>
+    </Grid>
+  </Grid>
+</controls:AppWindowBase>

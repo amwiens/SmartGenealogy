@@ -47,6 +47,10 @@ public class Settings
 
 
 
+    public bool RemoveFolderLinksOnShutdown { get; set; }
+
+
+
     public float AnimationScale { get; set; } = 1.0f;
 
 

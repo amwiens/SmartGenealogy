@@ -101,6 +101,29 @@ public static class DesignData
 
 
 
+    public static ExceptionViewModel ExceptionViewModel =>
+        DialogFactory.Get<ExceptionViewModel>(viewModel =>
+        {
+            // Use try-catch to generate traceback information
+            try
+            {
+                try
+                {
+                    throw new OperationCanceledException("Example");
+                }
+                catch (OperationCanceledException e)
+                {
+                    throw new AggregateException(e);
+                }
+            }
+            catch (AggregateException e)
+            {
+                viewModel.Exception = e;
+            }
+        });
+
+
+
     public static RefreshBadgeViewModel RefreshBadgeViewModel => new() { State = ProgressState.Success };
 
 
