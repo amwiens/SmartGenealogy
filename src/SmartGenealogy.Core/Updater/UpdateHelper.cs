@@ -47,7 +47,7 @@ public class UpdateHelper : IUpdateHelper
     {
         this.logger = logger;
         this.httpClientFactory = httpClientFactory;
-
+        this.downloadService = downloadService;
         this.settingsManager = settingsManager;
 
         this.debugOptions = debugOptions.Value;
@@ -85,6 +85,60 @@ public class UpdateHelper : IUpdateHelper
 
             // check if need authenticated download
 
+
+            // Download update
+            await downloadService
+                .DownloadToFileAsync(url, downloadFile, progress: progress, httpClientName: "UpdateClient")
+                .ConfigureAwait(false);
+
+            // Unzip if needed
+            if (downloadFile.Extension == ".zip")
+            {
+                if (extractDir.Exists)
+                {
+                    await extractDir.DeleteAsync(true).ConfigureAwait(false);
+                }
+                extractDir.Create();
+
+                progress.Report(new ProgressReport(-1, isIndeterminate: true, type: ProgressType.Extract));
+
+                await ArchiveHelper.Extract(downloadFile, extractDir).ConfigureAwait(false);
+
+                progress.Report(new ProgressReport(1, isIndeterminate: true, type: ProgressType.Extract));
+
+                // Find binary and move it up to the root
+                var binaryFile = extractDir
+                    .EnumerateFiles("*", EnumerationOptionConstants.AllDirectories)
+                    .First(f => f.Extension.ToLowerInvariant() is ".exe" or ".appimage");
+
+                await binaryFile.MoveToAsync((FilePath)ExecutablePath).ConfigureAwait(false);
+            }
+            else if (downloadFile.Extension == ".dmg")
+            {
+                if (!Compat.IsMacOS)
+                    throw new NotSupportedException(".dmg is only supported on macOS");
+
+                if (extractDir.Exists)
+                {
+                    await extractDir.DeleteAsync(true).ConfigureAwait(false);
+                }
+                extractDir.Create();
+
+                // Extract dmg contents
+                await ArchiveHelper.ExtractDmg(downloadFile, extractDir).ConfigureAwait(false);
+
+                // Find app dir and move it up to the root
+                var appBundle = extractDir.EnumerateDirectories("*.app").First();
+
+                await appBundle.MoveToAsync((DirectoryPath)ExecutablePath).ConfigureAwait(false);
+            }
+            // Otherwise just rename
+            else
+            {
+                downloadFile.Rename(ExecutablePath.Name);
+            }
+
+            progress.Report(new ProgressReport(1d));
         }
         finally
         {

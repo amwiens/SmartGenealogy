@@ -27,7 +27,10 @@ using Microsoft.Extensions.Logging;
 using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Core.Extensions;
+using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Settings;
+using SmartGenealogy.Core.Models.Update;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
@@ -83,6 +86,9 @@ public partial class MainWindow : AppWindowBase
 
         navigationService.TypedNavigation += NavigationService_OnTypedNavigation;
 
+
+        EventManager.Instance.CultureChanged += (_, _) => SetDefaultFonts();
+        EventManager.Instance.UpdateAvailable += OnUpdateAvailable;
 
 
         SetDefaultFonts();
@@ -192,6 +198,12 @@ public partial class MainWindow : AppWindowBase
                 {
                     Effect = SlideNavigationTransitionEffect.FromBottom
                 }));
+
+        // Check show update teaching tip
+        if (vm.UpdateViewModel.IsUpdateAvailable)
+        {
+            OnUpdateAvailable(this, vm.UpdateViewModel.UpdateInfo);
+        }
     }
 
     protected override void OnUnloaded(RoutedEventArgs e)
@@ -208,7 +220,21 @@ public partial class MainWindow : AppWindowBase
             .FirstOrDefault(x => x.GetType() == e.ViewModelType);
     }
 
+    private void OnUpdateAvailable(object? sender, UpdateInfo? updateInfo)
+    {
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (DataContext is MainWindowViewModel vm && vm.ShouldShowUpdateAvailableTeachingTip(updateInfo))
+            {
+                var target = this.FindControl<NavigationViewItem>("FooterUpdateItem")!;
+                var tip = this.FindControl<TeachingTip>("UpdateAvailableTeachingTip")!;
 
+                tip.Target = target;
+                tip.Subtitle = $"{Compat.AppVersion.ToDisplayString()} -> {updateInfo.Version}";
+                tip.IsOpen = true;
+            }
+        });
+    }
 
     private void SetDefaultFonts()
     {

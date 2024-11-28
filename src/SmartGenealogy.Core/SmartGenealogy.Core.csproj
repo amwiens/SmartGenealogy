@@ -30,6 +30,7 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
     <PackageReference Include="RockLib.Reflection.Optimized" Version="3.0.0" />
     <PackageReference Include="Semver" Version="3.0.0" />
+    <PackageReference Include="SharpCompress" Version="0.38.0" />
   </ItemGroup>
 
 </Project>

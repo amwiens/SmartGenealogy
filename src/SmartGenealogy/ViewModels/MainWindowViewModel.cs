@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,9 @@ using NLog;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models.Update;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Core.Updater;
 using SmartGenealogy.Languages;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels.Base;
@@ -34,7 +37,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private readonly ISettingsManager settingsManager;
     private readonly ServiceManager<ViewModelBase> dialogFactory;
+
     private readonly INotificationService notificationService;
+
+    private readonly IUpdateHelper updateHelper;
     public string Greeting => "Welcome to Avalonia!";
 
     [ObservableProperty]
@@ -50,6 +56,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private List<PageViewModelBase> footerPages = new();
 
 
+    public UpdateViewModel UpdateViewModel { get; init; }
 
     public double PaneWidth =>
         Cultures.Current switch
@@ -60,11 +67,15 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(
         ISettingsManager settingsManager,
         ServiceManager<ViewModelBase> dialogFactory,
-        INotificationService notificationService)
+        INotificationService notificationService,
+        IUpdateHelper updateHelper)
     {
         this.settingsManager = settingsManager;
         this.dialogFactory = dialogFactory;
         this.notificationService = notificationService;
+        this.updateHelper = updateHelper;
+
+        UpdateViewModel = dialogFactory.Get<UpdateViewModel>();
     }
 
     public override void OnLoaded()
@@ -163,7 +174,31 @@ public partial class MainWindowViewModel : ViewModelBase
         return true;
     }
 
+    /// <summary>
+    /// Return true if we should show the update available teaching tip
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns></returns>
+    public bool ShouldShowUpdateAvailableTeachingTip([NotNullWhen(true)] UpdateInfo? info)
+    {
+        if (info is null)
+        {
+            return false;
+        }
 
+        // If matching settings seen version, don't show
+        if (info.Version == settingsManager.Settings.LastSeenUpdateVersion)
+        {
+            return false;
+        }
+
+        // Save that we have dismissed this update
+        settingsManager.Transaction(
+            s => s.LastSeenUpdateVersion = info.Version,
+            ignoreMissingLibraryDir: true);
+
+        return true;
+    }
 
     /// <summary>
     /// Shows the select data directory dialog.

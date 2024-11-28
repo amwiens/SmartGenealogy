@@ -49,6 +49,7 @@ using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Configs;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Core.Updater;
 using SmartGenealogy.Languages;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
@@ -330,7 +331,8 @@ public sealed class App : Application
                 new MainWindowViewModel(
                     provider.GetRequiredService<ISettingsManager>(),
                     provider.GetRequiredService<ServiceManager<ViewModelBase>>(),
-                    provider.GetRequiredService<INotificationService>()
+                    provider.GetRequiredService<INotificationService>(),
+                    provider.GetRequiredService<IUpdateHelper>()
                 )
                 {
                     Pages =

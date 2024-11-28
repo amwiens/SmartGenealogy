@@ -15,12 +15,6 @@
                           mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="550">
   <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto">
 
-    <!--<TitleBar Background="{ui:ThemeResource ApplicationBackgroundBrush}">
-      <TitleBar.Header>
-        <TextBlock Margin="16,8" Text="Smart Genealogy - Update Available" />
-      </TitleBar.Header>
-    </TitleBar>-->
-
     <TextBlock Grid.Row="0"
                Text="{x:Static lang:Resources.Label_NewVersionAvailable}"
                HorizontalAlignment="Center"
