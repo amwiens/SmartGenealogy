@@ -20,6 +20,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Input.Platform;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Styling;
@@ -47,11 +48,17 @@ using Refit;
 using Sentry;
 
 using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Core.Extensions;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Configs;
+using SmartGenealogy.Core.Models.FileInterfaces;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Core.Updater;
+#if DEBUG
+using SmartGenealogy.Diagnostics.LogViewer;
+using SmartGenealogy.Diagnostics.LogViewer.Extensions;
+#endif
 using SmartGenealogy.Languages;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
@@ -377,6 +384,8 @@ public sealed class App : Application
     internal static IServiceCollection ConfigureServices()
     {
         var services = new ServiceCollection();
+        services.AddMemoryCache();
+        services.AddLazyInstance();
 
 
 
@@ -476,7 +485,7 @@ public sealed class App : Application
         defaultSystemTextJsonSettings.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         var apiFactoryRefitSettings = new RefitSettings
         {
-            ContentSerializer = new SystemTextJsonContentSerializer(defaultSystemTextJsonSettings)
+            ContentSerializer = new SystemTextJsonContentSerializer(defaultSystemTextJsonSettings),
         };
 
         // HTTP Policies
@@ -552,6 +561,9 @@ public sealed class App : Application
         // named client for update
         services.AddHttpClient("UpdateClient").AddPolicyHandler(retryPolicy);
 
+
+
+        ConditionalAddLogViewer(services);
 
         var logConfig = ConfigureLogging();
 
@@ -802,7 +814,7 @@ public sealed class App : Application
     {
         var setupBuilder = LogManager.Setup();
 
-
+        ConditionalAddLogViewerNLog(setupBuilder);
 
         setupBuilder.LoadConfiguration(builder =>
         {
@@ -866,10 +878,10 @@ public sealed class App : Application
 
 #if DEBUG
             // LogViewer target when debug mode
-            //builder
-            //    .ForLogger()
-            //    .FilterMinLevel(NLog.LogLevel.Trace)
-            //    .WriteTo(new DataStoreLoggerTarget { Layout = "${message}" });
+            builder
+                .ForLogger()
+                .FilterMinLevel(NLog.LogLevel.Trace)
+                .WriteTo(new DataStoreLoggerTarget { Layout = "${message}" });
 #endif
         });
 
@@ -893,5 +905,84 @@ public sealed class App : Application
         LogManager.ReconfigExistingLoggers();
 
         return LogManager.Configuration;
+    }
+
+    /// <summary>
+    /// Opens a dialog to save the current view as a screenshot.
+    /// </summary>
+    /// <remarks>Only available in debug builds.</remarks>
+    [Conditional("DEBUG")]
+    internal static void DebugSaveScreenshot(int dpi = 96)
+    {
+        const int scale = 2;
+        dpi *= scale;
+
+        var results = new List<MemoryStream>();
+        var targets = new List<Visual?> { VisualRoot };
+
+        foreach (var visual in targets.Where(x => x != null))
+        {
+            var rect = new Rect(visual!.Bounds.Size);
+
+            var pixelSize = new PixelSize((int)rect.Width * scale, (int)rect.Height * scale);
+            var dpiVector = new Vector(dpi, dpi);
+
+            var ms = new MemoryStream();
+
+            using (var bitmap = new RenderTargetBitmap(pixelSize, dpiVector))
+            {
+                bitmap.Render(visual);
+                bitmap.Save(ms);
+            }
+
+            results.Add(ms);
+        }
+
+        Dispatcher.UIThread.InvokeAsync(async () =>
+        {
+            var dest = await StorageProvider.SaveFilePickerAsync(
+                new FilePickerSaveOptions()
+                {
+                    SuggestedFileName = "screenshot.png",
+                    ShowOverwritePrompt = true
+                });
+
+            if (dest?.TryGetLocalPath() is { } localPath)
+            {
+                var localFile = new FilePath(localPath);
+                foreach (var (i, stream) in results.Enumerate())
+                {
+                    var name = localFile.NameWithoutExtension;
+                    if (results.Count > 1)
+                    {
+                        name += $"_{i + 1}";
+                    }
+
+                    localFile = localFile.Directory!.JoinFile(name + ".png");
+                    localFile.Create();
+
+                    await using var fileStream = localFile.Info.OpenWrite();
+                    stream.Seek(0, SeekOrigin.Begin);
+                    await stream.CopyToAsync(fileStream);
+                }
+            }
+        });
+    }
+
+    [Conditional("DEBUG")]
+    private static void ConditionalAddLogViewer(IServiceCollection services)
+    {
+#if DEBUG
+        services.AddLogViewer();
+#endif
+    }
+
+    [Conditional("DEBUG")]
+    private static void ConditionalAddLogViewerNLog(ISetupBuilder setupBuilder)
+    {
+#if DEBUG
+        setupBuilder.SetupExtensions(
+            extensionBuilder => extensionBuilder.RegisterTarget<DataStoreLoggerTarget>("DataStoreLogger"));
+#endif
     }
 }

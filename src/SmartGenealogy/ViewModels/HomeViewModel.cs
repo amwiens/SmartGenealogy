@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using FluentAvalonia.UI.Controls;
 
@@ -25,4 +21,9 @@ public partial class HomeViewModel : PageViewModelBase
     public override string Title => Resources.Label_Home;
     public override IconSource IconSource =>
         new SymbolIconSource { Symbol = Symbol.Home, IconVariant = IconVariant.Filled };
+
+    public HomeViewModel()
+    {
+
+    }
 }
