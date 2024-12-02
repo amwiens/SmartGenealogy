@@ -10,11 +10,11 @@
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="9.0.0" />
     <PackageReference Include="CompiledExpressions" Version="1.1.0" />
-    <PackageReference Include="DeviceId" Version="6.7.0" />
-    <PackageReference Include="DeviceId.Linux" Version="6.4.0" />
-    <PackageReference Include="DeviceId.Mac" Version="6.3.0" />
-    <PackageReference Include="DeviceId.Windows" Version="6.6.0" />
-    <PackageReference Include="DeviceId.Windows.Wmi" Version="6.6.0" />
+    <PackageReference Include="DeviceId" Version="6.8.0" />
+    <PackageReference Include="DeviceId.Linux" Version="6.8.0" />
+    <PackageReference Include="DeviceId.Mac" Version="6.8.0" />
+    <PackageReference Include="DeviceId.Windows" Version="6.8.0" />
+    <PackageReference Include="DeviceId.Windows.Wmi" Version="6.8.0" />
     <PackageReference Include="DynamicData" Version="9.0.4" />
     <PackageReference Include="ExifLibNet" Version="2.1.4" />
     <PackageReference Include="Hardware.Info" Version="101.0.0" />
