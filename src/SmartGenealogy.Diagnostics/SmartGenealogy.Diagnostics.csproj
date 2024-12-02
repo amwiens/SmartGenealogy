@@ -19,7 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Compile Update="LogViewer\Controls\LogViewerControl.axaml.cs">
+      <DependentUpon>LogViewerControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LogWindow.axaml.cs">
+      <DependentUpon>LogWindow.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

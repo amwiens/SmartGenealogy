@@ -32,6 +32,8 @@ using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Models.Update;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Diagnostics.Views;
+using SmartGenealogy.Extensions;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
@@ -78,8 +80,8 @@ public partial class MainWindow : AppWindowBase
 
 #if DEBUG
         this.AttachDevTools();
-        //this.AttachDebugSaveScreenshot();
-        //LogWindow.Attach(this, App.Services);
+        this.AttachDebugSaveScreenshot();
+        LogWindow.Attach(this, App.Services);
 #endif
         TitleBar.ExtendsContentIntoTitleBar = true;
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
