@@ -253,6 +253,9 @@
   <data name="Label_SelectNewDataDirectory_Details" xml:space="preserve">
     <value>Does not move existing data</value>
   </data>
+  <data name="Label_SkipSetup" xml:space="preserve">
+    <value>Skip first-time setup</value>
+  </data>
   <data name="Label_SmartGenealogy" xml:space="preserve">
     <value>Smart Genealogy</value>
   </data>

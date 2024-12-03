@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 using JetBrains.Annotations;
 
@@ -30,7 +31,7 @@ public static class NativeFileOperations
         if (!OperatingSystem.IsMacOS())
         {
             Debug.Fail(
-                $"Assembly of {nameof(NativeFileOperations)} was comiled for macOS, "
+                $"Assembly of {nameof(NativeFileOperations)} was compiled for macOS, "
                     + $"the current OS is '{Environment.OSVersion}'");
             return;
         }

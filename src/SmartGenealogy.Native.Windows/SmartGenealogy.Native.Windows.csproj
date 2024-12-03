@@ -2,10 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="SmartGenealogy.Tests" />
+    <InternalsVisibleTo Include="SmartGenealogy.UITests" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SmartGenealogy.Native.Abstractions\SmartGenealogy.Native.Abstractions.csproj" />

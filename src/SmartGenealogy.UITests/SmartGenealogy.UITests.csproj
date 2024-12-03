@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Headless.XUnit" Version="11.2.2" />
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Dotnet.Bundle" Version="0.9.13" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+    <PackageReference Include="Verify" Version="28.4.0" />
+    <PackageReference Include="Verify.Avalonia" Version="1.1.0" />
+    <PackageReference Include="Verify.CommunityToolkit.Mvvm" Version="0.1.0" />
+    <PackageReference Include="Verify.Phash" Version="3.1.0" />
+    <PackageReference Include="Verify.Xunit" Version="28.4.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0-pre.49">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartGenealogy.Core\SmartGenealogy.Core.csproj" />
+    <ProjectReference Include="..\SmartGenealogy\SmartGenealogy.csproj" />
+  </ItemGroup>
+
+</Project>

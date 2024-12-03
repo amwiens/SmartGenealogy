@@ -466,6 +466,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skip first-time setup.
+        /// </summary>
+        public static string Label_SkipSetup {
+            get {
+                return ResourceManager.GetString("Label_SkipSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Smart Genealogy.
         /// </summary>
         public static string Label_SmartGenealogy {

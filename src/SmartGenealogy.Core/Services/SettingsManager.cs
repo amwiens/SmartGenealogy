@@ -31,7 +31,7 @@ public class SettingsManager(ILogger<SettingsManager> logger) : ISettingsManager
     private DirectoryPath? libraryDirOverride;
 
     // Library properties
-    public  bool IsPortableMode { get; private set; }
+    public bool IsPortableMode { get; private set; }
 
     private DirectoryPath? libraryDir;
     public DirectoryPath LibraryDir
@@ -303,7 +303,7 @@ public class SettingsManager(ILogger<SettingsManager> logger) : ISettingsManager
             return true;
         }
 
-        // 2. Check %APPDATA%/SmartGenealoby/library.json
+        // 2. Check %APPDATA%/SmartGenealogy/library.json
         FilePath libraryJsonFile = Compat.AppDataHome + "library.json";
         if (!libraryJsonFile.Exists)
             return false;
@@ -408,6 +408,10 @@ public class SettingsManager(ILogger<SettingsManager> logger) : ISettingsManager
         File.WriteAllText(GlobalSettingsPath, json);
     }
 
+    /// <summary>
+    /// Loads settings from the settings file. Continues without loading if the file does not exist or is empty.
+    /// Will set <see cref="isLoaded"/> to true when finished in any case.
+    /// </summary>
     protected virtual void LoadSettings(CancellationToken cancellationToken = default)
     {
         fileLock.Wait(cancellationToken);
