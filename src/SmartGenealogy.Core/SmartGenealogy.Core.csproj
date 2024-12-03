@@ -34,4 +34,8 @@
     <PackageReference Include="SharpCompress" Version="0.38.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SmartGenealogy.Native\SmartGenealogy.Native.csproj" />
+  </ItemGroup>
+
 </Project>

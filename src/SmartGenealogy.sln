@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Core", "Smar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Diagnostics", "SmartGenealogy.Diagnostics\SmartGenealogy.Diagnostics.csproj", "{E91BCEF2-3D24-43C2-99A5-847F39E6BD4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native", "SmartGenealogy.Native\SmartGenealogy.Native.csproj", "{16A4DFE1-4378-481E-8459-33632628D884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native.Abstractions", "SmartGenealogy.Native.Abstractions\SmartGenealogy.Native.Abstractions.csproj", "{2EF5D861-6910-4414-92D6-BF37C5D37D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Native.Windows", "SmartGenealogy.Native.Windows\SmartGenealogy.Native.Windows.csproj", "{ACF1EF30-4974-415B-A0F8-30CF1EC58A6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,18 @@ Global
 		{E91BCEF2-3D24-43C2-99A5-847F39E6BD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91BCEF2-3D24-43C2-99A5-847F39E6BD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91BCEF2-3D24-43C2-99A5-847F39E6BD4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A4DFE1-4378-481E-8459-33632628D884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A4DFE1-4378-481E-8459-33632628D884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A4DFE1-4378-481E-8459-33632628D884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A4DFE1-4378-481E-8459-33632628D884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF5D861-6910-4414-92D6-BF37C5D37D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF5D861-6910-4414-92D6-BF37C5D37D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF5D861-6910-4414-92D6-BF37C5D37D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF5D861-6910-4414-92D6-BF37C5D37D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF1EF30-4974-415B-A0F8-30CF1EC58A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF1EF30-4974-415B-A0F8-30CF1EC58A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF1EF30-4974-415B-A0F8-30CF1EC58A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF1EF30-4974-415B-A0F8-30CF1EC58A6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
