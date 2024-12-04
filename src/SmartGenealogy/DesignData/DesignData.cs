@@ -96,6 +96,11 @@ public static class DesignData
 
 
 
+    public static NotificationSettingsViewModel NotificationSettingsViewModel =>
+        Services.GetRequiredService<NotificationSettingsViewModel>();
+
+
+
     public static SelectDataDirectoryViewModel SelectDataDirectoryViewModel =>
         Services.GetRequiredService<SelectDataDirectoryViewModel>();
 

@@ -367,6 +367,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Label_Notifications {
+            get {
+                return ResourceManager.GetString("Label_Notifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number Format.
         /// </summary>
         public static string Label_NumberFormat {

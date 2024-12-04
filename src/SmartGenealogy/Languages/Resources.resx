@@ -220,6 +220,9 @@
   <data name="Label_NewVersionAvailable" xml:space="preserve">
     <value>A new version of Smart Genealogy is available!</value>
   </data>
+  <data name="Label_Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
   <data name="Label_NumberFormat" xml:space="preserve">
     <value>Number Format</value>
   </data>

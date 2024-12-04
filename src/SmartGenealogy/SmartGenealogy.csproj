@@ -86,6 +86,9 @@
     <Compile Update="Views\FirstLaunchSetupWindow.axaml.cs">
       <DependentUpon>FirstLaunchSetupWindow.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Settings\NotificationSettingsPage.axaml.cs">
+      <DependentUpon>NotificationSettingsPage.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

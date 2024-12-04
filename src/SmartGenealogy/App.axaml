@@ -19,6 +19,8 @@
         <ResourceInclude Source="Styles/ThemeColors.axaml"/>
         <ResourceInclude Source="Styles/ThemeMaterials.axaml"/>
         <ResourceInclude Source="Styles/Card.axaml"/>
+
+        <ResourceInclude Source="Styles/ControlThemes/BetterComboBoxStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
       <!--<idcr:ControlRecycling x:Key="ControlRecyclingKey" />-->
