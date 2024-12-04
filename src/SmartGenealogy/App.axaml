@@ -40,6 +40,7 @@
     <StyleInclude Source="Styles/ButtonStyles.axaml"/>
 
     <StyleInclude Source="Styles/BorderStyles.axaml"/>
+    <StyleInclude Source="Styles/TextBoxStyles.axaml"/>
 
     <!--<Style Selector="DockControl">
       <Setter Property="(DockProperties.ControlRecycling)" Value="{StaticResource ControlRecyclingKey}" />
