@@ -24,6 +24,7 @@
 
   <controls:UserControlBase.Resources>
     <converters:CultureInfoDisplayConverter x:Key="CultureInfoDisplayConverter" />
+    <converters:NumberFormatModeSampleConverter x:Key="NumberFormatModeSampleConverter" />
   </controls:UserControlBase.Resources>
 
   <controls:UserControlBase.Styles>
@@ -67,6 +68,31 @@
                       DisplayMemberBinding="{Binding Converter={StaticResource CultureInfoDisplayConverter}}"
                       ItemsSource="{Binding AvailableLanguages}"
                       SelectedItem="{Binding SelectedLanguage}" />
+          </ui:SettingsExpander.Footer>
+        </ui:SettingsExpander>
+
+        <ui:SettingsExpander Grid.Row="3"
+                             Margin="8,0,8,4"
+                             Header="{x:Static lang:Resources.Label_NumberFormat}">
+          <ui:SettingsExpander.IconSource>
+            <fluentIcons:SymbolIconSource FontSize="10"
+                                          IconVariant="Filled"
+                                          Symbol="DecimalArrowLeft" />
+          </ui:SettingsExpander.IconSource>
+          <ui:SettingsExpander.Footer>
+            <ComboBox MinWidth="100"
+                      ItemsSource="{Binding NumberFormatModes}"
+                      SelectedItem="{Binding SelectedNumberFormatMode}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock>
+                    <Run Text="{Binding Converter={x:Static converters:EnumAttributeConverters.DisplayName}}" />
+                    <Run Text="-" />
+                    <Run Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding Converter={StaticResource NumberFormatModeSampleConverter}}" />
+                  </TextBlock>
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
           </ui:SettingsExpander.Footer>
         </ui:SettingsExpander>
       </Grid>
@@ -160,7 +186,7 @@
                  Height="112"
                  Margin="8"
                  HorizontalAlignment="Left"
-                 Source="/Assets/avalonia-logo.ico" />
+                 Source="/Assets/Icon.ico" />
           <TextBlock Margin="8"
                      FontWeight="Medium"
                      Text="{x:Static lang:Resources.Label_SmartGenealogy}" />

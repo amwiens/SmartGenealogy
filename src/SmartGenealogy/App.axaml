@@ -5,6 +5,7 @@
              xmlns:idcr="using:Dock.Avalonia.Controls.Recycling"
              xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
              xmlns:labs="clr-namespace:Avalonia.Labs.Controls;assembly=Avalonia.Labs.Controls"
+             Name="Smart Genealogy"
              RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -14,7 +15,11 @@
 
   <Application.Resources>
     <ResourceDictionary>
-
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Styles/ThemeColors.axaml"/>
+        <ResourceInclude Source="Styles/ThemeMaterials.axaml"/>
+        <ResourceInclude Source="Styles/Card.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
 
       <!--<idcr:ControlRecycling x:Key="ControlRecyclingKey" />-->
       <x:Double x:Key="ContentDialogMaxWidth">700</x:Double>
@@ -27,10 +32,15 @@
   <Application.Styles>
     <styling:FluentAvaloniaTheme PreferUserAccentColor="True" UseSystemFontOnWindows="True"
                                  TextVerticalAlignmentOverrideBehavior="Disabled"/>
-    <!--<StyleInclude Source="avares://Dock.Avalonia/Themes/DockSimpleTheme.axaml" />
+    <StyleInclude Source="avares://Dock.Avalonia/Themes/DockSimpleTheme.axaml" />
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml"/>
     <StyleInclude Source="avares://Avalonia.Xaml.Interactions.Draggable/Styles.axaml" />
-    <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />-->
+    <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
+    <StyleInclude Source="Styles/ProgressRing.axaml"/>
+    <StyleInclude Source="Styles/ButtonStyles.axaml"/>
+
+    <StyleInclude Source="Styles/BorderStyles.axaml"/>
+    <StyleInclude Source="Styles/TextBoxStyles.axaml"/>
 
     <!--<Style Selector="DockControl">
       <Setter Property="(DockProperties.ControlRecycling)" Value="{StaticResource ControlRecyclingKey}" />

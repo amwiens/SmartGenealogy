@@ -367,6 +367,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number Format.
+        /// </summary>
+        public static string Label_NumberFormat {
+            get {
+                return ResourceManager.GetString("Label_NumberFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower..
         /// </summary>
         public static string Label_NvidiaGpuRecommended {
