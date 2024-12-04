@@ -30,6 +30,7 @@ using SmartGenealogy.Core.Extensions;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Helper.HardwareInfo;
 using SmartGenealogy.Core.Models.FileInterfaces;
+using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Helpers;
 using SmartGenealogy.Languages;
@@ -78,6 +79,12 @@ public partial class MainSettingsViewModel : PageViewModelBase
     private CultureInfo selectedLanguage;
 
     public IReadOnlyList<CultureInfo> AvailableLanguages => Cultures.SupportedCultures;
+
+    [ObservableProperty]
+    private NumberFormatMode selectedNumberFormatMode;
+
+    public IReadOnlyList<NumberFormatMode> NumberFormatModes { get; } =
+        Enum.GetValues<NumberFormatMode>().Where(mode => mode != default).ToList();
 
 
 
@@ -146,6 +153,12 @@ public partial class MainSettingsViewModel : PageViewModelBase
         settingsManager.RelayPropertyFor(this, vm => vm.SelectedTheme, settings => settings.Theme);
 
 
+
+        settingsManager.RelayPropertyFor(
+            this,
+            vm => vm.SelectedNumberFormatMode,
+            settings => settings.NumberFormatMode,
+            true);
 
         //DebugThrowAsyncExceptionCommand.WithNotificationErrorHandler(notificationService, LogLevel.Warn);
 

@@ -220,6 +220,9 @@
   <data name="Label_NewVersionAvailable" xml:space="preserve">
     <value>A new version of Smart Genealogy is available!</value>
   </data>
+  <data name="Label_NumberFormat" xml:space="preserve">
+    <value>Number Format</value>
+  </data>
   <data name="Label_NvidiaGpuRecommended" xml:space="preserve">
     <value>We recommend a GPU with CUDA support for the best experience. You can continue without one, but some packages may not work, and inference may be slower.</value>
   </data>
