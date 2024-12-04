@@ -41,6 +41,9 @@ public partial class SettingsViewModel : PageViewModelBase
         SubPages = new PageViewModelBase[]
         {
             vmFactory.Get<MainSettingsViewModel>(),
+
+            vmFactory.Get<UpdateSettingsViewModel>(),
+            vmFactory.Get<NotificationSettingsViewModel>(),
         };
 
         CurrentPagePath.AddRange(SubPages);

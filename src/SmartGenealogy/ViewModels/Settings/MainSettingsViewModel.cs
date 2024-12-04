@@ -24,6 +24,7 @@ using Microsoft.Win32;
 
 using NLog;
 
+using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Extensions;
@@ -56,6 +57,8 @@ public partial class MainSettingsViewModel : PageViewModelBase
     private readonly ISettingsManager settingsManager;
 
     private readonly ServiceManager<ViewModelBase> dialogFactory;
+
+    private readonly INavigationService<SettingsViewModel> settingsNavigationService;
 
 
     public SharedState SharedState { get; }
@@ -133,12 +136,16 @@ public partial class MainSettingsViewModel : PageViewModelBase
 
         ServiceManager<ViewModelBase> dialogFactory,
 
-        SharedState sharedState)
+        SharedState sharedState,
+
+        INavigationService<SettingsViewModel> settingsNavigationService)
     {
         this.notificationService = notificationService;
         this.settingsManager = settingsManager;
 
         this.dialogFactory = dialogFactory;
+
+        this.settingsNavigationService = settingsNavigationService;
 
         SharedState = sharedState;
 
@@ -163,6 +170,7 @@ public partial class MainSettingsViewModel : PageViewModelBase
         //DebugThrowAsyncExceptionCommand.WithNotificationErrorHandler(notificationService, LogLevel.Warn);
 
         hardwareInfoUpdateTimer.Tick += OnHardwareInfoUpdateTimerTick;
+        this.settingsNavigationService = settingsNavigationService;
     }
 
     /// <inheritdoc />
@@ -294,6 +302,17 @@ public partial class MainSettingsViewModel : PageViewModelBase
     }
 
 
+
+    [RelayCommand]
+    private void NavigateToSubPage(Type viewModelType)
+    {
+        Dispatcher.UIThread.Post(
+            () =>
+                settingsNavigationService.NavigateTo(
+                    viewModelType,
+                    BetterSlideNavigationTransition.PageSlideFromRight),
+            DispatcherPriority.Send);
+    }
 
     #region System
 
