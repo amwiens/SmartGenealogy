@@ -88,6 +88,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for Updates.
+        /// </summary>
+        public static string Action_CheckForUpdates {
+            get {
+                return ResourceManager.GetString("Action_CheckForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Action_Close {
@@ -538,6 +547,42 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string Label_Updates {
+            get {
+                return ResourceManager.GetString("Label_Updates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For technical users. Be the first to access our Development builds from feature branches as soon as they are available. There may be some rough edges and bugs as we experiment with new features..
+        /// </summary>
+        public static string Label_UpdatesDevChannelDescription {
+            get {
+                return ResourceManager.GetString("Label_UpdatesDevChannelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For early adopters. Preview builds will be more reliable than those from the Dev channel, and will be available closer to stable releases. Your feedback will help us greatly in discovering issues and polishing design elements..
+        /// </summary>
+        public static string Label_UpdatesPreviewChannelDescription {
+            get {
+                return ResourceManager.GetString("Label_UpdatesPreviewChannelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re up to date.
+        /// </summary>
+        public static string Label_YouAreUpToDate {
+            get {
+                return ResourceManager.GetString("Label_YouAreUpToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The app will relaunch after updating.
         /// </summary>
         public static string Text_AppWillRelaunchAfterUpdate {
@@ -579,6 +624,15 @@ namespace SmartGenealogy.Languages {
         public static string Text_WelcomeToSmartGenealogy {
             get {
                 return ResourceManager.GetString("Text_WelcomeToSmartGenealogy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last checked: {0}.
+        /// </summary>
+        public static string TextTemplate_LastChecked {
+            get {
+                return ResourceManager.GetString("TextTemplate_LastChecked", resourceCulture);
             }
         }
         

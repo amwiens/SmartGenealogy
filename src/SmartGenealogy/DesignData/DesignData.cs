@@ -11,8 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 using NSubstitute;
 
+using Semver;
+
 using SmartGenealogy.Core.Models.Progress;
+using SmartGenealogy.Core.Models.Update;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Core.Updater;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Base;
@@ -98,6 +102,37 @@ public static class DesignData
 
     public static NotificationSettingsViewModel NotificationSettingsViewModel =>
         Services.GetRequiredService<NotificationSettingsViewModel>();
+
+    public static UpdateSettingsViewModel UpdateSettingsViewModel
+    {
+        get
+        {
+            var vm = Services.GetRequiredService<UpdateSettingsViewModel>();
+
+            var update = new UpdateInfo
+            {
+                Version = SemVersion.Parse("1.0.1"),
+                ReleaseDate = DateTimeOffset.Now,
+                Url = new Uri("https://example.org"),
+                Changelog = new Uri("https://example.org"),
+                HashBlake3 = "",
+                Signature = "",
+            };
+
+            vm.UpdateStatus = new UpdateStatusChangedEventArgs
+            {
+                LatestUpdate = update,
+                UpdateChannels = new Dictionary<UpdateChannel, UpdateInfo>
+                {
+                    [UpdateChannel.Stable] = update,
+                    [UpdateChannel.Preview] = update,
+                    [UpdateChannel.Development] = update,
+                },
+                CheckedAt = DateTimeOffset.UtcNow
+            };
+            return vm;
+        }
+    }
 
 
 

@@ -117,7 +117,18 @@
                    Text="{x:Static lang:Resources.Label_System}" />
 
         <!-- Updates page -->
-
+        <ui:SettingsExpander Grid.Row="1"
+                             ActionIconSource="ChevronRight"
+                             Command="{Binding NavigateToSubPageCommand}"
+                             CommandParameter="{x:Type vmSettings:UpdateSettingsViewModel}"
+                             Header="{x:Static lang:Resources.Label_Updates}"
+                             IsClickEnabled="True">
+          <ui:SettingsExpander.IconSource>
+            <fluentIcons:SymbolIconSource FontSize="10"
+                                          IconVariant="Filled"
+                                          Symbol="ArrowSync" />
+          </ui:SettingsExpander.IconSource>
+        </ui:SettingsExpander>
 
         <!-- Analytics page -->
 
