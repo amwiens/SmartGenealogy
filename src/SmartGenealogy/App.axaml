@@ -39,6 +39,8 @@
     <StyleInclude Source="Styles/ProgressRing.axaml"/>
     <StyleInclude Source="Styles/ButtonStyles.axaml"/>
 
+    <StyleInclude Source="Styles/BorderStyles.axaml"/>
+
     <!--<Style Selector="DockControl">
       <Setter Property="(DockProperties.ControlRecycling)" Value="{StaticResource ControlRecyclingKey}" />
     </Style>-->
