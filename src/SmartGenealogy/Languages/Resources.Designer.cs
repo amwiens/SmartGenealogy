@@ -124,6 +124,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create New Project.
+        /// </summary>
+        public static string Action_CreateProject {
+            get {
+                return ResourceManager.GetString("Action_CreateProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit Application.
         /// </summary>
         public static string Action_ExitApplication {
@@ -286,6 +295,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is where project data (database, documents, photos, etc.) will be saved..
+        /// </summary>
+        public static string Label_DataDirectoryNewProjectExplanation {
+            get {
+                return ResourceManager.GetString("Label_DataDirectoryNewProjectExplanation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Label_Details {
@@ -439,6 +457,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Name.
+        /// </summary>
+        public static string Label_ProjectName {
+            get {
+                return ResourceManager.GetString("Label_ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I have read and agree to the.
         /// </summary>
         public static string Label_ReadAndAgree {
@@ -588,6 +615,15 @@ namespace SmartGenealogy.Languages {
         public static string Text_AppWillRelaunchAfterUpdate {
             get {
                 return ResourceManager.GetString("Text_AppWillRelaunchAfterUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new project!.
+        /// </summary>
+        public static string Text_CreateNewProject {
+            get {
+                return ResourceManager.GetString("Text_CreateNewProject", resourceCulture);
             }
         }
         

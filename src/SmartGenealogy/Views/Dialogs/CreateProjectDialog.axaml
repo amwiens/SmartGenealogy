@@ -1,0 +1,102 @@
+<controls:UserControlBase x:Class="SmartGenealogy.Views.Dialogs.CreateProjectDialog"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
+                          xmlns:ui="using:FluentAvalonia.UI.Controls"
+                          xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                          xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                          d:DataContext="{x:Static mocks:DesignData.SelectDataDirectoryViewModel}"
+                          x:DataType="dialogs:CreateProjectViewModel"
+                          x:CompileBindings="True"
+                          mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550">
+  <Grid RowDefinitions="Auto,Auto,Auto,*,*"
+        Margin="16,0,16,16"
+        MinHeight="450"
+        MaxWidth="700">
+
+    <StackPanel Orientation="Vertical">
+      <TextBlock Text="{x:Static lang:Resources.Text_CreateNewProject}"
+                 TextWrapping="Wrap"
+                 Margin="8,0,8,0"
+                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                 FontSize="36" FontWeight="Light" />
+      <TextBlock Text="{x:Static lang:Resources.Label_PleaseSelectDataDirectory}"
+                 TextWrapping="Wrap"
+                 Margin="8,4,8,0"
+                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                 FontSize="20" FontWeight="Light" />
+      <TextBlock Text="{x:Static lang:Resources.Label_DataDirectoryNewProjectExplanation}"
+                 TextWrapping="Wrap"
+                 Foreground="LightGray"
+                 FontSize="14"
+                 FontWeight="Light"
+                 TextAlignment="Center"
+                 Margin="0,8,0,0" />
+    </StackPanel>
+
+    <StackPanel Grid.Row="1" Margin="0,0,0,16">
+      <Label Content="{x:Static lang:Resources.Label_ProjectName}"
+             FontSize="13"
+             Margin="0,16,0,0" />
+      <TextBox Height="36"
+               Margin="0,0,8,0"
+               Text="{Binding ProjectName}"
+               VerticalAlignment="Stretch" />
+    </StackPanel>
+
+    <StackPanel Grid.Row="2" Margin="0,0,0,16">
+      <Label Content="{x:Static lang:Resources.Label_DataDirectory}"
+             FontSize="13"
+             Margin="0,16,0,0" />
+      <Grid ColumnDefinitions="*,Auto">
+        <TextBox Height="36"
+                 Margin="0,0,8,0"
+                 Watermark="{Binding DefaultInstallLocation}"
+                 Text="{Binding DataDirectory}"
+                 VerticalAlignment="Stretch" />
+
+        <Button Command="{Binding ShowFolderBrowserDialogCommand}"
+                Grid.Column="1"
+                Height="36"
+                HorizontalAlignment="Stretch">
+          <ui:SymbolIcon Symbol="OpenFolder" />
+        </Button>
+      </Grid>
+    </StackPanel>
+
+    <!-- Indicator or existing or new data directory -->
+    <StackPanel Grid.Row="3"
+                HorizontalAlignment="Center"
+                Margin="8,0,8,0"
+                Orientation="Horizontal"
+                IsVisible="{Binding IsStatusBadgeVisible}">
+      <controls:RefreshBadge DataContext="{Binding ValidatorRefreshBadge}" />
+      <TextBlock FontSize="14"
+                 Text="{Binding DirectoryStatusText}"
+                 VerticalAlignment="Center" />
+    </StackPanel>
+
+    <UniformGrid Grid.Row="4"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Bottom"
+                 Margin="0,8,0,0">
+      <Button Content="{x:Static lang:Resources.Action_Cancel}"
+              IsDefault="True"
+              Command="{Binding OnCloseButtonClick}"
+              FontSize="16"
+              HorizontalAlignment="Center"
+              Padding="16,8" />
+      <Button Content="{x:Static lang:Resources.Action_Continue}"
+              IsDefault="True"
+              Command="{Binding OnPrimaryButtonClick}"
+              FontSize="16"
+              Classes="success"
+              HorizontalAlignment="Center"
+              IsEnabled="{Binding IsDirectoryValid}"
+              Padding="16,8" />
+    </UniformGrid>
+  </Grid>
+</controls:UserControlBase>

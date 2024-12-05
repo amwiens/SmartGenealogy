@@ -138,6 +138,9 @@
   <data name="Action_CopyDetails" xml:space="preserve">
     <value>Copy Details</value>
   </data>
+  <data name="Action_CreateProject" xml:space="preserve">
+    <value>Create New Project</value>
+  </data>
   <data name="Action_ExitApplication" xml:space="preserve">
     <value>Exit Application</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="Label_DataDirectoryExplanation" xml:space="preserve">
     <value>This is where application data (model checkpoints, web UIs, etc.) will be installed.</value>
   </data>
+  <data name="Label_DataDirectoryNewProjectExplanation" xml:space="preserve">
+    <value>This is where project data (database, documents, photos, etc.) will be saved.</value>
+  </data>
   <data name="Label_Details" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -243,6 +249,9 @@
   </data>
   <data name="Label_PortableModeExplanation" xml:space="preserve">
     <value>In Portable Mode, all data and settings will be stored in the same directory as the application. You will be able to move the application with its 'Data' folder to a different location or computer.</value>
+  </data>
+  <data name="Label_ProjectName" xml:space="preserve">
+    <value>Project Name</value>
   </data>
   <data name="Label_ReadAndAgree" xml:space="preserve">
     <value>I have read and agree to the</value>
@@ -300,6 +309,9 @@
   </data>
   <data name="Text_AppWillRelaunchAfterUpdate" xml:space="preserve">
     <value>The app will relaunch after updating</value>
+  </data>
+  <data name="Text_CreateNewProject" xml:space="preserve">
+    <value>Create a new project!</value>
   </data>
   <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
     <value>Relaunch is required for new language option to take effect</value>

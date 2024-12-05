@@ -1,9 +1,29 @@
 <controls:UserControlBase x:Class="SmartGenealogy.Views.HomePage"
                           xmlns="https://github.com/avaloniaui"
                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
+                          xmlns:ui="using:FluentAvalonia.UI.Controls"
+                          xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+                          xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+                          xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+                          xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
+                          x:DataType="vm:HomeViewModel"
                           mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450">
-  Home page!
+  <StackPanel Orientation="Vertical">
+    <TextBlock Text="Home page!" />
+    <Button Command="{Binding CreateNewProject}">
+      <Grid ColumnDefinitions="Auto,Auto">
+        <!--
+        <avalonia:Icon Grid.Row="0"
+                       Margin="0,0,8,0"
+                       VerticalAlignment="Center"
+                       Value="fa-solid fa-folder-open" />-->
+        <TextBlock Grid.Column="1"
+                   VerticalAlignment="Center"
+                   Text="{x:Static lang:Resources.Action_CreateProject}" />
+      </Grid>
+    </Button>
+  </StackPanel>
 </controls:UserControlBase>
