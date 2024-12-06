@@ -14,6 +14,8 @@ public class Settings
     public bool FirstLaunchSetupComplete { get; set; }
     public string? Theme { get; set; } = "Dark";
     public string? Language { get; set; } = GetDefaultCulture().Name;
+    public bool OpenLastProjectOnStartup { get; set; } = false;
+    public string? DefaultProjectFolder { get; set; }
 
     public NumberFormatMode NumberFormatMode { get; set; } = NumberFormatMode.CurrentCulture;
 

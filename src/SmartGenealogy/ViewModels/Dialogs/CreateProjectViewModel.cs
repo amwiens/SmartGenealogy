@@ -17,6 +17,7 @@ using NLog;
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Progress;
+using SmartGenealogy.Core.Services;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views.Dialogs;
 
@@ -32,7 +33,7 @@ public partial class CreateProjectViewModel : ContentDialogViewModelBase
     public static string DefaultInstallLocation =>
         Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-
+    private readonly IProjectSettingsManager projectSettingsManager;
 
     private const string ValidExistingDirectoryText = "Valid existing data directory found";
     private const string InvalidDirectoryText = "Directory must be empty of having a valid sgproj file";
@@ -60,8 +61,9 @@ public partial class CreateProjectViewModel : ContentDialogViewModelBase
             FailToolTipText = InvalidDirectoryText
         };
 
-    public CreateProjectViewModel()
+    public CreateProjectViewModel(IProjectSettingsManager projectSettingsManager)
     {
+        this.projectSettingsManager = projectSettingsManager;
         ValidatorRefreshBadge.RefreshFunc = ValidateDataDirectory;
     }
 

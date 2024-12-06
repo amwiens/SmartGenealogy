@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 using FluentAvalonia.UI.Controls;
 using FluentIcons.Common;
 
+using NLog;
+
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Core.Services;
 using SmartGenealogy.Languages;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels.Base;
@@ -22,6 +25,12 @@ namespace SmartGenealogy.ViewModels;
 [Singleton]
 public partial class HomeViewModel : PageViewModelBase
 {
+    private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+    private INotificationService notificationService;
+    private ISettingsManager settingsManager;
+    private IProjectSettingsManager projectSettingsManager;
+
     private readonly ServiceManager<ViewModelBase> dialogFactory;
 
     public override string Title => Resources.Label_Home;
@@ -29,8 +38,16 @@ public partial class HomeViewModel : PageViewModelBase
         new SymbolIconSource { Symbol = Symbol.Home, IconVariant = IconVariant.Filled };
 
     public HomeViewModel(
+        INotificationService notificationService,
+        ISettingsManager settingsManager,
+        IProjectSettingsManager projectSettingsManager,
+
         ServiceManager<ViewModelBase> dialogFactory)
     {
+        this.notificationService = notificationService;
+        this.settingsManager = settingsManager;
+        this.projectSettingsManager = projectSettingsManager;
+
         this.dialogFactory = dialogFactory;
     }
 
@@ -48,7 +65,9 @@ public partial class HomeViewModel : PageViewModelBase
         var result = await dialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-
+            projectSettingsManager.Settings.Name = viewModel.ProjectName;
+            projectSettingsManager.SetProjectPath(viewModel.DataDirectory);
+            //settingsManager.Settings.
         }
     }
 }
