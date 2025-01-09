@@ -31,6 +31,9 @@ public partial class SettingsViewModel : BaseViewModel
     [ObservableProperty]
     private LanguageSelectItem languageSelected;
 
+    [ObservableProperty]
+    private string? ollamaPath = AppSettings.OllamaPath;
+
     #endregion Properties
 
     #region Commands
@@ -56,6 +59,11 @@ public partial class SettingsViewModel : BaseViewModel
     #endregion Commands
 
     #region Methods
+
+    partial void OnOllamaPathChanged(string? value)
+    {
+        AppSettings.OllamaPath = value!;
+    }
 
     public void SetTheme()
     {

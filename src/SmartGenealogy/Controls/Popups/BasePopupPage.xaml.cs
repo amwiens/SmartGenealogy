@@ -16,57 +16,61 @@ public partial class BasePopupPage : ContentPage
         }
     }
 
-    public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(
-        propertyName: nameof(ForegroundColor),
-        returnType: typeof(Color),
-        declaringType: typeof(BasePopupPage),
-        defaultValue: Color.FromArgb("#00000000"),
-        defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty ForegroundColorProperty =
+        BindableProperty.Create(
+            propertyName: nameof(ForegroundColor),
+            returnType: typeof(Color),
+            declaringType: typeof(BasePopupPage),
+            defaultValue: Color.FromArgb("#00000000"),
+            defaultBindingMode: BindingMode.TwoWay);
 
     public Color ForegroundColor
     {
         get => (Color)GetValue(ForegroundColorProperty);
-        set { SetValue(ForegroundColorProperty, value); }
+        set => SetValue(ForegroundColorProperty, value);
     }
 
     public bool IsCloseOnBackgroundClick { get; set; } = true;
 
-    public static readonly BindableProperty VerticalOptionsProperty = BindableProperty.Create(
-        propertyName: nameof(VerticalOptions),
-        returnType: typeof(LayoutOptions),
-        declaringType: typeof(BasePopupPage),
-        defaultValue: LayoutOptions.Center,
-        defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty VerticalOptionsProperty =
+        BindableProperty.Create(
+            propertyName: nameof(VerticalOptions),
+            returnType: typeof(LayoutOptions),
+            declaringType: typeof(BasePopupPage),
+            defaultValue: LayoutOptions.Center,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public LayoutOptions VerticalOptions
     {
         get => (LayoutOptions)GetValue(VerticalOptionsProperty);
-        set { SetValue(VerticalOptionsProperty, value); }
+        set => SetValue(VerticalOptionsProperty, value);
     }
 
-    public static readonly BindableProperty HorizontalOptionsProperty = BindableProperty.Create(
-        propertyName: nameof(HorizontalOptions),
-        returnType: typeof(LayoutOptions),
-        declaringType: typeof(BasePopupPage),
-        defaultValue: LayoutOptions.Center,
-        defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty HorizontalOptionsProperty =
+        BindableProperty.Create(
+            propertyName: nameof(HorizontalOptions),
+            returnType: typeof(LayoutOptions),
+            declaringType: typeof(BasePopupPage),
+            defaultValue: LayoutOptions.Center,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public LayoutOptions HorizontalOptions
     {
         get => (LayoutOptions)GetValue(HorizontalOptionsProperty);
-        set { SetValue(HorizontalOptionsProperty, value); }
+        set => SetValue(HorizontalOptionsProperty, value);
     }
 
-    public static readonly BindableProperty MarginProperty = BindableProperty.Create(
-        propertyName: nameof(Margin),
-        returnType: typeof(Thickness),
-        declaringType: typeof(BasePopupPage),
-        defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty MarginProperty =
+        BindableProperty.Create(
+            propertyName: nameof(Margin),
+            returnType: typeof(Thickness),
+            declaringType: typeof(BasePopupPage),
+            defaultBindingMode: BindingMode.TwoWay);
 
     public Thickness Margin
     {
         get => (Thickness)GetValue(MarginProperty);
-        set { SetValue(MarginProperty, value); }
+        set => SetValue(MarginProperty, value);
     }
 
     public ICommand PopModelCommand => new Command(async () =>

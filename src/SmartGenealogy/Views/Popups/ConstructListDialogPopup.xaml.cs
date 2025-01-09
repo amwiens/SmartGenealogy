@@ -12,14 +12,14 @@ public partial class ConstructListDialogPopup : Popup
 
     public ObservableRangeCollection<object> ReturnValueItems
     {
-        get { return (ObservableRangeCollection<object>)GetValue(ReturnValueItemsProperty); }
-        set { SetValue(ReturnValueItemsProperty, value); }
+        get => (ObservableRangeCollection<object>)GetValue(ReturnValueItemsProperty);
+        set => SetValue(ReturnValueItemsProperty, value);
     }
 
     public List<object> AvailableItems
     {
-        get { return (List<object>)GetValue(AvailableItemsProperty); }
-        set { SetValue(AvailableItemsProperty, value); }
+        get => (List<object>)GetValue(AvailableItemsProperty);
+        set => SetValue(AvailableItemsProperty, value);
     }
 
     #region Bindable Properties Initializers

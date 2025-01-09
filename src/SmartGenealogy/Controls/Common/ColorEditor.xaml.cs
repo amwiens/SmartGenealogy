@@ -8,32 +8,32 @@ public partial class ColorEditor : ContentView
 
     public Color SelectedColor
     {
-        get { return (Color)GetValue(SelectedColorProperty); }
-        set { SetValue(SelectedColorProperty, value); }
+        get => (Color)GetValue(SelectedColorProperty);
+        set => SetValue(SelectedColorProperty, value);
     }
 
     public float SelectedColorRed
     {
-        get { return (float)GetValue(SelectedColorRedProperty); }
-        set { SetValue(SelectedColorRedProperty, value); }
+        get => (float)GetValue(SelectedColorRedProperty);
+        set => SetValue(SelectedColorRedProperty, value);
     }
 
     public float SelectedColorGreen
     {
-        get { return (float)GetValue(SelectedColorGreenProperty); }
-        set { SetValue(SelectedColorGreenProperty, value); }
+        get => (float)GetValue(SelectedColorGreenProperty);
+        set => SetValue(SelectedColorGreenProperty, value);
     }
 
     public float SelectedColorBlue
     {
-        get { return (float)GetValue(SelectedColorBlueProperty); }
-        set { SetValue(SelectedColorBlueProperty, value); }
+        get => (float)GetValue(SelectedColorBlueProperty);
+        set => SetValue(SelectedColorBlueProperty, value);
     }
 
     public float SelectedColorAlpha
     {
-        get { return (float)GetValue(SelectedColorAlphaProperty); }
-        set { SetValue(SelectedColorAlphaProperty, value); }
+        get => (float)GetValue(SelectedColorAlphaProperty);
+        set => SetValue(SelectedColorAlphaProperty, value);
     }
 
     #region Bindable Properties Initializers

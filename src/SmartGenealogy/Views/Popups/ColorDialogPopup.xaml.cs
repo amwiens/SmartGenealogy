@@ -10,8 +10,8 @@ public partial class ColorDialogPopup : Popup
 
     public Color SelectedColor
     {
-        get { return (Color)GetValue(SelectedColorProperty); }
-        set { SetValue(SelectedColorProperty, value); }
+        get => (Color)GetValue(SelectedColorProperty);
+        set => SetValue(SelectedColorProperty, value);
     }
 
     #region Bindable Properties Initializers

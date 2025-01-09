@@ -12,20 +12,35 @@ public static class RTLHelper
     /// <summary>
     /// Gets or sets the MarginProperty.
     /// </summary>
-    public static readonly BindableProperty MarginProperty = BindableProperty.CreateAttached(
-        "Margin", typeof(Thickness), typeof(RTLHelper), ZeroThickness, propertyChanged: OnMarginPropertyChanged);
+    public static readonly BindableProperty MarginProperty =
+        BindableProperty.CreateAttached(
+            "Margin",
+            typeof(Thickness),
+            typeof(RTLHelper),
+            ZeroThickness,
+            propertyChanged: OnMarginPropertyChanged);
 
     /// <summary>
     /// Gets or sets the PaddingProperty.
     /// </summary>
-    public static readonly BindableProperty PaddingProperty = BindableProperty.CreateAttached(
-        "Padding", typeof(Thickness), typeof(RTLHelper), ZeroThickness, propertyChanged: OnPaddingPropertyChanged);
+    public static readonly BindableProperty PaddingProperty =
+        BindableProperty.CreateAttached(
+            "Padding",
+            typeof(Thickness),
+            typeof(RTLHelper),
+            ZeroThickness,
+            propertyChanged: OnPaddingPropertyChanged);
 
     /// <summary>
     /// Gets or sets the CornerRadiusProperty.
     /// </summary>
-    public static readonly BindableProperty CornerRadiusProperty = BindableProperty.CreateAttached(
-        "CornerRadius", typeof(Thickness), typeof(RTLHelper), ZeroThickness, propertyChanged: OnCornerRadiusPropertyChanged);
+    public static readonly BindableProperty CornerRadiusProperty =
+        BindableProperty.CreateAttached(
+            "CornerRadius",
+            typeof(Thickness),
+            typeof(RTLHelper),
+            ZeroThickness,
+            propertyChanged: OnCornerRadiusPropertyChanged);
 
     #endregion Bindable Properties
 

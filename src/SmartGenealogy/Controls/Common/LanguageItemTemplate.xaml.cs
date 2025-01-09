@@ -16,8 +16,8 @@ public partial class LanguageItemTemplate : Grid
 
     public string Name
     {
-        get { return (string)GetValue(NameProperty); }
-        set { SetValue(NameProperty, value); }
+        get => (string)GetValue(NameProperty);
+        set => SetValue(NameProperty, value);
     }
 
     public static BindableProperty FlagProperty =
@@ -29,7 +29,7 @@ public partial class LanguageItemTemplate : Grid
 
     public string Flag
     {
-        get { return (string)GetValue(FlagProperty); }
-        set { SetValue(FlagProperty, value); }
+        get => (string)GetValue(FlagProperty);
+        set => SetValue(FlagProperty, value);
     }
 }

@@ -13,8 +13,8 @@ public class Reset : AnimationBase
 
     public double? Opacity
     {
-        get { return (double?)GetValue(OpacityProperty); }
-        set { SetValue(OpacityProperty, value); }
+        get => (double?)GetValue(OpacityProperty);
+        set => SetValue(OpacityProperty, value);
     }
 
     public static BindableProperty RotationProperty =
@@ -26,8 +26,8 @@ public class Reset : AnimationBase
 
     public double? Rotation
     {
-        get { return (double?)GetValue(RotationProperty); }
-        set { SetValue(RotationProperty, value); }
+        get => (double?)GetValue(RotationProperty);
+        set => SetValue(RotationProperty, value);
     }
 
     public static BindableProperty ScaleProperty =
@@ -39,8 +39,8 @@ public class Reset : AnimationBase
 
     public double? Scale
     {
-        get { return (double?)GetValue(ScaleProperty); }
-        set { SetValue(ScaleProperty, value); }
+        get => (double?)GetValue(ScaleProperty);
+        set => SetValue(ScaleProperty, value);
     }
 
     public static BindableProperty TranslateXProperty =
@@ -52,8 +52,8 @@ public class Reset : AnimationBase
 
     public double? TranslateX
     {
-        get { return (double?)GetValue(TranslateXProperty); }
-        set { SetValue(TranslateXProperty, value); }
+        get => (double?)GetValue(TranslateXProperty);
+        set => SetValue(TranslateXProperty, value);
     }
 
     public static BindableProperty TranslateYProperty =
@@ -65,8 +65,8 @@ public class Reset : AnimationBase
 
     public double? TranslateY
     {
-        get { return (double?)GetValue(TranslateYProperty); }
-        set { SetValue(TranslateYProperty, value); }
+        get => (double?)GetValue(TranslateYProperty);
+        set => SetValue(TranslateYProperty, value);
     }
 
     protected override Task BeginAnimation()

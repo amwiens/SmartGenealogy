@@ -23,8 +23,8 @@ public partial class HeaderTemplate : Grid
 
     public string Text
     {
-        get { return (string)GetValue(TextProperty); }
-        set { SetValue(TextProperty, value); }
+        get => (string)GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
     }
 
     /* TEXT SIZE */
@@ -43,8 +43,8 @@ public partial class HeaderTemplate : Grid
 
     public double TextSize
     {
-        get { return (double)GetValue(TextSizeProperty); }
-        set { SetValue(TextSizeProperty, value); }
+        get => (double)GetValue(TextSizeProperty);
+        set => SetValue(TextSizeProperty, value);
     }
 
     /* ICON */
@@ -63,8 +63,8 @@ public partial class HeaderTemplate : Grid
 
     public string IconText
     {
-        get { return (string)GetValue(IconTextProperty); }
-        set { SetValue(IconTextProperty, value); }
+        get => (string)GetValue(IconTextProperty);
+        set => SetValue(IconTextProperty, value);
     }
 
     /* ICON FONT FAMILY */
@@ -83,8 +83,8 @@ public partial class HeaderTemplate : Grid
 
     public string IconFontFamily
     {
-        get { return (string)GetValue(IconFontFamilyProperty); }
-        set { SetValue(IconFontFamilyProperty, value); }
+        get => (string)GetValue(IconFontFamilyProperty);
+        set => SetValue(IconFontFamilyProperty, value);
     }
 
     /* ICON SIZE */
@@ -103,8 +103,8 @@ public partial class HeaderTemplate : Grid
 
     public double IconSize
     {
-        get { return (double)GetValue(IconSizeProperty); }
-        set { SetValue(IconSizeProperty, value); }
+        get => (double)GetValue(IconSizeProperty);
+        set => SetValue(IconSizeProperty, value);
     }
 
     /* ICON COLOR */
@@ -123,7 +123,7 @@ public partial class HeaderTemplate : Grid
 
     public Color IconColor
     {
-        get { return (Color)GetValue(IconColorProperty); }
-        set { SetValue(IconColorProperty, value); }
+        get => (Color)GetValue(IconColorProperty);
+        set => SetValue(IconColorProperty, value);
     }
 }

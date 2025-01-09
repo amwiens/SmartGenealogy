@@ -16,8 +16,8 @@ public partial class RoundedCornerImage : Border
 
     public ImageSource Source
     {
-        get { return (ImageSource)GetValue(SourceProperty); }
-        set { SetValue(SourceProperty, value); }
+        get => (ImageSource)GetValue(SourceProperty);
+        set => SetValue(SourceProperty, value);
     }
 
     public static BindableProperty CornerRadiusProperty =
@@ -29,7 +29,7 @@ public partial class RoundedCornerImage : Border
 
     public Double CornerRadius
     {
-        get { return (Double)GetValue(CornerRadiusProperty); }
-        set { SetValue(CornerRadiusProperty, value); }
+        get => (Double)GetValue(CornerRadiusProperty);
+        set => SetValue(CornerRadiusProperty, value);
     }
 }

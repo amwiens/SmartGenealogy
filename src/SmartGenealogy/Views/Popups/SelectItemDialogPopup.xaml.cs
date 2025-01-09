@@ -10,14 +10,14 @@ public partial class SelectItemDialogPopup : Popup
 
     public object ReturnValue
     {
-        get { return (object)GetValue(ReturnValueProperty); }
-        set { SetValue(ReturnValueProperty, value); }
+        get => (object)GetValue(ReturnValueProperty);
+        set => SetValue(ReturnValueProperty, value);
     }
 
     public IEnumerable ItemsSource
     {
-        get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-        set { SetValue(ItemsSourceProperty, value); }
+        get => (IEnumerable)GetValue(ItemsSourceProperty);
+        set => SetValue(ItemsSourceProperty, value);
     }
 
     #region Bindable Properties Initializers

@@ -131,6 +131,7 @@
                                 HeightRequest="42"
                                 Placeholder="Ollama Path"
                                 PlaceholderColor="{DynamicResource BaseLightTextColor}"
+                                Text="{Binding OllamaPath}"
                                 TextColor="{DynamicResource BaseTextColor}" />
                         </Border>
                     </Grid>

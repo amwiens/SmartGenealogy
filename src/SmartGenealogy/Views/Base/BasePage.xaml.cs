@@ -44,8 +44,8 @@ public partial class BasePage : ContentPage
 
     public string BaseTitle
     {
-        get => (string)this.GetValue(BaseTitleProperty);
-        set => this.SetValue(BaseTitleProperty, value);
+        get => (string)GetValue(BaseTitleProperty);
+        set => SetValue(BaseTitleProperty, value);
     }
 
     public static BindableProperty BaseTitleColorProperty =
@@ -57,7 +57,7 @@ public partial class BasePage : ContentPage
 
     public Color BaseTitleColor
     {
-        get { return (Color)GetValue(BaseTitleColorProperty); }
-        set { SetValue(BaseTitleColorProperty, value); }
+        get => (Color)GetValue(BaseTitleColorProperty);
+        set => SetValue(BaseTitleColorProperty, value);
     }
 }
