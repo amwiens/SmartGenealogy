@@ -134,11 +134,8 @@
                                 TextColor="{DynamicResource BaseTextColor}" />
                         </Border>
                     </Grid>
-
                 </StackLayout>
             </Grid>
         </Grid>
-
     </views:BasePage.PageContent>
-
 </views:BasePage>

@@ -4,9 +4,10 @@ public class LocalizationResourceManager : INotifyPropertyChanged
 {
     /// <summary>
     /// Usage: Title = "{Binding MyCodeBehindLocalizationResourceManager[MainPageTitle], Mode=OneWay}"
-    /// where MyCodeBehindLocalizationResourceManager is a code-behind property with value LocalizationResourceManager.Instance
-    /// So here the Title value is binding to the resource value
-    /// Each time we call the method LocalizationResourceManager.SetCulture, our property value is updated.
+    /// where MyCodeBehindLocalizationResourceManager is a code-behind property with value
+    /// LocalizationResourceManager.Instance So here the Title value is binding to the resource
+    /// value Each time we call the method LocalizationResourceManager.SetCulture, our property
+    /// value is updated.
     /// </summary>
     private LocalizationResourceManager()
     {

@@ -21,14 +21,12 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
 
         WeakReferenceMessenger.Default.Register<CultureChangeMessage>(this);
 
-
         LoadMenuData();
         var firstEntry = MainMenuEntries[0];
         MainMenuSelectedItem = firstEntry;
 
         MenuItemSelectionCommand = new Command<MenuEntry>(SelectedMenuItem);
     }
-
 
     public void Receive(CultureChangeMessage message)
     {
@@ -87,7 +85,8 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
     }
 
     public ICommand MenuItemSelectionCommand { get; private set; }
-    async void SelectedMenuItem(MenuEntry obj)
+
+    private async void SelectedMenuItem(MenuEntry obj)
     {
         MainMenuSelectedItem = obj;
     }

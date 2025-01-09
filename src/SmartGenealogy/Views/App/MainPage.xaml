@@ -209,7 +209,6 @@
                                 </DataTemplate>
                             </IndicatorView.IndicatorTemplate>
                         </IndicatorView>
-
                     </Grid>
 
                     <VisualElement.Behaviors>
@@ -387,11 +386,8 @@
                                 </VerticalStackLayout>
                             </Border>
                         </Grid>
-
-
                     </VerticalStackLayout>
                 </Border>
-
             </Grid>
         </ScrollView>
 

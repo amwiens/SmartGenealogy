@@ -41,7 +41,7 @@ public static class PreferencesHelpers
         }
     }
 
-    static JsonSerializerSettings GetSerializerSettings() => new JsonSerializerSettings
+    private static JsonSerializerSettings GetSerializerSettings() => new JsonSerializerSettings
     {
         ContractResolver = new CamelCasePropertyNamesContractResolver(),
         NullValueHandling = NullValueHandling.Ignore

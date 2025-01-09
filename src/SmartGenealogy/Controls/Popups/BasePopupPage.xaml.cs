@@ -2,47 +2,47 @@ namespace SmartGenealogy.Controls;
 
 public partial class BasePopupPage : ContentPage
 {
-	public TaskCompletionSource<object> returnResultTask = new();
+    public TaskCompletionSource<object> returnResultTask = new();
 
-	public BasePopupPage()
-	{
-		InitializeComponent();
-		 
-		var current_theme = Application.Current.RequestedTheme;
-		if (current_theme == AppTheme.Light)
-		{
-			this.BackgroundColor = Color.FromArgb("#80000000");
-			ForegroundColor = Color.FromArgb("#FFFFFF");
-		}
-	}
+    public BasePopupPage()
+    {
+        InitializeComponent();
 
-	public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(
-		propertyName: nameof(ForegroundColor),
-		returnType: typeof(Color),
-		declaringType: typeof(BasePopupPage),
-		defaultValue: Color.FromArgb("#00000000"),
-		defaultBindingMode: BindingMode.TwoWay);
+        var current_theme = Application.Current.RequestedTheme;
+        if (current_theme == AppTheme.Light)
+        {
+            this.BackgroundColor = Color.FromArgb("#80000000");
+            ForegroundColor = Color.FromArgb("#FFFFFF");
+        }
+    }
 
-	public Color ForegroundColor
-	{
-		get => (Color)GetValue(ForegroundColorProperty);
-		set { SetValue(ForegroundColorProperty, value); }
-	}
+    public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create(
+        propertyName: nameof(ForegroundColor),
+        returnType: typeof(Color),
+        declaringType: typeof(BasePopupPage),
+        defaultValue: Color.FromArgb("#00000000"),
+        defaultBindingMode: BindingMode.TwoWay);
 
-	public bool IsCloseOnBackgroundClick { get; set; } = true;
+    public Color ForegroundColor
+    {
+        get => (Color)GetValue(ForegroundColorProperty);
+        set { SetValue(ForegroundColorProperty, value); }
+    }
 
-	public static readonly BindableProperty VerticalOptionsProperty = BindableProperty.Create(
+    public bool IsCloseOnBackgroundClick { get; set; } = true;
+
+    public static readonly BindableProperty VerticalOptionsProperty = BindableProperty.Create(
         propertyName: nameof(VerticalOptions),
         returnType: typeof(LayoutOptions),
         declaringType: typeof(BasePopupPage),
         defaultValue: LayoutOptions.Center,
         defaultBindingMode: BindingMode.TwoWay);
 
-	public LayoutOptions VerticalOptions
-	{
-		get => (LayoutOptions)GetValue(VerticalOptionsProperty);
-		set { SetValue(VerticalOptionsProperty, value); }
-	}
+    public LayoutOptions VerticalOptions
+    {
+        get => (LayoutOptions)GetValue(VerticalOptionsProperty);
+        set { SetValue(VerticalOptionsProperty, value); }
+    }
 
     public static readonly BindableProperty HorizontalOptionsProperty = BindableProperty.Create(
         propertyName: nameof(HorizontalOptions),
@@ -63,22 +63,22 @@ public partial class BasePopupPage : ContentPage
         declaringType: typeof(BasePopupPage),
         defaultBindingMode: BindingMode.TwoWay);
 
-	public Thickness Margin
-	{
-		get => (Thickness)GetValue(MarginProperty);
-		set { SetValue(MarginProperty, value); }
-	}
+    public Thickness Margin
+    {
+        get => (Thickness)GetValue(MarginProperty);
+        set { SetValue(MarginProperty, value); }
+    }
 
-	public ICommand PopModelCommand => new Command(async () =>
-	{
-		if (IsCloseOnBackgroundClick)
-			await PopupNavigation.Instance.PopAsync();
-	});
+    public ICommand PopModelCommand => new Command(async () =>
+    {
+        if (IsCloseOnBackgroundClick)
+            await PopupNavigation.Instance.PopAsync();
+    });
 
     protected override bool OnBackButtonPressed()
     {
-		if (!IsCloseOnBackgroundClick)
-			return true;
+        if (!IsCloseOnBackgroundClick)
+            return true;
 
         return base.OnBackButtonPressed();
     }

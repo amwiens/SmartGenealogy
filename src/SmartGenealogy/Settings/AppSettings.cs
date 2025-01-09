@@ -3,6 +3,7 @@
 public class AppSettings
 {
     public static string ImageServerPath { get; } = "https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/";
+
     public static bool IsFirstLaunching
     {
         get => Preferences.Get(nameof(IsFirstLaunching), true);
@@ -14,6 +15,7 @@ public class AppSettings
     {
         new LanguageSelectItem { Code = "en-US", Flag = "flag_en.png", Name = "English (United States)", IsRTL = false },
     };
+
     public static string DefaultLanguageCode = "en-US";
 
     public static LanguageSelectItem SelectedLanguageItem

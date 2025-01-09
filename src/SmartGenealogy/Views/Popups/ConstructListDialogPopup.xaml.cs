@@ -27,9 +27,9 @@ public partial class ConstructListDialogPopup : Popup
     public static readonly BindableProperty ReturnValueItemsProperty = BindableProperty.Create(nameof(ReturnValueItems), typeof(object), typeof(ConstructListDialogPopup), defaultValueCreator: ReturnValueItemsDefaultValueCreator);
     public static readonly BindableProperty AvailableItemsProperty = BindableProperty.Create(nameof(AvailableItems), typeof(IEnumerable), typeof(ConstructListDialogPopup));
 
-    #endregion
+    #endregion Bindable Properties Initializers
 
-    #endregion
+    #endregion Bindable Properties
 
     #region Commands
 
@@ -40,9 +40,9 @@ public partial class ConstructListDialogPopup : Popup
     public ICommand RemoveItemCommand { get; set; }
     public ICommand ClearReturnValueItemsCommand { get; set; }
 
-    #endregion
+    #endregion Commands
 
-    #endregion
+    #endregion Properties
 
     #region Constructors
 
@@ -52,7 +52,7 @@ public partial class ConstructListDialogPopup : Popup
     }
 
     public ConstructListDialogPopup(IEnumerable initialItems, IEnumerable availableItems)
-	{
+    {
         CloseDialogCommand = new Command(() => Close(new List<object>(ReturnValueItems)));
         CancelDialogCommand = new Command(CancelDialog);
         ResetReturnValueItemsCommand = new Command(ResetReturnValueItems);
@@ -67,9 +67,9 @@ public partial class ConstructListDialogPopup : Popup
 
         ResetReturnValueItems();
         ResultWhenUserTapsOutsideOfPopup = _InitialItems;
-	}
+    }
 
-    #endregion
+    #endregion Constructors
 
     #region Methods
 
@@ -111,7 +111,7 @@ public partial class ConstructListDialogPopup : Popup
         return new ObservableRangeCollection<object>();
     }
 
-    #endregion
+    #endregion Bindable Properties Methods
 
-    #endregion
+    #endregion Methods
 }

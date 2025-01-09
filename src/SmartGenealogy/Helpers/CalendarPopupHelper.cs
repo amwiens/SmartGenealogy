@@ -14,7 +14,7 @@ public class CalendarPopupHelper
         public static List<NavigationLoopMode> AllNavigationLoopModes { get; set; } = Enum.GetValues(typeof(NavigationLoopMode)).Cast<NavigationLoopMode>().ToList();
         public static List<DayOfWeek> AllDaysOfWeek { get; set; } = DayOfWeek.Monday.GetWeekAsFirst();
 
-        #endregion
+        #endregion Properties
 
         #region Methods
 
@@ -33,6 +33,6 @@ public class CalendarPopupHelper
             return (Color)await Shell.Current.ShowPopupAsync(new ColorDialogPopup(color));
         }
 
-        #endregion
+        #endregion Methods
     }
 }

@@ -5,7 +5,9 @@ using Windows.Graphics;
 #endif
 
 #if ANDROID
+
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+
 #endif
 
 #if IOS || MACCATALYST
@@ -85,7 +87,7 @@ public partial class App : Application
             }
         });
 
-        #endregion
+        #endregion Handlers
 
         //if (AppSettings.IsFirstLaunching)
         //{
@@ -94,7 +96,7 @@ public partial class App : Application
         //}
         //else
         //{
-            MainPage = GetMainPage();
+        MainPage = GetMainPage();
         //}
     }
 

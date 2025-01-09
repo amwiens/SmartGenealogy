@@ -102,5 +102,4 @@
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="MauiKitIcons" />
     </Style>
-
 </ResourceDictionary>

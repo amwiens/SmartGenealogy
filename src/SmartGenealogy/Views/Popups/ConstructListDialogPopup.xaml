@@ -158,11 +158,9 @@
                                     VerticalTextAlignment="Center" />
                             </Border>
                         </HorizontalStackLayout>
-
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
         </CollectionView>
 
         <CollectionView
@@ -256,7 +254,5 @@
                     VerticalTextAlignment="Center" />
             </ContentView>
         </Grid>
-
     </Grid>
-
 </mct:Popup>

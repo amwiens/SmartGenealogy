@@ -7,9 +7,8 @@ public class TranslateExtension : IMarkupExtension<BindingBase>
     public IValueConverter Converter { get; set; }
 
     /// <summary>
-    /// No need to create an additional property for LocalizationResourceManager, we can hide it in MarkupExtension
-    /// The Title value can be updated to:
-    /// Title="{localization:Translate MainPageTitle}"
+    /// No need to create an additional property for LocalizationResourceManager, we can hide it in
+    /// MarkupExtension The Title value can be updated to: Title="{localization:Translate MainPageTitle}"
     /// </summary>
     /// <param name="serviceProvider"></param>
     /// <returns></returns>

@@ -26,5 +26,4 @@
             TextColor="{DynamicResource White}"
             VerticalOptions="Center" />
     </Grid>
-
 </ContentView>

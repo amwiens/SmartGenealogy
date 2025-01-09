@@ -67,7 +67,6 @@
                     </Label>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
         </CollectionView>
 
         <Grid Grid.Row="1">
@@ -128,7 +127,5 @@
                     VerticalTextAlignment="Center" />
             </ContentView>
         </Grid>
-
     </Grid>
-
 </mct:Popup>

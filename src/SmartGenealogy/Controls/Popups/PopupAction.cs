@@ -44,7 +44,6 @@ public class PopupAction
             }
             catch (Exception ex)
             {
-
             }
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }

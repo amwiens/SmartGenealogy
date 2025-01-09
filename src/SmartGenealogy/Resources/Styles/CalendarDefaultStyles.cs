@@ -11,7 +11,7 @@ public static class CalendarDefaultStyles
     public static Style DefaultDayViewSelectedStyle { get; }
     public static Style DefaultDayViewInvalidStyle { get; }
 
-    #endregion
+    #endregion Properties
 
     #region Constructors
 
@@ -25,7 +25,7 @@ public static class CalendarDefaultStyles
         DefaultDayViewInvalidStyle = CreateDefaultDayViewInvalidStyle();
     }
 
-    #endregion
+    #endregion Constructors
 
     #region Methods
 
@@ -82,5 +82,5 @@ public static class CalendarDefaultStyles
         return style;
     }
 
-    #endregion
+    #endregion Methods
 }

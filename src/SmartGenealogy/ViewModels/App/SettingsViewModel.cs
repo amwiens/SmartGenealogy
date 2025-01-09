@@ -1,5 +1,4 @@
-﻿
-namespace SmartGenealogy.ViewModels;
+﻿namespace SmartGenealogy.ViewModels;
 
 public partial class SettingsViewModel : BaseViewModel
 {
@@ -18,6 +17,7 @@ public partial class SettingsViewModel : BaseViewModel
     public bool EnableDarkModeSwitch { get; set; } = true;
 
     private bool darkModeSwitchToggled = AppSettings.IsDarkMode;
+
     public bool DarkModeSwitchToggled
     {
         get => darkModeSwitchToggled;
@@ -31,12 +31,12 @@ public partial class SettingsViewModel : BaseViewModel
     [ObservableProperty]
     private LanguageSelectItem languageSelected;
 
-    #endregion
+    #endregion Properties
 
     #region Commands
 
     [RelayCommand]
-    async void LanguageItemTapped()
+    private async void LanguageItemTapped()
     {
         var popupViewModel = new LanguageSelectionPopupViewModel();
         var popup = new LanguageSelectionPopupPage { BindingContext = popupViewModel };
@@ -53,7 +53,7 @@ public partial class SettingsViewModel : BaseViewModel
         }
     }
 
-    #endregion
+    #endregion Commands
 
     #region Methods
 
@@ -96,5 +96,5 @@ public partial class SettingsViewModel : BaseViewModel
         (Application.Current as App).ChangeFlyoutDirection();
     }
 
-    #endregion
+    #endregion Methods
 }

@@ -71,8 +71,6 @@
             Route="MainPage" />
     </FlyoutItem>
 
-
-
     <!--<ShellContent
         Title="{localization:Translate MenuPrivacy}"
         ContentTemplate="{DataTemplate views:PrivacyPolicyPage}"

@@ -7,7 +7,6 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-
     private bool _rotated = false;
 
     private async void fabBtn_Clicked(object sender, EventArgs e)

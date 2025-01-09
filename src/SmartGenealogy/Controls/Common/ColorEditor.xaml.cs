@@ -44,20 +44,20 @@ public partial class ColorEditor : ContentView
     public static readonly BindableProperty SelectedColorBlueProperty = BindableProperty.Create(nameof(SelectedColorBlue), typeof(float), typeof(ColorEditor), defaultBindingMode: BindingMode.TwoWay, propertyChanged: SelectedColorBluePropertyChanged);
     public static readonly BindableProperty SelectedColorAlphaProperty = BindableProperty.Create(nameof(SelectedColorAlpha), typeof(float), typeof(ColorEditor), defaultBindingMode: BindingMode.TwoWay, propertyChanged: SelectedColorAlphaPropertyChanged);
 
-    #endregion
+    #endregion Bindable Properties Initializers
 
-    #endregion
+    #endregion Bindable Properties
 
-    #endregion
+    #endregion Properties
 
     #region Constructors
 
     public ColorEditor()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
-    #endregion
+    #endregion Constructors
 
     #region Methods
 
@@ -104,5 +104,5 @@ public partial class ColorEditor : ContentView
         Control.SelectedColor = new Color(Control.SelectedColor.Red, Control.SelectedColor.Green, Control.SelectedColor.Blue, NewAlpha);
     }
 
-    #endregion
+    #endregion Methods
 }

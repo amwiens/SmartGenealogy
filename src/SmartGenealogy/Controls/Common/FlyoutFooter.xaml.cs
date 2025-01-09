@@ -2,12 +2,12 @@ namespace SmartGenealogy.Controls;
 
 public partial class FlyoutFooter : ContentView
 {
-	public FlyoutFooter()
-	{
-		InitializeComponent();
+    public FlyoutFooter()
+    {
+        InitializeComponent();
 
-		BindingContext = this;
-	}
+        BindingContext = this;
+    }
 
-	public string AppVersion { get; set; } = AppInfo.Current.VersionString;
+    public string AppVersion { get; set; } = AppInfo.Current.VersionString;
 }

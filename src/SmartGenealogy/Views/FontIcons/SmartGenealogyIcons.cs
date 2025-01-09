@@ -1,9 +1,6 @@
-﻿
-using Microsoft.Maui;
+﻿namespace SmartGenealogy.Views;
 
-namespace SmartGenealogy.Views;
-
-static class SmartGenealogyIcons
+internal static class SmartGenealogyIcons
 {
     public const string Numeric0 = "\u0030";
     public const string Numeric1 = "\u0031";

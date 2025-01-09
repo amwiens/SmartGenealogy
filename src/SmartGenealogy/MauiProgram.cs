@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Maui;
 
-using PanCardView;
-
-using SkiaSharp.Views.Maui.Controls.Hosting;
-
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
+
+using PanCardView;
+
 using RGPopup.Maui.Extensions;
+
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 #if WINDOWS
 using Microsoft.UI;
@@ -73,10 +74,9 @@ public static class MauiProgram
                     winuiAppWindow.SetPresenter(AppWindowPresenterKind.Default);
 
                     // https://github.com/microsoft/microsoft-ui-xaml/issues/8746
-                    ///
                     /// System back button for backwards navigation is no longer recommended
                     /// Instead, you should provide your own in-app back button
-                    //  https://learn.microsoft.com/en-us/windows/apps/design/basics/navigation-history-and-backwards-navigation?source=recommendations#system-back-behavior-for-backward-compatibility
+                    // https://learn.microsoft.com/en-us/windows/apps/design/basics/navigation-history-and-backwards-navigation?source=recommendations#system-back-behavior-for-backward-compatibility
                     var titleBar = winuiAppWindow.TitleBar;
                     titleBar.ExtendsContentIntoTitleBar = true;
                     titleBar.BackgroundColor = Windows.UI.Color.FromArgb(1, 186, 213, 248); // Hex: #BAD5F8
@@ -116,8 +116,6 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddTransient<MainMenuPage>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
-
-
 
         mauiAppBuilder.Services.AddTransient<MainMenuViewModel>();
         mauiAppBuilder.Services.AddTransient<MainViewModel>();

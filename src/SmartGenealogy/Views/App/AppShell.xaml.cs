@@ -13,7 +13,7 @@ public partial class AppShell : Shell
         BindingContext = this;
     }
 
-    void RegisterRoutes()
+    private void RegisterRoutes()
     {
         Routes.Add(nameof(MainPage), typeof(MainPage));
 

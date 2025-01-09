@@ -54,7 +54,6 @@ public class ScrollViewScrollBehavior : Behavior<ScrollView>
         set { SetValue(RelativeScrollYProperty, value); }
     }
 
-
     public static readonly BindableProperty PercentageScrollXProperty =
         BindableProperty.Create(nameof(PercentageScrollX), typeof(double), typeof(ScrollViewScrollBehavior), default(double),
             BindingMode.TwoWay, null);

@@ -502,5 +502,4 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="8" />
     </Style>
-
 </ResourceDictionary>

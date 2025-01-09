@@ -64,9 +64,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
                 </Border.StrokeShape>
-
             </Border>
-
         </VerticalStackLayout>
 
         <Grid Grid.Row="2">
@@ -127,7 +125,5 @@
                     VerticalTextAlignment="Center" />
             </ContentView>
         </Grid>
-
     </Grid>
-
 </mct:Popup>

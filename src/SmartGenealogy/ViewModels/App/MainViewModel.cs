@@ -9,19 +9,19 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     private int _position;
 
     [ObservableProperty]
-    string text;
+    private string text;
 
     [ObservableProperty]
-    string uri;
+    private string uri;
 
     [ObservableProperty]
-    string subject;
+    private string subject;
 
     [ObservableProperty]
-    string title;
+    private string title;
 
     [ObservableProperty]
-    bool isRTLLanguage;
+    private bool isRTLLanguage;
 
     public ICommand ShareCommand { get; }
     public ICommand BuyNowCommand { get; }
@@ -53,11 +53,10 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     {
         BannerItems = new List<HomeBanner>
         {
-
         };
     }
 
-    async void OnShare(View element) =>
+    private async void OnShare(View element) =>
         await Share.RequestAsync(new ShareTextRequest
         {
             Subject = "Share Smart Genealogy app",
@@ -67,7 +66,7 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
             PresentationSourceBounds = element.GetAbsoluteBounds()
         });
 
-    async void OnBuyNow(View element)
+    private async void OnBuyNow(View element)
     {
         var url = "";
         await Launcher.OpenAsync(url);

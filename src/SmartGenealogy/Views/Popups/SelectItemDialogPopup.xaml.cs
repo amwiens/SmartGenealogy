@@ -25,9 +25,9 @@ public partial class SelectItemDialogPopup : Popup
     public static readonly BindableProperty ReturnValueProperty = BindableProperty.Create(nameof(ReturnValue), typeof(object), typeof(SelectItemDialogPopup), null);
     public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IEnumerable), typeof(SelectItemDialogPopup), null);
 
-    #endregion
+    #endregion Bindable Properties Initializers
 
-    #endregion
+    #endregion Bindable Properties
 
     #region Commands
 
@@ -35,14 +35,14 @@ public partial class SelectItemDialogPopup : Popup
     public ICommand CancelDialogCommand { get; set; }
     public ICommand ResetReturnValueCommand { get; set; }
 
-    #endregion
+    #endregion Commands
 
-    #endregion
+    #endregion Properties
 
     #region Constructors
 
     public SelectItemDialogPopup(object InitialValue, IEnumerable ItemsSource)
-	{
+    {
         CloseDialogCommand = new Command(() => Close(ReturnValue));
         CancelDialogCommand = new Command(CancelDialog);
         ResetReturnValueCommand = new Command(ResetReturnValue);
@@ -54,9 +54,9 @@ public partial class SelectItemDialogPopup : Popup
 
         ResetReturnValue();
         ResultWhenUserTapsOutsideOfPopup = _InitialValue;
-	}
+    }
 
-    #endregion
+    #endregion Constructors
 
     #region Methods
 
@@ -70,5 +70,5 @@ public partial class SelectItemDialogPopup : Popup
         ReturnValue = _InitialValue;
     }
 
-    #endregion
+    #endregion Methods
 }

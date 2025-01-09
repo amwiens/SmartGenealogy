@@ -18,9 +18,9 @@ public partial class ColorDialogPopup : Popup
 
     public static readonly BindableProperty SelectedColorProperty = BindableProperty.Create(nameof(SelectedColor), typeof(object), typeof(ColorDialogPopup), null);
 
-    #endregion
+    #endregion Bindable Properties Initializers
 
-    #endregion
+    #endregion Bindable Properties
 
     #region Commands
 
@@ -28,9 +28,9 @@ public partial class ColorDialogPopup : Popup
     public ICommand DismissDialogCommand { get; set; }
     public ICommand ResetReturnValueCommand { get; set; }
 
-    #endregion
+    #endregion Commands
 
-    #endregion
+    #endregion Properties
 
     #region Constructors
 
@@ -40,7 +40,7 @@ public partial class ColorDialogPopup : Popup
     }
 
     public ColorDialogPopup(Color InitialSelectedColor)
-	{
+    {
         CancelDialogCommand = new Command(CancelDialog);
         DismissDialogCommand = new Command(DismissDialog);
         ResetReturnValueCommand = new Command(ResetReturnValue);
@@ -52,7 +52,7 @@ public partial class ColorDialogPopup : Popup
         SelectedColor = InitialSelectedColor;
     }
 
-    #endregion
+    #endregion Constructors
 
     #region Methods
 
@@ -71,5 +71,5 @@ public partial class ColorDialogPopup : Popup
         SelectedColor = InitialSelectedColor;
     }
 
-    #endregion
+    #endregion Methods
 }

@@ -6,6 +6,7 @@ public class FlowDirectionManager : INotifyPropertyChanged
     public FlowDirection this[string key] => FlowDirection;
 
     public static FlowDirectionManager Instance { get; }
+
     static FlowDirectionManager()
     {
         Instance = new FlowDirectionManager();
@@ -27,6 +28,7 @@ public class FlowDirectionManager : INotifyPropertyChanged
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
     private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

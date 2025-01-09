@@ -1,8 +1,3 @@
-using System;
-
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-
 namespace SmartGenealogy;
 
 internal class Program : MauiApplication

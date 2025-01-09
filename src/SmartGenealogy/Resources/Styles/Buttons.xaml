@@ -61,8 +61,6 @@
         <Setter Property="BorderWidth" Value="2" />
     </Style>
 
-
-
     <!--  PRIMARY BUTTON  -->
     <Style
         x:Key="PrimaryButtonStyle"
@@ -170,5 +168,4 @@
         <Setter Property="TextColor" Value="{DynamicResource DeleteColor}" />
         <Setter Property="BorderColor" Value="{DynamicResource DeleteColor}" />
     </Style>
-
 </ResourceDictionary>

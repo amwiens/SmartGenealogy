@@ -19,7 +19,7 @@ public partial class LanguageSelectionPopupViewModel : ObservableObject
     private LanguageSelectItem _languageSelected;
 
     [RelayCommand]
-    async Task OkTapped()
+    private async Task OkTapped()
     {
         // Set the result and close the popup
         _taskCompletionSource.SetResult(LanguageSelected);
@@ -28,7 +28,7 @@ public partial class LanguageSelectionPopupViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task CancelTapped()
+    private async Task CancelTapped()
     {
         await PopupAction.ClosePopup();
     }

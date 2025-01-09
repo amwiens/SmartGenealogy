@@ -1,6 +1,5 @@
 ﻿using PropertyChanged;
 
-
 namespace SmartGenealogy.ViewModels.Base;
 
 [AddINotifyPropertyChangedInterface]
