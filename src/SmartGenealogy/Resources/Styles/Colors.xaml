@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="SmartGenealogy.Resources.Styles.Colors"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--
+        Custom Primary Colors used in Theme Settings
+    -->
+    <Color x:Key="ThemePrimaryColorOption1">#2F72E4</Color>
+    <Color x:Key="ThemePrimaryColorOption2">#5D4CF7</Color>
+    <Color x:Key="ThemePrimaryColorOption3">#06846A</Color>
+    <Color x:Key="ThemePrimaryColorOption4">#F54E5E</Color>
+    <Color x:Key="ThemePrimaryColorOption5">#D54008</Color>
+
+    <!--  Default Gradient Colors for Drawer Menu. Color value will be changed when changing PrimaryColor: Settings/ThemeUtils  -->
+    <Color x:Key="LinearGradientStartColor">#BF1A73E8</Color>
+    <Color x:Key="LinearGradientEndColor">#BF3E5AFF</Color>
+
+    <Color x:Key="BlurBlue">#1A377DFF</Color>
+    <Color x:Key="TwitterBlue">#55acee</Color>
+    <Color x:Key="FacebookBlue">#4267B2</Color>
+    <Color x:Key="LightGreen">#35c659</Color>
+    <Color x:Key="FacebookLogin">#3b5998</Color>
+    <Color x:Key="Green">#7ED321</Color>
+    <Color x:Key="Red">#FF392B</Color>
+    <Color x:Key="Orange">#FF844A</Color>
+    <Color x:Key="Blue">#1152A7</Color>
+    <Color x:Key="HyperLink">#3EAFFF</Color>
+
+    <!--  Start Specific Colors used for Apps/Travels templates  -->
+    <Color x:Key="T_Primary">#83B82C</Color>
+    <Color x:Key="T_Secondary">#5981F0</Color>
+    <Color x:Key="T_Accent">#FF9393</Color>
+    <Color x:Key="T_Base">#22313B</Color>
+    <Color x:Key="Gray500">#6E6E6E</Color>
+    <!--  End Specific Colors used for Apps/Travels templates  -->
+
+    <SolidColorBrush x:Key="PrimaryColorBrush">#1A73E8</SolidColorBrush>
+
+    <LinearGradientBrush x:Key="BlackberryGradient">
+        <GradientStop Offset="0.1" Color="#38b8f2" />
+        <GradientStop Offset="1.0" Color="#843cf7" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SunsetGradient">
+        <GradientStop Offset="0.1" Color="#ee0979" />
+        <GradientStop Offset="1.0" Color="#ff6a00" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GreenTeaGradient">
+        <GradientStop Offset="0.1" Color="#004b91" />
+        <GradientStop Offset="1.0" Color="#78cc37" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GranateGradient">
+        <GradientStop Offset="0.1" Color="#9B3cb7" />
+        <GradientStop Offset="1.0" Color="#FF396f" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="VioletGradient" EndPoint="1,0">
+        <GradientStop Offset="0.1" Color="#373668" />
+        <GradientStop Offset="1.0" Color="#24243b" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PinkGradient" EndPoint="1,0">
+        <GradientStop Offset="0.1" Color="#d54381" />
+        <GradientStop Offset="1.0" Color="#7644ad" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="OrangeGradient" EndPoint="1,0">
+        <GradientStop Offset="0.1" Color="#ff9632" />
+        <GradientStop Offset="1.0" Color="#e55313" />
+    </LinearGradientBrush>
+</ResourceDictionary>

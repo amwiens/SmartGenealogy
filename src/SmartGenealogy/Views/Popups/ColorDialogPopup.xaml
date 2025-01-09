@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+    x:Class="SmartGenealogy.Views.Popups.ColorDialogPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:Popups="clr-namespace:SmartGenealogy.Views.Popups"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="MainColorDialogPopup"
+    x:DataType="{x:Type Popups:ColorDialogPopup}"
+    Size="300, 285">
+
+    <Grid BackgroundColor="{DynamicResource BasePageColor}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Controls:ColorEditor
+            x:Name="ColorEditor"
+            Grid.Row="0"
+            SelectedColor="{Binding SelectedColor, Source={x:Reference MainColorDialogPopup}}" />
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Margin="0,10,0,0"
+            Spacing="0"
+            VerticalOptions="StartAndExpand">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalTextAlignment="Center"
+                Text="{localization:Translate LabelSelectAColor}"
+                TextColor="{DynamicResource BaseTextColor}" />
+
+            <VerticalStackLayout Margin="10,10,10,0" Spacing="20">
+                <Slider
+                    MaximumTrackColor="Red"
+                    MinimumTrackColor="Red"
+                    ThumbColor="#E0E0E0"
+                    Value="{Binding SelectedColorRed, Source={x:Reference ColorEditor}}" />
+                <Slider
+                    MaximumTrackColor="#00A000"
+                    MinimumTrackColor="#00A000"
+                    ThumbColor="#E0E0E0"
+                    Value="{Binding SelectedColorGreen, Source={x:Reference ColorEditor}}" />
+                <Slider
+                    MaximumTrackColor="Blue"
+                    MinimumTrackColor="Blue"
+                    ThumbColor="#E0E0E0"
+                    Value="{Binding SelectedColorBlue, Source={x:Reference ColorEditor}}" />
+            </VerticalStackLayout>
+            <Border
+                Margin="20,20,20,0"
+                Padding="10,20,10,20"
+                BackgroundColor="{Binding SelectedColor, Source={x:Reference MainColorDialogPopup}}"
+                Stroke="Black"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ContentView
+                Grid.Column="0"
+                Padding="10"
+                BackgroundColor="#0080E0">
+
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CancelDialogCommand, Source={x:Reference MainColorDialogPopup}}" />
+                </ContentView.GestureRecognizers>
+
+                <Label
+                    FontSize="18"
+                    Text="{localization:Translate LabelCancel}"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </ContentView>
+
+            <ContentView
+                Grid.Column="1"
+                Padding="10"
+                BackgroundColor="#0080E0">
+
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ResetReturnValueCommand, Source={x:Reference MainColorDialogPopup}}" />
+                </ContentView.GestureRecognizers>
+
+                <Label
+                    FontSize="18"
+                    Text="{localization:Translate LabelReset}"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </ContentView>
+
+            <ContentView
+                Grid.Column="2"
+                Padding="10"
+                BackgroundColor="#0080E0"
+                HorizontalOptions="Fill">
+
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DismissDialogCommand, Source={x:Reference MainColorDialogPopup}}" />
+                </ContentView.GestureRecognizers>
+
+                <Label
+                    FontSize="18"
+                    HorizontalTextAlignment="End"
+                    Text="{localization:Translate LabelConfirm}"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </ContentView>
+        </Grid>
+
+    </Grid>
+
+</mct:Popup>

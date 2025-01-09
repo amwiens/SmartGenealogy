@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePopupPage
+    x:Class="SmartGenealogy.Views.LanguageSelectionPopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    ForegroundColor="Transparent"
+    ZIndex="100">
+
+    <Grid HorizontalOptions="{OnIdiom Desktop='Center', Tablet='Center', Phone='Fill'}" VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Desktop='550', Tablet='350', Phone='*'}" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Margin="15"
+            Padding="20,25"
+            Background="{DynamicResource BasePageColor}"
+            StrokeShape="{RoundRectangle CornerRadius='20'}">
+
+            <Grid RowDefinitions="*,Auto" RowSpacing="20">
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="10"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Title2}"
+                        Text="{localization:Translate LabelSelectLanguage}" />
+
+                    <CollectionView
+                        ItemsSource="{Binding LanguageLists}"
+                        SelectedItem="{Binding LanguageSelected}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout
+                                    Padding="15,0"
+                                    Spacing="1"
+                                    VerticalOptions="Center">
+                                    <controls:LanguageItemTemplate Name="{Binding Name}" Flag="{Binding Flag}" />
+
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates" TargetType="{x:Type VerticalStackLayout}">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="{DynamicResource Primary10Color}" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="15"
+                    VerticalOptions="Center">
+
+                    <Button
+                        Command="{Binding OkTappedCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{localization:Translate LabelOk}" />
+
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding CancelTappedCommand}"
+                        Style="{StaticResource OutlinePrimaryButtonStyle}"
+                        Text="{localization:Translate LabelCancel}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:BasePopupPage>

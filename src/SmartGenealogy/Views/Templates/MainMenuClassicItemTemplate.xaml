@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Views.Templates.MainMenuClassicItemTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:views="clr-namespace:SmartGenealogy.Views">
+
+    <Grid Padding="25,10" ColumnDefinitions="30,*">
+
+        <Label
+            FontFamily="MaterialDesign"
+            FontSize="24"
+            Text="{Binding Icon}"
+            TextColor="{DynamicResource White}"
+            TranslationY="-2"
+            VerticalOptions="Center" />
+
+        <Label
+            Grid.Column="1"
+            Margin="12,0"
+            FontFamily="MediumFont"
+            FontSize="16"
+            Text="{Binding Title}"
+            TextColor="{DynamicResource White}"
+            VerticalOptions="Center" />
+    </Grid>
+
+</ContentView>

@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:cardscontrols="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
+    xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:Name="mainPage"
+    FlowDirection="{Binding IsRTLLanguage, Converter={StaticResource FlowDirectionConverter}}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <VisualElement.Behaviors>
+                <animations:ScrollViewScrollBehavior x:Name="ScrollBehavior" />
+            </VisualElement.Behaviors>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Border
+                    Margin="0"
+                    Padding="{OnIdiom Phone='0,0,0,30',
+                                      Tablet='30,0,30,30',
+                                      Desktop='30,0,30,30'}"
+                    Stroke="Transparent"
+                    StrokeShape="{RoundRectangle CornerRadius='1'}">
+
+                    <Grid RowDefinitions="Auto, Auto">
+
+                        <cards:CoverFlowView
+                            x:Name="bannerView"
+                            HeightRequest="{OnIdiom Phone=230,
+                                                    Tablet=380,
+                                                    Desktop=440}"
+                            IndicatorView="indicatorView"
+                            IsAutoNavigatingAnimationEnabled="True"
+                            IsCyclical="True"
+                            IsPanSwipeEnabled="True"
+                            IsRightToLeftFlowDirectionEnabled="{Binding IsRTLLanguage}"
+                            IsUserInteractionEnabled="True"
+                            IsViewReusingEnabled="True"
+                            ItemsSource="{Binding BannerItems}"
+                            PositionShiftValue="45"
+                            SlideShowDuration="5000">
+
+                            <x:Arguments>
+                                <proc:CoverFlowProcessor OpacityFactor="0.55" ScaleFactor="{OnIdiom Phone='0.85', Tablet='0.9', Desktop='1'}" />
+                            </x:Arguments>
+
+                            <cards:CoverFlowView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        Margin="30,15,30,5"
+                                        Padding="0"
+                                        HeightRequest="{OnIdiom Phone=220,
+                                                                Tablet=370,
+                                                                Desktop=410}"
+                                        StrokeShape="{RoundRectangle CornerRadius=25}">
+
+                                        <Grid Padding="0" RowSpacing="{OnIdiom Phone=0, Tablet=5, Desktop=10}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50" />
+                                                <RowDefinition Height="{OnIdiom Phone=54, Tablet=60, Default=70}" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--  Background gradient  -->
+                                            <Grid
+                                                Grid.RowSpan="4"
+                                                Background="{Binding BackgroundGradient}"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Fill">
+                                                <!--  Bug: crash issue in iOS  -->
+                                                <!--<Grid.Background>
+                                                    <LinearGradientBrush>
+                                                        <GradientStop Offset="0.1" Color="{Binding BackgroundGradientEnd}" />
+                                                        <GradientStop Offset="1.0" Color="{Binding BackgroundGradientStart}" />
+                                                    </LinearGradientBrush>
+                                                </Grid.Background>-->
+                                            </Grid>
+
+                                            <!--  Background Image  -->
+                                            <Image
+                                                Grid.RowSpan="4"
+                                                Aspect="AspectFill"
+                                                IsVisible="False"
+                                                Opacity="0.5"
+                                                Source="{OnIdiom Phone='main_bg.png',
+                                                                 Tablet='main_bg.png',
+                                                                 Desktop='main_bg_desktop.png'}" />
+
+                                            <Image
+                                                Grid.RowSpan="4"
+                                                Aspect="Fill"
+                                                Opacity="0.3"
+                                                Source="{Binding BackgroundImage}" />
+
+                                            <!--  Icons  -->
+                                            <Border
+                                                Grid.Row="1"
+                                                Margin="{OnIdiom Phone='20,0',
+                                                                 Tablet='20,0',
+                                                                 Desktop='30,0'}"
+                                                Padding="0"
+                                                Background="#60131313"
+                                                HeightRequest="{OnIdiom Phone=54,
+                                                                        Tablet=60,
+                                                                        Default=70}"
+                                                HorizontalOptions="Start"
+                                                Stroke="Transparent"
+                                                StrokeShape="{RoundRectangle CornerRadius='12'}"
+                                                TranslationY="0"
+                                                VerticalOptions="Center"
+                                                WidthRequest="{OnIdiom Phone=54,
+                                                                       Tablet=60,
+                                                                       Default=70}">
+                                                <Label
+                                                    FontFamily="IonIcons"
+                                                    FontSize="{OnIdiom Phone='35',
+                                                                       Tablet='40',
+                                                                       Desktop='45'}"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Opacity="1"
+                                                    Text="{Binding Icon}"
+                                                    TextColor="{DynamicResource OverImageTextColor}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                            </Border>
+
+                                            <!--  Title  -->
+                                            <Label
+                                                Grid.Row="2"
+                                                Margin="{OnIdiom Phone='20,10,20,0',
+                                                                 Tablet='25,10,25,0',
+                                                                 Desktop='30,10,30,0'}"
+                                                FontFamily="BoldFont"
+                                                FontSize="{OnIdiom Phone='19',
+                                                                   Tablet='21',
+                                                                   Desktop='23'}"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="2"
+                                                Text="{Binding Title}"
+                                                TextColor="{DynamicResource OverImageTextColor}"
+                                                VerticalOptions="End" />
+
+                                            <!--  Subtitle  -->
+                                            <Label
+                                                Grid.Row="3"
+                                                Margin="{OnIdiom Phone='20,0,20,20',
+                                                                 Tablet='25,0,25,20',
+                                                                 Desktop='30,0,30,30'}"
+                                                FontSize="{OnIdiom Phone='13',
+                                                                   Tablet='15',
+                                                                   Desktop='17'}"
+                                                LineBreakMode="TailTruncation"
+                                                MaxLines="2"
+                                                Text="{Binding Body}"
+                                                TextColor="{DynamicResource OverImageTextColor}"
+                                                VerticalOptions="Start" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </cards:CoverFlowView.ItemTemplate>
+                        </cards:CoverFlowView>
+
+                        <IndicatorView
+                            x:Name="indicatorView"
+                            Grid.Row="1"
+                            Margin="{OnIdiom Phone='0,15',
+                                             Tablet='0,10,0,0',
+                                             Desktop='0,10,0,10'}"
+                            HorizontalOptions="Center"
+                            IndicatorColor="Transparent"
+                            IndicatorsShape="Circle"
+                            MaximumVisible="5"
+                            SelectedIndicatorColor="Transparent">
+                            <IndicatorView.IndicatorTemplate>
+                                <DataTemplate>
+                                    <Label
+                                        FontFamily="SmartGenealogyIcons"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource IndicatorLabelStyle}"
+                                        VerticalOptions="Center" />
+                                </DataTemplate>
+                            </IndicatorView.IndicatorTemplate>
+                        </IndicatorView>
+
+                    </Grid>
+
+                    <VisualElement.Behaviors>
+                        <animations:AnimateProgressDouble
+                            Maximum="280"
+                            Minimum="0"
+                            Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                            TargetProperty="VisualElement.TranslationY"
+                            From="0"
+                            To="140" />
+                        <animations:AnimateProgressDouble
+                            Maximum="280"
+                            Minimum="50"
+                            Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                            TargetProperty="VisualElement.Opacity"
+                            From="1"
+                            To="0" />
+                    </VisualElement.Behaviors>
+                </Border>
+
+                <Border
+                    Grid.Row="1"
+                    Padding="{OnIdiom Phone='15,5,15,10',
+                                      Tablet='15,10',
+                                      Desktop='30,10'}"
+                    Background="{DynamicResource MainWrapperBackgroundColor}"
+                    TranslationY="-30">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30,30,0,0" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Margin="{OnIdiom Phone='10,15,10,10',
+                                         Tablet='15,10',
+                                         Desktop='30,10'}"
+                        Padding="5,5"
+                        Spacing="15"
+                        VerticalOptions="Center">
+                        <VisualElement.Behaviors>
+                            <animations:AnimateProgressDouble
+                                Maximum="280"
+                                Minimum="0"
+                                Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                TargetProperty="VerticalStackLayout.Spacing"
+                                From="15"
+                                To="5" />
+                        </VisualElement.Behaviors>
+
+                        <Grid
+                            ColumnDefinitions="0.5*, 0.5*"
+                            ColumnSpacing="15"
+                            RowDefinitions="Auto,Auto"
+                            RowSpacing="15">
+                            <VisualElement.Behaviors>
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.RowSpacing"
+                                    From="15"
+                                    To="5" />
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.ColumnSpacing"
+                                    From="15"
+                                    To="5" />
+                            </VisualElement.Behaviors>
+
+                            <!--  New File  -->
+                            <Border Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        Source="tasks.png"
+                                        VerticalOptions="Center" />
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelNewFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelNewFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!--  Open File  -->
+                            <Border Grid.Column="1" Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        Source="folder.png"
+                                        VerticalOptions="Center" />
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelOpenFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelOpenFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!--  Import File  -->
+                            <Border Grid.Row="1" Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        Source="upload.png"
+                                        VerticalOptions="Center" />
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelImportFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelImportFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!--  Download Tree  -->
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        Source="download.png"
+                                        VerticalOptions="Center" />
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelDownloadTree}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelDownloadTreeDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+
+        <VerticalStackLayout
+            x:Name="fabBtnsContainer"
+            Margin="0,0,-120,75"
+            Padding="15,0"
+            HorizontalOptions="End"
+            Spacing="8"
+            VerticalOptions="End">
+            <Button
+                BackgroundColor="{DynamicResource LightGreen}"
+                BorderColor="{DynamicResource LightGreen}"
+                BorderWidth="1.2"
+                Command="{Binding BuyNowCommand}"
+                CommandParameter="{Binding Source={RelativeSource Self}}"
+                FontFamily="SmartGenealogyIcons"
+                FontSize="22"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                Text="{x:Static views:SmartGenealogyIcons.Shopping}"
+                TextColor="{DynamicResource White}" />
+
+            <Button
+                BackgroundColor="{DynamicResource Red}"
+                BorderColor="{DynamicResource Red}"
+                BorderWidth="1.2"
+                Command="{Binding ShareCommand}"
+                CommandParameter="{Binding Source={RelativeSource Self}}"
+                FontFamily="SmartGenealogyIcons"
+                FontSize="22"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                Text="{x:Static views:SmartGenealogyIcons.ShareVariant}"
+                TextColor="{DynamicResource White}" />
+        </VerticalStackLayout>
+
+        <Button
+            x:Name="fabBtn"
+            Margin="15"
+            Padding="0"
+            BackgroundColor="{DynamicResource PrimaryColor}"
+            BorderColor="{DynamicResource Primary20Color}"
+            BorderWidth="7"
+            Clicked="fabBtn_Clicked"
+            CornerRadius="14"
+            FontFamily="SmartGenealogyIcons"
+            FontSize="25"
+            HeightRequest="56"
+            HorizontalOptions="End"
+            Text="{x:Static views:SmartGenealogyIcons.HandPointingRight}"
+            TextColor="{DynamicResource White}"
+            VerticalOptions="End"
+            WidthRequest="56" />
+    </Grid>
+</ContentPage>
