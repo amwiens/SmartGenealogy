@@ -153,6 +153,9 @@
   <data name="LabelEmpty" xml:space="preserve">
     <value>Empty</value>
   </data>
+  <data name="LabelGoback" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="LabelImportFile" xml:space="preserve">
     <value>Import File</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="LabelOllamaPath" xml:space="preserve">
     <value>Ollama Path</value>
+  </data>
+  <data name="PageTitleOllamaSettings" xml:space="preserve">
+    <value>Ollama Settings</value>
   </data>
   <data name="LabelOpenFile" xml:space="preserve">
     <value>Open File</value>
@@ -203,5 +209,17 @@
   </data>
   <data name="StringCopyright" xml:space="preserve">
     <value>Smart Genealogy</value>
+  </data>
+  <data name="LabelOllamaEndpointSettings" xml:space="preserve">
+    <value>Endpoint Settings</value>
+  </data>
+  <data name="LabelOllamaSettings" xml:space="preserve">
+    <value>Ollama Settings</value>
+  </data>
+  <data name="LabelOllamaIsRunning" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="LabelOllamaLocalModels" xml:space="preserve">
+    <value>Local models</value>
   </data>
 </root>

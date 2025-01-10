@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:BasePage
-    x:Class="SmartGenealogy.Views.SettingsPage"
+    x:Class="SmartGenealogy.Views.MainSettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
@@ -100,6 +100,7 @@
                     </VerticalStackLayout>
                 </StackLayout>
 
+                <!--  AI SETTINGS  -->
                 <StackLayout
                     Grid.Row="3"
                     Margin="20"
@@ -112,29 +113,44 @@
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
 
-                    <!--  Ollama path  -->
-                    <Grid
-                        Padding="0,7"
-                        ColumnDefinitions="0.5*,0.5*"
-                        ColumnSpacing="12">
+                    <!--  Ollama Settings  -->
+                    <Grid Padding="0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
                         <Label
+                            FontFamily="SmartGenealogyIcons"
+                            FontSize="22"
+                            HorizontalOptions="Start"
+                            Text="{x:Static views:SmartGenealogyIcons.AccountEdit}"
+                            TextColor="{DynamicResource PrimaryColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
                             FontSize="15"
                             HorizontalOptions="Start"
-                            Text="{localization:Translate LabelOllamaPath}"
+                            Text="{localization:Translate LabelOllamaSettings}"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
-                        <Border
-                            Grid.Column="1"
-                            Padding="20,5"
-                            Background="{DynamicResource EntryAndEditorsBackgroundColor}">
-                            <handlers:BorderlessEntry
-                                HeightRequest="42"
-                                Placeholder="Ollama Path"
-                                PlaceholderColor="{DynamicResource BaseLightTextColor}"
-                                Text="{Binding OllamaPath}"
-                                TextColor="{DynamicResource BaseTextColor}" />
-                        </Border>
+
+                        <Label
+                            Grid.Column="2"
+                            FontFamily="IonIcons"
+                            FontSize="15"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static views:IonIcons.ChevronRight}"
+                            TextColor="{DynamicResource BaseIconColor}"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OllamaSettings_Tapped" />
+                        </Grid.GestureRecognizers>
                     </Grid>
+
                 </StackLayout>
             </Grid>
         </Grid>

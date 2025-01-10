@@ -169,6 +169,15 @@ namespace SmartGenealogy.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        internal static string LabelGoback {
+            get {
+                return ResourceManager.GetString("LabelGoback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import File.
         /// </summary>
         internal static string LabelImportFile {
@@ -214,11 +223,47 @@ namespace SmartGenealogy.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint Settings.
+        /// </summary>
+        internal static string LabelOllamaEndpointSettings {
+            get {
+                return ResourceManager.GetString("LabelOllamaEndpointSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running.
+        /// </summary>
+        internal static string LabelOllamaIsRunning {
+            get {
+                return ResourceManager.GetString("LabelOllamaIsRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local models.
+        /// </summary>
+        internal static string LabelOllamaLocalModels {
+            get {
+                return ResourceManager.GetString("LabelOllamaLocalModels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ollama Path.
         /// </summary>
         internal static string LabelOllamaPath {
             get {
                 return ResourceManager.GetString("LabelOllamaPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ollama Settings.
+        /// </summary>
+        internal static string LabelOllamaSettings {
+            get {
+                return ResourceManager.GetString("LabelOllamaSettings", resourceCulture);
             }
         }
         
@@ -300,6 +345,15 @@ namespace SmartGenealogy.Resources.Translations {
         internal static string MenuSettings {
             get {
                 return ResourceManager.GetString("MenuSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ollama Settings.
+        /// </summary>
+        internal static string PageTitleOllamaSettings {
+            get {
+                return ResourceManager.GetString("PageTitleOllamaSettings", resourceCulture);
             }
         }
         
