@@ -121,6 +121,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\SmartGenealogy.Ollama\SmartGenealogy.Ollama.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Resources\Themes\DarkTheme.xaml.cs">
 	    <DependentUpon>DarkTheme.xaml</DependentUpon>
 	  </Compile>
@@ -134,6 +138,9 @@
 	  </Compile>
 	  <Compile Update="Views\Popups\ConstructListDialogPopup.xaml.cs">
 	    <DependentUpon>ConstructListDialogPopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Settings\MainSettingsPage.xaml.cs">
+	    <DependentUpon>MainSettingsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -190,7 +197,7 @@
 	  <MauiXaml Update="Views\App\LanguageSelectionPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\SettingsPage.xaml">
+	  <MauiXaml Update="Views\Settings\MainSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Base\BasePage.xaml">
@@ -206,6 +213,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\SelectItemDialogPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings\OllamaSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Templates\MainMenuClassicItemTemplate.xaml">

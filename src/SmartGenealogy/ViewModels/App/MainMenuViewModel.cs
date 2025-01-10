@@ -50,7 +50,7 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
             {
                 Title = LocalizationResourceManager.Translate("MenuSettings"),
                 Icon = MaterialDesignIcons.Settings,
-                TargetType = typeof(SettingsPage)
+                TargetType = typeof(MainSettingsPage)
             },
         };
     }

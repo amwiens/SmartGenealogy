@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:SmartGenealogy.Views">
     <Application.Resources>
         <ResourceDictionary>
@@ -64,6 +65,7 @@
             <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
             <converters:IsNotEmptyStringConverter x:Key="IsNotEmptyStringConverter" />
             <converters:TaskPriorityToColorConverter x:Key="TaskPriorityToColorConverter" />
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
