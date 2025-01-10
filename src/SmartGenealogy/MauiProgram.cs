@@ -120,6 +120,8 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<MainMenuViewModel>();
         mauiAppBuilder.Services.AddTransient<MainViewModel>();
 
+        mauiAppBuilder.Services.AddTransient<OllamaSettingsViewModel>();
+
         return mauiAppBuilder;
     }
 }

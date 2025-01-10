@@ -6,7 +6,13 @@
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:ollama="clr-namespace:OllamaSharp.Models;assembly=OllamaSharp"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:SmartGenealogy.Views">
+
+    <views:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </views:BasePage.Behaviors>
 
     <views:BasePage.PageContent>
 
@@ -56,7 +62,7 @@
                         </Border>
                     </Grid>
 
-                    <!--  Ollama path  -->
+                    <!--  Ollama running  -->
                     <Grid
                         Padding="0,7"
                         ColumnDefinitions="0.5*,0.5*"
@@ -89,6 +95,27 @@
                             TextColor="{DynamicResource ErrorColor}"
                             VerticalOptions="CenterAndExpand" />
                     </Grid>
+                </StackLayout>
+
+                <!--  LOCAL MODELS  -->
+                <StackLayout Grid.Row="2" Margin="20">
+                    <Label
+                        FontSize="17"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Title2}"
+                        Text="{localization:Translate LabelOllamaLocalModels}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <RefreshView>
+                        <CollectionView ItemsSource="{Binding LocalModels}" SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="ollama:Model">
+                                    <Label Text="{Binding Name}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
                 </StackLayout>
             </Grid>
         </Grid>

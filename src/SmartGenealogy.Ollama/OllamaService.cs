@@ -22,17 +22,23 @@ public class OllamaService
 
     public bool IsRunning
     {
-        get => isRunning;
-        set => isRunning = value;
+        get
+        {
+            CheckIsRunning().ConfigureAwait(false);
+            return isRunning;
+        }
     }
 
     public OllamaService(string url)
     {
         Url = url;
+        CheckIsRunning();
     }
 
     private async Task CheckIsRunning()
     {
+        bool isRunning;
+
         try
         {
             isRunning = await ollama!.IsRunningAsync();
@@ -41,10 +47,13 @@ public class OllamaService
         {
             isRunning = false;
         }
+
+        this.isRunning = isRunning;
     }
 
     public async Task<IEnumerable<Model>> GetLocalModels()
     {
+        await CheckIsRunning();
         if (isRunning)
             return await ollama!.ListLocalModelsAsync();
 

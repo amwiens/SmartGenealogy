@@ -219,4 +219,7 @@
   <data name="LabelOllamaIsRunning" xml:space="preserve">
     <value>Running</value>
   </data>
+  <data name="LabelOllamaLocalModels" xml:space="preserve">
+    <value>Local models</value>
+  </data>
 </root>

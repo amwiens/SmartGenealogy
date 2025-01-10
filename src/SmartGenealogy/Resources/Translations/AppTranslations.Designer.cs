@@ -241,6 +241,15 @@ namespace SmartGenealogy.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local models.
+        /// </summary>
+        internal static string LabelOllamaLocalModels {
+            get {
+                return ResourceManager.GetString("LabelOllamaLocalModels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ollama Path.
         /// </summary>
         internal static string LabelOllamaPath {
