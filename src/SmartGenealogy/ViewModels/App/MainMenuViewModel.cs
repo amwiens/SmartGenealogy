@@ -1,11 +1,12 @@
 ﻿namespace SmartGenealogy.ViewModels;
 
-public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessage>
+public partial class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessage>
 {
     private INavigation _navigation;
 
     private Action<Page> _openPageAsRoot;
 
+    [ObservableProperty]
     private List<MenuEntry> _mainMenuEntries;
 
     private bool _isGridView;
@@ -48,6 +49,12 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
             },
             new MenuEntry
             {
+                Title = LocalizationResourceManager.Translate("MenuArticles"),
+                Icon = MaterialDesignIcons.Note,
+                TargetType = typeof(MainArticlesPage)
+            },
+            new MenuEntry
+            {
                 Title = LocalizationResourceManager.Translate("MenuSettings"),
                 Icon = MaterialDesignIcons.Settings,
                 TargetType = typeof(MainSettingsPage)
@@ -55,11 +62,11 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
         };
     }
 
-    public List<MenuEntry> MainMenuEntries
-    {
-        get { return _mainMenuEntries; }
-        set { SetProperty(ref _mainMenuEntries, value); }
-    }
+    //public List<MenuEntry> MainMenuEntries
+    //{
+    //    get { return _mainMenuEntries; }
+    //    set { SetProperty(ref _mainMenuEntries, value); }
+    //}
 
     public bool IsGridMenuSwitchToggled
     {

@@ -222,4 +222,10 @@
   <data name="LabelOllamaLocalModels" xml:space="preserve">
     <value>Local models</value>
   </data>
+  <data name="MenuArticles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="LabelArticle" xml:space="preserve">
+    <value>Articles</value>
+  </data>
 </root>

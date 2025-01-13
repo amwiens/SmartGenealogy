@@ -97,6 +97,15 @@ namespace SmartGenealogy.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Articles.
+        /// </summary>
+        internal static string LabelArticle {
+            get {
+                return ResourceManager.GetString("LabelArticle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AW Web Solutions.
         /// </summary>
         internal static string LabelAWWebSolutions {
@@ -327,6 +336,15 @@ namespace SmartGenealogy.Resources.Translations {
         internal static string LabelVersion {
             get {
                 return ResourceManager.GetString("LabelVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Articles.
+        /// </summary>
+        internal static string MenuArticles {
+            get {
+                return ResourceManager.GetString("MenuArticles", resourceCulture);
             }
         }
         

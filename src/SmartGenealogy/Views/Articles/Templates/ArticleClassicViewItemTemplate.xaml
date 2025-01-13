@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Views.Articles.Templates.ArticleClassicViewItemTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls">
+
+    <Grid
+        x:Name="grid"
+        Padding="5,10"
+        BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+        ColumnSpacing="15"
+        RowSpacing="5">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.Triggers>
+            <DataTrigger
+                Binding="{Binding Source={x:Reference grid}, Path=BindingContext.IsSelected}"
+                TargetType="Grid"
+                Value="False">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+            </DataTrigger>
+            <DataTrigger
+                Binding="{Binding Source={x:Reference grid}, Path=BindingContext.IsSelected}"
+                TargetType="Grid"
+                Value="True">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </DataTrigger>
+        </Grid.Triggers>
+
+        <controls:RoundedCornerImage
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            HeightRequest="100"
+            Source="{Binding BackgroundImage}"
+            Stroke="{StaticResource FrameBorder}"
+            StrokeShape="{RoundRectangle CornerRadius=12}"
+            StrokeThickness="1" />
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            FontAttributes="Bold"
+            FontSize="16"
+            LineBreakMode="TailTruncation"
+            Text="{Binding Title}"
+            TextColor="{DynamicResource BaseTextColor}" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="12"
+            Opacity=".7"
+            Text="{Binding When}"
+            TextColor="{DynamicResource PrimaryColor}" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            FontSize="12"
+            Text="{Binding Body}"
+            TextColor="{DynamicResource BaseLightTextColor}" />
+    </Grid>
+</ContentView>

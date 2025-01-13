@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="SmartGenealogy.Views.MainArticlesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models.Articles"
+    xmlns:templates="clr-namespace:SmartGenealogy.Views.Articles.Templates"
+    xmlns:views="clr-namespace:SmartGenealogy.Views">
+
+    <views:BasePage.PageContent>
+        <Grid RowDefinitions="Auto,*" RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#1A73E8"
+                IconFontFamily="FaPro"
+                IconSize="35"
+                IconText="{x:Static views:FaPro.Newspaper}"
+                Text="{localization:Translate LabelArticle}"
+                TextSize="25" />
+
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Default">
+                <CollectionView
+                    Margin="0,10"
+                    ItemsSource="{Binding ArticleLists}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ArticleData">
+                            <templates:ArticleClassicViewItemTemplate Padding="20,10">
+                                <templates:ArticleClassicViewItemTemplate.GestureRecognizers>
+                                    <TapGestureRecognizer />
+                                </templates:ArticleClassicViewItemTemplate.GestureRecognizers>
+                            </templates:ArticleClassicViewItemTemplate>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Label Text="No articles yet" />
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </views:BasePage.PageContent>
+</views:BasePage>
