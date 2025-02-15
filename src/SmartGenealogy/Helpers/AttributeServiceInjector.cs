@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +14,6 @@ namespace SmartGenealogy.Helpers;
 [Localizable(false)]
 internal static partial class AttributeServiceInjector
 {
-
     public static IServiceCollection AddServicesByAttributes(this IServiceCollection services)
     {
 #if REGISTER_SERVICE_REFLECTION
@@ -41,7 +38,6 @@ internal static partial class AttributeServiceInjector
         services.AddSmartGenealogyCore();
         services.AddSmartGenealogy();
     }
-
 
     public static IServiceCollection AddServiceManagerWithCurrentCollectionServices<TService>(
         this IServiceCollection services,

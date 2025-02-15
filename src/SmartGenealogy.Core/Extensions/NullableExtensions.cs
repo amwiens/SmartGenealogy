@@ -12,7 +12,7 @@ public static class NullableExtensions
     /// Unwraps a nullable object, throwing an exception if it is null.
     /// </summary>
     /// <exception cref="ArgumentNullException">
-    /// Thrown if (<typeparamref name="T"/>) <paramref name="obj"/> is null.
+    /// Thrown if ( <typeparamref name="T"/>) <paramref name="obj"/> is null.
     /// </exception>
     [DebuggerStepThrough]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -35,7 +35,7 @@ public static class NullableExtensions
     /// Unwraps a nullable struct object, throwing an exception if it is null.
     /// </summary>
     /// <exception cref="ArgumentNullException">
-    /// Thrown if (<typeparamref name="T"/>) <paramref name="obj"/> is null.
+    /// Thrown if ( <typeparamref name="T"/>) <paramref name="obj"/> is null.
     /// </exception>
     [DebuggerStepThrough]
     [EditorBrowsable(EditorBrowsableState.Never)]

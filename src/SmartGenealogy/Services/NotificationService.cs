@@ -55,13 +55,13 @@ public class NotificationService(ILogger<NotificationService> logger, ISettingsM
         notificationManager?.Show(notification);
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Task ShowPersistentAsync(NotificationKey key, DesktopNotifications.Notification notification)
     {
         return ShowAsyncCore(key, notification, null, true);
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Task ShowAsync(
         NotificationKey key,
         DesktopNotifications.Notification notification,
@@ -172,7 +172,7 @@ public class NotificationService(ILogger<NotificationService> logger, ISettingsM
         Show(new Notification(title, message, appearance, TimeSpan.Zero));
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public void ShowPersistent(
         AppException exception,
         NotificationType appearance = NotificationType.Warning,
@@ -184,7 +184,7 @@ public class NotificationService(ILogger<NotificationService> logger, ISettingsM
         Show(new Notification(exception.Message, exception.Details, appearance, TimeSpan.Zero));
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task<TaskResult<T>> TryAsync<T>(
         Task<T> task,
         string title = "Error",
@@ -202,7 +202,7 @@ public class NotificationService(ILogger<NotificationService> logger, ISettingsM
         }
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task<TaskResult<bool>> TryAsync(
         Task task,
         string title = "Error",

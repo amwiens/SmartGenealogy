@@ -16,7 +16,9 @@ public class DynamicSvg : Avalonia.Svg.Svg
         set => SetValue(FillColorProperty, value);
     }
 
-    public DynamicSvg(IServiceProvider provider) : base(provider) { }
+    public DynamicSvg(IServiceProvider provider) : base(provider)
+    {
+    }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {

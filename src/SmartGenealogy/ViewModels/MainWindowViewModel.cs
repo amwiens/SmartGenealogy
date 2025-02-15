@@ -53,8 +53,6 @@ public partial class MainWindowViewModel : ViewModelBase, IRecipient<FileOpenedM
         // Skip if design mode
         if (Design.IsDesignMode)
             return;
-
-
     }
 
     public void Receive(FileOpenedMessage message)

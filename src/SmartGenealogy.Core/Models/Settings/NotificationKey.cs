@@ -17,20 +17,18 @@ public record NotificationKey(string Value) : StringValue(Value), IParsable<Noti
 
     public string? DisplayName { get; init; }
 
-
-
     public static Dictionary<string, NotificationKey> All { get; } = GetValues<NotificationKey>();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override string ToString() => base.ToString();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public static NotificationKey Parse(string s, IFormatProvider? provider)
     {
         return All[s];
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public static bool TryParse(
         string? s,
         IFormatProvider? provider,

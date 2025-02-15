@@ -38,13 +38,13 @@ public partial class MainWindow : AppWindowBase
         INotificationService notificationService,
         INavigationService<MainWindowViewModel> navigationService,
         ISettingsManager settingsManager,
-        /*ILogger<MainWindow> logger,*/
+        ILogger<MainWindow> logger,
         Lazy<MainWindowViewModel> lazyViewModel)
     {
         this.notificationService = notificationService;
         this.navigationService = navigationService;
         this.settingsManager = settingsManager;
-        //this.logger = logger;
+        this.logger = logger;
 
         InitializeComponent();
 
@@ -71,11 +71,10 @@ public partial class MainWindow : AppWindowBase
 
         //if (Program.Args.IsSplashScreenEnabled)
         //{
-
         //}
         //else
         //{
-            StartupInitialize(lazyViewModel);
+        StartupInitialize(lazyViewModel);
         //}
     }
 
@@ -83,7 +82,6 @@ public partial class MainWindow : AppWindowBase
         Lazy<MainWindowViewModel> lazyViewModel,
         CancellationToken cancellationToken = default)
     {
-
         Dispatcher.UIThread.VerifyAccess();
 
         cancellationToken.ThrowIfCancellationRequested();
@@ -94,9 +92,7 @@ public partial class MainWindow : AppWindowBase
         DataContext = viewModel;
     }
 
-
-
-    /// <inheritdoc />
+    /// <inheritdoc/>
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -123,9 +119,7 @@ public partial class MainWindow : AppWindowBase
         base.OnClosing(e);
     }
 
-
-
-    /// <inheritdoc />
+    /// <inheritdoc/>
     protected override void OnClosed(EventArgs e)
     {
         base.OnClosed(e);
@@ -138,8 +132,6 @@ public partial class MainWindow : AppWindowBase
         base.OnLoaded(e);
         // Initialize notification service using this window as the visual root
         notificationService.Initialize(this);
-
-
 
         if (DataContext is not MainWindowViewModel vm)
             return;
@@ -168,8 +160,6 @@ public partial class MainWindow : AppWindowBase
             .Pages.Concat(mainViewModel.FooterPages)
             .FirstOrDefault(x => x.GetType() == e.ViewModelType);
     }
-
-
 
     private void NavigationView_OnItemInvoked(object sender, NavigationViewItemInvokedEventArgs e)
     {
@@ -209,8 +199,6 @@ public partial class MainWindow : AppWindowBase
             }
         }
     }
-
-
 
     private void TryEnableMicaEffect()
     {

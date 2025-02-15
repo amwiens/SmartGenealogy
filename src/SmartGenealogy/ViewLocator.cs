@@ -4,7 +4,7 @@ public class ViewLocator : IDataTemplate, INavigationPageFactory
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Control Build(object? data)
     {
         if (data is null)
@@ -76,12 +76,11 @@ public class ViewLocator : IDataTemplate, INavigationPageFactory
         return new TextBlock { Text = $"View Not Found: {viewType.FullName}" };
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public bool Match(object? data)
     {
         return data is ViewModelBase;
     }
-
 
     public Control? GetPage(Type srcType)
     {
@@ -97,7 +96,7 @@ public class ViewLocator : IDataTemplate, INavigationPageFactory
         return view;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Control GetPageFromObject(object target)
     {
         if (Attribute.GetCustomAttribute(target.GetType(), typeof(ViewAttribute)) is not ViewAttribute viewAttr)

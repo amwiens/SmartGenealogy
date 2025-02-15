@@ -5,8 +5,6 @@ using Avalonia;
 
 using CommandLine;
 
-using SmartGenealogy.Core.Helper;
-
 namespace SmartGenealogy;
 
 public static class Program
@@ -21,8 +19,8 @@ public static class Program
     public static Stopwatch StartupTimer { get; } = new();
 
     // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
+    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized yet
+    // and stuff might break.
     [STAThread]
     public static void Main(string[] args)
     {
@@ -64,8 +62,6 @@ public static class Program
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
-
-
 
     [Conditional("DEBUG")]
     private static void SetDebugBuild()

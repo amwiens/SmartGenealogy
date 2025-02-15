@@ -11,8 +11,7 @@ public static class DesignData
 
     private static bool isInitialized;
 
-    // This needs to be static method instead of static constructor
-    // or else Avalonia analyzers won't work.
+    // This needs to be static method instead of static constructor or else Avalonia analyzers won't work.
     public static void Initialize()
     {
         if (isInitialized)

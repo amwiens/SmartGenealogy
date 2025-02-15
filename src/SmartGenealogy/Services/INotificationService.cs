@@ -34,8 +34,8 @@ public interface INotificationService
         NotificationType appearance = NotificationType.Error);
 
     /// <summary>
-    /// Attempt to run the given void task, showing a generic error notification if it fails.
-    /// Return a TaskResult with true if the task succeeded, false if it failed.
+    /// Attempt to run the given void task, showing a generic error notification if it fails. Return
+    /// a TaskResult with true if the task succeeded, false if it failed.
     /// </summary>
     /// <param name="task">The task to run.</param>
     /// <param name="title">The title to show in the notification.</param>

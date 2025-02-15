@@ -10,7 +10,6 @@ using SmartGenealogy.Messages;
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;
 
-
 namespace SmartGenealogy.ViewModels;
 
 [View(typeof(HomePage))]

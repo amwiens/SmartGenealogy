@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Resources;
 using System.Threading;
 
@@ -35,6 +34,7 @@ public class LocalizationService : MarkupExtension
 
     // MarkupExtension
     public string Key { get; set; } = string.Empty;
+
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
         return GetString(Key);

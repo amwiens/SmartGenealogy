@@ -10,7 +10,7 @@ namespace SmartGenealogy.Core.Converters.Json;
 public class ParsableStringValueJsonConverter<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T> : JsonConverter<T>
     where T : StringValue, IParsable<T>
 {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType != JsonTokenType.String)
@@ -28,7 +28,7 @@ public class ParsableStringValueJsonConverter<[DynamicallyAccessedMembers(Dynami
         return (T?)Activator.CreateInstance(typeToConvert, value);
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override T ReadAsPropertyName(
         ref Utf8JsonReader reader,
         Type typeToConvert,
@@ -50,7 +50,7 @@ public class ParsableStringValueJsonConverter<[DynamicallyAccessedMembers(Dynami
             ?? throw new JsonException("Property name cannot be null");
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
         if (value is IFormattable formattable)
@@ -63,7 +63,7 @@ public class ParsableStringValueJsonConverter<[DynamicallyAccessedMembers(Dynami
         }
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override void WriteAsPropertyName(Utf8JsonWriter writer, [DisallowNull] T value, JsonSerializerOptions options)
     {
         if (value is null)

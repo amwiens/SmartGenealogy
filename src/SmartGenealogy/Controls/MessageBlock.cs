@@ -173,7 +173,6 @@ public class MessageBlock : Control
         RenderBackground(context);
 
         RenderText(context);
-
     }
 
     private void RenderBackground(DrawingContext context)
@@ -356,8 +355,8 @@ public class MessageBlock : Control
         return size;
     }
 
-    // pozicionálja az elemeket a számukra elérhető hely alapján több metódussal együtt dolgozva (Arrange, ArrangeCore)
-    // több infó: https://docs.avaloniaui.net/docs/basics/user-interface/building-layouts/#measuring-and-arranging-children
+    // pozicionálja az elemeket a számukra elérhető hely alapján több metódussal együtt dolgozva
+    // (Arrange, ArrangeCore) több infó: https://docs.avaloniaui.net/docs/basics/user-interface/building-layouts/#measuring-and-arranging-children
     protected override Size ArrangeOverride(Size finalSize)
     {
         var scale = LayoutHelper.GetLayoutScale(this);
@@ -391,6 +390,7 @@ public class MessageBlock : Control
             case Avalonia.Media.TextAlignment.Center:
                 x = (Bounds.Width - Math.Max(subTextLayoutWidth, TextLayout!.Width)) / 2;
                 break;
+
             case Avalonia.Media.TextAlignment.Right or Avalonia.Media.TextAlignment.End:
                 x = Bounds.Width - Math.Max(subTextLayoutWidth, TextLayout!.Width) - padding.Right;
                 break;
@@ -427,6 +427,7 @@ public class MessageBlock : Control
             case Avalonia.Media.TextAlignment.Center:
                 x = (Bounds.Width - Math.Max(textLayoutWidth, SubTextLayout!.Width)) / 2;
                 break;
+
             case Avalonia.Media.TextAlignment.Right or Avalonia.Media.TextAlignment.End:
                 x = Bounds.Width - Math.Max(textLayoutWidth, SubTextLayout!.Width) - padding.Right;
                 break;
@@ -524,6 +525,5 @@ public class MessageBlock : Control
 
         return !(TextLayout.TextLines[linePointerIndex].Width < pointerPosXInBox)
                && (!(pointerPosYInBox < extentStartingPosY) && !(pointerPosYInBox > extentEndingPosY));
-
     }
 }

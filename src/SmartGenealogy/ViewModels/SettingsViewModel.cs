@@ -12,6 +12,7 @@ namespace SmartGenealogy.ViewModels;
 public partial class SettingsViewModel : PageViewModelBase
 {
     public override string Title => "Settings";
+
     public override IconSource IconSource =>
         new SymbolIconSource { Symbol = Symbol.Settings, IconVariant = IconVariant.Filled };
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Configuration.Assemblies;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -66,12 +65,10 @@ public sealed class App : Application
 
     public static IClipboard? Clipboard => TopLevel.Clipboard;
 
-
-
     public IClassicDesktopStyleApplicationLifetime? DesktopLifetime =>
         ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
 
-    public static new App? Current => (App?)Application.Current;
+    public new static App? Current => (App?)Application.Current;
 
     [NotNull]
     public static IServiceProvider? Services =>
@@ -81,8 +78,7 @@ public sealed class App : Application
         TopLevel.TryGetPlatformHandle()?.HandleDescriptor is null or "STUB";
 
     /// <summary>
-    /// Called before <see cref="Services"/> is built.
-    /// Can be used by UI tests to override services.
+    /// Called before <see cref="Services"/> is built. Can be used by UI tests to override services.
     /// </summary>
     internal static event EventHandler<IServiceCollection>? BeforeBuildServiceProvider;
 
@@ -125,7 +121,6 @@ public sealed class App : Application
 
             ShowMainWindow();
         }
-
     }
 
     /// <summary>
@@ -258,8 +253,6 @@ public sealed class App : Application
 
         services.AddServiceManagerWithCurrentCollectionServices<ViewModelBase>(
             s => s.ServiceType.GetCustomAttributes<ManagedServiceAttribute>().Any());
-
-
 
         var logConfig = ConfigureLogging();
 
@@ -432,7 +425,6 @@ public sealed class App : Application
 
     private static void OnServiceProviderDisposing(ServiceProvider serviceProvider)
     {
-
         //var disposables = serviceProvider.GetDisposables();
         //disposables.RemoveAll(d => d is NamedPipeWorker);
 
@@ -443,16 +435,11 @@ public sealed class App : Application
         object? sender,
         UnobservedTaskExceptionEventArgs e)
     {
-
     }
-
-
 
     private static LoggingConfiguration ConfigureLogging()
     {
         var setupBuilder = LogManager.Setup();
-
-
 
         LogManager.ReconfigExistingLoggers();
 

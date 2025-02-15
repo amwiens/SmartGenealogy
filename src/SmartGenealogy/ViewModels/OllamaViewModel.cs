@@ -20,6 +20,7 @@ namespace SmartGenealogy.ViewModels;
 public partial class OllamaViewModel : PageViewModelBase
 {
     public override string Title => "Ollama page";
+
     public override IconSource IconSource =>
         new SymbolIconSource { Symbol = Symbol.Laptop, IconVariant = IconVariant.Filled };
 

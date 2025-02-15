@@ -51,33 +51,33 @@ public partial class ViewModelBase : ObservableObject
     }
 
     /// <summary>
-    /// Called the first time the view's LoadedEvent is fired.
-    /// Sets the <see cref="ViewModelState.InitialLoaded"/> flag.
+    /// Called the first time the view's LoadedEvent is fired. Sets the <see
+    /// cref="ViewModelState.InitialLoaded"/> flag.
     /// </summary>
-    protected virtual void OnInitialLoaded() { }
+    protected virtual void OnInitialLoaded()
+    { }
 
     /// <summary>
-    /// Called asynchronously when the view's LoadedEvent is fired.
-    /// Runs on the UI thread via Dispatcher.UIThread.InvokeAsync.
-    /// The view loading will not wait for this to complete.
+    /// Called asynchronously when the view's LoadedEvent is fired. Runs on the UI thread via
+    /// Dispatcher.UIThread.InvokeAsync. The view loading will not wait for this to complete.
     /// </summary>
     public virtual Task OnLoadedAsync() => Task.CompletedTask;
 
     /// <summary>
-    /// Called the first time the view's LoadedEvent is fired.
-    /// Sets the <see cref="ViewModelState.InitialLoaded"/> flag.
+    /// Called the first time the view's LoadedEvent is fired. Sets the <see
+    /// cref="ViewModelState.InitialLoaded"/> flag.
     /// </summary>
     protected virtual Task OnInitialLoadedAsync() => Task.CompletedTask;
 
     /// <summary>
     /// Called when the view's UnloadedEvent is fired.
     /// </summary>
-    public virtual void OnUnloaded() { }
+    public virtual void OnUnloaded()
+    { }
 
     /// <summary>
-    /// Called asynchronously when the view's UnloadedEvent is fired.
-    /// Runs on the UI thread via Dispatcher.UIThread.InvokeAsync.
-    /// The view loading will not wait for this to complete.
+    /// Called asynchronously when the view's UnloadedEvent is fired. Runs on the UI thread via
+    /// Dispatcher.UIThread.InvokeAsync. The view loading will not wait for this to complete.
     /// </summary>
     /// <returns></returns>
     public virtual Task OnUnloadedAsync() => Task.CompletedTask;

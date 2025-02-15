@@ -18,7 +18,7 @@ public class NavigationService<T> : INavigationService<T>
 
     public event EventHandler<TypedNavigationEventArgs>? TypedNavigation;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public void SetFrame(Frame frame)
     {
         _frame = frame;
@@ -59,7 +59,7 @@ public class NavigationService<T> : INavigationService<T>
         TypedNavigation?.Invoke(this, new TypedNavigationEventArgs { ViewModelType = typeof(TViewModel) });
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public void NavigateTo(
         Type viewModelType,
         NavigationTransitionInfo? transitionInfo = null,
@@ -100,7 +100,7 @@ public class NavigationService<T> : INavigationService<T>
         TypedNavigation?.Invoke(this, new TypedNavigationEventArgs { ViewModelType = viewModelType });
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public void NavigateTo(ViewModelBase viewModel, NavigationTransitionInfo? transitionInfo = null)
     {
         if (_frame is null)

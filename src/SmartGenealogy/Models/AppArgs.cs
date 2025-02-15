@@ -14,8 +14,8 @@ public class AppArgs
     public bool DebugMode { get; set; }
 
     /// <summary>
-    /// Whether to use the exception dialog while debugger is attached.
-    /// When no debugger is attached, the exception dialog is always used.
+    /// Whether to use the exception dialog while debugger is attached. When no debugger is
+    /// attached, the exception dialog is always used.
     /// </summary>
     [Option("debug-exception-dialog", HelpText = "Use exception dialog while debugger is attached")]
     public bool DebugExceptionDialog { get; set; }
@@ -39,22 +39,20 @@ public class AppArgs
     public bool IsSplashScreenEnabled { get; set; }
 
     /// <summary>
-    /// Override global app home directory
-    /// Defaults to (%APPDATA%|~/.config)/SmartGenealogy
+    /// Override global app home directory Defaults to (%APPDATA%|~/.config)/SmartGenealogy
     /// </summary>
     [Option("home-dir", HelpText = "Override global app home directory")]
     public string? HomeDirectoryOverride { get; set; }
 
     /// <summary>
-    /// Override data directory
-    /// This takes precedence over relative portable directory and global directory
+    /// Override data directory This takes precedence over relative portable directory and global directory
     /// </summary>
     [Option("data-dir", HelpText = "Override data directory")]
     public string? DataDirectoryOverride { get; set; }
 
     /// <summary>
-    /// If provided, the app will wait for the process with this PID to exit
-    /// before starting up. Mainly used by the updater.
+    /// If provided, the app will wait for the process with this PID to exit before starting up.
+    /// Mainly used by the updater.
     /// </summary>
     [Option("wait-for-exit-pid", Hidden = true)]
     public int? WaitForExitPid { get; set; }

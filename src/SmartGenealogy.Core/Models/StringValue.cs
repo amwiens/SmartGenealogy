@@ -6,18 +6,17 @@ namespace SmartGenealogy.Core.Models;
 
 public abstract record StringValue(string Value) : IFormattable
 {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override string ToString()
     {
         return Value;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
         return Value;
     }
-
 
     protected static Dictionary<string, T> GetValues<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)] T>()
         where T : StringValue

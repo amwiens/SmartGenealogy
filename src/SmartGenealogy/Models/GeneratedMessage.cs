@@ -3,6 +3,7 @@
 public class GeneratedMessage : Message
 {
     private double _generationSpeed;
+
     public double GenerationSpeed
     {
         get => _generationSpeed;
