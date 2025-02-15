@@ -1,0 +1,93 @@
+<Window
+    x:Class="SmartGenealogy.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Services"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    xmlns:vm="using:SmartGenealogy.ViewModels"
+    Title="{localization:LocalizationService Key='CaptionTitle'}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <Grid
+            Name="TitleBarHost"
+            Height="32"
+            Background="Transparent"
+            ColumnDefinitions="Auto,Auto,*,Auto">
+            <Image
+                Name="WindowIcon"
+                Width="18"
+                Height="18"
+                Margin="12,4"
+                DockPanel.Dock="Left"
+                IsHitTestVisible="False"
+                RenderOptions.BitmapInterpolationMode="HighQuality"
+                Source="/Assets/avalonia-logo.ico">
+                <Image.IsVisible>
+                    <OnPlatform Default="False">
+                        <On Content="True" Options="Windows" />
+                    </OnPlatform>
+                </Image.IsVisible>
+            </Image>
+            <TextBlock
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="12"
+                IsHitTestVisible="False"
+                Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                <TextBlock.IsVisible>
+                    <OnPlatform Default="False">
+                        <On Content="True" Options="Windows" />
+                    </OnPlatform>
+                </TextBlock.IsVisible>
+            </TextBlock>
+
+            <Border Grid.Column="2" Padding="6" />
+        </Grid>
+        <ui:NavigationView
+            Name="NavigationView"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            BackRequested="NavigationView_OnBackRequested"
+            FooterMenuItemsSource="{Binding FooterPages, Mode=OneWay}"
+            IsBackButtonVisible="True"
+            IsBackEnabled="True"
+            IsPaneOpen="False"
+            IsSettingsVisible="False"
+            ItemInvoked="NavigationView_OnItemInvoked"
+            MenuItemsSource="{Binding Pages, Mode=TwoWay}"
+            OpenPaneLength="{Binding PaneWidth}"
+            PaneDisplayMode="Left"
+            SelectedItem="{Binding SelectedCategory}">
+
+            <ui:NavigationView.MenuItemTemplate>
+                <DataTemplate DataType="{x:Type vm:PageViewModelBase}">
+                    <ui:NavigationViewItem
+                        Margin="0,0,0,0"
+                        Content="{Binding Title}"
+                        IconSource="{Binding IconSource}"
+                        Tag="{Binding}" />
+                </DataTemplate>
+            </ui:NavigationView.MenuItemTemplate>
+
+            <ui:Frame Name="FrameView">
+                <ui:Frame.NavigationPageFactory>
+                    <local:ViewLocator />
+                </ui:Frame.NavigationPageFactory>
+            </ui:Frame>
+        </ui:NavigationView>
+    </Grid>
+
+</Window>

@@ -1,0 +1,123 @@
+<UserControl
+    x:Class="SmartGenealogy.Views.OllamaPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SmartGenealogy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SmartGenealogy.Models"
+    xmlns:vm="using:SmartGenealogy.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:OllamaViewModel"
+    mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="*,3*" RowDefinitions="Auto,Auto,*,Auto">
+        <StackPanel
+            Grid.Row="0"
+            Grid.RowSpan="4"
+            Grid.Column="0"
+            VerticalAlignment="Stretch"
+            Background="{DynamicResource SurfaceContainer}"
+            Orientation="Vertical">
+            <TextBlock
+                Margin="0,60,0,0"
+                Padding="15,0"
+                HorizontalAlignment="Center"
+                FontSize="14"
+                Foreground="{DynamicResource OnSurface}"
+                Text="Conversations not available"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            ColumnDefinitions="*,Auto,*">
+            <ComboBox
+                Grid.Column="1"
+                Width="150"
+                Margin="0,20,0,10"
+                HorizontalAlignment="Center"
+                IsEnabled="False"
+                SelectedIndex="0">
+                <ComboBoxItem Content="llama3.2" />
+            </ComboBox>
+        </Grid>
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="25,0"
+            Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <controls:DynamicSvg
+                    Width="18"
+                    Margin="0,0,5,5"
+                    FillColor="#808080"
+                    Path="/Assets/Svg/error_24dp.svg" />
+
+                <TextBlock
+                    Foreground="#808080"
+                    Text="{Binding LanguageLimitationWarning}"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <controls:DynamicSvg
+                    Width="18"
+                    Margin="0,0,5,5"
+                    FillColor="#FFD700"
+                    Path="/Assets/Svg/error_24dp.svg" />
+
+                <TextBlock
+                    Foreground="#FFD700"
+                    Text="{Binding ResourceLimitWarning}"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </StackPanel>
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="25,0,25,0"
+            RowDefinitions="*,Auto">
+            <ScrollViewer
+                Grid.Row="0"
+                Margin="0,15,0,0"
+                Padding="10,0,10,0"
+                HorizontalAlignment="Stretch"
+                ScrollChanged="ScrollViewer_OnScrollChanged">
+                <ItemsControl ItemsSource="{Binding Messages}">
+                    <ItemsControl.DataTemplates>
+                        <DataTemplate DataType="models:GeneratedMessage">
+                            <controls:MessageBlock
+                                Background="{DynamicResource OutlineVariant}"
+                                Classes="generatedMessage"
+                                SubText="{Binding GenerationSpeed}"
+                                Text="{Binding Content}"
+                                TextColor="{DynamicResource SurfaceContainerHighest}" />
+                        </DataTemplate>
+                        <DataTemplate DataType="models:Message">
+                            <controls:MessageBlock
+                                HorizontalAlignment="Right"
+                                Background="{DynamicResource OutlineVariant}"
+                                Classes="userMessage"
+                                Text="{Binding Content}"
+                                TextColor="{DynamicResource SurfaceContainerHighest}" />
+                        </DataTemplate>
+                    </ItemsControl.DataTemplates>
+                </ItemsControl>
+            </ScrollViewer>
+            <TextBox
+                Grid.Row="1"
+                Margin="0,30,0,20"
+                Text="{Binding NewMessageText, Mode=TwoWay}"
+                Watermark="Send a message..">
+                <TextBox.KeyBindings>
+                    <KeyBinding Command="{Binding SendMessageCommand}" Gesture="Enter" />
+                </TextBox.KeyBindings>
+            </TextBox>
+        </Grid>
+    </Grid>
+</UserControl>

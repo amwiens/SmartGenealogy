@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Add Resources Here  -->
+    <SolidColorBrush x:Key="Primary">#E4B7F3</SolidColorBrush>
+    <SolidColorBrush x:Key="OnPrimary">#442253</SolidColorBrush>
+    <SolidColorBrush x:Key="SurfaceContainerHighest">#383339</SolidColorBrush>
+    <SolidColorBrush x:Key="Outline">#978E97</SolidColorBrush>
+    <SolidColorBrush x:Key="OnSurfaceVariant">#CEC3CD</SolidColorBrush>
+</ResourceDictionary>

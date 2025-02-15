@@ -1,0 +1,49 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls">
+    <Design.PreviewWith>
+        <ThemeVariantScope RequestedThemeVariant="Light">
+            <Border Padding="20" Background="{DynamicResource Surface}">
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <controls:MessageBlock Classes="userMessage" Text="User Message" />
+
+                    <controls:MessageBlock
+                        Classes="generatedMessage"
+                        SubText="10"
+                        Text="Generated Message"
+                        Unit="token/sec" />
+                </StackPanel>
+            </Border>
+        </ThemeVariantScope>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|MessageBlock">
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="TextFontSize" Value="14" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="15,10" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="LineHeight" Value="22" />
+    </Style>
+
+    <Style Selector="controls|MessageBlock.userMessage">
+        <Setter Property="Background" Value="{DynamicResource Primary}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnPrimary}" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="SelectionColor" Value="{DynamicResource OnPrimary}" />
+    </Style>
+
+    <Style Selector="controls|MessageBlock.generatedMessage">
+        <Setter Property="Background" Value="{DynamicResource SurfaceContainerHighest}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSurfaceVariant}" />
+        <Setter Property="SubTextAlignment" Value="End" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="SubTextFontSize" Value="10" />
+        <Setter Property="SubTextColor" Value="{DynamicResource Outline}" />
+        <Setter Property="SelectionColor" Value="{DynamicResource Primary}" />
+        <!--<Setter Property="SelectionInverseColor" Value="{DynamicResource OnTertiary}" />-->
+        <Setter Property="Spacing" Value="5" />
+    </Style>
+</Styles>
