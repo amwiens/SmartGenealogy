@@ -2,10 +2,12 @@ using Avalonia.Controls;
 
 using Injectio.Attributes;
 
+using SmartGenealogy.Controls;
+
 namespace SmartGenealogy.Views;
 
 [RegisterSingleton<OllamaPage>]
-public partial class OllamaPage : UserControl
+public partial class OllamaPage : UserControlBase
 {
     public OllamaPage()
     {
