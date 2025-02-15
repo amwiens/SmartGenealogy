@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -11,6 +13,7 @@ using Avalonia.Styling;
 using Avalonia.Threading;
 
 using FluentAvalonia.Styling;
+using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Windowing;
@@ -22,7 +25,9 @@ using Microsoft.Extensions.Logging;
 using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Models;
 using SmartGenealogy.Services;
+using SmartGenealogy.ViewModels;
 
 namespace SmartGenealogy.Views;
 

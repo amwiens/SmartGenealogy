@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Models;
+﻿using Avalonia.Controls;
+
+namespace SmartGenealogy.Models;
 
 public interface IPersistentViewProvider
 {

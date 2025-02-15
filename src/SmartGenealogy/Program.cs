@@ -1,9 +1,14 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
 using Avalonia;
 
 using CommandLine;
+
+using NLog;
+
+using SmartGenealogy.Models;
 
 namespace SmartGenealogy;
 

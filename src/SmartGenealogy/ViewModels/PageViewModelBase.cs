@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.ViewModels;
+﻿using FluentAvalonia.UI.Controls;
+
+namespace SmartGenealogy.ViewModels;
 
 public abstract class PageViewModelBase : ViewModelBase
 {

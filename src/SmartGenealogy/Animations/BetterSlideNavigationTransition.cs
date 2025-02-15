@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 using Avalonia;
 using Avalonia.Animation;
@@ -25,7 +26,7 @@ public class BetterSlideNavigationTransition : BaseTransitionInfo
     public double FromHorizontalOffset { get; set; } = 50;
 
     /// <summary>
-    /// Gets or ssets the VerticalOffset used when animating from the Top or Bottom
+    /// Gets or sets the VerticalOffset used when animating from the Top or Bottom
     /// </summary>
     public double FromVerticalOffset { get; set; } = 56;
 

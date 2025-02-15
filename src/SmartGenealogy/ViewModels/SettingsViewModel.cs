@@ -1,6 +1,11 @@
-﻿using FluentIcons.Common;
+﻿using FluentAvalonia.UI.Controls;
+
+using FluentIcons.Common;
 
 using Injectio.Attributes;
+
+using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Views;
 
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;

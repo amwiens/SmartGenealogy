@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using AsyncAwaitBestPractices;
 
@@ -8,6 +9,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using JetBrains.Annotations;
+
+using SmartGenealogy.Models;
 
 namespace SmartGenealogy.ViewModels;
 

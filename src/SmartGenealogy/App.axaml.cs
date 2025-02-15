@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using AsyncAwaitBestPractices;
 
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Input.Platform;
@@ -22,13 +24,17 @@ using FluentAvalonia.Interop;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+using NLog;
 using NLog.Config;
 
+using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Extensions;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Helpers;
 using SmartGenealogy.Languages;
+using SmartGenealogy.ViewModels;
+using SmartGenealogy.Views;
 
 namespace SmartGenealogy;
 

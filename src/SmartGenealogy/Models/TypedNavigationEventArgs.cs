@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Models;
+﻿using System;
+
+namespace SmartGenealogy.Models;
 
 public class TypedNavigationEventArgs : EventArgs
 {

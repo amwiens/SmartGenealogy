@@ -4,11 +4,16 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FluentAvalonia.UI.Controls;
+
 using FluentIcons.Common;
 
 using Injectio.Attributes;
 
+using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Models;
 using SmartGenealogy.Services;
+using SmartGenealogy.Views;
 
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;

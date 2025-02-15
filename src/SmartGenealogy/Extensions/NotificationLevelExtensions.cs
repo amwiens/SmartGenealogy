@@ -1,4 +1,6 @@
-﻿using Avalonia.Controls.Notifications;
+﻿using System;
+
+using Avalonia.Controls.Notifications;
 
 using SmartGenealogy.Core.Models.Settings;
 

@@ -1,11 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
+using FluentAvalonia.UI.Controls;
+
 using FluentIcons.Common;
 
 using Injectio.Attributes;
 
+using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Messages;
+using SmartGenealogy.Views;
 
 using Symbol = FluentIcons.Common.Symbol;
 using SymbolIconSource = FluentIcons.Avalonia.Fluent.SymbolIconSource;

@@ -1,5 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
+using Avalonia.Controls;
+
+using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 using FluentAvalonia.UI.Navigation;
 
@@ -8,6 +12,8 @@ using Injectio.Attributes;
 using SmartGenealogy.Animations;
 using SmartGenealogy.Core.Models;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Models;
+using SmartGenealogy.ViewModels;
 
 namespace SmartGenealogy.Services;
 

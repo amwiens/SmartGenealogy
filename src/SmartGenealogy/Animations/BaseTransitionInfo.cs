@@ -1,4 +1,6 @@
-﻿using FluentAvalonia.UI.Media.Animation;
+﻿using System;
+
+using FluentAvalonia.UI.Media.Animation;
 
 namespace SmartGenealogy.Animations;
 

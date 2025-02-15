@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using AsyncAwaitBestPractices;
@@ -7,6 +8,8 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 
 using FluentAvalonia.UI.Windowing;
+
+using SmartGenealogy.ViewModels;
 
 namespace SmartGenealogy.Controls;
 

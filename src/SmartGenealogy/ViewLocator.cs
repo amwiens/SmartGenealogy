@@ -1,4 +1,17 @@
-﻿namespace SmartGenealogy;
+﻿using System;
+
+using Avalonia.Controls;
+using Avalonia.Controls.Templates;
+
+using FluentAvalonia.UI.Controls;
+
+using NLog;
+
+using SmartGenealogy.Core.Attributes;
+using SmartGenealogy.Models;
+using SmartGenealogy.ViewModels;
+
+namespace SmartGenealogy;
 
 public class ViewLocator : IDataTemplate, INavigationPageFactory
 {
