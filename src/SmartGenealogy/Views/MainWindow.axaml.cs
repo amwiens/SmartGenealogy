@@ -28,6 +28,7 @@ using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.Views;
 

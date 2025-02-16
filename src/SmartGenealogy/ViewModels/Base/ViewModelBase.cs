@@ -12,7 +12,7 @@ using JetBrains.Annotations;
 
 using SmartGenealogy.Models;
 
-namespace SmartGenealogy.ViewModels;
+namespace SmartGenealogy.ViewModels.Base;
 
 public partial class ViewModelBase : ObservableObject
 {

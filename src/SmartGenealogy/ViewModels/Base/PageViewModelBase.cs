@@ -1,6 +1,6 @@
 ﻿using FluentAvalonia.UI.Controls;
 
-namespace SmartGenealogy.ViewModels;
+namespace SmartGenealogy.ViewModels.Base;
 
 public abstract class PageViewModelBase : ViewModelBase
 {

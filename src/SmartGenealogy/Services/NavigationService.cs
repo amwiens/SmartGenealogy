@@ -14,10 +14,12 @@ using SmartGenealogy.Core.Models;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
 using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.Services;
 
 [RegisterSingleton<INavigationService<MainWindowViewModel>, NavigationService<MainWindowViewModel>>]
+[RegisterSingleton<INavigationService<SettingsViewModel>, NavigationService<SettingsViewModel>>]
 public class NavigationService<T> : INavigationService<T>
 {
     private Frame? _frame;

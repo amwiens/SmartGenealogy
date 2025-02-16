@@ -11,6 +11,7 @@ using NLog;
 
 using SmartGenealogy.Languages;
 using SmartGenealogy.Messages;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.ViewModels;
 

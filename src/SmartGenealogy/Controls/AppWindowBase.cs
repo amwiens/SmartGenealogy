@@ -9,7 +9,7 @@ using Avalonia.Threading;
 
 using FluentAvalonia.UI.Windowing;
 
-using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.Controls;
 

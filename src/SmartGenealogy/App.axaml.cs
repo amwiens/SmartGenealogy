@@ -34,6 +34,7 @@ using SmartGenealogy.Core.Services;
 using SmartGenealogy.Helpers;
 using SmartGenealogy.Languages;
 using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views;
 
 namespace SmartGenealogy;

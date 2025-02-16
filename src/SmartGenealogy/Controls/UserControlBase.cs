@@ -4,7 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 
-using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.Controls;
 

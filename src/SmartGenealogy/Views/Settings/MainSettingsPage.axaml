@@ -1,0 +1,80 @@
+<controls:UserControlBase
+    x:Class="SmartGenealogy.Views.Settings.MainSettingsPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vmSettings="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    d:DesignHeight="700"
+    d:DesignWidth="800"
+    x:CompileBindings="True"
+    x:DataType="vmSettings:MainSettingsViewModel"
+    Focusable="True"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="8,16" Spacing="8">
+
+            <!--  Theme  -->
+            <Grid RowDefinitions="Auto,*,*,*,*,*">
+                <TextBlock
+                    Margin="0,0,0,8"
+                    FontWeight="Medium"
+                    Text="Appearance" />
+                <ui:SettingsExpander
+                    Grid.Row="1"
+                    Margin="8,0,8,4"
+                    Header="Theme"
+                    IconSource="WeatherMoon">
+                    <ui:SettingsExpander.Footer>
+                        <ComboBox
+                            MinWidth="100"
+                            ItemsSource="{Binding AvailableThemes}"
+                            SelectedItem="{Binding SelectedTheme}" />
+                    </ui:SettingsExpander.Footer>
+                </ui:SettingsExpander>
+                <ui:SettingsExpander
+                    Grid.Row="2"
+                    Margin="8,0,8,4"
+                    Header="Language"
+                    IconSource="Character">
+                    <ui:SettingsExpander.Footer>
+                        <ComboBox
+                            MinWidth="100"
+                            ItemsSource="{Binding AvailableLanguages}"
+                            SelectedItem="{Binding SelectedLanguage}" />
+                    </ui:SettingsExpander.Footer>
+                </ui:SettingsExpander>
+
+                <ui:SettingsExpander
+                    Grid.Row="3"
+                    Margin="8,0,8,4"
+                    Header="Number Format">
+                    <ui:SettingsExpander.IconSource>
+                        <fluentIcons:SymbolIconSource
+                            FontSize="10"
+                            IconVariant="Filled"
+                            Symbol="DecimalArrowLeft" />
+                    </ui:SettingsExpander.IconSource>
+                    <ui:SettingsExpander.Footer>
+                        <ComboBox
+                            MinWidth="100"
+                            ItemsSource="{Binding NumberFormatModes}"
+                            SelectedItem="{Binding SelectedNumberFormatMode}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </ui:SettingsExpander.Footer>
+                </ui:SettingsExpander>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</controls:UserControlBase>

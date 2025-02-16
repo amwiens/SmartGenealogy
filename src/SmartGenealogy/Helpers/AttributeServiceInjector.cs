@@ -66,7 +66,7 @@ internal static partial class AttributeServiceInjector
                 Debug.Assert(type is not null, "type is not null");
                 Debug.Assert(type.IsAssignableTo(typeof(TService)), "type is assignable to TService");
 
-                //serviceManager.Register(type, () => (TService)provider.GetRequiredService(type));
+                serviceManager.Register(type, () => (TService)provider.GetRequiredService(type));
             }
 
             return serviceManager;

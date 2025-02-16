@@ -4,7 +4,7 @@ using FluentAvalonia.UI.Controls;
 using FluentAvalonia.UI.Media.Animation;
 
 using SmartGenealogy.Models;
-using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy.Services;
 

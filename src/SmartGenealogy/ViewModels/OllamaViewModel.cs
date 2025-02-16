@@ -13,6 +13,7 @@ using Injectio.Attributes;
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
+using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views;
 
 using Symbol = FluentIcons.Common.Symbol;

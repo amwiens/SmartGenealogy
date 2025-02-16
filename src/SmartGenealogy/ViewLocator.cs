@@ -9,7 +9,7 @@ using NLog;
 
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Models;
-using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Base;
 
 namespace SmartGenealogy;
 
