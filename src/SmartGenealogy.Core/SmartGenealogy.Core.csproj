@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="9.0.0" />
+    <PackageReference Include="CompiledExpressions" Version="1.1.0" />
+    <PackageReference Include="DynamicData" Version="9.1.1" />
     <PackageReference Include="Injectio" Version="4.0.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2025.1.0-eap1" />
     <PackageReference Include="NLog" Version="5.4.0" />
