@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
+using Avalonia;
+using Avalonia.Styling;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using FluentAvalonia.UI.Controls;
@@ -96,10 +99,48 @@ public partial class MainSettingsViewModel : PageViewModelBase
 
         if (Program.Args.DebugMode)
         {
-            
+
         }
 
         SelectedTheme = settingsManager.Settings.Theme ?? AvailableThemes[1];
         SelectedLanguage = Cultures.GetSupportedCultureOrDefault(settingsManager.Settings.Language);
+    }
+
+
+
+    partial void OnSelectedThemeChanged(string? value)
+    {
+        // In case design / tests
+        if (Application.Current is null)
+        {
+            return;
+        }
+        // Change theme
+        Application.Current.RequestedThemeVariant = value switch
+        {
+            "Dark" => ThemeVariant.Dark,
+            "Light" => ThemeVariant.Light,
+            _ => ThemeVariant.Default
+        };
+    }
+
+    partial void OnSelectedLanguageChanged(CultureInfo? oldValue, CultureInfo newValue)
+    {
+        if (oldValue is null || newValue.Name == Cultures.Current?.Name)
+            return;
+
+        // Set locale
+        if (AvailableLanguages.Contains(newValue))
+        {
+            Logger.Info("Changing language from {Old} to {New}", oldValue, newValue);
+
+            Cultures.TrySetSupportedCulture(newValue, settingsManager.Settings.NumberFormatMode);
+            //settingsManager.Transaction(s => s.Language = newValue.Name);
+
+            //var dialog = new BetterContentDialog
+            //{
+            //    Title =
+            //}
+        }
     }
 }
