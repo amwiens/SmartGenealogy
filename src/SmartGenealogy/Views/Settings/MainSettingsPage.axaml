@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:lang="clr-namespace:SmartGenealogy.Languages"
@@ -17,6 +18,11 @@
     Focusable="True"
     mc:Ignorable="d">
 
+    <controls:UserControlBase.Resources>
+        <converters:CultureInfoDisplayConverter x:Key="CultureInfoDisplayConverter" />
+        <converters:NumberFormatModeSampleConverter x:Key="NumberFormatModeSampleConverter" />
+    </controls:UserControlBase.Resources>
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="8,16" Spacing="8">
 
@@ -25,11 +31,11 @@
                 <TextBlock
                     Margin="0,0,0,8"
                     FontWeight="Medium"
-                    Text="Appearance" />
+                    Text="{x:Static lang:Resources.Label_Appearance}" />
                 <ui:SettingsExpander
                     Grid.Row="1"
                     Margin="8,0,8,4"
-                    Header="Theme"
+                    Header="{x:Static lang:Resources.Label_Theme}"
                     IconSource="WeatherMoon">
                     <ui:SettingsExpander.Footer>
                         <ComboBox
@@ -41,11 +47,12 @@
                 <ui:SettingsExpander
                     Grid.Row="2"
                     Margin="8,0,8,4"
-                    Header="Language"
+                    Header="{x:Static lang:Resources.Label_Language}"
                     IconSource="Character">
                     <ui:SettingsExpander.Footer>
                         <ComboBox
                             MinWidth="100"
+                            DisplayMemberBinding="{Binding Converter={StaticResource CultureInfoDisplayConverter}}"
                             ItemsSource="{Binding AvailableLanguages}"
                             SelectedItem="{Binding SelectedLanguage}" />
                     </ui:SettingsExpander.Footer>
@@ -54,7 +61,7 @@
                 <ui:SettingsExpander
                     Grid.Row="3"
                     Margin="8,0,8,4"
-                    Header="Number Format">
+                    Header="{x:Static lang:Resources.Label_NumberFormat}">
                     <ui:SettingsExpander.IconSource>
                         <fluentIcons:SymbolIconSource
                             FontSize="10"
@@ -68,13 +75,39 @@
                             SelectedItem="{Binding SelectedNumberFormatMode}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock />
+                                    <TextBlock>
+                                        <Run Text="{Binding Converter={x:Static converters:EnumAttributeConverters.DisplayName}}" />
+                                        <Run Text="-" />
+                                        <Run Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding Converter={StaticResource NumberFormatModeSampleConverter}}" />
+                                    </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                     </ui:SettingsExpander.Footer>
                 </ui:SettingsExpander>
             </Grid>
+
+
+
+            <Grid RowDefinitions="Auto,*">
+                <StackPanel
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,8"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Text="{x:Static lang:Resources.Label_About}" />
+                    <TextBlock
+                        Margin="8"
+                        FontWeight="Medium"
+                        Text="{x:Static lang:Resources.Label_SmartGenealogy}" />
+                </StackPanel>
+            </Grid>
+
+            <!--  Extra space at the bottom  -->
+            <Panel Margin="0,0,0,16" />
         </StackPanel>
     </ScrollViewer>
 </controls:UserControlBase>

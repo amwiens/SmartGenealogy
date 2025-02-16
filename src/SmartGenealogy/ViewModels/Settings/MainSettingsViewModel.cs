@@ -93,5 +93,13 @@ public partial class MainSettingsViewModel : PageViewModelBase
         this.dialogFactory = dialogFactory;
 
         this.settingsNavigationService = settingsNavigationService;
+
+        if (Program.Args.DebugMode)
+        {
+            
+        }
+
+        SelectedTheme = settingsManager.Settings.Theme ?? AvailableThemes[1];
+        SelectedLanguage = Cultures.GetSupportedCultureOrDefault(settingsManager.Settings.Language);
     }
 }
