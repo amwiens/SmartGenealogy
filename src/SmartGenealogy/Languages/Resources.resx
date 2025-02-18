@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Action_Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
   <data name="Label_About" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="Label_Appearance" xml:space="preserve">
     <value>Appearance</value>
+  </data>
+  <data name="Label_DataDirectory" xml:space="preserve">
+    <value>Data Directory</value>
+  </data>
+  <data name="Label_DataDirectoryExplanation" xml:space="preserve">
+    <value>This is where application data (model checkpoints, web UIs, etc.) will be installed.</value>
   </data>
   <data name="Label_Language" xml:space="preserve">
     <value>Language</value>
@@ -129,10 +141,16 @@
   <data name="Label_NumberFormat" xml:space="preserve">
     <value>Number Format</value>
   </data>
+  <data name="Label_PleaseSelectDataDirectory" xml:space="preserve">
+    <value>Please Select a Data Directory</value>
+  </data>
   <data name="Label_SmartGenealogy" xml:space="preserve">
     <value>Smart Genealogy</value>
   </data>
   <data name="Label_Theme" xml:space="preserve">
     <value>Theme</value>
+  </data>
+  <data name="Text_WelcomeToSmartGenealogy" xml:space="preserve">
+    <value>Welcome to Smart Genealogy!</value>
   </data>
 </root>

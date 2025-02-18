@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading;
 
 using Avalonia;
@@ -24,6 +25,7 @@ using Microsoft.Extensions.Logging;
 
 using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
+using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
@@ -93,6 +95,48 @@ public partial class MainWindow : AppWindowBase
         cancellationToken.ThrowIfCancellationRequested();
 
         navigationService.TypedNavigation += NavigationService_OnTypedNavigation;
+
+        Observable
+            .FromEventPattern<SizeChangedEventArgs>(this, nameof(SizeChanged))
+            .Where(x => x.EventArgs.PreviousSize != x.EventArgs.NewSize)
+            .Throttle(TimeSpan.FromMilliseconds(100))
+            .Select(x => x.EventArgs.NewSize)
+            .ObserveOn(SynchronizationContext.Current!)
+            .Subscribe(newSize =>
+            {
+                var validWindowPosition = Screens.All.Any(screen => screen.Bounds.Contains(Position));
+
+                settingsManager.Transaction(
+                    s =>
+                    {
+                        s.WindowSettings = new WindowSettings(
+                            newSize.Width,
+                            newSize.Height,
+                            validWindowPosition ? Position.X : 0,
+                            validWindowPosition ? Position.Y : 0,
+                            WindowState == WindowState.Maximized);
+                    }, ignoreMissingLibraryDir: true);
+            });
+
+        Observable
+            .FromEventPattern<PixelPointEventArgs>(this, nameof(PositionChanged))
+            .Where(x => Screens.All.Any(screen => screen.Bounds.Contains(x.EventArgs.Point)))
+            .Throttle(TimeSpan.FromMilliseconds(100))
+            .Select(x => x.EventArgs.Point)
+            .ObserveOn(SynchronizationContext.Current!)
+            .Subscribe(position =>
+            {
+                settingsManager.Transaction(
+                    s =>
+                    {
+                        s.WindowSettings = new WindowSettings(
+                            Width,
+                            Height,
+                            position.X,
+                            position.Y,
+                            WindowState == WindowState.Maximized);
+                    }, ignoreMissingLibraryDir: true);
+            });
 
         var viewModel = lazyViewModel.Value;
         DataContext = viewModel;

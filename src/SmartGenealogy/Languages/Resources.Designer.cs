@@ -61,6 +61,24 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Action_Cancel {
+            get {
+                return ResourceManager.GetString("Action_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Action_Continue {
+            get {
+                return ResourceManager.GetString("Action_Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string Label_About {
@@ -75,6 +93,24 @@ namespace SmartGenealogy.Languages {
         public static string Label_Appearance {
             get {
                 return ResourceManager.GetString("Label_Appearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Directory.
+        /// </summary>
+        public static string Label_DataDirectory {
+            get {
+                return ResourceManager.GetString("Label_DataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is where application data (model checkpoints, web UIs, etc.) will be installed..
+        /// </summary>
+        public static string Label_DataDirectoryExplanation {
+            get {
+                return ResourceManager.GetString("Label_DataDirectoryExplanation", resourceCulture);
             }
         }
         
@@ -97,6 +133,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select a Data Directory.
+        /// </summary>
+        public static string Label_PleaseSelectDataDirectory {
+            get {
+                return ResourceManager.GetString("Label_PleaseSelectDataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Smart Genealogy.
         /// </summary>
         public static string Label_SmartGenealogy {
@@ -111,6 +156,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_Theme {
             get {
                 return ResourceManager.GetString("Label_Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Smart Genealogy!.
+        /// </summary>
+        public static string Text_WelcomeToSmartGenealogy {
+            get {
+                return ResourceManager.GetString("Text_WelcomeToSmartGenealogy", resourceCulture);
             }
         }
     }

@@ -135,7 +135,7 @@ public partial class MainSettingsViewModel : PageViewModelBase
             Logger.Info("Changing language from {Old} to {New}", oldValue, newValue);
 
             Cultures.TrySetSupportedCulture(newValue, settingsManager.Settings.NumberFormatMode);
-            //settingsManager.Transaction(s => s.Language = newValue.Name);
+            settingsManager.Transaction(s => s.Language = newValue.Name);
 
             //var dialog = new BetterContentDialog
             //{

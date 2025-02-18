@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -26,13 +27,17 @@ using Microsoft.Extensions.Logging;
 
 using NLog;
 using NLog.Config;
+using NLog.Extensions.Logging;
+using NLog.Targets;
 
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Extensions;
 using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Helpers;
 using SmartGenealogy.Languages;
+using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views;
@@ -227,13 +232,41 @@ public sealed class App : Application
         BeforeBuildServiceProvider?.Invoke(null, services);
 
         serviceProvider = services.BuildServiceProvider();
+
+        var settingsManager = Services.GetRequiredService<ISettingsManager>();
+
+        if (Program.Args.DataDirectoryOverride is not null)
+        {
+            var normalizedDataDirPath = Path.GetFullPath(Program.Args.DataDirectoryOverride);
+
+            if (Compat.IsWindows)
+            {
+                normalizedDataDirPath = normalizedDataDirPath.Replace("\\\\", "\\");
+            }
+
+            settingsManager.SetLibraryDirOverride(normalizedDataDirPath);
+        }
+
+        if (settingsManager.TryFindLibrary())
+        {
+            Cultures.SetSupportedCultureOrDefault(
+                settingsManager.Settings.Language,
+                settingsManager.Settings.NumberFormatMode);
+        }
+        else
+        {
+            Cultures.TrySetSupportedCulture(Settings.GetDefaultCulture());
+        }
     }
 
     internal static void ConfigurePageViewModels(IServiceCollection services)
     {
         services.AddSingleton<MainWindowViewModel>(
             provider =>
-                new MainWindowViewModel()
+                new MainWindowViewModel(
+                    provider.GetRequiredService<ISettingsManager>(),
+                    provider.GetRequiredService<ServiceManager<ViewModelBase>>(),
+                    provider.GetRequiredService<INotificationService>())
                 {
                     Pages =
                     {
@@ -273,6 +306,17 @@ public sealed class App : Application
                 .AddFilter("Microsoft", Microsoft.Extensions.Logging.LogLevel.Warning)
                 .AddFilter("System", Microsoft.Extensions.Logging.LogLevel.Warning);
             builder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+#if DEBUG
+            builder.AddNLog(
+                logConfig,
+                new NLogProviderOptions
+                {
+                    IgnoreEmptyEventId = false,
+                    CaptureEventId = EventIdCaptureType.Legacy
+                });
+#else
+            builder.AddNLog(logConfig);
+#endif
         });
 
         return services;
@@ -447,6 +491,56 @@ public sealed class App : Application
     private static LoggingConfiguration ConfigureLogging()
     {
         var setupBuilder = LogManager.Setup();
+
+
+
+        setupBuilder.LoadConfiguration(builder =>
+        {
+            // Filter some sources to be warn levels or above only
+            builder.ForLogger("System.*").WriteToNil(NLog.LogLevel.Warn);
+            builder.ForLogger("Microsoft.*").WriteToNil(NLog.LogLevel.Warn);
+            builder.ForLogger("Microsoft.Extensions.Http.*").WriteToNil(NLog.LogLevel.Warn);
+
+            //// Disable some trace logging by default, unless overridden by app settings
+            //var typesToDisableTrace = new[]
+            //{
+            //};
+
+            // Console logging
+            builder
+                .ForLogger()
+                .FilterMinLevel(NLog.LogLevel.Trace)
+                .WriteTo(
+                    new ConsoleTarget("console")
+                    {
+                        Layout = "[${level:uppercase=true}]\t${logger:shortName=true}\t${message}",
+                        DetectConsoleAvailable = true
+                    }).WithAsync();
+
+            // File logging
+            builder
+                .ForLogger()
+                .FilterMinLevel(NLog.LogLevel.Debug)
+                .WriteTo(
+                    new FileTarget("logfile")
+                    {
+                        Layout = "${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}",
+                        FileName = "${specialfolder:folder=ApplicationData}/SmartGenealogy/Logs/app.log",
+                        ArchiveOldFileOnStartup = true,
+                        ArchiveFileName = "${specialfolder:folder=ApplicationData}/SmartGenealogy/Logs/app.{#}.log",
+                        ArchiveDateFormat = "yyyy-MM-dd HH_mm_ss",
+                        ArchiveNumbering = ArchiveNumberingMode.Date,
+                        MaxArchiveFiles = 9
+                    }).WithAsync();
+
+#if DEBUG
+            //// LogViewer target when debug mode
+            //builder
+            //    .ForLogger()
+            //    .FilterMinLevel(NLog.LogLevel.Trace)
+            //    .WriteTo(new DataStoreLoggerTarget { LayoutTransformControl = "${message}" });
+#endif
+        });
 
         LogManager.ReconfigExistingLoggers();
 

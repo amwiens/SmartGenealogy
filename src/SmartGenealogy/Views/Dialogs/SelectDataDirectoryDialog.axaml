@@ -1,0 +1,100 @@
+<controls:UserControlBase
+    x:Class="SmartGenealogy.Views.Dialogs.SelectDataDirectoryDialog"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
+    xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    d:DesignHeight="550"
+    d:DesignWidth="700"
+    x:CompileBindings="True"
+    x:DataType="dialogs:SelectDataDirectoryViewModel"
+    mc:Ignorable="d">
+
+    <Grid
+        MinHeight="450"
+        MaxWidth="700"
+        Margin="16,0,16,16"
+        RowDefinitions="Auto,Auto,Auto,*,*">
+        <StackPanel Orientation="Vertical">
+            <TextBlock
+                Margin="8,0,8,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="36"
+                FontWeight="Light"
+                Text="{x:Static lang:Resources.Text_WelcomeToSmartGenealogy}"
+                TextWrapping="Wrap" />
+            <TextBlock
+                Margin="8,4,8,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                FontWeight="Light"
+                Text="{x:Static lang:Resources.Label_PleaseSelectDataDirectory}"
+                TextWrapping="Wrap" />
+            <TextBlock
+                Margin="0,8,0,0"
+                FontSize="14"
+                FontWeight="Light"
+                Foreground="LightGray"
+                Text="{x:Static lang:Resources.Label_DataDirectoryExplanation}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,16">
+            <Label
+                Margin="0,16,0,0"
+                Content="{x:Static lang:Resources.Label_DataDirectory}"
+                FontSize="13" />
+
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBox
+                    Height="36"
+                    Margin="0,0,8,0"
+                    VerticalAlignment="Stretch"
+                    IsEnabled="{Binding !IsPortableMode}"
+                    Text="{Binding DataDirectory}"
+                    Watermark="{Binding DefaultInstallLocation}" />
+
+                <Button
+                    Grid.Column="1"
+                    Height="36"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding ShowFolderBrowserDialogCommand}"
+                    IsEnabled="{Binding !IsPortableMode}">
+                    <ui:SymbolIcon Symbol="OpenFolder" />
+                </Button>
+            </Grid>
+        </StackPanel>
+
+
+
+        <UniformGrid
+            Grid.Row="4"
+            Margin="0,8,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom">
+            <Button
+                Padding="16,8"
+                HorizontalAlignment="Center"
+                Command="{Binding OnCloseButtonClick}"
+                Content="{x:Static lang:Resources.Action_Cancel}"
+                FontSize="16"
+                IsDefault="True" />
+            <Button
+                Padding="16,8"
+                HorizontalAlignment="Center"
+                Classes="success"
+                Command="{Binding OnPrimaryButtonClick}"
+                Content="{x:Static lang:Resources.Action_Continue}"
+                FontSize="16"
+                IsDefault="True"
+                IsEnabled="{Binding IsDirectoryValid}" />
+        </UniformGrid>
+    </Grid>
+</controls:UserControlBase>
