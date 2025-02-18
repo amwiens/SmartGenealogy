@@ -6,10 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SmartGenealogy"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
     xmlns:vmBase="clr-namespace:SmartGenealogy.ViewModels.Base"
-    d:DesignHeight="450"
+    d:DataContext="{x:Static mocks:DesignData.SettingsViewModel}"
+    d:DesignHeight="700"
     d:DesignWidth="800"
     x:CompileBindings="True"
     x:DataType="vm:SettingsViewModel"
@@ -27,7 +29,14 @@
         <ui:BreadcrumbBar
             x:Name="BreadcrumbBar"
             Grid.Row="0"
-            Margin="16,8" />
+            Margin="16,8"
+            ItemsSource="{Binding CurrentPagePath}">
+            <ui:BreadcrumbBar.ItemTemplate>
+                <DataTemplate x:DataType="vmBase:PageViewModelBase">
+                    <ui:BreadcrumbBarItem Content="{Binding Title}" />
+                </DataTemplate>
+            </ui:BreadcrumbBar.ItemTemplate>
+        </ui:BreadcrumbBar>
 
         <ui:Frame Name="FrameView" Grid.Row="1">
             <ui:Frame.NavigationPageFactory>

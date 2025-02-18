@@ -15,7 +15,7 @@ namespace SmartGenealogy.Core.Helper;
 /// </summary>
 public static class Compat
 {
-    private const string AppName = "Smart Genealogy";
+    private const string AppName = "SmartGenealogy";
 
     public static SemVersion AppVersion { get; set; }
 

@@ -7,7 +7,9 @@
     xmlns:dialogs="clr-namespace:SmartGenealogy.ViewModels.Dialogs"
     xmlns:lang="clr-namespace:SmartGenealogy.Languages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
+    d:DataContext="{x:Static mocks:DesignData.SelectDataDirectoryViewModel}"
     d:DesignHeight="550"
     d:DesignWidth="700"
     x:CompileBindings="True"
@@ -24,7 +26,7 @@
                 Margin="8,0,8,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                FontSize="36"
+                FontSize="32"
                 FontWeight="Light"
                 Text="{x:Static lang:Resources.Text_WelcomeToSmartGenealogy}"
                 TextWrapping="Wrap" />
@@ -70,9 +72,40 @@
                     <ui:SymbolIcon Symbol="OpenFolder" />
                 </Button>
             </Grid>
+
+            <TextBlock
+                Margin="0,8,0,0"
+                FontSize="14"
+                Foreground="Yellow"
+                IsVisible="{Binding ShowFatWarning}"
+                Text="{x:Static lang:Resources.Label_FatWarning}"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Margin="0,8,0,0"
+                FontSize="28"
+                Foreground="Red"
+                IsVisible="{Binding IsInTempFolder}"
+                Text="{x:Static lang:Resources.Warning_PleaseExtractFirst}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
         </StackPanel>
 
 
+
+        <!--  Indicator of existing or new data directory  -->
+        <StackPanel
+            Grid.Row="3"
+            Margin="8,0,8,0"
+            HorizontalAlignment="Center"
+            IsVisible="{Binding IsStatusBadgeVisible}"
+            Orientation="Horizontal">
+            <controls:RefreshBadge DataContext="{Binding ValidatorRefreshBadge}" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                Text="{Binding DirectoryStatusText}" />
+        </StackPanel>
 
         <UniformGrid
             Grid.Row="4"

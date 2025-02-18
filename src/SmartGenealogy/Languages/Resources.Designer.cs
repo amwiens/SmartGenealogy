@@ -115,6 +115,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience..
+        /// </summary>
+        public static string Label_FatWarning {
+            get {
+                return ResourceManager.GetString("Label_FatWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Label_Language {
@@ -165,6 +174,15 @@ namespace SmartGenealogy.Languages {
         public static string Text_WelcomeToSmartGenealogy {
             get {
                 return ResourceManager.GetString("Text_WelcomeToSmartGenealogy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PLEASE EXTRACT THE APP FROM THE ZIP FILE BEFORE RUNNING SMART GENEALOGY.
+        /// </summary>
+        public static string Warning_PleaseExtractFirst {
+            get {
+                return ResourceManager.GetString("Warning_PleaseExtractFirst", resourceCulture);
             }
         }
     }

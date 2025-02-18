@@ -1,0 +1,44 @@
+<controls:UserControlBase
+    x:Class="SmartGenealogy.Controls.RefreshBadge"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
+    d:DataContext="{x:Static mocks:DesignData.RefreshBadgeViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:RefreshBadgeViewModel"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Grid Background="Transparent">
+        <Button
+            Margin="4"
+            Padding="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="Transparent"
+            BorderThickness="0"
+            Command="{Binding RefreshCommand}"
+            FontSize="26"
+            Foreground="{Binding ColorBrush}"
+            IsEnabled="{Binding !IsWorking}">
+            <ui:SymbolIcon Symbol="{Binding Icon}" />
+        </Button>
+        <controls:ProgressRing
+            Grid.Row="0"
+            Width="20"
+            Height="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderThickness="2"
+            FontSize="14"
+            IsEnabled="{Binding IsWorking}"
+            IsIndeterminate="True"
+            IsVisible="{Binding IsWorking}"
+            ToolTip.Tip="{Binding CurrentToolTip}" />
+    </Grid>
+</controls:UserControlBase>

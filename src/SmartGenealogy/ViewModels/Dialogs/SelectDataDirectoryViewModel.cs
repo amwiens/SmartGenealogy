@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
+using AsyncAwaitBestPractices;
 
 using Avalonia.Platform.Storage;
 
@@ -16,6 +20,7 @@ using NLog;
 
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Helper;
+using SmartGenealogy.Core.Models.Progress;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views.Dialogs;
@@ -69,15 +74,101 @@ public partial class SelectDataDirectoryViewModel : ContentDialogViewModelBase
                 Path.GetTempPath().TrimEnd(Path.DirectorySeparatorChar),
                 StringComparison.OrdinalIgnoreCase);
 
-
+    public RefreshBadgeViewModel ValidatorRefreshBadge { get; } =
+        new()
+        {
+            State = ProgressState.Inactive,
+            SuccessToolTipText = ValidExistingDirectoryText,
+            FailToolTipText = InvalidDirectoryText
+        };
 
     public SelectDataDirectoryViewModel(ISettingsManager settingsManager)
     {
         this.settingsManager = settingsManager;
-
+        ValidatorRefreshBadge.RefreshFunc = ValidateDataDirectory;
     }
 
+    public override void OnLoaded()
+    {
+        ValidatorRefreshBadge.RefreshCommand.ExecuteAsync(null).SafeFireAndForget();
+    }
 
+    // Revalidate on data directory change
+    partial void OnDataDirectoryChanged(string value)
+    {
+        ValidatorRefreshBadge.RefreshCommand.ExecuteAsync(null).SafeFireAndForget();
+    }
+
+    private async Task<bool> ValidateDataDirectory()
+    {
+        await using var delay = new MinimumDelay(100, 200);
+
+        ShowFatWarning = IsDriveFat(DataDirectory);
+
+        if (IsInTempFolder)
+            return false;
+
+        // Doesn't exist, this is fine as a new install, hide badge
+        if (!Directory.Exists(DataDirectory))
+        {
+            IsStatusBadgeVisible = false;
+            IsDirectoryValid = true;
+            return true;
+        }
+        // Otherwise check that a settings.json exists
+        var settingsPath = Path.Combine(DataDirectory, "settings.json");
+
+        // settings.json exists: Try deserializing it
+        if (File.Exists(settingsPath))
+        {
+            try
+            {
+                var jsonText = await File.ReadAllTextAsync(settingsPath);
+                var _ = JsonSerializer.Deserialize<Core.Models.Settings.Settings>(
+                    jsonText,
+                    new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } });
+                // If successful, show existing badge
+                IsStatusBadgeVisible = true;
+                IsDirectoryValid = true;
+                DirectoryStatusText = ValidExistingDirectoryText;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Info("Failed to deserialize settings.json: {Msg}", e.Message);
+                // If not, show error badge, and set directory to invalid to prevent continuing
+                IsStatusBadgeVisible = true;
+                IsDirectoryValid = false;
+                DirectoryStatusText = InvalidDirectoryText;
+                return false;
+            }
+        }
+
+        // No settings.json
+
+        // Check if the directory is %APPDATA%\SmartGenealogy: hide badge and set directory valid
+        if (DataDirectory == DefaultInstallLocation)
+        {
+            IsStatusBadgeVisible = false;
+            IsDirectoryValid = true;
+            return true;
+        }
+
+        // Check if the directory is empty: hide badge and set directory to valid
+        var isEmpty = !Directory.EnumerateFileSystemEntries(DataDirectory).Any();
+        if (isEmpty)
+        {
+            IsStatusBadgeVisible = false;
+            IsDirectoryValid = true;
+            return true;
+        }
+
+        // Not empty and not appdata: show error badge, and set directory to invalid
+        IsStatusBadgeVisible = true;
+        IsDirectoryValid = false;
+        DirectoryStatusText = InvalidDirectoryText;
+        return false;
+    }
 
     private bool CanPickFolder => App.StorageProvider.CanPickFolder;
 
@@ -92,5 +183,19 @@ public partial class SelectDataDirectoryViewModel : ContentDialogViewModelBase
             return;
 
         DataDirectory = result[0].Path.LocalPath;
+    }
+
+    private bool IsDriveFat(string path)
+    {
+        try
+        {
+            var drive = new DriveInfo(Path.GetPathRoot(path));
+            return drive.DriveFormat.Contains("FAT", StringComparison.OrdinalIgnoreCase);
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn(ex, "Error checking drive FATness");
+            return false;
+        }
     }
 }
