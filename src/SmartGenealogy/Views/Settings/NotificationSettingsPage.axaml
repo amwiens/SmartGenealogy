@@ -12,6 +12,7 @@
     xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:vmSettings="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    d:DataContext="{x:Static mocks:DesignData.NotificationSettingsViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vmSettings:NotificationSettingsViewModel"

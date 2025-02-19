@@ -19,8 +19,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="Styles/ThemeColors.axaml" />
                 <ResourceInclude Source="Styles/ThemeMaterials.axaml" />
+                <ResourceInclude Source="Styles/Card.axaml" />
                 <ResourceInclude Source="Styles/AppColors.axaml" />
+                <ResourceInclude Source="Styles/ControlThemes/BetterComboBoxStyles.axaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <x:Double x:Key="ContentDialogMaxWidth">700</x:Double>
+
+            <SolidColorBrush x:Key="CoreSplashScreenBackground" Color="#141414" />
+            <SolidColorBrush x:Key="CoreSplashScreenForeground" Color="#9FBDC3" />
+            <SolidColorBrush x:Key="ToolTipBackground" Color="#1E1F22" />
+            <SolidColorBrush x:Key="ToolTipForeground" Color="#9FBDC3" />
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>

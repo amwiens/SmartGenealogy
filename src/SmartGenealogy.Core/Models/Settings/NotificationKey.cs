@@ -17,6 +17,32 @@ public record NotificationKey(string Value) : StringValue(Value), IParsable<Noti
 
     public string? DisplayName { get; init; }
 
+
+
+    public static NotificationKey Download_Completed =>
+        new("Download_Completed")
+        {
+            DefaultOption = NotificationOption.NativePush,
+            Level = NotificationLevel.Success,
+            DisplayName = "Download Completed"
+        };
+
+    public static NotificationKey Download_Failed =>
+        new("Download_Failed")
+        {
+            DefaultOption = NotificationOption.NativePush,
+            Level = NotificationLevel.Error,
+            DisplayName = "Download Failed"
+        };
+
+    public static NotificationKey Download_Canceled =>
+        new("Download_Canceled")
+        {
+            DefaultOption = NotificationOption.NativePush,
+            Level = NotificationLevel.Warning,
+            DisplayName = "Download Canceled"
+        };
+
     public static Dictionary<string, NotificationKey> All { get; } = GetValues<NotificationKey>();
 
     /// <inheritdoc/>

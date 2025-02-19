@@ -1,0 +1,59 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:labs="clr-namespace:Avalonia.Labs.Controls;assembly=Avalonia.Labs.Controls"
+    xmlns:mocks="using:SmartGenealogy.DesignData"
+    xmlns:models="clr-namespace:SmartGenealogy.Core.Models;assembly=SmartGenealogy.Core"
+    xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
+    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia">
+
+    <Design.PreviewWith>
+        <Panel Width="450" Height="600">
+            <StackPanel
+                Width="250"
+                Margin="8"
+                Spacing="4">
+                <!--<controls:BetterComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Static mocks:DesignData.SampleHybridModels}"
+                    SelectedIndex="0" />
+
+                <controls:BetterComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Static mocks:DesignData.SampleHybridModels}"
+                    SelectedIndex="0"
+                    Theme="{DynamicResource BetterComboBoxHybridModelTheme}" />-->
+            </StackPanel>
+        </Panel>
+    </Design.PreviewWith>
+
+    <converters:FileUriConverter x:Key="FileUriConveter" />
+
+    <!--<ControlTheme
+        x:Key="BetterComboBoxItemHybridModelTheme"
+        BasedOn="{StaticResource {x:Type ComboBoxItem}}"
+        TargetType="ComboBoxItem">
+        <Setter Property="ToolTip.Placement" Value="RightEdgeAlignedTop" />
+        <Setter Property="ToolTip.Tip">
+            <Template>
+                <sg:SpacedGrid
+                    x:DataType="models:HybridModelFile"
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="6"
+                    RowSpacing="0">
+    -->
+    <!--  Image  -->
+    <!--
+                </sg:SpacedGrid>
+            </Template>
+        </Setter>
+    </ControlTheme>-->
+
+    <ControlTheme
+        x:Key="{x:Type controls:BetterComboBox}"
+        BasedOn="{StaticResource {x:Type ComboBox}}"
+        TargetType="controls:BetterComboBox" />
+</ResourceDictionary>
