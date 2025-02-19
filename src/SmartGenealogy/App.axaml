@@ -29,6 +29,7 @@
             TextVerticalAlignmentOverrideBehavior="Disabled"
             UseSystemFontOnWindows="True" />
 
+        <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
         <StyleInclude Source="Styles/MessageBlock.axaml" />
         <StyleInclude Source="Styles/ProgressRing.axaml" />
         <StyleInclude Source="Styles/ButtonStyles.axaml" />

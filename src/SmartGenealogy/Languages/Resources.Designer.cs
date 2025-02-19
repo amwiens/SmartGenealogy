@@ -124,6 +124,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artificial Intelligence.
+        /// </summary>
+        public static string Label_AI {
+            get {
+                return ResourceManager.GetString("Label_AI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appearance.
         /// </summary>
         public static string Label_Appearance {
@@ -169,11 +178,29 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string Label_General {
+            get {
+                return ResourceManager.GetString("Label_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Label_Language {
             get {
                 return ResourceManager.GetString("Label_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Label_Notifications {
+            get {
+                return ResourceManager.GetString("Label_Notifications", resourceCulture);
             }
         }
         

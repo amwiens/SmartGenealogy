@@ -10,6 +10,7 @@ using Avalonia.Styling;
 using Avalonia.Threading;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using FluentAvalonia.UI.Controls;
 
@@ -19,6 +20,7 @@ using Injectio.Attributes;
 
 using NLog;
 
+using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
 using SmartGenealogy.Core.Attributes;
 using SmartGenealogy.Core.Extensions;
@@ -187,6 +189,19 @@ public partial class MainSettingsViewModel : PageViewModelBase
         {
             Logger.Info("Requested invalid language change from {Old} to {New}", oldValue, newValue);
         }
+    }
+
+
+
+    [RelayCommand]
+    private void NavigateToSubPage(Type viewModelType)
+    {
+        Dispatcher.UIThread.Post(
+            () =>
+                settingsNavigationService.NavigateTo(
+                    viewModelType,
+                    BetterSlideNavigationTransition.PageSlideFromRight),
+            DispatcherPriority.Send);
     }
 
 

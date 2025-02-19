@@ -29,6 +29,42 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="8,16" Spacing="8">
+            <!--  General  -->
+            <sg:SpacedGrid RowDefinitions="Auto,*,*,*" RowSpacing="4">
+                <TextBlock
+                    Margin="0,0,0,4"
+                    FontWeight="Medium"
+                    Text="{x:Static lang:Resources.Label_General}" />
+
+
+                <!--  Link to AI Sub-Settings  -->
+                <ui:SettingsExpander
+                    Grid.Row="1"
+                    Margin="8,0"
+                    ActionIconSource="ChevronRight"
+                    Command="{Binding NavigateToSubPageCommand}"
+                    CommandParameter="{x:Type vmSettings:AISettingsViewModel}"
+                    Header="{x:Static lang:Resources.Label_AI}"
+                    IsClickEnabled="True">
+                    <ui:SettingsExpander.IconSource>
+                        <fluentIcons:SymbolIconSource FontSize="10" Symbol="Alert" />
+                    </ui:SettingsExpander.IconSource>
+                </ui:SettingsExpander>
+
+                <!--  Link to Notifications Sub-Settings  -->
+                <ui:SettingsExpander
+                    Grid.Row="2"
+                    Margin="8,0"
+                    ActionIconSource="ChevronRight"
+                    Command="{Binding NavigateToSubPageCommand}"
+                    CommandParameter="{x:Type vmSettings:NotificationSettingsViewModel}"
+                    Header="{x:Static lang:Resources.Label_Notifications}"
+                    IsClickEnabled="True">
+                    <ui:SettingsExpander.IconSource>
+                        <fluentIcons:SymbolIconSource FontSize="10" Symbol="Alert" />
+                    </ui:SettingsExpander.IconSource>
+                </ui:SettingsExpander>
+            </sg:SpacedGrid>
 
             <!--  Theme  -->
             <Grid RowDefinitions="Auto,*,*,*,*,*">
