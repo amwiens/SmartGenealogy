@@ -30,6 +30,10 @@
             UseSystemFontOnWindows="True" />
 
         <StyleInclude Source="Styles/MessageBlock.axaml" />
+        <StyleInclude Source="Styles/ProgressRing.axaml" />
+        <StyleInclude Source="Styles/ButtonStyles.axaml" />
+
+        <StyleInclude Source="Styles/BorderStyles.axaml" />
 
         <labs:ControlThemes />
 
