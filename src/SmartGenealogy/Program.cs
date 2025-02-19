@@ -14,6 +14,9 @@ using CommandLine;
 
 using NLog;
 
+using Projektanker.Icons.Avalonia;
+using Projektanker.Icons.Avalonia.FontAwesome;
+
 using Semver;
 
 using SmartGenealogy.Core.Helper;
@@ -89,7 +92,7 @@ public static class Program
     /// </summary>
     internal static void SetupAvaloniaApp()
     {
-
+        IconProvider.Current.Register<FontAwesomeIconProvider>();
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
