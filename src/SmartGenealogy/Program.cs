@@ -4,9 +4,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
+using AsyncImageLoader;
+
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 
@@ -22,6 +26,8 @@ using Semver;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models;
 using SmartGenealogy.Models;
+using SmartGenealogy.ViewModels.Dialogs;
+using SmartGenealogy.Views.Dialogs;
 
 namespace SmartGenealogy;
 
@@ -93,6 +99,10 @@ public static class Program
     internal static void SetupAvaloniaApp()
     {
         IconProvider.Current.Register<FontAwesomeIconProvider>();
+
+        // Use our custom image loaded for custom local load error handling
+        ImageLoader.AsyncImageLoader.Dispose();
+        ImageLoader.AsyncImageLoader = new FallbackRamCachedWebImageLoader();
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
@@ -124,7 +134,45 @@ public static class Program
 
         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
         {
+            var dialog = new ExceptionDialog
+            {
+                DataContext = new ExceptionViewModel { Exception = ex, }
+            };
 
+            // We can only show dialog if main window exists, and is visible
+            if (lifetime.MainWindow is { PlatformImpl: not null, IsVisible: true } mainWindow)
+            {
+                // Configure for dialog mode
+                dialog.ShowAsDialog = true;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+                // Show synchronously without blocking UI thread
+                // https://github.com/AvaloniaUI/Avalonia/issues/4810#issuecomment-704259221
+                var cts = new CancellationTokenSource();
+
+                dialog
+                    .ShowDialog(mainWindow)
+                    .ContinueWith(
+                        _ =>
+                        {
+                            cts.Cancel();
+                            ExitWithException(ex);
+                        }
+                        , TaskScheduler.FromCurrentSynchronizationContext());
+
+                Dispatcher.UIThread.MainLoop(cts.Token);
+            }
+            else
+            {
+                // No parent window available
+                var cts = new CancellationTokenSource();
+                // Exit on token cancellation
+                cts.Token.Register(() => ExitWithException(ex));
+
+                dialog.ShowWithCts(cts);
+
+                Dispatcher.UIThread.MainLoop(cts.Token);
+            }
         }
     }
 

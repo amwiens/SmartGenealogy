@@ -11,12 +11,15 @@
     <PackageReference Include="AsyncAwaitBestPractices" Version="9.0.0" />
     <PackageReference Include="CompiledExpressions" Version="1.1.0" />
     <PackageReference Include="DynamicData" Version="9.1.2" />
+    <PackageReference Include="ExifLibNet" Version="2.1.4" />
     <PackageReference Include="Injectio" Version="4.1.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2025.1.0-eap1" />
+    <PackageReference Include="MetadataExtractor" Version="2.8.1" />
     <PackageReference Include="NLog" Version="5.4.0" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.4.0" />
     <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="OneOf.SourceGenerator" Version="3.0.271" />
+    <PackageReference Include="RockLib.Reflection.Optimized" Version="3.0.0" />
     <PackageReference Include="Semver" Version="3.0.0" />
   </ItemGroup>
 

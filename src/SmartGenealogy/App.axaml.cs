@@ -17,11 +17,15 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Input.Platform;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Platform;
 using Avalonia.Platform.Storage;
+using Avalonia.Styling;
 using Avalonia.Threading;
 
 using FluentAvalonia.Interop;
+using FluentAvalonia.UI.Controls;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -41,6 +45,10 @@ using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.Views;
+
+using Application = Avalonia.Application;
+using Logger = NLog.Logger;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace SmartGenealogy;
 
@@ -77,6 +85,9 @@ public sealed class App : Application
 
     public static IClipboard? Clipboard => TopLevel.Clipboard;
 
+    [NotNull]
+    public static IConfiguration? Config { get; private set; }
+
     public IClassicDesktopStyleApplicationLifetime? DesktopLifetime =>
         ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
 
@@ -100,6 +111,14 @@ public sealed class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+        SetFontFamily(GetPlatformDefaultFontFamily());
+
+        // Set design theme
+        if (Design.IsDesignMode)
+        {
+            RequestedThemeVariant = ThemeVariant.Dark;
+        }
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -131,7 +150,41 @@ public sealed class App : Application
 
             Setup();
 
-            ShowMainWindow();
+            // First time setup if needed
+            var settingsManager = Services.GetRequiredService<ISettingsManager>();
+            if (!settingsManager.IsEulaAccepted())
+            {
+                var setupWindow = Services.GetRequiredService<FirstLaunchSetupWindow>();
+                var setupViewModel = Services.GetRequiredService<FirstLaunchSetupViewModel>();
+                setupWindow.DataContext = setupViewModel;
+                setupWindow.ShowAsDialog = true;
+                setupWindow.ShowActivated = true;
+                setupWindow.ShowAsyncCts = new CancellationTokenSource();
+
+                setupWindow.ExtendClientAreaChromeHints = Program.Args.NoWindowChromeEffects
+                    ? ExtendClientAreaChromeHints.NoChrome
+                    : ExtendClientAreaChromeHints.PreferSystemChrome;
+
+                DesktopLifetime.MainWindow = setupWindow;
+
+                setupWindow.ShowAsyncCts.Token.Register(() =>
+                {
+                    if (setupWindow.Result == ContentDialogResult.Primary)
+                    {
+                        settingsManager.SetEulaAccepted();
+                        ShowMainWindow();
+                        DesktopLifetime.MainWindow.Show();
+                    }
+                    else
+                    {
+                        Shutdown();
+                    }
+                });
+            }
+            else
+            {
+                ShowMainWindow();
+            }
         }
     }
 
@@ -160,11 +213,11 @@ public sealed class App : Application
 
             if (Compat.IsWindows)
             {
-                fonts.Add(OSVersionHelper.IsWindows11() ? "Segoe UI Variable TExt" : "Segoe UI");
+                fonts.Add(OSVersionHelper.IsWindows11() ? "Segoe UI Variable Text" : "Segoe UI");
             }
             else if (Compat.IsMacOS)
             {
-                // Use Segoe fonts if installed, but we can't distrubute them
+                // Use Segoe fonts if installed, but we can't distribute them
                 fonts.Add("Segoe UI Variable");
                 fonts.Add("Segoe UI");
 
@@ -192,7 +245,7 @@ public sealed class App : Application
     /// </summary>
     private void Setup()
     {
-        //using var _ = CodeTimer.StartNew();
+        using var _ = CodeTimer.StartNew();
 
         ////// Setup uri handler for `smartgenealogy://` protocol
         ////Program.UriHandler.RegisterUriScheme();
@@ -486,6 +539,33 @@ public sealed class App : Application
         object? sender,
         UnobservedTaskExceptionEventArgs e)
     {
+        if (e.Observed || e.Exception is not Exception unobservedEx)
+            return;
+
+        try
+        {
+            var notificationService = Services.GetRequiredService<INotificationService>();
+
+            Dispatcher.UIThread.Invoke(() =>
+            {
+                var originException = unobservedEx.InnerException ?? unobservedEx;
+                notificationService.ShowPersistent(
+                    $"Unobserved Task Exception - {originException.GetType().Name}",
+                    originException.Message);
+            });
+
+            // Consider the exception observed if we were able to show a notification
+            e.SetObserved();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "Failed to show Unobserved Task Exception notification");
+        }
+    }
+
+    private static async void OnActivated(object? sender, ActivatedEventArgs args)
+    {
+
     }
 
     private static LoggingConfiguration ConfigureLogging()
@@ -504,7 +584,21 @@ public sealed class App : Application
             //// Disable some trace logging by default, unless overridden by app settings
             //var typesToDisableTrace = new[]
             //{
+            //    typeof(ConsoleViewModel),
             //};
+
+            //foreach (var type in typesToDisableTrace)
+            //{
+            //    // Skip if app settings already set a level for this type
+            //    if (Config[$"Logging:LogLevel:{type.FullName}"] is { } levelStr
+            //        && Enum.TryParse<LogLevel>(levelStr, true, out _))
+            //    {
+            //        continue;
+            //    }
+
+            //    // Set minimum level to Debug for these types
+            //    builder.ForLogger(type.FullName).WriteToNil(NLog.LogLevel.Debug);
+            //}
 
             // Console logging
             builder

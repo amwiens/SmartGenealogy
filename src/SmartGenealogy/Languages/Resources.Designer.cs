@@ -79,6 +79,33 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Details.
+        /// </summary>
+        public static string Action_CopyDetails {
+            get {
+                return ResourceManager.GetString("Action_CopyDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit Application.
+        /// </summary>
+        public static string Action_ExitApplication {
+            get {
+                return ResourceManager.GetString("Action_ExitApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quit.
+        /// </summary>
+        public static string Action_Quit {
+            get {
+                return ResourceManager.GetString("Action_Quit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Relaunch.
         /// </summary>
         public static string Action_Relaunch {
@@ -115,6 +142,24 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Log in Explorer.
+        /// </summary>
+        public static string Action_ShowLogInExplorer {
+            get {
+                return ResourceManager.GetString("Action_ShowLogInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Log in Finder.
+        /// </summary>
+        public static string Action_ShowLogInFinder {
+            get {
+                return ResourceManager.GetString("Action_ShowLogInFinder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string Label_About {
@@ -138,6 +183,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_Appearance {
             get {
                 return ResourceManager.GetString("Label_Appearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Callstack.
+        /// </summary>
+        public static string Label_Callstack {
+            get {
+                return ResourceManager.GetString("Label_Callstack", resourceCulture);
             }
         }
         
@@ -169,6 +223,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Label_Details {
+            get {
+                return ResourceManager.GetString("Label_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience..
         /// </summary>
         public static string Label_FatWarning {
@@ -187,11 +250,29 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inner exception.
+        /// </summary>
+        public static string Label_InnerException {
+            get {
+                return ResourceManager.GetString("Label_InnerException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Label_Language {
             get {
                 return ResourceManager.GetString("Label_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License Agreement..
+        /// </summary>
+        public static string Label_LicenseAgreement {
+            get {
+                return ResourceManager.GetString("Label_LicenseAgreement", resourceCulture);
             }
         }
         
@@ -219,6 +300,15 @@ namespace SmartGenealogy.Languages {
         public static string Label_PleaseSelectDataDirectory {
             get {
                 return ResourceManager.GetString("Label_PleaseSelectDataDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have read and agree to the.
+        /// </summary>
+        public static string Label_ReadAndAgree {
+            get {
+                return ResourceManager.GetString("Label_ReadAndAgree", resourceCulture);
             }
         }
         
@@ -286,6 +376,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred.
+        /// </summary>
+        public static string Label_UnexpectedErrorOccurred {
+            get {
+                return ResourceManager.GetString("Label_UnexpectedErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Relaunch is required for new language option to take effect.
         /// </summary>
         public static string Text_RelaunchRequiredToApplyLanguage {
@@ -300,6 +399,24 @@ namespace SmartGenealogy.Languages {
         public static string Text_RestartRequired {
             get {
                 return ResourceManager.GetString("Text_RestartRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please let us know about this issue with the details below and attach the zipped log files..
+        /// </summary>
+        public static string Text_UnexpectedError_Description {
+            get {
+                return ResourceManager.GetString("Text_UnexpectedError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can continue, but full functionality will be available after restart. Please let us know about this issue with the details below and attach the zipped log files..
+        /// </summary>
+        public static string Text_UnexpectedErrorRecoverable_Description {
+            get {
+                return ResourceManager.GetString("Text_UnexpectedErrorRecoverable_Description", resourceCulture);
             }
         }
         

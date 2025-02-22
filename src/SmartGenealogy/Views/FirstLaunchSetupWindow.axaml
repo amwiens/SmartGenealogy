@@ -1,0 +1,79 @@
+<controls:AppWindowBase
+    x:Class="SmartGenealogy.Views.FirstLaunchSetupWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:SmartGenealogy.Languages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
+    Title="Smart Genealogy"
+    Width="800"
+    Height="450"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:FirstLaunchSetupViewModel"
+    CornerRadius="4"
+    Icon="/Assets/Icon.ico"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Grid ColumnDefinitions="0.8*,*">
+        <StackPanel
+            Margin="64"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <controls:BetterAdvancedImage Width="128" Source="/Assets/Icon.png" />
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid Margin="0,16,32,32" RowDefinitions="0.6*,0.4*">
+                <!--  Texts  -->
+                <StackPanel Margin="32,64,0,0" />
+
+                <Grid
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    ColumnDefinitions="*,Auto">
+                    <CheckBox
+                        Grid.Column="1"
+                        Margin="16,0,0,0"
+                        HorizontalAlignment="Left"
+                        IsChecked="{Binding EulaAccepted, Mode=TwoWay}">
+                        <Grid VerticalAlignment="Center" ColumnDefinitions="*,Auto">
+                            <TextBlock
+                                VerticalAlignment="Top"
+                                FontSize="14"
+                                Text="{x:Static lang:Resources.Label_ReadAndAgree}" />
+
+                            <HyperlinkButton
+                                Grid.Column="1"
+                                Margin="1,0,0,0"
+                                Padding="0"
+                                VerticalAlignment="Top"
+                                Classes="transparent"
+                                Content="{x:Static lang:Resources.Label_LicenseAgreement}"
+                                NavigateUri="" />
+                        </Grid>
+                    </CheckBox>
+                </Grid>
+            </Grid>
+            <!--  Buttons  -->
+            <UniformGrid
+                MaxWidth="170"
+                Margin="32,8"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom">
+                <Button
+                    Classes="danger"
+                    Click="QuitButton_OnClick"
+                    Content="{x:Static lang:Resources.Action_Quit}" />
+                <Button
+                    Classes="info"
+                    Click="ContinueButton_OnClick"
+                    Content="{x:Static lang:Resources.Action_Continue}"
+                    IsEnabled="{Binding EulaAccepted, Mode=OneWay}" />
+            </UniformGrid>
+        </Grid>
+    </Grid>
+</controls:AppWindowBase>

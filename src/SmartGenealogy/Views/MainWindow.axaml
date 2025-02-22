@@ -17,7 +17,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
-    Icon="/Assets/avalonia-logo.ico"
+    Icon="/Assets/Icon.ico"
     mc:Ignorable="d">
 
     <Design.DataContext>
@@ -38,7 +38,7 @@
                 DockPanel.Dock="Left"
                 IsHitTestVisible="False"
                 RenderOptions.BitmapInterpolationMode="HighQuality"
-                Source="/Assets/avalonia-logo.ico">
+                Source="/Assets/Icon.ico">
                 <Image.IsVisible>
                     <OnPlatform Default="False">
                         <On Content="True" Options="Windows" />

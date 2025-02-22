@@ -27,6 +27,12 @@
         <converters:NumberFormatModeSampleConverter x:Key="NumberFormatModeSampleConverter" />
     </controls:UserControlBase.Resources>
 
+    <controls:UserControlBase.Styles>
+        <Style Selector="sg|SpacedGrid &gt; ui|SettingsExpander">
+            <Setter Property="Margin" Value="8,0" />
+        </Style>
+    </controls:UserControlBase.Styles>
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="8,16" Spacing="8">
             <!--  General  -->

@@ -123,6 +123,15 @@
   <data name="Action_Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="Action_CopyDetails" xml:space="preserve">
+    <value>Copy Details</value>
+  </data>
+  <data name="Action_ExitApplication" xml:space="preserve">
+    <value>Exit Application</value>
+  </data>
+  <data name="Action_Quit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
   <data name="Action_Relaunch" xml:space="preserve">
     <value>Relaunch</value>
   </data>
@@ -135,6 +144,12 @@
   <data name="Action_SelectDirectory" xml:space="preserve">
     <value>Select Directory</value>
   </data>
+  <data name="Action_ShowLogInExplorer" xml:space="preserve">
+    <value>Show Log in Explorer</value>
+  </data>
+  <data name="Action_ShowLogInFinder" xml:space="preserve">
+    <value>Show Log in Finder</value>
+  </data>
   <data name="Label_About" xml:space="preserve">
     <value>About</value>
   </data>
@@ -143,6 +158,9 @@
   </data>
   <data name="Label_Appearance" xml:space="preserve">
     <value>Appearance</value>
+  </data>
+  <data name="Label_Callstack" xml:space="preserve">
+    <value>Callstack</value>
   </data>
   <data name="Label_CurrentDirectory" xml:space="preserve">
     <value>Current directory:</value>
@@ -153,14 +171,23 @@
   <data name="Label_DataDirectoryExplanation" xml:space="preserve">
     <value>This is where application data (model checkpoints, web UIs, etc.) will be installed.</value>
   </data>
+  <data name="Label_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="Label_FatWarning" xml:space="preserve">
     <value>You may encounter errors when using a FAT32 or exFAT drive. Select a different drive for a smoother experience.</value>
   </data>
   <data name="Label_General" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="Label_InnerException" xml:space="preserve">
+    <value>Inner exception</value>
+  </data>
   <data name="Label_Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="Label_LicenseAgreement" xml:space="preserve">
+    <value>License Agreement.</value>
   </data>
   <data name="Label_Notifications" xml:space="preserve">
     <value>Notifications</value>
@@ -170,6 +197,9 @@
   </data>
   <data name="Label_PleaseSelectDataDirectory" xml:space="preserve">
     <value>Please Select a Data Directory</value>
+  </data>
+  <data name="Label_ReadAndAgree" xml:space="preserve">
+    <value>I have read and agree to the</value>
   </data>
   <data name="Label_RelaunchRequired" xml:space="preserve">
     <value>Relaunch Required</value>
@@ -192,11 +222,20 @@
   <data name="Label_Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="Label_UnexpectedErrorOccurred" xml:space="preserve">
+    <value>An unexpected error occurred</value>
+  </data>
   <data name="Text_RelaunchRequiredToApplyLanguage" xml:space="preserve">
     <value>Relaunch is required for new language option to take effect</value>
   </data>
   <data name="Text_RestartRequired" xml:space="preserve">
     <value>Smart Genealogy must be restarted for the changes to take effect.</value>
+  </data>
+  <data name="Text_UnexpectedErrorRecoverable_Description" xml:space="preserve">
+    <value>You can continue, but full functionality will be available after restart. Please let us know about this issue with the details below and attach the zipped log files.</value>
+  </data>
+  <data name="Text_UnexpectedError_Description" xml:space="preserve">
+    <value>Please let us know about this issue with the details below and attach the zipped log files.</value>
   </data>
   <data name="Text_WelcomeToSmartGenealogy" xml:space="preserve">
     <value>Welcome to Smart Genealogy!</value>

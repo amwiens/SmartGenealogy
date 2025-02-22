@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
+
+using AsyncImageLoader;
 
 using Avalonia;
 using Avalonia.Controls;
@@ -25,6 +28,7 @@ using Microsoft.Extensions.Logging;
 
 using SmartGenealogy.Animations;
 using SmartGenealogy.Controls;
+using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Settings;
 using SmartGenealogy.Core.Services;
 using SmartGenealogy.Models;
@@ -90,11 +94,15 @@ public partial class MainWindow : AppWindowBase
         Lazy<MainWindowViewModel> lazyViewModel,
         CancellationToken cancellationToken = default)
     {
+        using var _ = CodeTimer.StartDebug();
+
         Dispatcher.UIThread.VerifyAccess();
 
         cancellationToken.ThrowIfCancellationRequested();
 
         navigationService.TypedNavigation += NavigationService_OnTypedNavigation;
+
+        SetDefaultFonts();
 
         Observable
             .FromEventPattern<SizeChangedEventArgs>(this, nameof(SizeChanged))
@@ -138,8 +146,11 @@ public partial class MainWindow : AppWindowBase
                     }, ignoreMissingLibraryDir: true);
             });
 
-        var viewModel = lazyViewModel.Value;
-        DataContext = viewModel;
+        using (CodeTimer.StartDebug("LoadViewModel"))
+        {
+            var viewModel = lazyViewModel.Value;
+            DataContext = viewModel;
+        }
     }
 
     /// <inheritdoc/>
@@ -183,6 +194,12 @@ public partial class MainWindow : AppWindowBase
         // Initialize notification service using this window as the visual root
         notificationService.Initialize(this);
 
+        // Attach error notification handler for image loader
+        if (ImageLoader.AsyncImageLoader is FallbackRamCachedWebImageLoader loader)
+        {
+            loader.LoadFailed += OnImageLoadFailed;
+        }
+
         if (DataContext is not MainWindowViewModel vm)
             return;
 
@@ -200,6 +217,12 @@ public partial class MainWindow : AppWindowBase
     protected override void OnUnloaded(RoutedEventArgs e)
     {
         base.OnUnloaded(e);
+
+        // Detach error notification handler for image loader
+        if (ImageLoader.AsyncImageLoader is FallbackRamCachedWebImageLoader loader)
+        {
+            loader.LoadFailed -= OnImageLoadFailed;
+        }
     }
 
     private void NavigationService_OnTypedNavigation(object? sender, TypedNavigationEventArgs e)
@@ -209,6 +232,14 @@ public partial class MainWindow : AppWindowBase
         mainViewModel.SelectedCategory = mainViewModel
             .Pages.Concat(mainViewModel.FooterPages)
             .FirstOrDefault(x => x.GetType() == e.ViewModelType);
+    }
+
+    private void SetDefaultFonts()
+    {
+        if (App.Current is not null)
+        {
+            FontFamily = App.Current.GetPlatformDefaultFontFamily();
+        }
     }
 
     private void NavigationView_OnItemInvoked(object sender, NavigationViewItemInvokedEventArgs e)
@@ -248,6 +279,13 @@ public partial class MainWindow : AppWindowBase
                 ClearValue(TransparencyBackgroundFallbackProperty);
             }
         }
+    }
+
+    private void OnImageLoadFailed(object? sender, ImageLoadFailedEventArgs e)
+    {
+        var fileName = Path.GetFileName(e.Url);
+        var displayName = string.IsNullOrEmpty(fileName) ? e.Url : fileName;
+        logger.LogWarning($"Could not load '{displayName}'\n({e.Exception.Message})");
     }
 
     private void TryEnableMicaEffect()
