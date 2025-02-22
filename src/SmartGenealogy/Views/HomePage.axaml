@@ -5,6 +5,7 @@
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
     xmlns:vm="using:SmartGenealogy.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"

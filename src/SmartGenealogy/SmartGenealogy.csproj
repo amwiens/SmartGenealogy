@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Remove="Assets\Localization\Resources.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Extensions\NotificationLevelExtensions.cs~RF8424fac.TMP" />
     <None Remove="Services\NotificationService.cs~RF82217a0.TMP" />
     <None Remove="ViewModels\MainViewModel.cs~RF3da13739.TMP" />
@@ -57,16 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Update="Assets\Localization\Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </AvaloniaResource>
-    <Compile Update="Assets\Localization\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Update="Languages\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -78,10 +64,6 @@
     <Compile Update="Views\SettingsPage.axaml.cs">
       <DependentUpon>SettingsPage.axaml</DependentUpon>
     </Compile>
-    <EmbeddedResource Update="Assets\Localization\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="Languages\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

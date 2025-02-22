@@ -4,7 +4,6 @@ using System.Collections.Immutable;
 using System.Globalization;
 using System.Threading;
 
-using SmartGenealogy.Assets.Localization;
 using SmartGenealogy.Core.Helper;
 using SmartGenealogy.Core.Models.Settings;
 

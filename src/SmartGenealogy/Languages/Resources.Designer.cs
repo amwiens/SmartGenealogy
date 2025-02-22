@@ -268,6 +268,15 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s get started.
+        /// </summary>
+        public static string Label_LetsGetStarted {
+            get {
+                return ResourceManager.GetString("Label_LetsGetStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to License Agreement..
         /// </summary>
         public static string Label_LicenseAgreement {

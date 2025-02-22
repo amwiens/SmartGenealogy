@@ -6,11 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lang="clr-namespace:SmartGenealogy.Languages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:vm="clr-namespace:SmartGenealogy.ViewModels"
     Title="Smart Genealogy"
     Width="800"
-    Height="450"
+    Height="550"
+    d:DataContext="{x:Static mocks:DesignData.FirstLaunchSetupViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:FirstLaunchSetupViewModel"
@@ -29,7 +31,9 @@
         <Grid Grid.Column="1">
             <Grid Margin="0,16,32,32" RowDefinitions="0.6*,0.4*">
                 <!--  Texts  -->
-                <StackPanel Margin="32,64,0,0" />
+                <StackPanel Margin="32,64,0,0">
+                    <TextBlock FontSize="24" Text="{x:Static lang:Resources.Label_LetsGetStarted}" />
+                </StackPanel>
 
                 <Grid
                     Grid.Row="1"

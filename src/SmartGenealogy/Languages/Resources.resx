@@ -186,6 +186,9 @@
   <data name="Label_Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Label_LetsGetStarted" xml:space="preserve">
+    <value>Let's get started</value>
+  </data>
   <data name="Label_LicenseAgreement" xml:space="preserve">
     <value>License Agreement.</value>
   </data>

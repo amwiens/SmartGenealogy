@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
@@ -6,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 using SmartGenealogy.Core.Models.Progress;
 using SmartGenealogy.Core.Services;
+using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Base;
 using SmartGenealogy.ViewModels.Dialogs;
 using SmartGenealogy.ViewModels.Settings;
-using SmartGenealogy.Views.Dialogs;
 
 namespace SmartGenealogy.DesignData;
 
@@ -45,6 +46,7 @@ public static class DesignData
         var settingsManager = Services.GetRequiredService<ISettingsManager>();
 
         var notificationService = Services.GetRequiredService<INotificationService>();
+
     }
 
     public static ServiceManager<ViewModelBase> DialogFactory =>
@@ -53,6 +55,11 @@ public static class DesignData
     public static MainWindowViewModel MainWindowViewModel =>
         Services.GetRequiredService<MainWindowViewModel>();
 
+    public static OllamaViewModel OllamaViewModel =>
+        Services.GetRequiredService<OllamaViewModel>();
+
+    public static FirstLaunchSetupViewModel FirstLaunchSetupViewModel =>
+        Services.GetRequiredService<FirstLaunchSetupViewModel>();
 
 
     public static SettingsViewModel SettingsViewModel => Services.GetRequiredService<SettingsViewModel>();
