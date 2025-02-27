@@ -198,6 +198,18 @@
   <data name="Label_NumberFormat" xml:space="preserve">
     <value>Number Format</value>
   </data>
+  <data name="Label_Ollama" xml:space="preserve">
+    <value>Ollama</value>
+  </data>
+  <data name="Label_OllamaAvailableModels" xml:space="preserve">
+    <value>Available Models</value>
+  </data>
+  <data name="Label_OllamaInstalledModels" xml:space="preserve">
+    <value>Installed Models</value>
+  </data>
+  <data name="Label_OllamaSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="Label_PleaseSelectDataDirectory" xml:space="preserve">
     <value>Please Select a Data Directory</value>
   </data>

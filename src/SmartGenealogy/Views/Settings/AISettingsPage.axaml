@@ -4,12 +4,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fluentIcons="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:lang="clr-namespace:SmartGenealogy.Languages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
+    xmlns:mocks="clr-namespace:SmartGenealogy.DesignData"
+    xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vmSettings="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    d:DataContext="{x:Static mocks:DesignData.AISettingsViewModel}"
+    d:DesignHeight="700"
     d:DesignWidth="800"
+    x:DataType="vmSettings:AISettingsViewModel"
     mc:Ignorable="d">
 
-    <ScrollViewer Padding="16" VerticalScrollBarVisibility="Auto">
-        AI Settings!
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="8,16" Spacing="8">
+            <!--  Ollama Settings  -->
+            <sg:SpacedGrid RowDefinitions="Auto,*,*,*" RowSpacing="4">
+                <TextBlock
+                    Margin="0,0,0,4"
+                    FontWeight="Medium"
+                    Text="{x:Static lang:Resources.Label_Ollama}" />
+
+                <!--  Link to AI Sub-Settings  -->
+                <ui:SettingsExpander
+                    Grid.Row="1"
+                    Margin="8,0"
+                    ActionIconSource="ChevronRight"
+                    Command="{Binding NavigateToSubPageCommand}"
+                    CommandParameter="{x:Type vmSettings:OllamaSettingsViewModel}"
+                    Header="{x:Static lang:Resources.Label_OllamaSettings}"
+                    IsClickEnabled="True">
+                    <ui:SettingsExpander.IconSource>
+                        <fluentIcons:SymbolIconSource FontSize="10" Symbol="Alert" />
+                    </ui:SettingsExpander.IconSource>
+                </ui:SettingsExpander>
+            </sg:SpacedGrid>
+        </StackPanel>
     </ScrollViewer>
 </controls:UserControlBase>

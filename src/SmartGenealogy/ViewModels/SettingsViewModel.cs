@@ -45,6 +45,7 @@ public partial class SettingsViewModel : PageViewModelBase
         {
             vmFactory.Get<MainSettingsViewModel>(),
             vmFactory.Get<AISettingsViewModel>(),
+            vmFactory.Get<OllamaSettingsViewModel>(),
             vmFactory.Get<NotificationSettingsViewModel>(),
         };
 

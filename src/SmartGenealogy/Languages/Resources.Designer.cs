@@ -304,6 +304,42 @@ namespace SmartGenealogy.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ollama.
+        /// </summary>
+        public static string Label_Ollama {
+            get {
+                return ResourceManager.GetString("Label_Ollama", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Models.
+        /// </summary>
+        public static string Label_OllamaAvailableModels {
+            get {
+                return ResourceManager.GetString("Label_OllamaAvailableModels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed Models.
+        /// </summary>
+        public static string Label_OllamaInstalledModels {
+            get {
+                return ResourceManager.GetString("Label_OllamaInstalledModels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Label_OllamaSettings {
+            get {
+                return ResourceManager.GetString("Label_OllamaSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Select a Data Directory.
         /// </summary>
         public static string Label_PleaseSelectDataDirectory {

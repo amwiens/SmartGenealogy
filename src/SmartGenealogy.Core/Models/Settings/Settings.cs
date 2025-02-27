@@ -10,6 +10,8 @@ public class Settings
     public string? Theme { get; set; } = "Dark";
     public string? Language { get; set; } = GetDefaultCulture().Name;
 
+    public string? OllamaUrl { get; set; } = "http://localhost:11434";
+
     public NumberFormatMode NumberFormatMode { get; set; } = NumberFormatMode.CurrentCulture;
 
     public WindowSettings? WindowSettings { get; set; }

@@ -64,6 +64,9 @@
     <Compile Update="Views\SettingsPage.axaml.cs">
       <DependentUpon>SettingsPage.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Settings\OllamaSettingsPage.axaml.cs">
+      <DependentUpon>OllamaSettingsPage.axaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Update="Languages\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -55,9 +55,6 @@ public static class DesignData
     public static MainWindowViewModel MainWindowViewModel =>
         Services.GetRequiredService<MainWindowViewModel>();
 
-    public static OllamaViewModel OllamaViewModel =>
-        Services.GetRequiredService<OllamaViewModel>();
-
     public static FirstLaunchSetupViewModel FirstLaunchSetupViewModel =>
         Services.GetRequiredService<FirstLaunchSetupViewModel>();
 
@@ -69,7 +66,11 @@ public static class DesignData
     public static MainSettingsViewModel MainSettingsViewModel =>
         Services.GetRequiredService<MainSettingsViewModel>();
 
+    public static AISettingsViewModel AISettingsViewModel =>
+        Services.GetRequiredService<AISettingsViewModel>();
 
+    public static OllamaSettingsViewModel OllamaSettingsViewModel =>
+        Services.GetRequiredService<OllamaSettingsViewModel>();
 
     public static NotificationSettingsViewModel NotificationSettingsViewModel =>
         Services.GetRequiredService<NotificationSettingsViewModel>();
