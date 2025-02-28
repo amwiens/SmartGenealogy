@@ -11,6 +11,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using Avalonia.Media.Immutable;
 using Avalonia.Platform;
 using Avalonia.Styling;
@@ -61,11 +62,13 @@ public partial class MainWindow : AppWindowBase
         InitializeComponent();
 
 #if DEBUG
-
+        this.AttachDevTools();
 #endif
         TitleBar.ExtendsContentIntoTitleBar = true;
         TitleBar.TitleBarHitTestType = TitleBarHitTestType.Complex;
-        ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.PreferSystemChrome;
+        ExtendClientAreaChromeHints = Program.Args.NoWindowChromeEffects
+            ? ExtendClientAreaChromeHints.NoChrome
+            : ExtendClientAreaChromeHints.PreferSystemChrome;
 
         // Load window positions
         if (settingsManager.Settings.WindowSettings is { } windowSettings
@@ -81,13 +84,27 @@ public partial class MainWindow : AppWindowBase
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        //if (Program.Args.IsSplashScreenEnabled)
-        //{
-        //}
-        //else
-        //{
-        StartupInitialize(lazyViewModel);
-        //}
+        if (Program.Args.IsSplashScreenEnabled)
+        {
+            var appIconStream = Assets.AppIcon.Open();
+            var appIcon = new Bitmap(appIconStream);
+            appIconStream.Dispose();
+
+            SplashScreen = new ApplicationSplashScreen
+            {
+                AppIcon = appIcon,
+                InitApp = cancellationToken =>
+                {
+                    return Dispatcher
+                        .UIThread.InvokeAsync(() => StartupInitialize(lazyViewModel, cancellationToken))
+                        .GetTask();
+                }
+            };
+        }
+        else
+        {
+            StartupInitialize(lazyViewModel);
+        }
     }
 
     private void StartupInitialize(
@@ -101,6 +118,8 @@ public partial class MainWindow : AppWindowBase
         cancellationToken.ThrowIfCancellationRequested();
 
         navigationService.TypedNavigation += NavigationService_OnTypedNavigation;
+
+        EventManager.Instance.CultureChanged += (_, _) => SetDefaultFonts();
 
         SetDefaultFonts();
 
@@ -146,7 +165,7 @@ public partial class MainWindow : AppWindowBase
                     }, ignoreMissingLibraryDir: true);
             });
 
-        using (CodeTimer.StartDebug("LoadViewModel"))
+        using (CodeTimer.StartDebug("Load view model"))
         {
             var viewModel = lazyViewModel.Value;
             DataContext = viewModel;

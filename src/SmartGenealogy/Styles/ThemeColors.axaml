@@ -53,7 +53,7 @@
             <SolidColorBrush x:Key="CompletionForegroundBrush" Color="#B4B8BF" />
             <SolidColorBrush x:Key="CompletionSecondaryForegroundBrush" Color="#878B8D" />
             <SolidColorBrush x:Key="CompletionSelectionBackgroundBrush" Color="#2E436E" />
-            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5839F4" />
+            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5389F4" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Dark">
@@ -68,7 +68,7 @@
             <SolidColorBrush x:Key="CompletionForegroundBrush" Color="#B4B8BF" />
             <SolidColorBrush x:Key="CompletionSecondaryForegroundBrush" Color="#878B8D" />
             <SolidColorBrush x:Key="CompletionSelectionBackgroundBrush" Color="#2E436E" />
-            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5839F4" />
+            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5389F4" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="{x:Static sty:FluentAvaloniaTheme.HighContrastTheme}">
@@ -83,7 +83,7 @@
             <SolidColorBrush x:Key="CompletionForegroundBrush" Color="#B4B8BF" />
             <SolidColorBrush x:Key="CompletionSecondaryForegroundBrush" Color="#878B8D" />
             <SolidColorBrush x:Key="CompletionSelectionBackgroundBrush" Color="#2E436E" />
-            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5839F4" />
+            <SolidColorBrush x:Key="CompletionSelectionForegroundBrush" Color="#5389F4" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 

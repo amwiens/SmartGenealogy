@@ -13,10 +13,13 @@
     xmlns:vm="using:SmartGenealogy.ViewModels"
     xmlns:vmBase="using:SmartGenealogy.ViewModels.Base"
     Title="{x:Static lang:Resources.Label_SmartGenealogy}"
+    Width="1300"
+    Height="950"
     d:DataContext="{x:Static mocks:DesignData.MainWindowViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
+    BackRequested="TopLevel_OnBackRequested"
     Icon="/Assets/Icon.ico"
     mc:Ignorable="d">
 
@@ -71,7 +74,7 @@
             IsPaneOpen="False"
             IsSettingsVisible="False"
             ItemInvoked="NavigationView_OnItemInvoked"
-            MenuItemsSource="{Binding Pages, Mode=TwoWay}"
+            MenuItemsSource="{Binding Pages, Mode=OneWay}"
             OpenPaneLength="{Binding PaneWidth}"
             PaneDisplayMode="Left"
             SelectedItem="{Binding SelectedCategory}">

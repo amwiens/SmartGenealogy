@@ -21,6 +21,7 @@
                 <ResourceInclude Source="Styles/ThemeMaterials.axaml" />
                 <ResourceInclude Source="Styles/Card.axaml" />
                 <ResourceInclude Source="Styles/AppColors.axaml" />
+                <ResourceInclude Source="Styles/ControlThemes/ListBoxStyles.axaml" />
                 <ResourceInclude Source="Styles/ControlThemes/BetterComboBoxStyles.axaml" />
             </ResourceDictionary.MergedDictionaries>
 
@@ -37,7 +38,10 @@
             PreferUserAccentColor="True"
             TextVerticalAlignmentOverrideBehavior="Disabled"
             UseSystemFontOnWindows="True" />
-
+        <!--<StyleInclude Source="avares://Dock.Avalonia/Themes/DockSimpleTheme.axaml" />-->
+        <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+        <StyleInclude Source="avares://AsyncImageLoader.Avalonia/AdvancedImage.axaml" />
+        <!--<StyleInclude Source="avares://Avalonia.Xaml.Interactions.Draggable/Styles.axaml" />-->
         <StyleInclude Source="avares://FluentAvalonia.BreadcrumbBar/Styling/Styles.axaml" />
         <StyleInclude Source="Styles/MessageBlock.axaml" />
         <StyleInclude Source="Styles/ProgressRing.axaml" />

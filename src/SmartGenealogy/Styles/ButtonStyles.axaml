@@ -197,7 +197,7 @@
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Background" Value="{DynamicResource ThemeDarkBlueColor}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ThemeDarkBuleColor}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ThemeDarkBlueColor}" />
                 <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
             </Style>
         </Style>
