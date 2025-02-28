@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -8,11 +9,15 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+using Injectio.Attributes;
+
 using SmartGenealogy.Models;
 
 namespace SmartGenealogy.Services;
 
-public class OllamaService
+[RegisterSingleton<IOllamaService, OllamaService>]
+
+public class OllamaService : IOllamaService
 {
     private Process? _ollamaProcess;
     private string OllamaPath { get; set; }
@@ -183,6 +188,27 @@ public class OllamaService
         }
 
         return generatedMessage;
+    }
+
+    public async Task<List<OllamaModel>?> GetOllamaModels()
+    {
+        const string url = "https://ollama-models.zwz.workers.dev/";
+        List<OllamaModel>? ollamaModels = null;
+        try
+        {
+            using var client = new HttpClient();
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                ollamaModels = JsonSerializer.Deserialize<List<OllamaModel>>(responseString);
+            }
+        }
+        catch
+        {
+            // ignored
+        }
+        return ollamaModels;
     }
 }
 

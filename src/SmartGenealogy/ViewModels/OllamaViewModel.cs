@@ -33,7 +33,7 @@ public partial class OllamaViewModel : PageViewModelBase
     public string LanguageLimitationWarning { get; } = string.Format("Currently the only supported model is {0}", "llama3.2");
     public string ResourceLimitWarning { get; } = string.Format("This model may not run optimally because you have {0} GB of VRAM, and this model requires {1} GB at least", 69, 420);
 
-    private OllamaService _ollamaService;
+    private IOllamaService _ollamaService;
 
     [ObservableProperty]
     private ObservableCollection<Message> messages = new();
@@ -41,9 +41,9 @@ public partial class OllamaViewModel : PageViewModelBase
     [ObservableProperty]
     private string newMessageText = string.Empty;
 
-    public OllamaViewModel()
+    public OllamaViewModel(IOllamaService ollamaService)
     {
-        _ollamaService = new OllamaService();
+        _ollamaService = ollamaService;
     }
 
     [RelayCommand]

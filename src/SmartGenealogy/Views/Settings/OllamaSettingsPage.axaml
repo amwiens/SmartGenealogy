@@ -10,6 +10,7 @@
     xmlns:sg="clr-namespace:SpacedGridControl.Avalonia;assembly=SpacedGridControl.Avalonia"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:vmSettings="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
     d:DataContext="{x:Static mocks:DesignData.OllamaSettingsViewModel}"
     d:DesignHeight="700"
     d:DesignWidth="800"
@@ -22,6 +23,16 @@
                 <Grid ColumnDefinitions="*,Auto">
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </Grid>
+            </controls:Card>
+        </DataTemplate>
+        <DataTemplate x:Key="AvailableTemplate" DataType="models:OllamaModel">
+            <controls:Card Padding="16">
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding Description}" />
                     </StackPanel>
                 </Grid>
             </controls:Card>
@@ -79,7 +90,7 @@
 
                 <ItemsControl
                     Grid.Row="1"
-                    ItemTemplate="{StaticResource ItemTemplate}"
+                    ItemTemplate="{StaticResource AvailableTemplate}"
                     ItemsSource="{Binding AvailableModels}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
