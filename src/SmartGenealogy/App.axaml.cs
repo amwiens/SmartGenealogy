@@ -324,6 +324,7 @@ public sealed class App : Application
                     Pages =
                     {
                         provider.GetRequiredService<HomeViewModel>(),
+                        provider.GetRequiredService<PlacesViewModel>(),
                         provider.GetRequiredService<OllamaViewModel>(),
                     },
                     FooterPages =
