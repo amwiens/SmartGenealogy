@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Places.EditPlaceDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
+    Title="EditPlaceDetailPage"
+    x:DataType="viewmodel:EditPlaceDetailViewModel">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Border Padding="10" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Entry Placeholder="Name" Text="{Binding PlaceDetail.Name}" />
+                    <Entry Placeholder="Address" Text="{Binding PlaceDetail.Address}" />
+                    <Entry Placeholder="Notes" Text="{Binding PlaceDetail.Notes}" />
+                    <Button
+                        Margin="0,20,0,0"
+                        Command="{Binding SavePlaceDetailCommand}"
+                        HorizontalOptions="Center"
+                        Text="Save Place Detail" />
+                    <Button
+                        Margin="0,10,0,0"
+                        BackgroundColor="Red"
+                        Command="{Binding DeletePlaceDetailCommand}"
+                        HorizontalOptions="Center"
+                        Text="Delete Place Detail"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

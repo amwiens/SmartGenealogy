@@ -1,0 +1,58 @@
+﻿using Microsoft.Extensions.Logging;
+
+using SmartGenealogy.Services;
+using SmartGenealogy.ViewModels;
+using SmartGenealogy.ViewModels.Media;
+using SmartGenealogy.ViewModels.Places;
+using SmartGenealogy.Views.Media;
+using SmartGenealogy.Views.Places;
+
+namespace SmartGenealogy;
+
+public static class MauiProgram
+{
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
+
+		// Services
+		builder.Services.AddSingleton<GeocodeService>();
+		builder.Services.AddSingleton<MultimediaService>();
+		builder.Services.AddSingleton<PlaceService>();
+        builder.Services.AddSingleton<PlaceDetailService>();
+
+        // ViewModels
+        builder.Services.AddSingleton<MainPageViewModel>();
+		builder.Services.AddSingleton<PlacesViewModel>();
+		builder.Services.AddTransient<PlaceViewModel>();
+		builder.Services.AddTransient<PlaceDetailViewModel>();
+		builder.Services.AddTransient<AddPlaceViewModel>();
+        builder.Services.AddTransient<AddPlaceDetailViewModel>();
+        builder.Services.AddTransient<EditPlaceViewModel>();
+		builder.Services.AddTransient<EditPlaceDetailViewModel>();
+		builder.Services.AddTransient<MediaViewModel>();
+
+        // Pages
+        builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<PlacesPage>();
+		builder.Services.AddTransient<PlacePage>();
+		builder.Services.AddTransient<AddPlacePage>();
+        builder.Services.AddTransient<AddPlaceDetailPage>();
+        builder.Services.AddTransient<EditPlacePage>();
+		builder.Services.AddTransient<EditPlaceDetailPage>();
+		builder.Services.AddSingleton<MediaPage>();
+
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
+
+		return builder.Build();
+	}
+}

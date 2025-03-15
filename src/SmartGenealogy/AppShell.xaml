@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SmartGenealogy.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:mediaviews="clr-namespace:SmartGenealogy.Views.Media"
+    xmlns:placeviews="clr-namespace:SmartGenealogy.Views.Places"
+    Title="SmartGenealogy"
+    Shell.FlyoutBehavior="Flyout">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Places"
+        ContentTemplate="{DataTemplate placeviews:PlacesPage}"
+        Route="PlacesPage" />
+
+    <ShellContent
+        Title="Media"
+        ContentTemplate="{DataTemplate mediaviews:MediaPage}"
+        Route="MediaPage" />
+
+</Shell>

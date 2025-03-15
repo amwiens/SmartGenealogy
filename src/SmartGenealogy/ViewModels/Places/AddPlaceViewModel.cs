@@ -1,0 +1,63 @@
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+using SmartGenealogy.Models;
+using SmartGenealogy.Services;
+
+namespace SmartGenealogy.ViewModels.Places;
+
+public partial class AddPlaceViewModel : ObservableObject
+{
+    private readonly PlaceService _placeService;
+    private readonly GeocodeService _geocodeService;
+
+    [ObservableProperty]
+    private string? city = string.Empty;
+
+    [ObservableProperty]
+    private string? county = string.Empty;
+
+    [ObservableProperty]
+    private string? state = string.Empty;
+
+    [ObservableProperty]
+    private string? country = string.Empty;
+
+    [ObservableProperty]
+    private string? notes = string.Empty;
+
+    public AddPlaceViewModel(PlaceService placeService, GeocodeService geocodeService)
+    {
+        _placeService = placeService;
+        _geocodeService = geocodeService;
+    }
+
+    [RelayCommand]
+    private async Task SavePlaceAsync()
+    {
+        if (string.IsNullOrWhiteSpace(City) || string.IsNullOrWhiteSpace(State))
+            return;
+
+        var geocodeResult = await _geocodeService.GetPlaceAsync($"{City}, {State}");
+
+        var place = new Place
+        {
+            City = geocodeResult.City,
+            County = geocodeResult.County,
+            State = geocodeResult.State,
+            Country = geocodeResult.Country,
+            Notes = Notes,
+            Latitude = geocodeResult.Latitude,
+            Longitude = geocodeResult.Longitude,
+            DateChanged = DateTime.Now
+        };
+
+        await _placeService.AddPlaceAsync(place);
+
+        var parameters = new Dictionary<string, object>
+        {
+            { "IsEdited", true }
+        };
+        await Shell.Current.GoToAsync("..", true, parameters);
+    }
+}
