@@ -86,7 +86,7 @@ public partial class EditPlaceViewModel : ObservableObject
             {
                 { "IsEdited", true }
             };
-            await Shell.Current.GoToAsync("..", true, parameters);
+            await Shell.Current.GoToAsync("../..", true, parameters);
         }
     }
 }

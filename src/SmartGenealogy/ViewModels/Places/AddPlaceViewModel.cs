@@ -42,10 +42,10 @@ public partial class AddPlaceViewModel : ObservableObject
 
         var place = new Place
         {
-            City = geocodeResult.City,
-            County = geocodeResult.County,
-            State = geocodeResult.State,
-            Country = geocodeResult.Country,
+            City = (!string.IsNullOrEmpty(geocodeResult.City)) ? geocodeResult.City : City,
+            County = (!string.IsNullOrEmpty(geocodeResult.County)) ? geocodeResult.County : County,
+            State = (!string.IsNullOrEmpty(geocodeResult.State)) ? geocodeResult.State : State,
+            Country = (!string.IsNullOrEmpty(geocodeResult.Country)) ? geocodeResult.Country : Country,
             Notes = Notes,
             Latitude = geocodeResult.Latitude,
             Longitude = geocodeResult.Longitude,
