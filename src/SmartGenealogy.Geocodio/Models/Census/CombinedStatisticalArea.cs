@@ -16,6 +16,7 @@ public class CombinedStatisticalArea
 
     [JsonPropertyName("name")]
     public string? Name { get; set; }
+
     [JsonPropertyName("area_code")]
     public string? AreaCode { get; set; }
 }

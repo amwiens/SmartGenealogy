@@ -7,7 +7,8 @@ namespace SmartGenealogy.Geocodio.Models.StateLegislature;
 /// </summary>
 public class StateLegislature
 {
-    private StateLegislature() { }
+    private StateLegislature()
+    { }
 
     [JsonConstructor]
     public StateLegislature(StateLegislator house, StateLegislator senate)
@@ -18,6 +19,7 @@ public class StateLegislature
 
     [JsonPropertyName("house")]
     public StateLegislator? House { get; set; }
+
     [JsonPropertyName("senate")]
     public StateLegislator? Senate { get; set; }
 }

@@ -9,8 +9,9 @@ namespace SmartGenealogy.Geocodio.Helpers;
 public static class ForwardGeocodingResultHelpers
 {
     /// <summary>
-    /// Transforms batch forward geocode results into a dictionary keyed by the address that was queried. Puts duplicate requests
-    /// into the same list and returns a 0 item list when no results are returned.
+    /// Transforms batch forward geocode results into a dictionary keyed by the address that was
+    /// queried. Puts duplicate requests into the same list and returns a 0 item list when no
+    /// results are returned.
     /// </summary>
     /// <param name="results"></param>
     /// <returns>A dictionary of GeoCodeInfo (the results) keyed by the address that was queried.</returns>

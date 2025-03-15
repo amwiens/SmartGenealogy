@@ -4,9 +4,9 @@ namespace SmartGenealogy.Views.Places;
 
 public partial class AddPlaceDetailPage : ContentPage
 {
-	public AddPlaceDetailPage(AddPlaceDetailViewModel viewModel)
-	{
-		InitializeComponent();
+    public AddPlaceDetailPage(AddPlaceDetailViewModel viewModel)
+    {
+        InitializeComponent();
         BindingContext = viewModel;
     }
 }

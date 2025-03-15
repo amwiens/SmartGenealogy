@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using SmartGenealogy.Models;
@@ -17,16 +15,16 @@ public partial class PlaceDetailViewModel : ObservableObject
     private readonly GeocodeService _geocodeService;
 
     [ObservableProperty]
-    int placeDetailId;
+    private int placeDetailId;
 
     [ObservableProperty]
-    PlaceDetail? placeDetail;
+    private PlaceDetail? placeDetail;
 
     [ObservableProperty]
-    Place? place;
+    private Place? place;
 
     [ObservableProperty]
-    bool isEdited;
+    private bool isEdited;
 
     public PlaceDetailViewModel(
         PlaceDetailService placeDetailService,
@@ -49,7 +47,7 @@ public partial class PlaceDetailViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task EditPlaceDetail()
+    private async Task EditPlaceDetail()
     {
         if (Place == null)
             return;
@@ -61,7 +59,7 @@ public partial class PlaceDetailViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task GeocodePlaceDetail()
+    private async Task GeocodePlaceDetail()
     {
         var geocodeResult = await _geocodeService.GetPlaceAsync($"{PlaceDetail!.Address}, {Place!.City}, {Place!.State}");
 

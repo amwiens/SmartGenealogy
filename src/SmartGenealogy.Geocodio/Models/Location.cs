@@ -16,6 +16,7 @@ public class Location
 
     [JsonPropertyName("lat")]
     public decimal Latitude { get; set; }
+
     [JsonPropertyName("lng")]
     public decimal Longitude { get; set; }
 }

@@ -24,9 +24,11 @@ public class SocialNetworkInfo
 
     [JsonPropertyName("rss_url")]
     public string RssURL { get; set; }
+
     public string Twitter { get; set; }
     public string Facebook { get; set; }
     public string YouTube { get; set; }
+
     [JsonPropertyName("youtube_id")]
     public string YouTubeId { get; set; }
 }

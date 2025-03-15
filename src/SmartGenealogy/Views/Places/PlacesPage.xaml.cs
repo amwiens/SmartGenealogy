@@ -4,12 +4,12 @@ namespace SmartGenealogy.Views.Places;
 
 public partial class PlacesPage : ContentPage
 {
-	private readonly PlacesViewModel viewModel;
+    private readonly PlacesViewModel viewModel;
 
-	public PlacesPage(PlacesViewModel viewModel)
-	{
-		InitializeComponent();
-		this.viewModel = viewModel;
+    public PlacesPage(PlacesViewModel viewModel)
+    {
+        InitializeComponent();
+        this.viewModel = viewModel;
         BindingContext = viewModel;
     }
 

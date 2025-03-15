@@ -17,8 +17,10 @@ public class MetroMicroStatisticalArea
 
     [JsonPropertyName("name")]
     public string Name { get; set; }
+
     [JsonPropertyName("area_code")]
     public string AreaCode { get; set; }
+
     [JsonPropertyName("type")]
     public string Type { get; set; }
 }

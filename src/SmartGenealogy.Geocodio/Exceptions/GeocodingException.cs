@@ -1,8 +1,8 @@
 ﻿namespace SmartGenealogy.Geocodio.Exceptions;
 
 /// <summary>
-/// Custom exception for bubbling up HTTP status codes other than 200 OK to help determine what might be wrong with our request
-/// to Geocodio.
+/// Custom exception for bubbling up HTTP status codes other than 200 OK to help determine what
+/// might be wrong with our request to Geocodio.
 /// </summary>
 public class GeocodingException : Exception
 {

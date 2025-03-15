@@ -7,8 +7,8 @@ public partial class PlaceDetailPage : ContentPage
     private readonly PlaceDetailViewModel viewModel;
 
     public PlaceDetailPage(PlaceDetailViewModel viewModel)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
     }

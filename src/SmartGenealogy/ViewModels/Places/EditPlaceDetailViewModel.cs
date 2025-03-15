@@ -15,7 +15,7 @@ public partial class EditPlaceDetailViewModel : ObservableObject
     private string originalNotes = string.Empty;
 
     [ObservableProperty]
-    PlaceDetail? placeDetail;
+    private PlaceDetail? placeDetail;
 
     partial void OnPlaceDetailChanged(PlaceDetail? value)
     {
@@ -43,7 +43,7 @@ public partial class EditPlaceDetailViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task SavePlaceDetail()
+    private async Task SavePlaceDetail()
     {
         if (PlaceDetail == null)
             return;
@@ -63,7 +63,7 @@ public partial class EditPlaceDetailViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task DeletePlaceDetail()
+    private async Task DeletePlaceDetail()
     {
         if (PlaceDetail == null)
             return;

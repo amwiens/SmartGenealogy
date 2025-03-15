@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SmartGenealogy.Enums;
 
-namespace SmartGenealogy.Enums;
-
-
-class PlaceDetailType
+internal class PlaceDetailType
 {
 }

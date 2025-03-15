@@ -7,7 +7,8 @@ namespace SmartGenealogy.Geocodio.Models;
 /// </summary>
 public class TimeZone
 {
-    private TimeZone() { }
+    private TimeZone()
+    { }
 
     [JsonConstructor]
     public TimeZone(string name, decimal utc_offset, bool observes_dst, string abbreviation, string source)
@@ -20,10 +21,13 @@ public class TimeZone
     }
 
     public string? Name { get; set; }
+
     [JsonPropertyName("utc_offset")]
     public decimal UTC_Offset { get; set; }
+
     [JsonPropertyName("observes_dst")]
     public bool Observes_DST { get; set; }
+
     public string? Abbreviation { get; set; }
     public string? Source { get; set; }
 }

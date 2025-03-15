@@ -23,6 +23,7 @@ public class ContactInfo
     public string Url { get; set; }
     public string Address { get; set; }
     public string Phone { get; set; }
+
     [JsonPropertyName("contact_form")]
     public string ContactForm { get; set; }
 }

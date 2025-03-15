@@ -7,7 +7,8 @@ namespace SmartGenealogy.Geocodio.ForwardGeocoding;
 /// </summary>
 public class BatchForwardGeoCodeResult
 {
-    private BatchForwardGeoCodeResult() { }
+    private BatchForwardGeoCodeResult()
+    { }
 
     [JsonConstructor]
     public BatchForwardGeoCodeResult(BatchForwardGeoCodeRecord[] results)

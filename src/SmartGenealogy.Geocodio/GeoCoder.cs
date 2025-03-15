@@ -15,10 +15,10 @@ public class GeoCoder
     private string _apiKey;
     private HttpClient _httpClient;
 
-    const string regularApiBase = "https://api.geocod.io/";
-    const string hippaApiBase = "https://api-hipaa.geocod.io/";
-    const string forwardGeocodeEndpoint = "geocode/";
-    const string reverseGeocodeEndpoint = "reverse/";
+    private const string regularApiBase = "https://api.geocod.io/";
+    private const string hippaApiBase = "https://api-hipaa.geocod.io/";
+    private const string forwardGeocodeEndpoint = "geocode/";
+    private const string reverseGeocodeEndpoint = "reverse/";
     public const string ClientGeocodioApiVersionPrefix = "v1.7";
 
     public string ClientGeocodioApiUrl { get; }
@@ -46,7 +46,9 @@ public class GeoCoder
     /// Method used to forward geocode a single address.
     /// </summary>
     /// <param name="addressToGeocode">The address we want to forward geocode.</param>
-    /// <param name="fieldSettings">Our field settings object used to determine which additional data fields we want to query.</param>
+    /// <param name="fieldSettings">
+    /// Our field settings object used to determine which additional data fields we want to query.
+    /// </param>
     /// <returns>The results returned from Geocodio.</returns>
     public async Task<BatchForwardGeoCodeResult> ForwardGeocodeAsync(string addressToGeocode, GeocodioDataFieldSettings fieldSettings)
     {
@@ -66,7 +68,9 @@ public class GeoCoder
     /// Method used to batch forward geocode a bunch of addresses.
     /// </summary>
     /// <param name="inputAddresses">A list of address strings.</param>
-    /// <param name="fieldSettings">Our field settings object used to determine which additional data fields we want to query.</param>
+    /// <param name="fieldSettings">
+    /// Our field settings object used to determine which additional data fields we want to query.
+    /// </param>
     /// <returns>The results returned from Geocodio.</returns>
     public async Task<BatchForwardGeoCodeResult> ForwardGeocodeAsync(List<string> inputAddresses, GeocodioDataFieldSettings fieldSettings)
     {
@@ -115,7 +119,6 @@ public class GeoCoder
         return await response.Content.ReadAsStringAsync();
     }
 
-
     public async Task<BatchReverseGeoCodingResult> ReverseGeocodeAsync(string latLong, GeocodioDataFieldSettings fieldSettings)
     {
         var fieldsQuery = this.PrepareDataFieldsQueryString(fieldSettings);
@@ -130,10 +133,15 @@ public class GeoCoder
     }
 
     /// <summary>
-    /// Method which handles reverse geo-coding a list of lat-long strings in decimal degrees format i.e. "48.434325, -76.434543"
+    /// Method which handles reverse geo-coding a list of lat-long strings in decimal degrees format
+    /// i.e. "48.434325, -76.434543"
     /// </summary>
-    /// <param name="inputAddresses">Our list of points to reverse geo-code. Strings in decimal degrees format i.e. "48.434325, -76.434543"</param>
-    /// <param name="fieldSettings">Our field settings object used to determine which additional data fields we want to query.</param>
+    /// <param name="inputAddresses">
+    /// Our list of points to reverse geo-code. Strings in decimal degrees format i.e. "48.434325, -76.434543"
+    /// </param>
+    /// <param name="fieldSettings">
+    /// Our field settings object used to determine which additional data fields we want to query.
+    /// </param>
     /// <returns>The results from Geocodio.</returns>
     public async Task<BatchReverseGeoCodingResult> ReverseGeocodeAsync(List<string> inputAddresses, GeocodioDataFieldSettings fieldSettings)
     {
@@ -166,8 +174,8 @@ public class GeoCoder
 
     private async Task<string> BatchReverseGeocodeWebRequest(string jsonPostData, string fieldQueryString)
     {
-        // Pass empty string as second parameter; locations to reverse geocode
-        // are passed as payload argument to HttpClient
+        // Pass empty string as second parameter; locations to reverse geocode are passed as payload
+        // argument to HttpClient
         var queryString = PrepareWebQueryString(GeocodingOperationType.BatchReverse, "", fieldQueryString);
 
         var url = Path.Combine(reverseGeocodeEndpoint, queryString);
@@ -185,9 +193,12 @@ public class GeoCoder
     }
 
     /// <summary>
-    /// Method used to prepare the additional (and optional) field components of our query, for things like Census or School district fields.
+    /// Method used to prepare the additional (and optional) field components of our query, for
+    /// things like Census or School district fields.
     /// </summary>
-    /// <param name="fieldSettings">Our field settings object used to determine which additional data fields we want to query.</param>
+    /// <param name="fieldSettings">
+    /// Our field settings object used to determine which additional data fields we want to query.
+    /// </param>
     /// <returns>A formatted string which will be appended to the URL when hitting Geocodio.</returns>
     public string PrepareDataFieldsQueryString(GeocodioDataFieldSettings fieldSettings)
     {

@@ -4,9 +4,9 @@ namespace SmartGenealogy.Views.Places;
 
 public partial class EditPlacePage : ContentPage
 {
-	public EditPlacePage(EditPlaceViewModel viewModel)
-	{
-		InitializeComponent();
+    public EditPlacePage(EditPlaceViewModel viewModel)
+    {
+        InitializeComponent();
         BindingContext = viewModel;
     }
 }

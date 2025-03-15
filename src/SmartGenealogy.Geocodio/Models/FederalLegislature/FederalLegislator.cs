@@ -28,10 +28,13 @@ public class FederalLegislator
 
     public string Type { get; set; }
     public Bio Bio { get; set; }
+
     [JsonPropertyName("contact")]
     public ContactInfo ContactInfo { get; set; }
+
     [JsonPropertyName("social")]
     public SocialNetworkInfo SocialNetworkInfo { get; set; }
+
     public References References { get; set; }
     public string Source { get; set; }
 }

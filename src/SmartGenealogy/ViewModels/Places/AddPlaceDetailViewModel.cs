@@ -13,16 +13,16 @@ public partial class AddPlaceDetailViewModel : ObservableObject
     private readonly GeocodeService _geocodeService;
 
     [ObservableProperty]
-    Place place;
+    private Place place;
 
     [ObservableProperty]
-    string? name;
+    private string? name;
 
     [ObservableProperty]
-    string? address;
+    private string? address;
 
     [ObservableProperty]
-    string? notes;
+    private string? notes;
 
     public AddPlaceDetailViewModel(PlaceDetailService placeDetailService, GeocodeService geocodeService)
     {

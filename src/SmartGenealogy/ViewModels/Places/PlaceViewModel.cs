@@ -17,16 +17,16 @@ public partial class PlaceViewModel : ObservableObject
     private readonly GeocodeService _geocodeService;
 
     [ObservableProperty]
-    int placeId;
+    private int placeId;
 
     [ObservableProperty]
-    Place? place;
+    private Place? place;
 
     [ObservableProperty]
     private ObservableCollection<PlaceDetail> _placeDetails;
 
     [ObservableProperty]
-    bool isEdited;
+    private bool isEdited;
 
     public PlaceViewModel(
         PlaceService placeService,
@@ -52,7 +52,7 @@ public partial class PlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task EditPlace()
+    private async Task EditPlace()
     {
         if (Place == null)
             return;
@@ -64,7 +64,7 @@ public partial class PlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task GeocodePlace()
+    private async Task GeocodePlace()
     {
         var geocodeResult = await _geocodeService.GetPlaceAsync($"{Place!.City}, {Place!.State}");
 
@@ -76,7 +76,7 @@ public partial class PlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task AddPlaceDetail()
+    private async Task AddPlaceDetail()
     {
         if (Place == null)
             return;
@@ -88,7 +88,7 @@ public partial class PlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task GoToPlaceDetail(PlaceDetail placeDetail)
+    private async Task GoToPlaceDetail(PlaceDetail placeDetail)
     {
         if (placeDetail == null)
             return;
@@ -100,7 +100,7 @@ public partial class PlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task DeletePlaceDetail(PlaceDetail placeDetail)
+    private async Task DeletePlaceDetail(PlaceDetail placeDetail)
     {
         if (placeDetail == null)
             return;
@@ -108,7 +108,6 @@ public partial class PlaceViewModel : ObservableObject
         await _placeDetailService.DeletePlaceDetailAsync(placeDetail);
         PlaceDetails.Remove(placeDetail);
     }
-
 
     public async Task OnNavigatedToAsync()
     {

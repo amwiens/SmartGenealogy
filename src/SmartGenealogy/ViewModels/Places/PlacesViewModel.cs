@@ -42,7 +42,7 @@ public partial class PlacesViewModel : ObservableObject, INavigationAwareAsync
     }
 
     [RelayCommand]
-    async Task GoToPlace(Place place)
+    private async Task GoToPlace(Place place)
     {
         if (place == null)
             return;
@@ -54,7 +54,7 @@ public partial class PlacesViewModel : ObservableObject, INavigationAwareAsync
     }
 
     [RelayCommand]
-    async Task DeletePlace(Place place)
+    private async Task DeletePlace(Place place)
     {
         if (place == null)
             return;

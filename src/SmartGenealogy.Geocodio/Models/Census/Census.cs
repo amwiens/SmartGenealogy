@@ -3,7 +3,8 @@
 namespace SmartGenealogy.Geocodio.Models.Census;
 
 /// <summary>
-/// JSON backer class used when deserializing responses from Geocodio. Contains items related to the US Census.
+/// JSON backer class used when deserializing responses from Geocodio. Contains items related to the
+/// US Census.
 /// </summary>
 public class Census
 {

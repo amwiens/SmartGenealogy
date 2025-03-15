@@ -9,7 +9,8 @@ namespace SmartGenealogy.Geocodio.ForwardGeocoding;
 /// </summary>
 public class ForwardGeoCodeInput
 {
-    private ForwardGeoCodeInput() { }
+    private ForwardGeoCodeInput()
+    { }
 
     [JsonConstructor]
     public ForwardGeoCodeInput(AddressComponent input, string formattedAddress)
@@ -19,6 +20,7 @@ public class ForwardGeoCodeInput
     }
 
     public AddressComponent? Input { get; set; }
+
     [JsonPropertyName("formatted_address")]
     public string? FormattedAddress { get; set; }
 }

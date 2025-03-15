@@ -6,13 +6,12 @@ namespace SmartGenealogy.Services;
 
 public class GeocodeService
 {
-    static string geocodioApiKey = "<insert API key here>";
+    private static string geocodioApiKey = "<insert API key here>";
 
     public async Task<GeocodedPlace> GetPlaceAsync(string place)
     {
         var result = new GeocodedPlace();
 
-        //BatchForwardGeoCodeResult data = new();
         var geoCoder = new GeoCoder(geocodioApiKey, ApiClientType.RegularApi);
         var fields = GeocodioDataFieldSettings.CreateDataFieldSettings();
         try

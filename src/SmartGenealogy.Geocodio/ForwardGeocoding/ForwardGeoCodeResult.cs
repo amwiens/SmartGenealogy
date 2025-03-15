@@ -9,7 +9,8 @@ namespace SmartGenealogy.Geocodio.ForwardGeocoding;
 /// </summary>
 public class ForwardGeoCodeResult
 {
-    private ForwardGeoCodeResult() { }
+    private ForwardGeoCodeResult()
+    { }
 
     [JsonConstructor]
     public ForwardGeoCodeResult(ForwardGeoCodeInput input, GeoCodeInfo[] results)
@@ -20,7 +21,9 @@ public class ForwardGeoCodeResult
 
     [JsonPropertyName("input")]
     public ForwardGeoCodeInput? Input { get; set; }
+
     [JsonPropertyName("results")]
     public GeoCodeInfo[]? Results { get; set; }
+
     public string[]? _warnings { get; set; }
 }

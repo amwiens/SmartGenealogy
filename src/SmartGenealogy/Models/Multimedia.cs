@@ -6,6 +6,7 @@ public class Multimedia
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
+
     public int MediaType { get; set; }
     public string? MediaPath { get; set; }
     public string? MediaFile { get; set; }

@@ -7,7 +7,8 @@ namespace SmartGenealogy.Geocodio.Models.SchoolDistrict;
 /// </summary>
 public class SchoolDistricts
 {
-    private SchoolDistricts() { }
+    private SchoolDistricts()
+    { }
 
     [JsonConstructor]
     public SchoolDistricts(
@@ -22,8 +23,10 @@ public class SchoolDistricts
 
     [JsonPropertyName("unified")]
     public SchoolDistrict? Unified { get; set; }
+
     [JsonPropertyName("elementary")]
     public SchoolDistrict? Elementary { get; set; }
+
     [JsonPropertyName("secondary")]
     public SchoolDistrict? Secondary { get; set; }
 }

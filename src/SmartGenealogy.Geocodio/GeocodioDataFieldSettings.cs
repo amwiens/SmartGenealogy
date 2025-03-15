@@ -1,8 +1,8 @@
 ﻿namespace SmartGenealogy.Geocodio;
 
 /// <summary>
-/// A class which holds and validates the Geocodio datafield keys used when querying additional data items
-/// such as Census or School district information.
+/// A class which holds and validates the Geocodio datafield keys used when querying additional data
+/// items such as Census or School district information.
 /// </summary>
 public class GeocodioDataFieldSettings
 {
@@ -59,8 +59,8 @@ public class GeocodioDataFieldSettings
     }
 
     /// <summary>
-    /// Create a fields object to use when sending requests to Geocodio. This object controls which data
-    /// fields (census, Congress, etc.) are queried when sending requests.
+    /// Create a fields object to use when sending requests to Geocodio. This object controls which
+    /// data fields (census, Congress, etc.) are queried when sending requests.
     /// </summary>
     /// <param name="defaultAllFieldsStatusToInclude"></param>
     /// <returns></returns>

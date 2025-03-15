@@ -17,7 +17,7 @@ public partial class EditPlaceViewModel : ObservableObject
     private string originalCountry = string.Empty;
 
     [ObservableProperty]
-    Place? place;
+    private Place? place;
 
     partial void OnPlaceChanged(Place? value)
     {
@@ -48,7 +48,7 @@ public partial class EditPlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task SavePlace()
+    private async Task SavePlace()
     {
         if (Place == null)
             return;
@@ -68,7 +68,7 @@ public partial class EditPlaceViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task DeletePlace()
+    private async Task DeletePlace()
     {
         if (Place == null)
             return;

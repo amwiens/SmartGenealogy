@@ -28,16 +28,22 @@ public class GeoCodeInfo
 
     [JsonPropertyName("address_components")]
     public AddressComponent AddressComponents { get; set; }
+
     [JsonPropertyName("formatted_address")]
     public string? FormattedAddress { get; set; }
+
     [JsonPropertyName("location")]
     public Location Location { get; set; }
+
     [JsonPropertyName("accuracy")]
     public double Accuracy { get; set; }
+
     [JsonPropertyName("accuracy_type")]
     public string? AccuracyType { get; set; }
+
     [JsonPropertyName("source")]
     public string? Source { get; set; }
+
     [JsonPropertyName("fields")]
     public Fields Fields { get; set; }
 }

@@ -16,6 +16,7 @@ public class BatchReverseGeoCodeResponse
 
     [JsonPropertyName("query")]
     public string Query { get; set; }
+
     [JsonPropertyName("reponse")]
     public ReverseGeoCodeResult Response { get; set; }
 }

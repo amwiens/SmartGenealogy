@@ -8,8 +8,10 @@ namespace SmartGenealogy.Geocodio.Models.Census.CanadianCensus;
 public class Riding
 {
     public string? Code { get; set; }
+
     [JsonPropertyName("name_french")]
     public string? NameFrench { get; set; }
+
     [JsonPropertyName("name_english")]
     public string? NameEnglish { get; set; }
 }

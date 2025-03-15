@@ -3,5 +3,6 @@
 public interface INavigationAwareAsync
 {
     Task OnNavigatedToAsync();
+
     Task OnNavigatedFromAsync();
 }

@@ -6,7 +6,7 @@ namespace SmartGenealogy.Services;
 
 public class PlaceDetailService
 {
-    SQLiteAsyncConnection Database;
+    private SQLiteAsyncConnection Database;
 
     public PlaceDetailService()
     {
@@ -15,8 +15,8 @@ public class PlaceDetailService
         Database = new SQLiteAsyncConnection(databasePath);
     }
 
-    bool isInitialized;
-    SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
+    private bool isInitialized;
+    private SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
     public async Task InitializeAsync()
     {
@@ -35,7 +35,7 @@ public class PlaceDetailService
         }
     }
 
-    async Task Init()
+    private async Task Init()
     {
         await Database.CreateTableAsync<PlaceDetail>();
     }

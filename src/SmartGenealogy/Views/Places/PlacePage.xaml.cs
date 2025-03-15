@@ -4,14 +4,14 @@ namespace SmartGenealogy.Views.Places;
 
 public partial class PlacePage : ContentPage
 {
-	private readonly PlaceViewModel viewModel;
+    private readonly PlaceViewModel viewModel;
 
-	public PlacePage(PlaceViewModel viewModel)
-	{
-		InitializeComponent();
-		this.viewModel = viewModel;
+    public PlacePage(PlaceViewModel viewModel)
+    {
+        InitializeComponent();
+        this.viewModel = viewModel;
         BindingContext = viewModel;
-	}
+    }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {

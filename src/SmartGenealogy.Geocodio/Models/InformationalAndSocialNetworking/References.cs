@@ -36,24 +36,34 @@ public class References
 
     [JsonPropertyName("bioguide_id")]
     public string BioguideId { get; set; }
+
     [JsonPropertyName("thomas_id")]
     public string ThomasId { get; set; }
+
     [JsonPropertyName("opensecrets_id")]
     public string OpenSecretsId { get; set; }
+
     [JsonPropertyName("lis_id")]
     public string LisId { get; set; }
+
     [JsonPropertyName("cspan_id")]
     public string CspanId { get; set; }
+
     [JsonPropertyName("govtrack_id")]
     public string GovtrackId { get; set; }
+
     [JsonPropertyName("votesmart_id")]
     public string VotesmartId { get; set; }
+
     [JsonPropertyName("ballotpedia_id")]
     public string BallotpediaId { get; set; }
+
     [JsonPropertyName("washington_post_id")]
     public string WashingtonPostId { get; set; }
+
     [JsonPropertyName("icpsr_id")]
     public string IcpsrId { get; set; }
+
     [JsonPropertyName("wikipedia_id")]
     public string WikipediaId { get; set; }
 }

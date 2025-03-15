@@ -25,13 +25,18 @@ public class CongressionalDistrict
     }
 
     public string Name { get; set; }
+
     [JsonPropertyName("district_number")]
     public int DistrictNumber { get; set; }
+
     [JsonPropertyName("congress_number")]
     public string CongressNumber { get; set; }
+
     [JsonPropertyName("congress_years")]
     public string CongressYears { get; set; }
+
     public int Proportion { get; set; }
+
     [JsonPropertyName("current_legislators")]
     public FederalLegislator[] CurrentLegislators { get; set; }
 }

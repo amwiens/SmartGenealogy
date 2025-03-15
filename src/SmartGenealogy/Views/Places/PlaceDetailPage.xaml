@@ -34,7 +34,7 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Coordinate" />
+                            <Label FontSize="Small" Text="Coordinates" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GeocodePlaceDetailCommand}"

@@ -10,6 +10,7 @@ public class Division
     public string? Id { get; set; }
     public string? Name { get; set; }
     public string? Type { get; set; }
+
     [JsonPropertyName("type_description")]
     public string? TypeDescription { get; set; }
 }

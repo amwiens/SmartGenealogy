@@ -17,5 +17,6 @@ public class ReverseGeoCodeResult
 
     [JsonPropertyName("results")]
     public GeoCodeInfo[] Results { get; set; }
+
     public string[]? _warnings { get; set; }
 }
