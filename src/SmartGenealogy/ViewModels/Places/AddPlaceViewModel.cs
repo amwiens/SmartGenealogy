@@ -52,6 +52,11 @@ public partial class AddPlaceViewModel : ObservableObject
             DateChanged = DateTime.Now
         };
 
+        var directoryPath = Path.Combine(@"C:\Genealogy\Research\Places", place.Country!, place.State, place.County!, place.City);
+
+        if (!Directory.Exists(directoryPath))
+            Directory.CreateDirectory(directoryPath);
+
         await _placeService.AddPlaceAsync(place);
 
         var parameters = new Dictionary<string, object>

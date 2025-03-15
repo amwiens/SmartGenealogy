@@ -44,11 +44,12 @@ public partial class AddPlaceDetailViewModel : ObservableObject
 
         var geocodeResult = await _geocodeService.GetPlaceAsync($"{Address}, {Place.City}, {Place.State}");
 
+        var placeDetailType = Enum.TryParse<PlaceDetailType>(@Type, out var parsedPlaceDetailType) ? parsedPlaceDetailType : PlaceDetailType.Other;
         var placeDetail = new PlaceDetail
         {
             PlaceId = Place.Id,
             Name = Name,
-            Type = Enum.TryParse<PlaceDetailType>(@Type, out var parsedPlaceDetailType) ? parsedPlaceDetailType : PlaceDetailType.Other,
+            Type = placeDetailType,
             Address = Address,
             Notes = Notes,
             Latitude = geocodeResult.Latitude,
@@ -56,9 +57,34 @@ public partial class AddPlaceDetailViewModel : ObservableObject
             DateChanged = DateTime.Now
         };
 
+        var directoryPath = Path.Combine(@"C:\Genealogy\Research\Places", Place.Country!, Place.State!, Place.County!, Place.City!, Name);
+
+        if (!Directory.Exists(directoryPath))
+            Directory.CreateDirectory(directoryPath);
+
         await _placeDetailService.AddPlaceDetailAsync(placeDetail);
 
-        var parameters = new Dictionary<string, object>
+        switch (placeDetailType)
+        {
+            case PlaceDetailType.Cemetery:
+            case PlaceDetailType.Church:
+            case PlaceDetailType.Newspaper:
+            case PlaceDetailType.Other:
+            case PlaceDetailType.Home:
+            case PlaceDetailType.Business:
+            case PlaceDetailType.Hospital:
+                break;
+            case PlaceDetailType.School:
+                var yearbookDirectoryPath = Path.Combine(directoryPath, "Yearbooks");
+                if (!Directory.Exists(yearbookDirectoryPath))
+                    Directory.CreateDirectory(yearbookDirectoryPath);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException("PlaceDetailType");
+        }
+
+    var parameters = new Dictionary<string, object>
         {
             { "IsEdited", true }
         };
