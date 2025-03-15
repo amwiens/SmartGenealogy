@@ -10,6 +10,7 @@ namespace SmartGenealogy.ViewModels.Places;
 public partial class EditPlaceViewModel : ObservableObject
 {
     private readonly PlaceService _placeService;
+    private readonly PlaceDetailService _placeDetailService;
     private readonly GeocodeService _geocodeService;
     private string originalCity = string.Empty;
     private string originalCounty = string.Empty;
@@ -30,9 +31,13 @@ public partial class EditPlaceViewModel : ObservableObject
         }
     }
 
-    public EditPlaceViewModel(PlaceService placeService, GeocodeService geocodeService)
+    public EditPlaceViewModel(
+        PlaceService placeService,
+        PlaceDetailService placeDetailService,
+        GeocodeService geocodeService)
     {
         _placeService = placeService;
+        _placeDetailService = placeDetailService;
         _geocodeService = geocodeService;
     }
 
@@ -80,6 +85,13 @@ public partial class EditPlaceViewModel : ObservableObject
 
         if (answer)
         {
+            var placeDetails = await _placeDetailService.GetPlaceDetailsByPlaceIdAsync(Place.Id);
+
+            foreach (var placeDetail in placeDetails)
+            {
+                await _placeDetailService.DeletePlaceDetailAsync(placeDetail);
+            }
+
             await _placeService.DeletePlaceAsync(Place);
 
             var parameters = new Dictionary<string, object>
