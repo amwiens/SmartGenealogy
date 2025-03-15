@@ -11,6 +11,7 @@
             <Border Padding="10" StrokeShape="RoundRectangle 10">
                 <VerticalStackLayout Spacing="10">
                     <Entry Placeholder="Name" Text="{Binding Name}" />
+                    <Picker ItemsSource="{Binding PlaceDetailTypes}" SelectedItem="{Binding Type}" />
                     <Entry Placeholder="Address" Text="{Binding Address}" />
                     <Entry Placeholder="Notes" Text="{Binding Notes}" />
                     <Button Command="{Binding SavePlaceDetailCommand}" Text="Save Place Detail" />

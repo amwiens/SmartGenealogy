@@ -4,15 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    Title="EditPlaceDetailPage"
+    Title="Edit Place Details"
     x:DataType="viewmodel:EditPlaceDetailViewModel">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Border Padding="10" StrokeShape="RoundRectangle 10">
                 <VerticalStackLayout Spacing="10">
-                    <Entry Placeholder="Name" Text="{Binding PlaceDetail.Name}" />
-                    <Entry Placeholder="Address" Text="{Binding PlaceDetail.Address}" />
-                    <Entry Placeholder="Notes" Text="{Binding PlaceDetail.Notes}" />
+                    <Entry Placeholder="Name" Text="{Binding Name}" />
+                    <Picker ItemsSource="{Binding PlaceDetailTypes}" SelectedItem="{Binding Type}" />
+                    <Entry Placeholder="Address" Text="{Binding Address}" />
+                    <Entry Placeholder="Notes" Text="{Binding Notes}" />
                     <Button
                         Margin="0,20,0,0"
                         Command="{Binding SavePlaceDetailCommand}"

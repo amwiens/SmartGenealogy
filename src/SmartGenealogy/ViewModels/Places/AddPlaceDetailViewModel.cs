@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using SmartGenealogy.Enums;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 
@@ -19,10 +20,15 @@ public partial class AddPlaceDetailViewModel : ObservableObject
     private string? name;
 
     [ObservableProperty]
+    private string type;
+
+    [ObservableProperty]
     private string? address;
 
     [ObservableProperty]
     private string? notes;
+
+    public List<string> PlaceDetailTypes { get; } = Enum.GetNames<PlaceDetailType>().Order().ToList();
 
     public AddPlaceDetailViewModel(PlaceDetailService placeDetailService, GeocodeService geocodeService)
     {
@@ -38,10 +44,11 @@ public partial class AddPlaceDetailViewModel : ObservableObject
 
         var geocodeResult = await _geocodeService.GetPlaceAsync($"{Address}, {Place.City}, {Place.State}");
 
-        var placeDetail = new Models.PlaceDetail
+        var placeDetail = new PlaceDetail
         {
             PlaceId = Place.Id,
             Name = Name,
+            Type = Enum.TryParse<PlaceDetailType>(@Type, out var parsedPlaceDetailType) ? parsedPlaceDetailType : PlaceDetailType.Other,
             Address = Address,
             Notes = Notes,
             Latitude = geocodeResult.Latitude,

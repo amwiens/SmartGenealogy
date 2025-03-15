@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using SmartGenealogy.Enums;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 
@@ -11,19 +12,46 @@ public partial class EditPlaceDetailViewModel : ObservableObject
 {
     private readonly PlaceDetailService _placeDetailService;
     private string originalName = string.Empty;
+    private string originalPlaceDetailType = string.Empty;
     private string originalAddress = string.Empty;
     private string originalNotes = string.Empty;
 
     [ObservableProperty]
     private PlaceDetail? placeDetail;
 
+    [ObservableProperty]
+    private string? name;
+
+    [ObservableProperty]
+    private string type;
+
+    [ObservableProperty]
+    private string? address;
+
+    [ObservableProperty]
+    private string? notes;
+
+    public List<string> PlaceDetailTypes { get; } = Enum.GetNames<PlaceDetailType>().Order().ToList();
+
+    public bool isInitialLoad = true;
+
     partial void OnPlaceDetailChanged(PlaceDetail? value)
     {
         if (value != null)
         {
-            originalName = value.Name ?? string.Empty;
-            originalAddress = value.Address ?? string.Empty;
-            originalNotes = value.Notes ?? string.Empty;
+            if (isInitialLoad)
+            {
+                Name = PlaceDetail!.Name;
+                Type = Enum.GetName(typeof(PlaceDetailType), PlaceDetail!.Type)!;
+                Address = PlaceDetail!.Address;
+                Notes = PlaceDetail!.Notes;
+                isInitialLoad = false;
+            }
+
+            originalName = Name ?? string.Empty;
+            originalPlaceDetailType = Type ?? string.Empty;
+            originalAddress = Address ?? string.Empty;
+            originalNotes = Notes ?? string.Empty;
         }
     }
 
@@ -38,6 +66,7 @@ public partial class EditPlaceDetailViewModel : ObservableObject
             return false;
 
         return !string.Equals(PlaceDetail.Name ?? string.Empty, originalName) ||
+            !string.Equals(PlaceDetail.Type, originalPlaceDetailType) ||
             !string.Equals(PlaceDetail.Address ?? string.Empty, originalAddress) ||
             !string.Equals(PlaceDetail.Notes ?? string.Empty, originalNotes);
     }
@@ -51,6 +80,10 @@ public partial class EditPlaceDetailViewModel : ObservableObject
         var hasPlaceChanged = HasPlaceChanged();
         if (hasPlaceChanged)
         {
+            PlaceDetail.Name = Name;
+            PlaceDetail.Type = Enum.TryParse<PlaceDetailType>(@Type, out var parsedPlaceDetailType) ? parsedPlaceDetailType : PlaceDetailType.Other;
+            PlaceDetail.Address = Address;
+            PlaceDetail.Notes = Notes;
             PlaceDetail.DateChanged = DateTime.Now;
             await _placeDetailService.UpdatePlaceDetailAsync(PlaceDetail);
         }
