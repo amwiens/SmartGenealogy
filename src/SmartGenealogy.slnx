@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SmartGenealogy.Geocodio/SmartGenealogy.Geocodio.csproj" />
+  <Project Path="SmartGenealogy.Images/SmartGenealogy.Images.csproj" />
+  <Project Path="SmartGenealogy/SmartGenealogy.csproj" />
+</Solution>
