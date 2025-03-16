@@ -6,4 +6,6 @@ This project uses the new solution format. To use this, you might need to enable
 
 ![Visual Studio Options](/assets/images/VSOptions.png "Visual Studio Options")
 
-Tesseract is used for OCR of images. 
+Tesseract is used for OCR of images. This needs trained language models to be downloaded in order to run which you can download [here](https://github.com/tesseract-ocr/tessdata).
+
+[Geocodio](https://www.geocod.io/) is used for geocoding places within the United States. The API key is set in the settings area of the application.

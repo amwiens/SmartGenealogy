@@ -52,7 +52,19 @@ public partial class AddPlaceViewModel : ObservableObject
             DateChanged = DateTime.Now
         };
 
-        var directoryPath = Path.Combine(@"C:\Genealogy\Research\Places", place.Country!, place.State, place.County!, place.City);
+        var placesBaseDirectory = SettingsManager.LoadSettings().PlacesBaseDirectory;
+
+        if (string.IsNullOrEmpty(placesBaseDirectory))
+        {
+            await Application.Current!.Windows[0].Page!.DisplayAlert(
+                "Add directory",
+                $"Places base directory is not set",
+                "Ok");
+
+            return;
+        }
+
+        var directoryPath = Path.Combine(placesBaseDirectory, place.Country!, place.State, place.County!, place.City);
 
         if (!Directory.Exists(directoryPath))
             Directory.CreateDirectory(directoryPath);

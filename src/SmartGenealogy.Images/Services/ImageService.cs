@@ -4,14 +4,21 @@ namespace SmartGenealogy.Images.Services;
 
 public class ImageService
 {
-    public string GetTextFromImage(string imagePath)
+    public string GetTextFromImage(string imagePath, string languageDataPath)
     {
-        var engine = new TesseractEngine(@"C:\Code\tessdata-4.1.0", "eng");
+        var text = string.Empty;
 
-        var image = Pix.LoadFromFile(imagePath);
-        var page = engine.Process(image);
+        if (!string.IsNullOrEmpty(languageDataPath))
+        {
+            var engine = new TesseractEngine(languageDataPath, "eng");
 
-        var text = page.GetText();
+            var image = Pix.LoadFromFile(imagePath);
+            var page = engine.Process(image);
+
+            text = page.GetText();
+
+            engine.Dispose();
+        }
 
         return text;
     }

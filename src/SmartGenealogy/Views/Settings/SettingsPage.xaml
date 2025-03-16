@@ -8,9 +8,25 @@
     Title="Settings"
     x:DataType="viewmodel:SettingsViewModel">
     <VerticalStackLayout>
+
         <Label
+            FontSize="Medium"
             HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
+            Text="Images"
             VerticalOptions="Center" />
+
+        <Label Text="Tesseract language file location" VerticalOptions="Center" />
+        <Entry Text="{Binding Settings.TesseractLanguageFileLocation}" />
+
+        <Label
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            Text="Places"
+            VerticalOptions="Center" />
+
+        <Label Text="Geocodio API Key" VerticalOptions="Center" />
+        <Entry Text="{Binding Settings.GeocodioApiKey}" />
+        <Label Text="Places Base Directory" VerticalOptions="Center" />
+        <Entry Text="{Binding Settings.PlacesBaseDirectory}" />
     </VerticalStackLayout>
 </ContentPage>

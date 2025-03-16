@@ -68,7 +68,9 @@ public partial class AddMediaViewModel : ObservableObject
     [RelayCommand]
     private void GetText()
     {
-        Text = _imageService.GetTextFromImage(FilePath!);
+        var languageFilePath = SettingsManager.LoadSettings().TesseractLanguageFileLocation;
+
+        Text = _imageService.GetTextFromImage(FilePath!, languageFilePath!);
     }
 
     [RelayCommand]

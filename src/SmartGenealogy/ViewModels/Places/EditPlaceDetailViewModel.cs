@@ -101,7 +101,7 @@ public partial class EditPlaceDetailViewModel : ObservableObject
         if (PlaceDetail == null)
             return;
 
-        bool answer = await Application.Current.MainPage.DisplayAlert(
+        bool answer = await Application.Current!.Windows[0].Page!.DisplayAlert(
             "Delete Place",
             $"You you sure you want to delete {PlaceDetail.Name}?",
             "Yes", "No");
