@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+
+using Microsoft.Extensions.Logging;
 
 using SmartGenealogy.Images.Services;
 using SmartGenealogy.Services;
@@ -19,7 +21,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -44,7 +47,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<EditPlaceDetailViewModel>();
 		builder.Services.AddSingleton<MediaViewModel>();
 		builder.Services.AddTransient<AddMediaViewModel>();
-		builder.Services.AddSingleton<SettingsViewModel>();
+		builder.Services.AddTransient<SettingsViewModel>();
 
         // Pages
         builder.Services.AddSingleton<MainPage>();
@@ -56,7 +59,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<EditPlaceDetailPage>();
 		builder.Services.AddSingleton<MediaPage>();
 		builder.Services.AddTransient<AddMediaPage>();
-		builder.Services.AddSingleton<SettingsPage>();
+		builder.Services.AddTransient<SettingsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

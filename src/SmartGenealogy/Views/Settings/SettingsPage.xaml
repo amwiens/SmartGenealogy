@@ -16,7 +16,13 @@
             VerticalOptions="Center" />
 
         <Label Text="Tesseract language file location" VerticalOptions="Center" />
-        <Entry Text="{Binding Settings.TesseractLanguageFileLocation}" />
+        <Grid ColumnDefinitions="*,Auto">
+            <Entry Text="{Binding TesseractLanguageFileLocation}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding PickTesseractFolderCommand}"
+                Text="Get Folder" />
+        </Grid>
 
         <Label
             FontSize="Medium"
@@ -25,8 +31,14 @@
             VerticalOptions="Center" />
 
         <Label Text="Geocodio API Key" VerticalOptions="Center" />
-        <Entry Text="{Binding Settings.GeocodioApiKey}" />
+        <Entry Text="{Binding GeocodioApiKey}" />
         <Label Text="Places Base Directory" VerticalOptions="Center" />
-        <Entry Text="{Binding Settings.PlacesBaseDirectory}" />
+        <Grid ColumnDefinitions="*,Auto">
+            <Entry Text="{Binding PlacesBaseDirectory}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding PickPlacesBaseFolderCommand}"
+                Text="Get Folder" />
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
