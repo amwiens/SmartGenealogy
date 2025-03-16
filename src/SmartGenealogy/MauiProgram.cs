@@ -5,8 +5,10 @@ using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Media;
 using SmartGenealogy.ViewModels.Places;
+using SmartGenealogy.ViewModels.Settings;
 using SmartGenealogy.Views.Media;
 using SmartGenealogy.Views.Places;
+using SmartGenealogy.Views.Settings;
 
 namespace SmartGenealogy;
 
@@ -40,8 +42,9 @@ public static class MauiProgram
         builder.Services.AddTransient<AddPlaceDetailViewModel>();
         builder.Services.AddTransient<EditPlaceViewModel>();
 		builder.Services.AddTransient<EditPlaceDetailViewModel>();
-		builder.Services.AddTransient<MediaViewModel>();
+		builder.Services.AddSingleton<MediaViewModel>();
 		builder.Services.AddTransient<AddMediaViewModel>();
+		builder.Services.AddSingleton<SettingsViewModel>();
 
         // Pages
         builder.Services.AddSingleton<MainPage>();
@@ -52,7 +55,8 @@ public static class MauiProgram
         builder.Services.AddTransient<EditPlacePage>();
 		builder.Services.AddTransient<EditPlaceDetailPage>();
 		builder.Services.AddSingleton<MediaPage>();
-		builder.Services.AddSingleton<AddMediaPage>();
+		builder.Services.AddTransient<AddMediaPage>();
+		builder.Services.AddSingleton<SettingsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:SmartGenealogy"
     xmlns:mediaviews="clr-namespace:SmartGenealogy.Views.Media"
     xmlns:placeviews="clr-namespace:SmartGenealogy.Views.Places"
+    xmlns:settingsviews="clr-namespace:SmartGenealogy.Views.Settings"
     Title="SmartGenealogy"
     Shell.FlyoutBehavior="Flyout">
 
@@ -23,5 +24,10 @@
         Title="Media"
         ContentTemplate="{DataTemplate mediaviews:MediaPage}"
         Route="MediaPage" />
+
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate settingsviews:SettingsPage}"
+        Route="SettingsPage" />
 
 </Shell>
