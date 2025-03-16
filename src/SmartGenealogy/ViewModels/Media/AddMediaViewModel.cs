@@ -47,6 +47,25 @@ public partial class AddMediaViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private async Task PickFileAsync()
+    {
+        try
+        {
+            var result = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                PickerTitle = "Select a file",
+                FileTypes = FilePickerFileType.Images
+            });
+
+            if (result != null)
+            {
+                FilePath = result.FullPath;
+            }
+        }
+        catch { }
+    }
+
+    [RelayCommand]
     private void GetText()
     {
         Text = _imageService.GetTextFromImage(FilePath!);

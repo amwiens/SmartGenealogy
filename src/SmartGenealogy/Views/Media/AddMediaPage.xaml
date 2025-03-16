@@ -15,7 +15,13 @@
             <VerticalStackLayout Padding="20" Spacing="10">
                 <Border Padding="10" StrokeShape="RoundRectangle 10">
                     <VerticalStackLayout Spacing="10">
-                        <Entry Placeholder="File Path" Text="{Binding FilePath}" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry Placeholder="File Path" Text="{Binding FilePath}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding PickFileCommand}"
+                                Text="Get File" />
+                        </Grid>
                         <Entry Placeholder="Caption" Text="{Binding Caption}" />
                         <Entry Placeholder="Date" Text="{Binding Date}" />
                         <Entry Placeholder="Ref Number" Text="{Binding RefNumber}" />
