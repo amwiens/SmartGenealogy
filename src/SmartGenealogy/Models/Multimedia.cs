@@ -14,6 +14,7 @@ public class Multimedia
     public string? Date { get; set; }
     public string? RefNumber { get; set; }
     public string? Text { get; set; }
+    public string? Description { get; set; }
     public DateTime? DateAdded { get; set; } = DateTime.Now;
     public DateTime? DateChanged { get; set; }
 }

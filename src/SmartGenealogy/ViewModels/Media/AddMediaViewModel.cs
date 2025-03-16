@@ -37,6 +37,14 @@ public partial class AddMediaViewModel : ObservableObject
     [ObservableProperty]
     private string? text;
 
+    [ObservableProperty]
+    private string? mediaType;
+
+    [ObservableProperty]
+    private string? description;
+
+    public List<string> MediaTypes { get; } = Enum.GetNames<MediaType>().Order().ToList();
+
     public AddMediaViewModel(MultimediaService multimediaService,
         MediaLinkService mediaLinkService,
         ImageService imageService)
@@ -88,6 +96,7 @@ public partial class AddMediaViewModel : ObservableObject
                 Date = Date,
                 RefNumber = RefNumber,
                 Text = Text,
+                Description = Description,
                 DateChanged = DateTime.Now
             };
 
