@@ -7,28 +7,25 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Place Detail"
     x:DataType="viewmodel:PlaceDetailViewModel">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Button
-                Command="{Binding EditPlaceDetailCommand}"
-                HorizontalOptions="End"
-                Text="Edit Place Detail" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Button
+            Command="{Binding EditPlaceDetailCommand}"
+            HorizontalOptions="End"
+            Text="Edit Place Detail" />
 
-            <Border StrokeShape="RoundRectangle 10">
-                <VerticalStackLayout Padding="20">
-                    <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
-                    <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
-                    <Label FontSize="Micro" Text="{Binding Place.City}" />
-                    <Label FontSize="Micro" Text="{Binding Place.County}" />
-                    <Label FontSize="Micro" Text="{Binding Place.State}" />
-                    <Label FontSize="Micro" Text="{Binding Place.Country}" />
-                </VerticalStackLayout>
-            </Border>
-            <Grid ColumnDefinitions="*,*">
-                <VerticalStackLayout
-                    Grid.Column="1"
-                    Padding="20"
-                    Spacing="10">
+        <Border StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout Padding="20">
+                <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
+                <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
+                <Label FontSize="Micro" Text="{Binding Place.City}" />
+                <Label FontSize="Micro" Text="{Binding Place.County}" />
+                <Label FontSize="Micro" Text="{Binding Place.State}" />
+                <Label FontSize="Micro" Text="{Binding Place.Country}" />
+            </VerticalStackLayout>
+        </Border>
+        <Grid ColumnDefinitions="*,*">
+            <ScrollView Grid.Column="1">
+                <VerticalStackLayout Padding="20" Spacing="10">
                     <Border
                         Margin="0,5"
                         Padding="10"
@@ -69,7 +66,22 @@
                         Margin="0,5"
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                            <Label FontSize="Small" Text="Media" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding AddMediaCommand}"
+                                HorizontalOptions="End"
+                                Text="Add Media" />
+
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Margin="0,5"
+                        Padding="10"
+                        StrokeShape="RoundRectangle 10">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
                             <Label FontSize="Small" Text="Dates" />
                             <Label
                                 Grid.Row="1"
@@ -140,7 +152,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>-->
                 </VerticalStackLayout>
-            </Grid>
-        </VerticalStackLayout>
-    </ScrollView>
+            </ScrollView>
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>

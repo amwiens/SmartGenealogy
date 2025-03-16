@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using SmartGenealogy.Enums;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 
@@ -56,6 +57,19 @@ public partial class PlaceDetailViewModel : ObservableObject
             { "PlaceDetail", PlaceDetail }
         };
         await Shell.Current.GoToAsync("EditPlaceDetailPage", parameters);
+    }
+
+    [RelayCommand]
+    private async Task AddMedia()
+    {
+        if (PlaceDetail == null)
+            return;
+        var parameters = new Dictionary<string, object>
+        {
+            { "OwnerType", OwnerType.PlaceDetail },
+            { "OwnerId", PlaceDetail.Id }
+        };
+        await Shell.Current.GoToAsync("AddMediaPage", parameters);
     }
 
     [RelayCommand]

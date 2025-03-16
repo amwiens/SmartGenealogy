@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy", "SmartGene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Geocodio", "SmartGenealogy.Geocodio\SmartGenealogy.Geocodio.csproj", "{07E357D0-90B8-E3B0-D45F-DE7EEE5DC53F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGenealogy.Images", "SmartGenealogy.Images\SmartGenealogy.Images.csproj", "{01E3BEA4-6FDE-4016-BC04-057E903AA6A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07E357D0-90B8-E3B0-D45F-DE7EEE5DC53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E357D0-90B8-E3B0-D45F-DE7EEE5DC53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E357D0-90B8-E3B0-D45F-DE7EEE5DC53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E3BEA4-6FDE-4016-BC04-057E903AA6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E3BEA4-6FDE-4016-BC04-057E903AA6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E3BEA4-6FDE-4016-BC04-057E903AA6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E3BEA4-6FDE-4016-BC04-057E903AA6A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

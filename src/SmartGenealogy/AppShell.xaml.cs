@@ -1,4 +1,5 @@
-﻿using SmartGenealogy.Views.Places;
+﻿using SmartGenealogy.Views.Media;
+using SmartGenealogy.Views.Places;
 
 namespace SmartGenealogy
 {
@@ -8,6 +9,7 @@ namespace SmartGenealogy
         {
             InitializeComponent();
 
+            Routing.RegisterRoute(nameof(AddMediaPage), typeof(AddMediaPage));
             Routing.RegisterRoute(nameof(AddPlacePage), typeof(AddPlacePage));
             Routing.RegisterRoute(nameof(AddPlaceDetailPage), typeof(AddPlaceDetailPage));
             Routing.RegisterRoute(nameof(EditPlacePage), typeof(EditPlacePage));

@@ -68,9 +68,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SmartGenealogy.Geocodio\SmartGenealogy.Geocodio.csproj" />
+	  <ProjectReference Include="..\SmartGenealogy.Images\SmartGenealogy.Images.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Media\AddMediaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Places\AddPlaceDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

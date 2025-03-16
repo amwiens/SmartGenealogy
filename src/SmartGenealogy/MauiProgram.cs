@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
+using SmartGenealogy.Images.Services;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Media;
@@ -24,7 +25,9 @@ public static class MauiProgram
 
 		// Services
 		builder.Services.AddSingleton<GeocodeService>();
+		builder.Services.AddSingleton<ImageService>();
 		builder.Services.AddSingleton<MultimediaService>();
+		builder.Services.AddSingleton<MediaLinkService>();
 		builder.Services.AddSingleton<PlaceService>();
         builder.Services.AddSingleton<PlaceDetailService>();
 
@@ -38,6 +41,7 @@ public static class MauiProgram
         builder.Services.AddTransient<EditPlaceViewModel>();
 		builder.Services.AddTransient<EditPlaceDetailViewModel>();
 		builder.Services.AddTransient<MediaViewModel>();
+		builder.Services.AddTransient<AddMediaViewModel>();
 
         // Pages
         builder.Services.AddSingleton<MainPage>();
@@ -48,6 +52,7 @@ public static class MauiProgram
         builder.Services.AddTransient<EditPlacePage>();
 		builder.Services.AddTransient<EditPlaceDetailPage>();
 		builder.Services.AddSingleton<MediaPage>();
+		builder.Services.AddSingleton<AddMediaPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

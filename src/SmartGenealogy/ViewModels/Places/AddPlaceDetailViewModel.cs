@@ -84,7 +84,7 @@ public partial class AddPlaceDetailViewModel : ObservableObject
                 throw new ArgumentOutOfRangeException("PlaceDetailType");
         }
 
-    var parameters = new Dictionary<string, object>
+        var parameters = new Dictionary<string, object>
         {
             { "IsEdited", true }
         };

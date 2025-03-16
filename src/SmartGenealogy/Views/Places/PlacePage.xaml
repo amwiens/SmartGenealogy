@@ -7,26 +7,23 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Place"
     x:DataType="viewmodel:PlaceViewModel">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Button
-                Command="{Binding EditPlaceCommand}"
-                HorizontalOptions="End"
-                Text="Edit Place" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Button
+            Command="{Binding EditPlaceCommand}"
+            HorizontalOptions="End"
+            Text="Edit Place" />
 
-            <Border StrokeShape="RoundRectangle 10">
-                <VerticalStackLayout Padding="20">
-                    <Label FontSize="Medium" Text="{Binding Place.City}" />
-                    <Label FontSize="Micro" Text="{Binding Place.County}" />
-                    <Label FontSize="Micro" Text="{Binding Place.State}" />
-                    <Label FontSize="Micro" Text="{Binding Place.Country}" />
-                </VerticalStackLayout>
-            </Border>
-            <Grid ColumnDefinitions="*,*">
-                <VerticalStackLayout
-                    Grid.Column="1"
-                    Padding="20"
-                    Spacing="10">
+        <Border StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout Padding="20">
+                <Label FontSize="Medium" Text="{Binding Place.City}" />
+                <Label FontSize="Micro" Text="{Binding Place.County}" />
+                <Label FontSize="Micro" Text="{Binding Place.State}" />
+                <Label FontSize="Micro" Text="{Binding Place.Country}" />
+            </VerticalStackLayout>
+        </Border>
+        <Grid ColumnDefinitions="*,*">
+            <ScrollView Grid.Column="1">
+                <VerticalStackLayout Padding="20" Spacing="10">
                     <Border
                         Margin="0,5"
                         Padding="10"
@@ -67,37 +64,28 @@
                         Margin="0,5"
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Dates" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                FontSize="Micro"
-                                Text="Date Created" />
-                            <Label
-                                Grid.Row="1"
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                            <Label FontSize="Small" Text="Media" />
+                            <Button
                                 Grid.Column="1"
-                                FontSize="Micro"
-                                Text="Date Updated" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding Place.DateAdded}" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding Place.DateChanged}" />
+                                Command="{Binding AddMediaCommand}"
+                                HorizontalOptions="End"
+                                Text="Add Media" />
+
                         </Grid>
                     </Border>
 
-                    <Button
-                        Command="{Binding AddPlaceDetailCommand}"
-                        HorizontalOptions="End"
-                        Text="Add Place Detail" />
+                    <Grid ColumnDefinitions="*,*">
+                        <Label
+                            FontSize="Medium"
+                            Text="Place Details"
+                            VerticalOptions="Center" />
+                        <Button
+                            Grid.Column="1"
+                            Command="{Binding AddPlaceDetailCommand}"
+                            HorizontalOptions="End"
+                            Text="Add Place Detail" />
+                    </Grid>
 
                     <CollectionView ItemsSource="{Binding PlaceDetails}">
                         <CollectionView.ItemTemplate>
@@ -137,8 +125,39 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
+                    <Border
+                        Margin="0,5"
+                        Padding="10"
+                        StrokeShape="RoundRectangle 10">
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                            <Label FontSize="Small" Text="Dates" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="Micro"
+                                Text="Date Created" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontSize="Micro"
+                                Text="Date Updated" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="{Binding Place.DateAdded}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontSize="Small"
+                                Text="{Binding Place.DateChanged}" />
+                        </Grid>
+                    </Border>
                 </VerticalStackLayout>
-            </Grid>
-        </VerticalStackLayout>
-    </ScrollView>
+            </ScrollView>
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>
