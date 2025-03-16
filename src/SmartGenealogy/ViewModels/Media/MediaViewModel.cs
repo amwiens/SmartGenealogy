@@ -1,12 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 
 namespace SmartGenealogy.ViewModels.Media;
 
+[QueryProperty(nameof(IsEdited), "IsEdited")]
 public partial class MediaViewModel : ObservableObject, INavigationAwareAsync
 {
     private readonly MultimediaService _multimediaService;
@@ -31,6 +33,15 @@ public partial class MediaViewModel : ObservableObject, INavigationAwareAsync
         {
             Multimedia.Add(item);
         }
+    }
+
+    [RelayCommand]
+    private async Task AddMedia()
+    {
+        var parameters = new Dictionary<string, object>
+        {
+        };
+        await Shell.Current.GoToAsync("AddMediaPage", parameters);
     }
 
     public async Task OnNavigatedToAsync()

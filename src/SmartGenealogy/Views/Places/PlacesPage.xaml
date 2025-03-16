@@ -7,14 +7,14 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Places"
     x:DataType="viewmodel:PlacesViewModel">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Button
-                Command="{Binding AddPlaceCommand}"
-                HorizontalOptions="End"
-                Text="Add New Place" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Button
+            Command="{Binding AddPlaceCommand}"
+            HorizontalOptions="End"
+            Text="Add New Place" />
 
-            <Label FontSize="Medium" Text="Places" />
+        <Label FontSize="Medium" Text="Places" />
+        <ScrollView>
             <CollectionView ItemsSource="{Binding Places}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Place">
@@ -66,6 +66,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
+    </VerticalStackLayout>
 </ContentPage>
