@@ -63,6 +63,16 @@
                                 Command="{Binding GetTextCommand}"
                                 Text="Get Text" />
                         </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Editor
+                                AutoSize="TextChanges"
+                                Placeholder="Text"
+                                Text="{Binding Summary}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding GetSummaryCommand}"
+                                Text="Get Summary" />
+                        </Grid>
                         <Button Command="{Binding SaveMediaCommand}" Text="Save Media" />
                     </VerticalStackLayout>
                 </Border>

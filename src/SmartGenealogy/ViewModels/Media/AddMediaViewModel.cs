@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Threading.Tasks;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using SmartGenealogy.Enums;
@@ -15,6 +17,7 @@ public partial class AddMediaViewModel : ObservableObject
     private readonly MultimediaService _multimediaService;
     private readonly MediaLinkService _mediaLinkService;
     private readonly ImageService _imageService;
+    private readonly OllamaService _ollamaService;
 
     [ObservableProperty]
     private int ownerId;
@@ -43,15 +46,20 @@ public partial class AddMediaViewModel : ObservableObject
     [ObservableProperty]
     private string? description;
 
+    [ObservableProperty]
+    private string? summary;
+
     public List<string> MediaTypes { get; } = Enum.GetNames<MediaType>().Order().ToList();
 
     public AddMediaViewModel(MultimediaService multimediaService,
         MediaLinkService mediaLinkService,
-        ImageService imageService)
+        ImageService imageService,
+        OllamaService ollamaService)
     {
         _multimediaService = multimediaService;
         _mediaLinkService = mediaLinkService;
         _imageService = imageService;
+        _ollamaService = ollamaService;
     }
 
     [RelayCommand]
@@ -79,6 +87,22 @@ public partial class AddMediaViewModel : ObservableObject
         var languageFilePath = SettingsManager.LoadSettings().TesseractLanguageFileLocation;
 
         Text = _imageService.GetTextFromImage(FilePath!, languageFilePath!);
+    }
+
+    [RelayCommand]
+    private async Task GetSummary()
+    {
+        var prompt = $"You are an experienced genealogist. Using the following obituary, who is it about and who are the children: {Text}";
+        var generatedMessage = new GeneratedMessage("", 0.0);
+
+        var messageHistory = new List<Message>
+        {
+            new Message(prompt)
+        };
+        await foreach (var chunk in _ollamaService.GenerateMessage(messageHistory))
+        {
+            if (chunk.Message != null) Summary += chunk.Message.Content;
+        }
     }
 
     [RelayCommand]

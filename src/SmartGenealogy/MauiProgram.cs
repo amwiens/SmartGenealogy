@@ -33,6 +33,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ImageService>();
 		builder.Services.AddSingleton<MultimediaService>();
 		builder.Services.AddSingleton<MediaLinkService>();
+		builder.Services.AddSingleton<OllamaService>();
 		builder.Services.AddSingleton<PlaceService>();
         builder.Services.AddSingleton<PlaceDetailService>();
 

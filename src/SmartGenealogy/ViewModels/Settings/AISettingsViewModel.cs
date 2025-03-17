@@ -7,11 +7,15 @@ namespace SmartGenealogy.ViewModels.Settings;
 
 public partial class AISettingsViewModel : ObservableObject, INavigationAwareAsync
 {
+    private readonly OllamaService _ollamaService;
+
     [ObservableProperty]
     private AppSettings settings;
 
-    public AISettingsViewModel()
+    public AISettingsViewModel(OllamaService ollamaService)
     {
+        _ollamaService = ollamaService;
+
         Settings = new AppSettings();
     }
 
