@@ -15,14 +15,28 @@
             Text="Images"
             VerticalOptions="Center" />
 
-        <Label Text="Tesseract language file location" VerticalOptions="Center" />
-        <Grid ColumnDefinitions="*,Auto">
-            <Entry Text="{Binding TesseractLanguageFileLocation}" />
-            <Button
-                Grid.Column="1"
-                Command="{Binding PickTesseractFolderCommand}"
-                Text="Get Folder" />
-        </Grid>
+        <Border
+            Margin="0,5"
+            Padding="10"
+            StrokeShape="RoundRectangle 10">
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=GoToImageSettingsCommand, x:DataType=viewmodel:SettingsViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:SettingsViewModel}}}" />
+                </Grid.GestureRecognizers>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="Images" />
+                <Image
+                    Grid.RowSpan="4"
+                    Grid.Column="2"
+                    HeightRequest="16"
+                    HorizontalOptions="End"
+                    Source="chevronright.png"
+                    VerticalOptions="Center"
+                    WidthRequest="16" />
+            </Grid>
+        </Border>
 
         <Label
             FontSize="Medium"
@@ -30,15 +44,27 @@
             Text="Places"
             VerticalOptions="Center" />
 
-        <Label Text="Geocodio API Key" VerticalOptions="Center" />
-        <Entry Text="{Binding GeocodioApiKey}" />
-        <Label Text="Places Base Directory" VerticalOptions="Center" />
-        <Grid ColumnDefinitions="*,Auto">
-            <Entry Text="{Binding PlacesBaseDirectory}" />
-            <Button
-                Grid.Column="1"
-                Command="{Binding PickPlacesBaseFolderCommand}"
-                Text="Get Folder" />
-        </Grid>
+        <Border
+            Margin="0,5"
+            Padding="10"
+            StrokeShape="RoundRectangle 10">
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=GoToPlaceSettingsCommand, x:DataType=viewmodel:SettingsViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:SettingsViewModel}}}" />
+                </Grid.GestureRecognizers>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="Places" />
+                <Image
+                    Grid.RowSpan="4"
+                    Grid.Column="2"
+                    HeightRequest="16"
+                    HorizontalOptions="End"
+                    Source="chevronright.png"
+                    VerticalOptions="Center"
+                    WidthRequest="16" />
+            </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

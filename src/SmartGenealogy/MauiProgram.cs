@@ -48,6 +48,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MediaViewModel>();
 		builder.Services.AddTransient<AddMediaViewModel>();
 		builder.Services.AddTransient<SettingsViewModel>();
+		builder.Services.AddTransient<ImageSettingsViewModel>();
+		builder.Services.AddTransient<PlaceSettingsViewModel>();
 
         // Pages
         builder.Services.AddSingleton<MainPage>();
@@ -60,6 +62,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MediaPage>();
 		builder.Services.AddTransient<AddMediaPage>();
 		builder.Services.AddTransient<SettingsPage>();
+		builder.Services.AddTransient<ImageSettingsPage>();
+		builder.Services.AddTransient<PlaceSettingsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

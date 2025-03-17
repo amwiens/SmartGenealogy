@@ -7,7 +7,7 @@ using SmartGenealogy.Services;
 
 namespace SmartGenealogy.ViewModels.Settings;
 
-public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
+public partial class ImageSettingsViewModel : ObservableObject
 {
     [ObservableProperty]
     private AppSettings settings;
@@ -15,42 +15,30 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
     [ObservableProperty]
     private string? tesseractLanguageFileLocation;
 
-    [ObservableProperty]
-    private string? geocodioApiKey;
-
-    [ObservableProperty]
-    private string? placesBaseDirectory;
-
-    public SettingsViewModel()
+    public ImageSettingsViewModel()
     {
         Settings = new AppSettings();
     }
 
     [RelayCommand]
-    private async Task GoToImageSettings()
+    private async Task PickTesseractFolder()
     {
-        await Shell.Current.GoToAsync("ImageSettingsPage");
-    }
-
-    [RelayCommand]
-    private async Task GoToPlaceSettings()
-    {
-        await Shell.Current.GoToAsync("PlaceSettingsPage");
+        var result = await FolderPicker.Default.PickAsync();
+        if (result.IsSuccessful)
+        {
+            TesseractLanguageFileLocation = result.Folder.Path;
+        }
     }
 
     public async Task OnNavigatedToAsync()
     {
         Settings = SettingsManager.LoadSettings();
         TesseractLanguageFileLocation = Settings.TesseractLanguageFileLocation;
-        GeocodioApiKey = Settings.GeocodioApiKey;
-        PlacesBaseDirectory = Settings.PlacesBaseDirectory;
     }
 
     public Task OnNavigatedFromAsync()
     {
         Settings.TesseractLanguageFileLocation = TesseractLanguageFileLocation;
-        Settings.GeocodioApiKey = GeocodioApiKey;
-        Settings.PlacesBaseDirectory = PlacesBaseDirectory;
         SettingsManager.SaveSettings(Settings);
         return Task.CompletedTask;
     }

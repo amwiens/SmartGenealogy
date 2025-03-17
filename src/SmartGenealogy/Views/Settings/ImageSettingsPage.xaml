@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Settings.ImageSettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    Title="Image Settings"
+    x:DataType="viewmodel:ImageSettingsViewModel">
+    <VerticalStackLayout>
+        <Label
+            FontSize="Medium"
+            HorizontalOptions="Center"
+            Text="Images"
+            VerticalOptions="Center" />
+
+        <Label Text="Tesseract language file location" VerticalOptions="Center" />
+        <Grid ColumnDefinitions="*,Auto">
+            <Entry Text="{Binding TesseractLanguageFileLocation}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding PickTesseractFolderCommand}"
+                Text="Get Folder" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
