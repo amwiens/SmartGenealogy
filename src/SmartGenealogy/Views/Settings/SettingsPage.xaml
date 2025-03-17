@@ -9,12 +9,6 @@
     x:DataType="viewmodel:SettingsViewModel">
     <VerticalStackLayout>
 
-        <Label
-            FontSize="Medium"
-            HorizontalOptions="Center"
-            Text="Images"
-            VerticalOptions="Center" />
-
         <Border
             Margin="0,5"
             Padding="10"
@@ -26,7 +20,7 @@
                 <Label
                     FontAttributes="Bold"
                     FontSize="Small"
-                    Text="Images" />
+                    Text="Image Settings" />
                 <Image
                     Grid.RowSpan="4"
                     Grid.Column="2"
@@ -37,12 +31,6 @@
                     WidthRequest="16" />
             </Grid>
         </Border>
-
-        <Label
-            FontSize="Medium"
-            HorizontalOptions="Center"
-            Text="Places"
-            VerticalOptions="Center" />
 
         <Border
             Margin="0,5"
@@ -55,7 +43,30 @@
                 <Label
                     FontAttributes="Bold"
                     FontSize="Small"
-                    Text="Places" />
+                    Text="Place Settings" />
+                <Image
+                    Grid.RowSpan="4"
+                    Grid.Column="2"
+                    HeightRequest="16"
+                    HorizontalOptions="End"
+                    Source="chevronright.png"
+                    VerticalOptions="Center"
+                    WidthRequest="16" />
+            </Grid>
+        </Border>
+
+        <Border
+            Margin="0,5"
+            Padding="10"
+            StrokeShape="RoundRectangle 10">
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=GoToAISettingsCommand, x:DataType=viewmodel:SettingsViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:SettingsViewModel}}}" />
+                </Grid.GestureRecognizers>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="AI Settings" />
                 <Image
                     Grid.RowSpan="4"
                     Grid.Column="2"

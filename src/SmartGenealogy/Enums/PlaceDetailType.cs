@@ -27,4 +27,7 @@ public enum PlaceDetailType
 
     [Description("Hospital")]
     Hospital,
+
+    [Description("Mortuary")]
+    Mortuary,
 }

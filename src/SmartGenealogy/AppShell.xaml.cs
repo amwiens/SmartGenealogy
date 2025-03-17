@@ -19,6 +19,7 @@ namespace SmartGenealogy
             Routing.RegisterRoute(nameof(PlaceDetailPage), typeof(PlaceDetailPage));
             Routing.RegisterRoute(nameof(ImageSettingsPage), typeof(ImageSettingsPage));
             Routing.RegisterRoute(nameof(PlaceSettingsPage), typeof(PlaceSettingsPage));
+            Routing.RegisterRoute(nameof(AISettingsPage), typeof(AISettingsPage));
         }
     }
 }

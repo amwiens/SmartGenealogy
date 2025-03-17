@@ -38,6 +38,12 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
         await Shell.Current.GoToAsync("PlaceSettingsPage");
     }
 
+    [RelayCommand]
+    private async Task GoToAISettings()
+    {
+        await Shell.Current.GoToAsync("AISettingsPage");
+    }
+
     public async Task OnNavigatedToAsync()
     {
         Settings = SettingsManager.LoadSettings();
