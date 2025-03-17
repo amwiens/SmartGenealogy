@@ -8,6 +8,7 @@ using SmartGenealogy.ViewModels;
 using SmartGenealogy.ViewModels.Media;
 using SmartGenealogy.ViewModels.Places;
 using SmartGenealogy.ViewModels.Settings;
+using SmartGenealogy.Views;
 using SmartGenealogy.Views.Media;
 using SmartGenealogy.Views.Places;
 using SmartGenealogy.Views.Settings;

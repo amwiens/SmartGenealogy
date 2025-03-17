@@ -1,5 +1,6 @@
 ﻿using SmartGenealogy.Models;
 using SmartGenealogy.Services;
+using SmartGenealogy.Views;
 
 namespace SmartGenealogy;
 
