@@ -3,6 +3,7 @@
     x:Class="SmartGenealogy.Views.Places.PlaceDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Place Detail"
@@ -24,6 +25,11 @@
             </VerticalStackLayout>
         </Border>
         <Grid ColumnDefinitions="*,*">
+            <maps:MapControl
+                x:Name="mapControl"
+                HorizontalOptions="Fill"
+                Map="{Binding Map}"
+                VerticalOptions="Fill" />
             <ScrollView Grid.Column="1">
                 <VerticalStackLayout Padding="20" Spacing="10">
                     <Border

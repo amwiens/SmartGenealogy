@@ -11,6 +11,9 @@ public partial class PlaceDetailPage : ContentPage
         InitializeComponent();
         this.viewModel = viewModel;
         BindingContext = viewModel;
+
+        var map = new Mapsui.Map();
+        mapControl.Map = map;
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)

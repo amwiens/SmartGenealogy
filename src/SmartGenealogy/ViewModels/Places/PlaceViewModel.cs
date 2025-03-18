@@ -3,6 +3,14 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using Mapsui;
+using Mapsui.Extensions;
+using Mapsui.Layers;
+using Mapsui.Projections;
+using Mapsui.Styles;
+using Mapsui.Tiling;
+using Mapsui.Widgets.Zoom;
+
 using SmartGenealogy.Enums;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
@@ -29,6 +37,9 @@ public partial class PlaceViewModel : ObservableObject
     [ObservableProperty]
     private bool isEdited;
 
+    [ObservableProperty]
+    private Mapsui.Map map;
+
     public PlaceViewModel(
         PlaceService placeService,
         PlaceDetailService placeDetailService,
@@ -50,6 +61,33 @@ public partial class PlaceViewModel : ObservableObject
             return;
         var placeDetails = await _placeDetailService.GetPlaceDetailsByPlaceIdAsync(PlaceId);
         PlaceDetails = new ObservableCollection<PlaceDetail>(placeDetails);
+    }
+
+    partial void OnPlaceChanged(Place? value)
+    {
+        Map = new Mapsui.Map();
+        Map.Layers.Add(OpenStreetMap.CreateTileLayer());
+        if (value!.Longitude != null && value.Latitude != null)
+        {
+            var pinLayer = new MemoryLayer
+            {
+                Name = "Pins",
+                Features = new ObservableCollection<IFeature>
+                {
+                    new PointFeature(SphericalMercator.FromLonLat((double)value!.Longitude!, (double)value!.Latitude!).ToMPoint()) { ["Label"] = value.City },
+                },
+                Style = new SymbolStyle
+                {
+                    SymbolScale = 0.5,
+                    Fill = new Mapsui.Styles.Brush(Mapsui.Styles.Color.Red),
+                    Outline = new Pen(Mapsui.Styles.Color.Black)
+                }
+            };
+            Map.Layers.Add(pinLayer);
+            Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
+            Map.Navigator.CenterOnAndZoomTo(SphericalMercator.FromLonLat((double)value!.Longitude!, (double)value!.Latitude!).ToMPoint(), 12);
+            Map.RefreshGraphics();
+        }
     }
 
     [RelayCommand]

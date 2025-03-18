@@ -1,5 +1,17 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.ObjectModel;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
+using Mapsui;
+using Mapsui.Extensions;
+using Mapsui.Layers;
+using Mapsui.Projections;
+
+using Mapsui.Styles;
+
+using Mapsui.Tiling;
+using Mapsui.Widgets.Zoom;
 
 using SmartGenealogy.Enums;
 using SmartGenealogy.Models;
@@ -27,6 +39,9 @@ public partial class PlaceDetailViewModel : ObservableObject
     [ObservableProperty]
     private bool isEdited;
 
+    [ObservableProperty]
+    private Mapsui.Map map;
+
     public PlaceDetailViewModel(
         PlaceDetailService placeDetailService,
         PlaceService placeService,
@@ -45,6 +60,34 @@ public partial class PlaceDetailViewModel : ObservableObject
     private async Task LoadPlaceAsync()
     {
         Place = await _placeService.GetPlaceAsync(PlaceDetail?.PlaceId ?? 0);
+    }
+
+
+    partial void OnPlaceDetailChanged(PlaceDetail? value)
+    {
+        Map = new Mapsui.Map();
+        Map.Layers.Add(OpenStreetMap.CreateTileLayer());
+        if (value!.Longitude != null && value.Latitude != null)
+        {
+            var pinLayer = new MemoryLayer
+            {
+                Name = "Pins",
+                Features = new ObservableCollection<IFeature>
+                {
+                    new PointFeature(SphericalMercator.FromLonLat((double)value!.Longitude!, (double)value!.Latitude!).ToMPoint()) { ["Label"] = value.Name },
+                },
+                Style = new SymbolStyle
+                {
+                    SymbolScale = 0.5,
+                    Fill = new Mapsui.Styles.Brush(Mapsui.Styles.Color.Red),
+                    Outline = new Pen(Mapsui.Styles.Color.Black)
+                }
+            };
+            Map.Layers.Add(pinLayer);
+            Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
+            Map.Navigator.CenterOnAndZoomTo(SphericalMercator.FromLonLat((double)value!.Longitude!, (double)value!.Latitude!).ToMPoint(), 12);
+            Map.RefreshGraphics();
+        }
     }
 
     [RelayCommand]

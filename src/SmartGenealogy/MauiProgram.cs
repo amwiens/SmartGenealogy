@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.Logging;
 
+using SkiaSharp.Views.Maui.Controls.Hosting;
+
 using SmartGenealogy.Images.Services;
 using SmartGenealogy.Services;
 using SmartGenealogy.ViewModels;
@@ -23,6 +25,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+			.UseSkiaSharp()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
