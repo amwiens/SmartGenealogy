@@ -93,6 +93,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiFont Remove="Resources\Fonts\FaBrands.cs" />
+	  <MauiFont Remove="Resources\Fonts\FaPro.cs" />
+	  <MauiFont Remove="Resources\Fonts\FaRegular.cs" />
+	  <MauiFont Remove="Resources\Fonts\FontAwesomeSolid.cs" />
+	  <MauiFont Remove="Resources\Fonts\IonIcons.cs" />
+	  <MauiFont Remove="Resources\Fonts\LineAwesome.cs" />
+	  <MauiFont Remove="Resources\Fonts\MaterialDesignIcons.cs" />
+	  <MauiFont Remove="Resources\Fonts\SmartGenealogyIcons.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="AppSettings.json" />
 	</ItemGroup>
 
@@ -103,6 +114,9 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.50" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.3" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="System.Text.Json" Version="9.0.3" />
+		<PackageReference Include="XCalendar.Core" Version="4.6.0" />
+		<PackageReference Include="XCalendar.Maui" Version="4.6.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,6 +125,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Resources\Themes\LightTheme.xaml.cs">
+	    <DependentUpon>LightTheme.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Settings\PlaceSettingsPage.xaml.cs">
 	    <DependentUpon>PlaceSettingsPage.xaml</DependentUpon>
 	  </Compile>
@@ -121,6 +138,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Controls\MediaType\NewspaperArticle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Buttons.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Colors.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\LightTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Themes\DarkTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Media\AddMediaPage.xaml">
