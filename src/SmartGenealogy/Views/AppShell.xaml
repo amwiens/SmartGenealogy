@@ -11,9 +11,13 @@
     Title="SmartGenealogy"
     FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
     FlyoutBackgroundImageAspect="AspectFill"
-    FlyoutBehavior="Flyout"
+    FlyoutBehavior="Locked"
     FlyoutHeaderBehavior="Fixed"
     FlyoutWidth="300">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+    </Shell.BackButtonBehavior>
 
     <Shell.ItemTemplate>
         <DataTemplate>

@@ -1,120 +1,128 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Places.PlaceDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:maps="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    Title="Place Detail"
-    x:DataType="viewmodel:PlaceDetailViewModel">
-    <VerticalStackLayout Padding="20" Spacing="10">
-        <Button
-            Command="{Binding EditPlaceDetailCommand}"
-            HorizontalOptions="End"
-            Text="Edit Place Detail" />
+    x:DataType="viewmodel:PlaceDetailViewModel"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BaseTitle="Place Detail"
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-        <Border StrokeShape="RoundRectangle 10">
-            <VerticalStackLayout Padding="20">
-                <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
-                <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
-                <Label FontSize="Micro" Text="{Binding Place.City}" />
-                <Label FontSize="Micro" Text="{Binding Place.County}" />
-                <Label FontSize="Micro" Text="{Binding Place.State}" />
-                <Label FontSize="Micro" Text="{Binding Place.Country}" />
-            </VerticalStackLayout>
-        </Border>
-        <Grid ColumnDefinitions="*,*">
-            <maps:MapControl
-                x:Name="mapControl"
-                HorizontalOptions="Fill"
-                Map="{Binding Map}"
-                VerticalOptions="Fill" />
-            <ScrollView Grid.Column="1">
-                <VerticalStackLayout Padding="20" Spacing="10">
-                    <Border
-                        Margin="0,5"
-                        Padding="10"
-                        StrokeShape="RoundRectangle 10">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Coordinates" />
-                            <Button
-                                Grid.Column="1"
-                                Command="{Binding GeocodePlaceDetailCommand}"
-                                HorizontalOptions="End"
-                                Text="Geocode" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                FontSize="Micro"
-                                Text="Latitude" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                FontSize="Micro"
-                                Text="Longitude" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding PlaceDetail.Latitude}" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding PlaceDetail.Longitude}" />
-                        </Grid>
-                    </Border>
+    <base:BasePage.PageContent>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Button
+                Command="{Binding EditPlaceDetailCommand}"
+                HorizontalOptions="End"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Edit Place Detail" />
 
-                    <Border
-                        Margin="0,5"
-                        Padding="10"
-                        StrokeShape="RoundRectangle 10">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label FontSize="Small" Text="Media" />
-                            <Button
-                                Grid.Column="1"
-                                Command="{Binding AddMediaCommand}"
-                                HorizontalOptions="End"
-                                Text="Add Media" />
+            <Border StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Padding="20">
+                    <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
+                    <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
+                    <Label FontSize="Micro" Text="{Binding Place.City}" />
+                    <Label FontSize="Micro" Text="{Binding Place.County}" />
+                    <Label FontSize="Micro" Text="{Binding Place.State}" />
+                    <Label FontSize="Micro" Text="{Binding Place.Country}" />
+                </VerticalStackLayout>
+            </Border>
+            <Grid ColumnDefinitions="*,*">
+                <maps:MapControl
+                    x:Name="mapControl"
+                    HorizontalOptions="Fill"
+                    Map="{Binding Map}"
+                    VerticalOptions="Fill" />
+                <ScrollView Grid.Column="1">
+                    <VerticalStackLayout Padding="20" Spacing="10">
+                        <Border
+                            Margin="0,5"
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
+                                <Label FontSize="Small" Text="Coordinates" />
+                                <Button
+                                    Grid.Column="1"
+                                    Command="{Binding GeocodePlaceDetailCommand}"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="Geocode" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="Micro"
+                                    Text="Latitude" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="Micro"
+                                    Text="Longitude" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="{Binding PlaceDetail.Latitude}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="{Binding PlaceDetail.Longitude}" />
+                            </Grid>
+                        </Border>
 
-                        </Grid>
-                    </Border>
+                        <Border
+                            Margin="0,5"
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                <Label FontSize="Small" Text="Media" />
+                                <Button
+                                    Grid.Column="1"
+                                    Command="{Binding AddMediaCommand}"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="Add Media" />
 
-                    <Border
-                        Margin="0,5"
-                        Padding="10"
-                        StrokeShape="RoundRectangle 10">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
-                            <Label FontSize="Small" Text="Dates" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                FontSize="Micro"
-                                Text="Date Created" />
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                FontSize="Micro"
-                                Text="Date Updated" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding PlaceDetail.DateAdded}" />
-                            <Label
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
-                                Text="{Binding PlaceDetail.DateChanged}" />
-                        </Grid>
-                    </Border>
+                            </Grid>
+                        </Border>
 
-                    <!--<Button
+                        <Border
+                            Margin="0,5"
+                            Padding="10"
+                            StrokeShape="RoundRectangle 10">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                                <Label FontSize="Small" Text="Dates" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="Micro"
+                                    Text="Date Created" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontSize="Micro"
+                                    Text="Date Updated" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="{Binding PlaceDetail.DateAdded}" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Small"
+                                    Text="{Binding PlaceDetail.DateChanged}" />
+                            </Grid>
+                        </Border>
+
+                        <!--<Button
                         Command="{Binding AddPlaceDetailCommand}"
                         HorizontalOptions="End"
                         Text="Add Place Detail" />
@@ -157,8 +165,9 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>-->
-                </VerticalStackLayout>
-            </ScrollView>
-        </Grid>
-    </VerticalStackLayout>
-</ContentPage>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Grid>
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

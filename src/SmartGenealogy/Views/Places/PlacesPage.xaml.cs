@@ -1,8 +1,9 @@
 using SmartGenealogy.ViewModels.Places;
+using SmartGenealogy.Views.Base;
 
 namespace SmartGenealogy.Views.Places;
 
-public partial class PlacesPage : ContentPage
+public partial class PlacesPage : BasePage
 {
     private readonly PlacesViewModel viewModel;
 

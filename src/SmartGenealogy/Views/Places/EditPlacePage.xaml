@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Places.EditPlacePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    Title="Edit Place"
-    x:DataType="viewmodel:EditPlaceViewModel">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Border Padding="10" StrokeShape="RoundRectangle 10">
-                <VerticalStackLayout Spacing="10">
-                    <Entry Placeholder="City" Text="{Binding Place.City}" />
-                    <Entry Placeholder="County" Text="{Binding Place.County}" />
-                    <Entry Placeholder="State" Text="{Binding Place.State}" />
-                    <Entry Placeholder="Country" Text="{Binding Place.Country}" />
-                    <Entry Placeholder="Notes" Text="{Binding Place.Notes}" />
-                    <Button
-                        Margin="0,20,0,0"
-                        Command="{Binding SavePlaceCommand}"
-                        HorizontalOptions="Center"
-                        Text="Save Place" />
-                    <Button
-                        Margin="0,10,0,0"
-                        BackgroundColor="Red"
-                        Command="{Binding DeletePlaceCommand}"
-                        HorizontalOptions="Center"
-                        Text="Delete Place"
-                        TextColor="White" />
-                </VerticalStackLayout>
-            </Border>
-        </VerticalStackLayout>
-    </ScrollView>
-</ContentPage>
+    x:DataType="viewmodel:EditPlaceViewModel"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BaseTitle="Edit Place"
+    BaseTitleColor="{DynamicResource BaseTextColor}">
+
+    <base:BasePage.PageContent>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <Border Padding="10" StrokeShape="RoundRectangle 10">
+                    <VerticalStackLayout Spacing="10">
+                        <Entry Placeholder="City" Text="{Binding Place.City}" />
+                        <Entry Placeholder="County" Text="{Binding Place.County}" />
+                        <Entry Placeholder="State" Text="{Binding Place.State}" />
+                        <Entry Placeholder="Country" Text="{Binding Place.Country}" />
+                        <Entry Placeholder="Notes" Text="{Binding Place.Notes}" />
+                        <Button
+                            Margin="0,20,0,0"
+                            Command="{Binding SavePlaceCommand}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Save Place" />
+                        <Button
+                            Margin="0,10,0,0"
+                            Command="{Binding DeletePlaceCommand}"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource DeleteButtonStyle}"
+                            Text="Delete Place" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </base:BasePage.PageContent>
+</base:BasePage>

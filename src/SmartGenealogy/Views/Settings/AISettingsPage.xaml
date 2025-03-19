@@ -10,5 +10,7 @@
     BaseTitle="AI Settings"
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <base:BasePage.PageContent />
+    <base:BasePage.PageContent>
+        <Label Text="test" />
+    </base:BasePage.PageContent>
 </base:BasePage>

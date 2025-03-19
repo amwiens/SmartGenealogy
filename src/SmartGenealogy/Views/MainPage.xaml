@@ -7,7 +7,7 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels"
     Title=""
     x:DataType="viewmodel:MainPageViewModel"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="True">
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">

@@ -1,71 +1,76 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Places.PlacesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    Title="Places"
+    Title=""
     x:DataType="viewmodel:PlacesViewModel">
-    <VerticalStackLayout Padding="20" Spacing="10">
-        <Button
-            Command="{Binding AddPlaceCommand}"
-            HorizontalOptions="End"
-            Text="Add New Place" />
 
-        <Label FontSize="Medium" Text="Places" />
-        <ScrollView>
-            <CollectionView ItemsSource="{Binding Places}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Place">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem
-                                        BackgroundColor="Red"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}, x:DataType=viewmodel:PlacesViewModel, Path=DeletePlaceCommand}"
-                                        CommandParameter="{Binding}"
-                                        Text="Delete" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Border
-                                Margin="0,5"
-                                Padding="10"
-                                StrokeShape="RoundRectangle 10">
-                                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Path=GoToPlaceCommand, x:DataType=viewmodel:PlacesViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}}" CommandParameter="{Binding .}" />
-                                    </Grid.GestureRecognizers>
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="Small"
-                                        Text="{Binding City}" />
-                                    <Label
-                                        Grid.Row="1"
-                                        FontSize="Micro"
-                                        Text="{Binding County}" />
-                                    <Label
-                                        Grid.Row="2"
-                                        FontSize="Micro"
-                                        Text="{Binding State}" />
-                                    <Label
-                                        Grid.Row="3"
-                                        FontSize="Micro"
-                                        Text="{Binding Country}" />
-                                    <Image
-                                        Grid.RowSpan="4"
-                                        Grid.Column="2"
-                                        HeightRequest="16"
-                                        HorizontalOptions="End"
-                                        Source="chevronright.png"
-                                        VerticalOptions="Center"
-                                        WidthRequest="16" />
-                                </Grid>
-                            </Border>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
-    </VerticalStackLayout>
-</ContentPage>
+    <base:BasePage.PageContent>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Button
+                Command="{Binding AddPlaceCommand}"
+                HorizontalOptions="End"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Add New Place" />
+
+            <Label FontSize="Medium" Text="Places" />
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding Places}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Place">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}, x:DataType=viewmodel:PlacesViewModel, Path=DeletePlaceCommand}"
+                                            CommandParameter="{Binding}"
+                                            Text="Delete" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Border
+                                    Margin="0,5"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 10">
+                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=GoToPlaceCommand, x:DataType=viewmodel:PlacesViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}}" CommandParameter="{Binding .}" />
+                                        </Grid.GestureRecognizers>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="{Binding City}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontSize="Micro"
+                                            Text="{Binding County}" />
+                                        <Label
+                                            Grid.Row="2"
+                                            FontSize="Micro"
+                                            Text="{Binding State}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            FontSize="Micro"
+                                            Text="{Binding Country}" />
+                                        <Image
+                                            Grid.RowSpan="4"
+                                            Grid.Column="2"
+                                            HeightRequest="16"
+                                            HorizontalOptions="End"
+                                            Source="chevronright.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="16" />
+                                    </Grid>
+                                </Border>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

@@ -7,9 +7,11 @@
     NavigationPage.HasBackButton="{OnPlatform Default='True',
                                               WinUI='False'}">
 
-    <NavigationPage.TitleView>
+    <VerticalStackLayout>
+        <!--<NavigationPage.TitleView>-->
         <Grid
             Padding="15,5"
+            BackgroundColor="{DynamicResource BasePageColor}"
             ColumnDefinitions="Auto,*"
             ColumnSpacing="15"
             IsVisible="{OnPlatform WinUI='True',
@@ -23,7 +25,7 @@
 
                 <Label
                     Style="{StaticResource SubTitle}"
-                    Text="Go back"
+                    Text="Back"
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
 
@@ -36,8 +38,9 @@
                 TextColor="{Binding BaseTitleColor, Source={x:Reference Root}}"
                 VerticalOptions="Center" />
         </Grid>
-    </NavigationPage.TitleView>
+        <!--</NavigationPage.TitleView>-->
 
-    <!--  Grid to contain Page Content  -->
-    <Grid x:Name="PageContentGrid" IgnoreSafeArea="True" />
+        <!--  Grid to contain Page Content  -->
+        <Grid x:Name="PageContentGrid" IgnoreSafeArea="True" />
+    </VerticalStackLayout>
 </ContentPage>
