@@ -1,8 +1,9 @@
 using SmartGenealogy.ViewModels.Settings;
+using SmartGenealogy.Views.Base;
 
 namespace SmartGenealogy.Views.Settings;
 
-public partial class ImageSettingsPage : ContentPage
+public partial class ImageSettingsPage : BasePage
 {
     private readonly ImageSettingsViewModel viewModel;
 

@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels"
-    x:DataType="viewmodel:MainPageViewModel">
+    Title=""
+    x:DataType="viewmodel:MainPageViewModel"
+    NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
@@ -17,4 +20,4 @@
         </VerticalStackLayout>
     </ScrollView>
 
-</ContentPage>
+</base:BasePage>

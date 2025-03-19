@@ -12,15 +12,6 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
     [ObservableProperty]
     private AppSettings settings;
 
-    [ObservableProperty]
-    private string? tesseractLanguageFileLocation;
-
-    [ObservableProperty]
-    private string? geocodioApiKey;
-
-    [ObservableProperty]
-    private string? placesBaseDirectory;
-
     public SettingsViewModel()
     {
         Settings = new AppSettings();
@@ -47,16 +38,10 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
     public async Task OnNavigatedToAsync()
     {
         Settings = SettingsManager.LoadSettings();
-        TesseractLanguageFileLocation = Settings.TesseractLanguageFileLocation;
-        GeocodioApiKey = Settings.GeocodioApiKey;
-        PlacesBaseDirectory = Settings.PlacesBaseDirectory;
     }
 
     public Task OnNavigatedFromAsync()
     {
-        Settings.TesseractLanguageFileLocation = TesseractLanguageFileLocation;
-        Settings.GeocodioApiKey = GeocodioApiKey;
-        Settings.PlacesBaseDirectory = PlacesBaseDirectory;
         SettingsManager.SaveSettings(Settings);
         return Task.CompletedTask;
     }

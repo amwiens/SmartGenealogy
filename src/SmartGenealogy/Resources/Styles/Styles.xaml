@@ -496,7 +496,7 @@
 
     <Style x:Key="DefaultEventIndicatorRectangleStyle" TargetType="Rectangle">
         <Setter Property="HeightRequest" Value="8" />
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="RadiusX" Value="100" />
         <Setter Property="RadiusY" Value="100" />
         <Setter Property="VerticalOptions" Value="Center" />

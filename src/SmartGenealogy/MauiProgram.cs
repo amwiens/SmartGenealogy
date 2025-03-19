@@ -42,6 +42,7 @@ public static class MauiProgram
                 fonts.AddFont("material-icons-outlined-regular.otf", "MaterialDesign");
                 fonts.AddFont("ionicons.ttf", "IonIcons");
                 fonts.AddFont("icon.ttf", "SmartGenealogyIcons");
+				fonts.AddFont("FluentSystemIcons-Regular.ttf", "FluentUI");
             });
 
 		// Services

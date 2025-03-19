@@ -87,7 +87,7 @@
         <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}" />
     </Style>
 
-    <!--  OUTLINE SECONDARY COLOR  -->
+    <!--  OUTLINE SECONDARY BUTTON  -->
     <Style
         x:Key="OutlineSecondaryButtonStyle"
         BasedOn="{StaticResource BaseOutlineButtonStyle}"
