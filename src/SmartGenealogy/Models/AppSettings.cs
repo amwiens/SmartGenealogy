@@ -2,7 +2,7 @@
 
 public class AppSettings
 {
-    public string? AppTheme { get; set; }
+    public bool DarkMode { get; set; }
     public string? TesseractLanguageFileLocation { get; set; }
     public string? PlacesBaseDirectory { get; set; }
     public string? GeocodioApiKey { get; set; }
