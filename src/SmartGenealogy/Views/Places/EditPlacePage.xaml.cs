@@ -1,9 +1,8 @@
 using SmartGenealogy.ViewModels.Places;
-using SmartGenealogy.Views.Base;
 
 namespace SmartGenealogy.Views.Places;
 
-public partial class EditPlacePage : BasePage
+public partial class EditPlacePage : ContentPage
 {
     public EditPlacePage(EditPlaceViewModel viewModel)
     {

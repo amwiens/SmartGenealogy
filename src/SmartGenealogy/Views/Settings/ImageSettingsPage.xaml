@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Settings.ImageSettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Settings"
-    x:DataType="viewmodel:ImageSettingsViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Image Settings"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="Image Settings"
+    x:DataType="viewmodel:ImageSettingsViewModel">
 
-    <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Label
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                Text="Images"
-                VerticalOptions="Center" />
+    <VerticalStackLayout>
+        <Label Text="Tesseract language file location" VerticalOptions="Center" />
 
-            <Label Text="Tesseract language file location" VerticalOptions="Center" />
-            <Grid ColumnDefinitions="*,Auto">
-                <Entry Text="{Binding TesseractLanguageFileLocation}" />
-                <Button
-                    Grid.Column="1"
-                    Command="{Binding PickTesseractFolderCommand}"
-                    Text="Get Folder" />
-            </Grid>
-        </VerticalStackLayout>
-    </base:BasePage.PageContent>
-</base:BasePage>
+        <Grid ColumnDefinitions="*,Auto">
+            <Entry Text="{Binding TesseractLanguageFileLocation}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding PickTesseractFolderCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Get Folder" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

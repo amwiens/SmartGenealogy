@@ -1,91 +1,97 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Media.AddMediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
-    xmlns:controls="clr-namespace:SmartGenealogy.Controls.MediaType"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:mediaTypeControls="clr-namespace:SmartGenealogy.Controls.MediaType"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Media"
-    x:DataType="viewmodel:AddMediaViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Add Media"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="Add Media"
+    x:DataType="viewmodel:AddMediaViewModel">
 
-    <base:BasePage.PageContent>
-        <Grid ColumnDefinitions="*,*">
-            <Border Padding="10" StrokeThickness="0">
-                <Image Source="{Binding FilePath}" />
+    <Grid
+        ColumnDefinitions="*,*"
+        HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}"
+        RowDefinitions="*">
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Border Padding="10" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}">
+                <controls:PanPinchContainer>
+                    <Image
+                        Aspect="AspectFit"
+                        Scale=".5"
+                        Source="{Binding FilePath}" />
+                </controls:PanPinchContainer>
             </Border>
-            <ScrollView Grid.Column="1">
-                <VerticalStackLayout Padding="20" Spacing="10">
-                    <Border Padding="10" StrokeShape="RoundRectangle 10">
-                        <VerticalStackLayout Spacing="10">
-                            <Grid ColumnDefinitions="*,Auto">
-                                <Entry Placeholder="File Path" Text="{Binding FilePath}" />
-                                <Button
-                                    Grid.Column="1"
-                                    Command="{Binding PickFileCommand}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="Get File" />
-                            </Grid>
-                            <Picker ItemsSource="{Binding MediaTypes}" SelectedItem="{Binding MediaType}" />
-                            <ContentView ControlTemplate="{StaticResource imageView}">
-                                <ContentView.Resources>
-                                    <ResourceDictionary>
-                                        <ControlTemplate x:Key="newspaperView">
-                                            <controls:NewspaperArticle Description="{Binding Description, Mode=TwoWay}" />
-                                        </ControlTemplate>
-                                        <ControlTemplate x:Key="imageView">
-                                            <controls:Image Description="{Binding Description, Mode=TwoWay}" />
-                                        </ControlTemplate>
-                                    </ResourceDictionary>
-                                </ContentView.Resources>
-                                <ContentView.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding MediaType}"
-                                        TargetType="ContentView"
-                                        Value="NewspaperArticle">
-                                        <Setter Property="ContentView.ControlTemplate" Value="{StaticResource newspaperView}" />
-                                    </DataTrigger>
-                                    <DataTrigger
-                                        Binding="{Binding MediaType}"
-                                        TargetType="ContentView"
-                                        Value="Image">
-                                        <Setter Property="ContentView.ControlTemplate" Value="{StaticResource imageView}" />
-                                    </DataTrigger>
-                                </ContentView.Triggers>
-                            </ContentView>
-                            <Entry Placeholder="Caption" Text="{Binding Caption}" />
-                            <Entry Placeholder="Date" Text="{Binding Date}" />
-                            <Entry Placeholder="Ref Number" Text="{Binding RefNumber}" />
-                            <Grid ColumnDefinitions="*,Auto">
-                                <Editor
-                                    AutoSize="TextChanges"
-                                    Placeholder="Text"
-                                    Text="{Binding Text}" />
-                                <Button
-                                    Grid.Column="1"
-                                    Command="{Binding GetTextCommand}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="Get Text" />
-                            </Grid>
-                            <Grid ColumnDefinitions="*,Auto">
-                                <Editor
-                                    AutoSize="TextChanges"
-                                    Placeholder="Text"
-                                    Text="{Binding Summary}" />
-                                <Button
-                                    Grid.Column="1"
-                                    Command="{Binding GetSummaryCommand}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="Get Summary" />
-                            </Grid>
-                            <Button Command="{Binding SaveMediaCommand}" Text="Save Media" />
-                        </VerticalStackLayout>
-                    </Border>
-                </VerticalStackLayout>
-            </ScrollView>
-        </Grid>
-    </base:BasePage.PageContent>
-</base:BasePage>
+        </VerticalStackLayout>
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <Border Padding="10" StrokeShape="RoundRectangle 10">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry Placeholder="File Path" Text="{Binding FilePath}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding PickFileCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Get File" />
+                        </Grid>
+                        <Picker ItemsSource="{Binding MediaTypes}" SelectedItem="{Binding MediaType}" />
+                        <ContentView ControlTemplate="{StaticResource imageView}">
+                            <ContentView.Resources>
+                                <ResourceDictionary>
+                                    <ControlTemplate x:Key="newspaperView">
+                                        <mediaTypeControls:NewspaperArticle Description="{Binding Description, Mode=TwoWay}" />
+                                    </ControlTemplate>
+                                    <ControlTemplate x:Key="imageView">
+                                        <mediaTypeControls:Image Description="{Binding Description, Mode=TwoWay}" />
+                                    </ControlTemplate>
+                                </ResourceDictionary>
+                            </ContentView.Resources>
+                            <ContentView.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding MediaType}"
+                                    TargetType="ContentView"
+                                    Value="NewspaperArticle">
+                                    <Setter Property="ContentView.ControlTemplate" Value="{StaticResource newspaperView}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding MediaType}"
+                                    TargetType="ContentView"
+                                    Value="Image">
+                                    <Setter Property="ContentView.ControlTemplate" Value="{StaticResource imageView}" />
+                                </DataTrigger>
+                            </ContentView.Triggers>
+                        </ContentView>
+                        <Entry Placeholder="Caption" Text="{Binding Caption}" />
+                        <Entry Placeholder="Date" Text="{Binding Date}" />
+                        <Entry Placeholder="Ref Number" Text="{Binding RefNumber}" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Editor
+                                AutoSize="TextChanges"
+                                Placeholder="Text"
+                                Text="{Binding Text}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding GetTextCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Get Text" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Editor
+                                AutoSize="TextChanges"
+                                Placeholder="Text"
+                                Text="{Binding Summary}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding GetSummaryCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Get Summary" />
+                        </Grid>
+                        <Button Command="{Binding SaveMediaCommand}" Text="Save Media" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

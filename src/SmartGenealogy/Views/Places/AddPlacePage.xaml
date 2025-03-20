@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Places.AddPlacePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    x:DataType="viewmodel:AddPlaceViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Add New Place"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="Add New Place"
+    x:DataType="viewmodel:AddPlaceViewModel">
 
-    <base:BasePage.PageContent>
-        <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="10">
-                <Border Padding="10" StrokeShape="RoundRectangle 10">
-                    <VerticalStackLayout Spacing="10">
-                        <Entry Placeholder="City" Text="{Binding City}" />
-                        <Entry Placeholder="County" Text="{Binding County}" />
-                        <Entry Placeholder="State" Text="{Binding State}" />
-                        <Entry Placeholder="Country" Text="{Binding Country}" />
-                        <Entry Placeholder="Notes" Text="{Binding Notes}" />
-                        <Button
-                            Command="{Binding SavePlaceCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="Save Place" />
-                    </VerticalStackLayout>
-                </Border>
-            </VerticalStackLayout>
-        </ScrollView>
-    </base:BasePage.PageContent>
-</base:BasePage>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Border Padding="10" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Entry Placeholder="City" Text="{Binding City}" />
+                    <Entry Placeholder="County" Text="{Binding County}" />
+                    <Entry Placeholder="State" Text="{Binding State}" />
+                    <Entry Placeholder="Country" Text="{Binding Country}" />
+                    <Entry Placeholder="Notes" Text="{Binding Notes}" />
+                    <Button
+                        Command="{Binding SavePlaceCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Save Place" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

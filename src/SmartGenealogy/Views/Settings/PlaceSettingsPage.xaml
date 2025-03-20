@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Settings.PlaceSettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Settings"
-    x:DataType="viewmodel:PlaceSettingsViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Place Settings"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="Place Settings"
+    x:DataType="viewmodel:PlaceSettingsViewModel">
 
-    <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Label
-                FontSize="Medium"
-                HorizontalOptions="Center"
-                Text="Places"
-                VerticalOptions="Center" />
+    <VerticalStackLayout>
+        <Label Text="Geocodio API Key" VerticalOptions="Center" />
+        <Entry Text="{Binding GeocodioApiKey}" />
 
-            <Label Text="Geocodio API Key" VerticalOptions="Center" />
-            <Entry Text="{Binding GeocodioApiKey}" />
-            <Label Text="Places Base Directory" VerticalOptions="Center" />
-            <Grid ColumnDefinitions="*,Auto">
-                <Entry Text="{Binding PlacesBaseDirectory}" />
-                <Button
-                    Grid.Column="1"
-                    Command="{Binding PickPlacesBaseFolderCommand}"
-                    Text="Get Folder" />
-            </Grid>
-        </VerticalStackLayout>
-    </base:BasePage.PageContent>
-</base:BasePage>
+        <Label Text="Places Base Directory" VerticalOptions="Center" />
+        <Grid ColumnDefinitions="*,Auto">
+            <Entry Text="{Binding PlacesBaseDirectory}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding PickPlacesBaseFolderCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Get Folder" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,9 +1,8 @@
 using SmartGenealogy.ViewModels.Media;
-using SmartGenealogy.Views.Base;
 
 namespace SmartGenealogy.Views.Media;
 
-public partial class MediaPage : BasePage
+public partial class MediaPage : ContentPage
 {
     private readonly MediaViewModel viewModel;
 

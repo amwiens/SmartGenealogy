@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Media.MediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Media"
     Title=""
     x:DataType="viewmodel:MediaViewModel">
 
-    <base:BasePage.PageContent>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Button
-                Command="{Binding AddMediaCommand}"
-                HorizontalOptions="End"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Text="Add New Media" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Button
+            Command="{Binding AddMediaCommand}"
+            HorizontalOptions="End"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Text="Add New Media" />
 
-            <Label FontSize="Medium" Text="Multimedia" />
-            <ScrollView>
-                <CollectionView ItemsSource="{Binding Multimedia}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Multimedia">
-                            <SwipeView>
-                                <!--<SwipeView.RightItems>
+        <Label FontSize="Medium" Text="Multimedia" />
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding Multimedia}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Multimedia">
+                        <SwipeView>
+                            <!--<SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem
                                         BackgroundColor="Red"
@@ -32,33 +30,32 @@
                                         Text="Delete" />
                                 </SwipeItems>
                             </SwipeView.RightItems>-->
-                                <Border
-                                    Margin="0,5"
-                                    Padding="10"
-                                    StrokeShape="RoundRectangle 10">
-                                    <VerticalStackLayout>
-                                        <!--<Grid.GestureRecognizers>
+                            <Border
+                                Margin="0,5"
+                                Padding="10"
+                                StrokeShape="RoundRectangle 10">
+                                <VerticalStackLayout>
+                                    <!--<Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Path=GoToPlaceCommand, x:DataType=viewmodel:PlacesViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}}" CommandParameter="{Binding .}" />
                                     </Grid.GestureRecognizers>-->
-                                        <Image
-                                            Aspect="AspectFit"
-                                            HeightRequest="100"
-                                            HorizontalOptions="Center"
-                                            Source="C:\Users\amwie\OneDrive\Genealogy\RootsMagic\Media\Places\United States\North Dakota\Cavalier\Munich\Munich.tif"
-                                            VerticalOptions="Center"
-                                            WidthRequest="100" />
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Micro"
-                                            HorizontalOptions="Center"
-                                            Text="{Binding Caption}" />
-                                    </VerticalStackLayout>
-                                </Border>
-                            </SwipeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
-        </VerticalStackLayout>
-    </base:BasePage.PageContent>
-</base:BasePage>
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="100"
+                                        HorizontalOptions="Center"
+                                        Source="C:\Users\amwie\OneDrive\Genealogy\RootsMagic\Media\Places\United States\North Dakota\Cavalier\Munich\Munich.tif"
+                                        VerticalOptions="Center"
+                                        WidthRequest="100" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Micro"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding Caption}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

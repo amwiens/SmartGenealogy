@@ -21,4 +21,37 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(PlaceSettingsPage), typeof(PlaceSettingsPage));
         Routing.RegisterRoute(nameof(AISettingsPage), typeof(AISettingsPage));
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+#if WINDOWS
+		CheckIfRootPage();
+#endif
+    }
+
+    protected override void OnNavigated(ShellNavigatedEventArgs args)
+    {
+        base.OnNavigated(args);
+        CheckIfRootPage();
+        pageTitle.Text = Current.CurrentPage.Title;
+    }
+    public async void GoBack_Tapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
+    }
+
+    protected void CheckIfRootPage()
+    {
+        if (Shell.Current.Navigation.NavigationStack.Count == 1)
+        //if (Navigation.NavigationStack.Count == 1)
+        {
+            // Root page
+            backNavigation.IsVisible = false;
+        }
+        else
+        {
+            backNavigation.IsVisible = true;
+        }
+    }
 }

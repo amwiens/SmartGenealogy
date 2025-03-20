@@ -19,6 +19,38 @@
         <BackButtonBehavior IsEnabled="False" IsVisible="False" />
     </Shell.BackButtonBehavior>
 
+    <Shell.TitleView>
+        <Grid
+            Padding="15,5"
+            BackgroundColor="{DynamicResource BasePageColor}"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="15"
+            IsVisible="{OnPlatform WinUI='True',
+                                   Default='False'}">
+            <HorizontalStackLayout x:Name="backNavigation" Spacing="15">
+                <Label Style="{StaticResource IconBackLabelStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoBack_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label
+                    Style="{StaticResource SubTitle}"
+                    Text="Back"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <Label
+                x:Name="pageTitle"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource Title2}"
+                TextColor="{StaticResource BaseTextColor}"
+                VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
     <Shell.ItemTemplate>
         <DataTemplate>
             <Grid

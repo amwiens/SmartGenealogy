@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Places.AddPlaceDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
-    x:DataType="viewmodel:AddPlaceDetailViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Add New Place Detail"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="Add New Place Detail"
+    x:DataType="viewmodel:AddPlaceDetailViewModel">
 
-    <base:BasePage.PageContent>
-        <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing="10">
-                <Border Padding="10" StrokeShape="RoundRectangle 10">
-                    <VerticalStackLayout Spacing="10">
-                        <Entry Placeholder="Name" Text="{Binding Name}" />
-                        <Picker ItemsSource="{Binding PlaceDetailTypes}" SelectedItem="{Binding Type}" />
-                        <Entry Placeholder="Address" Text="{Binding Address}" />
-                        <Entry Placeholder="Notes" Text="{Binding Notes}" />
-                        <Button
-                            Command="{Binding SavePlaceDetailCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="Save Place Detail" />
-                    </VerticalStackLayout>
-                </Border>
-            </VerticalStackLayout>
-        </ScrollView>
-    </base:BasePage.PageContent>
-</base:BasePage>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Border Padding="10" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Entry Placeholder="Name" Text="{Binding Name}" />
+                    <Picker ItemsSource="{Binding PlaceDetailTypes}" SelectedItem="{Binding Type}" />
+                    <Entry Placeholder="Address" Text="{Binding Address}" />
+                    <Entry Placeholder="Notes" Text="{Binding Notes}" />
+                    <Button
+                        Command="{Binding SavePlaceDetailCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Save Place Detail" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

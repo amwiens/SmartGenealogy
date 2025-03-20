@@ -165,9 +165,6 @@
 	  <MauiXaml Update="Resources\Themes\DarkTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Base\BasePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Media\AddMediaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

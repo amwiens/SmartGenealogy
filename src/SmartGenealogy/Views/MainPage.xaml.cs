@@ -1,9 +1,8 @@
 ﻿using SmartGenealogy.ViewModels;
-using SmartGenealogy.Views.Base;
 
 namespace SmartGenealogy.Views;
 
-public partial class MainPage : BasePage
+public partial class MainPage : ContentPage
 {
     public MainPage(MainPageViewModel viewModel)
     {

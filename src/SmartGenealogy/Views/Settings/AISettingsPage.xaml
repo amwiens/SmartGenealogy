@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
+<ContentPage
     x:Class="SmartGenealogy.Views.Settings.AISettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Settings"
-    x:DataType="viewmodel:AISettingsViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="AI Settings"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    Title="AI Settings"
+    x:DataType="viewmodel:AISettingsViewModel">
 
-    <base:BasePage.PageContent>
-        <Label Text="test" />
-    </base:BasePage.PageContent>
-</base:BasePage>
+    <Label Text="test" />
+</ContentPage>
