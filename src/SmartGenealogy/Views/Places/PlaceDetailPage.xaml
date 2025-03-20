@@ -18,7 +18,7 @@
 
         <Border StrokeShape="RoundRectangle 10">
             <VerticalStackLayout Padding="20">
-                <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
+                <Label Style="{StaticResource Title2}" Text="{Binding PlaceDetail.Name}" />
                 <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
                 <Label FontSize="Micro" Text="{Binding Place.City}" />
                 <Label FontSize="Micro" Text="{Binding Place.County}" />
@@ -39,7 +39,7 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Coordinates" />
+                            <Label Style="{StaticResource Title2}" Text="Coordinates" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GeocodePlaceDetailCommand}"
@@ -49,24 +49,22 @@
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Latitude" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Longitude" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.Latitude}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.Longitude}" />
                         </Grid>
                     </Border>
@@ -76,7 +74,7 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label FontSize="Small" Text="Media" />
+                            <Label Style="{StaticResource Title2}" Text="Media" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding AddMediaCommand}"
@@ -92,28 +90,25 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
-                            <Label FontSize="Small" Text="Dates" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Created" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Updated" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.DateAdded}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.DateChanged}" />
                         </Grid>
                     </Border>

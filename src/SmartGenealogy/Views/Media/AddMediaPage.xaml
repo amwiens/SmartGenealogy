@@ -12,9 +12,9 @@
 
     <Grid
         ColumnDefinitions="*,*"
-        HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}"
+        HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Height}"
         RowDefinitions="*">
-        <VerticalStackLayout Padding="20" Spacing="10">
+        <VerticalStackLayout Padding="10,10,10,200" Spacing="10">
             <Border Padding="10" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}">
                 <controls:PanPinchContainer>
                     <Image
