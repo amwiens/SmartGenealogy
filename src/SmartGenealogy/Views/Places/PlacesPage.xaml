@@ -45,18 +45,18 @@
                                                 <TapGestureRecognizer Command="{Binding Path=GoToPlaceCommand, x:DataType=viewmodel:PlacesViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlacesViewModel}}}" CommandParameter="{Binding .}" />
                                             </Grid.GestureRecognizers>
                                             <Label Style="{StaticResource Title2}" Text="{Binding City}" />
-                                            <Label
-                                                Grid.Row="1"
-                                                Style="{StaticResource Footnote}"
-                                                Text="{Binding County}" />
-                                            <Label
-                                                Grid.Row="2"
-                                                Style="{StaticResource Footnote}"
-                                                Text="{Binding State}" />
-                                            <Label
-                                                Grid.Row="3"
-                                                Style="{StaticResource Footnote}"
-                                                Text="{Binding Country}" />
+                                            <Label Grid.Row="1" Style="{StaticResource Footnote}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding County}" />
+                                                        <Span Text=", " />
+                                                        <Span Text="{Binding State}" />
+                                                        <Span Text=", " />
+                                                        <Span Text="{Binding Country}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
                                             <Image
                                                 Grid.RowSpan="4"
                                                 Grid.Column="2"

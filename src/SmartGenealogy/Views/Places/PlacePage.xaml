@@ -19,9 +19,17 @@
         <Border StrokeShape="RoundRectangle 10">
             <VerticalStackLayout Padding="20">
                 <Label Style="{StaticResource Title2}" Text="{Binding Place.City}" />
-                <Label Style="{StaticResource Body}" Text="{Binding Place.County}" />
-                <Label Style="{StaticResource Body}" Text="{Binding Place.State}" />
-                <Label Style="{StaticResource Body}" Text="{Binding Place.Country}" />
+                <Label Grid.Row="1" Style="{StaticResource Body}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Place.County}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.State}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.Country}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
         </Border>
         <Grid ColumnDefinitions="*,*">
@@ -118,10 +126,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Path=GoToPlaceDetailCommand, x:DataType=viewmodel:PlaceViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlaceViewModel}}}" CommandParameter="{Binding .}" />
                                             </Grid.GestureRecognizers>
-                                            <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Small"
-                                                Text="{Binding Name}" />
+                                            <Label Style="{StaticResource Title2}" Text="{Binding Name}" />
                                             <Image
                                                 Grid.Column="2"
                                                 HeightRequest="16"

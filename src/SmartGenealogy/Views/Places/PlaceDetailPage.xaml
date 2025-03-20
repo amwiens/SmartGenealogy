@@ -19,11 +19,19 @@
         <Border StrokeShape="RoundRectangle 10">
             <VerticalStackLayout Padding="20">
                 <Label Style="{StaticResource Title2}" Text="{Binding PlaceDetail.Name}" />
-                <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
-                <Label FontSize="Micro" Text="{Binding Place.City}" />
-                <Label FontSize="Micro" Text="{Binding Place.County}" />
-                <Label FontSize="Micro" Text="{Binding Place.State}" />
-                <Label FontSize="Micro" Text="{Binding Place.Country}" />
+                <Label Grid.Row="1" Style="{StaticResource Body}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding PlaceDetail.Address}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.County}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.State}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.Country}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
         </Border>
         <Grid ColumnDefinitions="*,*">
