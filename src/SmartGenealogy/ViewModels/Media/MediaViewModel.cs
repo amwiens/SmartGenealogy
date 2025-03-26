@@ -44,6 +44,28 @@ public partial class MediaViewModel : ObservableObject, INavigationAwareAsync
         await Shell.Current.GoToAsync("AddMediaPage", parameters);
     }
 
+    [RelayCommand]
+    private async Task GoToMedia(Multimedia multimedia)
+    {
+        if (multimedia == null)
+            return;
+        var parameters = new Dictionary<string, object>
+        {
+            { "MultimediaId", multimedia.Id }
+        };
+        await Shell.Current.GoToAsync("MediaDetailPage", parameters);
+    }
+
+    [RelayCommand]
+    private async Task DeleteMedia(Multimedia multimedia)
+    {
+        if (multimedia == null)
+            return;
+
+        await _multimediaService.DeleteMultimediaAsync(multimedia);
+        Multimedia.Remove(multimedia);
+    }
+
     public async Task OnNavigatedToAsync()
     {
         var shouldRefresh = IsEdited || Multimedia.Count == 0;

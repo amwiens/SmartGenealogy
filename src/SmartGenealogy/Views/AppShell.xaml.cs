@@ -11,6 +11,7 @@ public partial class AppShell : Shell
         InitializeComponent();
 
         Routing.RegisterRoute(nameof(AddMediaPage), typeof(AddMediaPage));
+        Routing.RegisterRoute(nameof(MediaDetailPage), typeof(MediaDetailPage));
         Routing.RegisterRoute(nameof(AddPlacePage), typeof(AddPlacePage));
         Routing.RegisterRoute(nameof(AddPlaceDetailPage), typeof(AddPlaceDetailPage));
         Routing.RegisterRoute(nameof(EditPlacePage), typeof(EditPlacePage));
