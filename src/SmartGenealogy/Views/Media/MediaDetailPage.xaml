@@ -3,6 +3,7 @@
     x:Class="SmartGenealogy.Views.Media.MediaDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Media"
     Title="Media Detail"
@@ -22,12 +23,22 @@
         </Border>
         <Grid
             ColumnDefinitions="*,*"
+            HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Height}"
             RowDefinitions="*"
             VerticalOptions="Fill">
-            <Image Aspect="AspectFit" Source="{Binding Multimedia.MediaFullPath}" />
+            <Border Padding="10" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}">
+                <controls:PanPinchContainer>
+                    <Image Aspect="AspectFit" Source="{Binding Multimedia.MediaFullPath}" />
+                </controls:PanPinchContainer>
+            </Border>
             <ScrollView Grid.Column="1">
-                <VerticalStackLayout Padding="20" Spacing="10">
-                    <Label Text="{Binding Multimedia.Text}" />
+                <VerticalStackLayout Padding="10" Spacing="10">
+                    <Border
+                        Margin="0,5"
+                        Padding="10"
+                        StrokeShape="RoundRectangle 10">
+                        <Label Text="{Binding Multimedia.Text}" />
+                    </Border>
 
                     <Border
                         Margin="0,5"
