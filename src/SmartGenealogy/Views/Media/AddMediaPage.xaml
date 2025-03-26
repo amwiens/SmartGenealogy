@@ -3,15 +3,27 @@
     x:Class="SmartGenealogy.Views.Media.AddMediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:SmartGenealogy.Controls.MediaType"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:mediaTypeControls="clr-namespace:SmartGenealogy.Controls.MediaType"
     xmlns:model="clr-namespace:SmartGenealogy.Models"
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Media"
     Title="Add Media"
     x:DataType="viewmodel:AddMediaViewModel">
-    <Grid ColumnDefinitions="*,*">
-        <Border Padding="10" StrokeThickness="0">
-            <Image Source="{Binding FilePath}" />
-        </Border>
+
+    <Grid
+        ColumnDefinitions="*,*"
+        HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Height}"
+        RowDefinitions="*">
+        <VerticalStackLayout Padding="10,10,10,200" Spacing="10">
+            <Border Padding="10" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}">
+                <controls:PanPinchContainer>
+                    <Image
+                        Aspect="AspectFit"
+                        Scale=".5"
+                        Source="{Binding FilePath}" />
+                </controls:PanPinchContainer>
+            </Border>
+        </VerticalStackLayout>
         <ScrollView Grid.Column="1">
             <VerticalStackLayout Padding="20" Spacing="10">
                 <Border Padding="10" StrokeShape="RoundRectangle 10">
@@ -21,6 +33,7 @@
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding PickFileCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Get File" />
                         </Grid>
                         <Picker ItemsSource="{Binding MediaTypes}" SelectedItem="{Binding MediaType}" />
@@ -28,10 +41,10 @@
                             <ContentView.Resources>
                                 <ResourceDictionary>
                                     <ControlTemplate x:Key="newspaperView">
-                                        <controls:NewspaperArticle Description="{Binding Description, Mode=TwoWay}" />
+                                        <mediaTypeControls:NewspaperArticle Description="{Binding Description, Mode=TwoWay}" />
                                     </ControlTemplate>
                                     <ControlTemplate x:Key="imageView">
-                                        <controls:Image Description="{Binding Description, Mode=TwoWay}" />
+                                        <mediaTypeControls:Image Description="{Binding Description, Mode=TwoWay}" />
                                     </ControlTemplate>
                                 </ResourceDictionary>
                             </ContentView.Resources>
@@ -61,6 +74,7 @@
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GetTextCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Get Text" />
                         </Grid>
                         <Grid ColumnDefinitions="*,Auto">
@@ -71,6 +85,7 @@
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GetSummaryCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Get Summary" />
                         </Grid>
                         <Button Command="{Binding SaveMediaCommand}" Text="Save Media" />

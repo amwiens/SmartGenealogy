@@ -8,23 +8,34 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Place"
     x:DataType="viewmodel:PlaceViewModel">
+
     <VerticalStackLayout Padding="20" Spacing="10">
         <Button
             Command="{Binding EditPlaceCommand}"
             HorizontalOptions="End"
+            Style="{StaticResource PrimaryButtonStyle}"
             Text="Edit Place" />
 
         <Border StrokeShape="RoundRectangle 10">
             <VerticalStackLayout Padding="20">
-                <Label FontSize="Medium" Text="{Binding Place.City}" />
-                <Label FontSize="Micro" Text="{Binding Place.County}" />
-                <Label FontSize="Micro" Text="{Binding Place.State}" />
-                <Label FontSize="Micro" Text="{Binding Place.Country}" />
+                <Label Style="{StaticResource Title2}" Text="{Binding Place.City}" />
+                <Label Grid.Row="1" Style="{StaticResource Body}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Place.County}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.State}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.Country}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
         </Border>
         <Grid ColumnDefinitions="*,*">
             <maps:MapControl
                 x:Name="mapControl"
+                HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Height}"
                 HorizontalOptions="Fill"
                 Map="{Binding Map}"
                 VerticalOptions="Fill" />
@@ -35,33 +46,32 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Coordinates" />
+                            <Label Style="{StaticResource Title2}" Text="Coordinates" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GeocodePlaceCommand}"
                                 HorizontalOptions="End"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Geocode" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Latitude" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Longitude" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding Place.Latitude}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding Place.Longitude}" />
                         </Grid>
                     </Border>
@@ -71,11 +81,12 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label FontSize="Small" Text="Media" />
+                            <Label Style="{StaticResource Title2}" Text="Media" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding AddMediaCommand}"
                                 HorizontalOptions="End"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Add Media" />
 
                         </Grid>
@@ -83,13 +94,14 @@
 
                     <Grid ColumnDefinitions="*,*">
                         <Label
-                            FontSize="Medium"
+                            Style="{StaticResource Title2}"
                             Text="Place Details"
                             VerticalOptions="Center" />
                         <Button
                             Grid.Column="1"
                             Command="{Binding AddPlaceDetailCommand}"
                             HorizontalOptions="End"
+                            Style="{StaticResource PrimaryButtonStyle}"
                             Text="Add Place Detail" />
                     </Grid>
 
@@ -114,10 +126,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Path=GoToPlaceDetailCommand, x:DataType=viewmodel:PlaceViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlaceViewModel}}}" CommandParameter="{Binding .}" />
                                             </Grid.GestureRecognizers>
-                                            <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Small"
-                                                Text="{Binding Name}" />
+                                            <Label Style="{StaticResource Title2}" Text="{Binding Name}" />
                                             <Image
                                                 Grid.Column="2"
                                                 HeightRequest="16"
@@ -137,28 +146,25 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
-                            <Label FontSize="Small" Text="Dates" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Created" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Updated" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding Place.DateAdded}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding Place.DateChanged}" />
                         </Grid>
                     </Border>

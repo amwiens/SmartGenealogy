@@ -7,12 +7,10 @@
         <Entry
             x:Name="txtNewspaper"
             Placeholder="Newspaper"
-            Text="{Binding Newspaper}"
             TextChanged="text_TextChanged" />
         <Entry
             x:Name="txtPage"
             Placeholder="Page"
-            Text="{Binding Page}"
             TextChanged="text_TextChanged" />
     </VerticalStackLayout>
 </ContentView>

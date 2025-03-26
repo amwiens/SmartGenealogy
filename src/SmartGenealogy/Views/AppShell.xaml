@@ -3,31 +3,122 @@
     x:Class="SmartGenealogy.Views.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonts="clr-namespace:SmartGenealogy.Resources.Fonts"
     xmlns:local="clr-namespace:SmartGenealogy.Views"
     xmlns:mediaviews="clr-namespace:SmartGenealogy.Views.Media"
     xmlns:placeviews="clr-namespace:SmartGenealogy.Views.Places"
     xmlns:settingsviews="clr-namespace:SmartGenealogy.Views.Settings"
     Title="SmartGenealogy"
-    Shell.FlyoutBehavior="Flyout">
+    FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutBehavior="Locked"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutWidth="300">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False" />
+    </Shell.BackButtonBehavior>
 
-    <ShellContent
-        Title="Places"
-        ContentTemplate="{DataTemplate placeviews:PlacesPage}"
-        Route="PlacesPage" />
+    <Shell.TitleView>
+        <Grid
+            Padding="15,5"
+            BackgroundColor="{DynamicResource BasePageColor}"
+            ColumnDefinitions="Auto,*"
+            ColumnSpacing="15"
+            IsVisible="{OnPlatform WinUI='True',
+                                   Default='False'}">
+            <HorizontalStackLayout x:Name="backNavigation" Spacing="15">
+                <Label Style="{StaticResource IconBackLabelStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoBack_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
 
-    <ShellContent
-        Title="Media"
-        ContentTemplate="{DataTemplate mediaviews:MediaPage}"
-        Route="MediaPage" />
+                <Label
+                    Style="{StaticResource SubTitle}"
+                    Text="Back"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-    <ShellContent
-        Title="Settings"
-        ContentTemplate="{DataTemplate settingsviews:SettingsPage}"
-        Route="SettingsPage" />
+            <Label
+                x:Name="pageTitle"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource Title2}"
+                TextColor="{StaticResource BaseTextColor}"
+                VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="Home" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fonts:MaterialDesignIcons.Home}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Places" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fonts:MaterialDesignIcons.Map}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title="Places"
+            ContentTemplate="{DataTemplate placeviews:PlacesPage}"
+            Route="PlacesPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Media" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fonts:MaterialDesignIcons.Photo}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title="Media"
+            ContentTemplate="{DataTemplate mediaviews:MediaPage}"
+            Route="MediaPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fonts:MaterialDesignIcons.Settings}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate settingsviews:SettingsPage}"
+            Route="SettingsPage" />
+    </FlyoutItem>
 
 </Shell>

@@ -1,7 +1,7 @@
-﻿using CommunityToolkit.Maui.Storage;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using SmartGenealogy.Helpers;
 using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 
@@ -13,13 +13,7 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
     private AppSettings settings;
 
     [ObservableProperty]
-    private string? tesseractLanguageFileLocation;
-
-    [ObservableProperty]
-    private string? geocodioApiKey;
-
-    [ObservableProperty]
-    private string? placesBaseDirectory;
+    private bool darkMode;
 
     public SettingsViewModel()
     {
@@ -44,19 +38,24 @@ public partial class SettingsViewModel : ObservableObject, INavigationAwareAsync
         await Shell.Current.GoToAsync("AISettingsPage");
     }
 
+    partial void OnDarkModeChanged(bool value)
+    {
+        Settings.DarkMode = value;
+        if (value)
+            Application.Current!.Resources.ApplyDarkTheme();
+        else
+            Application.Current!.Resources.ApplyLightTheme();
+    }
+
     public async Task OnNavigatedToAsync()
     {
         Settings = SettingsManager.LoadSettings();
-        TesseractLanguageFileLocation = Settings.TesseractLanguageFileLocation;
-        GeocodioApiKey = Settings.GeocodioApiKey;
-        PlacesBaseDirectory = Settings.PlacesBaseDirectory;
+        DarkMode = Settings.DarkMode;
+
     }
 
     public Task OnNavigatedFromAsync()
     {
-        Settings.TesseractLanguageFileLocation = TesseractLanguageFileLocation;
-        Settings.GeocodioApiKey = GeocodioApiKey;
-        Settings.PlacesBaseDirectory = PlacesBaseDirectory;
         SettingsManager.SaveSettings(Settings);
         return Task.CompletedTask;
     }

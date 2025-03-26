@@ -1,4 +1,5 @@
-﻿using SmartGenealogy.Models;
+﻿using SmartGenealogy.Helpers;
+using SmartGenealogy.Models;
 using SmartGenealogy.Services;
 using SmartGenealogy.Views;
 
@@ -6,8 +7,6 @@ namespace SmartGenealogy;
 
 public partial class App : Application
 {
-    public AppSettings Settings { get; set; }
-
     public App()
     {
         InitializeComponent();
@@ -19,5 +18,16 @@ public partial class App : Application
     protected override Window CreateWindow(IActivationState? activationState)
     {
         return new Window(new AppShell());
+    }
+
+    protected override void OnStart()
+    {
+        base.OnStart();
+
+        var settings = SettingsManager.LoadSettings();
+        if (settings.DarkMode)
+            Application.Current!.Resources.ApplyDarkTheme();
+        else
+            Application.Current!.Resources.ApplyLightTheme();
     }
 }

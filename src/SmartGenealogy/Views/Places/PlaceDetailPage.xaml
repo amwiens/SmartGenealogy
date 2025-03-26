@@ -8,20 +8,30 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Place Detail"
     x:DataType="viewmodel:PlaceDetailViewModel">
+
     <VerticalStackLayout Padding="20" Spacing="10">
         <Button
             Command="{Binding EditPlaceDetailCommand}"
             HorizontalOptions="End"
+            Style="{StaticResource PrimaryButtonStyle}"
             Text="Edit Place Detail" />
 
         <Border StrokeShape="RoundRectangle 10">
             <VerticalStackLayout Padding="20">
-                <Label FontSize="Medium" Text="{Binding PlaceDetail.Name}" />
-                <Label FontSize="Micro" Text="{Binding PlaceDetail.Address}" />
-                <Label FontSize="Micro" Text="{Binding Place.City}" />
-                <Label FontSize="Micro" Text="{Binding Place.County}" />
-                <Label FontSize="Micro" Text="{Binding Place.State}" />
-                <Label FontSize="Micro" Text="{Binding Place.Country}" />
+                <Label Style="{StaticResource Title2}" Text="{Binding PlaceDetail.Name}" />
+                <Label Grid.Row="1" Style="{StaticResource Body}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding PlaceDetail.Address}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.County}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.State}" />
+                            <Span Text=", " />
+                            <Span Text="{Binding Place.Country}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
         </Border>
         <Grid ColumnDefinitions="*,*">
@@ -37,33 +47,32 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto,Auto">
-                            <Label FontSize="Small" Text="Coordinates" />
+                            <Label Style="{StaticResource Title2}" Text="Coordinates" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding GeocodePlaceDetailCommand}"
                                 HorizontalOptions="End"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Geocode" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Latitude" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Longitude" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.Latitude}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.Longitude}" />
                         </Grid>
                     </Border>
@@ -73,11 +82,12 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label FontSize="Small" Text="Media" />
+                            <Label Style="{StaticResource Title2}" Text="Media" />
                             <Button
                                 Grid.Column="1"
                                 Command="{Binding AddMediaCommand}"
                                 HorizontalOptions="End"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="Add Media" />
 
                         </Grid>
@@ -88,75 +98,28 @@
                         Padding="10"
                         StrokeShape="RoundRectangle 10">
                         <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
-                            <Label FontSize="Small" Text="Dates" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Created" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontSize="Micro"
+                                Style="{StaticResource Body}"
                                 Text="Date Updated" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.DateAdded}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontAttributes="Bold"
-                                FontSize="Small"
+                                Style="{StaticResource Body}"
                                 Text="{Binding PlaceDetail.DateChanged}" />
                         </Grid>
                     </Border>
-
-                    <!--<Button
-                        Command="{Binding AddPlaceDetailCommand}"
-                        HorizontalOptions="End"
-                        Text="Add Place Detail" />
-
-                    <CollectionView ItemsSource="{Binding PlaceDetails}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="model:PlaceDetail">
-                                <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems>
-                                            <SwipeItem
-                                                BackgroundColor="Red"
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PlaceViewModel}}, x:DataType=viewmodel:PlaceViewModel, Path=DeletePlaceDetailCommand}"
-                                                CommandParameter="{Binding}"
-                                                Text="Delete" />
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
-                                    <Border
-                                        Margin="0,5"
-                                        Padding="10"
-                                        StrokeShape="RoundRectangle 10">
-                                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto">
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Path=GoToPlaceDetailCommand, x:DataType=viewmodel:PlaceViewModel, Source={RelativeSource AncestorType={x:Type viewmodel:PlaceViewModel}}}" CommandParameter="{Binding .}" />
-                                            </Grid.GestureRecognizers>
-                                            <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Medium"
-                                                Text="{Binding Name}" />
-                                            <Image
-                                                Grid.Column="2"
-                                                HeightRequest="16"
-                                                HorizontalOptions="End"
-                                                Source="chevronright.png"
-                                                VerticalOptions="Center"
-                                                WidthRequest="16" />
-                                        </Grid>
-                                    </Border>
-                                </SwipeView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>-->
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>

@@ -6,6 +6,7 @@
     xmlns:viewmodel="clr-namespace:SmartGenealogy.ViewModels.Places"
     Title="Add New Place"
     x:DataType="viewmodel:AddPlaceViewModel">
+
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Border Padding="10" StrokeShape="RoundRectangle 10">
@@ -15,7 +16,10 @@
                     <Entry Placeholder="State" Text="{Binding State}" />
                     <Entry Placeholder="Country" Text="{Binding Country}" />
                     <Entry Placeholder="Notes" Text="{Binding Notes}" />
-                    <Button Command="{Binding SavePlaceCommand}" Text="Save Place" />
+                    <Button
+                        Command="{Binding SavePlaceCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Save Place" />
                 </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>

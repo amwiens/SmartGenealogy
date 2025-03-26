@@ -85,7 +85,7 @@ public partial class PlaceViewModel : ObservableObject
             };
             Map.Layers.Add(pinLayer);
             Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
-            Map.Navigator.CenterOnAndZoomTo(SphericalMercator.FromLonLat((double)value!.Longitude!, (double)value!.Latitude!).ToMPoint(), 12);
+            Map.Navigator.CenterOnAndZoomTo(map.Layers[1].Extent!.Centroid, 12);
             Map.RefreshGraphics();
         }
     }

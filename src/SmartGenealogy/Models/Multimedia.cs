@@ -17,4 +17,7 @@ public class Multimedia
     public string? Description { get; set; }
     public DateTime? DateAdded { get; set; } = DateTime.Now;
     public DateTime? DateChanged { get; set; }
+
+    [Ignore]
+    public string? MediaFullPath => Path.Combine(MediaPath!, MediaFile!);
 }
