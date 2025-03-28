@@ -48,6 +48,8 @@ public partial class PlaceViewModel : ObservableObject
         _placeService = placeService;
         _placeDetailService = placeDetailService;
         _geocodeService = geocodeService;
+
+        Map = new Mapsui.Map();
     }
 
     private async Task LoadPlaceAsync()
@@ -65,7 +67,6 @@ public partial class PlaceViewModel : ObservableObject
 
     partial void OnPlaceChanged(Place? value)
     {
-        Map = new Mapsui.Map();
         Map.Layers.Add(OpenStreetMap.CreateTileLayer());
         if (value!.Longitude != null && value.Latitude != null)
         {
@@ -85,9 +86,39 @@ public partial class PlaceViewModel : ObservableObject
             };
             Map.Layers.Add(pinLayer);
             Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
-            Map.Navigator.CenterOnAndZoomTo(map.Layers[1].Extent!.Centroid, 12);
+            Map.Navigator.CenterOnAndZoomTo(Map.Layers[1].Extent!.Centroid, 12);
             Map.RefreshGraphics();
         }
+    }
+
+    partial void OnPlaceDetailsChanged(ObservableCollection<PlaceDetail> value)
+    {
+        var placeDetailsFeatures = new ObservableCollection<IFeature>();
+        foreach (var placeDetail in PlaceDetails)
+        {
+            if (placeDetail.Latitude != null && placeDetail.Longitude != null)
+            {
+                placeDetailsFeatures.Add(new PointFeature(SphericalMercator.FromLonLat((double)placeDetail.Longitude!, (double)placeDetail.Latitude!).ToMPoint())
+                {
+                    ["Label"] = placeDetail.Name
+                });
+            }
+        }
+        var placeDetailsLayer = new MemoryLayer
+        {
+            Name = "PlaceDetails",
+            Features = placeDetailsFeatures,
+            Style = new SymbolStyle
+            {
+                SymbolScale = 0.5,
+                Fill = new Mapsui.Styles.Brush(Mapsui.Styles.Color.Blue),
+                Outline = new Pen(Mapsui.Styles.Color.Black)
+            }
+        };
+        Map.Layers.Add(placeDetailsLayer);
+        Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
+        Map.Navigator.CenterOnAndZoomTo(Map.Layers[2].Extent!.Centroid, 12);
+        Map.RefreshGraphics();
     }
 
     [RelayCommand]
