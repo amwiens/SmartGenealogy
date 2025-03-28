@@ -9,29 +9,38 @@
     Title="Media Detail"
     x:DataType="viewmodel:MediaDetailViewModel">
 
-    <VerticalStackLayout Padding="20" Spacing="10">
-        <Button
-            Command="{Binding EditMediaDetailCommand}"
-            HorizontalOptions="End"
-            Style="{StaticResource PrimaryButtonStyle}"
-            Text="Edit Media Detail" />
+    <Grid ColumnDefinitions="*" RowDefinitions="*">
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,*">
+            <Button
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="10"
+                Command="{Binding EditMediaDetailCommand}"
+                HorizontalOptions="End"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Edit Media Detail" />
 
-        <Border StrokeShape="RoundRectangle 10">
-            <VerticalStackLayout Padding="20">
-                <Label Style="{StaticResource Title2}" Text="{Binding Multimedia.Caption}" />
-            </VerticalStackLayout>
-        </Border>
-        <Grid
-            ColumnDefinitions="*,*"
-            HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=Height}"
-            RowDefinitions="*"
-            VerticalOptions="Fill">
-            <Border Padding="10" HeightRequest="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=Height}">
+            <Border
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="10"
+                StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Padding="20">
+                    <Label Style="{StaticResource Title2}" Text="{Binding Multimedia.Caption}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Margin="10"
+                Padding="10"
+                StrokeShape="RoundRectangle 10">
                 <controls:PanPinchContainer>
                     <Image Aspect="AspectFit" Source="{Binding Multimedia.MediaFullPath}" />
                 </controls:PanPinchContainer>
             </Border>
-            <ScrollView Grid.Column="1">
+
+            <ScrollView Grid.Row="2" Grid.Column="1">
                 <VerticalStackLayout Padding="10" Spacing="10">
                     <Border
                         Margin="0,5"
@@ -70,5 +79,5 @@
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
