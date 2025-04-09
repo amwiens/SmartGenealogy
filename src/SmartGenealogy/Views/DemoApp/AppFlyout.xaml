@@ -1,0 +1,10 @@
+<FlyoutPage
+    x:Class="SmartGenealogy.AppFlyout"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    FlyoutLayoutBehavior="Default" />

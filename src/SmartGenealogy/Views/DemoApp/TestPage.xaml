@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.TestPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:templates="clr-namespace:SmartGenealogy.Views.Templates"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15,10" Spacing="15">
+            <!--  Button  -->
+            <Button
+                Margin="0,15"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                CornerRadius="10"
+                FontSize="16"
+                HeightRequest="46"
+                HorizontalOptions="Fill"
+                Text="Go to Shop"
+                TextColor="{DynamicResource White}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

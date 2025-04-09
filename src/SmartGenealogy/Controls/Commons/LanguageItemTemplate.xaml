@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="SmartGenealogy.Controls.LanguageItemTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:Name="Root">
+
+    <Grid.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HeightRequest" Value="46" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="TextColor" Value="{DynamicResource BaseTextColor}" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+        </Style>
+    </Grid.Resources>
+
+    <Grid ColumnDefinitions="25, *" ColumnSpacing="15">
+
+        <!--  Flag  -->
+        <Border
+            Grid.Column="0"
+            Padding="0"
+            HeightRequest="18"
+            HorizontalOptions="Center"
+            StrokeShape="{RoundRectangle CornerRadius=3}"
+            VerticalOptions="Center"
+            WidthRequest="25">
+            <Image
+                x:Name="FlagIcon"
+                Aspect="Fill"
+                HeightRequest="18"
+                Source="{Binding Source={x:Reference Root}, Path=Flag}"
+                VerticalOptions="Center"
+                WidthRequest="25" />
+        </Border>
+
+        <!--  Language Name  -->
+        <Label
+            x:Name="NameLabel"
+            Grid.Column="1"
+            Style="{StaticResource HeaderStyle}"
+            Text="{Binding Source={x:Reference Root}, Path=Name}" />
+    </Grid>
+</Grid>

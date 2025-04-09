@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="SmartGenealogy.Views.Dashboards.DefaultTabbedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:pages="clr-namespace:SmartGenealogy.Views.Samples"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="{DynamicResource BaseTabbedPageColor}"
+    BarTextColor="{DynamicResource BaseTextColor}"
+    SelectedTabColor="{DynamicResource PrimaryColor}"
+    UnselectedTabColor="{DynamicResource BaseIconColor}">
+
+    <pages:SamplePageOne Title="Page 1">
+        <pages:SamplePageOne.IconImageSource>
+            <FontImageSource
+                FontFamily="IonIcons"
+                Glyph="{x:Static views:IonIcons.IosAlbumsOutline}"
+                Color="{DynamicResource BaseIconColor}" />
+        </pages:SamplePageOne.IconImageSource>
+    </pages:SamplePageOne>
+
+    <pages:SamplePageTwo Title="Page 2">
+        <pages:SamplePageTwo.IconImageSource>
+            <FontImageSource
+                FontFamily="IonIcons"
+                Glyph="{x:Static views:IonIcons.IosAlbumsOutline}"
+                Color="{DynamicResource BaseIconColor}" />
+        </pages:SamplePageTwo.IconImageSource>
+    </pages:SamplePageTwo>
+
+    <pages:SamplePageThree Title="Page 3">
+        <pages:SamplePageThree.IconImageSource>
+            <FontImageSource
+                FontFamily="IonIcons"
+                Glyph="{x:Static views:IonIcons.IosAlbumsOutline}"
+                Color="{DynamicResource BaseIconColor}" />
+        </pages:SamplePageThree.IconImageSource>
+    </pages:SamplePageThree>
+</TabbedPage>

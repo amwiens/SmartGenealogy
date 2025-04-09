@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="SmartGenealogy.Views.ControlsOverviewPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:bar="clr-namespace:SmartGenealogy.Controls.ProgressBar"
+    xmlns:circular="clr-namespace:SmartGenealogy.Controls.CircularProgress"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:enums="clr-namespace:SmartGenealogy.Enums"
+    xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:templates="clr-namespace:SmartGenealogy.Views.Templates"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    Title=""
+    BackgroundColor="{DynamicResource BasePageColor}">
+
+    <views:BasePage.Resources>
+        <Color x:Key="ProgressColor">DeepSkyBlue</Color>
+        <Color x:Key="GradientColor">GreenYellow</Color>
+
+        <Style x:Key="ControlsBlockContainer" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{DynamicResource MainWrapperBackgroundColor}" />
+            <Setter Property="Padding" Value="18" />
+            <Setter Property="Stroke" Value="{DynamicResource DefaultBorder}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeDashArray" Value="10,8" />
+            <Setter Property="StrokeDashOffset" Value="1" />
+            <Setter Property="Margin" Value="0,10,0,30" />
+            <Setter Property="StrokeShape" Value="{RoundRectangle CornerRadius='16'}" />
+        </Style>
+    </views:BasePage.Resources>
+
+    <views:BasePage.PageContent>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Padding="15,10" Spacing="0">
+
+                <Label
+                    Margin="0,0,0,20"
+                    Style="{StaticResource CustomTitle}"
+                    Text="Controls Overview" />
+
+                <Label Style="{StaticResource Title2}" Text="Branding" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <VerticalStackLayout Spacing="{OnIdiom Desktop=15, Tablet=10, Phone=5}">
+
+                        <Label Style="{StaticResource Body}" Text="Brand block landscape:" />
+                        <controls:BrandingLandscape HorizontalOptions="Center" />
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Brand block portrait:" />
+                        <controls:BrandingPortrait />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Style="{StaticResource Title2}" Text="Buttons" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <VerticalStackLayout Spacing="10">
+                        <Button Style="{StaticResource PrimaryButtonStyle}" Text="Primary Button" />
+
+                        <Button Style="{StaticResource SecondaryButtonStyle}" Text="Secondary Button" />
+
+                        <Button Style="{StaticResource OutlineButtonStyle}" Text="Outline Button" />
+
+                        <Button Style="{StaticResource OutlinePrimaryButtonStyle}" Text="Outline Primary" />
+
+                        <Button Style="{StaticResource OutlineSecondaryButtonStyle}" Text="Outline Secondary" />
+
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                            <Button
+                                FontFamily="FaBrands"
+                                Style="{StaticResource PrimaryIconButtonStyle}"
+                                Text="{x:Static views:FaBrands.Twitter}" />
+
+                            <Button
+                                FontFamily="SmartGenealogyIcons"
+                                Style="{StaticResource OutlinePrimaryIconButtonStyle}"
+                                Text="{x:Static views:SmartGenealogyIcons.Email}" />
+
+                            <Button
+                                FontFamily="LineAwesome"
+                                Style="{StaticResource OutlineSecondaryIconButtonStyle}"
+                                Text="{x:Static views:LineAwesome.Question}" />
+                        </HorizontalStackLayout>
+
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                            <Button Style="{StaticResource SaveButtonStyle}" Text="Save Button" />
+
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Text="Delete Button" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+                            <Button Style="{StaticResource SaveOutlineButtonStyle}" Text="Save Outline" />
+
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource DeleteOutlineButtonStyle}"
+                                Text="Delete Outline" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Style="{StaticResource Title2}" Text="Charts" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Style="{StaticResource Body}" Text="Progress bar:" />
+                        <bar:ProgressBar
+                            Margin="15,0"
+                            GradientColor="{StaticResource GradientColor}"
+                            HeightRequest="10"
+                            Progress="{Binding Path=Value, Source={x:Reference ProgressSlider}}"
+                            ProgressColor="{StaticResource ProgressColor}"
+                            UseGradient="{Binding Path=IsChecked, Source={x:Reference GradientCheckBox}}"
+                            UseRange="False" />
+                        <Slider
+                            x:Name="ProgressSlider"
+                            Maximum="1"
+                            Minimum="0"
+                            Value="0.25" />
+                        <HorizontalStackLayout>
+                            <Label Text="Use Gradient?" VerticalOptions="Center" />
+                            <CheckBox x:Name="GradientCheckBox" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Progress circular:" />
+                        <Grid ColumnDefinitions="0.5*, 0.5*" ColumnSpacing="{OnIdiom Desktop=20, Tablet=15, Phone=10}">
+
+                            <Border StrokeShape="{RoundRectangle CornerRadius='8'}" Style="{StaticResource FeatureBorder}">
+                                <VerticalStackLayout Spacing="15" VerticalOptions="Center">
+                                    <circular:CircularProgressBar
+                                        Progress="70"
+                                        ProgressColor="{DynamicResource Green}"
+                                        ProgressLeftColor="{DynamicResource DisabledColor}"
+                                        Size="100"
+                                        TextColor="{DynamicResource Green}"
+                                        Thickness="8" />
+
+                                    <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="3425" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="Joined" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                StrokeShape="{RoundRectangle CornerRadius='8'}"
+                                Style="{StaticResource FeatureBorder}">
+                                <VerticalStackLayout Spacing="15" VerticalOptions="Center">
+
+                                    <circular:CircularProgressBar
+                                        Progress="60"
+                                        ProgressColor="{DynamicResource Red}"
+                                        ProgressLeftColor="{DynamicResource DisabledColor}"
+                                        Size="100"
+                                        TextColor="{DynamicResource Red}"
+                                        Thickness="8" />
+
+                                    <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="6789" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="Designers" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Style="{StaticResource Title2}" Text="Images" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="{OnIdiom Desktop=20, Tablet=15, Phone=10}">
+                        <VerticalStackLayout Spacing="5">
+                            <controls:GalleryImage HeightRequest="{OnIdiom Desktop=250, Tablet=200, Phone=150}" Image="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/gallery/31.jpg" />
+                            <Label
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource Footnote}"
+                                Text="Tap view full size" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                            <controls:RoundedCornerImage
+                                CornerRadius="20"
+                                HeightRequest="{OnIdiom Desktop=250,
+                                                        Tablet=200,
+                                                        Phone=150}"
+                                Source="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/2.jpg" />
+
+                            <Label
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource Footnote}"
+                                Text="With RoundCorner" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Label Style="{StaticResource Title2}" Text="Indicators" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Style="{StaticResource Body}" Text="Simple busy indicator:" />
+                        <controls:SimpleLoadingIndicator IsBusy="True" />
+
+                        <Label Style="{StaticResource Body}" Text="Custom busy indicator:" />
+                        <controls:CustomLoadingIndicator HorizontalOptions="Center" IsBusy="True" />
+
+                        <Label Style="{StaticResource Body}" Text="Busy indicator with text:" />
+                        <controls:LoadingIndicator
+                            BackgroundColor="{DynamicResource BasePageColor}"
+                            HorizontalOptions="Center"
+                            IndicatorColor="{DynamicResource AccentColor}"
+                            IsBusy="True"
+                            LoadingText="Loading..."
+                            LoadingTextColor="{DynamicResource AccentColor}" />
+
+                        <Label Style="{StaticResource Body}" Text="Error indicator:" />
+                        <controls:ErrorIndicator
+                            ErrorImage="ic_payment_failed.png"
+                            ErrorText="Error messsage..."
+                            IsError="True" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Style="{StaticResource Title2}" Text="Micellanous" />
+                <Border Style="{StaticResource ControlsBlockContainer}">
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Style="{StaticResource Body}" Text="Avatar with status:" />
+                        <HorizontalStackLayout Spacing="15">
+
+                            <controls:AvatarWithStatus
+                                AvatarHeight="50"
+                                AvatarWidth="50"
+                                CornerRadius="14"
+                                HorizontalOptions="Center"
+                                Source="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/avatars/150-1.jpg"
+                                Status="Online" />
+
+                            <controls:AvatarWithStatus
+                                AvatarHeight="40"
+                                AvatarWidth="40"
+                                CornerRadius="12"
+                                HorizontalOptions="Center"
+                                Source="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/avatars/150-2.jpg"
+                                Status="Offline" />
+
+                            <controls:AvatarWithStatus
+                                AvatarHeight="50"
+                                AvatarWidth="50"
+                                CornerRadius="14"
+                                HorizontalOptions="Center"
+                                Source="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/avatars/150-3.jpg"
+                                Status="Away" />
+
+                            <controls:AvatarWithStatus
+                                AvatarHeight="40"
+                                AvatarWidth="40"
+                                CornerRadius="12"
+                                HorizontalOptions="Center"
+                                Source="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/avatars/150-4.jpg"
+                                Status="Busy" />
+                        </HorizontalStackLayout>
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Rating:" />
+                        <VerticalStackLayout Spacing="10">
+                            <controls:Rating
+                                Max="5"
+                                Color="{DynamicResource Green}"
+                                Value="5" />
+
+                            <controls:Rating Max="5" Value="4.5" />
+
+                            <controls:Rating
+                                Max="5"
+                                Color="{DynamicResource Red}"
+                                Value="2.5" />
+                        </VerticalStackLayout>
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Badge view:" />
+                        <HorizontalStackLayout Spacing="10">
+                            <controls:BadgeView
+                                BackgroundColor="{DynamicResource Green}"
+                                Text="10"
+                                TextColor="{DynamicResource White}" />
+                            <controls:BadgeView
+                                BackgroundColor="{DynamicResource Red}"
+                                Text="99+"
+                                TextColor="{DynamicResource White}" />
+                        </HorizontalStackLayout>
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Tags:" />
+                        <controls:Tags
+                            CornerRadius="8"
+                            FontSize="12"
+                            HeightRequest="24"
+                            HorizontalOptions="Start"
+                            Icon="{x:Static views:SmartGenealogyIcons.Information}"
+                            IconFontSize="18"
+                            Text="This is a tag with icon"
+                            TextColor="{DynamicResource White}" />
+
+                        <controls:Tags
+                            CornerRadius="8"
+                            FontSize="12"
+                            HeightRequest="24"
+                            HorizontalOptions="Start"
+                            Image="https://raw.githubusercontent.com/tlssoftware/raw-material/master/maui-kit/avatars/user2.png"
+                            ImageSize="15"
+                            TagColor="{DynamicResource Red}"
+                            Text="This is a tag with image"
+                            TextColor="{DynamicResource White}" />
+
+                        <BoxView HeightRequest="10" Color="Transparent" />
+
+                        <Label Style="{StaticResource Body}" Text="Header:" />
+                        <controls:HeaderTemplate
+                            IconColor="{DynamicResource PrimaryColor}"
+                            IconFontFamily="IonIcons"
+                            IconSize="30"
+                            IconText="{x:Static views:IonIcons.Image}"
+                            Text="This is a header with icon"
+                            TextSize="16" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </views:BasePage.PageContent>
+</views:BasePage>

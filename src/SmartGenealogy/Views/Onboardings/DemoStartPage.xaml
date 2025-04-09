@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Onboardings.DemoStartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid RowDefinitions="*, Auto">
+
+            <Grid
+                Padding="30"
+                HorizontalOptions="Center"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                RowSpacing="10"
+                VerticalOptions="Center">
+
+                <Border
+                    Padding="0"
+                    Background="{DynamicResource PrimaryColor}"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Shadow="{StaticResource CommonShadow}"
+                    StrokeShape="{RoundRectangle CornerRadius=16}"
+                    WidthRequest="80">
+
+                    <controls:RoundedCornerImage
+                        Background="{DynamicResource White}"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        Source="logo1.png"
+                        Stroke="{DynamicResource PrimaryColor}"
+                        StrokeShape="{RoundRectangle CornerRadius=30}"
+                        StrokeThickness="1"
+                        VerticalOptions="Center"
+                        WidthRequest="60" />
+                </Border>
+
+                <Label
+                    Grid.Row="1"
+                    FontFamily="BoldFont"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title1}"
+                    Text="Smart Genealogy"
+                    TextColor="{DynamicResource PrimaryColor}" />
+
+                <Grid Grid.Row="2">
+                    <ffimageloading:CachedImage
+                        Aspect="AspectFit"
+                        DownsampleToViewSize="True"
+                        HeightRequest="{OnIdiom Phone='170',
+                                                Desktop='350',
+                                                Tablet='230'}"
+                        Source="bg_paint.png"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource CustomTitle}"
+                        Text="{localization:Translate StringAppWelcomeTitle}"
+                        TextColor="{DynamicResource White}"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Label
+                    Grid.Row="3"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource CustomBody}"
+                    Text="{localization:Translate StringAppWelcomeSubtitle}"
+                    TextColor="{DynamicResource BaseTextColor}"
+                    TranslationY="-20" />
+
+                <Border
+                    Grid.Row="4"
+                    Padding="15,0"
+                    Background="{DynamicResource BasePageColor}"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Stroke="{DynamicResource PrimaryColor}"
+                    StrokeShape="{RoundRectangle CornerRadius='8'}"
+                    StrokeThickness="1.2"
+                    VerticalOptions="Center">
+                    <Label
+                        FontFamily="SemiBoldFont"
+                        FontSize="12"
+                        HorizontalOptions="Center"
+                        Text=".NET 9.0"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        VerticalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1" ColumnDefinitions="{OnIdiom Desktop='1*, 8*, 1*', Phone='Auto, *, Auto', Tablet='1*, 8*, 1*', Default='Auto, *, Auto'}">
+                <StackLayout
+                    Grid.Column="1"
+                    Padding="30,0,30,20"
+                    HorizontalOptions="Fill"
+                    Spacing="15"
+                    VerticalOptions="End">
+                    <Button
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        Clicked="TakeTour_Clicked"
+                        CornerRadius="14"
+                        FontFamily="MediumFont"
+                        FontSize="14"
+                        HeightRequest="50"
+                        Text="{localization:Translate ButtonTakeTour}"
+                        TextColor="{DynamicResource White}" />
+
+                    <Button
+                        BackgroundColor="{DynamicResource Primary35Color}"
+                        BorderColor="{DynamicResource Primary50Color}"
+                        BorderWidth="1.2"
+                        Clicked="Skip_Clicked"
+                        CornerRadius="14"
+                        FontFamily="MediumFont"
+                        FontSize="14"
+                        HeightRequest="50"
+                        Text="{localization:Translate ButtonSkip}"
+                        TextColor="{DynamicResource BaseTextColor}" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
