@@ -6,8 +6,10 @@
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
     xmlns:selectors="clr-namespace:SmartGenealogy.Selectors"
     xmlns:templates="clr-namespace:SmartGenealogy.Views.Templates"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels"
     x:Name="this"
     Title="Menu"
     NavigationPage.HasNavigationBar="True">
@@ -25,11 +27,11 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="GridItemTemplate">
+            <DataTemplate x:Key="GridItemTemplate" x:DataType="models:MenuEntry">
                 <templates:MainMenuGridItemTemplate />
             </DataTemplate>
 
-            <DataTemplate x:Key="ClassicItemTemplate">
+            <DataTemplate x:Key="ClassicItemTemplate" x:DataType="models:MenuEntry">
                 <templates:MainMenuClassicItemTemplate />
             </DataTemplate>
         </ResourceDictionary>

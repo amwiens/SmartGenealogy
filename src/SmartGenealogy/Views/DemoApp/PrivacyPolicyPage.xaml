@@ -3,7 +3,8 @@
     x:Class="SmartGenealogy.Views.PrivacyPolicyPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels">
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels"
+    x:DataType="viewModels:PrivacyPolicyViewModel">
     <ScrollView>
         <WebView
             HorizontalOptions="Fill"

@@ -60,6 +60,12 @@ public partial class AboutViewModel : ObservableObject
 
     [ObservableProperty]
     private ObservableCollection<TestimonialModel> _testimonialItems;
+
+    [RelayCommand]
+    private void Tap()
+    {
+
+    }
 }
 
 public class TestimonialModel

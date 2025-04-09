@@ -5,14 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SmartGenealogy"
     xmlns:models="clr-namespace:SmartGenealogy.Models"
-    xmlns:views="clr-namespace:SmartGenealogy.Views">
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:DataType="models:MenuEntry">
 
     <Grid Padding="25,10" ColumnDefinitions="30, *">
 
         <Label
             FontFamily="MaterialDesign"
             FontSize="24"
-            Text="{Binding Icon}"
+            Text="{Binding Icon, Mode=OneWay}"
             TextColor="{DynamicResource White}"
             TranslationY="-2"
             VerticalOptions="Center" />
@@ -22,7 +23,7 @@
             Margin="12,0"
             FontFamily="MediumFont"
             FontSize="16"
-            Text="{Binding Title}"
+            Text="{Binding Title, Mode=OneWay}"
             TextColor="{DynamicResource White}"
             VerticalOptions="Center" />
     </Grid>

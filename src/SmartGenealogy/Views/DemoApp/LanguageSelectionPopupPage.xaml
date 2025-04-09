@@ -6,8 +6,11 @@
     xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
     xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels"
     xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:DataType="viewModels:LanguageSelectionPopupViewModel"
     ForegroundColor="Transparent"
     IsCloseOnBackgroundClick="False"
     ZIndex="100">
@@ -39,7 +42,7 @@
                         SelectedItem="{Binding LanguageSelected}"
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="models:LanguageSelectItem">
                                 <VerticalStackLayout
                                     Padding="15,0"
                                     Spacing="1"

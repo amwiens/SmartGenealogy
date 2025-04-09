@@ -7,8 +7,10 @@
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels"
     xmlns:views="clr-namespace:SmartGenealogy.Views"
-    Title="{localization:Translate PageTitleAboutUs}">
+    Title="{localization:Translate PageTitleAboutUs}"
+    x:DataType="viewModels:AboutViewModel">
 
     <views:BasePage.PageContent>
         <Grid RowSpacing="0">
@@ -153,7 +155,7 @@
                                             SnapPointsType="Mandatory" />
                                     </CarouselView.ItemsLayout>
                                     <CarouselView.ItemTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate x:DataType="viewModels:TestimonialModel">
                                             <VerticalStackLayout
                                                 Padding="20"
                                                 MaximumWidthRequest="{OnIdiom Phone=300,

@@ -3,7 +3,9 @@
     x:Class="SmartGenealogy.Controls.BadgeView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Name="Root">
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    x:Name="Root"
+    x:DataType="controls:BadgeView">
 
     <Border
         x:Name="badgeShape"

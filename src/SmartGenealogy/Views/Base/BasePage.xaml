@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
     x:Name="Root"
+    x:DataType="views:BasePage"
     NavigationPage.HasBackButton="{OnPlatform Default='True',
                                               WinUI='False'}">
 
