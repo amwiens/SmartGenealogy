@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.ViewModels.Onboardings;
+﻿using SmartGenealogy.Resources.FontIcons;
+
+namespace SmartGenealogy.ViewModels.Onboardings;
 
 public partial class DemoWalkthroughViewModel : ObservableObject
 {

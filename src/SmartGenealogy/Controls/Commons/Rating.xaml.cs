@@ -1,3 +1,5 @@
+using SmartGenealogy.Resources.FontIcons;
+
 namespace SmartGenealogy.Controls;
 
 public partial class Rating : ContentView

@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.ViewModels;
+﻿using SmartGenealogy.Resources.FontIcons;
+
+namespace SmartGenealogy.ViewModels;
 
 public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessage>
 {

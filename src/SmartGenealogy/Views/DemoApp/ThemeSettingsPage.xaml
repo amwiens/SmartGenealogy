@@ -7,6 +7,7 @@
     xmlns:behaviors="clr-namespace:SmartGenealogy.Behaviors"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
@@ -196,7 +197,7 @@
                             Grid.Column="1"
                             FontFamily="SmartGenealogyIcons"
                             FontSize="20"
-                            Text="{x:Static views:SmartGenealogyIcons.ChevronDown}"
+                            Text="{x:Static fonticons:SmartGenealogyIcons.ChevronDown}"
                             VerticalOptions="Center" />
                     </Grid>
                 </Border>

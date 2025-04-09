@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Views;
+﻿namespace SmartGenealogy.Resources.FontIcons;
 
 internal static class FaBrands
 {

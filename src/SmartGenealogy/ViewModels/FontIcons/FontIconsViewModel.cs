@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.ViewModels.FontIcons;
+﻿using SmartGenealogy.Resources.FontIcons;
+
+namespace SmartGenealogy.ViewModels.FontIcons;
 
 public class FontIconsViewModel : BaseViewModel
 {
