@@ -31,6 +31,7 @@ namespace SmartGenealogy
             builder
                 .UseMauiApp<App>()
                 .RegisterAppServices()
+                .RegisterViews()
                 .RegisterViewModels()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement()
@@ -139,15 +140,21 @@ namespace SmartGenealogy
             return mauiAppBuilder;
         }
 
-        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddTransient<MainPage>();
+            mauiAppBuilder.Services.AddSingleton<MainPage>();
             mauiAppBuilder.Services.AddTransient<TestPage>();
-            mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
-            mauiAppBuilder.Services.AddTransient<MainViewModel>();
-            mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
             mauiAppBuilder.Services.AddTransient<StartPage>();
             mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
+
+            return mauiAppBuilder;
+        }
+
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
+            mauiAppBuilder.Services.AddSingleton<MainViewModel>();
+            mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
 
             return mauiAppBuilder;
         }
