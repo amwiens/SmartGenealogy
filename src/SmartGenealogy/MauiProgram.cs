@@ -142,19 +142,19 @@ namespace SmartGenealogy
 
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<MainPage>();
-            mauiAppBuilder.Services.AddTransient<TestPage>();
-            mauiAppBuilder.Services.AddTransient<StartPage>();
-            mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
+            //mauiAppBuilder.Services.AddSingleton<MainPage>();
+            //mauiAppBuilder.Services.AddTransient<TestPage>();
+            //mauiAppBuilder.Services.AddTransient<StartPage>();
+            //mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
 
             return mauiAppBuilder;
         }
 
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
-            mauiAppBuilder.Services.AddSingleton<MainViewModel>();
-            mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
+            //mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
+            //mauiAppBuilder.Services.AddSingleton<MainViewModel>();
+            //mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
 
             return mauiAppBuilder;
         }

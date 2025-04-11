@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        this.viewModel = new MainViewModel();
+        this.viewModel = App.Current.Services.GetService<MainViewModel>();
         BindingContext = viewModel;
     }
 

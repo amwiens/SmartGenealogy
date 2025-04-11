@@ -24,6 +24,8 @@ public partial class App : Application
 {
     public App()
     {
+        Services = ConfigureServices();
+
         InitializeComponent();
 
         #region Handlers
@@ -100,6 +102,19 @@ public partial class App : Application
         {
             MainPage = GetMainPage();
         }
+    }
+
+    public new static App Current => (App)Application.Current;
+
+    public IServiceProvider Services { get; }
+
+    private static IServiceProvider ConfigureServices()
+    {
+        var services = new ServiceCollection();
+
+        services.AddTransient<MainViewModel>();
+
+        return services.BuildServiceProvider();
     }
 
     public static Page GetMainPage()

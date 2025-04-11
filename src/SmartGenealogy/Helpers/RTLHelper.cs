@@ -278,7 +278,7 @@ public static class RTLHelper
                 cornerRadius = new Thickness(cornerRadius.Top, cornerRadius.Left, cornerRadius.Bottom, cornerRadius.Right);
             }
 
-            if (view is Frame)
+            if (view is Border)
             {
                 //view.SetValue(Frame.CornerRadiusProperty, cornerRadius);
             }
@@ -289,7 +289,7 @@ public static class RTLHelper
         }
         else
         {
-            if (view is Frame)
+            if (view is Border)
             {
                 //view.ClearValue(Frame.CornerRadiusProperty);
             }

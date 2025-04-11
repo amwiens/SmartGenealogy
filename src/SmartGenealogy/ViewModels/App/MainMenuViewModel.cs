@@ -49,39 +49,43 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
 
     private void LoadMenuData()
     {
-        MainMenuEntries = new List<MenuEntry>
-        {
+        MainMenuEntries = new List<MenuEntry>();
+
+        MainMenuEntries.Add(
             new MenuEntry
             {
                 Title = LocalizationResourceManager.Translate("MenuHome"),
                 Icon = MaterialDesignIcons.Home,
                 TargetType = typeof(MainPage)
-            },
+            });
+        MainMenuEntries.Add(
             new MenuEntry
             {
                 Title = LocalizationResourceManager.Translate("MenuControls"),
                 Icon = MaterialDesignIcons.ViewCompact,
                 TargetType = typeof(ControlsOverviewPage)
-            },
+            });
+        MainMenuEntries.Add(
             new MenuEntry()
             {
                 Title = LocalizationResourceManager.Translate("MenuIcon"),
                 Icon = MaterialDesignIcons.InsertEmoticon,
                 TargetType = typeof(FontIconsPage)
-            },
+            });
+        MainMenuEntries.Add(
             new MenuEntry()
             {
                 Title = LocalizationResourceManager.Translate("MenuAbout"),
                 Icon = MaterialDesignIcons.Info,
                 TargetType = typeof(AboutPage)
-            },
+            });
+        MainMenuEntries.Add(
             new MenuEntry()
             {
                 Title = LocalizationResourceManager.Translate("MenuPrivacy"),
                 Icon = MaterialDesignIcons.Security,
                 TargetType = typeof(PrivacyPolicyPage)
-            }
-        };
+            });
     }
 
     public List<MenuEntry> MainMenuEntries
