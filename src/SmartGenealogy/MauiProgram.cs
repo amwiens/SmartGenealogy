@@ -30,7 +30,7 @@ namespace SmartGenealogy
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .RegisterDemoAppServices()
+                .RegisterAppServices()
                 .RegisterViewModels()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement()
@@ -134,7 +134,7 @@ namespace SmartGenealogy
             return app;
         }
 
-        public static MauiAppBuilder RegisterDemoAppServices(this MauiAppBuilder mauiAppBuilder)
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
             return mauiAppBuilder;
         }
@@ -146,7 +146,7 @@ namespace SmartGenealogy
             mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
             mauiAppBuilder.Services.AddTransient<MainViewModel>();
             mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
-            mauiAppBuilder.Services.AddTransient<DemoStartPage>();
+            mauiAppBuilder.Services.AddTransient<StartPage>();
             mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
 
             return mauiAppBuilder;

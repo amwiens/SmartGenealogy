@@ -94,7 +94,7 @@ public partial class App : Application
         if (AppSettings.IsFirstLaunching)
         {
             AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-            MainPage = new NavigationPage(new DemoStartPage());
+            MainPage = new NavigationPage(new StartPage());
         }
         else
         {

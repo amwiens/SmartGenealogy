@@ -171,13 +171,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Onboardings\StartPage.xaml.cs">
+	    <DependentUpon>StartPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Controls\Popups\BasePopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DemoApp\AppFlyout.xaml">
+	  <MauiXaml Update="Views\App\AppFlyout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DemoApp\MainMenuPage.xaml">
+	  <MauiXaml Update="Views\App\MainMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Templates\MainMenuClassicItemTemplate.xaml">

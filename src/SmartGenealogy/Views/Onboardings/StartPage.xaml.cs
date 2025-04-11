@@ -1,8 +1,8 @@
 namespace SmartGenealogy.Views.Onboardings;
 
-public partial class DemoStartPage : ContentPage
+public partial class StartPage : ContentPage
 {
-    public DemoStartPage()
+    public StartPage()
     {
         InitializeComponent();
     }
