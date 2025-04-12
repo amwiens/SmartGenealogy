@@ -17,6 +17,7 @@ using UIKit;
 using LiveChartsCore;
 
 using SmartGenealogy.Handlers;
+using SmartGenealogy.ViewModels.Settings;
 
 namespace SmartGenealogy;
 
@@ -113,6 +114,7 @@ public partial class App : Application
         var services = new ServiceCollection();
 
         services.AddTransient<MainViewModel>();
+        services.AddTransient<AppSettingsViewModel>();
 
         return services.BuildServiceProvider();
     }

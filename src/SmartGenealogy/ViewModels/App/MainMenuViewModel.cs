@@ -1,4 +1,5 @@
 ﻿using SmartGenealogy.Resources.FontIcons;
+using SmartGenealogy.Views.Settings;
 
 namespace SmartGenealogy.ViewModels;
 
@@ -85,6 +86,13 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
                 Title = LocalizationResourceManager.Translate("MenuPrivacy"),
                 Icon = MaterialDesignIcons.Security,
                 TargetType = typeof(PrivacyPolicyPage)
+            });
+        MainMenuEntries.Add(
+            new MenuEntry()
+            {
+                Title = LocalizationResourceManager.Translate("MenuSetting"),
+                Icon = MaterialDesignIcons.Settings,
+                TargetType = typeof(AppSettingsPage)
             });
     }
 
