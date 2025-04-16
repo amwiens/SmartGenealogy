@@ -24,7 +24,7 @@
 		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 
 		<!-- Display name -->
-		<ApplicationTitle>SmartGenealogy</ApplicationTitle>
+		<ApplicationTitle>Smart Genealogy</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.company.smartgenealogy</ApplicationId>
@@ -50,7 +50,6 @@
 		<DefaultLanguage>en</DefaultLanguage>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageCertificateThumbprint>BCA99AACFFFF9D30670A23E4BF841B76A739B05A</PackageCertificateThumbprint>
-		<PackageIcon></PackageIcon>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-windows10.0.19041.0|AnyCPU'">
@@ -150,8 +149,8 @@
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
 		<PackageReference Include="RGPopup.Maui" Version="1.1.2" />
 		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
-		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="6.0.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="6.0.1" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
@@ -171,33 +170,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Onboardings\StartPage.xaml.cs">
-	    <DependentUpon>StartPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Settings\AppSettingsPage.xaml.cs">
-	    <DependentUpon>AppSettingsPage.xaml</DependentUpon>
+	  <Compile Update="Views\Settings\ApplicationSettingsPage.xaml.cs">
+	    <DependentUpon>ApplicationSettingsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\Commons\BasePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\Popups\BasePopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\AppFlyout.xaml">
+	  <MauiXaml Update="Views\App\AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\MainMenuPage.xaml">
+	  <MauiXaml Update="Views\Settings\AISettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Settings\AppSettingsPage.xaml">
+	  <MauiXaml Update="Views\Settings\MainSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Templates\MainMenuClassicItemTemplate.xaml">
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Views\DemoApp\AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Templates\MainMenuGridItemTemplate.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>

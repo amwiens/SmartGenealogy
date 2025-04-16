@@ -41,7 +41,7 @@
             <Label
                 x:Name="sloganText"
                 Style="{StaticResource Footnote}"
-                Text="App Design Studio"
+                Text="AW Web Solutions"
                 VerticalOptions="Start" />
         </VerticalStackLayout>
     </VerticalStackLayout>

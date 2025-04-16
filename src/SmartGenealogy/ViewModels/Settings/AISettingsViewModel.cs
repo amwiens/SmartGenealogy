@@ -1,9 +1,8 @@
 ﻿namespace SmartGenealogy.ViewModels.Settings;
 
-public partial class AppSettingsViewModel : BaseViewModel
+public partial class AISettingsViewModel : BaseViewModel
 {
-
-    public AppSettingsViewModel()
+    public AISettingsViewModel()
     {
     }
 

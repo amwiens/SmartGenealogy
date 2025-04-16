@@ -17,16 +17,19 @@ using UIKit;
 using LiveChartsCore;
 
 using SmartGenealogy.Handlers;
-using SmartGenealogy.ViewModels.Settings;
+using SmartGenealogy.Views.DemoApp;
 
 namespace SmartGenealogy;
 
+
 public partial class App : Application
 {
-    public App()
-    {
-        Services = ConfigureServices();
+    public IServiceProvider Services { get; }
 
+    public new static App Current => (App)Application.Current!;
+
+    public App(IServiceProvider serviceProvider)
+    {
         InitializeComponent();
 
         #region Handlers
@@ -94,47 +97,38 @@ public partial class App : Application
 
         #endregion Handlers
 
+        Services = serviceProvider;
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
         if (AppSettings.IsFirstLaunching)
         {
             AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-            MainPage = new NavigationPage(new StartPage());
+            return new Window(new NavigationPage(new DemoStartPage()));
         }
         else
         {
-            MainPage = GetMainPage();
+            return new Window(GetMainPage());
         }
-    }
-
-    public new static App Current => (App)Application.Current;
-
-    public IServiceProvider Services { get; }
-
-    private static IServiceProvider ConfigureServices()
-    {
-        var services = new ServiceCollection();
-
-        services.AddTransient<MainViewModel>();
-        services.AddTransient<AppSettingsViewModel>();
-
-        return services.BuildServiceProvider();
     }
 
     public static Page GetMainPage()
     {
-        return new AppFlyout();
+        return new AppShell();
     }
 
     public void ChangeFlyoutDirection()
     {
-        var flyoutPage = (AppFlyout)MainPage;
+        var flyoutPage = (AppShell)Application.Current!.Windows[0].Page!;
         if (AppSettings.IsRTLLanguage)
         {
-            flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
+            //flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
             flyoutPage.FlowDirection = FlowDirection.RightToLeft;
         }
         else
         {
-            flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
+            //flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
             flyoutPage.FlowDirection = FlowDirection.LeftToRight;
         }
     }
@@ -199,14 +193,11 @@ public partial class App : Application
                 //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('أ'))  // <- Arabic
                 //.UseRightToLeftSettings() // Enables right to left tooltips
 
-                // finally register your own mappers
-                // you can learn more about mappers at:
-                // https://livecharts.dev/docs/maui/2.0.0-rc2/Overview.Mappers
+                // finally register your own mappers you can learn more about mappers at: https://livecharts.dev/docs/maui/2.0.0-rc2/Overview.Mappers
 
                 // here we use the index as X, and the population as Y
                 .HasMap<City>((city, index) => new(index, city.Population))
-        // .HasMap<Foo>( .... )
-        // .HasMap<Bar>( .... )
+        // .HasMap<Foo>( .... ) .HasMap<Bar>( .... )
         );
     }
 

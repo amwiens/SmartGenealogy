@@ -1,8 +1,7 @@
 ﻿namespace SmartGenealogy.Behaviors;
 
 /// <summary>
-/// iOS CollectionView size calculation
-/// https://github.com/dotnet/maui/issues/6605
+/// iOS CollectionView size calculation https://github.com/dotnet/maui/issues/6605
 /// </summary>
 public sealed class IOSFixInfiniteHeightCollectionView : Behavior<CollectionView>
 {

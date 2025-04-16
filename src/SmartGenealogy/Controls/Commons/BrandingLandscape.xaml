@@ -39,7 +39,7 @@
             <Label
                 HorizontalTextAlignment="Start"
                 Style="{StaticResource Footnote}"
-                Text="App Design Studio"
+                Text="AW Web Solutions"
                 VerticalOptions="Center" />
         </VerticalStackLayout>
     </HorizontalStackLayout>

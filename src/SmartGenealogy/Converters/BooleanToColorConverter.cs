@@ -1,8 +1,9 @@
 ﻿namespace SmartGenealogy.Converters;
 
 /// <summary>
-/// This class have methods to convert the Boolean values to color objects.
-/// This is needed to validate in the Entry controls. If the validation is failed, it will return the color code of error, otherwise it will be transparent.
+/// This class have methods to convert the Boolean values to color objects. This is needed to
+/// validate in the Entry controls. If the validation is failed, it will return the color code of
+/// error, otherwise it will be transparent.
 /// </summary>
 public class BooleanToColorConverter : IValueConverter
 {

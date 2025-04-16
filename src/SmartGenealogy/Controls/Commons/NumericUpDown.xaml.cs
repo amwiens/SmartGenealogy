@@ -63,8 +63,7 @@ public partial class NumericUpDown : ContentView
     // - Minimum
     // - Maximum
     // - Value
-    // - Step
-    // OTHER POSSIBLE PROPERTIES:
+    // - Step OTHER POSSIBLE PROPERTIES:
     // - Animate
     // - NumericBackgroundColor
     // - NumericBorderColor

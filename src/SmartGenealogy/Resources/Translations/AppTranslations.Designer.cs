@@ -4595,7 +4595,7 @@ namespace SmartGenealogy.Resources.Translations {
                 return ResourceManager.GetString("StringWalkthroughTitleStep3", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Welcome to Smart Genealogy.
         /// </summary>

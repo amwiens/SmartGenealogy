@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Resources.Themes;
-
-namespace SmartGenealogy.Settings;
+﻿namespace SmartGenealogy.Settings;
 
 public static class ThemeUtil
 {

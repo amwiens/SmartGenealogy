@@ -1,16 +1,15 @@
-﻿namespace SmartGenealogy.ViewModels;
+﻿namespace SmartGenealogy.ViewModels.Settings;
 
-public partial class ThemeSettingsViewModel : ObservableObject
+public partial class ApplicationSettingsViewModel : ObservableObject
 {
     public LocalizationResourceManager LocalizationResourceManager { get; }
 
-    public ThemeSettingsViewModel()
+    public ApplicationSettingsViewModel()
     {
         LocalizationResourceManager = LocalizationResourceManager.Instance;
         CreatePrimaryColorCollection();
 
         LanguageSelected = AppSettings.SelectedLanguageItem;
-        IsGridMenuSwitchToggled = AppSettings.IsMenuGridStyle;
         DarkModeSwitchToggled = AppSettings.IsDarkMode;
         UseSystemThemeSwitchToggled = AppSettings.IsUseSystemTheme;
         SelectedPrimaryColorItem = AppSettings.SelectedPrimaryColorCollectionItem;
@@ -26,19 +25,6 @@ public partial class ThemeSettingsViewModel : ObservableObject
         set
         {
             SetProperty(ref primaryColorItems, value);
-        }
-    }
-
-    private bool isGridMenuSwitchToggled = false;
-
-    public bool IsGridMenuSwitchToggled
-    {
-        get => isGridMenuSwitchToggled;
-        set
-        {
-            SetProperty(ref isGridMenuSwitchToggled, value);
-            AppSettings.IsMenuGridStyle = value;
-            WeakReferenceMessenger.Default.Send(new MainMenuGridStyleMessage(value));
         }
     }
 
@@ -224,4 +210,14 @@ public partial class ThemeSettingsViewModel : ObservableObject
     }
 
     #endregion Methods
+
+    public async Task OnNavigatedToAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    public async Task OnNavigatedFromAsync()
+    {
+        await Task.CompletedTask;
+    }
 }

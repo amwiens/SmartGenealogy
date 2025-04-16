@@ -1,4 +1,5 @@
 ﻿using SmartGenealogy.Resources.FontIcons;
+using SmartGenealogy.Views.DemoApp;
 
 namespace SmartGenealogy.ViewModels.Onboardings;
 
@@ -87,7 +88,8 @@ public partial class DemoWalkthroughViewModel : ObservableObject
 
     private async Task CloseWalkThroughPage()
     {
-        Application.Current.MainPage = new AppFlyout();
+        //Application.Current.MainPage = new AppFlyout();
+        Application.Current.Windows[0].Page = new AppShell();
     }
 
     #endregion Methods

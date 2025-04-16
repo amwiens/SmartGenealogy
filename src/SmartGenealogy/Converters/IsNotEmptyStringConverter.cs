@@ -2,7 +2,7 @@
 
 public class IsNotEmptyStringConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
     {
         if (String.IsNullOrEmpty(value.ToString()))
         {
@@ -12,7 +12,7 @@ public class IsNotEmptyStringConverter : IValueConverter
             return true;
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
     {
         throw new NotSupportedException();
     }

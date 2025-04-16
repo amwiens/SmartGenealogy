@@ -7,7 +7,7 @@
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations">
 
     <StackLayout
-        Padding="15,30"
+        Padding="10,30"
         HorizontalOptions="Start"
         Spacing="15"
         VerticalOptions="Center">
@@ -48,7 +48,7 @@
                 <Label
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource Footnote}"
-                    Text="App Design Studio"
+                    Text="AW Web Solutions"
                     TextColor="{DynamicResource White}"
                     TextTransform="Uppercase"
                     VerticalOptions="Center" />

@@ -1,27 +1,25 @@
-using SmartGenealogy.ViewModels.Settings;
-
 namespace SmartGenealogy.Views.Settings;
 
-public partial class AppSettingsPage : ContentPage
+public partial class MainSettingsPage : BasePage
 {
-    private readonly AppSettingsViewModel viewModel;
+    private readonly MainSettingsViewModel _viewModel;
 
-    public AppSettingsPage()
+    public MainSettingsPage(MainSettingsViewModel viewModel)
 	{
 		InitializeComponent();
-		this.viewModel = App.Current.Services.GetService<AppSettingsViewModel>();
+        _viewModel = viewModel;
         BindingContext = viewModel;
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        await viewModel.OnNavigatedToAsync();
+        await _viewModel.OnNavigatedToAsync();
     }
 
     protected override async void OnNavigatedFrom(NavigatedFromEventArgs args)
     {
         base.OnNavigatedFrom(args);
-        await viewModel.OnNavigatedFromAsync();
+        await _viewModel.OnNavigatedFromAsync();
     }
 }

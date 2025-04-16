@@ -86,7 +86,8 @@ public class CircularProgressBarDrawable : BindableObject, IDrawable
         canvas.FontSize = fontSize;
         canvas.FontColor = TextColor;
 
-        // Vertical text align the text, and we need a correction factor of around 1.15 to have it aligned properly
+        // Vertical text align the text, and we need a correction factor of around 1.15 to have it
+        // aligned properly
         // Note: The VerticalAlignment.Center property of the DrawString method seems to have no effect
         float verticalPosition = ((Size / 2) - (fontSize / 2)) * 1.15f;
         canvas.DrawString($"{Progress}%", x, verticalPosition, effectiveSize, effectiveSize / 4, HorizontalAlignment.Center, VerticalAlignment.Center);

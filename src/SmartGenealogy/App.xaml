@@ -10,16 +10,16 @@
         <ResourceDictionary>
             <!-- Default theme
             Choose from one of the available prebuilt themes:
-        <ResourceDictionary Source="Resources/Themes/LightTheme.xaml" />
-        <ResourceDictionary Source="Resources/Themes/DarkTheme.xaml" />
+        <ResourceDictionary Source="Themes/LightTheme.xaml" />
+        <ResourceDictionary Source="Themes/DarkTheme.xaml" />
             -->
-            <ResourceDictionary Source="Resources/Themes/LightTheme.xaml" />
+            <ResourceDictionary Source="/Resources/Themes/LightTheme.xaml" />
 
-            <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
-            <ResourceDictionary Source="Resources/Styles/Icons.xaml" />
-            <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-            <ResourceDictionary Source="Resources/Styles/Labels.xaml" />
-            <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            <ResourceDictionary Source="/Resources/Styles/Buttons.xaml" />
+            <ResourceDictionary Source="/Resources/Styles/Icons.xaml" />
+            <ResourceDictionary Source="/Resources/Styles/Colors.xaml" />
+            <ResourceDictionary Source="/Resources/Styles/Labels.xaml" />
+            <ResourceDictionary Source="/Resources/Styles/Styles.xaml" />
 
             <!--  UNITS  -->
             <x:Double x:Key="BaseFontSize">14</x:Double>

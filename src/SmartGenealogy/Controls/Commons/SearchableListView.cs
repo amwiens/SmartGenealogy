@@ -33,9 +33,7 @@ public class SearchableListView : ListView
         set { this.SetValue(SearchTextProperty, value); }
     }
 
-    //
-    // Summary:
-    //     Gets or sets the filter for the underlying collection
+    // Summary: Gets or sets the filter for the underlying collection
     public Predicate<object> Filter
     {
         get

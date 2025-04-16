@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage
+    x:Class="SmartGenealogy.Views.Settings.MainSettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    x:DataType="viewModels:MainSettingsViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto">
+
+        <!--  Main Settings  -->
+        <StackLayout Grid.Row="0" Margin="20">
+            <Label
+                HorizontalOptions="Start"
+                Style="{StaticResource Title2}"
+                Text="{localization:Translate LabelMainSettings}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+
+            <!--  Application Settings  -->
+            <Grid Padding="0,12" ColumnDefinitions="40,*,40">
+                <Label
+                    FontFamily="SmartGenealogyIcons"
+                    FontSize="22"
+                    HorizontalOptions="Start"
+                    Text="{x:Static fontIcons:SmartGenealogyIcons.Image}"
+                    TextColor="{DynamicResource T_Primary}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    Text="{localization:Translate LabelApplicationSettings}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Grid.Column="2"
+                    FontFamily="IonIcons"
+                    FontSize="15"
+                    HorizontalOptions="End"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static fontIcons:IonIcons.ChevronRight}"
+                    TextColor="{DynamicResource BaseIconColor}"
+                    VerticalOptions="Center" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToApplicationSettingsCommand, x:DataType=viewModels:MainSettingsViewModel, Source={RelativeSource AncestorType={x:Type viewModels:MainSettingsViewModel}}}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />
+
+            <!--  AI Settings  -->
+            <Grid Padding="0,12" ColumnDefinitions="40,*,40">
+                <Label
+                    FontFamily="SmartGenealogyIcons"
+                    FontSize="22"
+                    HorizontalOptions="Start"
+                    Text="{x:Static fontIcons:SmartGenealogyIcons.Image}"
+                    TextColor="{DynamicResource T_Primary}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    Text="{localization:Translate LabelAISettings}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Grid.Column="2"
+                    FontFamily="IonIcons"
+                    FontSize="15"
+                    HorizontalOptions="End"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static fontIcons:IonIcons.ChevronRight}"
+                    TextColor="{DynamicResource BaseIconColor}"
+                    VerticalOptions="Center" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToAISettingsCommand, x:DataType=viewModels:MainSettingsViewModel, Source={RelativeSource AncestorType={x:Type viewModels:MainSettingsViewModel}}}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />
+
+        </StackLayout>
+    </Grid>
+
+</controls:BasePage>

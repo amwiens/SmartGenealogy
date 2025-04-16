@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace SmartGenealogy.Controls.Videos;
+﻿namespace SmartGenealogy.Controls.Videos;
 
 public class VideoSourceConverter : TypeConverter, IExtendedTypeConverter
 {

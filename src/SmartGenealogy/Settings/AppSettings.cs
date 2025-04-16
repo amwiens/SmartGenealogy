@@ -42,12 +42,6 @@ public class AppSettings
         set => Preferences.Set(nameof(IsRTLLanguage), value);
     }
 
-    public static bool IsMenuGridStyle
-    {
-        get => Preferences.Get(nameof(IsMenuGridStyle), false);
-        set => Preferences.Set(nameof(IsMenuGridStyle), value);
-    }
-
     public static bool IsDarkMode
     {
         get => Preferences.Get(nameof(IsDarkMode), false);

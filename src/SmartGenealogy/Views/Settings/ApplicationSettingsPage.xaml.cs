@@ -1,10 +1,10 @@
-﻿namespace SmartGenealogy.Views;
+﻿namespace SmartGenealogy.Views.Settings;
 
-public partial class MainPage : BasePage
+public partial class ApplicationSettingsPage : BasePage
 {
-    private readonly MainViewModel _viewModel;
+    private readonly ApplicationSettingsViewModel _viewModel;
 
-    public MainPage(MainViewModel viewModel)
+    public ApplicationSettingsPage(ApplicationSettingsViewModel viewModel)
     {
         InitializeComponent();
         _viewModel = viewModel;

@@ -1,8 +1,10 @@
+using SmartGenealogy.Views.DemoApp;
+
 namespace SmartGenealogy.Views.Onboardings;
 
-public partial class StartPage : ContentPage
+public partial class DemoStartPage : ContentPage
 {
-    public StartPage()
+    public DemoStartPage()
     {
         InitializeComponent();
     }
@@ -14,6 +16,7 @@ public partial class StartPage : ContentPage
 
     private async void Skip_Clicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new AppFlyout();
+        //Application.Current.MainPage = new AppFlyout();
+        Application.Current.Windows[0].Page = new AppShell();
     }
 }

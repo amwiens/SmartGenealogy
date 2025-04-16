@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Graphics;
 
 namespace SmartGenealogy.Controls
 {
@@ -247,8 +246,7 @@ namespace SmartGenealogy.Controls
                 return;
             }
 
-            // Validate the length (which must be a positive,
-            // finite number)
+            // Validate the length (which must be a positive, finite number)
             if ((value <= 0.0) || double.IsPositiveInfinity(value))
             {
                 // Reset the property to its original state before throwing

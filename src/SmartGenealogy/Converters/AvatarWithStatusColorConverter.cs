@@ -2,7 +2,7 @@ namespace SmartGenealogy.Converters
 {
     public class AvatarWithStatusColorConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string resourceName;
 
@@ -30,7 +30,7 @@ namespace SmartGenealogy.Converters
             return ResourceHelper.FindResource<Color>(resourceName);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotSupportedException();
         }

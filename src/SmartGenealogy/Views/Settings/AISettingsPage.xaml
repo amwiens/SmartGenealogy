@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage
+    x:Class="SmartGenealogy.Views.Settings.AISettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    x:Name="aiSettingsPage"
+    x:DataType="viewModels:AISettingsViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle="AI Settings">
+
+    <Grid RowDefinitions="Auto,Auto,Auto">
+
+        <!--  Ollama Settings  -->
+        <StackLayout
+            Grid.Row="0"
+            Margin="20"
+            IsVisible="{OnIdiom Default='False',
+                                Desktop='True'}">
+            <Label
+                HorizontalOptions="Start"
+                Style="{StaticResource Title2}"
+                Text="{localization:Translate LabelOllamaSettings}"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+
+            <Label Style="{StaticResource Body}" Text="This is a test message" />
+
+            <Button Style="{StaticResource OutlinePrimaryButtonStyle}" Text="Download Ollama" />
+
+        </StackLayout>
+    </Grid>
+
+</controls:BasePage>

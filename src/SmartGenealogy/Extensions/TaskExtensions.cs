@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace SmartGenealogy
+﻿namespace SmartGenealogy
 {
     internal static class TaskExtensions
     {

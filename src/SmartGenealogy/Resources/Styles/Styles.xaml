@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
-    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:local="clr-namespace:SmartGenealogy">
 
     <Shadow
@@ -28,14 +28,14 @@
                     <VisualState x:Name="Normal">
                         <VisualState.Setters>
                             <Setter Property="TextColor" Value="{DynamicResource DisabledColor}" />
-                            <Setter Property="Text" Value="{x:Static fonticons:SmartGenealogyIcons.CircleOutline}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:SmartGenealogyIcons.CircleOutline}" />
                             <Setter Property="FontSize" Value="{OnIdiom Phone=8, Tablet=10, Desktop=12}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
                             <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
-                            <Setter Property="Text" Value="{x:Static fonticons:SmartGenealogyIcons.Circle}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:SmartGenealogyIcons.Circle}" />
                             <Setter Property="FontSize" Value="{OnIdiom Phone=10, Tablet=13, Desktop=16}" />
                         </VisualState.Setters>
                     </VisualState>

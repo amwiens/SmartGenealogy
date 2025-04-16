@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:pages="clr-namespace:SmartGenealogy.Views.Samples"
     android:TabbedPage.ToolbarPlacement="Bottom"
     BarBackgroundColor="{DynamicResource BaseTabbedPageColor}"
@@ -16,7 +16,7 @@
         <pages:SamplePageOne.IconImageSource>
             <FontImageSource
                 FontFamily="IonIcons"
-                Glyph="{x:Static fonticons:IonIcons.IosAlbumsOutline}"
+                Glyph="{x:Static fontIcons:IonIcons.IosAlbumsOutline}"
                 Color="{DynamicResource BaseIconColor}" />
         </pages:SamplePageOne.IconImageSource>
     </pages:SamplePageOne>
@@ -25,7 +25,7 @@
         <pages:SamplePageTwo.IconImageSource>
             <FontImageSource
                 FontFamily="IonIcons"
-                Glyph="{x:Static fonticons:IonIcons.IosAlbumsOutline}"
+                Glyph="{x:Static fontIcons:IonIcons.IosAlbumsOutline}"
                 Color="{DynamicResource BaseIconColor}" />
         </pages:SamplePageTwo.IconImageSource>
     </pages:SamplePageTwo>
@@ -34,7 +34,7 @@
         <pages:SamplePageThree.IconImageSource>
             <FontImageSource
                 FontFamily="IonIcons"
-                Glyph="{x:Static fonticons:IonIcons.IosAlbumsOutline}"
+                Glyph="{x:Static fontIcons:IonIcons.IosAlbumsOutline}"
                 Color="{DynamicResource BaseIconColor}" />
         </pages:SamplePageThree.IconImageSource>
     </pages:SamplePageThree>

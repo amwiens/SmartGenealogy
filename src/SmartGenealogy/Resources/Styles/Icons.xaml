@@ -4,12 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
-    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons">
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons">
 
     <Style x:Key="IconCloseLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="IonIcons" />
         <Setter Property="FontSize" Value="28" />
-        <Setter Property="Text" Value="{x:Static fonticons:IonIcons.AndroidClose}" />
+        <Setter Property="Text" Value="{x:Static fontIcons:IonIcons.AndroidClose}" />
     </Style>
 
     <!--  Back button style for Windows app  -->
@@ -26,7 +26,7 @@
                             <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="LeftToRight" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
-                            <Setter Property="Text" Value="{x:Static fonticons:IonIcons.ArrowLeftC}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:IonIcons.ArrowLeftC}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="rtl">
@@ -34,7 +34,7 @@
                             <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="RightToLeft" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
-                            <Setter Property="Text" Value="{x:Static fonticons:IonIcons.ArrowRightC}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:IonIcons.ArrowRightC}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -57,7 +57,7 @@
                             <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="LeftToRight" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
-                            <Setter Property="Text" Value="{x:Static fonticons:MaterialDesignIcons.ChevronRight}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:MaterialDesignIcons.ChevronRight}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="rtlDirection">
@@ -65,7 +65,7 @@
                             <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="RightToLeft" />
                         </VisualState.StateTriggers>
                         <VisualState.Setters>
-                            <Setter Property="Text" Value="{x:Static fonticons:MaterialDesignIcons.ChevronLeft}" />
+                            <Setter Property="Text" Value="{x:Static fontIcons:MaterialDesignIcons.ChevronLeft}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

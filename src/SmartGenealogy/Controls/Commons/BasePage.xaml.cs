@@ -1,8 +1,8 @@
-namespace SmartGenealogy.Views;
+namespace SmartGenealogy.Controls;
 
 public partial class BasePage : ContentPage
 {
-    public IList<Microsoft.Maui.IView> PageContent => PageContentGrid.Children;
+    //public IList<Microsoft.Maui.IView> PageContent => PageContentGrid.Children;
 
     public BasePage()
     {
@@ -27,11 +27,11 @@ public partial class BasePage : ContentPage
         if (Navigation.NavigationStack.Count == 1)
         {
             // Root page
-            backNavigation.IsVisible = false;
+            IsBackVisible = false;
         }
         else
         {
-            backNavigation.IsVisible = true;
+            IsBackVisible = true;
         }
     }
 
@@ -61,5 +61,19 @@ public partial class BasePage : ContentPage
     {
         get { return (Color)GetValue(BaseTitleColorProperty); }
         set { SetValue(BaseTitleColorProperty, value); }
+    }
+
+    public static readonly BindableProperty IsBackVisibleProperty =
+        BindableProperty.Create(
+            nameof(IsBackVisible),
+            typeof(bool),
+            typeof(BasePage),
+            defaultValue: false
+        );
+
+    public bool IsBackVisible
+    {
+        get => (bool)GetValue(IsBackVisibleProperty);
+        set => SetValue(IsBackVisibleProperty, value);
     }
 }

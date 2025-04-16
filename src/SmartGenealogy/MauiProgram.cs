@@ -2,6 +2,8 @@
 
 using FFImageLoading.Maui;
 
+using SmartGenealogy.Handlers;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 
@@ -10,8 +12,6 @@ using PanCardView;
 using RGPopup.Maui.Extensions;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
-
-using SmartGenealogy.Handlers;
 
 #if WINDOWS
 using Microsoft.UI;
@@ -31,7 +31,6 @@ namespace SmartGenealogy
             builder
                 .UseMauiApp<App>()
                 .RegisterAppServices()
-                .RegisterViews()
                 .RegisterViewModels()
                 .UseMauiCommunityToolkit()
                 .UseMauiCommunityToolkitMediaElement()
@@ -103,10 +102,9 @@ namespace SmartGenealogy
                         winuiAppWindow.SetPresenter(AppWindowPresenterKind.Default);
 
                         //https://github.com/microsoft/microsoft-ui-xaml/issues/8746
-                        ///
                         /// System back button for backwards navigation is no longer recommend
                         /// Instead, you should provide your own in-app back button
-                        //  https://learn.microsoft.com/en-us/windows/apps/design/basics/navigation-history-and-backwards-navigation?source=recommendations#system-back-behavior-for-backward-compatibility
+                        // https://learn.microsoft.com/en-us/windows/apps/design/basics/navigation-history-and-backwards-navigation?source=recommendations#system-back-behavior-for-backward-compatibility
                         var titleBar = winuiAppWindow.TitleBar;
                         titleBar.ExtendsContentIntoTitleBar = true;
                         titleBar.BackgroundColor = Windows.UI.Color.FromArgb(1, 186, 213, 248); //Hex: #BAD5F8
@@ -137,24 +135,24 @@ namespace SmartGenealogy
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-            return mauiAppBuilder;
-        }
 
-        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
-        {
-            //mauiAppBuilder.Services.AddSingleton<MainPage>();
-            //mauiAppBuilder.Services.AddTransient<TestPage>();
-            //mauiAppBuilder.Services.AddTransient<StartPage>();
-            //mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
 
             return mauiAppBuilder;
         }
 
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
-            //mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
-            //mauiAppBuilder.Services.AddSingleton<MainViewModel>();
-            //mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
+            mauiAppBuilder.Services.AddTransient<MainPage>();
+
+            mauiAppBuilder.Services.AddTransient<MainViewModel>();
+
+            mauiAppBuilder.Services.AddTransient<MainSettingsViewModel>();
+            mauiAppBuilder.Services.AddTransient<AISettingsViewModel>();
+            mauiAppBuilder.Services.AddTransient<ApplicationSettingsViewModel>();
+
+            mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
+            mauiAppBuilder.Services.AddTransient<DemoStartPage>();
+            mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
 
             return mauiAppBuilder;
         }

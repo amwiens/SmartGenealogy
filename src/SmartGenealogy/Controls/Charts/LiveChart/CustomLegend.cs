@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-using LiveChartsCore;
+﻿using LiveChartsCore;
 using LiveChartsCore.Drawing;
 using LiveChartsCore.Kernel.Events;
 using LiveChartsCore.Kernel.Sketches;

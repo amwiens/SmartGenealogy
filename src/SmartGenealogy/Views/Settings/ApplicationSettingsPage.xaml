@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<controls:BasePage
+    x:Class="SmartGenealogy.Views.Settings.ApplicationSettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:behaviors="clr-namespace:SmartGenealogy.Behaviors"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:settings="clr-namespace:SmartGenealogy.Settings"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle="Application Settings"
+    FlowDirection="{Binding LanguageSelected.IsRTL, Converter={StaticResource FlowDirectionConverter}}">
+
+    <controls:BasePage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeaderStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{DynamicResource BaseTextColor}" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+        </ResourceDictionary>
+    </controls:BasePage.Resources>
+
+    <Grid
+        Padding="20,0"
+        BackgroundColor="{DynamicResource BasePageColor}"
+        RowDefinitions="Auto, Auto, Auto, Auto"
+        RowSpacing="15">
+
+        <!--  Primary Color Options  -->
+        <Grid Grid.Row="0" RowDefinitions="Auto, Auto">
+            <Label Style="{StaticResource HeaderStyle}" Text="{localization:Translate LabelPickColor}" />
+
+            <CollectionView
+                x:Name="primaryColorLists"
+                Grid.Row="1"
+                Margin="10,0,10,10"
+                HeightRequest="{OnIdiom Phone='50',
+                                        Desktop='70',
+                                        Default='60'}"
+                HorizontalOptions="{OnPlatform iOS='Center',
+                                               Android='Center',
+                                               WinUI='Center',
+                                               MacCatalyst='Center'}"
+                ItemsSource="{Binding PrimaryColorItems}"
+                SelectedItem="{Binding SelectedPrimaryColorItem}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="2"
+                            Padding="2"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            StrokeThickness="2"
+                            WidthRequest="40">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+
+                            <RoundRectangle
+                                CornerRadius="8"
+                                Fill="{Binding Color}"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="35" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                                <Setter Property="Stroke" Value="Transparent" />
+                                                <Setter Property="HeightRequest" Value="40" />
+                                                <Setter Property="WidthRequest" Value="40" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                                <Setter Property="Stroke" Value="{Binding Color}" />
+                                                <Setter Property="HeightRequest" Value="40" />
+                                                <Setter Property="WidthRequest" Value="45" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!--  Use System Theme  -->
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="*, Auto"
+            ColumnSpacing="10">
+            <Label Style="{StaticResource HeaderStyle}" Text="{localization:Translate LabelUseSystemTheme}" />
+
+            <Switch
+                x:Name="systemThemeSwitch"
+                Grid.Column="1"
+                HandlerProperties.DisconnectPolicy="Manual"
+                HorizontalOptions="End"
+                IsToggled="{Binding UseSystemThemeSwitchToggled}"
+                OnColor="{DynamicResource Primary50Color}"
+                ThumbColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!--  Dark Mode  -->
+        <Grid
+            Grid.Row="2"
+            ColumnDefinitions="*, Auto"
+            ColumnSpacing="10">
+            <Label
+                IsEnabled="{Binding EnableDarkModeSwitch, Mode=TwoWay}"
+                Style="{StaticResource HeaderStyle}"
+                Text="{localization:Translate LabelDarkmode}" />
+
+            <Switch
+                Grid.Column="1"
+                HandlerProperties.DisconnectPolicy="Manual"
+                HorizontalOptions="End"
+                IsEnabled="{Binding EnableDarkModeSwitch, Mode=TwoWay}"
+                IsToggled="{Binding DarkModeSwitchToggled}"
+                OnColor="{DynamicResource Primary50Color}"
+                ThumbColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!--  Language Options  -->
+        <VerticalStackLayout
+            Grid.Row="3"
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="Center">
+
+            <Label Style="{StaticResource HeaderStyle}" Text="{localization:Translate LabelAppLanguage}" />
+
+            <Border
+                Padding="15,0"
+                Stroke="{DynamicResource DefaultBorder}"
+                StrokeShape="{RoundRectangle CornerRadius=8}"
+                StrokeThickness="1">
+                <Grid ColumnDefinitions="*, Auto">
+                    <controls:LanguageItemTemplate Name="{Binding LanguageSelected.Name}" Flag="{Binding LanguageSelected.Flag}">
+                        <controls:LanguageItemTemplate.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LanguageItemTappedCommand}" />
+                        </controls:LanguageItemTemplate.GestureRecognizers>
+                    </controls:LanguageItemTemplate>
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="SmartGenealogyIcons"
+                        FontSize="20"
+                        Text="{x:Static fontIcons:SmartGenealogyIcons.ChevronDown}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </Grid>
+
+</controls:BasePage>

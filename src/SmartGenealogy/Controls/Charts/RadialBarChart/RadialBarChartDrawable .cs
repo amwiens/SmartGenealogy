@@ -111,8 +111,7 @@ public class RadialBarChartDrawable : IDrawable
 
     private static void DrawArc(ICanvas canvas, PointF center, float radius, float start, float end)
     {
-        // Angle 0 is the right
-        // Degrees go counter clockwise, meaning 90 is top
+        // Angle 0 is the right Degrees go counter clockwise, meaning 90 is top
         canvas.DrawArc(
             center.X - radius,
             center.Y - radius,
