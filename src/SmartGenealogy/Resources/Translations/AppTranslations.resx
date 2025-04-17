@@ -2048,4 +2048,16 @@ MAUI LOVERS</value>
   <data name="LabelAISettings" xml:space="preserve">
     <value>AI Settings</value>
   </data>
+  <data name="LabelCreateNewFile" xml:space="preserve">
+    <value>Create New File</value>
+  </data>
+  <data name="LabelSelectFolder" xml:space="preserve">
+    <value>Select folder</value>
+  </data>
+  <data name="LabelFileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="LabelFolderPath" xml:space="preserve">
+    <value>Folder path</value>
+  </data>
 </root>

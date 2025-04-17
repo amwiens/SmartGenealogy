@@ -2046,4 +2046,16 @@
   <data name="LabelAISettings" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelCreateNewFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelSelectFolder" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelFileName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelFolderPath" xml:space="preserve">
+    <value />
+  </data>
 </root>

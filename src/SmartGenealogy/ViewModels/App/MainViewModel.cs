@@ -23,6 +23,21 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
         });
     }
 
+    [RelayCommand]
+    private async void CreateFileTapped()
+    {
+        var popupViewModel = new CreateFilePopupViewModel();
+        var popup = new CreateFilePopupPage { BindingContext = popupViewModel };
+        await PopupAction.DisplayPopup(popup);
+
+        // Await the result from the popup
+        var result = await popupViewModel.PopupClosedTask;
+        if (result != null)
+        {
+            //await Shell.Current.GoToAsync(nameof(AISettingsPage));
+        }
+    }
+
     public async Task OnNavigatedToAsync()
     {
         await Task.CompletedTask;

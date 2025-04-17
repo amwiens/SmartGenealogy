@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePopupPage
+    x:Class="SmartGenealogy.Views.Popups.App.CreateFilePopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fontIcons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Popups.App"
+    x:DataType="viewModels:CreateFilePopupViewModel"
+    ForegroundColor="Transparent"
+    IsCloseOnBackgroundClick="False"
+    ZIndex="100">
+    <Grid HorizontalOptions="{OnIdiom Desktop='Center', Tablet='Center', Phone='Fill'}" VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Desktop='550', Tablet='350', Phone='*'}" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Margin="15"
+            Padding="20,25"
+            Background="{DynamicResource BasePageColor}"
+            StrokeShape="{RoundRectangle CornerRadius='20'}">
+            <Grid RowDefinitions="*,Auto" RowSpacing="20">
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="10"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource Title2}"
+                        Text="{localization:Translate LabelCreateNewFile}" />
+
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Headline}"
+                        Text="{localization:Translate LabelFolderPath}" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Entry Placeholder="{localization:Translate LabelFolderPath}" Text="{Binding FilePath}" />
+                        <Button
+                            Command="{Binding PickFolderPathCommand}"
+                            FontFamily="IonIcons"
+                            FontSize="22"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource OutlinePrimaryButtonStyle}"
+                            Text="{x:Static fontIcons:IonIcons.Folder}"
+                            TextColor="{DynamicResource PrimaryColor}"
+                            ToolTipProperties.Text="{localization:Translate LabelSelectFolder}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Headline}"
+                        Text="{localization:Translate LabelFileName}" />
+
+                    <Entry Placeholder="{localization:Translate LabelFileName}" Text="{Binding FileName}" />
+                </VerticalStackLayout>
+
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="15"
+                    VerticalOptions="Center">
+
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding OkTappedCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{localization:Translate LabelOk}" />
+
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding CancelTappedCommand}"
+                        Style="{StaticResource OutlinePrimaryButtonStyle}"
+                        Text="{localization:Translate LabelCancel}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:BasePopupPage>
