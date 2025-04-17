@@ -13,7 +13,7 @@ public class AppSettings
     // http://www.lingoes.net/en/translator/langcode.htm
     public static List<LanguageSelectItem> Languages = new List<LanguageSelectItem>
     {
-        new LanguageSelectItem { Code ="en-US", Flag="flag_en.png", Name = "English (United State)", IsRTL = false },
+        new LanguageSelectItem { Code ="en-US", Flag="flag_en.png", Name = "English (United States)", IsRTL = false },
         new LanguageSelectItem { Code ="ar-AE", Flag="flag_ar.png", Name = "Arabic (U.A.E.)", IsRTL = true },
         new LanguageSelectItem { Code ="de-DE", Flag="flag_de.png", Name = "German (Germany)", IsRTL = false },
         new LanguageSelectItem { Code ="es-ES", Flag="flag_es.png", Name = "Spanish (Spain)", IsRTL = false },

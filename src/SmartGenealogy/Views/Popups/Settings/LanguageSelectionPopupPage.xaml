@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <controls:BasePopupPage
-    x:Class="SmartGenealogy.Views.LanguageSelectionPopupPage"
+    x:Class="SmartGenealogy.Views.Popups.Settings.LanguageSelectionPopupPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
     xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Popups.Settings"
+    x:DataType="viewModels:LanguageSelectionPopupViewModel"
     ForegroundColor="Transparent"
     IsCloseOnBackgroundClick="False"
     ZIndex="100">
@@ -44,7 +46,10 @@
                                     Padding="15,0"
                                     Spacing="1"
                                     VerticalOptions="Center">
-                                    <controls:LanguageItemTemplate Name="{Binding Name}" Flag="{Binding Flag}" />
+                                    <controls:LanguageItemTemplate
+                                        Name="{Binding Name}"
+                                        x:DataType="models:LanguageSelectItem"
+                                        Flag="{Binding Flag}" />
 
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroupList>

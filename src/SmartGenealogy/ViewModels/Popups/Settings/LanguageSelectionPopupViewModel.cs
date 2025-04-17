@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.ViewModels;
+﻿namespace SmartGenealogy.ViewModels.Popups.Settings;
 
 public partial class LanguageSelectionPopupViewModel : ObservableObject
 {

@@ -1,4 +1,4 @@
-namespace SmartGenealogy.Views;
+namespace SmartGenealogy.Views.Popups.Settings;
 
 public partial class LanguageSelectionPopupPage : BasePopupPage
 {
