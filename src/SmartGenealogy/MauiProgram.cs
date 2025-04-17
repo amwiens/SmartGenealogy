@@ -12,6 +12,7 @@ using PanCardView;
 using RGPopup.Maui.Extensions;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using Microsoft.Extensions.AI;
 
 #if WINDOWS
 using Microsoft.UI;
@@ -135,7 +136,7 @@ namespace SmartGenealogy
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-
+            //mauiAppBuilder.Services.AddChatClient(new OllamaChatClient(new Uri("http://localhost:11434"), "llava:7b"));
 
             return mauiAppBuilder;
         }
