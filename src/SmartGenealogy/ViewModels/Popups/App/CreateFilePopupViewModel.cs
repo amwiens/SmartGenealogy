@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui.Storage;
-
-namespace SmartGenealogy.ViewModels.Popups.App;
+﻿namespace SmartGenealogy.ViewModels.Popups.App;
 
 public partial class CreateFilePopupViewModel : BaseViewModel
 {

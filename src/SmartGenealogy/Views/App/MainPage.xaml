@@ -24,10 +24,16 @@
             Margin="20"
             Style="{StaticResource Headline}"
             Text="Add your content here" />
-        <Button
-            Grid.Row="1"
-            Command="{Binding CreateFileTappedCommand}"
-            Style="{StaticResource OutlinePrimaryButtonStyle}"
-            Text="Create File" />
+        <VerticalStackLayout Grid.Row="1">
+            <Button
+                Command="{Binding CreateFileTappedCommand}"
+                Style="{StaticResource OutlinePrimaryButtonStyle}"
+                Text="Create File" />
+
+            <Button
+                Command="{Binding OpenFileTappedCommand}"
+                Style="{StaticResource OutlinePrimaryButtonStyle}"
+                Text="Open File" />
+        </VerticalStackLayout>
     </Grid>
 </controls:BasePage>

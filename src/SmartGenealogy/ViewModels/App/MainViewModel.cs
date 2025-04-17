@@ -24,7 +24,7 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     }
 
     [RelayCommand]
-    private async void CreateFileTapped()
+    private async Task CreateFileTapped()
     {
         var popupViewModel = new CreateFilePopupViewModel();
         var popup = new CreateFilePopupPage { BindingContext = popupViewModel };
@@ -35,6 +35,32 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
         if (result != null)
         {
             //await Shell.Current.GoToAsync(nameof(AISettingsPage));
+        }
+    }
+
+    [RelayCommand]
+    private async Task OpenFileTapped()
+    {
+        var customFileType = new FilePickerFileType(
+            new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.Android, new[] { ".sgdb" } },
+                { DevicePlatform.iOS, new[] { ".sgdb" } },
+                { DevicePlatform.WinUI, new[] { ".sgdb" } },
+                { DevicePlatform.MacCatalyst, new[] { "sgdb" } },
+            });
+
+        var result = await FilePicker.Default.PickAsync(new PickOptions
+        {
+            PickerTitle = "Select a database",
+            //FileTypes = customFileType,
+        });
+        if (result != null)
+        {
+            if (!string.IsNullOrEmpty(result!.FileName))
+            {
+                //FilePath = result.Folder.Path;
+            }
         }
     }
 
