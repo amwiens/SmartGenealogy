@@ -2,11 +2,18 @@
 
 public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMessage>
 {
+    private readonly DatabaseContext _databaseContext;
+
+    [ObservableProperty]
+    private string? databasePath;
+
     [ObservableProperty]
     private bool isRTLLanguage;
 
-    public MainViewModel()
+    public MainViewModel(DatabaseContext databaseContext)
     {
+        _databaseContext = databaseContext;
+
         WeakReferenceMessenger.Default.Register<CultureChangeMessage>(this);
         IsRTLLanguage = AppSettings.IsRTLLanguage;
     }
@@ -34,7 +41,7 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
         var result = await popupViewModel.PopupClosedTask;
         if (result != null)
         {
-            //await Shell.Current.GoToAsync(nameof(AISettingsPage));
+            SetDatabasePath(result);
         }
     }
 
@@ -59,9 +66,16 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
         {
             if (!string.IsNullOrEmpty(result!.FileName))
             {
-                //FilePath = result.Folder.Path;
+                SetDatabasePath(result.FileName);
             }
         }
+    }
+
+    [RelayCommand]
+    private async Task CloseFileTapped()
+    {
+        SetDatabasePath(string.Empty);
+        WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(string.Empty));
     }
 
     public async Task OnNavigatedToAsync()
@@ -72,5 +86,12 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     public async Task OnNavigatedFromAsync()
     {
         await Task.CompletedTask;
+    }
+
+    private void SetDatabasePath(string databasePath)
+    {
+        _databaseContext.DatabasePath = databasePath;
+        DatabasePath = databasePath;
+        WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(databasePath));
     }
 }

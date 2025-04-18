@@ -2060,4 +2060,7 @@ MAUI-LIEFHEBBERS</value>
   <data name="LabelFolderPath" xml:space="preserve">
     <value />
   </data>
+  <data name="MenuPlaces" xml:space="preserve">
+    <value />
+  </data>
 </root>

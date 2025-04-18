@@ -23,7 +23,7 @@
         <Label
             Margin="20"
             Style="{StaticResource Headline}"
-            Text="Add your content here" />
+            Text="{Binding DatabasePath}" />
         <VerticalStackLayout Grid.Row="1">
             <Button
                 Command="{Binding CreateFileTappedCommand}"
@@ -34,6 +34,11 @@
                 Command="{Binding OpenFileTappedCommand}"
                 Style="{StaticResource OutlinePrimaryButtonStyle}"
                 Text="Open File" />
+
+            <Button
+                Command="{Binding CloseFileTappedCommand}"
+                Style="{StaticResource OutlinePrimaryButtonStyle}"
+                Text="Close File" />
         </VerticalStackLayout>
     </Grid>
 </controls:BasePage>

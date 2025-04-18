@@ -136,6 +136,7 @@ namespace SmartGenealogy
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
             //mauiAppBuilder.Services.AddChatClient(new OllamaChatClient(new Uri("http://localhost:11434"), "llava:7b"));
+            mauiAppBuilder.Services.AddSingleton<DatabaseContext>();
 
             return mauiAppBuilder;
         }

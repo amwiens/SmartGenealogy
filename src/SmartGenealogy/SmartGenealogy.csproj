@@ -208,4 +208,8 @@
 	  <Folder Include="Services\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
+	</ItemGroup>
+
 </Project>

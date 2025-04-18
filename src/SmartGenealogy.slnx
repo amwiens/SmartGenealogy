@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="SmartGenealogy.Data/SmartGenealogy.Data.csproj" Id="8493c12f-45c2-4b36-8095-a7b4898db7de" />
   <Project Path="SmartGenealogy/SmartGenealogy.csproj">
     <Deploy />
   </Project>

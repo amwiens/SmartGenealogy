@@ -40,7 +40,7 @@ public partial class CreateFilePopupViewModel : BaseViewModel
             await Application.Current!.Windows[0].Page!.DisplayAlert("Error", "The selected folder does not exist.", AppTranslations.ButtonOk);
             return;
         }
-        var file = Path.Combine(FilePath!, FileName!, ".sgdb");
+        var file = Path.Combine(FilePath!, $"{FileName!}.sgdb");
         if (File.Exists(file))
         {
             await Application.Current!.Windows[0].Page!.DisplayAlert("Error", "The file already exists.", AppTranslations.ButtonOk);

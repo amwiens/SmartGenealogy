@@ -69,14 +69,40 @@
         <controls:FlyoutFooter />
     </Shell.FlyoutFooter>
 
-    <FlyoutItem Title="{localization:Translate MenuHome}" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fontIcons:MaterialDesignIcons.Home}, Size=50, Color={StaticResource White}}">
+    <FlyoutItem
+        x:Name="menuHome"
+        Title="{localization:Translate MenuHome}"
+        Icon="{FontImage FontFamily=MaterialDesign,
+                         Glyph={x:Static fontIcons:MaterialDesignIcons.Home},
+                         Size=50,
+                         Color={StaticResource White}}">
         <ShellContent
             Title="{localization:Translate MenuHome}"
             ContentTemplate="{DataTemplate views:MainPage}"
             Route="MainPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="{localization:Translate MenuSetting}" Icon="{FontImage FontFamily=MaterialDesign, Glyph={x:Static fontIcons:MaterialDesignIcons.Settings}, Size=50, Color={StaticResource White}}">
+    <FlyoutItem
+        x:Name="menuPlaces"
+        Title="{localization:Translate MenuPlaces}"
+        Icon="{FontImage FontFamily=MaterialDesign,
+                         Glyph={x:Static fontIcons:MaterialDesignIcons.Map},
+                         Size=50,
+                         Color={StaticResource White}}"
+        IsVisible="False">
+        <ShellContent
+            Title="{localization:Translate MenuPlaces}"
+            ContentTemplate="{DataTemplate settingsViews:MainSettingsPage}"
+            Route="MainSettingsPage" />
+    </FlyoutItem>
+
+    <FlyoutItem
+        x:Name="menuSettings"
+        Title="{localization:Translate MenuSetting}"
+        Icon="{FontImage FontFamily=MaterialDesign,
+                         Glyph={x:Static fontIcons:MaterialDesignIcons.Settings},
+                         Size=50,
+                         Color={StaticResource White}}">
         <ShellContent
             Title="{localization:Translate MenuSetting}"
             ContentTemplate="{DataTemplate settingsViews:MainSettingsPage}"
