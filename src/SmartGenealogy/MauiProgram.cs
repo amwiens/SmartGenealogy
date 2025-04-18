@@ -2,8 +2,6 @@
 
 using FFImageLoading.Maui;
 
-using SmartGenealogy.Handlers;
-
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 
@@ -12,7 +10,8 @@ using PanCardView;
 using RGPopup.Maui.Extensions;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
-using Microsoft.Extensions.AI;
+
+using SmartGenealogy.Handlers;
 
 #if WINDOWS
 using Microsoft.UI;

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.AI;
-
-namespace SmartGenealogy.ViewModels.Settings;
+﻿namespace SmartGenealogy.ViewModels.Settings;
 
 public partial class AISettingsViewModel : BaseViewModel
 {

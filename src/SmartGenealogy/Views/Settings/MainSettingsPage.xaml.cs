@@ -5,8 +5,8 @@ public partial class MainSettingsPage : BasePage
     private readonly MainSettingsViewModel _viewModel;
 
     public MainSettingsPage(MainSettingsViewModel viewModel)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _viewModel = viewModel;
         BindingContext = viewModel;
     }

@@ -5,8 +5,8 @@ public partial class AISettingsPage : BasePage
     private readonly AISettingsViewModel _viewModel;
 
     public AISettingsPage(AISettingsViewModel viewModel)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _viewModel = viewModel;
         BindingContext = viewModel;
     }

@@ -16,8 +16,6 @@ public partial class CreateFilePopupViewModel : BaseViewModel
         _taskCompletionSource = new TaskCompletionSource<string>();
     }
 
-
-
     [RelayCommand]
     private async Task PickFolderPath()
     {
@@ -34,7 +32,6 @@ public partial class CreateFilePopupViewModel : BaseViewModel
         // Set the result and close the popup
         if (string.IsNullOrEmpty(FilePath) || string.IsNullOrEmpty(FileName))
         {
-
             await Application.Current!.Windows[0].Page!.DisplayAlert("Error", "Please select a folder and enter a file name.", AppTranslations.ButtonOk);
             return;
         }

@@ -2,9 +2,9 @@ namespace SmartGenealogy.Views.Popups.App;
 
 public partial class CreateFilePopupPage : BasePopupPage
 {
-	public CreateFilePopupPage()
-	{
-		InitializeComponent();
+    public CreateFilePopupPage()
+    {
+        InitializeComponent();
         BindingContext = new CreateFilePopupViewModel();
     }
 }

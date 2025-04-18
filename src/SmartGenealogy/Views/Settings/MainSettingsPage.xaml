@@ -90,8 +90,6 @@
             </Grid>
 
             <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />
-
         </StackLayout>
     </Grid>
-
 </controls:BasePage>

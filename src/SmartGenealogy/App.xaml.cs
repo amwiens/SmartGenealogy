@@ -21,7 +21,6 @@ using SmartGenealogy.Views.DemoApp;
 
 namespace SmartGenealogy;
 
-
 public partial class App : Application
 {
     public IServiceProvider Services { get; }

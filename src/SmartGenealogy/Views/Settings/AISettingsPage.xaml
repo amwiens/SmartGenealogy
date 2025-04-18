@@ -29,8 +29,6 @@
             <Label Style="{StaticResource Body}" Text="This is a test message" />
 
             <Button Style="{StaticResource OutlinePrimaryButtonStyle}" Text="Download Ollama" />
-
         </StackLayout>
     </Grid>
-
 </controls:BasePage>
