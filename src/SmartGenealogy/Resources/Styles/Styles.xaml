@@ -15,6 +15,13 @@
         Radius="15"
         Offset="5,10" />
 
+    <Style x:Key="CardGridStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="12" />
+        <!--<Setter Property="BorderThickness" Value="1" />-->
+        <Setter Property="BackgroundColor" Value="{StaticResource FrameBorder}" />
+        <!--<Setter Property=""-->
+    </Style>
+
     <Style x:Key="FeatureBorder" TargetType="Border">
         <Setter Property="Shadow" Value="{StaticResource CommonShadow}" />
         <Setter Property="Padding" Value="18" />
