@@ -8,6 +8,7 @@
     xmlns:circular="clr-namespace:SmartGenealogy.Controls.CircularProgress"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:enums="clr-namespace:SmartGenealogy.Enums"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
     xmlns:local="clr-namespace:SmartGenealogy"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
@@ -74,17 +75,17 @@
                             <Button
                                 FontFamily="FaBrands"
                                 Style="{StaticResource PrimaryIconButtonStyle}"
-                                Text="{x:Static views:FaBrands.Twitter}" />
+                                Text="{x:Static fonticons:FaBrands.Twitter}" />
 
                             <Button
                                 FontFamily="SmartGenealogyIcons"
                                 Style="{StaticResource OutlinePrimaryIconButtonStyle}"
-                                Text="{x:Static views:SmartGenealogyIcons.Email}" />
+                                Text="{x:Static fonticons:SmartGenealogyIcons.Email}" />
 
                             <Button
                                 FontFamily="LineAwesome"
                                 Style="{StaticResource OutlineSecondaryIconButtonStyle}"
-                                Text="{x:Static views:LineAwesome.Question}" />
+                                Text="{x:Static fonticons:LineAwesome.Question}" />
                         </HorizontalStackLayout>
 
                         <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
@@ -323,7 +324,7 @@
                             FontSize="12"
                             HeightRequest="24"
                             HorizontalOptions="Start"
-                            Icon="{x:Static views:SmartGenealogyIcons.Information}"
+                            Icon="{x:Static fonticons:SmartGenealogyIcons.Information}"
                             IconFontSize="18"
                             Text="This is a tag with icon"
                             TextColor="{DynamicResource White}" />
@@ -346,7 +347,7 @@
                             IconColor="{DynamicResource PrimaryColor}"
                             IconFontFamily="IonIcons"
                             IconSize="30"
-                            IconText="{x:Static views:IonIcons.Image}"
+                            IconText="{x:Static fonticons:IonIcons.Image}"
                             Text="This is a header with icon"
                             TextSize="16" />
                     </VerticalStackLayout>

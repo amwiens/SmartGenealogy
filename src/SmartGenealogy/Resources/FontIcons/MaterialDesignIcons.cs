@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Views;
+﻿namespace SmartGenealogy.Resources.FontIcons;
 
 /// <summary>
 /// The unicode values for all Material Design icons.

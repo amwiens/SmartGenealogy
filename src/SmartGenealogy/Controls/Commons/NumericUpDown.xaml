@@ -3,7 +3,7 @@
     x:Class="SmartGenealogy.Controls.NumericUpDown"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:SmartGenealogy.Views">
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons">
     <HorizontalStackLayout Spacing="3">
         <Label
             x:Name="MinusButton"
@@ -11,7 +11,7 @@
             FontFamily="IonIcons"
             FontSize="25"
             HorizontalOptions="End"
-            Text="{x:Static views:IonIcons.MinusCircled}"
+            Text="{x:Static fonticons:IonIcons.MinusCircled}"
             TextColor="{DynamicResource Gray500}"
             VerticalOptions="Center">
             <Label.GestureRecognizers>
@@ -37,7 +37,7 @@
             FontFamily="IonIcons"
             FontSize="25"
             HorizontalOptions="End"
-            Text="{x:Static views:IonIcons.PlusCircled}"
+            Text="{x:Static fonticons:IonIcons.PlusCircled}"
             TextColor="{DynamicResource Primary}"
             VerticalOptions="Center">
             <Label.GestureRecognizers>

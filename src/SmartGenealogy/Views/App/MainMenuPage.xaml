@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:selectors="clr-namespace:SmartGenealogy.Selectors"
     xmlns:templates="clr-namespace:SmartGenealogy.Views.Templates"
-    xmlns:views="clr-namespace:SmartGenealogy.Views"
     x:Name="this"
     Title="Menu"
     NavigationPage.HasNavigationBar="True">
@@ -16,7 +16,7 @@
         <FontImageSource
             FontAutoScalingEnabled="True"
             FontFamily="SmartGenealogyIcons"
-            Glyph="{x:Static views:SmartGenealogyIcons.Menu}"
+            Glyph="{x:Static fonticons:SmartGenealogyIcons.Menu}"
             Size="{OnPlatform Android='25',
                               iOS='30',
                               Default='35'}"

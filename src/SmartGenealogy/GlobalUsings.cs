@@ -18,6 +18,7 @@ global using SmartGenealogy.Extensions;
 global using SmartGenealogy.Helpers;
 global using SmartGenealogy.Messages;
 global using SmartGenealogy.Models;
+global using SmartGenealogy.Resources.FontIcons;
 global using SmartGenealogy.Resources.Themes;
 global using SmartGenealogy.Resources.Translations;
 global using SmartGenealogy.Settings;
