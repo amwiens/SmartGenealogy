@@ -117,7 +117,7 @@ public partial class App : Application
         if (AppSettings.IsFirstLaunching)
         {
             AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-            return new Window(new NavigationPage(new DemoStartPage()));
+            return new Window(new NavigationPage(new StartPage()));
         }
         else
         {

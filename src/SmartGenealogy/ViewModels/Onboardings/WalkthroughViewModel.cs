@@ -85,7 +85,7 @@ public partial class WalkthroughViewModel : ObservableObject
 
     private async Task CloseWalkThroughPage()
     {
-        await _navigationService.PopAsync();
+        Application.Current!.Windows[0].Page = new AppFlyout();
     }
 
     #endregion Methods

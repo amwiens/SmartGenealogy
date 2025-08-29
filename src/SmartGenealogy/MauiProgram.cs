@@ -145,9 +145,9 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<TestPage>();
         mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
         mauiAppBuilder.Services.AddTransient<MainViewModel>();
-        mauiAppBuilder.Services.AddTransient<DemoWalkthroughViewModel>();
-        mauiAppBuilder.Services.AddTransient<DemoStartPage>();
-        mauiAppBuilder.Services.AddTransient<DemoWalkthroughPage>();
+        mauiAppBuilder.Services.AddTransient<WalkthroughViewModel>();
+        mauiAppBuilder.Services.AddTransient<StartPage>();
+        mauiAppBuilder.Services.AddTransient<WalkthroughPage>();
 
         return mauiAppBuilder;
     }

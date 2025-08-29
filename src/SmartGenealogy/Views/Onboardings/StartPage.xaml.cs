@@ -1,15 +1,15 @@
 namespace SmartGenealogy.Views.Onboardings;
 
-public partial class DemoStartPage : ContentPage
+public partial class StartPage : ContentPage
 {
-    public DemoStartPage()
+    public StartPage()
     {
         InitializeComponent();
     }
 
     private async void TakeTour_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DemoWalkthroughPage());
+        await Navigation.PushAsync(new WalkthroughPage());
     }
 
     private async void Skip_Clicked(object sender, EventArgs e)
