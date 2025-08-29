@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.MainMenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:selectors="clr-namespace:SmartGenealogy.Selectors"
+    xmlns:templates="clr-namespace:SmartGenealogy.Views.Templates"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:Name="this"
+    Title="Menu"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.IconImageSource>
+        <FontImageSource
+            FontAutoScalingEnabled="True"
+            FontFamily="SmartGenealogyIcons"
+            Glyph="{x:Static views:SmartGenealogyIcons.Menu}"
+            Size="{OnPlatform Android='25',
+                              iOS='30',
+                              Default='35'}"
+            Color="{DynamicResource BaseTextColor}" />
+    </ContentPage.IconImageSource>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="GridItemTemplate">
+                <templates:MainMenuGridItemTemplate />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ClassicItemTemplate">
+                <templates:MainMenuClassicItemTemplate />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!--  Background Image  -->
+        <Image
+            Grid.RowSpan="3"
+            Margin="-1"
+            Aspect="Fill"
+            Opacity="0.5"
+            Source="bg_purple.png" />
+
+        <!--  Gradient Mask  -->
+        <Grid Grid.RowSpan="3">
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Offset="0.1" Color="{DynamicResource LinearGradientStartColor}" />
+                    <GradientStop Offset="1.0" Color="{DynamicResource LinearGradientEndColor}" />
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+
+        <!--  Branding Logo  -->
+        <controls:FlyoutHeader Grid.Row="0" />
+
+        <!--  Main Menu  -->
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding MainMenuEntries}"
+            SelectedItem="{Binding MainMenuSelectedItem, Mode=TwoWay}"
+            SelectionChangedCommand="{Binding MenuItemSelectionCommand}"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="0"
+                    Orientation="Vertical"
+                    Span="{Binding IsGridMenuSwitchToggled, Converter={converters:BooleanToIntegerConverter}}"
+                    VerticalItemSpacing="0" />
+            </CollectionView.ItemsLayout>
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="gridItemTemplate">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Reference this}, Mode=TwoWay, Path=BindingContext.IsGridMenuSwitchToggled}" Value="True" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="ItemTemplate" Value="{StaticResource GridItemTemplate}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="classicItemTemplate">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Reference this}, Mode=TwoWay, Path=BindingContext.IsGridMenuSwitchToggled}" Value="False" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="ItemTemplate" Value="{StaticResource ClassicItemTemplate}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </CollectionView>
+
+        <!--  Copyright Footer  -->
+        <controls:FlyoutFooter Grid.Row="2" />
+    </Grid>
+</ContentPage>

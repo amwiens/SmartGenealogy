@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.PeoplePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
+    xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:Name="peoplePage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PeopleViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Label
+            Margin="20"
+            Style="{StaticResource Headline}"
+            Text="Add your content here" />
+    </Grid>
+</ContentPage>

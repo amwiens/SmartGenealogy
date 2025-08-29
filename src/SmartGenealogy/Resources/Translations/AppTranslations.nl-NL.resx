@@ -1,0 +1,2046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BottomTabbedHome" xml:space="preserve">
+    <value>Thuis</value>
+  </data>
+  <data name="BottomTabbedProfile" xml:space="preserve">
+    <value>Profiel</value>
+  </data>
+  <data name="BottomTabbedRemarks" xml:space="preserve">
+    <value>Opmerkingen</value>
+  </data>
+  <data name="BottomTabbedSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="BottomTabbedStats" xml:space="preserve">
+    <value>Statistieken</value>
+  </data>
+  <data name="ButtonAccept" xml:space="preserve">
+    <value>Aanvaarden</value>
+  </data>
+  <data name="ButtonAddArticle" xml:space="preserve">
+    <value>Artikel maken</value>
+  </data>
+  <data name="ButtonAddCard" xml:space="preserve">
+    <value>Voeg een kaart toe</value>
+  </data>
+  <data name="ButtonAddComment" xml:space="preserve">
+    <value>VOEG COMMENTAAR TOE</value>
+  </data>
+  <data name="ButtonAddImage" xml:space="preserve">
+    <value>Kies afbeeldingen</value>
+  </data>
+  <data name="ButtonAddToCart" xml:space="preserve">
+    <value>VOEG TOE AAN WINKELKAR</value>
+  </data>
+  <data name="ButtonAlreadyRegistered" xml:space="preserve">
+    <value>AL EEN GEBRUIKER? LOG NU IN</value>
+  </data>
+  <data name="ButtonCallNow" xml:space="preserve">
+    <value>BEL NU</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>Dichtbij</value>
+  </data>
+  <data name="ButtonConfirmOrder" xml:space="preserve">
+    <value>BEVESTIG BESTELLING</value>
+  </data>
+  <data name="ButtonContactUs" xml:space="preserve">
+    <value>NEEM CONTACT MET ONS OP</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="ButtonDarkTheme" xml:space="preserve">
+    <value>Donker thema</value>
+  </data>
+  <data name="ButtonDownloadReceipt" xml:space="preserve">
+    <value>E-ontvangstbewijs downloaden</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Bewerking</value>
+  </data>
+  <data name="ButtonEditProfile" xml:space="preserve">
+    <value>Bewerk profiel</value>
+  </data>
+  <data name="ButtonFacebook" xml:space="preserve">
+    <value>FACEBOOK</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>FINISH</value>
+  </data>
+  <data name="ButtonFollow" xml:space="preserve">
+    <value>Volgen</value>
+  </data>
+  <data name="ButtonGoBack" xml:space="preserve">
+    <value>Ga terug</value>
+  </data>
+  <data name="ButtonGoogle" xml:space="preserve">
+    <value>GOOGLE</value>
+  </data>
+  <data name="ButtonGoToCheckout" xml:space="preserve">
+    <value>UITCHECKEN</value>
+  </data>
+  <data name="ButtonLightTheme" xml:space="preserve">
+    <value>Licht thema</value>
+  </data>
+  <data name="ButtonLogin" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>VOLGENDE</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonPostComment" xml:space="preserve">
+    <value>Voeg commentaar toe</value>
+  </data>
+  <data name="ButtonReject" xml:space="preserve">
+    <value>Afwijzen</value>
+  </data>
+  <data name="ButtonReserve" xml:space="preserve">
+    <value>RESERVEREN</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Redden</value>
+  </data>
+  <data name="ButtonSeeMore" xml:space="preserve">
+    <value>Bekijk meer</value>
+  </data>
+  <data name="ButtonSignin" xml:space="preserve">
+    <value>AANMELDEN</value>
+  </data>
+  <data name="ButtonSignup" xml:space="preserve">
+    <value>AANMELDEN</value>
+  </data>
+  <data name="ButtonSkip" xml:space="preserve">
+    <value>OVERSLAAN</value>
+  </data>
+  <data name="ButtonStartNow" xml:space="preserve">
+    <value>Begin nu</value>
+  </data>
+  <data name="ButtonSubmit" xml:space="preserve">
+    <value>INDIENEN</value>
+  </data>
+  <data name="ButtonTakeTour" xml:space="preserve">
+    <value>ONTDEK NU</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Probeer het nog eens</value>
+  </data>
+  <data name="ButtonTwitter" xml:space="preserve">
+    <value>TWITTER</value>
+  </data>
+  <data name="ButtonViewAll" xml:space="preserve">
+    <value>Bekijk alles</value>
+  </data>
+  <data name="ButtonViewReceipt" xml:space="preserve">
+    <value>Bekijk e-ontvangstbewijs</value>
+  </data>
+  <data name="ButtonWriteReview" xml:space="preserve">
+    <value>Schrijf een recensie</value>
+  </data>
+  <data name="CommandToggleBrazil" xml:space="preserve">
+    <value>Schakel Brazilië in</value>
+  </data>
+  <data name="Label270DegreesGaugePie" xml:space="preserve">
+    <value>270 graden maattaart</value>
+  </data>
+  <data name="LabelAboutUs" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="LabelAboutUsDescription" xml:space="preserve">
+    <value>Een korte beschrijving van uw app of bedrijf</value>
+  </data>
+  <data name="LabelAccountOptions" xml:space="preserve">
+    <value>Account opties</value>
+  </data>
+  <data name="LabelAction" xml:space="preserve">
+    <value>Acties</value>
+  </data>
+  <data name="LabelActionCallAction" xml:space="preserve">
+    <value>Tik om te bekijken</value>
+  </data>
+  <data name="LabelActionChangePasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelActionConfirmation" xml:space="preserve">
+    <value>Bevestiging</value>
+  </data>
+  <data name="LabelActionCongratulation" xml:space="preserve">
+    <value>Felicitatie bevestiging</value>
+  </data>
+  <data name="LabelActionDescription" xml:space="preserve">
+    <value>Oproep tot acties</value>
+  </data>
+  <data name="LabelActionPasswordResetSuccessful" xml:space="preserve">
+    <value>Wachtwoord opnieuw instellen succesvol!</value>
+  </data>
+  <data name="LabelActionPaymentFailed" xml:space="preserve">
+    <value>Betaling mislukt</value>
+  </data>
+  <data name="LabelActionPaymentMethod" xml:space="preserve">
+    <value>Betalingsmiddel</value>
+  </data>
+  <data name="LabelActions" xml:space="preserve">
+    <value>Acties</value>
+  </data>
+  <data name="LabelActionShippingInfo" xml:space="preserve">
+    <value>Verzend informatie</value>
+  </data>
+  <data name="LabelActionSuccess" xml:space="preserve">
+    <value>Succes doos</value>
+  </data>
+  <data name="LabelActionSuccessBackground" xml:space="preserve">
+    <value>Succes vak achtergrond</value>
+  </data>
+  <data name="LabelActionSurveyQuestion" xml:space="preserve">
+    <value>Enquêtevragen</value>
+  </data>
+  <data name="LabelActionWarning" xml:space="preserve">
+    <value>Waarschuwingsdoos</value>
+  </data>
+  <data name="LabelActionWarningBackground" xml:space="preserve">
+    <value>Waarschuwing vak achtergrond</value>
+  </data>
+  <data name="LabelActionWelcomeBack" xml:space="preserve">
+    <value>Welkom terug</value>
+  </data>
+  <data name="LabelAddArticle" xml:space="preserve">
+    <value>Nieuw artikel toevoegen</value>
+  </data>
+  <data name="LabelAddArticleDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelAddCard" xml:space="preserve">
+    <value>Voeg een kaart toe</value>
+  </data>
+  <data name="LabelAllAuthors" xml:space="preserve">
+    <value>Alle auteurs</value>
+  </data>
+  <data name="LabelAmenities" xml:space="preserve">
+    <value>Voorzieningen</value>
+  </data>
+  <data name="LabelAndroidBottomTabbedPage" xml:space="preserve">
+    <value>Android onderste tabblad</value>
+  </data>
+  <data name="LabelAndroidBottomTabbedPageDescription" xml:space="preserve">
+    <value>Standaard .NET MAUI onderste tabbladpagina die de lettertypeafbeelding gebruikt als pictogram met tabbladen</value>
+  </data>
+  <data name="LabelApp" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="LabelAppDescription" xml:space="preserve">
+    <value>Vooraf gebouwde app-pakketten</value>
+  </data>
+  <data name="LabelAppLanguage" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="LabelAppSettings" xml:space="preserve">
+    <value>App instellingen</value>
+  </data>
+  <data name="LabelAreYouSure" xml:space="preserve">
+    <value>Weet je het zeker?</value>
+  </data>
+  <data name="LabelAreYouSureDetails" xml:space="preserve">
+    <value>U kunt dit vakje zelfs gebruiken ter bevestiging. Elk element kan het activeren.</value>
+  </data>
+  <data name="LabelArticle" xml:space="preserve">
+    <value>Lidwoord</value>
+  </data>
+  <data name="LabelArticleCardOverlay" xml:space="preserve">
+    <value>Artikelkaart-overlay</value>
+  </data>
+  <data name="LabelArticleCardOverlayDescription" xml:space="preserve">
+    <value>Lijst met artikelen met kaartindeling, met een achtergrondafbeelding en overlaytekst of inhoud.</value>
+  </data>
+  <data name="LabelArticleCount" xml:space="preserve">
+    <value>Lidwoord</value>
+  </data>
+  <data name="LabelArticleCurvedMask" xml:space="preserve">
+    <value>Artikel gebogen masker</value>
+  </data>
+  <data name="LabelArticleCurvedMaskDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelArticleDescription" xml:space="preserve">
+    <value>Blogberichten met een eenvoudig te navigeren lay-out</value>
+  </data>
+  <data name="LabelArticleDetailCard" xml:space="preserve">
+    <value>Artikeldetailkaart</value>
+  </data>
+  <data name="LabelArticleDetailCardDescription" xml:space="preserve">
+    <value>Geef details van het artikel weer met behulp van de kaartindeling, met een afbeelding over de volledige breedte en een prachtige galerij.</value>
+  </data>
+  <data name="LabelArticleDetailVideo" xml:space="preserve">
+    <value>Artikeldetailvideo</value>
+  </data>
+  <data name="LabelArticleDetailVideoDescription" xml:space="preserve">
+    <value>Geef details van video-inhoudsartikelen weer met behulp van de kaartindeling, met een afbeelding over de volledige breedte en een prachtige galerij.</value>
+  </data>
+  <data name="LabelArticleListClassic" xml:space="preserve">
+    <value>Klassieke lijsten</value>
+  </data>
+  <data name="LabelArticleListClassicDescription" xml:space="preserve">
+    <value>Lijst met artikelen die de meest gebruikelijke lijststijl gebruiken, houd het simpel maar betekenisvol.</value>
+  </data>
+  <data name="LabelArticleParallaxHeader" xml:space="preserve">
+    <value>Parallax-header</value>
+  </data>
+  <data name="LabelArticleParallaxHeaderDescription" xml:space="preserve">
+    <value>Geef details van het artikel weer met behulp van de kaartindeling, met een afbeelding over de volledige breedte en parallaxeffect en een prachtige galerij.</value>
+  </data>
+  <data name="LabelArticleVideoDetail" xml:space="preserve">
+    <value>Video speler</value>
+  </data>
+  <data name="LabelArticleVideoDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot zit amet, consectetur adipiscing elit. Praesent en aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelArticleVideoList" xml:space="preserve">
+    <value>Artikelen Videolijst</value>
+  </data>
+  <data name="LabelArticleVideoListDescription" xml:space="preserve">
+    <value>Lijst met video-inhoudsartikelen, met een functie die de afbeelding bedekt en een knop voor direct afspelen</value>
+  </data>
+  <data name="LabelAskQuestion" xml:space="preserve">
+    <value>Een vraag stellen</value>
+  </data>
+  <data name="LabelBarBackgroundChart" xml:space="preserve">
+    <value>Bar met achtergrond</value>
+  </data>
+  <data name="LabelBasicBar" xml:space="preserve">
+    <value>Basisstaven</value>
+  </data>
+  <data name="LabelBasicGaugePie" xml:space="preserve">
+    <value>Basismetertaart</value>
+  </data>
+  <data name="LabelBasicGeoMap" xml:space="preserve">
+    <value>Basis GeoMap</value>
+  </data>
+  <data name="LabelBasicHeat" xml:space="preserve">
+    <value>Basiswarmte</value>
+  </data>
+  <data name="LabelBasicPie" xml:space="preserve">
+    <value>Basis taart</value>
+  </data>
+  <data name="LabelBasicPolar" xml:space="preserve">
+    <value>Basis polair</value>
+  </data>
+  <data name="LabelBasicStackedArea" xml:space="preserve">
+    <value>Basis gestapeld gebied</value>
+  </data>
+  <data name="LabelBestSellingSection" xml:space="preserve">
+    <value>BEST VERKOPENDE</value>
+  </data>
+  <data name="LabelBestSellingSubheader" xml:space="preserve">
+    <value>Altijd warme artikelen</value>
+  </data>
+  <data name="LabelBookNow" xml:space="preserve">
+    <value>Boek nu</value>
+  </data>
+  <data name="LabelCalendar" xml:space="preserve">
+    <value>Kalender</value>
+  </data>
+  <data name="LabelCalendarDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelCallButton" xml:space="preserve">
+    <value>Belknop</value>
+  </data>
+  <data name="LabelCallUsNow" xml:space="preserve">
+    <value>Bel ons nu</value>
+  </data>
+  <data name="LabelCallUsNowDetails" xml:space="preserve">
+    <value>Wij zijn altijd hier om te helpen. Bel ons vandaag nog. Tik gewoon op de knop en neem contact met ons op.</value>
+  </data>
+  <data name="LabelCancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="LabelCartesianChart" xml:space="preserve">
+    <value>Cartesiaanse grafiek</value>
+  </data>
+  <data name="LabelCartesianChartDescription" xml:space="preserve">
+    <value>Een "klaar voor gebruik"-besturing om plots te maken met behulp van het cartesiaanse coördinatensysteem</value>
+  </data>
+  <data name="LabelCategories" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="LabelCategorySection" xml:space="preserve">
+    <value>CATEGORIEËN</value>
+  </data>
+  <data name="LabelCategorySubheader" xml:space="preserve">
+    <value>Winkelen per categorie</value>
+  </data>
+  <data name="LabelCharts" xml:space="preserve">
+    <value>Grafieken</value>
+  </data>
+  <data name="LabelChartsDescription" xml:space="preserve">
+    <value>Ontdek krachtige diagrambedieningen om uw app te visualiseren
+Kies een onderwerp om te verkennen</value>
+  </data>
+  <data name="LabelChooseNewsTopic" xml:space="preserve">
+    <value>Kies betalingsmethode</value>
+  </data>
+  <data name="LabelChoosePaymentMethod" xml:space="preserve">
+    <value>Kies uw thema</value>
+  </data>
+  <data name="LabelChooseTheme" xml:space="preserve">
+    <value>Opmerkingen</value>
+  </data>
+  <data name="LabelComments" xml:space="preserve">
+    <value>Bevestiging</value>
+  </data>
+  <data name="LabelConfirmation" xml:space="preserve">
+    <value>Felicitatie</value>
+  </data>
+  <data name="LabelCongratulation" xml:space="preserve">
+    <value>Felicitatie</value>
+  </data>
+  <data name="LabelCongratulationDetails" xml:space="preserve">
+    <value>Geniet van de door MAUI aangedreven UI Kit en ontgrendel geavanceerde functies. Welkom op het volgende niveau 💫</value>
+  </data>
+  <data name="LabelControlsOverview" xml:space="preserve">
+    <value>Overzicht bedieningselementen</value>
+  </data>
+  <data name="LabelControlsOverviewDescription" xml:space="preserve">
+    <value>Ontdek geweldige aangepaste bedieningselementen die in deze kit worden ondersteund</value>
+  </data>
+  <data name="LabelCoordinatesPolar" xml:space="preserve">
+    <value>Coördineert polair</value>
+  </data>
+  <data name="LabelCreditCard" xml:space="preserve">
+    <value>Kredietkaart</value>
+  </data>
+  <data name="LabelCustomPie" xml:space="preserve">
+    <value>Aangepaste taart</value>
+  </data>
+  <data name="LabelDarkmode" xml:space="preserve">
+    <value>Donkere modus</value>
+  </data>
+  <data name="LabelDashboard" xml:space="preserve">
+    <value>Dashboards</value>
+  </data>
+  <data name="LabelDashboardArticle" xml:space="preserve">
+    <value>Dashboardartikelen</value>
+  </data>
+  <data name="LabelDashboardArticleDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardCard" xml:space="preserve">
+    <value>Dashboardkaarten</value>
+  </data>
+  <data name="LabelDashboardCardDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardCoverFlow" xml:space="preserve">
+    <value>Dashboarddekkingsstroom</value>
+  </data>
+  <data name="LabelDashboardCoverFlowDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardDescription" xml:space="preserve">
+    <value>Hoofdapp-navigatiepagina's</value>
+  </data>
+  <data name="LabelDashboardEvent" xml:space="preserve">
+    <value>Dashboardgebeurtenissen</value>
+  </data>
+  <data name="LabelDashboardEventDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardGrid" xml:space="preserve">
+    <value>Dashboardraster</value>
+  </data>
+  <data name="LabelDashboardGridDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardGridInverse" xml:space="preserve">
+    <value>Dashboardraster omgekeerd</value>
+  </data>
+  <data name="LabelDashboardGridInverseDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardTasks" xml:space="preserve">
+    <value>Dashboard Takenbeheer</value>
+  </data>
+  <data name="LabelDashboardTasksDescription" xml:space="preserve">
+    <value>Eenvoudige implementatie van takenbeheer met Drag and drop-functie</value>
+  </data>
+  <data name="LabelDashboardTimeline" xml:space="preserve">
+    <value>Dashboard-tijdlijn</value>
+  </data>
+  <data name="LabelDashboardTimelineDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardVariant" xml:space="preserve">
+    <value>Dashboardvarianten</value>
+  </data>
+  <data name="LabelDashboardVariantDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardVisual" xml:space="preserve">
+    <value>Dashboard visueel</value>
+  </data>
+  <data name="LabelDashboardVisualDescription" xml:space="preserve">
+    <value>Dit voorbeelddashboard presenteert een interface die relevant is voor algemene gegevens en monitoring-gebruiksscenario's.</value>
+  </data>
+  <data name="LabelDashboardWithCarousel" xml:space="preserve">
+    <value>Dashboardcarrousel</value>
+  </data>
+  <data name="LabelDashboardWithCarouselDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDelete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="LabelDeleteAccount" xml:space="preserve">
+    <value>Account verwijderen</value>
+  </data>
+  <data name="LabelDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="LabelDonutPie" xml:space="preserve">
+    <value>Donut Taart</value>
+  </data>
+  <data name="LabelEcommerce" xml:space="preserve">
+    <value>Ecommerce</value>
+  </data>
+  <data name="LabelEcommerceAccount" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="LabelEcommerceAccountDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceCategory" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="LabelEcommerceCategoryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceCheckoutPage" xml:space="preserve">
+    <value>Afrekenpagina</value>
+  </data>
+  <data name="LabelEcommerceCheckoutPageDescription" xml:space="preserve">
+    <value>Als u van plan bent iets via uw app te verkopen, heeft u waarschijnlijk deze sjabloon nodig.</value>
+  </data>
+  <data name="LabelEcommerceDescription" xml:space="preserve">
+    <value>Biedt u alle benodigde tools om een ​​aanpasbare app voor uw online winkel te maken, inclusief productvermeldingen, winkelwagentje, betalingsverwerking en orderbeheer</value>
+  </data>
+  <data name="LabelEcommerceHomePage" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="LabelEcommerceHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderConfirmation" xml:space="preserve">
+    <value>Bevestig bestelling</value>
+  </data>
+  <data name="LabelEcommerceOrderConfirmationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderHistory" xml:space="preserve">
+    <value>Bestel Geschiedenissen</value>
+  </data>
+  <data name="LabelEcommerceOrderHistoryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderTracking" xml:space="preserve">
+    <value>Volgen van bestellingen</value>
+  </data>
+  <data name="LabelEcommerceOrderTrackingDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceProductDetail" xml:space="preserve">
+    <value>Product detail</value>
+  </data>
+  <data name="LabelEcommerceProductDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceProducts" xml:space="preserve">
+    <value>Productraster</value>
+  </data>
+  <data name="LabelEcommerceProductsDescription" xml:space="preserve">
+    <value>Toon de producten waar u het meest van houdt in een mooie rasterindeling met elegante achtergrondkleuren die bij elkaar passen</value>
+  </data>
+  <data name="LabelEcommerceProductsList" xml:space="preserve">
+    <value>Productenlijst</value>
+  </data>
+  <data name="LabelEcommerceProductsListDescription" xml:space="preserve">
+    <value>Toon de producten waar u het meest van houdt in een klassieke lijstindeling met elegante achtergrondkleuren die bij elkaar passen</value>
+  </data>
+  <data name="LabelEnableLocation" xml:space="preserve">
+    <value>Locatieservices inschakelen</value>
+  </data>
+  <data name="LabelEwallet" xml:space="preserve">
+    <value>Ewallet</value>
+  </data>
+  <data name="LabelEwalletBillPaymentPage" xml:space="preserve">
+    <value>Factuurbetalingspagina</value>
+  </data>
+  <data name="LabelEwalletBillPaymentPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletCardPage" xml:space="preserve">
+    <value>Mijn kaart</value>
+  </data>
+  <data name="LabelEwalletCardPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelEwalletDescription" xml:space="preserve">
+    <value>Ontworpen om gebruikers een veilige en gemakkelijke manier te bieden om hun financiën te beheren, inclusief accountbeheer, transactiegeschiedenis en betalingsverwerking</value>
+  </data>
+  <data name="LabelEwalletEReceiptPage" xml:space="preserve">
+    <value>E-ontvangstpagina</value>
+  </data>
+  <data name="LabelEwalletEReceiptPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletHomePage" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="LabelEwalletHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletPaymentConfirmDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletPaymentConfirmPage" xml:space="preserve">
+    <value>Betalingsbevestigingspagina</value>
+  </data>
+  <data name="LabelEwalletPaymentMethod" xml:space="preserve">
+    <value>Betalingsmiddel</value>
+  </data>
+  <data name="LabelEwalletScanQrPage" xml:space="preserve">
+    <value>QR-scanpagina</value>
+  </data>
+  <data name="LabelEwalletScanQrPageDescription" xml:space="preserve">
+    <value>Scan de QR-code om te betalen, over te maken of op te nemen</value>
+  </data>
+  <data name="LabelEwalletServicesPage" xml:space="preserve">
+    <value>Dienstenpagina</value>
+  </data>
+  <data name="LabelEwalletServicesPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletStatisticsPage" xml:space="preserve">
+    <value>Statistieken</value>
+  </data>
+  <data name="LabelEwalletStatisticsPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelEwalletTopupPage" xml:space="preserve">
+    <value>Mobiele opwaardeerpagina</value>
+  </data>
+  <data name="LabelEwalletTopupPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelEwalletTransferMoneyPage" xml:space="preserve">
+    <value>Geld overmaken</value>
+  </data>
+  <data name="LabelEwalletTransferMoneyPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelExplore" xml:space="preserve">
+    <value>Ontdekken</value>
+  </data>
+  <data name="LabelExpress" xml:space="preserve">
+    <value>Nadrukkelijk</value>
+  </data>
+  <data name="LabelExpressDetail" xml:space="preserve">
+    <value>1 werkdag</value>
+  </data>
+  <data name="LabelFaceIdLogin" xml:space="preserve">
+    <value>Schakel Face ID in om in te loggen</value>
+  </data>
+  <data name="LabelFailed" xml:space="preserve">
+    <value>OOPS!</value>
+  </data>
+  <data name="LabelFailedDetails" xml:space="preserve">
+    <value>U kunt doorgaan met uw vorige acties. Gemakkelijk om deze aan foutoproepen te koppelen.</value>
+  </data>
+  <data name="LabelFavorite" xml:space="preserve">
+    <value>Favoriet</value>
+  </data>
+  <data name="LabelFeatureBrandSection" xml:space="preserve">
+    <value>KENMERKEN</value>
+  </data>
+  <data name="LabelFeatureBrandSubheader" xml:space="preserve">
+    <value>Kies uw merk</value>
+  </data>
+  <data name="LabelFemale" xml:space="preserve">
+    <value>Vrouwelijk</value>
+  </data>
+  <data name="LabelFollowerCount" xml:space="preserve">
+    <value>Volgers</value>
+  </data>
+  <data name="LabelFollowingCount" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="LabelForm" xml:space="preserve">
+    <value>Formulieren</value>
+  </data>
+  <data name="LabelFormBackgroundGradientLogin" xml:space="preserve">
+    <value>Achtergrondverloop voor inloggen</value>
+  </data>
+  <data name="LabelFormBackgroundGradientLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormBackgroundGradientSignup" xml:space="preserve">
+    <value>Registreer achtergrondverloop</value>
+  </data>
+  <data name="LabelFormBackgroundGradientSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormChangePassword" xml:space="preserve">
+    <value>Wachtwoord wijzigen Pagina</value>
+  </data>
+  <data name="LabelFormChangePasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormDescription" xml:space="preserve">
+    <value>Ontvang de gegevens van de gebruiker</value>
+  </data>
+  <data name="LabelFormFullBackgroundLogin" xml:space="preserve">
+    <value>Achtergrondafbeelding inloggen</value>
+  </data>
+  <data name="LabelFormFullBackgroundLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormFullBackgroundSignup" xml:space="preserve">
+    <value>Achtergrondafbeelding registreren</value>
+  </data>
+  <data name="LabelFormFullBackgroundSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LabelFormLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormPasswordVerification" xml:space="preserve">
+    <value>Wachtwoordverificatiepagina</value>
+  </data>
+  <data name="LabelFormPasswordVerificationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormResetPassword" xml:space="preserve">
+    <value>Wachtwoord opnieuw instellen Pagina</value>
+  </data>
+  <data name="LabelFormResetPasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormSignup" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="LabelFormSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormSimpleLogin" xml:space="preserve">
+    <value>Koptekst Achtergrond Inloggen</value>
+  </data>
+  <data name="LabelFormSimpleLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormSimpleSignup" xml:space="preserve">
+    <value>Kopachtergrond Register</value>
+  </data>
+  <data name="LabelFormSimpleSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormVideoBackgroundLogin" xml:space="preserve">
+    <value>Achtergrondvideo voor inloggen</value>
+  </data>
+  <data name="LabelFormVideoBackgroundLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFormVideoBackgroundSignUp" xml:space="preserve">
+    <value>Registreer achtergrondvideo</value>
+  </data>
+  <data name="LabelFormVideoBackgroundSignUpDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelFreeShip" xml:space="preserve">
+    <value>Geen verzendkosten</value>
+  </data>
+  <data name="LabelFreeShipDetail" xml:space="preserve">
+    <value>Vrij</value>
+  </data>
+  <data name="LabelFriends" xml:space="preserve">
+    <value>Vrienden</value>
+  </data>
+  <data name="LabelGeoMap" xml:space="preserve">
+    <value>Geo-kaart</value>
+  </data>
+  <data name="LabelGeoMapDescription" xml:space="preserve">
+    <value>Handig om geografische kaarten te maken, het gebruikt bestanden in geojson-indeling om gevectoriseerde kaarten weer te geven.</value>
+  </data>
+  <data name="LabelGiftOrder" xml:space="preserve">
+    <value>Deze bestelling is een geschenk</value>
+  </data>
+  <data name="LabelGoback" xml:space="preserve">
+    <value>Rug</value>
+  </data>
+  <data name="LabelGroup" xml:space="preserve">
+    <value>Groep</value>
+  </data>
+  <data name="LabelHistory" xml:space="preserve">
+    <value>Geschiedenis</value>
+  </data>
+  <data name="LabelIcon" xml:space="preserve">
+    <value>Pictogrammen</value>
+  </data>
+  <data name="LabelIconDescription" xml:space="preserve">
+    <value>Meer dan 8K iconen uit 7 lettertypen</value>
+  </data>
+  <data name="LabelInformation" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="LabelLatestArticles" xml:space="preserve">
+    <value>Laatste artikels</value>
+  </data>
+  <data name="LabelLatestNews" xml:space="preserve">
+    <value>Laatste nieuws</value>
+  </data>
+  <data name="LabelListCards" xml:space="preserve">
+    <value>Lijstkaarten</value>
+  </data>
+  <data name="LabelListCardsDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListFlat" xml:space="preserve">
+    <value>Lijst kleuren</value>
+  </data>
+  <data name="LabelListFlatDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListIcon" xml:space="preserve">
+    <value>Lijst met pictogrammen</value>
+  </data>
+  <data name="LabelListIconDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelListImage" xml:space="preserve">
+    <value>Lijst met afbeeldingen</value>
+  </data>
+  <data name="LabelListImageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListImageRounded" xml:space="preserve">
+    <value>Lijst met afgeronde hoekafbeelding</value>
+  </data>
+  <data name="LabelListImageRoundedDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelListingAgent" xml:space="preserve">
+    <value>Noteringsagent</value>
+  </data>
+  <data name="LabelLists" xml:space="preserve">
+    <value>Lijsten</value>
+  </data>
+  <data name="LabelListsDescription" xml:space="preserve">
+    <value>Wordt gebruikt om een ​​verzameling items weer te geven</value>
+  </data>
+  <data name="LabelLocation" xml:space="preserve">
+    <value>Plaats</value>
+  </data>
+  <data name="LabelLogOut" xml:space="preserve">
+    <value>Uitloggen</value>
+  </data>
+  <data name="LabelMale" xml:space="preserve">
+    <value>Mannelijk</value>
+  </data>
+  <data name="LabelMenuGridStyle" xml:space="preserve">
+    <value>Menurasterstijl</value>
+  </data>
+  <data name="LabelMoreNews" xml:space="preserve">
+    <value>Meer nieuws</value>
+  </data>
+  <data name="LabelMultipleValuesGaugePie" xml:space="preserve">
+    <value>Metertaart met meerdere waarden</value>
+  </data>
+  <data name="LabelMyFavorite" xml:space="preserve">
+    <value>Mijn favoriet</value>
+  </data>
+  <data name="LabelNavigation" xml:space="preserve">
+    <value>Navigaties</value>
+  </data>
+  <data name="LabelNewListings" xml:space="preserve">
+    <value>Nieuwe vermeldingen</value>
+  </data>
+  <data name="LabelNews" xml:space="preserve">
+    <value>Nieuws en tijdschrift</value>
+  </data>
+  <data name="LabelNewsAccountPage" xml:space="preserve">
+    <value>Accountpagina</value>
+  </data>
+  <data name="LabelNewsAccountPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsArticleDetailPage" xml:space="preserve">
+    <value>Artikeldetailpagina</value>
+  </data>
+  <data name="LabelNewsArticleDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsAuthorPage" xml:space="preserve">
+    <value>Auteurspagina</value>
+  </data>
+  <data name="LabelNewsAuthorPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsBookmarkPage" xml:space="preserve">
+    <value>Bladwijzerpagina</value>
+  </data>
+  <data name="LabelNewsBookmarkPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsCategoryPage" xml:space="preserve">
+    <value>Categorieënpagina</value>
+  </data>
+  <data name="LabelNewsCategoryPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsDescription" xml:space="preserve">
+    <value>Een mooie en eenvoudige nieuws-app-pagina's, met artikeldetails, categorieën verkennen, nieuwskanalen en auteurs.</value>
+  </data>
+  <data name="LabelNewsHomePage" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="LabelNewsHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsVideoPage" xml:space="preserve">
+    <value>Videonieuwspagina</value>
+  </data>
+  <data name="LabelNewsVideoPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNightingaleRosePie" xml:space="preserve">
+    <value>Nachtegaal Rozentaart</value>
+  </data>
+  <data name="LabelOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="LabelOnboarding" xml:space="preserve">
+    <value>Voorgerechten</value>
+  </data>
+  <data name="LabelOnboardingDescription" xml:space="preserve">
+    <value>App-overzicht</value>
+  </data>
+  <data name="LabelPasswordResetSuccessful" xml:space="preserve">
+    <value>Wachtwoord opnieuw instellen succesvol!</value>
+  </data>
+  <data name="LabelPasswordResetSuccessfulDetails" xml:space="preserve">
+    <value>Uw nieuwe wachtwoord is ingesteld en u heeft nu veilig toegang tot uw account</value>
+  </data>
+  <data name="LabelPaymentFailed" xml:space="preserve">
+    <value>Betaling mislukt</value>
+  </data>
+  <data name="LabelPaymentFailedDetails" xml:space="preserve">
+    <value>Het spijt ons, maar uw betaling voor het Pro-abonnement is mislukt. Controleer de betalingsgegevens en probeer het opnieuw.</value>
+  </data>
+  <data name="LabelPaymentMethod" xml:space="preserve">
+    <value>Betalingsmiddel</value>
+  </data>
+  <data name="LabelPending" xml:space="preserve">
+    <value>In behandeling</value>
+  </data>
+  <data name="LabelPhotos" xml:space="preserve">
+    <value>Foto's</value>
+  </data>
+  <data name="LabelPickColor" xml:space="preserve">
+    <value>Kies uw kleur</value>
+  </data>
+  <data name="LabelPieChart" xml:space="preserve">
+    <value>Cirkeldiagram</value>
+  </data>
+  <data name="LabelPieChartDescription" xml:space="preserve">
+    <value>Gebruik deze bedieningselementen om cirkel-, donut- en meterdiagrammen samen te stellen</value>
+  </data>
+  <data name="LabelPolarChart" xml:space="preserve">
+    <value>Polaire kaart</value>
+  </data>
+  <data name="LabelPolarChartDescription" xml:space="preserve">
+    <value>Een "klaar voor gebruik"-besturing om plots te maken met behulp van het polaire coördinatensysteems</value>
+  </data>
+  <data name="LabelPopular" xml:space="preserve">
+    <value>Populair</value>
+  </data>
+  <data name="LabelPopularNewsTags" xml:space="preserve">
+    <value>Populaire tags</value>
+  </data>
+  <data name="LabelPostCount" xml:space="preserve">
+    <value>Berichten</value>
+  </data>
+  <data name="LabelPreview" xml:space="preserve">
+    <value>Voorbeeld</value>
+  </data>
+  <data name="LabelPrice" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="LabelProfile" xml:space="preserve">
+    <value>Profiel</value>
+  </data>
+  <data name="LabelPropertyListing" xml:space="preserve">
+    <value>Vastgoedvermeldingen</value>
+  </data>
+  <data name="LabelPropertyListingAgentProfile" xml:space="preserve">
+    <value>Agentprofielpagina</value>
+  </data>
+  <data name="LabelPropertyListingAgentProfileDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingAgentSettings" xml:space="preserve">
+    <value>Pagina Agentinstellingen</value>
+  </data>
+  <data name="LabelPropertyListingAgentSettingsDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingBooking" xml:space="preserve">
+    <value>Boekingspagina</value>
+  </data>
+  <data name="LabelPropertyListingBookingDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingBookingPayment" xml:space="preserve">
+    <value>Betaalpagina voor boeking</value>
+  </data>
+  <data name="LabelPropertyListingBookingPaymentDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingCard" xml:space="preserve">
+    <value>Lijstkaart</value>
+  </data>
+  <data name="LabelPropertyListingCardDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingClassic" xml:space="preserve">
+    <value>Klassieker aanbieden</value>
+  </data>
+  <data name="LabelPropertyListingClassicDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingDescription" xml:space="preserve">
+    <value>Ontworpen om vastgoedprofessionals en vastgoedbeheerders te helpen eenvoudig een aanpasbare app voor hun vastgoedadvertenties te maken</value>
+  </data>
+  <data name="LabelPropertyListingDetailPage" xml:space="preserve">
+    <value>Detailpagina van vermelding</value>
+  </data>
+  <data name="LabelPropertyListingDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingHomePage" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="LabelPropertyListingHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelPropertyListingMapView" xml:space="preserve">
+    <value>Kaartweergavepagina</value>
+  </data>
+  <data name="LabelPropertyListingMapViewDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelRadialAreaPolar" xml:space="preserve">
+    <value>Radiaal gebied polair</value>
+  </data>
+  <data name="LabelRecentPosts" xml:space="preserve">
+    <value>Recente berichten</value>
+  </data>
+  <data name="LabelRecommendations" xml:space="preserve">
+    <value>Aanbevelingen</value>
+  </data>
+  <data name="LabelRecommendedSection" xml:space="preserve">
+    <value>AANBEVOLEN</value>
+  </data>
+  <data name="LabelRecommendedSubheader" xml:space="preserve">
+    <value>Voor jou geplukt</value>
+  </data>
+  <data name="LabelRelatedNews" xml:space="preserve">
+    <value>gerelateerde artikelen</value>
+  </data>
+  <data name="LabelRelatedProduct" xml:space="preserve">
+    <value>Misschien ben je geïnteresseerd</value>
+  </data>
+  <data name="LabelRelateds" xml:space="preserve">
+    <value>Verwant</value>
+  </data>
+  <data name="LabelRequestTour" xml:space="preserve">
+    <value>Vraag een rondleiding aan</value>
+  </data>
+  <data name="LabelReviews" xml:space="preserve">
+    <value>Recensies</value>
+  </data>
+  <data name="LabelSelectColor" xml:space="preserve">
+    <value>SELECTEER KLEUR</value>
+  </data>
+  <data name="LabelSelectLanguage" xml:space="preserve">
+    <value>Selecteer taal</value>
+  </data>
+  <data name="LabelSelectSize" xml:space="preserve">
+    <value>SELECTEER GROOTTE</value>
+  </data>
+  <data name="LabelShareApp" xml:space="preserve">
+    <value>Deel deze app</value>
+  </data>
+  <data name="LabelShareAppDetails" xml:space="preserve">
+    <value>Deel je liefdesapp met de wereld.</value>
+  </data>
+  <data name="LabelShareGrid" xml:space="preserve">
+    <value>Deel raster</value>
+  </data>
+  <data name="LabelShareList" xml:space="preserve">
+    <value>Lijst delen</value>
+  </data>
+  <data name="LabelShippingAddress" xml:space="preserve">
+    <value>Verzendingsadres</value>
+  </data>
+  <data name="LabelShippingInfo" xml:space="preserve">
+    <value>Verzend informatie</value>
+  </data>
+  <data name="LabelShippinInfo" xml:space="preserve">
+    <value>Verzend informatie</value>
+  </data>
+  <data name="LabelSlimGaugePie" xml:space="preserve">
+    <value>Slanke maattaart</value>
+  </data>
+  <data name="LabelSocial" xml:space="preserve">
+    <value>Sociaal</value>
+  </data>
+  <data name="LabelSocialChatDetail" xml:space="preserve">
+    <value>Pagina met chatdetails</value>
+  </data>
+  <data name="LabelSocialChatDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelSocialChatMain" xml:space="preserve">
+    <value>Chat-hoofdpagina</value>
+  </data>
+  <data name="LabelSocialChatMainDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelSocialContactDetail" xml:space="preserve">
+    <value>Contact Detail</value>
+  </data>
+  <data name="LabelSocialContactDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelSocialDescription" xml:space="preserve">
+    <value>Populaire voorbeelden van sociale media</value>
+  </data>
+  <data name="LabelSocialProfile" xml:space="preserve">
+    <value>Sociaal profiel 1</value>
+  </data>
+  <data name="LabelSocialProfileDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelSocialProfileWithBackground" xml:space="preserve">
+    <value>Sociale profielachtergrond</value>
+  </data>
+  <data name="LabelSocialProfileWithBackgroundDescription" xml:space="preserve">
+    <value>Een opvallende profielpagina met een omslagafbeelding op de achtergrond</value>
+  </data>
+  <data name="LabelSocialProfileWithCard" xml:space="preserve">
+    <value>Social Profile Card</value>
+  </data>
+  <data name="LabelSocialProfileWithCardDescription" xml:space="preserve">
+    <value>An eye-catching profile page with user profile in a card layout</value>
+  </data>
+  <data name="LabelSocialProfileWithGallery" xml:space="preserve">
+    <value>Sociale profielkaart</value>
+  </data>
+  <data name="LabelSocialProfileWithGalleryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelStackedBars" xml:space="preserve">
+    <value>Gestapelde staven</value>
+  </data>
+  <data name="LabelStandard" xml:space="preserve">
+    <value>Standaard</value>
+  </data>
+  <data name="LabelStandardDetail" xml:space="preserve">
+    <value>$5.00</value>
+  </data>
+  <data name="LabelSubtotal" xml:space="preserve">
+    <value>Subtotaal</value>
+  </data>
+  <data name="LabelSuccess" xml:space="preserve">
+    <value>GEWELDIG!</value>
+  </data>
+  <data name="LabelSuccessBox" xml:space="preserve">
+    <value>Succes doos</value>
+  </data>
+  <data name="LabelSuccessBoxBackground" xml:space="preserve">
+    <value>Succes vak achtergrond</value>
+  </data>
+  <data name="LabelSuccessDetails" xml:space="preserve">
+    <value>U kunt doorgaan met uw vorige acties. Gemakkelijk om deze aan succesgesprekken te koppelen.</value>
+  </data>
+  <data name="LabelSupportCenter" xml:space="preserve">
+    <value>Ondersteuning's centrum</value>
+  </data>
+  <data name="LabelSurveyQuestion" xml:space="preserve">
+    <value>Welke sociale media gebruikt u het meest?</value>
+  </data>
+  <data name="LabelSurveyQuestions" xml:space="preserve">
+    <value>Enquêtevragen</value>
+  </data>
+  <data name="LabelTabbedPage" xml:space="preserve">
+    <value>Standaard tabbladpagina</value>
+  </data>
+  <data name="LabelTabbedPageDescription" xml:space="preserve">
+    <value>Standaard .NET MAUI-tabbladpagina die de lettertypeafbeelding gebruikt als pictogram met tabbladen</value>
+  </data>
+  <data name="LabelTopAuthors" xml:space="preserve">
+    <value>Topauteurs</value>
+  </data>
+  <data name="LabelTopBrands" xml:space="preserve">
+    <value>Top merken</value>
+  </data>
+  <data name="LabelTopChannels" xml:space="preserve">
+    <value>Topkanalen</value>
+  </data>
+  <data name="LabelTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="LabelTotalUsers" xml:space="preserve">
+    <value>Totaal aantal gebruikers</value>
+  </data>
+  <data name="LabelTravel" xml:space="preserve">
+    <value>Reizen</value>
+  </data>
+  <data name="LabelTravelAboutTrip" xml:space="preserve">
+    <value>Over deze reis</value>
+  </data>
+  <data name="LabelTravelAccountPage" xml:space="preserve">
+    <value>Gebruikersaccountpagina</value>
+  </data>
+  <data name="LabelTravelAccountPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelArticleDetailPage" xml:space="preserve">
+    <value>Reisgidspagina</value>
+  </data>
+  <data name="LabelTravelArticleDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelConversationPage" xml:space="preserve">
+    <value>Berichtdetailpagina</value>
+  </data>
+  <data name="LabelTravelConversationPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelCreateArticlePage" xml:space="preserve">
+    <value>Maak een nieuwe artikelpagina</value>
+  </data>
+  <data name="LabelTravelCreateArticlePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelDescription" xml:space="preserve">
+    <value>Ontworpen om reisliefhebbers en bloggers te helpen eenvoudig een aanpasbare app te maken voor hun reisverhalen en avonturen</value>
+  </data>
+  <data name="LabelTravelExplorePage" xml:space="preserve">
+    <value>Pagina Reizen verkennen</value>
+  </data>
+  <data name="LabelTravelExplorePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelFollowingArticles" xml:space="preserve">
+    <value>Als vervolg op</value>
+  </data>
+  <data name="LabelTravelHomePage" xml:space="preserve">
+    <value>Startpagina</value>
+  </data>
+  <data name="LabelTravelHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelMessagesPage" xml:space="preserve">
+    <value>Recente berichtenpagina</value>
+  </data>
+  <data name="LabelTravelMessagesPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelPopularArticles" xml:space="preserve">
+    <value>Populaire reisgids</value>
+  </data>
+  <data name="LabelTravelSettingsPage" xml:space="preserve">
+    <value>Instellingenpagina</value>
+  </data>
+  <data name="LabelTravelSettingsPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelUpdateProfilePage" xml:space="preserve">
+    <value>Profielpagina bijwerken</value>
+  </data>
+  <data name="LabelTravelUpdateProfilePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTrendingNews" xml:space="preserve">
+    <value>Populair</value>
+  </data>
+  <data name="LabelTrendingNewsHeadline" xml:space="preserve">
+    <value>Enkele van de meest populaire nieuwsberichten op verhalen van de wereldnieuwskanalen.</value>
+  </data>
+  <data name="LabelUpdated" xml:space="preserve">
+    <value>Bijgewerkt</value>
+  </data>
+  <data name="LabelUpdateProfile" xml:space="preserve">
+    <value>Profiel bijwerken</value>
+  </data>
+  <data name="LabelUseSystemTheme" xml:space="preserve">
+    <value>Gebruik Systeemthema</value>
+  </data>
+  <data name="LabelVersion" xml:space="preserve">
+    <value>Versie</value>
+  </data>
+  <data name="LabelViewAgentProfile" xml:space="preserve">
+    <value>Agentprofiel bekijken</value>
+  </data>
+  <data name="LabelViewAll" xml:space="preserve">
+    <value>Bekijk alles</value>
+  </data>
+  <data name="LabelWalkthroughAnimation" xml:space="preserve">
+    <value>Walkthrough-animatie</value>
+  </data>
+  <data name="LabelWalkthroughAnimationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughGradient" xml:space="preserve">
+    <value>Verloop verloop</value>
+  </data>
+  <data name="LabelWalkthroughGradientDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughIllustration" xml:space="preserve">
+    <value>Walkthrough-illustratie</value>
+  </data>
+  <data name="LabelWalkthroughIllustrationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughImage1" xml:space="preserve">
+    <value>Walkthrough-afbeelding 1</value>
+  </data>
+  <data name="LabelWalkthroughImage1Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughImage2" xml:space="preserve">
+    <value>Walkthrough-afbeelding 2</value>
+  </data>
+  <data name="LabelWalkthroughImage2Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle1" xml:space="preserve">
+    <value>Doorloopstijl 1</value>
+  </data>
+  <data name="LabelWalkthroughStyle1Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle2" xml:space="preserve">
+    <value>Doorloopstijl 2</value>
+  </data>
+  <data name="LabelWalkthroughStyle2Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWarningBox" xml:space="preserve">
+    <value>Waarschuwingsdoos</value>
+  </data>
+  <data name="LabelWarningBoxBackground" xml:space="preserve">
+    <value>Waarschuwing vak achtergrond</value>
+  </data>
+  <data name="LabelWelcomeBack" xml:space="preserve">
+    <value>Welkom terug</value>
+  </data>
+  <data name="LabelWelcomeBackDetails" xml:space="preserve">
+    <value>Je eerdere chatgeschiedenis en gegevens zijn gesynchroniseerd</value>
+  </data>
+  <data name="LabelWelcomeBackgroundPage" xml:space="preserve">
+    <value>Achtergrond van de welkomstpagina</value>
+  </data>
+  <data name="LabelWelcomeBackgroundPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWelcomePage" xml:space="preserve">
+    <value>Welkomstpagina</value>
+  </data>
+  <data name="LabelWelcomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWelcomeVariantPage" xml:space="preserve">
+    <value>Welcome Variant</value>
+  </data>
+  <data name="LabelWelcomeVariantPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWorldHeatGeoMap" xml:space="preserve">
+    <value>Wereld hittekaart</value>
+  </data>
+  <data name="LanguageArabic" xml:space="preserve">
+    <value>Arabisch (VAE)</value>
+  </data>
+  <data name="LanguageDutch" xml:space="preserve">
+    <value>Nederlands (Nederland)</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>(Amerikaans) Engels</value>
+  </data>
+  <data name="LanguageFrench" xml:space="preserve">
+    <value>Frans Frankrijk)</value>
+  </data>
+  <data name="LanguageGerman" xml:space="preserve">
+    <value>Duits duitsland)</value>
+  </data>
+  <data name="LanguagePortuguese" xml:space="preserve">
+    <value>Portugees (Portugal)</value>
+  </data>
+  <data name="LanguageSpanish" xml:space="preserve">
+    <value>Spaans (Spanje)</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="MenuAction" xml:space="preserve">
+    <value>Acties</value>
+  </data>
+  <data name="MenuApp" xml:space="preserve">
+    <value>App-pakketten</value>
+  </data>
+  <data name="MenuArticle" xml:space="preserve">
+    <value>Lidwoord</value>
+  </data>
+  <data name="MenuChart" xml:space="preserve">
+    <value>Grafieken</value>
+  </data>
+  <data name="MenuControls" xml:space="preserve">
+    <value>Controles</value>
+  </data>
+  <data name="MenuExplore" xml:space="preserve">
+    <value>Ontdek functies</value>
+  </data>
+  <data name="MenuForm" xml:space="preserve">
+    <value>Formulieren</value>
+  </data>
+  <data name="MenuIcon" xml:space="preserve">
+    <value>Alle iconen</value>
+  </data>
+  <data name="MenuMainDashboard" xml:space="preserve">
+    <value>Hoofddashboard</value>
+  </data>
+  <data name="MenuNavigation" xml:space="preserve">
+    <value>Navigaties</value>
+  </data>
+  <data name="MenuOnboarding" xml:space="preserve">
+    <value>Onboardingen</value>
+  </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="MenuSetting" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="MenuSocial" xml:space="preserve">
+    <value>Sociaal</value>
+  </data>
+  <data name="PageTitleAboutUs" xml:space="preserve">
+    <value>Over ons</value>
+  </data>
+  <data name="PageTitleAccount" xml:space="preserve">
+    <value>Rekening</value>
+  </data>
+  <data name="PageTitleAgentProfile" xml:space="preserve">
+    <value>Agentprofiel</value>
+  </data>
+  <data name="PageTitleArticleCardOverlay" xml:space="preserve">
+    <value>Artikelkaart-overlay</value>
+  </data>
+  <data name="PageTitleArticleClassic" xml:space="preserve">
+    <value>Artikellijst Klassiek</value>
+  </data>
+  <data name="PageTitleArticleParallaxHeader" xml:space="preserve">
+    <value>Parallaxkopartikel</value>
+  </data>
+  <data name="PageTitleArticleVideos" xml:space="preserve">
+    <value>Artikelen Videolijst</value>
+  </data>
+  <data name="PageTitleBrandDetail" xml:space="preserve">
+    <value>Merkdetail</value>
+  </data>
+  <data name="PageTitleCartPage" xml:space="preserve">
+    <value>WinkelwagenPagina</value>
+  </data>
+  <data name="PageTitleCategoryDetail" xml:space="preserve">
+    <value>Categoriedetail</value>
+  </data>
+  <data name="PageTitleChatMainPage" xml:space="preserve">
+    <value>Chat met je vrienden</value>
+  </data>
+  <data name="PageTitleCheckout" xml:space="preserve">
+    <value>Afrekenpagina</value>
+  </data>
+  <data name="PageTitleDashboardCarousel" xml:space="preserve">
+    <value>Dashboardcarrousel</value>
+  </data>
+  <data name="PageTitleDashboardCoverFlow" xml:space="preserve">
+    <value>Dashboarddekkingsstroom</value>
+  </data>
+  <data name="PageTitleDashboardEvent" xml:space="preserve">
+    <value>Dashboardgebeurtenissen</value>
+  </data>
+  <data name="PageTitleDashboardGrid" xml:space="preserve">
+    <value>Dashboardraster</value>
+  </data>
+  <data name="PageTitleDashboardGridInverse" xml:space="preserve">
+    <value>Dashboardraster omgekeerd</value>
+  </data>
+  <data name="PageTitleDashboardTimeline" xml:space="preserve">
+    <value>Dashboard-tijdlijn</value>
+  </data>
+  <data name="PageTitleDashboardVariant" xml:space="preserve">
+    <value>Dashboardvarianten</value>
+  </data>
+  <data name="PageTitleDashboardVisual" xml:space="preserve">
+    <value>Dashboardvisualisatie</value>
+  </data>
+  <data name="PageTitleEReceipt" xml:space="preserve">
+    <value>E-ontvangstbewijs</value>
+  </data>
+  <data name="PageTitleFavorites" xml:space="preserve">
+    <value>Favorieten</value>
+  </data>
+  <data name="PageTitleFontIcon" xml:space="preserve">
+    <value>Pictogrammen</value>
+  </data>
+  <data name="PageTitleFontIconFont" xml:space="preserve">
+    <value>Lettertypepictogrammen</value>
+  </data>
+  <data name="PageTitleMapView" xml:space="preserve">
+    <value>Kaarten zoeken</value>
+  </data>
+  <data name="PageTitleNewsAuthor" xml:space="preserve">
+    <value>Auteurs</value>
+  </data>
+  <data name="PageTitleNewsBookmark" xml:space="preserve">
+    <value>Bladwijzers</value>
+  </data>
+  <data name="PageTitleNewsCategory" xml:space="preserve">
+    <value>Categorieën</value>
+  </data>
+  <data name="PageTitleOrderConfirmation" xml:space="preserve">
+    <value>Bevestig bestelling</value>
+  </data>
+  <data name="PageTitleOrderHistory" xml:space="preserve">
+    <value>Bestelgeschiedenis</value>
+  </data>
+  <data name="PageTitleProductCatalog" xml:space="preserve">
+    <value>Productcatalogi</value>
+  </data>
+  <data name="PageTitleProductDetail" xml:space="preserve">
+    <value>Product detail</value>
+  </data>
+  <data name="PageTitleProfile" xml:space="preserve">
+    <value>Profiel</value>
+  </data>
+  <data name="PageTitleSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="PageTitleTravelMessagePage" xml:space="preserve">
+    <value>Berichten</value>
+  </data>
+  <data name="PageTitleVideoNews" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="SettingDarkMode" xml:space="preserve">
+    <value>Donkere modus</value>
+  </data>
+  <data name="SettingGridLayout" xml:space="preserve">
+    <value>Rooster</value>
+  </data>
+  <data name="SettingIsRtlDefault" xml:space="preserve">
+    <value>RTL standaard?</value>
+  </data>
+  <data name="SettingLayoutDirection" xml:space="preserve">
+    <value>Indeling Richting</value>
+  </data>
+  <data name="SettingLightMode" xml:space="preserve">
+    <value>Lichtmodus</value>
+  </data>
+  <data name="SettingListLayout" xml:space="preserve">
+    <value>Lijst</value>
+  </data>
+  <data name="SettingLtr" xml:space="preserve">
+    <value>Van links naar rechts</value>
+  </data>
+  <data name="SettingMainMenuLayout" xml:space="preserve">
+    <value>Indeling hoofdmenu</value>
+  </data>
+  <data name="SettingPrimaryColor" xml:space="preserve">
+    <value>Primaire kleur</value>
+  </data>
+  <data name="SettingRtl" xml:space="preserve">
+    <value>Rechts naar links</value>
+  </data>
+  <data name="SettingTheme" xml:space="preserve">
+    <value>Thema</value>
+  </data>
+  <data name="StringAboutUs" xml:space="preserve">
+    <value>Over ons</value>
+  </data>
+  <data name="StringAddNewCard" xml:space="preserve">
+    <value>Nieuwe kaart toevoegen</value>
+  </data>
+  <data name="StringAddress" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="StringAlreadyHaveAccount" xml:space="preserve">
+    <value>Heeft u al een account?</value>
+  </data>
+  <data name="StringAlreadyRegistered" xml:space="preserve">
+    <value>Bent u al een gebruiker? Log nu in</value>
+  </data>
+  <data name="StringAppWelcomeSubtitle" xml:space="preserve">
+    <value>Laat uw app er binnen enkele minuten prachtig uitzien</value>
+  </data>
+  <data name="StringAppWelcomeTitle" xml:space="preserve">
+    <value>XAML UI-sjablonen voor .NET MAUI.</value>
+  </data>
+  <data name="StringBannerArticles" xml:space="preserve">
+    <value>Berichten en artikelen</value>
+  </data>
+  <data name="StringBannerArticlesDescription" xml:space="preserve">
+    <value>Organiseer blogposts in een eenvoudig te navigeren lay-out</value>
+  </data>
+  <data name="StringBannerEcommerce" xml:space="preserve">
+    <value>Ecommerce App Kit</value>
+  </data>
+  <data name="StringBannerEcommerceDescription" xml:space="preserve">
+    <value>Creëer een naadloze winkelervaring voor uw klanten</value>
+  </data>
+  <data name="StringBannerNews" xml:space="preserve">
+    <value>Nieuws-appkit</value>
+  </data>
+  <data name="StringBannerNewsDescription" xml:space="preserve">
+    <value>U kunt eenvoudig een aanpasbare app maken die het laatste nieuws, de laatste verhalen en diepgaande analyses aan uw lezers levert</value>
+  </data>
+  <data name="StringBannerPropertyListing" xml:space="preserve">
+    <value>App-kit voor vastgoedvermeldingen</value>
+  </data>
+  <data name="StringBannerPropertyListingDescription" xml:space="preserve">
+    <value>Alles wat u nodig heeft om een ​​professionele en effectieve app voor uw vermeldingen te maken</value>
+  </data>
+  <data name="StringBannerSocials" xml:space="preserve">
+    <value>Sociale contacten en chatten</value>
+  </data>
+  <data name="StringBannerSocialsDescription" xml:space="preserve">
+    <value>Bouw een aanpasbare app waarmee gebruikers kunnen chatten, inhoud kunnen delen en relaties kunnen opbouwen</value>
+  </data>
+  <data name="StringCardExpiry" xml:space="preserve">
+    <value>Houdbaarheidsdatum</value>
+  </data>
+  <data name="StringCategory" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="StringCommingSoon" xml:space="preserve">
+    <value>Binnenkort</value>
+  </data>
+  <data name="StringConfirmPassword" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
+  <data name="StringCopyright" xml:space="preserve">
+    <value>Smart Genealogy</value>
+  </data>
+  <data name="StringCreateNewPassword" xml:space="preserve">
+    <value>Maak uw nieuwe wachtwoord aan</value>
+  </data>
+  <data name="StringCreatePassword" xml:space="preserve">
+    <value>Maak een wachtwoord</value>
+  </data>
+  <data name="StringDailyProgress" xml:space="preserve">
+    <value>Daily Progress</value>
+  </data>
+  <data name="StringDontHaveAccount" xml:space="preserve">
+    <value>Heeft u geen account?</value>
+  </data>
+  <data name="StringDontReceiveCode" xml:space="preserve">
+    <value>Geen code ontvangen?</value>
+  </data>
+  <data name="StringEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="StringEnterFullname" xml:space="preserve">
+    <value>Vul uw volledige naam in</value>
+  </data>
+  <data name="StringEnterMessage" xml:space="preserve">
+    <value>Schrijf je bericht...</value>
+  </data>
+  <data name="StringEnterPassword" xml:space="preserve">
+    <value>Voer uw wachtwoord in</value>
+  </data>
+  <data name="StringEnterReceivedCode" xml:space="preserve">
+    <value>De bevestigingscode is per e-mail verzonden</value>
+  </data>
+  <data name="StringEnterUsername" xml:space="preserve">
+    <value>Voer uw e-mailadres of telefoonnummer in</value>
+  </data>
+  <data name="StringEnterYourEmail" xml:space="preserve">
+    <value>Voer uw e-mailadres in</value>
+  </data>
+  <data name="StringFacebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="StringFontsCount" xml:space="preserve">
+    <value>Lettertypen</value>
+  </data>
+  <data name="StringForgotPassword" xml:space="preserve">
+    <value>Je wachtwoord vergeten?</value>
+  </data>
+  <data name="StringFullname" xml:space="preserve">
+    <value>Voor-en achternaam</value>
+  </data>
+  <data name="StringGoogle" xml:space="preserve">
+    <value>Google</value>
+  </data>
+  <data name="StringGridItemTappedMessage" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringHome" xml:space="preserve">
+    <value>Thuis</value>
+  </data>
+  <data name="StringHours" xml:space="preserve">
+    <value>Uur</value>
+  </data>
+  <data name="StringHouseSearchResult" xml:space="preserve">
+    <value>Huis(en) gevonden</value>
+  </data>
+  <data name="StringIconsCount" xml:space="preserve">
+    <value>pictogrammen</value>
+  </data>
+  <data name="StringInputCardCvv" xml:space="preserve">
+    <value>CVV</value>
+  </data>
+  <data name="StringInputCardHolder" xml:space="preserve">
+    <value>Kaartnaamhouder</value>
+  </data>
+  <data name="StringInputCardNumber" xml:space="preserve">
+    <value>Kaartnummer</value>
+  </data>
+  <data name="StringIsRTL" xml:space="preserve">
+    <value>Is RTL</value>
+  </data>
+  <data name="StringLoginHeader" xml:space="preserve">
+    <value>Log in op jouw account</value>
+  </data>
+  <data name="StringLoginSubtitle" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringLoginWith" xml:space="preserve">
+    <value>OF LOG IN MET</value>
+  </data>
+  <data name="StringMessageFeatureCommingSoon" xml:space="preserve">
+    <value>Deze sjabloon zal beschikbaar zijn in de volgende versie.</value>
+  </data>
+  <data name="StringMobile" xml:space="preserve">
+    <value>Mobiel</value>
+  </data>
+  <data name="StringName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="StringNewPassword" xml:space="preserve">
+    <value>nieuw paswoord</value>
+  </data>
+  <data name="StringNote" xml:space="preserve">
+    <value>Opmerkingen</value>
+  </data>
+  <data name="StringOr" xml:space="preserve">
+    <value>OF</value>
+  </data>
+  <data name="StringPassword" xml:space="preserve">
+    <value>Voer uw wachtwoord in</value>
+  </data>
+  <data name="StringPhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="StringPhoneNumberInput" xml:space="preserve">
+    <value>Voer telefoonnummer in</value>
+  </data>
+  <data name="StringPostTitle" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="StringRegisterAnAccount" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringRegisterNow" xml:space="preserve">
+    <value>Registreer nu</value>
+  </data>
+  <data name="StringRegisterNowSubtitle" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringRememberLogin" xml:space="preserve">
+    <value>Onthoud me</value>
+  </data>
+  <data name="StringResend" xml:space="preserve">
+    <value>Opnieuw versturen</value>
+  </data>
+  <data name="StringSchedule" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="StringSearch" xml:space="preserve">
+    <value>Zoek hier...</value>
+  </data>
+  <data name="StringSearchContact" xml:space="preserve">
+    <value>Zoek naam of nummer</value>
+  </data>
+  <data name="StringSearchHouse" xml:space="preserve">
+    <value>Doorzoek uw huis</value>
+  </data>
+  <data name="StringSearchIcon" xml:space="preserve">
+    <value>Zoekpictogram</value>
+  </data>
+  <data name="StringSearchNews" xml:space="preserve">
+    <value>Zoek Nieuws</value>
+  </data>
+  <data name="StringSelectBed" xml:space="preserve">
+    <value>Selecteer bed</value>
+  </data>
+  <data name="StringSelectGuest" xml:space="preserve">
+    <value>Selecteer gast</value>
+  </data>
+  <data name="StringSelectTime" xml:space="preserve">
+    <value>Selecteer tijd</value>
+  </data>
+  <data name="StringSetDefaultCard" xml:space="preserve">
+    <value>Instellen als standaardkaart</value>
+  </data>
+  <data name="StringShare" xml:space="preserve">
+    <value>Deel</value>
+  </data>
+  <data name="StringSignin" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="StringSignup" xml:space="preserve">
+    <value>Aanmelden</value>
+  </data>
+  <data name="StringSMS" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="StringStatus" xml:space="preserve">
+    <value>Toestand</value>
+  </data>
+  <data name="StringTransactionID" xml:space="preserve">
+    <value>Transactie ID</value>
+  </data>
+  <data name="StringTransactionTime" xml:space="preserve">
+    <value>Transactietijd</value>
+  </data>
+  <data name="StringTransferAmount" xml:space="preserve">
+    <value>Overboekingsbedrag</value>
+  </data>
+  <data name="StringTransferTo" xml:space="preserve">
+    <value>Overzetten naar</value>
+  </data>
+  <data name="StringTypeEmailReceiveCode" xml:space="preserve">
+    <value>Typ uw e-mailadres om de verificatiecode te ontvangen.</value>
+  </data>
+  <data name="StringUsername" xml:space="preserve">
+    <value>E-mail of telefoonnummer</value>
+  </data>
+  <data name="StringUseYourCredentials" xml:space="preserve">
+    <value>Gebruik uw inloggegevens om in te loggen.</value>
+  </data>
+  <data name="StringVerifyCode" xml:space="preserve">
+    <value>Code verifiëren</value>
+  </data>
+  <data name="StringViewAll" xml:space="preserve">
+    <value>Bekijk alles</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep1" xml:space="preserve">
+    <value>Ontdek de MauiKit-sjablooncollectie en kies de sjablonen voor uw project.</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep2" xml:space="preserve">
+    <value>Voeg branding toe, verander het thema, afbeeldingen, iconen en wat je maar wilt</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep3" xml:space="preserve">
+    <value>Voeg uw weergavemodelbestanden toe en u kunt aan de slag</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep1" xml:space="preserve">
+    <value>Kies Sjablonen</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep2" xml:space="preserve">
+    <value>Ontwerp aanpassen</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep3" xml:space="preserve">
+    <value>Logica implementeren</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep1" xml:space="preserve">
+    <value>De beste UI-kit voor platformonafhankelijke apps van vandaag</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep2" xml:space="preserve">
+    <value>Rijke XAML-lay-outs voor de meest voorkomende app-gebruiksscenario's</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep3" xml:space="preserve">
+    <value>Klaar voor gebruik met eenvoudige aanpassing en integratie</value>
+  </data>
+  <data name="StringWalkthroughTitleStep1" xml:space="preserve">
+    <value>Welkom</value>
+  </data>
+  <data name="StringWalkthroughTitleStep2" xml:space="preserve">
+    <value>Ontdekken</value>
+  </data>
+  <data name="StringWalkthroughTitleStep3" xml:space="preserve">
+    <value>Publiceren</value>
+  </data>
+  <data name="StringWelcome" xml:space="preserve">
+    <value>Welkom!
+MAUI-LIEFHEBBERS</value>
+  </data>
+  <data name="StringWelcomeToMauiKit" xml:space="preserve">
+    <value>Welkom bij MAUI KIT</value>
+  </data>
+  <data name="StringWritePostContent" xml:space="preserve">
+    <value>Schrijf hier de inhoud van uw bericht...</value>
+  </data>
+  <data name="ToolbarLayoutDirection" xml:space="preserve">
+    <value>RTL</value>
+  </data>
+  <data name="ToolbarSettings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="LabelWalkthroughImage" xml:space="preserve">
+    <value>Walkthrough Image</value>
+  </data>
+  <data name="LabelWalkthroughImageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle1Description1" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="StringDaily Progress" xml:space="preserve">
+    <value>Dagelijkse vooruitgang</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Thuis</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MenuPeople" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="StringAppName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+</root>

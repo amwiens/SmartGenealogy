@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Onboardings.DemoWalkthroughPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cardcontrols="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid RowDefinitions="*, Auto">
+
+            <!--  Walkthrough Steps  -->
+            <cards:CarouselView
+                x:Name="carouselView"
+                IsPanInteractionEnabled="False"
+                IsPanSwipeEnabled="False"
+                IsUserInteractionEnabled="False"
+                ItemsSource="{Binding Boardings}"
+                SelectedIndex="{Binding Position}">
+
+                <cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="30,0"
+                            HorizontalOptions="Center"
+                            RowDefinitions="Auto, Auto, Auto"
+                            RowSpacing="10"
+                            VerticalOptions="Center">
+                            <Grid
+                                Margin="0,0,0,20"
+                                HeightRequest="300"
+                                HorizontalOptions="Center"
+                                WidthRequest="300">
+                                <Border
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource Primary40Color}"
+                                    HeightRequest="300"
+                                    HorizontalOptions="Center"
+                                    Stroke="{DynamicResource Primary10Color}"
+                                    StrokeShape="{RoundRectangle CornerRadius=150}"
+                                    StrokeThickness="70"
+                                    VerticalOptions="Center"
+                                    WidthRequest="300" />
+
+                                <Border
+                                    BackgroundColor="{DynamicResource Primary35Color}"
+                                    HeightRequest="230"
+                                    HorizontalOptions="Center"
+                                    Stroke="{DynamicResource Primary50Color}"
+                                    StrokeShape="{RoundRectangle CornerRadius=115}"
+                                    StrokeThickness="70"
+                                    VerticalOptions="Center"
+                                    WidthRequest="230">
+
+                                    <Image
+                                        x:Name="stepIcon"
+                                        Margin="15"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontAutoScalingEnabled="True"
+                                                FontFamily="SmartGenealogyIcons"
+                                                Glyph="{Binding ImagePath}"
+                                                Size="60"
+                                                Color="{DynamicResource White}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Border>
+                            </Grid>
+
+                            <Label
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                FontSize="19"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Title}" />
+
+                            <Label
+                                Grid.Row="2"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource Body}"
+                                Text="{Binding Subtitle}" />
+                        </Grid>
+                    </DataTemplate>
+                </cards:CarouselView.ItemTemplate>
+            </cards:CarouselView>
+
+            <StackLayout Grid.Row="1" VerticalOptions="End">
+                <!--  Step Indicator  -->
+                <!--<IndicatorView
+                    x:Name="indicatorView"
+                    HorizontalOptions="Center"
+                    IndicatorColor="{DynamicResource BaseLightTextColor}"
+                    IndicatorsShape="Circle"
+                    SelectedIndicatorColor="{DynamicResource PrimaryColor}">
+                    <IndicatorView.IndicatorTemplate>
+                        <DataTemplate>
+                            <Border HeightRequest="8" StrokeShape="{RoundRectangle CornerRadius='4'}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="WidthRequest" Value="8" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="WidthRequest" Value="10" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </DataTemplate>
+                    </IndicatorView.IndicatorTemplate>
+                </IndicatorView>-->
+
+                <!--  Next button  -->
+                <Grid Grid.Row="1" ColumnDefinitions="{OnIdiom Desktop='1*, 8*, 1*', Phone='Auto, *, Auto', Tablet='1*, 8*, 1*', Default='Auto, *, Auto'}">
+                    <Button
+                        Grid.Column="1"
+                        Margin="30,20"
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        Command="{Binding NextCommand}"
+                        CornerRadius="16"
+                        FontSize="14"
+                        HeightRequest="50"
+                        Text="{Binding NextButtonText, Mode=TwoWay}"
+                        TextColor="{DynamicResource White}"
+                        VerticalOptions="End" />
+                </Grid>
+            </StackLayout>
+
+            <!--  Skip Button  -->
+            <Button
+                Margin="20"
+                Padding="10,5"
+                BackgroundColor="Transparent"
+                BorderColor="{DynamicResource BaseTextColor}"
+                BorderWidth="1"
+                Command="{Binding SkipCommand}"
+                FontSize="12"
+                HeightRequest="26"
+                HorizontalOptions="End"
+                IsVisible="{Binding IsSkipButtonVisible, Mode=TwoWay}"
+                Text="{localization:Translate ButtonSkip}"
+                TextColor="{DynamicResource BaseTextColor}"
+                VerticalOptions="Start" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,2044 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BottomTabbedHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="BottomTabbedProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="BottomTabbedRemarks" xml:space="preserve">
+    <value>Anmerkungen</value>
+  </data>
+  <data name="BottomTabbedSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="BottomTabbedStats" xml:space="preserve">
+    <value>Statistiken</value>
+  </data>
+  <data name="ButtonAccept" xml:space="preserve">
+    <value>Akzeptieren</value>
+  </data>
+  <data name="ButtonAddArticle" xml:space="preserve">
+    <value>Artikel erstellen</value>
+  </data>
+  <data name="ButtonAddCard" xml:space="preserve">
+    <value>Karte hinzufügen</value>
+  </data>
+  <data name="ButtonAddComment" xml:space="preserve">
+    <value>KOMMENTAR HINZUFÜGEN</value>
+  </data>
+  <data name="ButtonAddImage" xml:space="preserve">
+    <value>Bilder auswählen</value>
+  </data>
+  <data name="ButtonAddToCart" xml:space="preserve">
+    <value>IN DEN WARENKORB LEGEN</value>
+  </data>
+  <data name="ButtonAlreadyRegistered" xml:space="preserve">
+    <value>BEREITS BENUTZER? JETZT ANMELDEN</value>
+  </data>
+  <data name="ButtonCallNow" xml:space="preserve">
+    <value>JETZT ANRUFEN</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="ButtonConfirmOrder" xml:space="preserve">
+    <value>BESTELLUNG BESTÄTIGEN</value>
+  </data>
+  <data name="ButtonContactUs" xml:space="preserve">
+    <value>KONTAKTIEREN SIE UNS</value>
+  </data>
+  <data name="ButtonContinue" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="ButtonDarkTheme" xml:space="preserve">
+    <value>Dunkles Design</value>
+  </data>
+  <data name="ButtonDownloadReceipt" xml:space="preserve">
+    <value>E-Quittung herunterladen</value>
+  </data>
+  <data name="ButtonEdit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="ButtonEditProfile" xml:space="preserve">
+    <value>Profil bearbeiten</value>
+  </data>
+  <data name="ButtonFacebook" xml:space="preserve">
+    <value>FACEBOOK</value>
+  </data>
+  <data name="ButtonFinish" xml:space="preserve">
+    <value>FERTIG</value>
+  </data>
+  <data name="ButtonFollow" xml:space="preserve">
+    <value>Folgen</value>
+  </data>
+  <data name="ButtonGoBack" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="ButtonGoogle" xml:space="preserve">
+    <value>GOOGLE</value>
+  </data>
+  <data name="ButtonGoToCheckout" xml:space="preserve">
+    <value>KASSE</value>
+  </data>
+  <data name="ButtonLightTheme" xml:space="preserve">
+    <value>Helles Design</value>
+  </data>
+  <data name="ButtonLogin" xml:space="preserve">
+    <value>ANMELDEN</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>WEITER</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonPostComment" xml:space="preserve">
+    <value>Kommentar hinzufügen</value>
+  </data>
+  <data name="ButtonReject" xml:space="preserve">
+    <value>Ablehnen</value>
+  </data>
+  <data name="ButtonReserve" xml:space="preserve">
+    <value>RESERVIEREN</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="ButtonSeeMore" xml:space="preserve">
+    <value>Mehr anzeigen</value>
+  </data>
+  <data name="ButtonSignin" xml:space="preserve">
+    <value>ANMELDEN</value>
+  </data>
+  <data name="ButtonSignup" xml:space="preserve">
+    <value>REGISTRIEREN</value>
+  </data>
+  <data name="ButtonSkip" xml:space="preserve">
+    <value>ÜBERSPRINGEN</value>
+  </data>
+  <data name="ButtonStartNow" xml:space="preserve">
+    <value>Jetzt starten</value>
+  </data>
+  <data name="ButtonSubmit" xml:space="preserve">
+    <value>SENDEN</value>
+  </data>
+  <data name="ButtonTakeTour" xml:space="preserve">
+    <value>JETZT ENTDECKEN</value>
+  </data>
+  <data name="ButtonTryAgain" xml:space="preserve">
+    <value>Erneut versuchen</value>
+  </data>
+  <data name="ButtonTwitter" xml:space="preserve">
+    <value>TWITTER</value>
+  </data>
+  <data name="ButtonViewAll" xml:space="preserve">
+    <value>Alle anzeigen</value>
+  </data>
+  <data name="ButtonViewReceipt" xml:space="preserve">
+    <value>E-Quittung anzeigen</value>
+  </data>
+  <data name="ButtonWriteReview" xml:space="preserve">
+    <value>Bewertung schreiben</value>
+  </data>
+  <data name="CommandToggleBrazil" xml:space="preserve">
+    <value>Brasilien umschalten</value>
+  </data>
+  <data name="Label270DegreesGaugePie" xml:space="preserve">
+    <value>270-Grad-Messkreis</value>
+  </data>
+  <data name="LabelAboutUs" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="LabelAboutUsDescription" xml:space="preserve">
+    <value>Eine kurze Beschreibung Ihrer App oder Ihres Unternehmens</value>
+  </data>
+  <data name="LabelAccountOptions" xml:space="preserve">
+    <value>Kontooptionen</value>
+  </data>
+  <data name="LabelAction" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="LabelActionCallAction" xml:space="preserve">
+    <value>Zum Anzeigen tippen</value>
+  </data>
+  <data name="LabelActionChangePasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelActionConfirmation" xml:space="preserve">
+    <value>Bestätigung</value>
+  </data>
+  <data name="LabelActionCongratulation" xml:space="preserve">
+    <value>Gratulationsbestätigung</value>
+  </data>
+  <data name="LabelActionDescription" xml:space="preserve">
+    <value>Aufruf zum Handeln</value>
+  </data>
+  <data name="LabelActionPasswordResetSuccessful" xml:space="preserve">
+    <value>Passwort zurücksetzen erfolgreich!</value>
+  </data>
+  <data name="LabelActionPaymentFailed" xml:space="preserve">
+    <value>Zahlung fehlgeschlagen</value>
+  </data>
+  <data name="LabelActionPaymentMethod" xml:space="preserve">
+    <value>Zahlungsmethode</value>
+  </data>
+  <data name="LabelActions" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="LabelActionShippingInfo" xml:space="preserve">
+    <value>Versandinformationen</value>
+  </data>
+  <data name="LabelActionSuccess" xml:space="preserve">
+    <value>Erfolgsbox</value>
+  </data>
+  <data name="LabelActionSuccessBackground" xml:space="preserve">
+    <value>Hintergrund der Erfolgsbox</value>
+  </data>
+  <data name="LabelActionSurveyQuestion" xml:space="preserve">
+    <value>Umfragefragen</value>
+  </data>
+  <data name="LabelActionWarning" xml:space="preserve">
+    <value>Warnbox</value>
+  </data>
+  <data name="LabelActionWarningBackground" xml:space="preserve">
+    <value>Hintergrund der Warnbox</value>
+  </data>
+  <data name="LabelActionWelcomeBack" xml:space="preserve">
+    <value>Willkommen zurück</value>
+  </data>
+  <data name="LabelAddArticle" xml:space="preserve">
+    <value>Neuen Artikel hinzufügen</value>
+  </data>
+  <data name="LabelAddArticleDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelAddCard" xml:space="preserve">
+    <value>Karte hinzufügen</value>
+  </data>
+  <data name="LabelAllAuthors" xml:space="preserve">
+    <value>Alle Autoren</value>
+  </data>
+  <data name="LabelAmenities" xml:space="preserve">
+    <value>Annehmlichkeiten</value>
+  </data>
+  <data name="LabelAndroidBottomTabbedPage" xml:space="preserve">
+    <value>Android-Seite mit unteren Registerkarten</value>
+  </data>
+  <data name="LabelAndroidBottomTabbedPageDescription" xml:space="preserve">
+    <value>Standard-Seite mit unteren Registerkarten von .NET MAUI, die ein Schriftbild als Symbol mit Registerkarten verwendet</value>
+  </data>
+  <data name="LabelApp" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="LabelAppDescription" xml:space="preserve">
+    <value>Vorgefertigte App-Pakete</value>
+  </data>
+  <data name="LabelAppLanguage" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LabelAppSettings" xml:space="preserve">
+    <value>App-Einstellungen</value>
+  </data>
+  <data name="LabelAreYouSure" xml:space="preserve">
+    <value>Sind Sie sicher?</value>
+  </data>
+  <data name="LabelAreYouSureDetails" xml:space="preserve">
+    <value>Sie können dieses Feld sogar zur Bestätigung verwenden. Jedes Element kann es auslösen.</value>
+  </data>
+  <data name="LabelArticle" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="LabelArticleCardOverlay" xml:space="preserve">
+    <value>Artikel-Karten-Overlay</value>
+  </data>
+  <data name="LabelArticleCardOverlayDescription" xml:space="preserve">
+    <value>Liste von Artikeln im Kartenlayout mit einem Hintergrundbild und Overlay-Text oder -Inhalten.</value>
+  </data>
+  <data name="LabelArticleCount" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="LabelArticleCurvedMask" xml:space="preserve">
+    <value>Gebogene Artikelmaske</value>
+  </data>
+  <data name="LabelArticleCurvedMaskDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelArticleDescription" xml:space="preserve">
+    <value>Blogbeiträge mit einem leicht zu navigierenden Layout</value>
+  </data>
+  <data name="LabelArticleDetailCard" xml:space="preserve">
+    <value>Artikel-Detailkarte</value>
+  </data>
+  <data name="LabelArticleDetailCardDescription" xml:space="preserve">
+    <value>Zeigen Sie Details des Artikels im Kartenlayout mit einem Feature-Bild in voller Breite und einer schönen Galerie an.</value>
+  </data>
+  <data name="LabelArticleDetailVideo" xml:space="preserve">
+    <value>Artikel-Detailvideo</value>
+  </data>
+  <data name="LabelArticleDetailVideoDescription" xml:space="preserve">
+    <value>Zeigen Sie Details des Artikels mit Videoinhalt im Kartenlayout mit einem Feature-Bild in voller Breite und einer schönen Galerie an.</value>
+  </data>
+  <data name="LabelArticleListClassic" xml:space="preserve">
+    <value>Klassische Listen</value>
+  </data>
+  <data name="LabelArticleListClassicDescription" xml:space="preserve">
+    <value>Liste von Artikeln im gängigsten Listenstil, halten Sie es einfach, aber aussagekräftig.</value>
+  </data>
+  <data name="LabelArticleParallaxHeader" xml:space="preserve">
+    <value>Parallax-Header</value>
+  </data>
+  <data name="LabelArticleParallaxHeaderDescription" xml:space="preserve">
+    <value>Zeigen Sie Artikeldetails mithilfe des Kartenlayouts an, mit einem Bild in voller Breite und mit Parallax-Effekt sowie einer schönen Galerie.</value>
+  </data>
+  <data name="LabelArticleVideoDetail" xml:space="preserve">
+    <value>Videoplayer</value>
+  </data>
+  <data name="LabelArticleVideoDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelArticleVideoList" xml:space="preserve">
+    <value>Artikel-Videoliste</value>
+  </data>
+  <data name="LabelArticleVideoListDescription" xml:space="preserve">
+    <value>Liste von Artikeln mit Videoinhalten, mit einem Titelbild und einer Schaltfläche zum sofortigen Abspielen</value>
+  </data>
+  <data name="LabelAskQuestion" xml:space="preserve">
+    <value>Stellen Sie eine Frage</value>
+  </data>
+  <data name="LabelBarBackgroundChart" xml:space="preserve">
+    <value>Balken mit Hintergrund</value>
+  </data>
+  <data name="LabelBasicBar" xml:space="preserve">
+    <value>Einfache Balken</value>
+  </data>
+  <data name="LabelBasicGaugePie" xml:space="preserve">
+    <value>Einfaches Kreisdiagramm</value>
+  </data>
+  <data name="LabelBasicGeoMap" xml:space="preserve">
+    <value>Einfaches GeoMap</value>
+  </data>
+  <data name="LabelBasicHeat" xml:space="preserve">
+    <value>Einfaches Wärmediagramm</value>
+  </data>
+  <data name="LabelBasicPie" xml:space="preserve">
+    <value>Einfaches Kreisdiagramm</value>
+  </data>
+  <data name="LabelBasicPolar" xml:space="preserve">
+    <value>Einfaches Polardiagramm</value>
+  </data>
+  <data name="LabelBasicStackedArea" xml:space="preserve">
+    <value>Einfaches gestapeltes Flächendiagramm</value>
+  </data>
+  <data name="LabelBestSellingSection" xml:space="preserve">
+    <value>MEISTVERKAUF</value>
+  </data>
+  <data name="LabelBestSellingSubheader" xml:space="preserve">
+    <value>Immer heiße Artikel</value>
+  </data>
+  <data name="LabelBookNow" xml:space="preserve">
+    <value>Jetzt buchen</value>
+  </data>
+  <data name="LabelCalendar" xml:space="preserve">
+    <value>Kalender</value>
+  </data>
+  <data name="LabelCalendarDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelCallButton" xml:space="preserve">
+    <value>Anruftaste</value>
+  </data>
+  <data name="LabelCallUsNow" xml:space="preserve">
+    <value>Rufen Sie uns jetzt an</value>
+  </data>
+  <data name="LabelCallUsNowDetails" xml:space="preserve">
+    <value>Wir sind immer für Sie da. Rufen Sie uns noch heute an. Tippen Sie einfach auf die Taste und setzen Sie sich mit uns in Verbindung.</value>
+  </data>
+  <data name="LabelCancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="LabelCartesianChart" xml:space="preserve">
+    <value>Kartesisches Diagramm</value>
+  </data>
+  <data name="LabelCartesianChartDescription" xml:space="preserve">
+    <value>Ein „einsatzbereites“ Steuerelement zum Erstellen von Diagrammen mit dem kartesischen Koordinatensystem</value>
+  </data>
+  <data name="LabelCategories" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="LabelCategorySection" xml:space="preserve">
+    <value>KATEGORIEN</value>
+  </data>
+  <data name="LabelCategorySubheader" xml:space="preserve">
+    <value>Nach Kategorie einkaufen</value>
+  </data>
+  <data name="LabelCharts" xml:space="preserve">
+    <value>Diagramme</value>
+  </data>
+  <data name="LabelChartsDescription" xml:space="preserve">
+    <value>Entdecken Sie leistungsstarke Diagrammsteuerelemente zum Visualisieren Ihrer App</value>
+  </data>
+  <data name="LabelChooseNewsTopic" xml:space="preserve">
+    <value>Wählen Sie ein Thema zum Erkunden aus</value>
+  </data>
+  <data name="LabelChoosePaymentMethod" xml:space="preserve">
+    <value>Wählen Sie eine Zahlungsmethode aus</value>
+  </data>
+  <data name="LabelChooseTheme" xml:space="preserve">
+    <value>Designmodus</value>
+  </data>
+  <data name="LabelComments" xml:space="preserve">
+    <value>Kommentare</value>
+  </data>
+  <data name="LabelConfirmation" xml:space="preserve">
+    <value>Bestätigung</value>
+  </data>
+  <data name="LabelCongratulation" xml:space="preserve">
+    <value>Gratulation</value>
+  </data>
+  <data name="LabelCongratulationDetails" xml:space="preserve">
+    <value>Genießen Sie das MAUI-basierte UI-Kit und schalten Sie erweiterte Funktionen frei. Willkommen auf der nächsten Ebene 💫</value>
+  </data>
+  <data name="LabelControlsOverview" xml:space="preserve">
+    <value>Steuerungsübersicht</value>
+  </data>
+  <data name="LabelControlsOverviewDescription" xml:space="preserve">
+    <value>Entdecken Sie die fantastischen benutzerdefinierten Steuerungen, die in diesem Kit unterstützt werden</value>
+  </data>
+  <data name="LabelCoordinatesPolar" xml:space="preserve">
+    <value>Polare Koordinaten</value>
+  </data>
+  <data name="LabelCreditCard" xml:space="preserve">
+    <value>Kreditkarte</value>
+  </data>
+  <data name="LabelCustomPie" xml:space="preserve">
+    <value>Benutzerdefiniertes Kreisdiagramm</value>
+  </data>
+  <data name="LabelDarkmode" xml:space="preserve">
+    <value>Dunkelmodus</value>
+  </data>
+  <data name="LabelDashboard" xml:space="preserve">
+    <value>Dashboards</value>
+  </data>
+  <data name="LabelDashboardArticle" xml:space="preserve">
+    <value>Dashboard-Artikel</value>
+  </data>
+  <data name="LabelDashboardArticleDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelDashboardCard" xml:space="preserve">
+    <value>Dashboard-Karten</value>
+  </data>
+  <data name="LabelDashboardCardDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardCoverFlow" xml:space="preserve">
+    <value>Dashboard-Cover-Flow</value>
+  </data>
+  <data name="LabelDashboardCoverFlowDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardDescription" xml:space="preserve">
+    <value>Hauptnavigationsseiten der App</value>
+  </data>
+  <data name="LabelDashboardEvent" xml:space="preserve">
+    <value>Dashboard-Ereignisse</value>
+  </data>
+  <data name="LabelDashboardEventDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardGrid" xml:space="preserve">
+    <value>Dashboard-Raster</value>
+  </data>
+  <data name="LabelDashboardGridDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardGridInverse" xml:space="preserve">
+    <value>Dashboard-Raster invers</value>
+  </data>
+  <data name="LabelDashboardGridInverseDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardTasks" xml:space="preserve">
+    <value>Dashboard-Aufgabenverwaltung</value>
+  </data>
+  <data name="LabelDashboardTasksDescription" xml:space="preserve">
+    <value>Einfache Implementierung der Aufgabenverwaltung mit Drag-and-Drop-Funktion</value>
+  </data>
+  <data name="LabelDashboardTimeline" xml:space="preserve">
+    <value>Dashboard-Zeitleiste</value>
+  </data>
+  <data name="LabelDashboardTimelineDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardVariant" xml:space="preserve">
+    <value>Dashboard-Varianten</value>
+  </data>
+  <data name="LabelDashboardVariantDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelDashboardVisual" xml:space="preserve">
+    <value>Dashboard-Visualisierung</value>
+  </data>
+  <data name="LabelDashboardVisualDescription" xml:space="preserve">
+    <value>Dieses Beispiel-Dashboard stellt eine Schnittstelle dar, die für allgemeine Daten und Überwachungsanwendungsfälle relevant ist.</value>
+  </data>
+  <data name="LabelDashboardWithCarousel" xml:space="preserve">
+    <value>Dashboard-Karussell</value>
+  </data>
+  <data name="LabelDashboardWithCarouselDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Doch als ob es ein Maximus wäre, würde er es tun.</value>
+  </data>
+  <data name="LabelDelete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="LabelDeleteAccount" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="LabelDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="LabelDonutPie" xml:space="preserve">
+    <value>Donut Pie</value>
+  </data>
+  <data name="LabelEcommerce" xml:space="preserve">
+    <value>E-Commerce</value>
+  </data>
+  <data name="LabelEcommerceAccount" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="LabelEcommerceAccountDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceCategory" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="LabelEcommerceCategoryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceCheckoutPage" xml:space="preserve">
+    <value>Checkout-Seite</value>
+  </data>
+  <data name="LabelEcommerceCheckoutPageDescription" xml:space="preserve">
+    <value>Wenn Sie planen, über Ihre App etwas zu verkaufen, benötigen Sie wahrscheinlich diese Vorlage.</value>
+  </data>
+  <data name="LabelEcommerceDescription" xml:space="preserve">
+    <value>Bietet Ihnen alle notwendigen Tools, um eine anpassbare App für Ihren Online-Shop zu erstellen, einschließlich Produktlisten, Einkaufswagen, Zahlungsabwicklung und Auftragsverwaltung.</value>
+  </data>
+  <data name="LabelEcommerceHomePage" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="LabelEcommerceHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderConfirmation" xml:space="preserve">
+    <value>Bestellung bestätigen</value>
+  </data>
+  <data name="LabelEcommerceOrderConfirmationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderHistory" xml:space="preserve">
+    <value>Auftragshistorien</value>
+  </data>
+  <data name="LabelEcommerceOrderHistoryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceOrderTracking" xml:space="preserve">
+    <value>Auftragsverfolgung</value>
+  </data>
+  <data name="LabelEcommerceOrderTrackingDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceProductDetail" xml:space="preserve">
+    <value>Produktdetails</value>
+  </data>
+  <data name="LabelEcommerceProductDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEcommerceProducts" xml:space="preserve">
+    <value>Produktraster</value>
+  </data>
+  <data name="LabelEcommerceProductsDescription" xml:space="preserve">
+    <value>Zeigen Sie Ihre Lieblingsprodukte in einem schönen Rasterlayout mit eleganten passenden Hintergrundfarben.</value>
+  </data>
+  <data name="LabelEcommerceProductsList" xml:space="preserve">
+    <value>Produktliste</value>
+  </data>
+  <data name="LabelEcommerceProductsListDescription" xml:space="preserve">
+    <value>Zeigen Sie Ihre Lieblingsprodukte in einem klassischen Listenlayout mit eleganten passenden Hintergrundfarben.</value>
+  </data>
+  <data name="LabelEnableLocation" xml:space="preserve">
+    <value>Standortdienste aktivieren</value>
+  </data>
+  <data name="LabelEwallet" xml:space="preserve">
+    <value>Ewallet</value>
+  </data>
+  <data name="LabelEwalletBillPaymentPage" xml:space="preserve">
+    <value>Seite zur Rechnungszahlung</value>
+  </data>
+  <data name="LabelEwalletBillPaymentPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletCardPage" xml:space="preserve">
+    <value>Meine Karte</value>
+  </data>
+  <data name="LabelEwalletCardPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelEwalletDescription" xml:space="preserve">
+    <value>Entwickelt, um Benutzern eine sichere und bequeme Möglichkeit zur Verwaltung ihrer Finanzen zu bieten, einschließlich Kontoverwaltung, Transaktionsverlauf und Zahlungsabwicklung.</value>
+  </data>
+  <data name="LabelEwalletEReceiptPage" xml:space="preserve">
+    <value>E-Quittungsseite</value>
+  </data>
+  <data name="LabelEwalletEReceiptPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletHomePage" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="LabelEwalletHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletPaymentConfirmDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletPaymentConfirmPage" xml:space="preserve">
+    <value>Seite zur Zahlungsbestätigung</value>
+  </data>
+  <data name="LabelEwalletPaymentMethod" xml:space="preserve">
+    <value>Zahlungsmethode</value>
+  </data>
+  <data name="LabelEwalletScanQrPage" xml:space="preserve">
+    <value>Seite zum QR-Scannen</value>
+  </data>
+  <data name="LabelEwalletScanQrPageDescription" xml:space="preserve">
+    <value>QR-Code scannen, um zu bezahlen, zu überweisen oder abzuheben</value>
+  </data>
+  <data name="LabelEwalletServicesPage" xml:space="preserve">
+    <value>Seite „Services“</value>
+  </data>
+  <data name="LabelEwalletServicesPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletStatisticsPage" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="LabelEwalletStatisticsPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelEwalletTopupPage" xml:space="preserve">
+    <value>Seite zum Aufladen von Mobiltelefonen</value>
+  </data>
+  <data name="LabelEwalletTopupPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelEwalletTransferMoneyPage" xml:space="preserve">
+    <value>Geld überweisen</value>
+  </data>
+  <data name="LabelEwalletTransferMoneyPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit.</value>
+  </data>
+  <data name="LabelExplore" xml:space="preserve">
+    <value>Entdecken</value>
+  </data>
+  <data name="LabelExpress" xml:space="preserve">
+    <value>Express</value>
+  </data>
+  <data name="LabelExpressDetail" xml:space="preserve">
+    <value>1 Werktag</value>
+  </data>
+  <data name="LabelFaceIdLogin" xml:space="preserve">
+    <value>Face ID für die Anmeldung aktivieren</value>
+  </data>
+  <data name="LabelFailed" xml:space="preserve">
+    <value>OOPS!</value>
+  </data>
+  <data name="LabelFailedDetails" xml:space="preserve">
+    <value>Sie können mit Ihren vorherigen Aktionen fortfahren. Diese lassen sich leicht an Fehleraufrufe anhängen.</value>
+  </data>
+  <data name="LabelFavorite" xml:space="preserve">
+    <value>Favorit</value>
+  </data>
+  <data name="LabelFeatureBrandSection" xml:space="preserve">
+    <value>FEATURE-MARKEN</value>
+  </data>
+  <data name="LabelFeatureBrandSubheader" xml:space="preserve">
+    <value>Wählen Sie Ihre Marke</value>
+  </data>
+  <data name="LabelFemale" xml:space="preserve">
+    <value>Weiblich</value>
+  </data>
+  <data name="LabelFollowerCount" xml:space="preserve">
+    <value>Follower</value>
+  </data>
+  <data name="LabelFollowingCount" xml:space="preserve">
+    <value>Followings</value>
+  </data>
+  <data name="LabelForm" xml:space="preserve">
+    <value>Formulare</value>
+  </data>
+  <data name="LabelFormBackgroundGradientLogin" xml:space="preserve">
+    <value>Login-Hintergrundfarbverlauf</value>
+  </data>
+  <data name="LabelFormBackgroundGradientLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormBackgroundGradientSignup" xml:space="preserve">
+    <value>Hintergrundverlauf registrieren</value>
+  </data>
+  <data name="LabelFormBackgroundGradientSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormChangePassword" xml:space="preserve">
+    <value>Seite zum Ändern des Passworts</value>
+  </data>
+  <data name="LabelFormChangePasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormDescription" xml:space="preserve">
+    <value>Benutzerdetails abrufen</value>
+  </data>
+  <data name="LabelFormFullBackgroundLogin" xml:space="preserve">
+    <value>Anmelde-Hintergrundbild</value>
+  </data>
+  <data name="LabelFormFullBackgroundLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormFullBackgroundSignup" xml:space="preserve">
+    <value>Hintergrundbild registrieren</value>
+  </data>
+  <data name="LabelFormFullBackgroundSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormLogin" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="LabelFormLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormPasswordVerification" xml:space="preserve">
+    <value>Seite zur Passwortüberprüfung</value>
+  </data>
+  <data name="LabelFormPasswordVerificationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormResetPassword" xml:space="preserve">
+    <value>Seite zum Zurücksetzen des Passworts</value>
+  </data>
+  <data name="LabelFormResetPasswordDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormSignup" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="LabelFormSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormSimpleLogin" xml:space="preserve">
+    <value>Kopfzeilenhintergrund Anmelden</value>
+  </data>
+  <data name="LabelFormSimpleLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormSimpleSignup" xml:space="preserve">
+    <value>Kopfzeilenhintergrundregister</value>
+  </data>
+  <data name="LabelFormSimpleSignupDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormVideoBackgroundLogin" xml:space="preserve">
+    <value>Login-Hintergrundvideo</value>
+  </data>
+  <data name="LabelFormVideoBackgroundLoginDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFormVideoBackgroundSignUp" xml:space="preserve">
+    <value>Hintergrundvideo registrieren</value>
+  </data>
+  <data name="LabelFormVideoBackgroundSignUpDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelFreeShip" xml:space="preserve">
+    <value>Kostenloser Versand</value>
+  </data>
+  <data name="LabelFreeShipDetail" xml:space="preserve">
+    <value>Kostenlose</value>
+  </data>
+  <data name="LabelFriends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="LabelGeoMap" xml:space="preserve">
+    <value>Geo Map</value>
+  </data>
+  <data name="LabelGeoMapDescription" xml:space="preserve">
+    <value>Nützlich zum Erstellen geografischer Karten. Verwendet Dateien im GeoJSON-Format, um vektorisierte Karten darzustellen.</value>
+  </data>
+  <data name="LabelGiftOrder" xml:space="preserve">
+    <value>Diese Bestellung ist ein Geschenk</value>
+  </data>
+  <data name="LabelGoback" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="LabelGroup" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="LabelHistory" xml:space="preserve">
+    <value>Verlauf</value>
+  </data>
+  <data name="LabelIcon" xml:space="preserve">
+    <value>Symbole</value>
+  </data>
+  <data name="LabelIconDescription" xml:space="preserve">
+    <value>Mehr als 8.000 Symbole aus 7 Schriftarten</value>
+  </data>
+  <data name="LabelInformation" xml:space="preserve">
+    <value>Informationen</value>
+  </data>
+  <data name="LabelLatestArticles" xml:space="preserve">
+    <value>Neueste Artikel</value>
+  </data>
+  <data name="LabelLatestNews" xml:space="preserve">
+    <value>Neueste Nachrichten</value>
+  </data>
+  <data name="LabelListCards" xml:space="preserve">
+    <value>Listenkarten</value>
+  </data>
+  <data name="LabelListCardsDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListFlat" xml:space="preserve">
+    <value>Farben auflisten</value>
+  </data>
+  <data name="LabelListFlatDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListIcon" xml:space="preserve">
+    <value>Liste mit Symbolen</value>
+  </data>
+  <data name="LabelListIconDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelListImage" xml:space="preserve">
+    <value>Liste mit Bildern</value>
+  </data>
+  <data name="LabelListImageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelListImageRounded" xml:space="preserve">
+    <value>Liste mit Bild mit abgerundeten Ecken</value>
+  </data>
+  <data name="LabelListImageRoundedDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelListingAgent" xml:space="preserve">
+    <value>Listing Agent</value>
+  </data>
+  <data name="LabelLists" xml:space="preserve">
+    <value>Listen</value>
+  </data>
+  <data name="LabelListsDescription" xml:space="preserve">
+    <value>Wird verwendet, um eine Sammlung von Artikeln anzuzeigen</value>
+  </data>
+  <data name="LabelLocation" xml:space="preserve">
+    <value>Standort</value>
+  </data>
+  <data name="LabelLogOut" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="LabelMale" xml:space="preserve">
+    <value>Männlich</value>
+  </data>
+  <data name="LabelMenuGridStyle" xml:space="preserve">
+    <value>Menürasterstil</value>
+  </data>
+  <data name="LabelMoreNews" xml:space="preserve">
+    <value>Weitere Nachrichten</value>
+  </data>
+  <data name="LabelMultipleValuesGaugePie" xml:space="preserve">
+    <value>Kreisdiagramm mit mehreren Werten</value>
+  </data>
+  <data name="LabelMyFavorite" xml:space="preserve">
+    <value>Meine Favoriten</value>
+  </data>
+  <data name="LabelNavigation" xml:space="preserve">
+    <value>Navigationen</value>
+  </data>
+  <data name="LabelNewListings" xml:space="preserve">
+    <value>Neue Listings</value>
+  </data>
+  <data name="LabelNews" xml:space="preserve">
+    <value>Nachrichten und Zeitschriften</value>
+  </data>
+  <data name="LabelNewsAccountPage" xml:space="preserve">
+    <value>Kontoseite</value>
+  </data>
+  <data name="LabelNewsAccountPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelNewsArticleDetailPage" xml:space="preserve">
+    <value>Artikeldetailseite</value>
+  </data>
+  <data name="LabelNewsArticleDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelNewsAuthorPage" xml:space="preserve">
+    <value>Autorenseite</value>
+  </data>
+  <data name="LabelNewsAuthorPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelNewsBookmarkPage" xml:space="preserve">
+    <value>Lesezeichenseite</value>
+  </data>
+  <data name="LabelNewsBookmarkPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelNewsCategoryPage" xml:space="preserve">
+    <value>Kategorienseite</value>
+  </data>
+  <data name="LabelNewsCategoryPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsDescription" xml:space="preserve">
+    <value>Eine schöne und einfache Nachrichten-App mit Artikeldetails, Kategorien zum Erkunden, Nachrichtenkanälen und Autoren.</value>
+  </data>
+  <data name="LabelNewsHomePage" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="LabelNewsHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNewsVideoPage" xml:space="preserve">
+    <value>Video-News-Seite</value>
+  </data>
+  <data name="LabelNewsVideoPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelNightingaleRosePie" xml:space="preserve">
+    <value>Nightingale Rose Pie</value>
+  </data>
+  <data name="LabelOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="LabelOnboarding" xml:space="preserve">
+    <value>Starter</value>
+  </data>
+  <data name="LabelOnboardingDescription" xml:space="preserve">
+    <value>App-Komplettlösung</value>
+  </data>
+  <data name="LabelPasswordResetSuccessful" xml:space="preserve">
+    <value>Passwort zurücksetzen erfolgreich!</value>
+  </data>
+  <data name="LabelPasswordResetSuccessfulDetails" xml:space="preserve">
+    <value>Ihr neues Passwort wurde eingerichtet und Sie können jetzt sicher auf Ihr Konto zugreifen.</value>
+  </data>
+  <data name="LabelPaymentFailed" xml:space="preserve">
+    <value>Zahlung fehlgeschlagen</value>
+  </data>
+  <data name="LabelPaymentFailedDetails" xml:space="preserve">
+    <value>Es tut uns leid, aber Ihre Zahlung für das Pro-Abonnement ist fehlgeschlagen. Bitte überprüfen Sie die Zahlungsdetails und versuchen Sie es erneut.</value>
+  </data>
+  <data name="LabelPaymentMethod" xml:space="preserve">
+    <value>Zahlungsmethode</value>
+  </data>
+  <data name="LabelPending" xml:space="preserve">
+    <value>Ausstehend</value>
+  </data>
+  <data name="LabelPhotos" xml:space="preserve">
+    <value>Fotos</value>
+  </data>
+  <data name="LabelPickColor" xml:space="preserve">
+    <value>Primärfarbe</value>
+  </data>
+  <data name="LabelPieChart" xml:space="preserve">
+    <value>Kreisdiagramm</value>
+  </data>
+  <data name="LabelPieChartDescription" xml:space="preserve">
+    <value>Verwenden Sie diese Steuerelemente, um Kreis-, Ring- und Messdiagramme zu erstellen</value>
+  </data>
+  <data name="LabelPolarChart" xml:space="preserve">
+    <value>Polardiagramm</value>
+  </data>
+  <data name="LabelPolarChartDescription" xml:space="preserve">
+    <value>Ein „einsatzbereites“ Steuerelement zum Erstellen von Diagrammen mit dem Polarkoordinatensystem</value>
+  </data>
+  <data name="LabelPopular" xml:space="preserve">
+    <value>Beliebt</value>
+  </data>
+  <data name="LabelPopularNewsTags" xml:space="preserve">
+    <value>Beliebte Tags</value>
+  </data>
+  <data name="LabelPostCount" xml:space="preserve">
+    <value>Beiträge</value>
+  </data>
+  <data name="LabelPreview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="LabelPrice" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="LabelProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="LabelPropertyListing" xml:space="preserve">
+    <value>Immobilienangebote</value>
+  </data>
+  <data name="LabelPropertyListingAgentProfile" xml:space="preserve">
+    <value>Agentenprofilseite</value>
+  </data>
+  <data name="LabelPropertyListingAgentProfileDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingAgentSettings" xml:space="preserve">
+    <value>Agenteneinstellungsseite</value>
+  </data>
+  <data name="LabelPropertyListingAgentSettingsDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingBooking" xml:space="preserve">
+    <value>Buchungsseite</value>
+  </data>
+  <data name="LabelPropertyListingBookingDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingBookingPayment" xml:space="preserve">
+    <value>Buchungszahlungsseite</value>
+  </data>
+  <data name="LabelPropertyListingBookingPaymentDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingCard" xml:space="preserve">
+    <value>Listing-Karte</value>
+  </data>
+  <data name="LabelPropertyListingCardDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingClassic" xml:space="preserve">
+    <value>Auflistung Klassisch</value>
+  </data>
+  <data name="LabelPropertyListingClassicDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingDescription" xml:space="preserve">
+    <value>Entwickelt, um Immobilienfachleuten und Immobilienverwaltern dabei zu helfen, einfach eine anpassbare App für ihre Immobilienangebote zu erstellen.</value>
+  </data>
+  <data name="LabelPropertyListingDetailPage" xml:space="preserve">
+    <value>Angebotsdetailseite</value>
+  </data>
+  <data name="LabelPropertyListingDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelPropertyListingHomePage" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="LabelPropertyListingHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc.</value>
+  </data>
+  <data name="LabelPropertyListingMapView" xml:space="preserve">
+    <value>Kartenansichtsseite</value>
+  </data>
+  <data name="LabelPropertyListingMapViewDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelRadialAreaPolar" xml:space="preserve">
+    <value>Radialfläche Polar</value>
+  </data>
+  <data name="LabelRecentPosts" xml:space="preserve">
+    <value>Neueste Beiträge</value>
+  </data>
+  <data name="LabelRecommendations" xml:space="preserve">
+    <value>Empfehlungen</value>
+  </data>
+  <data name="LabelRecommendedSection" xml:space="preserve">
+    <value>EMPFOHLEN</value>
+  </data>
+  <data name="LabelRecommendedSubheader" xml:space="preserve">
+    <value>Für Sie ausgewählt</value>
+  </data>
+  <data name="LabelRelatedNews" xml:space="preserve">
+    <value>Ähnliche Artikel</value>
+  </data>
+  <data name="LabelRelatedProduct" xml:space="preserve">
+    <value>Das könnte Sie interessieren</value>
+  </data>
+  <data name="LabelRelateds" xml:space="preserve">
+    <value>Ähnlich</value>
+  </data>
+  <data name="LabelRequestTour" xml:space="preserve">
+    <value>Tour anfordern</value>
+  </data>
+  <data name="LabelReviews" xml:space="preserve">
+    <value>Bewertungen</value>
+  </data>
+  <data name="LabelSelectColor" xml:space="preserve">
+    <value>FARBE AUSWÄHLEN</value>
+  </data>
+  <data name="LabelSelectLanguage" xml:space="preserve">
+    <value>Sprache auswählen</value>
+  </data>
+  <data name="LabelSelectSize" xml:space="preserve">
+    <value>GRÖSSE AUSWÄHLEN</value>
+  </data>
+  <data name="LabelShareApp" xml:space="preserve">
+    <value>Diese App teilen</value>
+  </data>
+  <data name="LabelShareAppDetails" xml:space="preserve">
+    <value>Teilen Sie Ihre Lieblings-App mit der Welt.</value>
+  </data>
+  <data name="LabelShareGrid" xml:space="preserve">
+    <value>Raster teilen</value>
+  </data>
+  <data name="LabelShareList" xml:space="preserve">
+    <value>Liste teilen</value>
+  </data>
+  <data name="LabelShippingAddress" xml:space="preserve">
+    <value>Versand Adresse</value>
+  </data>
+  <data name="LabelShippingInfo" xml:space="preserve">
+    <value>Versandinformationen</value>
+  </data>
+  <data name="LabelShippinInfo" xml:space="preserve">
+    <value>Versandinformationen</value>
+  </data>
+  <data name="LabelSlimGaugePie" xml:space="preserve">
+    <value>Slim Gauge Pie</value>
+  </data>
+  <data name="LabelSocial" xml:space="preserve">
+    <value>Soziale Netzwerke</value>
+  </data>
+  <data name="LabelSocialChatDetail" xml:space="preserve">
+    <value>Seite mit Chatdetails</value>
+  </data>
+  <data name="LabelSocialChatDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelSocialChatMain" xml:space="preserve">
+    <value>Chat-Hauptseite</value>
+  </data>
+  <data name="LabelSocialChatMainDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelSocialContactDetail" xml:space="preserve">
+    <value>Kontaktdaten</value>
+  </data>
+  <data name="LabelSocialContactDetailDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelSocialDescription" xml:space="preserve">
+    <value>Beliebte Social-Media-Beispiele</value>
+  </data>
+  <data name="LabelSocialProfile" xml:space="preserve">
+    <value>Social-Media-Profil 1</value>
+  </data>
+  <data name="LabelSocialProfileDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelSocialProfileWithBackground" xml:space="preserve">
+    <value>Hintergrund des sozialen Profils</value>
+  </data>
+  <data name="LabelSocialProfileWithBackgroundDescription" xml:space="preserve">
+    <value>Eine auffällige Profilseite mit einem Titelbild im Hintergrund</value>
+  </data>
+  <data name="LabelSocialProfileWithCard" xml:space="preserve">
+    <value>Karte des sozialen Profils</value>
+  </data>
+  <data name="LabelSocialProfileWithCardDescription" xml:space="preserve">
+    <value>Eine auffällige Profilseite mit Benutzerprofil im Kartenlayout</value>
+  </data>
+  <data name="LabelSocialProfileWithGallery" xml:space="preserve">
+    <value>Soziales Profil 2</value>
+  </data>
+  <data name="LabelSocialProfileWithGalleryDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelStackedBars" xml:space="preserve">
+    <value>Gestapelte Balken</value>
+  </data>
+  <data name="LabelStandard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="LabelStandardDetail" xml:space="preserve">
+    <value>$5.00 </value>
+  </data>
+  <data name="LabelSubtotal" xml:space="preserve">
+    <value>Zwischensumme</value>
+  </data>
+  <data name="LabelSuccess" xml:space="preserve">
+    <value>GENIAL!</value>
+  </data>
+  <data name="LabelSuccessBox" xml:space="preserve">
+    <value>Erfolgsbox</value>
+  </data>
+  <data name="LabelSuccessBoxBackground" xml:space="preserve">
+    <value>Hintergrund der Erfolgsbox</value>
+  </data>
+  <data name="LabelSuccessDetails" xml:space="preserve">
+    <value>Sie können mit Ihren vorherigen Aktionen fortfahren. Diese lassen sich leicht an Erfolgsaufrufe anhängen.</value>
+  </data>
+  <data name="LabelSupportCenter" xml:space="preserve">
+    <value>Support Center</value>
+  </data>
+  <data name="LabelSurveyQuestion" xml:space="preserve">
+    <value>Welche sozialen Medien nutzen Sie am häufigsten?</value>
+  </data>
+  <data name="LabelSurveyQuestions" xml:space="preserve">
+    <value>Umfragefragen</value>
+  </data>
+  <data name="LabelTabbedPage" xml:space="preserve">
+    <value>Standardseite mit Registerkarten</value>
+  </data>
+  <data name="LabelTabbedPageDescription" xml:space="preserve">
+    <value>Standardseite mit .NET MAUI-Registerkarten, die ein Schriftbild als Registerkartensymbol verwendet</value>
+  </data>
+  <data name="LabelTopAuthors" xml:space="preserve">
+    <value>Top-Autoren</value>
+  </data>
+  <data name="LabelTopBrands" xml:space="preserve">
+    <value>Top-Marken</value>
+  </data>
+  <data name="LabelTopChannels" xml:space="preserve">
+    <value>Top-Kanäle</value>
+  </data>
+  <data name="LabelTotal" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="LabelTotalUsers" xml:space="preserve">
+    <value>Gesamtzahl der Benutzer</value>
+  </data>
+  <data name="LabelTravel" xml:space="preserve">
+    <value>Reisen</value>
+  </data>
+  <data name="LabelTravelAboutTrip" xml:space="preserve">
+    <value>Über diese Reise</value>
+  </data>
+  <data name="LabelTravelAccountPage" xml:space="preserve">
+    <value>Benutzerkontoseite</value>
+  </data>
+  <data name="LabelTravelAccountPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelArticleDetailPage" xml:space="preserve">
+    <value>Reiseführerseite</value>
+  </data>
+  <data name="LabelTravelArticleDetailPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelConversationPage" xml:space="preserve">
+    <value>Nachrichtendetailseite</value>
+  </data>
+  <data name="LabelTravelConversationPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelCreateArticlePage" xml:space="preserve">
+    <value>Neue Artikelseite erstellen</value>
+  </data>
+  <data name="LabelTravelCreateArticlePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelDescription" xml:space="preserve">
+    <value>Entwickelt, um Reisebegeisterten und Bloggern dabei zu helfen, ganz einfach eine anpassbare App für ihre Reisegeschichten und Abenteuer zu erstellen.</value>
+  </data>
+  <data name="LabelTravelExplorePage" xml:space="preserve">
+    <value>Reise-Erkundungsseite</value>
+  </data>
+  <data name="LabelTravelExplorePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelFollowingArticles" xml:space="preserve">
+    <value>Folgen</value>
+  </data>
+  <data name="LabelTravelHomePage" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="LabelTravelHomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelTravelMessagesPage" xml:space="preserve">
+    <value>Seite mit den neuesten Nachrichten</value>
+  </data>
+  <data name="LabelTravelMessagesPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelPopularArticles" xml:space="preserve">
+    <value>Beliebter Reiseführer</value>
+  </data>
+  <data name="LabelTravelSettingsPage" xml:space="preserve">
+    <value>Einstellungsseite</value>
+  </data>
+  <data name="LabelTravelSettingsPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTravelUpdateProfilePage" xml:space="preserve">
+    <value>Profilseite aktualisieren</value>
+  </data>
+  <data name="LabelTravelUpdateProfilePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelTrendingNews" xml:space="preserve">
+    <value>Trends</value>
+  </data>
+  <data name="LabelTrendingNewsHeadline" xml:space="preserve">
+    <value>Einige der wichtigsten Nachrichten aus den weltweiten Nachrichtenkanälen.</value>
+  </data>
+  <data name="LabelUpdated" xml:space="preserve">
+    <value>Aktualisiert</value>
+  </data>
+  <data name="LabelUpdateProfile" xml:space="preserve">
+    <value>Profil aktualisieren</value>
+  </data>
+  <data name="LabelUseSystemTheme" xml:space="preserve">
+    <value>Systemdesign verwenden</value>
+  </data>
+  <data name="LabelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="LabelViewAgentProfile" xml:space="preserve">
+    <value>Agentenprofil anzeigen</value>
+  </data>
+  <data name="LabelViewAll" xml:space="preserve">
+    <value>Alle anzeigen</value>
+  </data>
+  <data name="LabelWalkthroughAnimation" xml:space="preserve">
+    <value>Walkthrough-Animation</value>
+  </data>
+  <data name="LabelWalkthroughAnimationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughGradient" xml:space="preserve">
+    <value>Walkthrough-Gradient</value>
+  </data>
+  <data name="LabelWalkthroughGradientDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughIllustration" xml:space="preserve">
+    <value>Abbildung der Komplettlösung</value>
+  </data>
+  <data name="LabelWalkthroughIllustrationDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughImage1" xml:space="preserve">
+    <value>Komplettlösung Bild 1</value>
+  </data>
+  <data name="LabelWalkthroughImage1Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughImage2" xml:space="preserve">
+    <value>Komplettlösung Bild 2</value>
+  </data>
+  <data name="LabelWalkthroughImage2Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle1" xml:space="preserve">
+    <value>Komplettlösung Stil 1</value>
+  </data>
+  <data name="LabelWalkthroughStyle1Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle2" xml:space="preserve">
+    <value>Komplettlösungsstil 2</value>
+  </data>
+  <data name="LabelWalkthroughStyle2Description" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Präsent und aliquet nunc. Wenn die Ältesten sich erheben, sitzen sie amet maximus.</value>
+  </data>
+  <data name="LabelWarningBox" xml:space="preserve">
+    <value>Warnfeld</value>
+  </data>
+  <data name="LabelWarningBoxBackground" xml:space="preserve">
+    <value>Hintergrund des Warnfelds</value>
+  </data>
+  <data name="LabelWelcomeBack" xml:space="preserve">
+    <value>Willkommen zurück</value>
+  </data>
+  <data name="LabelWelcomeBackDetails" xml:space="preserve">
+    <value>Ihr bisheriger Chatverlauf und Ihre Daten wurden synchronisiert</value>
+  </data>
+  <data name="LabelWelcomeBackgroundPage" xml:space="preserve">
+    <value>Hintergrund der Willkommensseite</value>
+  </data>
+  <data name="LabelWelcomeBackgroundPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWelcomePage" xml:space="preserve">
+    <value>Willkommensseite</value>
+  </data>
+  <data name="LabelWelcomePageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWelcomeVariantPage" xml:space="preserve">
+    <value>Welcome Variant</value>
+  </data>
+  <data name="LabelWelcomeVariantPageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWorldHeatGeoMap" xml:space="preserve">
+    <value>Welt-Heatmap</value>
+  </data>
+  <data name="LanguageArabic" xml:space="preserve">
+    <value>Arabisch (Vereinigte Arabische Emirate)</value>
+  </data>
+  <data name="LanguageDutch" xml:space="preserve">
+    <value>Niederländisch (Niederlande)</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>Englisch (USA)</value>
+  </data>
+  <data name="LanguageFrench" xml:space="preserve">
+    <value>Französisch (Frankreich)</value>
+  </data>
+  <data name="LanguageGerman" xml:space="preserve">
+    <value>Deutsch (Deutschland)</value>
+  </data>
+  <data name="LanguagePortuguese" xml:space="preserve">
+    <value>Portugiesisch (Portugal)</value>
+  </data>
+  <data name="LanguageSpanish" xml:space="preserve">
+    <value>Spanisch (Spanien)</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="MenuAction" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="MenuApp" xml:space="preserve">
+    <value>App-Pakete</value>
+  </data>
+  <data name="MenuArticle" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="MenuChart" xml:space="preserve">
+    <value>Diagramme</value>
+  </data>
+  <data name="MenuControls" xml:space="preserve">
+    <value>Steuerungen</value>
+  </data>
+  <data name="MenuExplore" xml:space="preserve">
+    <value>Funktionen erkunden</value>
+  </data>
+  <data name="MenuForm" xml:space="preserve">
+    <value>Formulare</value>
+  </data>
+  <data name="MenuIcon" xml:space="preserve">
+    <value>Alle Symbole</value>
+  </data>
+  <data name="MenuMainDashboard" xml:space="preserve">
+    <value>Haupt-Dashboard</value>
+  </data>
+  <data name="MenuNavigation" xml:space="preserve">
+    <value>Navigationen</value>
+  </data>
+  <data name="MenuOnboarding" xml:space="preserve">
+    <value>Onboardings</value>
+  </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Datenschutzrichtlinie</value>
+  </data>
+  <data name="MenuSetting" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="MenuSocial" xml:space="preserve">
+    <value>Soziale Netzwerke</value>
+  </data>
+  <data name="PageTitleAboutUs" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="PageTitleAccount" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="PageTitleAgentProfile" xml:space="preserve">
+    <value>Agentenprofil</value>
+  </data>
+  <data name="PageTitleArticleCardOverlay" xml:space="preserve">
+    <value>Artikelkarten-Overlay</value>
+  </data>
+  <data name="PageTitleArticleClassic" xml:space="preserve">
+    <value>Artikelliste klassisch</value>
+  </data>
+  <data name="PageTitleArticleParallaxHeader" xml:space="preserve">
+    <value>Parallax-Header-Artikel</value>
+  </data>
+  <data name="PageTitleArticleVideos" xml:space="preserve">
+    <value>Artikelvideoliste</value>
+  </data>
+  <data name="PageTitleBrandDetail" xml:space="preserve">
+    <value>Markendetails</value>
+  </data>
+  <data name="PageTitleCartPage" xml:space="preserve">
+    <value>Warenkorbseite</value>
+  </data>
+  <data name="PageTitleCategoryDetail" xml:space="preserve">
+    <value>Kategoriedetails</value>
+  </data>
+  <data name="PageTitleChatMainPage" xml:space="preserve">
+    <value>Chatten Sie mit Ihren Freunden</value>
+  </data>
+  <data name="PageTitleCheckout" xml:space="preserve">
+    <value>Checkout-Seite</value>
+  </data>
+  <data name="PageTitleDashboardCarousel" xml:space="preserve">
+    <value>Dashboard-Karussell</value>
+  </data>
+  <data name="PageTitleDashboardCoverFlow" xml:space="preserve">
+    <value>Dashboard-Cover-Flow</value>
+  </data>
+  <data name="PageTitleDashboardEvent" xml:space="preserve">
+    <value>Dashboard-Ereignisse</value>
+  </data>
+  <data name="PageTitleDashboardGrid" xml:space="preserve">
+    <value>Dashboard-Raster</value>
+  </data>
+  <data name="PageTitleDashboardGridInverse" xml:space="preserve">
+    <value>Dashboard-Raster invers</value>
+  </data>
+  <data name="PageTitleDashboardTimeline" xml:space="preserve">
+    <value>Dashboard-Zeitleiste</value>
+  </data>
+  <data name="PageTitleDashboardVariant" xml:space="preserve">
+    <value>Dashboard-Varianten</value>
+  </data>
+  <data name="PageTitleDashboardVisual" xml:space="preserve">
+    <value>Dashboard-Visualisierung</value>
+  </data>
+  <data name="PageTitleEReceipt" xml:space="preserve">
+    <value>E-Quittung</value>
+  </data>
+  <data name="PageTitleFavorites" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="PageTitleFontIcon" xml:space="preserve">
+    <value>Symbole</value>
+  </data>
+  <data name="PageTitleFontIconFont" xml:space="preserve">
+    <value>Schriftsymbole</value>
+  </data>
+  <data name="PageTitleMapView" xml:space="preserve">
+    <value>Kartensuche</value>
+  </data>
+  <data name="PageTitleNewsAuthor" xml:space="preserve">
+    <value>Autoren</value>
+  </data>
+  <data name="PageTitleNewsBookmark" xml:space="preserve">
+    <value>Lesezeichen</value>
+  </data>
+  <data name="PageTitleNewsCategory" xml:space="preserve">
+    <value>Kategorien</value>
+  </data>
+  <data name="PageTitleOrderConfirmation" xml:space="preserve">
+    <value>Bestellung bestätigen</value>
+  </data>
+  <data name="PageTitleOrderHistory" xml:space="preserve">
+    <value>Bestellverlauf</value>
+  </data>
+  <data name="PageTitleProductCatalog" xml:space="preserve">
+    <value>Produktkataloge</value>
+  </data>
+  <data name="PageTitleProductDetail" xml:space="preserve">
+    <value>Produktdetails</value>
+  </data>
+  <data name="PageTitleProfile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="PageTitleSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="PageTitleTravelMessagePage" xml:space="preserve">
+    <value>Nachrichten</value>
+  </data>
+  <data name="PageTitleVideoNews" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="SettingDarkMode" xml:space="preserve">
+    <value>Dunkelmodus</value>
+  </data>
+  <data name="SettingGridLayout" xml:space="preserve">
+    <value>Raster</value>
+  </data>
+  <data name="SettingIsRtlDefault" xml:space="preserve">
+    <value>RTL-Standard?</value>
+  </data>
+  <data name="SettingLayoutDirection" xml:space="preserve">
+    <value>Layoutrichtung</value>
+  </data>
+  <data name="SettingLightMode" xml:space="preserve">
+    <value>Hellmodus</value>
+  </data>
+  <data name="SettingListLayout" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="SettingLtr" xml:space="preserve">
+    <value>Von links nach rechts</value>
+  </data>
+  <data name="SettingMainMenuLayout" xml:space="preserve">
+    <value>Hauptmenülayout</value>
+  </data>
+  <data name="SettingPrimaryColor" xml:space="preserve">
+    <value>Primärfarbe</value>
+  </data>
+  <data name="SettingRtl" xml:space="preserve">
+    <value>Von rechts nach links</value>
+  </data>
+  <data name="SettingTheme" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="StringAboutUs" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="StringAddNewCard" xml:space="preserve">
+    <value>Neue Karte hinzufügen</value>
+  </data>
+  <data name="StringAddress" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="StringAlreadyHaveAccount" xml:space="preserve">
+    <value>Sie haben bereits ein Konto?</value>
+  </data>
+  <data name="StringAlreadyRegistered" xml:space="preserve">
+    <value>Sie sind bereits Benutzer? Jetzt anmelden</value>
+  </data>
+  <data name="StringAppWelcomeSubtitle" xml:space="preserve">
+    <value>Machen Sie Ihre App in wenigen Minuten schön</value>
+  </data>
+  <data name="StringAppWelcomeTitle" xml:space="preserve">
+    <value>„XAML-UI-Vorlagen für</value>
+  </data>
+  <data name="StringBannerArticles" xml:space="preserve">
+    <value>.NET MAUI“</value>
+  </data>
+  <data name="StringBannerArticlesDescription" xml:space="preserve">
+    <value>Beiträge und Artikel</value>
+  </data>
+  <data name="StringBannerEcommerce" xml:space="preserve">
+    <value>Organisieren Sie Blogbeiträge in einem leicht zu navigierenden Layout</value>
+  </data>
+  <data name="StringBannerEcommerceDescription" xml:space="preserve">
+    <value>E-Commerce-App-Kit</value>
+  </data>
+  <data name="StringBannerNews" xml:space="preserve">
+    <value>Erstellen Sie ein nahtloses Einkaufserlebnis für Ihre Kunden</value>
+  </data>
+  <data name="StringBannerNewsDescription" xml:space="preserve">
+    <value>Erstellen Sie ganz einfach eine anpassbare App, die Ihren Lesern die neuesten Nachrichten, Eilmeldungen und detaillierte Analysen liefert</value>
+  </data>
+  <data name="StringBannerPropertyListing" xml:space="preserve">
+    <value>App-Kit für Immobilienangebote</value>
+  </data>
+  <data name="StringBannerPropertyListingDescription" xml:space="preserve">
+    <value>Alles, was Sie brauchen, um eine professionelle und effektive App für Ihre Angebote zu erstellen</value>
+  </data>
+  <data name="StringBannerSocials" xml:space="preserve">
+    <value>Soziale Netzwerke und Chatten</value>
+  </data>
+  <data name="StringBannerSocialsDescription" xml:space="preserve">
+    <value>Erstellen Sie eine anpassbare App, mit der Benutzer chatten, Inhalte teilen und Beziehungen aufbauen können</value>
+  </data>
+  <data name="StringCardExpiry" xml:space="preserve">
+    <value>Abgelaufenes Datum</value>
+  </data>
+  <data name="StringCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="StringCommingSoon" xml:space="preserve">
+    <value>Kommt bald</value>
+  </data>
+  <data name="StringConfirmPassword" xml:space="preserve">
+    <value>Passwort bestätigen</value>
+  </data>
+  <data name="StringCopyright" xml:space="preserve">
+    <value>Smart Genealogy</value>
+  </data>
+  <data name="StringCreateNewPassword" xml:space="preserve">
+    <value>Erstellen Sie Ihr neues Passwort</value>
+  </data>
+  <data name="StringCreatePassword" xml:space="preserve">
+    <value>Passwort erstellen</value>
+  </data>
+  <data name="StringDailyProgress" xml:space="preserve">
+    <value>Täglicher Fortschritt</value>
+  </data>
+  <data name="StringDontHaveAccount" xml:space="preserve">
+    <value>Sie haben noch kein Konto?</value>
+  </data>
+  <data name="StringDontReceiveCode" xml:space="preserve">
+    <value>Keinen Code erhalten?</value>
+  </data>
+  <data name="StringEmail" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="StringEnterFullname" xml:space="preserve">
+    <value>Geben Sie Ihren vollständigen Namen ein</value>
+  </data>
+  <data name="StringEnterMessage" xml:space="preserve">
+    <value>Geben Sie Ihre Nachricht ein...</value>
+  </data>
+  <data name="StringEnterPassword" xml:space="preserve">
+    <value>Geben Sie Ihr Passwort ein</value>
+  </data>
+  <data name="StringEnterReceivedCode" xml:space="preserve">
+    <value>Der Bestätigungscode wurde per E-Mail gesendet</value>
+  </data>
+  <data name="StringEnterUsername" xml:space="preserve">
+    <value>Geben Sie Ihre E-Mail-Adresse oder Telefonnummer ein</value>
+  </data>
+  <data name="StringEnterYourEmail" xml:space="preserve">
+    <value>Geben Sie Ihre E-Mail-Adresse ein</value>
+  </data>
+  <data name="StringFacebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="StringFontsCount" xml:space="preserve">
+    <value>Schriftarten</value>
+  </data>
+  <data name="StringForgotPassword" xml:space="preserve">
+    <value>Passwort vergessen?</value>
+  </data>
+  <data name="StringFullname" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="StringGoogle" xml:space="preserve">
+    <value>Google</value>
+  </data>
+  <data name="StringGridItemTappedMessage" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringHome" xml:space="preserve">
+    <value>Zuhause</value>
+  </data>
+  <data name="StringHours" xml:space="preserve">
+    <value>Öffnungszeiten</value>
+  </data>
+  <data name="StringHouseSearchResult" xml:space="preserve">
+    <value>Gefundene(s) Haus(s)</value>
+  </data>
+  <data name="StringIconsCount" xml:space="preserve">
+    <value>Symbole</value>
+  </data>
+  <data name="StringInputCardCvv" xml:space="preserve">
+    <value>CVV</value>
+  </data>
+  <data name="StringInputCardHolder" xml:space="preserve">
+    <value>Karteninhaber</value>
+  </data>
+  <data name="StringInputCardNumber" xml:space="preserve">
+    <value>Kartennummer</value>
+  </data>
+  <data name="StringIsRTL" xml:space="preserve">
+    <value>Ist RTL</value>
+  </data>
+  <data name="StringLoginHeader" xml:space="preserve">
+    <value>Melden Sie sich bei Ihrem Konto an</value>
+  </data>
+  <data name="StringLoginSubtitle" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringLoginWith" xml:space="preserve">
+    <value>ODER MELDEN SIE SICH AN MIT</value>
+  </data>
+  <data name="StringMessageFeatureCommingSoon" xml:space="preserve">
+    <value>Diese Vorlage wird in der nächsten Version verfügbar sein.</value>
+  </data>
+  <data name="StringMobile" xml:space="preserve">
+    <value>Mobil</value>
+  </data>
+  <data name="StringName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="StringNewPassword" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="StringNote" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="StringOr" xml:space="preserve">
+    <value>ODER</value>
+  </data>
+  <data name="StringPassword" xml:space="preserve">
+    <value>Geben Sie Ihr Passwort ein</value>
+  </data>
+  <data name="StringPhoneNumber" xml:space="preserve">
+    <value>Telefonnummer</value>
+  </data>
+  <data name="StringPhoneNumberInput" xml:space="preserve">
+    <value>Geben Sie die Telefonnummer ein</value>
+  </data>
+  <data name="StringPostTitle" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="StringRegisterAnAccount" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringRegisterNow" xml:space="preserve">
+    <value>Jetzt registrieren</value>
+  </data>
+  <data name="StringRegisterNowSubtitle" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet</value>
+  </data>
+  <data name="StringRememberLogin" xml:space="preserve">
+    <value>Angemeldet bleiben</value>
+  </data>
+  <data name="StringResend" xml:space="preserve">
+    <value>Erneut senden</value>
+  </data>
+  <data name="StringSchedule" xml:space="preserve">
+    <value>Planen</value>
+  </data>
+  <data name="StringSearch" xml:space="preserve">
+    <value>Hier suchen...</value>
+  </data>
+  <data name="StringSearchContact" xml:space="preserve">
+    <value>Nach Namen oder Nummer suchen</value>
+  </data>
+  <data name="StringSearchHouse" xml:space="preserve">
+    <value>Ihr Haus durchsuchen</value>
+  </data>
+  <data name="StringSearchIcon" xml:space="preserve">
+    <value>Suchsymbol</value>
+  </data>
+  <data name="StringSearchNews" xml:space="preserve">
+    <value>Nachrichten durchsuchen</value>
+  </data>
+  <data name="StringSelectBed" xml:space="preserve">
+    <value>Bett auswählen</value>
+  </data>
+  <data name="StringSelectGuest" xml:space="preserve">
+    <value>Gast auswählen</value>
+  </data>
+  <data name="StringSelectTime" xml:space="preserve">
+    <value>Zeit auswählen</value>
+  </data>
+  <data name="StringSetDefaultCard" xml:space="preserve">
+    <value>Als Standardkarte festlegen</value>
+  </data>
+  <data name="StringShare" xml:space="preserve">
+    <value>Teilen</value>
+  </data>
+  <data name="StringSignin" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="StringSignup" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="StringSMS" xml:space="preserve">
+    <value>SMS</value>
+  </data>
+  <data name="StringStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StringTransactionID" xml:space="preserve">
+    <value>Transaktions-ID</value>
+  </data>
+  <data name="StringTransactionTime" xml:space="preserve">
+    <value>Transaktionszeit</value>
+  </data>
+  <data name="StringTransferAmount" xml:space="preserve">
+    <value>Überweisungsbetrag</value>
+  </data>
+  <data name="StringTransferTo" xml:space="preserve">
+    <value>Überweisen an</value>
+  </data>
+  <data name="StringTypeEmailReceiveCode" xml:space="preserve">
+    <value>Geben Sie Ihre E-Mail-Adresse ein, um einen Bestätigungscode zu erhalten.</value>
+  </data>
+  <data name="StringUsername" xml:space="preserve">
+    <value>E-Mail oder Telefonnummer</value>
+  </data>
+  <data name="StringUseYourCredentials" xml:space="preserve">
+    <value>Verwenden Sie Ihre Anmeldeinformationen zum Anmelden.</value>
+  </data>
+  <data name="StringVerifyCode" xml:space="preserve">
+    <value>Code bestätigen</value>
+  </data>
+  <data name="StringViewAll" xml:space="preserve">
+    <value>Alle anzeigen</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep1" xml:space="preserve">
+    <value>Entdecken Sie die Vorlagensammlung von MauiKit und wählen Sie die Vorlagen für Ihr Projekt aus.</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep2" xml:space="preserve">
+    <value>Fügen Sie Branding hinzu, ändern Sie Design, Bilder, Symbole und was immer Sie möchten</value>
+  </data>
+  <data name="StringWalkthroughDemoSubtitleStep3" xml:space="preserve">
+    <value>Fügen Sie Ihre Ansichtsmodelldateien hinzu und schon kann es losgehen</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep1" xml:space="preserve">
+    <value>Vorlagen auswählen</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep2" xml:space="preserve">
+    <value>Design anpassen</value>
+  </data>
+  <data name="StringWalkthroughDemoTitleStep3" xml:space="preserve">
+    <value>Logik implementieren</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep1" xml:space="preserve">
+    <value>Das beste UI-Kit für plattformübergreifende Apps heute</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep2" xml:space="preserve">
+    <value>Umfangreiche XAML-Layouts für die gängigsten App-Anwendungsfälle</value>
+  </data>
+  <data name="StringWalkthroughSubtitleStep3" xml:space="preserve">
+    <value>Sofort einsatzbereit mit einfacher Anpassung und Integration</value>
+  </data>
+  <data name="StringWalkthroughTitleStep1" xml:space="preserve">
+    <value>Willkommen</value>
+  </data>
+  <data name="StringWalkthroughTitleStep2" xml:space="preserve">
+    <value>Erkunden</value>
+  </data>
+  <data name="StringWalkthroughTitleStep3" xml:space="preserve">
+    <value>Veröffentlichen</value>
+  </data>
+  <data name="StringWelcome" xml:space="preserve">
+    <value>„Willkommen!</value>
+  </data>
+  <data name="StringWelcomeToMauiKit" xml:space="preserve">
+    <value>MAUI-LIEBHABER“</value>
+  </data>
+  <data name="StringWritePostContent" xml:space="preserve">
+    <value>Willkommen bei MAUI KIT</value>
+  </data>
+  <data name="ToolbarLayoutDirection" xml:space="preserve">
+    <value>Schreiben Sie hier Ihren Beitragsinhalt …</value>
+  </data>
+  <data name="ToolbarSettings" xml:space="preserve">
+    <value>RTL</value>
+  </data>
+  <data name="LabelWalkthroughImage" xml:space="preserve">
+    <value>Walkthrough Image</value>
+  </data>
+  <data name="LabelWalkthroughImageDescription" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="LabelWalkthroughStyle1Description1" xml:space="preserve">
+    <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
+  </data>
+  <data name="StringDaily Progress" xml:space="preserve">
+    <value>Täglicher Fortschritt</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Heim</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MenuPeople" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="StringAppName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+</root>
