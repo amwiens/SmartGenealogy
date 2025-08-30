@@ -2041,4 +2041,16 @@ MAUI LOVERS</value>
   <data name="StringAppName" xml:space="preserve">
     <value>Smart Genealogy</value>
   </data>
+  <data name="LabelCreateFile" xml:space="preserve">
+    <value>Create File</value>
+  </data>
+  <data name="LabelCreateFileDescription" xml:space="preserve">
+    <value>Create a new Smart Genealogy file</value>
+  </data>
+  <data name="LabelOpenFile" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="LabelOpenFileDescription" xml:space="preserve">
+    <value>Open an existing Smart Genealogy file</value>
+  </data>
 </root>

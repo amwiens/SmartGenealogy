@@ -22,4 +22,16 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
         {
         });
     }
+
+    [RelayCommand]
+    private async Task CreateFile()
+    {
+
+    }
+
+    [RelayCommand]
+    private async Task OpenFile()
+    {
+
+    }
 }
