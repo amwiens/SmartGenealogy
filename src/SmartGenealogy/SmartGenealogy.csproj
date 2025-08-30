@@ -170,7 +170,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\App\PeoplePage.xaml.cs">
+	  <Compile Update="Views\App\People\PeoplePage.xaml.cs">
 	    <DependentUpon>PeoplePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -179,13 +179,13 @@
 	  <MauiXaml Update="Controls\Popups\BasePopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\AppFlyout.xaml">
+	  <MauiXaml Update="Views\App\Main\AppFlyout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\MainMenuPage.xaml">
+	  <MauiXaml Update="Views\App\Main\MainMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\App\PeoplePage.xaml">
+	  <MauiXaml Update="Views\App\People\PeoplePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Templates\MainMenuClassicItemTemplate.xaml">
