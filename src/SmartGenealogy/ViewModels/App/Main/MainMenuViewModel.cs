@@ -4,6 +4,8 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
 {
     private INavigation _navigation;
 
+    private readonly IServiceProvider _serviceProvider;
+
     private Action<Page> _openPageAsRoot;
 
     private List<MenuEntry>? _mainMenuEntries;
@@ -12,10 +14,11 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
 
     private MenuEntry? _selectedMainMenuEntry;
 
-    public MainMenuViewModel(INavigation navigation, Action<Page> openPageAsRoot)
+    public MainMenuViewModel(INavigation navigation, Action<Page> openPageAsRoot, IServiceProvider serviceProvider)
     {
         _navigation = navigation;
         _openPageAsRoot = openPageAsRoot;
+        _serviceProvider = serviceProvider;
 
         IsGridMenuSwitchToggled = AppSettings.IsMenuGridStyle;
 
@@ -107,7 +110,8 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
         {
             if (SetProperty(ref _selectedMainMenuEntry, value) && value != null)
             {
-                NavigationPage navigationPage = new((Page)Activator.CreateInstance(value.TargetType!)!);
+                //NavigationPage navigationPage = new((Page)Activator.CreateInstance(value.TargetType!)!);
+                NavigationPage navigationPage = new((Page)_serviceProvider.GetRequiredService(value.TargetType!)!);
 
                 _openPageAsRoot(navigationPage);
 

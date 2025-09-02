@@ -141,13 +141,26 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddTransient<MainPage>();
-        mauiAppBuilder.Services.AddTransient<TestPage>();
-        mauiAppBuilder.Services.AddTransient<TestPageViewModel>();
-        mauiAppBuilder.Services.AddTransient<MainViewModel>();
-        mauiAppBuilder.Services.AddTransient<WalkthroughViewModel>();
+        // Repositories
+        mauiAppBuilder.Services.AddSingleton<PersonRepository>();
+
+        // Pages
         mauiAppBuilder.Services.AddTransient<StartPage>();
         mauiAppBuilder.Services.AddTransient<WalkthroughPage>();
+        mauiAppBuilder.Services.AddTransient<MainPage>();
+        mauiAppBuilder.Services.AddSingleton<PeoplePage>();
+        mauiAppBuilder.Services.AddTransient<ControlsOverviewPage>();
+        mauiAppBuilder.Services.AddTransient<FontIconsPage>();
+        mauiAppBuilder.Services.AddTransient<AboutPage>();
+        mauiAppBuilder.Services.AddSingleton<PrivacyPolicyPage>();
+
+        // ViewModels
+        mauiAppBuilder.Services.AddTransient<WalkthroughViewModel>();
+        mauiAppBuilder.Services.AddTransient<MainViewModel>();
+        mauiAppBuilder.Services.AddTransient<PeopleViewModel>();
+        mauiAppBuilder.Services.AddTransient<FontIconsViewModel>();
+        mauiAppBuilder.Services.AddTransient<AboutViewModel>();
+        mauiAppBuilder.Services.AddTransient<PrivacyPolicyViewModel>();
 
         return mauiAppBuilder;
     }

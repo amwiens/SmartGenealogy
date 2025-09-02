@@ -2,11 +2,11 @@ namespace SmartGenealogy;
 
 public partial class AppFlyout : FlyoutPage
 {
-    public AppFlyout()
+    public AppFlyout(IServiceProvider serviceProvider)
     {
         InitializeComponent();
 
-        Flyout = new MainMenuPage(LaunchDetailPage);
+        Flyout = new MainMenuPage(LaunchDetailPage, serviceProvider);
     }
 
     private void LaunchDetailPage(Page page)

@@ -22,7 +22,9 @@ namespace SmartGenealogy;
 
 public partial class App : Application
 {
-    public App()
+    private readonly IServiceProvider _serviceProvider;
+
+    public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
 
@@ -88,13 +90,14 @@ public partial class App : Application
 #endif
             }
         });
+        _serviceProvider = serviceProvider;
 
         #endregion Handlers
     }
 
-    public static Page GetMainPage()
+    public Page GetMainPage()
     {
-        return new AppFlyout();
+        return new AppFlyout(_serviceProvider);
     }
 
     public void ChangeFlyoutDirection()
@@ -117,7 +120,7 @@ public partial class App : Application
         if (AppSettings.IsFirstLaunching)
         {
             AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-            return new Window(new NavigationPage(new StartPage()));
+            return new Window(new NavigationPage(new StartPage(_serviceProvider)));
         }
         else
         {

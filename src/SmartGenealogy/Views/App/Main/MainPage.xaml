@@ -35,9 +35,9 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodels:MainViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <Grid RowSpacing="0">
         <ScrollView VerticalScrollBarVisibility="Default">

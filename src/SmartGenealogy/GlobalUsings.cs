@@ -13,6 +13,7 @@ global using Microsoft.Extensions.Localization;
 global using Microsoft.Maui.Storage;
 
 global using SmartGenealogy.Controls;
+global using SmartGenealogy.Data.Data;
 global using SmartGenealogy.Enums;
 global using SmartGenealogy.Extensions;
 global using SmartGenealogy.Helpers;
