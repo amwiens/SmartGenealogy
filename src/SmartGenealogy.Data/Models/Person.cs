@@ -7,4 +7,6 @@ public class Person
     public long Sex { get; set; }
     public long ParentID { get; set; }
 
+    public DateTime DateCreated { get; set; }
+    public DateTime DateUpdated { get; set; }
 }

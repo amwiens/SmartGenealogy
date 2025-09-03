@@ -5,13 +5,15 @@ namespace SmartGenealogy.ViewModels;
 public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMessage>
 {
     private readonly PersonRepository _personRepository;
+    private readonly FactTypeRepository _factTypeRepository;
 
     [ObservableProperty]
     private bool isRTLLanguage;
 
-    public MainViewModel(PersonRepository personRepository)
+    public MainViewModel(PersonRepository personRepository, FactTypeRepository factTypeRepository)
     {
         _personRepository = personRepository;
+        _factTypeRepository = factTypeRepository;
 
         WeakReferenceMessenger.Default.Register<CultureChangeMessage>(this);
         IsRTLLanguage = AppSettings.IsRTLLanguage;
@@ -32,7 +34,7 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     [RelayCommand]
     private async Task CreateFile()
     {
-        var database = new DatabaseInitializer(_personRepository);
+        var database = new DatabaseInitializer(_personRepository, _factTypeRepository);
         await database.LoadSeedDataAsync();
     }
 

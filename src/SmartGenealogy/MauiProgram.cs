@@ -143,6 +143,7 @@ public static class MauiProgram
     {
         // Repositories
         mauiAppBuilder.Services.AddSingleton<PersonRepository>();
+        mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
 
         // Pages
         mauiAppBuilder.Services.AddTransient<StartPage>();
