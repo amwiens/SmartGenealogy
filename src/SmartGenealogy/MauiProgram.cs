@@ -145,6 +145,8 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<PersonRepository>();
         mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
 
+        mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
+
         // Pages
         mauiAppBuilder.Services.AddTransient<StartPage>();
         mauiAppBuilder.Services.AddTransient<WalkthroughPage>();

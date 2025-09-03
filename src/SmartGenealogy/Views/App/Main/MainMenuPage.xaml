@@ -35,18 +35,18 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="Auto, *, Auto">
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
 
         <!--  Background Image  -->
         <Image
-            Grid.RowSpan="3"
+            Grid.RowSpan="4"
             Margin="-1"
             Aspect="Fill"
             Opacity="0.5"
             Source="bg_purple.png" />
 
         <!--  Gradient Mask  -->
-        <Grid Grid.RowSpan="3">
+        <Grid Grid.RowSpan="4">
             <Grid.Background>
                 <LinearGradientBrush>
                     <GradientStop Offset="0.1" Color="{DynamicResource LinearGradientStartColor}" />
@@ -58,9 +58,18 @@
         <!--  Branding Logo  -->
         <controls:FlyoutHeader Grid.Row="0" />
 
+        <!--  Database Name  -->
+        <StackLayout
+            Grid.Row="1"
+            Padding="30,15,30,15"
+            Orientation="Vertical">
+            <Label Text="Database name:" TextColor="{DynamicResource White}" />
+            <Label Text="{Binding DatabaseName}" TextColor="{DynamicResource White}" />
+        </StackLayout>
+
         <!--  Main Menu  -->
         <CollectionView
-            Grid.Row="1"
+            Grid.Row="2"
             ItemsSource="{Binding MainMenuEntries}"
             SelectedItem="{Binding MainMenuSelectedItem, Mode=TwoWay}"
             SelectionChangedCommand="{Binding MenuItemSelectionCommand}"
@@ -96,6 +105,6 @@
         </CollectionView>
 
         <!--  Copyright Footer  -->
-        <controls:FlyoutFooter Grid.Row="2" />
+        <controls:FlyoutFooter Grid.Row="3" />
     </Grid>
 </ContentPage>

@@ -5,8 +5,7 @@
 /// </summary>
 public class FactTypeRepository
 {
-    private string _dbPath = Path.Combine(@"C:\Code\Mine\", "appdata.db");
-    private string _dbSource;
+    private readonly DatabaseSettings _databaseSettings;
 
     private bool _hasBeenInitialized = false;
     private readonly ILogger _logger;
@@ -15,11 +14,10 @@ public class FactTypeRepository
     /// Initializes a new instanc of the <see cref="FactTypeRepository"/> class.
     /// </summary>
     /// <param name="logger"></param>
-    public FactTypeRepository(ILogger<FactTypeRepository> logger)
+    public FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
     {
+        _databaseSettings = databaseSettings;
         _logger = logger;
-
-        _dbSource = $"DataSource={_dbPath};";
     }
 
     /// <summary>
@@ -30,7 +28,7 @@ public class FactTypeRepository
         if (_hasBeenInitialized)
             return;
 
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         try
@@ -69,7 +67,7 @@ public class FactTypeRepository
     public async Task<List<FactType>> ListAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -82,7 +80,7 @@ public class FactTypeRepository
             var factType = new FactType
             {
                 Id = reader.GetInt64(0),
-                OwnerType = reader.GetInt64(1),
+                OwnerType = (OwnerType)reader.GetInt64(1),
                 Name = reader.IsDBNull(2) ? null : reader.GetString(2),
                 Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
                 GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
@@ -107,7 +105,7 @@ public class FactTypeRepository
     public async Task<List<FactType>> ListAsync(int ownerType)
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -121,7 +119,7 @@ public class FactTypeRepository
             var factType = new FactType
             {
                 Id = reader.GetInt64(0),
-                OwnerType = reader.GetInt64(1),
+                OwnerType = (OwnerType)reader.GetInt64(1),
                 Name = reader.IsDBNull(2) ? null : reader.GetString(2),
                 Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
                 GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
@@ -146,7 +144,7 @@ public class FactTypeRepository
     public async Task<FactType?> GetAsync(long id)
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -159,7 +157,7 @@ public class FactTypeRepository
             var factType = new FactType
             {
                 Id = reader.GetInt64(0),
-                OwnerType = reader.GetInt64(1),
+                OwnerType = (OwnerType)reader.GetInt64(1),
                 Name = reader.IsDBNull(2) ? null : reader.GetString(2),
                 Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
                 GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
@@ -185,7 +183,7 @@ public class FactTypeRepository
     public async Task<long> SaveItemAsync(FactType item)
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
         var cmd = connection.CreateCommand();
         if (item.Id == 0)
@@ -240,7 +238,7 @@ public class FactTypeRepository
     public async Task<int> DeleteItemAsync(long id)
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var deleteCmd = connection.CreateCommand();
@@ -256,7 +254,7 @@ public class FactTypeRepository
     public async Task DropTableAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var dropTableCmd = connection.CreateCommand();

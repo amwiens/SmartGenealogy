@@ -2,17 +2,15 @@
 
 public class PersonRepository
 {
-    private string _dbPath = Path.Combine(@"C:\Code\Mine\", "appdata.db");
-    private string _dbSource;
+    private readonly DatabaseSettings _databaseSettings;
 
     private bool _hasBeenInitialized = false;
     private readonly ILogger _logger;
 
-    public PersonRepository(ILogger<PersonRepository> logger)
+    public PersonRepository(DatabaseSettings databaseSettings, ILogger<PersonRepository> logger)
     {
+        _databaseSettings = databaseSettings;
         _logger = logger;
-
-        _dbSource = $"DataSource={_dbPath};";
     }
 
     private async Task Init()
@@ -20,7 +18,7 @@ public class PersonRepository
         if (_hasBeenInitialized)
             return;
 
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         try
@@ -46,7 +44,7 @@ public class PersonRepository
     {
         await Init();
 
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -62,7 +60,7 @@ public class PersonRepository
     {
         await Init();
 
-        await using var connection = new SqliteConnection(_dbSource);
+        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var saveCmd = connection.CreateCommand();

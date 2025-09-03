@@ -4,7 +4,7 @@ public class FactType
 {
     [PrimaryKey, AutoIncrement]
     public long Id { get; set; }
-    public long OwnerType { get; set; }
+    public OwnerType OwnerType { get; set; }
     public string? Name { get; set; }
     public string? Abbreviation { get; set; }
     public string? GedcomTag { get; set; }

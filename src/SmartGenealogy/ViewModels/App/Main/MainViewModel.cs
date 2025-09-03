@@ -1,4 +1,5 @@
 ﻿using SmartGenealogy.Data;
+using SmartGenealogy.Data.Models;
 
 namespace SmartGenealogy.ViewModels;
 
@@ -6,14 +7,16 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
 {
     private readonly PersonRepository _personRepository;
     private readonly FactTypeRepository _factTypeRepository;
+    private readonly DatabaseSettings _databaseSettings;
 
     [ObservableProperty]
     private bool isRTLLanguage;
 
-    public MainViewModel(PersonRepository personRepository, FactTypeRepository factTypeRepository)
+    public MainViewModel(PersonRepository personRepository, FactTypeRepository factTypeRepository, DatabaseSettings databaseSettings)
     {
         _personRepository = personRepository;
         _factTypeRepository = factTypeRepository;
+        _databaseSettings = databaseSettings;
 
         WeakReferenceMessenger.Default.Register<CultureChangeMessage>(this);
         IsRTLLanguage = AppSettings.IsRTLLanguage;
@@ -34,8 +37,13 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     [RelayCommand]
     private async Task CreateFile()
     {
+        var dbPath = Path.Combine(@"C:\Code\Mine", "smartgenealogy.db");
+        _databaseSettings.DatabasePath = dbPath;
+        _databaseSettings.DatabaseName = "smartgenealogy.db";
+
         var database = new DatabaseInitializer(_personRepository, _factTypeRepository);
         await database.LoadSeedDataAsync();
+        WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(true));
     }
 
     [RelayCommand]
@@ -49,10 +57,14 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
             });
             if (result != null)
             {
+                _databaseSettings.DatabasePath = result.FullPath;
+                _databaseSettings.DatabaseName = result.FileName;
+
+                await _personRepository.SaveItemAsync(new Person { Sex = 0, ParentID = 1, DateCreated = DateTime.UtcNow, DateUpdated = DateTime.UtcNow });
                 // You can access the file with result.FullPath or result.FileName
-                // Example: read file content
                 using var stream = await result.OpenReadAsync();
                 // TODO: Process the file stream as needed
+                WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(true));
             }
         }
         catch (Exception ex)

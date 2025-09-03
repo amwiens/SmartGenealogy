@@ -5,8 +5,8 @@ public partial class AppFlyout : FlyoutPage
     public AppFlyout(IServiceProvider serviceProvider)
     {
         InitializeComponent();
-
-        Flyout = new MainMenuPage(LaunchDetailPage, serviceProvider);
+        var databaseSettings = serviceProvider.GetRequiredService<DatabaseSettings>();
+        Flyout = new MainMenuPage(LaunchDetailPage, serviceProvider, databaseSettings);
     }
 
     private void LaunchDetailPage(Page page)

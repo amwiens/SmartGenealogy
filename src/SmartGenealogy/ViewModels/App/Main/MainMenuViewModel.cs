@@ -1,7 +1,8 @@
 ﻿namespace SmartGenealogy.ViewModels;
 
-public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessage>
+public partial class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessage>, IRecipient<DatabaseChangeMessage>
 {
+    private readonly DatabaseSettings _databaseSettings;
     private INavigation _navigation;
 
     private readonly IServiceProvider _serviceProvider;
@@ -12,17 +13,24 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
 
     private bool _isGridView;
 
+    private bool _databaseOpen;
+
     private MenuEntry? _selectedMainMenuEntry;
 
-    public MainMenuViewModel(INavigation navigation, Action<Page> openPageAsRoot, IServiceProvider serviceProvider)
+    [ObservableProperty]
+    private string? _databaseName;
+
+    public MainMenuViewModel(INavigation navigation, Action<Page> openPageAsRoot, IServiceProvider serviceProvider, DatabaseSettings databaseSettings)
     {
         _navigation = navigation;
         _openPageAsRoot = openPageAsRoot;
         _serviceProvider = serviceProvider;
+        _databaseSettings = databaseSettings;
 
         IsGridMenuSwitchToggled = AppSettings.IsMenuGridStyle;
 
         WeakReferenceMessenger.Default.Register<CultureChangeMessage>(this);
+        WeakReferenceMessenger.Default.Register<DatabaseChangeMessage>(this);
         WeakReferenceMessenger.Default.Register<MainMenuGridStyleMessage>(this, (recipient, message) =>
         {
             IsGridMenuSwitchToggled = (bool)message.Value;
@@ -48,47 +56,62 @@ public class MainMenuViewModel : ObservableObject, IRecipient<CultureChangeMessa
         });
     }
 
+
+    public void Receive(DatabaseChangeMessage message)
+    {
+        DatabaseName = _databaseSettings.DatabaseName;
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            _databaseOpen = (bool)message.Value;
+            LoadMenuData();
+        });
+    }
+
     private void LoadMenuData()
     {
-        MainMenuEntries = new List<MenuEntry>
-        {
+        MainMenuEntries = 
+        [
             new MenuEntry
             {
                 Title = LocalizationResourceManager.Translate("MenuHome"),
                 Icon = MaterialDesignIcons.Home,
                 TargetType = typeof(MainPage)
             },
-            new MenuEntry
+        ];
+
+        if (_databaseOpen)
+        {
+            MainMenuEntries.Add(new MenuEntry
             {
                 Title = LocalizationResourceManager.Translate("MenuPeople"),
                 Icon = MaterialDesignIcons.Person,
                 TargetType = typeof(PeoplePage)
-            },
-            new MenuEntry
-            {
-                Title = LocalizationResourceManager.Translate("MenuControls"),
-                Icon = MaterialDesignIcons.ViewCompact,
-                TargetType = typeof(ControlsOverviewPage)
-            },
-            new MenuEntry()
-            {
-                Title = LocalizationResourceManager.Translate("MenuIcon"),
-                Icon = MaterialDesignIcons.InsertEmoticon,
-                TargetType = typeof(FontIconsPage)
-            },
-            new MenuEntry()
-            {
-                Title = LocalizationResourceManager.Translate("MenuAbout"),
-                Icon = MaterialDesignIcons.Info,
-                TargetType = typeof(AboutPage)
-            },
-            new MenuEntry()
-            {
-                Title = LocalizationResourceManager.Translate("MenuPrivacy"),
-                Icon = MaterialDesignIcons.Security,
-                TargetType = typeof(PrivacyPolicyPage)
-            }
-        };
+            });
+        }
+        MainMenuEntries.Add(new MenuEntry
+        {
+            Title = LocalizationResourceManager.Translate("MenuControls"),
+            Icon = MaterialDesignIcons.ViewCompact,
+            TargetType = typeof(ControlsOverviewPage)
+        });
+        MainMenuEntries.Add(new MenuEntry()
+        {
+            Title = LocalizationResourceManager.Translate("MenuIcon"),
+            Icon = MaterialDesignIcons.InsertEmoticon,
+            TargetType = typeof(FontIconsPage)
+        });
+        MainMenuEntries.Add(new MenuEntry()
+        {
+            Title = LocalizationResourceManager.Translate("MenuAbout"),
+            Icon = MaterialDesignIcons.Info,
+            TargetType = typeof(AboutPage)
+        });
+        MainMenuEntries.Add(new MenuEntry()
+        {
+            Title = LocalizationResourceManager.Translate("MenuPrivacy"),
+            Icon = MaterialDesignIcons.Security,
+            TargetType = typeof(PrivacyPolicyPage)
+        });
     }
 
     public List<MenuEntry> MainMenuEntries
