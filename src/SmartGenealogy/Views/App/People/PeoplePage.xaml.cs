@@ -2,10 +2,10 @@
 
 public partial class PeoplePage : ContentPage
 {
-    public PeoplePage()
+    public PeoplePage(PeopleViewModel peopleViewModel)
     {
         InitializeComponent();
-        BindingContext = new PeopleViewModel();
+        BindingContext = peopleViewModel;
     }
 
     protected override void OnAppearing()

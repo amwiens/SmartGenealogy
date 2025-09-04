@@ -2,11 +2,13 @@
 
 public partial class WalkthroughViewModel : ObservableObject
 {
+    private readonly IServiceProvider _serviceProvider;
     private INavigation _navigationService;
     private Page _pageService;
 
-    public WalkthroughViewModel(INavigation navigationService, Page pageService)
+    public WalkthroughViewModel(INavigation navigationService, Page pageService, IServiceProvider serviceProvider)
     {
+        _serviceProvider = serviceProvider;
         _navigationService = navigationService;
         _pageService = pageService;
 
@@ -85,7 +87,7 @@ public partial class WalkthroughViewModel : ObservableObject
 
     private async Task CloseWalkThroughPage()
     {
-        Application.Current!.Windows[0].Page = new AppFlyout();
+        Application.Current!.Windows[0].Page = new AppFlyout(_serviceProvider);
     }
 
     #endregion Methods

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePopupPage
+    x:Class="SmartGenealogy.Views.NewDatabasePopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:viewmodels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    x:DataType="viewmodels:NewDatabasePopupViewModel"
+    ForegroundColor="Transparent"
+    IsCloseOnBackgroundClick="False"
+    ZIndex="100">
+    <Grid HorizontalOptions="{OnIdiom Desktop='Center', Tablet='Center', Phone='Fill'}" VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Desktop='550', Tablet='350', Phone='*'}" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Margin="15"
+            Padding="20,25"
+            Background="{DynamicResource BasePageColor}"
+            StrokeShape="{RoundRectangle CornerRadius='20'}">
+
+            <Grid RowDefinitions="*, Auto" RowSpacing="20">
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="10"
+                    VerticalOptions="Center">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="19"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource Title2}"
+                        Text="{localization:Translate LabelCreateFileDescription}" />
+
+                    <Border Padding="20,5" Background="{DynamicResource EntryAndEditorsBackgroundColor}">
+                        <handlers:BorderlessEntry
+                            HeightRequest="42"
+                            Keyboard="Default"
+                            Placeholder="{localization:Translate LabelDatabaseName}"
+                            PlaceholderColor="{DynamicResource BaseTextColor}"
+                            Text="{Binding DatabaseName}" />
+                    </Border>
+
+                    <HorizontalStackLayout>
+                        <Border Padding="20,5" Background="{DynamicResource EntryAndEditorsBackgroundColor}">
+                            <handlers:BorderlessEntry
+                                HeightRequest="42"
+                                IsReadOnly="True"
+                                Keyboard="Default"
+                                Placeholder="{localization:Translate LabelDatabasePath}"
+                                PlaceholderColor="{DynamicResource BaseTextColor}"
+                                Text="{Binding DatabasePath}" />
+                        </Border>
+
+                        <Button
+                            Command="{Binding SelectFolderCommand}"
+                            FontFamily="FaRegular"
+                            Style="{StaticResource OutlinePrimaryIconButtonStyle}"
+                            Text="{x:Static fonticons:FaRegular.FolderOpen}" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+                <Grid
+                    Grid.Row="1"
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="15"
+                    VerticalOptions="Center">
+
+                    <Button
+                        Command="{Binding OkTappedCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{localization:Translate LabelOk}" />
+
+                    <Button
+                        Grid.Column="1"
+                        Command="{Binding CancelTappedCommand}"
+                        Style="{StaticResource OutlinePrimaryButtonStyle}"
+                        Text="{localization:Translate LabelCancel}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</controls:BasePopupPage>

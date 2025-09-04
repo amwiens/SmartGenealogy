@@ -2041,4 +2041,23 @@ MAUI LOVERS</value>
   <data name="StringAppName" xml:space="preserve">
     <value>Smart Genealogy</value>
   </data>
+  <data name="LabelCreateFile" xml:space="preserve">
+    <value>Create File</value>
+  </data>
+  <data name="LabelCreateFileDescription" xml:space="preserve">
+    <value>Create a new Smart Genealogy file</value>
+  </data>
+  <data name="LabelOpenFile" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="LabelOpenFileDescription" xml:space="preserve">
+    <value>Open an existing Smart Genealogy file</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LabelDatabaseName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LabelDatabasePath" xml:space="preserve">
+    <value>Database Path</value>
+  </data>
 </root>

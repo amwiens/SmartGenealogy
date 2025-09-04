@@ -3,6 +3,7 @@
     x:Class="SmartGenealogy.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
@@ -34,14 +35,156 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodels:MainViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
-    <Grid>
-        <Label
-            Margin="20"
-            Style="{StaticResource Headline}"
-            Text="Add your content here" />
+    <Grid RowSpacing="0">
+        <ScrollView VerticalScrollBarVisibility="Default">
+            <VisualElement.Behaviors>
+                <animations:ScrollViewScrollBehavior x:Name="ScrollBehavior" />
+            </VisualElement.Behaviors>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="1"
+                    Padding="{OnIdiom Phone='5,5,5,10',
+                                      Tablet='15,10',
+                                      Desktop='30,10'}"
+                    Background="{DynamicResource MainWrapperBackgroundColor}"
+                    TranslationY="-30">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30,30,0,0" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Margin="{OnIdiom Phone='10,15,10,10',
+                                         Tablet='15,10',
+                                         Desktop='30,10'}"
+                        Padding="5,5"
+                        Spacing="15"
+                        VerticalOptions="Center">
+                        <VisualElement.Behaviors>
+                            <animations:AnimateProgressDouble
+                                Maximum="280"
+                                Minimum="0"
+                                Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                TargetProperty="VerticalStackLayout.Spacing"
+                                From="15"
+                                To="5" />
+                        </VisualElement.Behaviors>
+
+                        <Grid
+                            ColumnDefinitions="0.5*, 0.5*"
+                            ColumnSpacing="15"
+                            RowDefinitions="Auto, Auto"
+                            RowSpacing="15">
+                            <VisualElement.Behaviors>
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.RowSpacing"
+                                    From="15"
+                                    To="5" />
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.ColumnSpacing"
+                                    From="15"
+                                    To="5" />
+                            </VisualElement.Behaviors>
+
+                            <!--  Create File  -->
+                            <Border Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CreateFileCommand}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Border
+                                        Padding="0"
+                                        Background="{DynamicResource PrimaryColor}"
+                                        HeightRequest="52"
+                                        HorizontalOptions="Center"
+                                        Stroke="{DynamicResource DefaultBorder}"
+                                        StrokeShape="{RoundRectangle CornerRadius=12}"
+                                        StrokeThickness="0"
+                                        WidthRequest="52">
+                                        <controls:RoundedCornerImage
+                                            Background="{DynamicResource White}"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="logo.png"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=20}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelCreateFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelCreateFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!--  Open File  -->
+                            <Border Grid.Column="1" Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenFileCommand}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Border
+                                        Padding="0"
+                                        Background="{DynamicResource PrimaryColor}"
+                                        HeightRequest="52"
+                                        HorizontalOptions="Center"
+                                        Stroke="{DynamicResource DefaultBorder}"
+                                        StrokeShape="{RoundRectangle CornerRadius=12}"
+                                        StrokeThickness="0"
+                                        WidthRequest="52">
+                                        <controls:RoundedCornerImage
+                                            Background="{DynamicResource White}"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="logo.png"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=20}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelOpenFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelOpenFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+        </ScrollView>
     </Grid>
 </ContentPage>

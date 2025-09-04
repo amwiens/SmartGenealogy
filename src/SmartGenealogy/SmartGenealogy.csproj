@@ -170,6 +170,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\App\People\PeoplePage.xaml.cs">
 	    <DependentUpon>PeoplePage.xaml</DependentUpon>
 	  </Compile>
@@ -183,6 +187,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\App\Main\MainMenuPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\App\Main\NewDatabasePopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\App\People\PeoplePage.xaml">
