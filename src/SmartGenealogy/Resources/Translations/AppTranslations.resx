@@ -2053,4 +2053,10 @@ MAUI LOVERS</value>
   <data name="LabelOpenFileDescription" xml:space="preserve">
     <value>Open an existing Smart Genealogy file</value>
   </data>
+  <data name="LabelDatabaseName" xml:space="preserve">
+    <value>Database Name</value>
+  </data>
+  <data name="LabelDatabasePath" xml:space="preserve">
+    <value>Database Path</value>
+  </data>
 </root>

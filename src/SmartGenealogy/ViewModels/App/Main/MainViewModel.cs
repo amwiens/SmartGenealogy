@@ -1,7 +1,4 @@
-﻿using SmartGenealogy.Data;
-using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.ViewModels;
+﻿namespace SmartGenealogy.ViewModels;
 
 public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMessage>
 {
@@ -37,13 +34,23 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
     [RelayCommand]
     private async Task CreateFile()
     {
-        var dbPath = Path.Combine(@"C:\Code\Mine", "smartgenealogy.db");
-        _databaseSettings.DatabasePath = dbPath;
-        _databaseSettings.DatabaseName = "smartgenealogy.db";
+        var popupViewModel = new NewDatabasePopupViewModel();
+        var popup = new NewDatabasePopupPage { BindingContext = popupViewModel };
+        //await PopupNavigation.Instance.PushAsync(popup);
+        await PopupAction.DisplayPopup(popup);
 
-        var database = new DatabaseInitializer(_personRepository, _factTypeRepository);
-        await database.LoadSeedDataAsync();
-        WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(true));
+        // Await the result from the popup
+        var result = await popupViewModel.PopupClosedTask;
+        if (result != null)
+        {
+            var dbPath = Path.Combine(result.DatabasePath!, result.DatabaseName!);
+            _databaseSettings.DatabasePath = dbPath;
+            _databaseSettings.DatabaseName = result.DatabaseName;
+
+            var database = new DatabaseInitializer(_personRepository, _factTypeRepository);
+            await database.LoadSeedDataAsync();
+            WeakReferenceMessenger.Default.Send(new DatabaseChangeMessage(true));
+        }
     }
 
     [RelayCommand]

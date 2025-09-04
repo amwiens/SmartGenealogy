@@ -2053,4 +2053,11 @@ MAUI LOVERS</value>
   <data name="LabelOpenFileDescription" xml:space="preserve">
     <value>Open an existing Smart Genealogy file</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LabelDatabaseName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LabelDatabasePath" xml:space="preserve">
+    <value>Database Path</value>
+  </data>
 </root>

@@ -2055,4 +2055,10 @@ MAUI-LIEFHEBBERS</value>
   <data name="LabelOpenFileDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="LabelDatabaseName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LabelDatabasePath" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>
