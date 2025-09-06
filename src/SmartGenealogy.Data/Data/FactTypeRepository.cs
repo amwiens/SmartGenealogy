@@ -45,8 +45,9 @@ public class FactTypeRepository
                 UseDate INTEGER NOT NULL,
                 UsePlace INTEGER NOT NULL,
                 Sentence TEXT NULL,
-                DateCreated TEXT NOT NULL,
-                DateUpdated TEXT NOT NULL
+                IsBuiltIn INTEGER NOT NULL,
+                DateAdded TEXT NOT NULL,
+                DateChanged TEXT NOT NULL
             );";
             await createTableCmd.ExecuteNonQueryAsync();
         }
@@ -79,17 +80,18 @@ public class FactTypeRepository
         {
             var factType = new FactType
             {
-                Id = reader.GetInt64(0),
-                OwnerType = (OwnerType)reader.GetInt64(1),
-                Name = reader.IsDBNull(2) ? null : reader.GetString(2),
-                Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
-                GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
-                UseValue = reader.GetBoolean(5),
-                UseDate = reader.GetBoolean(6),
-                UsePlace = reader.GetBoolean(7),
-                Sentence = reader.IsDBNull(8) ? null : reader.GetString(8),
-                DateCreated = reader.GetDateTime(9),
-                DateUpdated = reader.GetDateTime(10)
+                Id = reader.GetInt64(reader.GetOrdinal("Id")),
+                OwnerType = (OwnerType)reader.GetInt64(reader.GetOrdinal("OwnerType")),
+                Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                Abbreviation = reader.IsDBNull(reader.GetOrdinal("Abbreviation")) ? null : reader.GetString(reader.GetOrdinal("Abbreviation")),
+                GedcomTag = reader.IsDBNull(reader.GetOrdinal("GedcomTag")) ? null : reader.GetString(reader.GetOrdinal("GedcomTag")),
+                UseValue = reader.GetBoolean(reader.GetOrdinal("UseValue")),
+                UseDate = reader.GetBoolean(reader.GetOrdinal("UseDate")),
+                UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
+                Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
+                IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
             };
             factTypes.Add(factType);
         }
@@ -118,17 +120,18 @@ public class FactTypeRepository
         {
             var factType = new FactType
             {
-                Id = reader.GetInt64(0),
-                OwnerType = (OwnerType)reader.GetInt64(1),
-                Name = reader.IsDBNull(2) ? null : reader.GetString(2),
-                Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
-                GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
-                UseValue = reader.GetBoolean(5),
-                UseDate = reader.GetBoolean(6),
-                UsePlace = reader.GetBoolean(7),
-                Sentence = reader.IsDBNull(8) ? null : reader.GetString(8),
-                DateCreated = reader.GetDateTime(9),
-                DateUpdated = reader.GetDateTime(10)
+                Id = reader.GetInt64(reader.GetOrdinal("Id")),
+                OwnerType = (OwnerType)reader.GetInt64(reader.GetOrdinal("OwnerType")),
+                Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                Abbreviation = reader.IsDBNull(reader.GetOrdinal("Abbreviation")) ? null : reader.GetString(reader.GetOrdinal("Abbreviation")),
+                GedcomTag = reader.IsDBNull(reader.GetOrdinal("GedcomTag")) ? null : reader.GetString(reader.GetOrdinal("GedcomTag")),
+                UseValue = reader.GetBoolean(reader.GetOrdinal("UseValue")),
+                UseDate = reader.GetBoolean(reader.GetOrdinal("UseDate")),
+                UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
+                Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
+                IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
             };
             factTypes.Add(factType);
         }
@@ -156,17 +159,18 @@ public class FactTypeRepository
         {
             var factType = new FactType
             {
-                Id = reader.GetInt64(0),
-                OwnerType = (OwnerType)reader.GetInt64(1),
-                Name = reader.IsDBNull(2) ? null : reader.GetString(2),
-                Abbreviation = reader.IsDBNull(3) ? null : reader.GetString(3),
-                GedcomTag = reader.IsDBNull(4) ? null : reader.GetString(4),
-                UseValue = reader.GetBoolean(5),
-                UseDate = reader.GetBoolean(6),
-                UsePlace = reader.GetBoolean(7),
-                Sentence = reader.IsDBNull(8) ? null : reader.GetString(8),
-                DateCreated = reader.GetDateTime(9),
-                DateUpdated = reader.GetDateTime(10)
+                Id = reader.GetInt64(reader.GetOrdinal("Id")),
+                OwnerType = (OwnerType)reader.GetInt64(reader.GetOrdinal("OwnerType")),
+                Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                Abbreviation = reader.IsDBNull(reader.GetOrdinal("Abbreviation")) ? null : reader.GetString(reader.GetOrdinal("Abbreviation")),
+                GedcomTag = reader.IsDBNull(reader.GetOrdinal("GedcomTag")) ? null : reader.GetString(reader.GetOrdinal("GedcomTag")),
+                UseValue = reader.GetBoolean(reader.GetOrdinal("UseValue")),
+                UseDate = reader.GetBoolean(reader.GetOrdinal("UseDate")),
+                UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
+                Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
+                IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
             };
 
             return factType;
@@ -189,10 +193,10 @@ public class FactTypeRepository
         if (item.Id == 0)
         {
             cmd.CommandText = @"
-            INSERT INTO FactType (OwnerType, Name, Abbreviation, GedcomTag, UseValue, UseDate, UsePlace, Sentence, DateCreated, DateUpdated)
-            VALUES (@OwnerType, @Name, @Abbreviation, @GedcomTag, @UseValue, @UseDate, @UsePlace, @Sentence, @DateCreated, @DateUpdated);
+            INSERT INTO FactType (OwnerType, Name, Abbreviation, GedcomTag, UseValue, UseDate, UsePlace, Sentence, IsBuiltIn, DateAdded, DateChanged)
+            VALUES (@OwnerType, @Name, @Abbreviation, @GedcomTag, @UseValue, @UseDate, @UsePlace, @Sentence, @IsBuiltIn, @DateAdded, @DateChanged);
             SELECT last_insert_rowid();";
-            cmd.Parameters.AddWithValue("@DateCreated", DateTime.UtcNow);
+            cmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
         else
         {
@@ -206,7 +210,8 @@ public class FactTypeRepository
                 UseDate = @UseDate,
                 UsePlace = @UsePlace,
                 Sentence = @Sentence,
-                DateUpdated = @DateUpdated
+                IsBuiltIn = @IsBuiltIn,
+                DateChanged = @DateChanged
             WHERE Id = @Id;";
             cmd.Parameters.AddWithValue("@Id", item.Id);
         }
@@ -219,7 +224,8 @@ public class FactTypeRepository
         cmd.Parameters.AddWithValue("@UseDate", item.UseDate ? 1 : 0);
         cmd.Parameters.AddWithValue("@UsePlace", item.UsePlace ? 1 : 0);
         cmd.Parameters.AddWithValue("@Sentence", item.Sentence ?? string.Empty);
-        cmd.Parameters.AddWithValue("@DateUpdated", DateTime.UtcNow);
+        cmd.Parameters.AddWithValue("@IsBuiltIn", item.IsBuiltIn ? 1 : 0);
+        cmd.Parameters.AddWithValue("@DateChanged", DateTime.UtcNow);
 
         var result = await cmd.ExecuteScalarAsync();
         if (item.Id == 0)

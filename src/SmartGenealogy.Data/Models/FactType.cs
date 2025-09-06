@@ -12,8 +12,9 @@ public class FactType
     public bool UseDate { get; set; }
     public bool UsePlace { get; set; }
     public string? Sentence { get; set; }
-    public DateTime DateCreated { get; set; }
-    public DateTime DateUpdated { get; set; }
+    public bool IsBuiltIn { get; set; }
+    public DateTime DateAdded { get; set; }
+    public DateTime DateChanged { get; set; }
 }
 
 public class FactTypesJson

@@ -25,7 +25,7 @@ public partial class NewDatabasePopupViewModel : ObservableObject
     [RelayCommand]
     private async Task OkTapped()
     {
-        NewDatabase.DatabaseName = DatabaseName;
+        NewDatabase.DatabaseName = $"{DatabaseName}.sgdb";
         NewDatabase.DatabasePath = DatabasePath;
         // Set the result and close the popup
         _taskCompletionSource.SetResult(NewDatabase);
