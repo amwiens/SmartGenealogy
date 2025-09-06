@@ -19,12 +19,14 @@ public partial class BasePage : ContentPage
 
     public async void GoBack_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PopAsync();
+        await Shell.Current.GoToAsync("..");
+        //await Navigation.PopAsync();
     }
 
     protected void CheckIfRootPage()
     {
-        if (Navigation.NavigationStack.Count == 1)
+        var navStack = Shell.Current?.Navigation.NavigationStack;
+        if (navStack is null && navStack!.Count > 1)
         {
             // Root page
             backNavigation.IsVisible = false;
