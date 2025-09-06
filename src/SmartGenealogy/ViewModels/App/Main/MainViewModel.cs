@@ -80,4 +80,10 @@ public partial class MainViewModel : BaseViewModel, IRecipient<CultureChangeMess
             // Optionally set error state or show a message
         }
     }
+
+    [RelayCommand]
+    private async Task OpenSettings()
+            {
+        await Shell.Current.GoToAsync(nameof(ThemeSettingsPage));
+    }
 }

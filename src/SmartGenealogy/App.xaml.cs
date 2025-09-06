@@ -97,20 +97,21 @@ public partial class App : Application
 
     public Page GetMainPage()
     {
-        return new AppFlyout(_serviceProvider);
+        return new AppShell();
+        //return new AppFlyout(_serviceProvider);
     }
 
     public void ChangeFlyoutDirection()
     {
-        var flyoutPage = (AppFlyout)Windows[0].Page!;
+        var flyoutPage = (AppShell)Windows[0].Page!;
         if (AppSettings.IsRTLLanguage)
         {
-            flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
+            //flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
             flyoutPage.FlowDirection = FlowDirection.RightToLeft;
         }
         else
         {
-            flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
+            //flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
             flyoutPage.FlowDirection = FlowDirection.LeftToRight;
         }
     }

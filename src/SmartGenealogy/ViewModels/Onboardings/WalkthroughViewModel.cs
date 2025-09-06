@@ -87,7 +87,8 @@ public partial class WalkthroughViewModel : ObservableObject
 
     private async Task CloseWalkThroughPage()
     {
-        Application.Current!.Windows[0].Page = new AppFlyout(_serviceProvider);
+        Application.Current!.Windows[0].Page = new AppShell();
+        //Application.Current!.Windows[0].Page = new AppFlyout(_serviceProvider);
     }
 
     #endregion Methods
