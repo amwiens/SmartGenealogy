@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="SmartGenealogy.Views.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:views="clr-namespace:SmartGenealogy.Views"
+    FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutBehavior="{OnIdiom Desktop=Locked,
+                             Default=Flyout}"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutWidth="315">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="{localization:Translate MenuHome}" Icon="{FontImage FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Home}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title=""
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="{localization:Translate MenuPeople}" Icon="{FontImage FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.User}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title=""
+            ContentTemplate="{DataTemplate views:PeoplePage}"
+            Route="PeoplePage" />
+    </FlyoutItem>
+
+    <!--<FlyoutItem Title="{localization:Translate MenuTools}" Icon="{FontImage FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Tools}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            Title=""
+            ContentTemplate="{DataTemplate views:ToolsPage}"
+            Route="PeoplePage" />
+    </FlyoutItem>-->
+</Shell>
