@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace SmartGenealogy;
+namespace SmartGenealogy.Settings;
 
 /// <summary>
 /// Used to (de)serialize the settings.json file.

@@ -20,6 +20,10 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        // Register repositories
+
+        builder.Services.AddSingleton<DatabaseSettings>();
+
         // Register view models
         builder.Services.AddTransient<MainPageViewModel>();
         builder.Services.AddSingleton<MediaPageViewModel>();
