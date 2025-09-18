@@ -9,6 +9,6 @@
         <Label
             SemanticProperties.HeadingLevel="Level1"
             Style="{StaticResource Headline}"
-            Text="Settings Page" />
+            Text="{Binding Title}" />
     </VerticalStackLayout>
 </ContentPage>

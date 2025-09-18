@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
+    xmlns:media="clr-namespace:SmartGenealogy.Views.Media"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     Title="Smart Genealogy">
 
@@ -11,6 +12,11 @@
         Title="Main"
         ContentTemplate="{DataTemplate main:MainPage}"
         Route="main" />
+
+    <ShellContent
+        Title="Media"
+        ContentTemplate="{DataTemplate media:MediaPage}"
+        Route="media" />
 
     <ShellContent
         Title="Settings"

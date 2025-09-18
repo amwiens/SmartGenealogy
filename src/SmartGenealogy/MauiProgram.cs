@@ -20,6 +20,7 @@ public static class MauiProgram
 
         // Register view models
         builder.Services.AddTransient<MainPageViewModel>();
+        builder.Services.AddSingleton<MediaPageViewModel>();
         builder.Services.AddSingleton<SettingsPageViewModel>();
 
         // Register views
