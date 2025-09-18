@@ -3,7 +3,9 @@
     x:Class="SmartGenealogy.Views.Media.MediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Media Page">
+    xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
+    Title="Media Page"
+    x:DataType="viewModel:MediaPageViewModel">
 
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Label

@@ -3,7 +3,9 @@
     x:Class="SmartGenealogy.Views.Main.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Main Page">
+    xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Main"
+    Title="Main Page"
+    x:DataType="viewModel:MainPageViewModel">
 
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Label
