@@ -22,6 +22,7 @@ public static class MauiProgram
 
         // Register repositories
 
+
         builder.Services.AddSingleton<DatabaseSettings>();
 
         // Register view models
