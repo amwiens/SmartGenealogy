@@ -12,5 +12,9 @@
             SemanticProperties.HeadingLevel="Level1"
             Style="{StaticResource Headline}"
             Text="{Binding Title}" />
+
+        <Button Command="{Binding CreateDatabaseCommand}" Text="Create Database" />
+
+        <Button Command="{Binding OpenDatabaseCommand}" Text="Open Database" />
     </VerticalStackLayout>
 </ContentPage>

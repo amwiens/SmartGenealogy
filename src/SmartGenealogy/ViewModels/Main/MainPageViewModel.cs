@@ -2,10 +2,58 @@
 
 public partial class MainPageViewModel : ObservableObject
 {
+    private readonly DatabaseSettings _databaseSettings;
+
     [ObservableProperty]
     private string? _title = "Main Page";
 
-    public MainPageViewModel()
+    public MainPageViewModel(DatabaseSettings databaseSettings)
     {
+        _databaseSettings = databaseSettings;
+    }
+
+    [RelayCommand]
+    private async Task CreateDatabase()
+    {
+
+    }
+
+    [RelayCommand]
+    private async Task OpenDatabase()
+    {
+        try
+        {
+            var options = new PickOptions
+            {
+                PickerTitle = "Please select a database file",
+                FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+                    { DevicePlatform.iOS, new[] { "public.database" } }, // UTType values
+                    { DevicePlatform.Android, new[] { "application/*" } }, // MIME type
+                    { DevicePlatform.WinUI, new[] { ".sgdb", ".db", ".sqlite", ".sqlite3" } }, // file extensions
+                    { DevicePlatform.Tizen, new[] { "*/*" } }, // MIME type
+                    { DevicePlatform.macOS, new[] { "public.database" } }, // UTType values
+                })
+            };
+
+            var result = await FilePicker.Default.PickAsync(options);
+
+            if (result != null)
+            {
+                // Process the selected file
+                if (File.Exists(result.FullPath))
+                {
+                    var fi = new FileInfo(result.FullPath);
+                    _databaseSettings.DatabasePath = fi.DirectoryName;
+                    _databaseSettings.DatabaseName = fi.Name;
+
+                    WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(result.FullPath));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }
