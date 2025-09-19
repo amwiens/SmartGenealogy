@@ -9,3 +9,5 @@ global using SmartGenealogy.ViewModels.Main;
 global using SmartGenealogy.ViewModels.Media;
 global using SmartGenealogy.ViewModels.Settings;
 global using SmartGenealogy.Views.Main;
+
+global using System.Collections.ObjectModel;

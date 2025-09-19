@@ -6,7 +6,9 @@
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
     xmlns:media="clr-namespace:SmartGenealogy.Views.Media"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
-    Title="Smart Genealogy">
+    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Main"
+    Title="{Binding Title}"
+    x:DataType="viewModels:AppShellViewModel">
 
     <ShellContent
         Title="Main"

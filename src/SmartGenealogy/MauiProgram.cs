@@ -26,11 +26,13 @@ public static class MauiProgram
         builder.Services.AddSingleton<DatabaseSettings>();
 
         // Register view models
+        builder.Services.AddTransient<AppShellViewModel>();
         builder.Services.AddTransient<MainPageViewModel>();
-        builder.Services.AddSingleton<MediaPageViewModel>();
-        builder.Services.AddSingleton<SettingsPageViewModel>();
+        builder.Services.AddTransient<MediaPageViewModel>();
+        builder.Services.AddTransient<SettingsPageViewModel>();
 
         // Register views
+        builder.Services.AddTransient<AppShell>();
         builder.Services.AddTransient<MainPage>();
 
         return builder.Build();
