@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- The Mac App Store requires you specify if the app uses encryption. -->
-    <!-- Please consult https://developer.apple.com/documentation/bundleresources/information_property_list/itsappusesnonexemptencryption -->
-    <!-- <key>ITSAppUsesNonExemptEncryption</key> -->
-    <!-- Please indicate <true/> or <false/> here. -->
-
-    <!-- Specify the category for your app here. -->
-    <!-- Please consult https://developer.apple.com/documentation/bundleresources/information_property_list/lsapplicationcategorytype -->
-    <!-- <key>LSApplicationCategoryType</key> -->
-    <!-- <string>public.app-category.YOUR-CATEGORY-HERE</string> -->
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>2</integer>
@@ -34,5 +25,84 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>xamarinessentials</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>xamarinessentials</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs Calendar Access</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app needs access to the microphone to capture video</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Contacts</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses camera for qrcode scanning services</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Can we use your location at all times?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Can we use your location when your application is being used?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Can we use your location at all times?</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs access to the photo gallery to save photos and videos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to the photo gallery to save photos and videos.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>mailto</string>
+	</array>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en-US</string>
+		<string>nl-NL</string>
+		<string>ar-AE</string>
+		<string>de-DE</string>
+		<string>fr-FR</string>
+		<string>es-ES</string>
+		<string>pt-PT</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en-US</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>tlssoftwarevn.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>googleapis.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Smart Genealogy © 2024</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.company.smartgenealogy</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.1</string>
+	<key>CFBundleVersion</key>
+	<string>12</string>
 </dict>
 </plist>
