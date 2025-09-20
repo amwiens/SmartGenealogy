@@ -130,4 +130,16 @@
   <data name="StringAppName" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="LabelCreateFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelCreateFileDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelOpenFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelOpenFileDescription" xml:space="preserve">
+    <value />
+  </data>
 </root>

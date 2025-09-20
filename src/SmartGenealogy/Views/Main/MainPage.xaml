@@ -3,18 +3,164 @@
     x:Class="SmartGenealogy.Views.Main.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:helpers="clr-namespace:SmartGenealogy.Helpers"
+    xmlns:local="clr-namespace:SmartGenealogy"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:models="clr-namespace:SmartGenealogy.Models"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Main"
-    Title="Main Page"
     x:DataType="viewModel:MainPageViewModel">
 
-    <VerticalStackLayout Padding="30,0" Spacing="25">
-        <Label
-            SemanticProperties.HeadingLevel="Level1"
-            Style="{StaticResource Headline}"
-            Text="{Binding Title}" />
+    <Grid RowSpacing="0">
+        <ScrollView VerticalScrollBarVisibility="Default">
+            <VisualElement.Behaviors>
+                <animations:ScrollViewScrollBehavior x:Name="ScrollBehavior" />
+            </VisualElement.Behaviors>
 
-        <Button Command="{Binding CreateDatabaseCommand}" Text="Create Database" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <Button Command="{Binding OpenDatabaseCommand}" Text="Open Database" />
-    </VerticalStackLayout>
+                <Border
+                    Grid.Row="1"
+                    Padding="{OnIdiom Phone='5,5,5,10',
+                                      Tablet='15,10',
+                                      Desktop='30,10'}"
+                    Background="{DynamicResource MainWrapperBackgroundColor}"
+                    TranslationY="-30">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30,30,0,0" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout
+                        Margin="{OnIdiom Phone='10,15,10,10',
+                                         Tablet='15,10',
+                                         Desktop='30,10'}"
+                        Padding="5,5"
+                        Spacing="15"
+                        VerticalOptions="Center">
+                        <VisualElement.Behaviors>
+                            <animations:AnimateProgressDouble
+                                Maximum="280"
+                                Minimum="0"
+                                Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                TargetProperty="VerticalStackLayout.Spacing"
+                                From="15"
+                                To="5" />
+                        </VisualElement.Behaviors>
+
+                        <Grid
+                            ColumnDefinitions="0.5*, 0.5*"
+                            ColumnSpacing="15"
+                            RowDefinitions="Auto, Auto"
+                            RowSpacing="15">
+                            <VisualElement.Behaviors>
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.RowSpacing"
+                                    From="15"
+                                    To="5" />
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="Grid.ColumnSpacing"
+                                    From="15"
+                                    To="5" />
+                            </VisualElement.Behaviors>
+
+                            <!--  Create File  -->
+                            <Border Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CreateDatabaseCommand}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Border
+                                        Padding="0"
+                                        Background="{DynamicResource PrimaryColor}"
+                                        HeightRequest="52"
+                                        HorizontalOptions="Center"
+                                        Stroke="{DynamicResource DefaultBorder}"
+                                        StrokeShape="{RoundRectangle CornerRadius=12}"
+                                        StrokeThickness="0"
+                                        WidthRequest="52">
+                                        <controls:RoundedCornerImage
+                                            Background="{DynamicResource White}"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="logo.png"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=20}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelCreateFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelCreateFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <!--  Open File  -->
+                            <Border Grid.Column="1" Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenDatabaseCommand}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Border
+                                        Padding="0"
+                                        Background="{DynamicResource PrimaryColor}"
+                                        HeightRequest="52"
+                                        HorizontalOptions="Center"
+                                        Stroke="{DynamicResource DefaultBorder}"
+                                        StrokeShape="{RoundRectangle CornerRadius=12}"
+                                        StrokeThickness="0"
+                                        WidthRequest="52">
+                                        <controls:RoundedCornerImage
+                                            Background="{DynamicResource White}"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="logo.png"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=20}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelOpenFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelOpenFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>
