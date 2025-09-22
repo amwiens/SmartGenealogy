@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Main.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
@@ -207,4 +208,4 @@
             </Grid>
         </ScrollView>
     </Grid>
-</ContentPage>
+</base:BasePage>
