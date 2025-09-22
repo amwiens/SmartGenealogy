@@ -9,6 +9,8 @@ using FFImageLoading.Maui;
 using RGPopup.Maui.Extensions;
 
 using SmartGenealogy.Handlers;
+using SmartGenealogy.Views.Media;
+
 
 #if WINDOWS
 using Microsoft.UI;
@@ -168,6 +170,7 @@ public static class MauiProgram
         // Register views
         mauiAppBuilder.Services.AddTransient<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<MediaDetailsPage, MediaDetailsPageViewModel>("mediaDetails");
 
         return mauiAppBuilder;
     }

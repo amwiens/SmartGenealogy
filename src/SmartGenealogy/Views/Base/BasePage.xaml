@@ -13,6 +13,7 @@
     </Shell.BackButtonBehavior>
 
     <Grid RowDefinitions="Auto, *">
+        <!--<NavigationPage.TitleView>-->
         <Grid
             Padding="15,5"
             ColumnDefinitions="Auto, *"
@@ -41,11 +42,10 @@
                 TextColor="{Binding BaseTitleColor, Source={x:Reference Root}}"
                 VerticalOptions="Center" />
         </Grid>
+        <!--</NavigationPage.TitleView>-->
 
         <!--  Grid to contain Page Content  -->
-        <Grid
-            x:Name="PageContentGrid"
-            Grid.Row="1"
-            IgnoreSafeArea="True" />
+        <Grid x:Name="PageContentGrid" Grid.Row="1" />
+        <!--<ContentPresenter Grid.Row="1" />-->
     </Grid>
 </ContentPage>

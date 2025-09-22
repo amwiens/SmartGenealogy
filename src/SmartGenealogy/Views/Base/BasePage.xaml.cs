@@ -25,7 +25,7 @@ public partial class BasePage : ContentPage
 	protected void CheckIfRootPage()
 	{
 		var navStack = Shell.Current?.Navigation.NavigationStack;
-		if (navStack is null && navStack!.Count > 1)
+		if (navStack is null || navStack!.Count <= 1)
 		{
 			// Root page
 			backNavigation.IsVisible = false;

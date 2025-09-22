@@ -5,14 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Settings"
+    x:Name="settingsPage"
     x:DataType="{viewModel:SettingsPageViewModel}"
     BaseTitle="{Binding Title}"
     BaseTitleColor="{StaticResource PrimaryColor}">
 
-    <VerticalStackLayout Padding="30,0" Spacing="25">
-        <Label
-            SemanticProperties.HeadingLevel="Level1"
-            Style="{StaticResource Headline}"
-            Text="{Binding Title}" />
-    </VerticalStackLayout>
+    <base:BasePage.PageContent>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label
+                SemanticProperties.HeadingLevel="Level1"
+                Style="{StaticResource Headline}"
+                Text="{Binding Title}" />
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
 </base:BasePage>

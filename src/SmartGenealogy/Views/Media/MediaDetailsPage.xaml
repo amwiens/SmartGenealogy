@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage
-    x:Class="SmartGenealogy.Views.Media.MediaPage"
+    x:Class="SmartGenealogy.Views.Media.MediaDetailsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
-    x:Name="mediaPage"
-    x:DataType="viewModel:MediaPageViewModel"
-    BaseTitle="{Binding Title}"
+    x:Name="mediaDetailPage"
+    x:DataType="viewModel:MediaDetailsPageViewModel"
+    BaseTitle="MediaDetailsPage"
     BaseTitleColor="{StaticResource PrimaryColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
+        <VerticalStackLayout>
             <Label
-                SemanticProperties.HeadingLevel="Level1"
-                Style="{StaticResource Headline}"
-                Text="{Binding Title}" />
-
-            <Button Command="{Binding GoToMediaDeatilsCommand}" Text="Go to details" />
+                HorizontalOptions="Center"
+                Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" />
         </VerticalStackLayout>
     </base:BasePage.PageContent>
 </base:BasePage>
