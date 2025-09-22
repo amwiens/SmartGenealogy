@@ -7,6 +7,9 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private string? _title = "Main Page";
 
+    [ObservableProperty]
+    private bool _isDatabaseOpen = false;
+
     public MainPageViewModel(DatabaseSettings databaseSettings)
     {
         _databaseSettings = databaseSettings;
@@ -47,6 +50,7 @@ public partial class MainPageViewModel : ObservableObject
                     _databaseSettings.DatabasePath = fi.DirectoryName;
                     _databaseSettings.DatabaseName = fi.Name;
 
+                    IsDatabaseOpen = true;
                     WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(result.FullPath));
                 }
             }
@@ -55,5 +59,12 @@ public partial class MainPageViewModel : ObservableObject
         {
 
         }
+    }
+
+    [RelayCommand]
+    private async Task CloseDatabase()
+    {
+        IsDatabaseOpen = false;
+        WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(string.Empty));
     }
 }

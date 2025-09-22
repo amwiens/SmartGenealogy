@@ -142,4 +142,10 @@
   <data name="LabelOpenFileDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelCloseFile" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelCloseFileDescription" xml:space="preserve">
+    <value />
+  </data>
 </root>

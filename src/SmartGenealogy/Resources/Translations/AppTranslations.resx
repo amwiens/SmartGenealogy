@@ -141,4 +141,10 @@
   <data name="LabelOpenFileDescription" xml:space="preserve">
     <value>Open an existing Smart Genealogy Database</value>
   </data>
+  <data name="LabelCloseFile" xml:space="preserve">
+    <value>Close Database</value>
+  </data>
+  <data name="LabelCloseFileDescription" xml:space="preserve">
+    <value>Close an open Smart Genealogy Database</value>
+  </data>
 </root>

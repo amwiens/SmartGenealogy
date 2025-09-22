@@ -157,6 +157,50 @@
                                     </VerticalStackLayout>
                                 </VerticalStackLayout>
                             </Border>
+
+                            <!--  Close File  -->
+                            <Border
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                IsVisible="{Binding IsDatabaseOpen}"
+                                Style="{StaticResource FeatureBorder}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CloseDatabaseCommand}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                    <Border
+                                        Padding="0"
+                                        Background="{DynamicResource PrimaryColor}"
+                                        HeightRequest="52"
+                                        HorizontalOptions="Center"
+                                        Stroke="{DynamicResource DefaultBorder}"
+                                        StrokeShape="{RoundRectangle CornerRadius=12}"
+                                        StrokeThickness="0"
+                                        WidthRequest="52">
+                                        <controls:RoundedCornerImage
+                                            Background="{DynamicResource White}"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="logo.png"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=20}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                    </Border>
+                                    <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Title2}"
+                                            Text="{localization:Translate LabelCloseFile}" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource Footnote}"
+                                            Text="{localization:Translate LabelCloseFileDescription}" />
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Border>
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
