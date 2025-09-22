@@ -28,67 +28,6 @@
         <controls:FlyoutFooter />
     </Shell.FlyoutFooter>
 
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <Grid
-                Padding="30,10"
-                ColumnDefinitions="Auto,*"
-                ColumnSpacing="20">
-                <Image
-                    HeightRequest="25"
-                    HorizontalOptions="Start"
-                    Source="{Binding FlyoutIcon}"
-                    VerticalOptions="Center" />
-                <Label
-                    Grid.Column="1"
-                    Style="{StaticResource Title2}"
-                    Text="{Binding Title}"
-                    TextColor="{DynamicResource White}"
-                    VerticalTextAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <Grid
-                Padding="30,10"
-                ColumnDefinitions="Auto,*"
-                ColumnSpacing="20">
-                <Image
-                    HeightRequest="25"
-                    HorizontalOptions="Start"
-                    Source="{Binding FlyoutIcon}"
-                    VerticalOptions="Center" />
-                <Label
-                    Grid.Column="1"
-                    Style="{StaticResource Title2}"
-                    Text="{Binding Title}"
-                    TextColor="{StaticResource White}"
-                    VerticalTextAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    <FlyoutItem Title="{localization:Translate MenuHome}" Icon="{FontImageSource FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Home}, Size=50, Color={StaticResource White}}">
-        <ShellContent
-            Title=""
-            ContentTemplate="{DataTemplate main:MainPage}"
-            Route="main" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="{localization:Translate MenuMedia}" Icon="{FontImageSource FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Image}, Size=50, Color={StaticResource White}}">
-        <ShellContent
-            Title=""
-            ContentTemplate="{DataTemplate media:MediaPage}"
-            Route="media" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="{localization:Translate MenuSettings}" Icon="{FontImageSource FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Cog}, Size=50, Color={StaticResource White}}">
-        <ShellContent
-            Title=""
-            ContentTemplate="{DataTemplate settings:SettingsPage}"
-            Route="settings" />
-    </FlyoutItem>
+    <!-- Flyout items are now generated in code-behind -->
 
 </Shell>

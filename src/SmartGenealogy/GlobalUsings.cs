@@ -23,6 +23,8 @@ global using SmartGenealogy.ViewModels.Media;
 global using SmartGenealogy.ViewModels.Settings;
 global using SmartGenealogy.Views.Base;
 global using SmartGenealogy.Views.Main;
+global using SmartGenealogy.Views.Media;
+global using SmartGenealogy.Views.Settings;
 
 global using System.ComponentModel;
 global using System.Globalization;
