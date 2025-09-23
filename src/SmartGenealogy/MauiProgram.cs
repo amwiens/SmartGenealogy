@@ -158,7 +158,7 @@ public static class MauiProgram
     {
         // Register view models
         mauiAppBuilder.Services.AddTransient<AppShellViewModel>();
-        mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
+        mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
         mauiAppBuilder.Services.AddTransient<MediaPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
 

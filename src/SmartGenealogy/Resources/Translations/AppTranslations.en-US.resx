@@ -150,4 +150,13 @@
   <data name="LabelGoback" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="LabelUseSystemTheme" xml:space="preserve">
+    <value>Use system theme</value>
+  </data>
+  <data name="LabelDarkmode" xml:space="preserve">
+    <value>Dark mode</value>
+  </data>
+  <data name="LabelVersion" xml:space="preserve">
+    <value />
+  </data>
 </root>

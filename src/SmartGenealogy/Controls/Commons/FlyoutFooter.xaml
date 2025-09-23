@@ -6,36 +6,14 @@
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:sys="clr-namespace:System;assembly=netstandard">
-    <Grid Padding="30,30,30,15" ColumnDefinitions="*, Auto">
-
-        <!--  Copyright  -->
-        <HorizontalStackLayout
-            HorizontalOptions="Start"
-            Spacing="5"
-            VerticalOptions="Center">
-
-            <Image>
-                <Image.Source>
-                    <FontImageSource
-                        FontFamily="SmartGenealogyIcons"
-                        Glyph="{x:Static fonticons:SmartGenealogyIcons.Copyright}"
-                        Size="16"
-                        Color="{DynamicResource White}" />
-                </Image.Source>
-            </Image>
-
-            <Label Text="{localization:Translate StringCopyright}" TextColor="{DynamicResource White}" />
-            <Label Text=" - " TextColor="{DynamicResource White}" />
-            <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:yyyy}'}" TextColor="{DynamicResource White}" />
-        </HorizontalStackLayout>
+    <Grid Padding="30,30,30,15" ColumnDefinitions="*">
 
         <!--  Version info  -->
         <Border
-            Grid.Column="1"
             Padding="10,0"
             Background="{StaticResource White}"
             HeightRequest="24"
-            HorizontalOptions="End"
+            HorizontalOptions="Center"
             Stroke="Transparent"
             StrokeShape="{RoundRectangle CornerRadius=6}"
             VerticalOptions="Center">

@@ -64,6 +64,8 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand]
     private async Task CloseDatabase()
     {
+        _databaseSettings.DatabasePath = string.Empty;
+        _databaseSettings.DatabaseName = string.Empty;
         IsDatabaseOpen = false;
         WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(string.Empty));
     }

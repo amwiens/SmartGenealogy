@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Settings"
     x:Name="settingsPage"
     x:DataType="{viewModel:SettingsPageViewModel}"
@@ -12,10 +14,34 @@
 
     <base:BasePage.PageContent>
         <VerticalStackLayout Padding="30,0" Spacing="25">
-            <Label
-                SemanticProperties.HeadingLevel="Level1"
-                Style="{StaticResource Headline}"
-                Text="{Binding Title}" />
+            <!--  Dark Mode  -->
+            <Grid
+                Grid.Row="4"
+                ColumnDefinitions="*, Auto"
+                ColumnSpacing="10">
+                <Label
+                    IsEnabled="{Binding EnableDarkModeSwitch, Mode=TwoWay}"
+                    Style="{StaticResource HeaderStyle}"
+                    Text="{localization:Translate LabelDarkmode}" />
+
+                <Switch
+                    x:Name="darkModeSwitch"
+                    Grid.Column="1"
+                    HandlerProperties.DisconnectPolicy="Manual"
+                    HorizontalOptions="End"
+                    IsToggled="{Binding DarkModeSwitchToggled, Mode=TwoWay}"
+                    OnColor="{DynamicResource Primary50Color}"
+                    ThumbColor="{DynamicResource PrimaryColor}"
+                    VerticalOptions="Center">
+                    <Switch.Behaviors>
+                        <toolkit:EventToCommandBehavior
+                            BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                            Command="{Binding ToggleDarkModeCommand}"
+                            CommandParameter="{Binding Source={x:Reference darkModeSwitch}, Path=IsToggled}"
+                            EventName="Toggled" />
+                    </Switch.Behaviors>
+                </Switch>
+            </Grid>
         </VerticalStackLayout>
     </base:BasePage.PageContent>
 </base:BasePage>
