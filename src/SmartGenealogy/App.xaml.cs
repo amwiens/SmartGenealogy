@@ -101,7 +101,16 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        return new Window(GetMainPage());
+        var window = new Window(GetMainPage());
+        var windowState = SmartGenealogySettings.WindowState;
+        if (windowState is not null)
+        {
+            window.X = windowState.X;
+            window.Y = windowState.Y;
+            window.Width = windowState.Width;
+            window.Height = windowState.Height;
+        }
+        return window;
     }
 
     protected override void OnStart()
@@ -114,21 +123,9 @@ public partial class App : Application
 
         LocalizationResourceManager.Instance.SetCulture(new CultureInfo(appLanguageCode));
 
-        AppTheme currentTheme = Application.Current!.RequestedTheme;
-
-        if (SmartGenealogySettings.UseSystemTheme)
-        {
-            if (currentTheme == AppTheme.Dark)
-                Application.Current.Resources.ApplyDarkTheme();
-            else
-                Application.Current.Resources.ApplyLightTheme();
-        }
+        if (SmartGenealogySettings.UseDarkMode)
+            Application.Current!.Resources.ApplyDarkTheme();
         else
-        {
-            if (SmartGenealogySettings.UseDarkMode)
-                Application.Current.Resources.ApplyDarkTheme();
-            else
-                Application.Current.Resources.ApplyLightTheme();
-        }
+            Application.Current!.Resources.ApplyLightTheme();
     }
 }

@@ -11,7 +11,7 @@ public record SettingsRecord
 {
     public bool IsFirstLaunching { get; init; } = true;
     public bool UseDarkMode { get; init; } = false;
-    public bool UseSystemTheme { get; init; } = true;
+    public WindowState? WindowState { get; init; } = new();
 }
 
 /// <summary>
@@ -46,7 +46,7 @@ internal static class SmartGenealogySettings
         {
             IsFirstLaunching = IsFirstLaunching,
             UseDarkMode = UseDarkMode,
-            UseSystemTheme = UseSystemTheme,
+            WindowState = WindowState,
         };
 
     /// <summary>
@@ -66,9 +66,9 @@ internal static class SmartGenealogySettings
     public static bool UseDarkMode { get; set; }
 
     /// <summary>
-    /// Indicates whether the application uses the system theme. Defaults to <see langword="true"/>.
+    /// Saves the window state (position and size) of the main application window.
     /// </summary>
-    public static bool UseSystemTheme { get; set; }
+    public static WindowState? WindowState { get; set; }
 
     /// <summary>
     /// Loads settings from the settings file and applies them to the current session.
@@ -108,7 +108,7 @@ internal static class SmartGenealogySettings
     {
         IsFirstLaunching = settings.IsFirstLaunching;
         UseDarkMode = settings.UseDarkMode;
-        UseSystemTheme = settings.UseSystemTheme;
+        WindowState = settings.WindowState;
     }
 
     /// <summary>

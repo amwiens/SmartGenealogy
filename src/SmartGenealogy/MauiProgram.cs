@@ -10,6 +10,8 @@ using RGPopup.Maui.Extensions;
 
 using SmartGenealogy.Handlers;
 using SmartGenealogy.Views.Media;
+using Microsoft.Maui.Platform;
+
 
 
 #if WINDOWS
@@ -126,10 +128,24 @@ public static class MauiProgram
 
                     int width = displayArea.WorkArea.Width * 3 / 4;
                     int height = displayArea.WorkArea.Height - 50;
+                    var windowState = SmartGenealogySettings.WindowState;
 
-                    winuiAppWindow.MoveAndResize(new RectInt32(25, 50, width, height));
+                    if (windowState is not null)
+                        winuiAppWindow.MoveAndResize(new RectInt32((int)windowState.X, (int)windowState.Y, (int)windowState.Width, (int)windowState.Height));
+                    else
+                        winuiAppWindow.MoveAndResize(new RectInt32(25, 50, width, height));
                 });
             });
+            events.AddWindows(windows => windows
+                .OnClosed((window, args) =>
+                {
+                    IWindow appWindow = window.GetWindow()!;
+                    SmartGenealogySettings.WindowState!.X = appWindow.X;
+                    SmartGenealogySettings.WindowState!.Y = appWindow.Y;
+                    SmartGenealogySettings.WindowState!.Width = appWindow.Width;
+                    SmartGenealogySettings.WindowState!.Height = appWindow.Height;
+                    SmartGenealogySettings.SaveSettings();
+                }));
 #endif
         });
         builder.Services.AddLocalization();
