@@ -8,7 +8,7 @@ This application is still in development. Core functionality is being implemente
 
 ## Tech Stack
 
-- .NET 9 / .NET MAUI
+- .NET 10 / .NET MAUI
 - C#
 - MVVM Architecture
 - Community Toolkit MAUI
