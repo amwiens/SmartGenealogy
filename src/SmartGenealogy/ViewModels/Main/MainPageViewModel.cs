@@ -2,6 +2,7 @@
 
 public partial class MainPageViewModel : ObservableObject
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseSettings _databaseSettings;
 
     [ObservableProperty]
@@ -10,15 +11,16 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private bool _isDatabaseOpen = false;
 
-    public MainPageViewModel(DatabaseSettings databaseSettings)
+    public MainPageViewModel(IServiceProvider serviceProvider, DatabaseSettings databaseSettings)
     {
+        _serviceProvider = serviceProvider;
         _databaseSettings = databaseSettings;
     }
 
     [RelayCommand]
     private async Task CreateDatabase()
     {
-
+        await PopupNavigation.Instance.PushAsync(new NewDatabasePopupPage(_serviceProvider, _databaseSettings));
     }
 
     [RelayCommand]

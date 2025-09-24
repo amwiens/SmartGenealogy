@@ -159,4 +159,13 @@
   <data name="LabelVersion" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="LabelCreateNewDatabase" xml:space="preserve">
+    <value>Create Database</value>
+  </data>
+  <data name="ButtonCreateDatabase" xml:space="preserve">
+    <value>Create Database</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

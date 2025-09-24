@@ -14,6 +14,7 @@ using Microsoft.Maui.Platform;
 
 
 
+
 #if WINDOWS
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -163,9 +164,10 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterRepositories(this MauiAppBuilder mauiAppBuilder)
     {
         // Register repositories
-
+        mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
 
         mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
+        mauiAppBuilder.Services.AddSingleton<DatabaseInitializer>();
 
         return mauiAppBuilder;
     }

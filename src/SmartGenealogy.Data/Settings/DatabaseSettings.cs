@@ -18,5 +18,5 @@ public class DatabaseSettings
     /// <summary>
     /// Connection string.
     /// </summary>
-    public string? ConnectionString => !string.IsNullOrEmpty(DatabasePath) ? $"DataSource={DatabasePath};" : null;
+    public string? ConnectionString => !string.IsNullOrEmpty(DatabasePath) ? $"DataSource={Path.Combine(DatabasePath, DatabaseName!)};" : null;
 }
