@@ -13,77 +13,57 @@
     BaseTitle="{localization:Translate LabelTools}"
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <base:BasePage.Resources>
-        <Style x:Key="ActionIconContainerStyle" TargetType="Border">
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Background" Value="{DynamicResource Primary10Color}" />
-            <Setter Property="WidthRequest" Value="50" />
-            <Setter Property="HeightRequest" Value="50" />
-            <Setter Property="Stroke" Value="{DynamicResource DefaultBorder}" />
-            <Setter Property="StrokeThickness" Value="1" />
-        </Style>
-
-        <Style x:Key="ActionIconStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="26" />
-            <Setter Property="HorizontalOptions" Value="Center" />
-            <Setter Property="VerticalOptions" Value="Center" />
-        </Style>
-
-        <Style x:Key="ChevronIconContainerStyle" TargetType="Border">
-            <Setter Property="Padding" Value="5" />
-            <Setter Property="Background" Value="{DynamicResource MainWrapperBackgroundColor}" />
-            <Setter Property="WidthRequest" Value="30" />
-            <Setter Property="HeightRequest" Value="30" />
-            <Setter Property="StrokeShape" Value="{RoundRectangle CornerRadius=15}" />
-        </Style>
-    </base:BasePage.Resources>
-
     <base:BasePage.PageContent>
-        <Grid RowDefinitions="Auto,*" RowSpacing="15">
-            <controls:HeaderTemplate
-                Margin="30,30,30,0"
-                IconColor="{DynamicResource PrimaryColor}"
-                IconFontFamily="FaPro"
-                IconSize="35"
-                IconText="{x:Static fonticons:FaPro.Tools}"
-                Text="{localization:Translate LabelTools}"
-                TextSize="25" />
+        <Grid RowDefinitions="Auto,Auto,Auto">
 
-            <!--  Tools Trigger  -->
-            <Grid Grid.Row="1">
-                <ScrollView>
-                    <StackLayout Padding="30,0,30,30" Spacing="18">
-                        <Border Padding="20,22" Style="{StaticResource FeatureBorder}">
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
-                            </Border.GestureRecognizers>
-                            <Grid
-                                ColumnDefinitions="Auto,*,Auto"
-                                ColumnSpacing="20"
-                                VerticalOptions="Center">
-                                <Border Style="{StaticResource ActionIconContainerStyle}">
-                                    <Label
-                                        FontFamily="FaPro"
-                                        Style="{StaticResource ActionIconStyle}"
-                                        Text="{x:Static fonticons:FaPro.Tools}"
-                                        TextColor="{DynamicResource PrimaryColor}" />
-                                </Border>
+            <!--  Fact types  -->
+            <StackLayout Grid.Row="1" Margin="20">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="{localization:Translate LabelFactTypes}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
 
-                                <Label
-                                    Grid.Column="1"
-                                    FontSize="16"
-                                    Style="{StaticResource Title2}"
-                                    Text="{localization:Translate LabelManageFactTypes}"
-                                    VerticalOptions="Center" />
+                <!--  Manage fact types  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        FontFamily="MaterialDesign"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonticons:MaterialDesignIcons.Event}"
+                        TextColor="{DynamicResource T_Primary}"
+                        VerticalOptions="Center" />
 
-                                <Border Grid.Column="2" Style="{StaticResource ChevronIconContainerStyle}">
-                                    <Label Style="{StaticResource ChevronIconStyle}" />
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </StackLayout>
-                </ScrollView>
-            </Grid>
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="{localization:Translate LabelManageFactTypes}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </StackLayout>
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

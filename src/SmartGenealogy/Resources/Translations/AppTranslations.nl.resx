@@ -175,4 +175,7 @@
   <data name="LabelManageFactTypes" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelFactTypes" xml:space="preserve">
+    <value />
+  </data>
 </root>
