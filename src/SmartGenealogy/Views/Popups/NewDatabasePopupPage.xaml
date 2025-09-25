@@ -91,7 +91,8 @@
                                 FontFamily="FaRegular"
                                 HeightRequest="42"
                                 Text="{x:Static fonticons:FaRegular.FolderOpen}"
-                                TextColor="{DynamicResource White}" />
+                                TextColor="{DynamicResource White}"
+                                ToolTipProperties.Text="{localization:Translate ToolTipOpenFolder}" />
 
                         </Grid>
 
