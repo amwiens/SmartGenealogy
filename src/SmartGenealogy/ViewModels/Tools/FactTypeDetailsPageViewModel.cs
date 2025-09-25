@@ -92,4 +92,17 @@ public partial class FactTypeDetailsPageViewModel : ObservableObject, IQueryAttr
             IsBusy = false;
         }
     }
+
+    [RelayCommand]
+    private async Task EditFactType()
+    {
+
+    }
+
+    [RelayCommand]
+    private async Task DeleteFactType()
+    {
+        await _factTypeRepository.DeleteItemAsync(_factType!.Id);
+        await Shell.Current.GoToAsync("..");
+    }
 }

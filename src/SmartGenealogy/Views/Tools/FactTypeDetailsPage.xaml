@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
@@ -17,6 +18,8 @@
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+
         <Style x:Key="ControlsBlockContainer" TargetType="Border">
             <Setter Property="BackgroundColor" Value="{DynamicResource MainWrapperBackgroundColor}" />
             <Setter Property="Padding" Value="18" />
@@ -33,6 +36,29 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <Border Style="{StaticResource ControlsBlockContainer}">
                 <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout HorizontalOptions="End">
+                        <Button
+                            Command="{Binding EditFactTypeCommand}"
+                            CornerRadius="14"
+                            FontAttributes="Bold"
+                            FontFamily="FaRegular"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static fonticons:FaRegular.Edit}"
+                            TextColor="{DynamicResource White}"
+                            ToolTipProperties.Text="{localization:Translate ToolTipEdit}" />
+
+                        <Button
+                            Command="{Binding DeleteFactTypeCommand}"
+                            CornerRadius="14"
+                            FontAttributes="Bold"
+                            FontFamily="FaRegular"
+                            IsEnabled="{Binding IsBuiltIn, Converter={StaticResource InverseBooleanConverter}}"
+                            Style="{StaticResource DeleteButtonStyle}"
+                            Text="{x:Static fonticons:FaRegular.TrashAlt}"
+                            TextColor="{DynamicResource White}"
+                            ToolTipProperties.Text="{localization:Translate ToolTipDelete}" />
+                    </HorizontalStackLayout>
+
                     <Label
                         Margin="0,0,0,20"
                         Style="{StaticResource Title1}"

@@ -180,4 +180,13 @@
   <data name="LabelLoading" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="ToolTipDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ToolTipEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ToolTipAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
 </root>

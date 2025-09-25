@@ -8,9 +8,6 @@ public partial class FactTypesPageViewModel : ObservableObject
     bool _isBusy;
 
     [ObservableProperty]
-    bool  _isNotBusy;
-
-    [ObservableProperty]
     private List<FactType> _factTypes = [];
 
     public FactTypesPageViewModel(FactTypeRepository factTypeRepository)
@@ -22,12 +19,16 @@ public partial class FactTypesPageViewModel : ObservableObject
     private async Task Appearing()
     {
         IsBusy = true;
-        IsNotBusy = false;
 
         FactTypes = await _factTypeRepository.ListAsync();
 
         IsBusy = false;
-        IsNotBusy = true;
+    }
+
+    [RelayCommand]
+    private async Task AddFactType()
+    {
+
     }
 
     [RelayCommand]
