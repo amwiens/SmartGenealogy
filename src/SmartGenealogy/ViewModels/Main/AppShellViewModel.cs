@@ -11,6 +11,7 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<DatabaseOp
     {
         new FlyoutMenuItem { Title = "Home", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Home }, Route = "main" },
         new FlyoutMenuItem { Title = "Media", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Image }, Route = "media" },
+        new FlyoutMenuItem { Title = "Tools", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Tools }, Route = "tools" },
         new FlyoutMenuItem { Title = "Settings", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Cog }, Route = "settings" }
     };
 

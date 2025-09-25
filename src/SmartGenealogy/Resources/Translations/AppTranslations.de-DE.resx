@@ -169,4 +169,10 @@
   <data name="ButtonCancel" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelTools" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelManageFactTypes" xml:space="preserve">
+    <value />
+  </data>
 </root>

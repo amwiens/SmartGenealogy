@@ -7,8 +7,9 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
     x:Name="mediaDetailPage"
     x:DataType="viewModel:MediaDetailsPageViewModel"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
     BaseTitle="MediaDetailsPage"
-    BaseTitleColor="{StaticResource PrimaryColor}">
+    BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
         <VerticalStackLayout>

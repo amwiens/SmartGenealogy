@@ -33,6 +33,7 @@ public partial class AppShell : Shell, IRecipient<DatabaseOpenMessage>
             {
                 "main" => new ShellContent { ContentTemplate = new DataTemplate(typeof(MainPage)), Route = "main" },
                 "media" => new ShellContent { ContentTemplate = new DataTemplate(typeof(MediaPage)), Route = "media" },
+                "tools" => new ShellContent { ContentTemplate = new DataTemplate(typeof(ToolsPage)), Route = "tools" },
                 "settings" => new ShellContent { ContentTemplate = new DataTemplate(typeof(SettingsPage)), Route = "settings" },
                 _ => null
             };

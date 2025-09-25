@@ -15,6 +15,7 @@ using Microsoft.Maui.Platform;
 
 
 
+
 #if WINDOWS
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -178,6 +179,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<AppShellViewModel>();
         mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
         mauiAppBuilder.Services.AddTransient<MediaPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
 
         return mauiAppBuilder;
@@ -189,6 +191,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<MediaDetailsPage, MediaDetailsPageViewModel>("mediaDetails");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
 
         return mauiAppBuilder;
     }

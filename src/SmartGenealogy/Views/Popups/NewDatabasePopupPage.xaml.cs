@@ -17,7 +17,7 @@ public partial class NewDatabasePopupPage : PopupPage
         try
         {
             var result = await FolderPicker.Default.PickAsync();
-            if (result != null)
+            if (result != null && result.Folder != null)
             {
                 databasePath.Text = result.Folder!.Path;
             }

@@ -9,8 +9,9 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Settings"
     x:Name="settingsPage"
     x:DataType="{viewModel:SettingsPageViewModel}"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
     BaseTitle="{Binding Title}"
-    BaseTitleColor="{StaticResource PrimaryColor}">
+    BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
         <VerticalStackLayout Padding="30,0" Spacing="25">

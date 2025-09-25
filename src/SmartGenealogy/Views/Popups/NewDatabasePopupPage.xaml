@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui">
@@ -52,7 +53,7 @@
                             Margin="0,20"
                             ColumnDefinitions="*,Auto"
                             ColumnSpacing="12"
-                            RowDefinitions="Auto,Auto,Auto,Auto"
+                            RowDefinitions="Auto,Auto,Auto"
                             RowSpacing="16">
 
                             <Border
@@ -83,13 +84,13 @@
                             <Button
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Margin="0,10"
                                 BackgroundColor="{DynamicResource PrimaryColor}"
                                 Clicked="SelectFolderButton_Clicked"
                                 CornerRadius="14"
                                 FontAttributes="Bold"
-                                HeightRequest="50"
-                                Text="{localization:Translate ButtonCreateDatabase}"
+                                FontFamily="FaRegular"
+                                HeightRequest="42"
+                                Text="{x:Static fonticons:FaRegular.FolderOpen}"
                                 TextColor="{DynamicResource White}" />
 
                         </Grid>

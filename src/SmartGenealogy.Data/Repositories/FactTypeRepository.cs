@@ -93,8 +93,8 @@ public class FactTypeRepository
                 UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
                 Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
                 IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
-                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
-                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
             factTypes.Add(factType);
         }
@@ -133,8 +133,8 @@ public class FactTypeRepository
                 UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
                 Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
                 IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
-                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
-                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
             factTypes.Add(factType);
         }
@@ -172,8 +172,8 @@ public class FactTypeRepository
                 UsePlace = reader.GetBoolean(reader.GetOrdinal("UsePlace")),
                 Sentence = reader.IsDBNull(reader.GetOrdinal("Sentence")) ? null : reader.GetString(reader.GetOrdinal("Sentence")),
                 IsBuiltIn = reader.GetBoolean(reader.GetOrdinal("IsBuiltIn")),
-                DateAdded = reader.GetDateTime(reader.GetOrdinal("Id")),
-                DateChanged = reader.GetDateTime(reader.GetOrdinal("Id"))
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
 
             return factType;
