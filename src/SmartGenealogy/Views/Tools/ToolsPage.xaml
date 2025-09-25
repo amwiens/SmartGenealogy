@@ -38,7 +38,7 @@
                         FontSize="22"
                         HorizontalOptions="Start"
                         Text="{x:Static fonticons:MaterialDesignIcons.Event}"
-                        TextColor="{DynamicResource T_Primary}"
+                        TextColor="{DynamicResource PrimaryColor}"
                         VerticalOptions="Center" />
 
                     <Label

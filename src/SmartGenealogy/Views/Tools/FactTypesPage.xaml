@@ -29,12 +29,37 @@
                 <VerticalStackLayout BindableLayout.ItemsSource="{Binding FactTypes}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="models:FactType">
-                            <Border>
-                                <VerticalStackLayout Padding="10">
-                                    <Label FontSize="24" Text="{Binding Name}" />
-                                    <Label Text="{Binding Sentence}" />
-                                </VerticalStackLayout>
-                            </Border>
+                            <StackLayout Margin="5">
+                                <!--  Manage fact types  -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="40" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        FontSize="15"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Name}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        FontFamily="IonIcons"
+                                        FontSize="15"
+                                        HorizontalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                                        TextColor="{DynamicResource BaseIconColor}"
+                                        VerticalOptions="Center" />
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+
+                                <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />
+                            </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
