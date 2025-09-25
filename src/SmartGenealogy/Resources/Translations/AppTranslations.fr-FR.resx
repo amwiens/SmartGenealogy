@@ -178,4 +178,7 @@
   <data name="LabelFactTypes" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelLoading" xml:space="preserve">
+    <value />
+  </data>
 </root>

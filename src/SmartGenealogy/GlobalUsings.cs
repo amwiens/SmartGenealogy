@@ -18,6 +18,7 @@ global using RGPopup.Maui.Services;
 
 global using SmartGenealogy.Controls;
 global using SmartGenealogy.Data;
+global using SmartGenealogy.Data.Models;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Settings;
 global using SmartGenealogy.Enums;
@@ -29,6 +30,8 @@ global using SmartGenealogy.Resources.FontIcons;
 global using SmartGenealogy.Resources.Themes;
 global using SmartGenealogy.Resources.Translations;
 global using SmartGenealogy.Settings;
+global using SmartGenealogy.Services;
+global using SmartGenealogy.Utilities;
 global using SmartGenealogy.ViewModels.Main;
 global using SmartGenealogy.ViewModels.Media;
 global using SmartGenealogy.ViewModels.Settings;

@@ -12,16 +12,68 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Tools"
     x:Name="factTypesPage"
     x:DataType="{viewModel:FactTypeDetailsPageViewModel}"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle="Fact Type"
     BaseTitleColor="{StaticResource BaseTextColor}">
 
+    <base:BasePage.Resources>
+        <Style x:Key="ControlsBlockContainer" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{DynamicResource MainWrapperBackgroundColor}" />
+            <Setter Property="Padding" Value="18" />
+            <Setter Property="Stroke" Value="{DynamicResource DefaultBorder}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeDashArray" Value="10,8" />
+            <Setter Property="StrokeDashOffset" Value="1" />
+            <Setter Property="Margin" Value="0,10,0,30" />
+            <Setter Property="StrokeShape" Value="{RoundRectangle CornerRadius='16'}" />
+        </Style>
+    </base:BasePage.Resources>
+
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" />
-        </VerticalStackLayout>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Border Style="{StaticResource ControlsBlockContainer}">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title1}"
+                        Text="{Binding Name}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding Abbreviation}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding GedcomTag}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding UseValue}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding UseDate}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding UsePlace}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding Sentence}" />
+
+                    <Label
+                        Margin="0,0,0,20"
+                        Style="{StaticResource Title2}"
+                        Text="{Binding IsBuiltIn}" />
+                </VerticalStackLayout>
+            </Border>
+        </ScrollView>
     </base:BasePage.PageContent>
 </base:BasePage>

@@ -177,4 +177,7 @@
   <data name="LabelFactTypes" xml:space="preserve">
     <value>Fact Types</value>
   </data>
+  <data name="LabelLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
 </root>

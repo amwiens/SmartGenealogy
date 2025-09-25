@@ -25,11 +25,21 @@
 
     <base:BasePage.PageContent>
         <Grid>
+            <controls:LoadingIndicator
+                BackgroundColor="{DynamicResource BasePageColor}"
+                HorizontalOptions="Center"
+                IndicatorColor="{DynamicResource PrimaryColor}"
+                IsBusy="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                LoadingText="{localization:Translate LabelLoading}"
+                LoadingTextColor="{DynamicResource PrimaryColor}" />
+
             <ScrollView>
                 <VerticalStackLayout BindableLayout.ItemsSource="{Binding FactTypes}">
+
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="models:FactType">
-                            <StackLayout Margin="5">
+                            <StackLayout Margin="5" IsVisible="{Binding IsNotBusy, Source={RelativeSource AncestorType={x:Type viewModel:FactTypesPageViewModel}}, x:DataType=viewModel:FactTypesPageViewModel}">
                                 <!--  Manage fact types  -->
                                 <Grid>
                                     <Grid.ColumnDefinitions>

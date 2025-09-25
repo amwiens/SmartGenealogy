@@ -159,6 +159,9 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
+        // Register services
+        mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+
         return mauiAppBuilder;
     }
 
