@@ -13,7 +13,7 @@
     x:Name="factTypesPage"
     x:DataType="{viewModel:FactTypesPageViewModel}"
     BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Fact Types"
+    BaseTitle="{localization:Translate LabelFactTypes}"
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.Behaviors>
@@ -54,7 +54,7 @@
                                         VerticalOptions="Center" />
 
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OpenFactTypeDetailsCommand, Source={RelativeSource AncestorType={x:Type viewModel:FactTypesPageViewModel}}, x:DataType=viewModel:FactTypesPageViewModel}" CommandParameter="{Binding .}" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
 

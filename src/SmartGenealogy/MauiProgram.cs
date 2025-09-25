@@ -192,6 +192,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<MainPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<MediaDetailsPage, MediaDetailsPageViewModel>("mediaDetails");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypeDetailsPage, FactTypeDetailsPageViewModel>("factTypeDetails");
 
         return mauiAppBuilder;
     }

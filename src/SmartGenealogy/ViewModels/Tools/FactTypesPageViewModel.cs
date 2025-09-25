@@ -19,4 +19,10 @@ public partial class FactTypesPageViewModel : ObservableObject
     {
         FactTypes = await _factTypeRepository.ListAsync();
     }
+
+    [RelayCommand]
+    private void OpenFactTypeDetails()
+    {
+        Shell.Current.GoToAsync("factTypeDetails");
+    }
 }
