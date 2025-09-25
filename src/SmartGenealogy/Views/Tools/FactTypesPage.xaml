@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
@@ -13,8 +14,12 @@
     x:Name="factTypesPage"
     x:DataType="{viewModel:FactTypesPageViewModel}"
     BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="Fact Types"
+    BaseTitle="{localization:Translate LabelFactTypes}"
     BaseTitleColor="{StaticResource BaseTextColor}">
+
+    <base:BasePage.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </base:BasePage.Resources>
 
     <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
@@ -24,17 +29,65 @@
     </base:BasePage.Behaviors>
 
     <base:BasePage.PageContent>
-        <Grid>
-            <ScrollView>
+        <Grid RowDefinitions="Auto, *">
+            <controls:LoadingIndicator
+                Grid.Row="0"
+                BackgroundColor="{DynamicResource BasePageColor}"
+                HorizontalOptions="Center"
+                IndicatorColor="{DynamicResource PrimaryColor}"
+                IsBusy="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                LoadingText="{localization:Translate LabelLoading}"
+                LoadingTextColor="{DynamicResource PrimaryColor}" />
+
+            <HorizontalStackLayout Grid.Row="0" HorizontalOptions="End">
+                <Button
+                    Command="{Binding AddFactTypeCommand}"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontFamily="FaRegular"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static fonticons:FaRegular.PlusSquare}"
+                    TextColor="{DynamicResource White}"
+                    ToolTipProperties.Text="{localization:Translate ToolTipAdd}" />
+            </HorizontalStackLayout>
+
+            <ScrollView Grid.Row="1">
                 <VerticalStackLayout BindableLayout.ItemsSource="{Binding FactTypes}">
+
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="models:FactType">
-                            <Border>
-                                <VerticalStackLayout Padding="10">
-                                    <Label FontSize="24" Text="{Binding Name}" />
-                                    <Label Text="{Binding Sentence}" />
-                                </VerticalStackLayout>
-                            </Border>
+                            <StackLayout Margin="5" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}, Source={RelativeSource AncestorType={x:Type viewModel:FactTypesPageViewModel}}, x:DataType=viewModel:FactTypesPageViewModel}">
+                                <!--  Manage fact types  -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="40" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        FontSize="15"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Name}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        FontFamily="IonIcons"
+                                        FontSize="15"
+                                        HorizontalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                                        TextColor="{DynamicResource BaseIconColor}"
+                                        VerticalOptions="Center" />
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenFactTypeDetailsCommand, Source={RelativeSource AncestorType={x:Type viewModel:FactTypesPageViewModel}}, x:DataType=viewModel:FactTypesPageViewModel}" CommandParameter="{Binding .}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+
+                                <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="1" />
+                            </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>

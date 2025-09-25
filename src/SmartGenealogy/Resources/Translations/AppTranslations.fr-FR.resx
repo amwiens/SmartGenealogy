@@ -175,4 +175,19 @@
   <data name="LabelManageFactTypes" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelFactTypes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelLoading" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolTipDelete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolTipEdit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolTipAdd" xml:space="preserve">
+    <value />
+  </data>
 </root>

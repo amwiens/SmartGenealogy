@@ -159,6 +159,9 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
+        // Register services
+        mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+
         return mauiAppBuilder;
     }
 
@@ -192,6 +195,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<MainPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<MediaDetailsPage, MediaDetailsPageViewModel>("mediaDetails");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypeDetailsPage, FactTypeDetailsPageViewModel>("factTypeDetails");
 
         return mauiAppBuilder;
     }

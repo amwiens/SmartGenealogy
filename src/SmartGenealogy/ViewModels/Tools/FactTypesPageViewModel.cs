@@ -1,10 +1,11 @@
-﻿using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.ViewModels.Tools;
+﻿namespace SmartGenealogy.ViewModels.Tools;
 
 public partial class FactTypesPageViewModel : ObservableObject
 {
     private readonly FactTypeRepository _factTypeRepository;
+
+    [ObservableProperty]
+    bool _isBusy;
 
     [ObservableProperty]
     private List<FactType> _factTypes = [];
@@ -17,6 +18,22 @@ public partial class FactTypesPageViewModel : ObservableObject
     [RelayCommand]
     private async Task Appearing()
     {
+        IsBusy = true;
+
         FactTypes = await _factTypeRepository.ListAsync();
+
+        IsBusy = false;
+    }
+
+    [RelayCommand]
+    private async Task AddFactType()
+    {
+
+    }
+
+    [RelayCommand]
+    private void OpenFactTypeDetails(FactType factType)
+    {
+        Shell.Current.GoToAsync($"factTypeDetails?id={factType.Id}");
     }
 }
