@@ -3,26 +3,31 @@
     x:Class="SmartGenealogy.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
     xmlns:media="clr-namespace:SmartGenealogy.Views.Media"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Main"
-    Title="{Binding Title}"
-    x:DataType="viewModels:AppShellViewModel">
+    FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
+    FlyoutBehavior="{OnIdiom Desktop=Locked,
+                             Default=Flyout}"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutWidth="315">
 
-    <ShellContent
-        Title="Main"
-        ContentTemplate="{DataTemplate main:MainPage}"
-        Route="main" />
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
 
-    <ShellContent
-        Title="Media"
-        ContentTemplate="{DataTemplate media:MediaPage}"
-        Route="media" />
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
 
-    <ShellContent
-        Title="Settings"
-        ContentTemplate="{DataTemplate settings:SettingsPage}"
-        Route="settings" />
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <!-- Flyout items are now generated in code-behind -->
 
 </Shell>

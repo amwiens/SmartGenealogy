@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage
+    x:Class="SmartGenealogy.Views.Popups.NewDatabasePopupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui">
+
+    <rg:PopupPage.Animation>
+        <animation:MoveAnimation PositionIn="Bottom" PositionOut="Bottom" />
+    </rg:PopupPage.Animation>
+
+    <Grid
+        Margin="0,100,0,0"
+        HorizontalOptions="{OnIdiom Phone='Fill',
+                                    Default='Center'}"
+        VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Desktop='600', Default='*'}" />
+        </Grid.ColumnDefinitions>
+
+        <Border BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+
+            <Grid RowDefinitions="Auto,1,*,Auto">
+                <Label
+                    Margin="0,20"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource Title2}"
+                    Text="{localization:Translate LabelCreateNewDatabase}" />
+
+                <Rectangle
+                    Grid.Row="1"
+                    Margin="20,0,20,10"
+                    Fill="{DynamicResource BaseSeparatorColor}"
+                    HeightRequest="1"
+                    VerticalOptions="Fill" />
+
+                <ScrollView
+                    Grid.Row="2"
+                    Margin="20,16"
+                    BackgroundColor="Transparent"
+                    VerticalScrollBarVisibility="Never">
+
+                    <VerticalStackLayout>
+                        <Grid
+                            Margin="0,20"
+                            ColumnDefinitions="*,Auto"
+                            ColumnSpacing="12"
+                            RowDefinitions="Auto,Auto,Auto"
+                            RowSpacing="16">
+
+                            <Border
+                                Grid.ColumnSpan="2"
+                                Padding="20,5"
+                                Background="{DynamicResource EntryAndEditorsBackgroundColor}">
+                                <handlers:BorderlessEntry
+                                    x:Name="databaseName"
+                                    HeightRequest="42"
+                                    Placeholder="Database name"
+                                    PlaceholderColor="{DynamicResource BaseLightTextColor}"
+                                    TextColor="{DynamicResource BaseTextColor}" />
+                            </Border>
+
+                            <Border
+                                Grid.Row="1"
+                                Padding="20,5"
+                                Background="{DynamicResource EntryAndEditorsBackgroundColor}">
+                                <handlers:BorderlessEntry
+                                    x:Name="databasePath"
+                                    HeightRequest="42"
+                                    IsReadOnly="True"
+                                    Placeholder="Database path"
+                                    PlaceholderColor="{DynamicResource BaseLightTextColor}"
+                                    TextColor="{DynamicResource BaseTextColor}" />
+                            </Border>
+
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                Clicked="SelectFolderButton_Clicked"
+                                CornerRadius="14"
+                                FontAttributes="Bold"
+                                FontFamily="FaRegular"
+                                HeightRequest="42"
+                                Text="{x:Static fonticons:FaRegular.FolderOpen}"
+                                TextColor="{DynamicResource White}" />
+
+                        </Grid>
+
+                        <Grid
+                            Margin="0,20"
+                            ColumnDefinitions="*,*"
+                            RowDefinitions="Auto"
+                            RowSpacing="16">
+
+                            <Button
+                                Margin="0,10"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                Clicked="SubmitButton_Clicked"
+                                CornerRadius="14"
+                                FontAttributes="Bold"
+                                HeightRequest="50"
+                                Text="{localization:Translate ButtonCreateDatabase}"
+                                TextColor="{DynamicResource White}" />
+
+                            <Button
+                                Grid.Column="1"
+                                Margin="0,10"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                Clicked="CancelButton_Clicked"
+                                CornerRadius="14"
+                                FontAttributes="Bold"
+                                HeightRequest="50"
+                                Text="{localization:Translate ButtonCancel}"
+                                TextColor="{DynamicResource White}" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Grid>
+        </Border>
+    </Grid>
+</rg:PopupPage>

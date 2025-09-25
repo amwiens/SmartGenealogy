@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Media.MediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
-    Title="Media Page"
-    x:DataType="viewModel:MediaPageViewModel">
+    x:Name="mediaPage"
+    x:DataType="viewModel:MediaPageViewModel"
+    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BaseTitle="{Binding Title}"
+    BaseTitleColor="{StaticResource BaseTextColor}">
 
-    <VerticalStackLayout Padding="30,0" Spacing="25">
-        <Label
-            SemanticProperties.HeadingLevel="Level1"
-            Style="{StaticResource Headline}"
-            Text="{Binding Title}" />
-    </VerticalStackLayout>
-</ContentPage>
+    <base:BasePage.PageContent>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label
+                SemanticProperties.HeadingLevel="Level1"
+                Style="{StaticResource Headline}"
+                Text="{Binding Title}" />
+
+            <Button Command="{Binding GoToMediaDeatilsCommand}" Text="Go to details" />
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

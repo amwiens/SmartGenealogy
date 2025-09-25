@@ -8,4 +8,11 @@ public partial class MediaPageViewModel : ObservableObject
     public MediaPageViewModel()
     {
     }
+
+    [RelayCommand]
+    private void GoToMediaDeatils()
+    {
+        // Navigate to the MediaDetailsPage
+        Shell.Current.GoToAsync("mediaDetails");
+    }
 }

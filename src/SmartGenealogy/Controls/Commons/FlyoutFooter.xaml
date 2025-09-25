@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Controls.FlyoutFooter"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    xmlns:sys="clr-namespace:System;assembly=netstandard">
+    <Grid Padding="30,30,30,15" ColumnDefinitions="*">
+
+        <!--  Version info  -->
+        <Border
+            Padding="10,0"
+            Background="{StaticResource White}"
+            HeightRequest="24"
+            HorizontalOptions="Center"
+            Stroke="Transparent"
+            StrokeShape="{RoundRectangle CornerRadius=6}"
+            VerticalOptions="Center">
+            <Label
+                x:Name="labelVersion"
+                FontSize="10"
+                HorizontalOptions="Center"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{localization:Translate LabelVersion}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding AppVersion}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Border>
+    </Grid>
+</ContentView>

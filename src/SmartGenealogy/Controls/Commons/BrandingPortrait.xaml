@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Controls.BrandingPortrait"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
+    x:Name="Root">
+
+    <VerticalStackLayout HorizontalOptions="Start" Spacing="7">
+
+        <Border
+            Padding="0"
+            BackgroundColor="{DynamicResource White}"
+            HeightRequest="50"
+            HorizontalOptions="Start"
+            Stroke="{DynamicResource Primary10Color}"
+            StrokeShape="{RoundRectangle CornerRadius=12}"
+            StrokeThickness="2"
+            WidthRequest="50">
+            <controls:RoundedCornerImage
+                Background="{DynamicResource White}"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                Source="logo.png"
+                Stroke="Transparent"
+                StrokeShape="{RoundRectangle CornerRadius=20}"
+                VerticalOptions="Center"
+                WidthRequest="40" />
+        </Border>
+
+        <VerticalStackLayout HorizontalOptions="Start">
+            <Label
+                x:Name="brandName"
+                Style="{StaticResource Title2}"
+                Text="Maui Kit"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="Start" />
+
+            <Label
+                x:Name="sloganText"
+                Style="{StaticResource Footnote}"
+                Text="App Design Studio"
+                VerticalOptions="Start" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentView>

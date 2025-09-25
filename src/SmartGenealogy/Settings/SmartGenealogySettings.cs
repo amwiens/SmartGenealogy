@@ -9,7 +9,9 @@ namespace SmartGenealogy.Settings;
 /// </summary>
 public record SettingsRecord
 {
+    public bool IsFirstLaunching { get; init; } = true;
     public bool UseDarkMode { get; init; } = false;
+    public WindowState? WindowState { get; init; } = new();
 }
 
 /// <summary>
@@ -42,7 +44,9 @@ internal static class SmartGenealogySettings
     public static SettingsRecord CurrentSettings =>
         new()
         {
+            IsFirstLaunching = IsFirstLaunching,
             UseDarkMode = UseDarkMode,
+            WindowState = WindowState,
         };
 
     /// <summary>
@@ -52,9 +56,19 @@ internal static class SmartGenealogySettings
     private static string _previousSettingsJson = string.Empty;
 
     /// <summary>
+    /// Indicates whether the application is first launching. Defaults to <see langword="true"/>.
+    /// </summary>
+    public static bool IsFirstLaunching { get; set; }
+
+    /// <summary>
     /// Indicates whether the application uses a dark theme. Defaults to <see langword="false"/>.
     /// </summary>
     public static bool UseDarkMode { get; set; }
+
+    /// <summary>
+    /// Saves the window state (position and size) of the main application window.
+    /// </summary>
+    public static WindowState? WindowState { get; set; }
 
     /// <summary>
     /// Loads settings from the settings file and applies them to the current session.
@@ -92,7 +106,9 @@ internal static class SmartGenealogySettings
     /// <param name="settings"></param>
     public static void ImportSettings(SettingsRecord settings)
     {
+        IsFirstLaunching = settings.IsFirstLaunching;
         UseDarkMode = settings.UseDarkMode;
+        WindowState = settings.WindowState;
     }
 
     /// <summary>

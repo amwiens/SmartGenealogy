@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="SmartGenealogy.Resources.Styles.Icons"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="clr-namespace:SmartGenealogy.Extensions"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons">
+
+    <Style x:Key="IconCloseLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="IonIcons" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="Text" Value="{x:Static fonticons:IonIcons.AndroidClose}" />
+    </Style>
+
+    <!--  Back button style for Windows app  -->
+    <Style x:Key="IconBackLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="IonIcons" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="{DynamicResource BaseIconColor}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup>
+                    <VisualState x:Name="ltr">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="LeftToRight" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="Text" Value="{x:Static fonticons:IonIcons.ArrowLeftC}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="rtl">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="RightToLeft" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="Text" Value="{x:Static fonticons:IonIcons.ArrowRightC}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ChevronIconStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="MaterialDesign" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="{DynamicResource BaseIconColor}" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup>
+                    <VisualState x:Name="ltrDirection">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="LeftToRight" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="Text" Value="{x:Static fonticons:MaterialDesignIcons.ChevronRight}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="rtlDirection">
+                        <VisualState.StateTriggers>
+                            <CompareStateTrigger Property="{Binding Source={x:Static extensions:FlowDirectionManager.Instance}, Mode=TwoWay, Path=FlowDirection}" Value="RightToLeft" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="Text" Value="{x:Static fonticons:MaterialDesignIcons.ChevronLeft}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+</ResourceDictionary>

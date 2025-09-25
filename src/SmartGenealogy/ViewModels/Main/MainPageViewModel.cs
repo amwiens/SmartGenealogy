@@ -2,20 +2,25 @@
 
 public partial class MainPageViewModel : ObservableObject
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseSettings _databaseSettings;
 
     [ObservableProperty]
     private string? _title = "Main Page";
 
-    public MainPageViewModel(DatabaseSettings databaseSettings)
+    [ObservableProperty]
+    private bool _isDatabaseOpen = false;
+
+    public MainPageViewModel(IServiceProvider serviceProvider, DatabaseSettings databaseSettings)
     {
+        _serviceProvider = serviceProvider;
         _databaseSettings = databaseSettings;
     }
 
     [RelayCommand]
     private async Task CreateDatabase()
     {
-
+        await PopupNavigation.Instance.PushAsync(new NewDatabasePopupPage(_serviceProvider, _databaseSettings));
     }
 
     [RelayCommand]
@@ -47,6 +52,7 @@ public partial class MainPageViewModel : ObservableObject
                     _databaseSettings.DatabasePath = fi.DirectoryName;
                     _databaseSettings.DatabaseName = fi.Name;
 
+                    IsDatabaseOpen = true;
                     WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(result.FullPath));
                 }
             }
@@ -55,5 +61,14 @@ public partial class MainPageViewModel : ObservableObject
         {
 
         }
+    }
+
+    [RelayCommand]
+    private async Task CloseDatabase()
+    {
+        _databaseSettings.DatabasePath = string.Empty;
+        _databaseSettings.DatabaseName = string.Empty;
+        IsDatabaseOpen = false;
+        WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(string.Empty));
     }
 }
