@@ -146,6 +146,10 @@ public static class MauiProgram
                     SmartGenealogySettings.WindowState!.Y = appWindow.Y;
                     SmartGenealogySettings.WindowState!.Width = appWindow.Width;
                     SmartGenealogySettings.WindowState!.Height = appWindow.Height;
+
+                    var databaseSettings = IPlatformApplication.Current!.Services.GetRequiredService<DatabaseSettings>();
+                    SmartGenealogySettings.LastOpenDatabase = Path.Combine(databaseSettings.DatabasePath!, databaseSettings.DatabaseName!);
+
                     SmartGenealogySettings.SaveSettings();
                 }));
 #endif

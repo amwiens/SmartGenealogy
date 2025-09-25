@@ -9,13 +9,74 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Settings"
     x:Name="settingsPage"
     x:DataType="{viewModel:SettingsPageViewModel}"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle="{Binding Title}"
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
-            <!--  Dark Mode  -->
+        <Grid RowDefinitions="Auto,Auto,Auto">
+
+
+            <!--  SETTINGS  -->
+            <StackLayout
+                Grid.Row="2"
+                Margin="20"
+                VerticalOptions="Fill">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="{localization:Translate LabelAppSettings}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Grid Padding="0,7" ColumnDefinitions="*,Auto">
+                    <Label
+                        IsEnabled="{Binding EnableDarkModeSwitch, Mode=TwoWay}"
+                        Style="{StaticResource HeaderStyle}"
+                        Text="{localization:Translate LabelOpenLastDatabase}" />
+                    <Switch
+                        x:Name="openLastDatabaseSwitch"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding OpenLastDatabaseToggled}">
+                        <Switch.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                                Command="{Binding ToggleOpenLastDatabaseCommand}"
+                                CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
+                                EventName="Toggled" />
+                        </Switch.Behaviors>
+                    </Switch>
+                </Grid>
+
+                <Rectangle Fill="{DynamicResource BaseSeparatorColor}" HeightRequest="0.5" />
+
+                <Grid Padding="0,7" ColumnDefinitions="*,Auto">
+                    <Label
+                        IsEnabled="{Binding EnableDarkModeSwitch, Mode=TwoWay}"
+                        Style="{StaticResource HeaderStyle}"
+                        Text="{localization:Translate LabelDarkmode}" />
+                    <Switch
+                        x:Name="darkModeSwitch"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding DarkModeSwitchToggled}">
+                        <Switch.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                                Command="{Binding ToggleDarkModeCommand}"
+                                CommandParameter="{Binding Source={x:Reference darkModeSwitch}, Path=IsToggled}"
+                                EventName="Toggled" />
+                        </Switch.Behaviors>
+                    </Switch>
+                </Grid>
+            </StackLayout>
+        </Grid>
+        <!--<VerticalStackLayout Padding="30,0" Spacing="25">
+        -->
+        <!--  Dark Mode  -->
+        <!--
             <Grid
                 Grid.Row="4"
                 ColumnDefinitions="*, Auto"
@@ -43,6 +104,6 @@
                     </Switch.Behaviors>
                 </Switch>
             </Grid>
-        </VerticalStackLayout>
+        </VerticalStackLayout>-->
     </base:BasePage.PageContent>
 </base:BasePage>

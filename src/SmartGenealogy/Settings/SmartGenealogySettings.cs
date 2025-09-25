@@ -12,6 +12,8 @@ public record SettingsRecord
     public bool IsFirstLaunching { get; init; } = true;
     public bool UseDarkMode { get; init; } = false;
     public WindowState? WindowState { get; init; } = new();
+    public bool OpenLastDatabaseOnStartup { get; init; } = false;
+    public string? LastOpenDatabase { get; init; } = string.Empty;
 }
 
 /// <summary>
@@ -47,6 +49,8 @@ internal static class SmartGenealogySettings
             IsFirstLaunching = IsFirstLaunching,
             UseDarkMode = UseDarkMode,
             WindowState = WindowState,
+            OpenLastDatabaseOnStartup = OpenLastDatabaseOnStartup,
+            LastOpenDatabase = LastOpenDatabase,
         };
 
     /// <summary>
@@ -69,6 +73,16 @@ internal static class SmartGenealogySettings
     /// Saves the window state (position and size) of the main application window.
     /// </summary>
     public static WindowState? WindowState { get; set; }
+
+    /// <summary>
+    /// Indicates whether the application opens the last database on startup. Defaults to <see langword="false"/>.
+    /// </summary>
+    public static bool OpenLastDatabaseOnStartup { get; set; }
+
+    /// <summary>
+    /// Holds the value of the last open database.
+    /// </summary>
+    public static string? LastOpenDatabase { get; set; }
 
     /// <summary>
     /// Loads settings from the settings file and applies them to the current session.
@@ -109,6 +123,8 @@ internal static class SmartGenealogySettings
         IsFirstLaunching = settings.IsFirstLaunching;
         UseDarkMode = settings.UseDarkMode;
         WindowState = settings.WindowState;
+        OpenLastDatabaseOnStartup = settings.OpenLastDatabaseOnStartup;
+        LastOpenDatabase = settings.LastOpenDatabase;
     }
 
     /// <summary>

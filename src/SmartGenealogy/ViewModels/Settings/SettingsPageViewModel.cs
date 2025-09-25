@@ -8,9 +8,20 @@ public partial class SettingsPageViewModel : ObservableObject
     [ObservableProperty]
     private bool _darkModeSwitchToggled;
 
+    [ObservableProperty]
+    private bool _openLastDatabaseToggled;
+
     public SettingsPageViewModel()
     {
         DarkModeSwitchToggled = SmartGenealogySettings.UseDarkMode;
+        OpenLastDatabaseToggled = SmartGenealogySettings.OpenLastDatabaseOnStartup;
+    }
+
+    [RelayCommand]
+    private void ToggleOpenLastDatabase()
+    {
+        SmartGenealogySettings.OpenLastDatabaseOnStartup = OpenLastDatabaseToggled;
+        SmartGenealogySettings.SaveSettings();
     }
 
     [RelayCommand]
