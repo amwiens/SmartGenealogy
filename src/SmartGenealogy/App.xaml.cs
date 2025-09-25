@@ -2,6 +2,8 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 
+using SmartGenealogy.Data.Settings;
+
 using Windows.Graphics;
 #endif
 
@@ -127,5 +129,18 @@ public partial class App : Application
             Application.Current!.Resources.ApplyDarkTheme();
         else
             Application.Current!.Resources.ApplyLightTheme();
+
+        if (SmartGenealogySettings.OpenLastDatabaseOnStartup)
+        {
+            if (File.Exists(SmartGenealogySettings.LastOpenDatabase))
+            {
+                var fi = new FileInfo(SmartGenealogySettings.LastOpenDatabase);
+                var databaseSettings = IPlatformApplication.Current!.Services.GetRequiredService<DatabaseSettings>();
+                databaseSettings.DatabasePath = fi.DirectoryName;
+                databaseSettings.DatabaseName = fi.Name;
+
+                WeakReferenceMessenger.Default.Send(new DatabaseOpenMessage(SmartGenealogySettings.LastOpenDatabase));
+            }
+        }
     }
 }

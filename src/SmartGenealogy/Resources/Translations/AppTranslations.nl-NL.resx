@@ -190,4 +190,10 @@
   <data name="ToolTipAdd" xml:space="preserve">
     <value />
   </data>
+  <data name="LabelAppSettings" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LabelOpenLastDatabase" xml:space="preserve">
+    <value />
+  </data>
 </root>

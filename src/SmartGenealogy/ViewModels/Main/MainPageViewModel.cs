@@ -1,4 +1,8 @@
-﻿namespace SmartGenealogy.ViewModels.Main;
+﻿using SmartGenealogy.Data.Models;
+using SmartGenealogy.Data.Repositories;
+using SmartGenealogy.Data.Settings;
+
+namespace SmartGenealogy.ViewModels.Main;
 
 public partial class MainPageViewModel : ObservableObject
 {
@@ -15,6 +19,7 @@ public partial class MainPageViewModel : ObservableObject
     {
         _serviceProvider = serviceProvider;
         _databaseSettings = databaseSettings;
+
     }
 
     [RelayCommand]
@@ -61,6 +66,13 @@ public partial class MainPageViewModel : ObservableObject
         {
 
         }
+    }
+
+    [RelayCommand]
+    private async Task Appearing()
+    {
+        if (_databaseSettings.DatabasePath is not null && !string.IsNullOrEmpty(_databaseSettings.DatabasePath))
+            IsDatabaseOpen = true;
     }
 
     [RelayCommand]
