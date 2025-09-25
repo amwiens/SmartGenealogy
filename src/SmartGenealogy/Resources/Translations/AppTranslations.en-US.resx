@@ -126,9 +126,6 @@
   <data name="MenuHome" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="StringAppName" xml:space="preserve">
-    <value>Smart Genealogy</value>
-  </data>
   <data name="LabelCreateFile" xml:space="preserve">
     <value>Create Database</value>
   </data>
@@ -194,5 +191,11 @@
   </data>
   <data name="LabelOpenLastDatabase" xml:space="preserve">
     <value>Open last database on startup</value>
+  </data>
+  <data name="ToolTipOpenFolder" xml:space="preserve">
+    <value>Open Folder</value>
+  </data>
+  <data name="StringAppName" xml:space="preserve">
+    <value>Smart Genealogy</value>
   </data>
 </root>
