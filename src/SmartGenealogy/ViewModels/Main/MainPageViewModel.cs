@@ -1,13 +1,10 @@
-﻿using SmartGenealogy.Data.Models;
-using SmartGenealogy.Data.Repositories;
-using SmartGenealogy.Data.Settings;
-
-namespace SmartGenealogy.ViewModels.Main;
+﻿namespace SmartGenealogy.ViewModels.Main;
 
 public partial class MainPageViewModel : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly DatabaseSettings _databaseSettings;
+    private readonly IPopupService _popupService;
 
     [ObservableProperty]
     private string? _title = "Main Page";
@@ -15,17 +12,17 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private bool _isDatabaseOpen = false;
 
-    public MainPageViewModel(IServiceProvider serviceProvider, DatabaseSettings databaseSettings)
+    public MainPageViewModel(IServiceProvider serviceProvider, DatabaseSettings databaseSettings, IPopupService popupService)
     {
         _serviceProvider = serviceProvider;
         _databaseSettings = databaseSettings;
-
+        _popupService = popupService;
     }
 
     [RelayCommand]
     private async Task CreateDatabase()
     {
-        await PopupNavigation.Instance.PushAsync(new NewDatabasePopupPage(_serviceProvider, _databaseSettings));
+        var popupResult = await _popupService.ShowPopupAsync<NewDatabasePopupPage>(Application.Current!.Windows[0].Page!);
     }
 
     [RelayCommand]
@@ -69,14 +66,14 @@ public partial class MainPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task Appearing()
+    private void Appearing()
     {
         if (_databaseSettings.DatabasePath is not null && !string.IsNullOrEmpty(_databaseSettings.DatabasePath))
             IsDatabaseOpen = true;
     }
 
     [RelayCommand]
-    private async Task CloseDatabase()
+    private void CloseDatabase()
     {
         _databaseSettings.DatabasePath = string.Empty;
         _databaseSettings.DatabaseName = string.Empty;
