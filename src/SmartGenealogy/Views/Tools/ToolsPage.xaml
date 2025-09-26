@@ -9,61 +9,63 @@
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Tools"
     x:DataType="{viewModel:ToolsPageViewModel}"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="{localization:Translate LabelTools}"
-    BaseTitleColor="{DynamicResource BaseTextColor}">
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle="{localization:Translate MenuTools}"
+    BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
         <Grid RowDefinitions="Auto,Auto,Auto">
+            <ScrollView Grid.Row="0">
 
-            <!--  Fact types  -->
-            <StackLayout Grid.Row="1" Margin="20">
-                <Label
-                    FontSize="17"
-                    HorizontalOptions="Start"
-                    Style="{StaticResource Title2}"
-                    Text="{localization:Translate LabelFactTypes}"
-                    VerticalOptions="Center"
-                    VerticalTextAlignment="Center" />
-
-                <!--  Manage fact types  -->
-                <Grid Padding="0,12">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="40" />
-                    </Grid.ColumnDefinitions>
+                <!--  Fact types  -->
+                <StackLayout Grid.Row="1" Margin="20">
                     <Label
-                        FontFamily="MaterialDesign"
-                        FontSize="22"
+                        FontSize="17"
                         HorizontalOptions="Start"
-                        Text="{x:Static fonticons:MaterialDesignIcons.Event}"
-                        TextColor="{DynamicResource PrimaryColor}"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        Grid.Column="1"
-                        FontSize="15"
-                        HorizontalOptions="Start"
-                        Text="{localization:Translate LabelManageFactTypes}"
+                        Style="{StaticResource Title2}"
+                        Text="{localization:Translate LabelFactTypes}"
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
 
-                    <Label
-                        Grid.Column="2"
-                        FontFamily="IonIcons"
-                        FontSize="15"
-                        HorizontalOptions="End"
-                        HorizontalTextAlignment="Center"
-                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
-                        TextColor="{DynamicResource BaseIconColor}"
-                        VerticalOptions="Center" />
+                    <!--  Manage fact types  -->
+                    <Grid Padding="0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            FontFamily="MaterialDesign"
+                            FontSize="22"
+                            HorizontalOptions="Start"
+                            Text="{x:Static fonticons:MaterialDesignIcons.Event}"
+                            TextColor="{DynamicResource PrimaryColor}"
+                            VerticalOptions="Center" />
 
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
-                    </Grid.GestureRecognizers>
-                </Grid>
-            </StackLayout>
+                        <Label
+                            Grid.Column="1"
+                            FontSize="15"
+                            HorizontalOptions="Start"
+                            Text="{localization:Translate LabelManageFactTypes}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            FontFamily="IonIcons"
+                            FontSize="15"
+                            HorizontalOptions="End"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                            TextColor="{DynamicResource BaseIconColor}"
+                            VerticalOptions="Center" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenFactTypesCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

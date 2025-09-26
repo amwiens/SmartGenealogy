@@ -198,4 +198,7 @@
   <data name="StringAppName" xml:space="preserve">
     <value>Smart Genealogy</value>
   </data>
+  <data name="MenuTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
 </root>

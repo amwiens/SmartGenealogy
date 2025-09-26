@@ -10,7 +10,7 @@
     x:Name="settingsPage"
     x:DataType="{viewModel:SettingsPageViewModel}"
     BackgroundColor="{DynamicResource BasePageColor}"
-    BaseTitle="{Binding Title}"
+    BaseTitle="{localization:Translate MenuSettings}"
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>

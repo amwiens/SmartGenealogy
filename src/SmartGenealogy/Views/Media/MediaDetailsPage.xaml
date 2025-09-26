@@ -7,16 +7,18 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
     x:Name="mediaDetailPage"
     x:DataType="viewModel:MediaDetailsPageViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="MediaDetailsPage"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" />
-        </VerticalStackLayout>
+        <Grid>
+            <ScrollView>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Welcome to .NET MAUI!"
+                    VerticalOptions="Center" />
+            </ScrollView>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

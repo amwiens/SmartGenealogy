@@ -13,7 +13,7 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Tools"
     x:Name="factTypesPage"
     x:DataType="{viewModel:FactTypesPageViewModel}"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle="{localization:Translate LabelFactTypes}"
     BaseTitleColor="{StaticResource BaseTextColor}">
 

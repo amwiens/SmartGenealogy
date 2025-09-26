@@ -4,21 +4,31 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Media"
     x:Name="mediaPage"
     x:DataType="viewModel:MediaPageViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
-    BaseTitle="{Binding Title}"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle="{localization:Translate MenuMedia}"
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
-            <Label
-                SemanticProperties.HeadingLevel="Level1"
-                Style="{StaticResource Headline}"
-                Text="{Binding Title}" />
+        <Grid RowDefinitions="Auto,*" RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="20,30,25,0"
+                IconColor="{DynamicResource PrimaryColor}"
+                IconFontFamily="MaterialDesign"
+                IconSize="35"
+                IconText="{x:Static fonticons:MaterialDesignIcons.Image}"
+                Text="{localization:Translate MenuMedia}"
+                TextSize="25" />
 
-            <Button Command="{Binding GoToMediaDeatilsCommand}" Text="Go to details" />
-        </VerticalStackLayout>
+            <ScrollView Grid.Row="1">
+
+                <Button Command="{Binding GoToMediaDeatilsCommand}" Text="Go to details" />
+            </ScrollView>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

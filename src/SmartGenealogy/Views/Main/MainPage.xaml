@@ -17,7 +17,9 @@
     xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Main"
     x:Name="mainPage"
     x:DataType="viewModel:MainPageViewModel"
-    BackgroundColor="{DynamicResource MainWrapperBackgroundColor}">
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
