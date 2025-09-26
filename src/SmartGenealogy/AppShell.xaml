@@ -8,8 +8,10 @@
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
     xmlns:media="clr-namespace:SmartGenealogy.Views.Media"
+    xmlns:models="clr-namespace:Microsoft.Maui.Controls"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
-    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels.Main"
+    xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Main"
+    x:DataType="viewModel:AppShellViewModel"
     FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
     FlyoutBehavior="{OnIdiom Desktop=Locked,
                              Default=Flyout}"
@@ -21,13 +23,55 @@
     </Shell.BackButtonBehavior>
 
     <Shell.FlyoutHeader>
-        <controls:FlyoutHeader />
+        <controls:FlyoutHeader DatabaseName="{Binding DatabasePath}" />
     </Shell.FlyoutHeader>
 
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter />
     </Shell.FlyoutFooter>
 
-    <!-- Flyout items are now generated in code-behind -->
+    <Shell.ItemTemplate>
+        <DataTemplate x:DataType="models:FlyoutItem">
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{DynamicResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate x:DataType="models:FlyoutItem">
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <!--  Flyout items are now generated in code-behind  -->
 
 </Shell>
