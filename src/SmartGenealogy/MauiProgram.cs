@@ -6,8 +6,6 @@ using PanCardView;
 
 using FFImageLoading.Maui;
 
-using RGPopup.Maui.Extensions;
-
 using SmartGenealogy.Handlers;
 using SmartGenealogy.Views.Media;
 using Microsoft.Maui.Platform;
@@ -42,16 +40,12 @@ public static class MauiProgram
             .RegisterRepositories()
             .RegisterViewModels()
             .RegisterViews()
+            .RegisterPopups()
             .UseMauiCommunityToolkit()
             .UseMauiCommunityToolkitMediaElement()
             .UseSkiaSharp()
             .UseCardsView()
             .UseFFImageLoading()
-            .UseMauiRGPopup(config =>
-            {
-                config.BackPressHandler = null;
-                config.FixKeyboardOverlap = true;
-            })
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Poppins-Regular.otf", "RegularFont");
@@ -200,6 +194,14 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientWithShellRoute<MediaDetailsPage, MediaDetailsPageViewModel>("mediaDetails");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypeDetailsPage, FactTypeDetailsPageViewModel>("factTypeDetails");
+
+        return mauiAppBuilder;
+    }
+
+    public static MauiAppBuilder RegisterPopups(this MauiAppBuilder mauiAppBuilder)
+    {
+        // Register popups
+        mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopupPage, NewDatabasePopupPageViewModel>();
 
         return mauiAppBuilder;
     }

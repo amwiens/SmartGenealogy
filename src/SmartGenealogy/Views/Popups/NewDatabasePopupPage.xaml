@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<rg:PopupPage
+<toolkit:Popup
     x:Class="SmartGenealogy.Views.Popups.NewDatabasePopupPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
     xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:handlers="clr-namespace:SmartGenealogy.Handlers"
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations"
-    xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui">
-
-    <rg:PopupPage.Animation>
-        <animation:MoveAnimation PositionIn="Bottom" PositionOut="Bottom" />
-    </rg:PopupPage.Animation>
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModel="clr-namespace:SmartGenealogy.ViewModels.Popups"
+    x:DataType="viewModel:NewDatabasePopupPageViewModel">
 
     <Grid
         Margin="0,100,0,0"
@@ -61,10 +58,10 @@
                                 Padding="20,5"
                                 Background="{DynamicResource EntryAndEditorsBackgroundColor}">
                                 <handlers:BorderlessEntry
-                                    x:Name="databaseName"
                                     HeightRequest="42"
                                     Placeholder="Database name"
                                     PlaceholderColor="{DynamicResource BaseLightTextColor}"
+                                    Text="{Binding DatabaseName}"
                                     TextColor="{DynamicResource BaseTextColor}" />
                             </Border>
 
@@ -73,11 +70,11 @@
                                 Padding="20,5"
                                 Background="{DynamicResource EntryAndEditorsBackgroundColor}">
                                 <handlers:BorderlessEntry
-                                    x:Name="databasePath"
                                     HeightRequest="42"
                                     IsReadOnly="True"
                                     Placeholder="Database path"
                                     PlaceholderColor="{DynamicResource BaseLightTextColor}"
+                                    Text="{Binding DatabasePath}"
                                     TextColor="{DynamicResource BaseTextColor}" />
                             </Border>
 
@@ -85,7 +82,7 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 BackgroundColor="{DynamicResource PrimaryColor}"
-                                Clicked="SelectFolderButton_Clicked"
+                                Command="{Binding SelectFolderCommand}"
                                 CornerRadius="14"
                                 FontAttributes="Bold"
                                 FontFamily="FaRegular"
@@ -105,7 +102,7 @@
                             <Button
                                 Margin="0,10"
                                 BackgroundColor="{DynamicResource PrimaryColor}"
-                                Clicked="SubmitButton_Clicked"
+                                Command="{Binding SubmitCommand}"
                                 CornerRadius="14"
                                 FontAttributes="Bold"
                                 HeightRequest="50"
@@ -116,7 +113,7 @@
                                 Grid.Column="1"
                                 Margin="0,10"
                                 BackgroundColor="{DynamicResource PrimaryColor}"
-                                Clicked="CancelButton_Clicked"
+                                Command="{Binding CancelCommand}"
                                 CornerRadius="14"
                                 FontAttributes="Bold"
                                 HeightRequest="50"
@@ -128,4 +125,4 @@
             </Grid>
         </Border>
     </Grid>
-</rg:PopupPage>
+</toolkit:Popup>

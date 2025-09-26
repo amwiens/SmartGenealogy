@@ -5,6 +5,7 @@ global using System.Windows.Input;
 
 global using CommunityToolkit.Maui;
 global using CommunityToolkit.Maui.Storage;
+global using CommunityToolkit.Maui.Views;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.Messaging;
@@ -12,9 +13,6 @@ global using CommunityToolkit.Mvvm.Messaging.Messages;
 
 global using Microsoft.Extensions.Localization;
 global using Microsoft.Extensions.Logging;
-
-global using RGPopup.Maui.Pages;
-global using RGPopup.Maui.Services;
 
 global using SmartGenealogy.Controls;
 global using SmartGenealogy.Data;
@@ -34,6 +32,7 @@ global using SmartGenealogy.Services;
 global using SmartGenealogy.Utilities;
 global using SmartGenealogy.ViewModels.Main;
 global using SmartGenealogy.ViewModels.Media;
+global using SmartGenealogy.ViewModels.Popups;
 global using SmartGenealogy.ViewModels.Settings;
 global using SmartGenealogy.ViewModels.Tools;
 global using SmartGenealogy.Views.Base;
