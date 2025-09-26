@@ -46,9 +46,9 @@
                     VerticalOptions="Center" />
 
                 <Label
+                    x:Name="databaseName"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource Footnote}"
-                    Text="Take control of your family"
                     TextColor="{DynamicResource White}"
                     TextTransform="Uppercase"
                     VerticalOptions="Center" />

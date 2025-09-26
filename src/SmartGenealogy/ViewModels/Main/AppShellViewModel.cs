@@ -5,7 +5,7 @@ namespace SmartGenealogy.ViewModels.Main;
 public partial class AppShellViewModel : ObservableObject, IRecipient<DatabaseOpenMessage>
 {
     [ObservableProperty]
-    private string _title = "Smart Genealogy";
+    private string? _databasePath = string.Empty;
 
     public ObservableCollection<FlyoutMenuItem> MenuItems { get; } = new()
     {
@@ -22,6 +22,6 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<DatabaseOp
 
     public void Receive(DatabaseOpenMessage message)
     {
-        Title = Title + message.Value;
+        DatabasePath = message.Value;
     }
 }
