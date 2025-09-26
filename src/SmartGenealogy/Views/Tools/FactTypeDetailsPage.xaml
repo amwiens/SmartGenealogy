@@ -14,7 +14,7 @@
     x:Name="factTypesPage"
     x:DataType="{viewModel:FactTypeDetailsPageViewModel}"
     BackgroundColor="{DynamicResource BasePageColor}"
-    BaseTitle="Fact Type"
+    BaseTitle=""
     BaseTitleColor="{StaticResource BaseTextColor}">
 
     <base:BasePage.Resources>

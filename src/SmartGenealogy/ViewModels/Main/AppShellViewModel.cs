@@ -9,10 +9,10 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<DatabaseOp
 
     public ObservableCollection<FlyoutMenuItem> MenuItems { get; } = new()
     {
-        new FlyoutMenuItem { Title = "Home", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Home }, Route = "main" },
-        new FlyoutMenuItem { Title = "Media", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Image }, Route = "media" },
-        new FlyoutMenuItem { Title = "Tools", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Tools }, Route = "tools" },
-        new FlyoutMenuItem { Title = "Settings", FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Cog }, Route = "settings" }
+        new FlyoutMenuItem { Title = LocalizationResourceManager.Translate("MenuHome"), FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Home }, Route = "main" },
+        new FlyoutMenuItem { Title = LocalizationResourceManager.Translate("MenuMedia"), FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Image }, Route = "media" },
+        new FlyoutMenuItem { Title = LocalizationResourceManager.Translate("MenuTools"), FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Tools }, Route = "tools" },
+        new FlyoutMenuItem { Title = LocalizationResourceManager.Translate("MenuSettings"), FontImageSource = new FontImageSource { Color = Colors.White, FontFamily = "FaPro", Glyph = FaPro.Cog }, Route = "settings" }
     };
 
     public AppShellViewModel()

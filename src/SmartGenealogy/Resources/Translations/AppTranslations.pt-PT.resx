@@ -198,4 +198,7 @@
   <data name="StringAppName" xml:space="preserve">
     <value />
   </data>
+  <data name="MenuTools" xml:space="preserve">
+    <value />
+  </data>
 </root>
