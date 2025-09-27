@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Extensions;
-
-namespace SmartGenealogy.ViewModels.Tools;
+﻿namespace SmartGenealogy.ViewModels.Tools;
 
 public partial class FactTypeDetailsPageViewModel : ObservableObject, IQueryAttributable
 {

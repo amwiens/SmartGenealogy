@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics.Platform;
-
-namespace SmartGenealogy.ViewModels.Media;
+﻿namespace SmartGenealogy.ViewModels.Media;
 
 public partial class MediaPageViewModel : ObservableObject
 {
@@ -30,10 +28,10 @@ public partial class MediaPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void OpenMediaDetails()
+    private void OpenMediaDetails(Multimedia multimedia)
     {
         // Navigate to the MediaDetailsPage
-        Shell.Current.GoToAsync("mediaDetails");
+        Shell.Current.GoToAsync($"mediaDetails?id={multimedia.Id}");
     }
 
     [RelayCommand]
