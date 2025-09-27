@@ -8,13 +8,13 @@ public class MainActivity : MauiAppCompatActivity
 {
     public override void OnBackPressed()
     {
-        if (RGPopup.Maui.Droid.Popup.SendBackPressed(base.OnBackPressed))
-        {
-            // Do something if there are some pages in the `PopupStack`
-        }
-        else
-        {
-            // Do something if there are not any pages in the `PopupStack`
-        }
+        //if (RGPopup.Maui.Droid.Popup.SendBackPressed(base.OnBackPressed))
+        //{
+        //    // Do something if there are some pages in the `PopupStack`
+        //}
+        //else
+        //{
+        //    // Do something if there are not any pages in the `PopupStack`
+        //}
     }
 }

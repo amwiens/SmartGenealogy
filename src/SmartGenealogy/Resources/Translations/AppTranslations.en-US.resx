@@ -201,4 +201,10 @@
   <data name="MenuTools" xml:space="preserve">
     <value>Tools</value>
   </data>
+  <data name="LabelAddMultimedia" xml:space="preserve">
+    <value>Add Multimedia</value>
+  </data>
+  <data name="ButtonAddMultimedia" xml:space="preserve">
+    <value>Add Multimedia</value>
+  </data>
 </root>

@@ -16,6 +16,8 @@ global using Microsoft.Extensions.Logging;
 
 global using SmartGenealogy.Controls;
 global using SmartGenealogy.Data;
+global using SmartGenealogy.Data.Enums;
+global using SmartGenealogy.Data.Extensions;
 global using SmartGenealogy.Data.Models;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Settings;

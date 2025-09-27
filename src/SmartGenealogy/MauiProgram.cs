@@ -167,6 +167,7 @@ public static class MauiProgram
     {
         // Register repositories
         mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
+        mauiAppBuilder.Services.AddSingleton<MultimediaRepository>();
 
         mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
         mauiAppBuilder.Services.AddSingleton<DatabaseInitializer>();
@@ -202,6 +203,7 @@ public static class MauiProgram
     {
         // Register popups
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopupPage, NewDatabasePopupPageViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<NewMultimediaPopupPage, NewMultimediaPopupPageViewModel>();
 
         return mauiAppBuilder;
     }

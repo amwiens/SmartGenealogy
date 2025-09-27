@@ -2,17 +2,41 @@
 
 public partial class MediaPageViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private string? _title = "Media Page";
+    private readonly MultimediaRepository _multimediaRepository;
+    private readonly IPopupService _popupService;
 
-    public MediaPageViewModel()
+    [ObservableProperty]
+    bool _isBusy;
+
+    [ObservableProperty]
+    private List<Multimedia> _multimedia = [];
+
+    public MediaPageViewModel(MultimediaRepository multimediaRepository, IPopupService popupService)
     {
+        _multimediaRepository = multimediaRepository;
+        _popupService = popupService;
     }
 
     [RelayCommand]
-    private void GoToMediaDeatils()
+    private async Task Appearing()
+    {
+        IsBusy = true;
+
+        Multimedia = await _multimediaRepository.ListAsync();
+
+        IsBusy = false;
+    }
+
+    [RelayCommand]
+    private void OpenMediaDetails(Multimedia multimedia)
     {
         // Navigate to the MediaDetailsPage
-        Shell.Current.GoToAsync("mediaDetails");
+        Shell.Current.GoToAsync($"mediaDetails?id={multimedia.Id}");
+    }
+
+    [RelayCommand]
+    private async Task AddMultimedia()
+    {
+        var popupResult = await _popupService.ShowPopupAsync<NewMultimediaPopupPage>(Application.Current!.Windows[0].Page!);
     }
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-
-namespace SmartGenealogy.Data.Repositories;
+﻿namespace SmartGenealogy.Data.Repositories;
 
 /// <summary>
 /// Repository class for managing fact types in the database.
@@ -146,7 +144,7 @@ public class FactTypeRepository
     /// Retrieves a specific task by its Id.
     /// </summary>
     /// <param name="id">The Id of the fact type.</param>
-    /// <returns> a <see cref="FactType"/> object if found; otherwise, null.</returns>
+    /// <returns>A <see cref="FactType"/> object if found; otherwise, null.</returns>
     public async Task<FactType?> GetAsync(long id)
     {
         await Init();
@@ -196,26 +194,26 @@ public class FactTypeRepository
         if (item.Id == 0)
         {
             cmd.CommandText = @"
-            INSERT INTO FactType (OwnerType, Name, Abbreviation, GedcomTag, UseValue, UseDate, UsePlace, Sentence, IsBuiltIn, DateAdded, DateChanged)
-            VALUES (@OwnerType, @Name, @Abbreviation, @GedcomTag, @UseValue, @UseDate, @UsePlace, @Sentence, @IsBuiltIn, @DateAdded, @DateChanged);
-            SELECT last_insert_rowid();";
+                INSERT INTO FactType (OwnerType, Name, Abbreviation, GedcomTag, UseValue, UseDate, UsePlace, Sentence, IsBuiltIn, DateAdded, DateChanged)
+                VALUES (@OwnerType, @Name, @Abbreviation, @GedcomTag, @UseValue, @UseDate, @UsePlace, @Sentence, @IsBuiltIn, @DateAdded, @DateChanged);
+                SELECT last_insert_rowid();";
             cmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
         else
         {
             cmd.CommandText = @"
-            UPDATE FactType
-            SET OwnerType = @OwnerType,
-                Name = @Name,
-                Abbreviation = @Abbreviation,
-                GedcomTag = @GedcomTag,
-                UseValue = @UseValue,
-                UseDate = @UseDate,
-                UsePlace = @UsePlace,
-                Sentence = @Sentence,
-                IsBuiltIn = @IsBuiltIn,
-                DateChanged = @DateChanged
-            WHERE Id = @Id;";
+                UPDATE FactType
+                SET OwnerType = @OwnerType,
+                    Name = @Name,
+                    Abbreviation = @Abbreviation,
+                    GedcomTag = @GedcomTag,
+                    UseValue = @UseValue,
+                    UseDate = @UseDate,
+                    UsePlace = @UsePlace,
+                    Sentence = @Sentence,
+                    IsBuiltIn = @IsBuiltIn,
+                    DateChanged = @DateChanged
+                WHERE Id = @Id;";
             cmd.Parameters.AddWithValue("@Id", item.Id);
         }
 
@@ -255,20 +253,5 @@ public class FactTypeRepository
         deleteCmd.Parameters.AddWithValue("@id", id);
 
         return await deleteCmd.ExecuteNonQueryAsync();
-    }
-
-    /// <summary>
-    /// Drops the FactType table from the database.
-    /// </summary>
-    public async Task DropTableAsync()
-    {
-        await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
-        await connection.OpenAsync();
-
-        var dropTableCmd = connection.CreateCommand();
-        dropTableCmd.CommandText = "DROP TABLE IF EXISTS FactType";
-        await dropTableCmd.ExecuteNonQueryAsync();
-        _hasBeenInitialized = false;
     }
 }
