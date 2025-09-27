@@ -203,6 +203,7 @@ public static class MauiProgram
     {
         // Register popups
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopupPage, NewDatabasePopupPageViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<NewMultimediaPopupPage, NewMultimediaPopupPageViewModel>();
 
         return mauiAppBuilder;
     }

@@ -17,13 +17,23 @@ public class Multimedia
     public DateTime DateAdded { get; set; }
     public DateTime DateChanged { get; set; }
 
-    public ImageSource ThumbnailBytes
+    public ImageSource? ThumbnailBytes
     {
         get
         {
             if (Thumbnail == null)
                 return null;
             return ImageSource.FromStream(() => new MemoryStream(Thumbnail));
+        }
+    }
+
+    public string? FullPath
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(MediaPath) || string.IsNullOrEmpty(MediaFile))
+                return null;
+            return Path.Combine(MediaPath, MediaFile);
         }
     }
 }
