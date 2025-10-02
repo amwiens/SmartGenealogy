@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.ViewModels;
+﻿namespace SmartGenealogy.Core.ViewModels;
 
 public partial class MainPageViewModel : ObservableObject
 {
