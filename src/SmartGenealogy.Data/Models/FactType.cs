@@ -64,4 +64,9 @@ public class FactType
     /// Date changed
     /// </summary>
     public DateTime DateChanged { get; set; }
+
+    /// <summary>
+    /// Roles associated with the fact type.
+    /// </summary>
+    public List<Role> Roles { get; set; } = [];
 }

@@ -4,10 +4,12 @@
 /// Main Page View Model.
 /// </summary>
 /// <param name="factTypeRepository">Fact type repository.</param>
+/// <param name="roleRepository">Role repository.</param>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="modalErrorHandler">Modal error handler.</param>
 public partial class MainPageViewModel(
     FactTypeRepository factTypeRepository,
+    RoleRepository roleRepository,
     DatabaseSettings databaseSettings,
     ModalErrorHandler modalErrorHandler)
     : ObservableObject
@@ -25,6 +27,7 @@ public partial class MainPageViewModel(
             databaseSettings.DatabasePath = @"C:\Code";
 
             await factTypeRepository.CreateTableAsync();
+            await roleRepository.CreateTableAsync();
         }
         catch (Exception ex)
         {
