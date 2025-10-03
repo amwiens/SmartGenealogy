@@ -3,8 +3,12 @@
     x:Class="SmartGenealogy.Views.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModels="clr-namespace:SmartGenealogy.ViewModels"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels"
     x:DataType="viewModels:MainPageViewModel">
 
-    <ScrollView />
+    <VerticalStackLayout>
+        <Button Command="{Binding CreateDatabaseCommand}" Text="Create Database" />
+        <Button Command="{Binding OpenDatabaseCommand}" Text="Open Database" />
+        <Button Command="{Binding CloseDatabaseCommand}" Text="Close Database" />
+    </VerticalStackLayout>
 </ContentPage>

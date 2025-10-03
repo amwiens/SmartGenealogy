@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/Tests/">
     <Project Path="SmartGenealogy.Core.Tests/SmartGenealogy.Core.Tests.csproj" />
+    <Project Path="SmartGenealogy.Data.Tests/SmartGenealogy.Data.Tests.csproj" />
   </Folder>
   <Project Path="SmartGenealogy.Core/SmartGenealogy.Core.csproj" />
+  <Project Path="SmartGenealogy.Data/SmartGenealogy.Data.csproj" Id="34fa5b81-2aa7-414e-93f9-e00e011a37fd" />
   <Project Path="SmartGenealogy/SmartGenealogy.csproj" Id="dbbb2a1f-1d09-41e6-a5c0-2a355c328ae2">
     <Deploy Solution="Debug|*" />
   </Project>

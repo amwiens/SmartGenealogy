@@ -1,13 +1,21 @@
 ﻿namespace SmartGenealogy;
 
+/// <summary>
+/// Main Maui program class.
+/// </summary>
 public static class MauiProgram
 {
+    /// <summary>
+    /// Creates the Maui app.
+    /// </summary>
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .ConfigureRepositories()
+            .ConfigureServices()
             .ConfigureViewModels()
             .ConfigureViews()
             .ConfigureFonts(fonts =>
@@ -23,6 +31,30 @@ public static class MauiProgram
         return builder.Build();
     }
 
+    /// <summary>
+    /// Configure repositories for dependency injection.
+    /// </summary>
+    private static MauiAppBuilder ConfigureRepositories(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
+        mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
+
+        return mauiAppBuilder;
+    }
+
+    /// <summary>
+    /// Configure services for dependency injection.
+    /// </summary>
+    private static MauiAppBuilder ConfigureServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+
+        return mauiAppBuilder;
+    }
+
+    /// <summary>
+    /// Configure view models for dependency injection.
+    /// </summary>
     private static MauiAppBuilder ConfigureViewModels(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
@@ -30,6 +62,9 @@ public static class MauiProgram
         return mauiAppBuilder;
     }
 
+    /// <summary>
+    /// Configure views for dependency injection.
+    /// </summary>
     private static MauiAppBuilder ConfigureViews(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransient<MainPage>();
