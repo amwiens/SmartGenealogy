@@ -35,7 +35,8 @@ public static class MauiProgram
 
     private static MauiAppBuilder ConfigureServices(this MauiAppBuilder mauiAppBuilder)
     {
-        // Add any additional services here
+        mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+
         return mauiAppBuilder;
     }
 

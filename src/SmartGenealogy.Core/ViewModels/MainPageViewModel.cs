@@ -4,22 +4,32 @@ public partial class MainPageViewModel : ObservableObject
 {
     private readonly FactTypeRepository _factTypeRepository;
     private readonly DatabaseSettings _databaseSettings;
+    private readonly ModalErrorHandler _modalErrorHandler;
 
     public MainPageViewModel(
         FactTypeRepository factTypeRepository,
-        DatabaseSettings databaseSettings)
+        DatabaseSettings databaseSettings,
+        ModalErrorHandler modalErrorHandler)
     {
         _factTypeRepository = factTypeRepository;
         _databaseSettings = databaseSettings;
+        _modalErrorHandler = modalErrorHandler;
     }
 
     [RelayCommand]
     private async Task CreateDatabase()
     {
-        _databaseSettings.DatabaseFilename = "genealogy.db";
-        _databaseSettings.DatabasePath = @"C:\Code";
+        try
+        {
+            _databaseSettings.DatabaseFilename = "genealogy.db";
+            _databaseSettings.DatabasePath = @"C:\Code";
 
-        await _factTypeRepository.CreateTableAsync();
+            await _factTypeRepository.CreateTableAsync();
+        }
+        catch (Exception ex)
+        {
+            _modalErrorHandler.HandleError(ex);
+        }
     }
 
     [RelayCommand]
