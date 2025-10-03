@@ -8,6 +8,8 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .ConfigureRepositories()
+            .ConfigureServices()
             .ConfigureViewModels()
             .ConfigureViews()
             .ConfigureFonts(fonts =>
@@ -21,6 +23,20 @@ public static class MauiProgram
 #endif
 
         return builder.Build();
+    }
+
+    private static MauiAppBuilder ConfigureRepositories(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
+        mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
+
+        return mauiAppBuilder;
+    }
+
+    private static MauiAppBuilder ConfigureServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        // Add any additional services here
+        return mauiAppBuilder;
     }
 
     private static MauiAppBuilder ConfigureViewModels(this MauiAppBuilder mauiAppBuilder)

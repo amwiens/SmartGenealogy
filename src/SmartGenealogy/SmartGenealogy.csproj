@@ -65,6 +65,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SmartGenealogy.Core\SmartGenealogy.Core.csproj" />
+	  <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
 	</ItemGroup>
 
 </Project>
