@@ -3,22 +3,14 @@
 /// <summary>
 /// Repository class for managing FactType entities in the database.
 /// </summary>
-public class FactTypeRepository
+/// <remarks>
+/// Initializes a new instance of the <see cref="FactTypeRepository"/> class.
+/// </remarks>
+/// <param name="databaseSettings">Database settings.</param>
+/// <param name="logger">Logger.</param>
+public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
 {
     private bool _hasBeenInitialized = false;
-    private readonly DatabaseSettings _databaseSettings;
-    private readonly ILogger _logger;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="FactTypeRepository"/> class.
-    /// </summary>
-    /// <param name="databaseSettings"></param>
-    /// <param name="logger"></param>
-    public FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
-    {
-        _databaseSettings = databaseSettings;
-        _logger = logger;
-    }
 
     /// <summary>
     /// Initializes the database connection and creates the FactType table if it does not exist.
@@ -28,7 +20,7 @@ public class FactTypeRepository
         if (_hasBeenInitialized)
             return;
 
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         try
@@ -53,7 +45,7 @@ public class FactTypeRepository
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error creating FactType table.");
+            logger.LogError(ex, "Error creating FactType table.");
             throw;
         }
 
@@ -68,7 +60,7 @@ public class FactTypeRepository
     public async Task<List<FactType>> ListAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -106,7 +98,7 @@ public class FactTypeRepository
     public async Task<FactType?> GetAsync(int id)
     {
         await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
@@ -146,7 +138,7 @@ public class FactTypeRepository
     public async Task<int> SaveItemAsync(FactType item)
     {
         await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var saveCmd = connection.CreateCommand();
@@ -203,7 +195,7 @@ public class FactTypeRepository
     public async Task<int> DeleteItemAsync(FactType item)
     {
         await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var deleteCmd = connection.CreateCommand();
@@ -228,7 +220,7 @@ public class FactTypeRepository
     public async Task DropTableAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(_databaseSettings.ConnectionString);
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
         await connection.OpenAsync();
 
         var dropCmd = connection.CreateCommand();
