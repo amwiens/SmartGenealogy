@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Views;
+﻿namespace SmartGenealogy.Views.Main;
 
 /// <summary>
 /// MainPage class.

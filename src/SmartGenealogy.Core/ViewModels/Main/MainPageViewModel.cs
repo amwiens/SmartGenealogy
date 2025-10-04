@@ -1,5 +1,4 @@
-﻿
-namespace SmartGenealogy.Core.ViewModels;
+﻿namespace SmartGenealogy.Core.ViewModels.Main;
 
 /// <summary>
 /// Main Page View Model.
