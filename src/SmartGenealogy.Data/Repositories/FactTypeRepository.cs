@@ -6,9 +6,10 @@
 /// <remarks>
 /// Initializes a new instance of the <see cref="FactTypeRepository"/> class.
 /// </remarks>
+/// <param name="roleRepository">Role repository.</param>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="logger">Logger.</param>
-public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
+public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
 {
     private bool _hasBeenInitialized = false;
 
@@ -87,13 +88,18 @@ public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactT
             });
         }
 
+        foreach (var factType in factTypes)
+        {
+            factType.Roles = await roleRepository.ListAsync(factType.Id);
+        }
+
         return factTypes;
     }
 
     /// <summary>
     /// Retrieves a specific fact type by its ID.
     /// </summary>
-    /// <param name="id">The ID of the project.</param>
+    /// <param name="id">The ID of the fact type.</param>
     /// <returns>A <see cref="FactType"/> object if found; otherwise, null.</returns>
     public async Task<FactType?> GetAsync(int id)
     {
@@ -124,6 +130,8 @@ public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactT
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
 
+            factType.Roles = await roleRepository.ListAsync(factType.Id);
+
             return factType;
         }
 
@@ -148,6 +156,7 @@ public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactT
                 INSERT INTO FactType (OwnerType, Name, Abbreviation, GedcomTag, UseValue, UseDate, UsePlace, Sentence, IsBuiltIn, DateAdded, DateChanged)
                 VALUES (@OwnerType, @Name, @Abbreviation, @GedcomTag, @UseValue, @UseDate, @UsePlace, @Sentence, @IsBuiltIn, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
+            saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
         else
         {
@@ -208,7 +217,6 @@ public class FactTypeRepository(DatabaseSettings databaseSettings, ILogger<FactT
     /// <summary>
     /// Creates the FactType table in the database.
     /// </summary>
-    /// <returns></returns>
     public async Task CreateTableAsync()
     {
         await Init();

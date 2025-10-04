@@ -38,6 +38,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
         mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
+        mauiAppBuilder.Services.AddSingleton<RoleRepository>();
 
         return mauiAppBuilder;
     }
@@ -47,6 +48,7 @@ public static class MauiProgram
     /// </summary>
     private static MauiAppBuilder ConfigureServices(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddSingleton<SeedDataService>();
         mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
 
         return mauiAppBuilder;
