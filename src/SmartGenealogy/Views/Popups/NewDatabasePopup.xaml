@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.NewDatabasePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:NewDatabasePopupViewModel"
+    BackgroundColor="Black">
+
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Enter the database name:"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding DatabaseName}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Enter the database path:"
+            VerticalOptions="Center" />
+
+        <Entry IsReadOnly="True" Text="{Binding DatabasePath}" />
+        <Button Command="{Binding SelectFolderCommand}" Text="Select Folder" />
+
+        <Button Command="{Binding CreateCommand}" Text="Create" />
+        <Button Command="{Binding CancelCommand}" Text="Cancel" />
+    </VerticalStackLayout>
+</toolkit:Popup>

@@ -18,6 +18,7 @@ public static class MauiProgram
             .ConfigureServices()
             .ConfigureViewModels()
             .ConfigureViews()
+            .ConfigurePopups()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -70,6 +71,16 @@ public static class MauiProgram
     private static MauiAppBuilder ConfigureViews(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransient<MainPage>();
+
+        return mauiAppBuilder;
+    }
+
+    /// <summary>
+    /// Configure popups for dependency injection.
+    /// </summary>
+    private static MauiAppBuilder ConfigurePopups(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
 
         return mauiAppBuilder;
     }

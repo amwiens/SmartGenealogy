@@ -5,13 +5,17 @@
 /// </summary>
 /// <param name="seedDataService">Seed data service.</param>
 /// <param name="databaseSettings">Database settings.</param>
+/// <param name="popupService">Popup service.</param>
 /// <param name="modalErrorHandler">Modal error handler.</param>
 public partial class MainPageViewModel(
     SeedDataService seedDataService,
     DatabaseSettings databaseSettings,
+    IPopupService popupService,
     ModalErrorHandler modalErrorHandler)
     : ObservableObject
 {
+    [ObservableProperty]
+    private bool _databaseOpen = false;
 
     /// <summary>
     /// Create a new database.
@@ -21,10 +25,13 @@ public partial class MainPageViewModel(
     {
         try
         {
-            databaseSettings.DatabaseFilename = "genealogy.db";
-            databaseSettings.DatabasePath = @"C:\Code";
+            var result = await popupService.ShowPopupAsync<NewDatabasePopupViewModel>(Shell.Current);
 
-            await seedDataService.LoadSeedDataAsync();
+            if (!string.IsNullOrWhiteSpace(databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(databaseSettings.DatabasePath))
+            {
+                await seedDataService.LoadSeedDataAsync();
+                DatabaseOpen = true;
+            }
         }
         catch (Exception ex)
         {
@@ -47,6 +54,8 @@ public partial class MainPageViewModel(
     [RelayCommand]
     private async Task CloseDatabase()
     {
-
+        databaseSettings.DatabaseFilename = null;
+        databaseSettings.DatabasePath = null;
+        DatabaseOpen = false;
     }
 }

@@ -68,4 +68,10 @@
 	  <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\Popups\NewDatabasePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
