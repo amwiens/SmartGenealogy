@@ -1,4 +1,5 @@
 ﻿global using CommunityToolkit.Maui;
+global using CommunityToolkit.Maui.Storage;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 

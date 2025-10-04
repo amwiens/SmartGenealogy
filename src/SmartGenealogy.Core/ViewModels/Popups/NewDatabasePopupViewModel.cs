@@ -1,4 +1,5 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Popups;
+﻿
+namespace SmartGenealogy.Core.ViewModels.Popups;
 
 /// <summary>
 /// New database popup view model.
@@ -9,9 +10,11 @@ public partial class NewDatabasePopupViewModel(DatabaseSettings databaseSettings
     : ObservableObject
 {
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(CreateCommand))]
     private string _databaseName = string.Empty;
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(CreateCommand))]
     private string _databasePath = string.Empty;
 
     bool CanCreate() => string.IsNullOrWhiteSpace(DatabaseName) is false && string.IsNullOrWhiteSpace(DatabasePath) is false;
@@ -22,7 +25,12 @@ public partial class NewDatabasePopupViewModel(DatabaseSettings databaseSettings
     [RelayCommand]
     private async Task SelectFolder()
     {
+        var result = await FolderPicker.Default.PickAsync();
 
+        if (result.IsSuccessful)
+        {
+            DatabasePath = result.Folder.Path;
+        }
     }
 
     /// <summary>
