@@ -5,7 +5,7 @@
 /// </summary>
 public class ModalErrorHandler : IErrorHandler
 {
-    SemaphoreSlim _semaphore = new(1, 1);
+    private SemaphoreSlim _semaphore = new(1, 1);
 
     /// <summary>
     /// Handle error in UI.
@@ -16,7 +16,7 @@ public class ModalErrorHandler : IErrorHandler
         DisplayAlert(ex).FireAndForgetSafeAsync();
     }
 
-    async Task DisplayAlert(Exception ex)
+    private async Task DisplayAlert(Exception ex)
     {
         try
         {

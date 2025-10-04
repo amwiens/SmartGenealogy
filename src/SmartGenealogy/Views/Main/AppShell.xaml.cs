@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy;
+﻿namespace SmartGenealogy.Views.Main;
 
 /// <summary>
 /// AppShell class.
