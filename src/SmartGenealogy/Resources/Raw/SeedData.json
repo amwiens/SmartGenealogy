@@ -1,0 +1,1119 @@
+{
+  "FactTypes": [
+    {
+      "OwnerType": 0,
+      "Name": "Birth",
+      "Abbreviation": "Birth",
+      "GedcomTag": "BIRT",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was born< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the birth of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        },
+        {
+          "Name": "Doctor",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] delivered [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Death",
+      "Abbreviation": "Death",
+      "GedcomTag": "DEAT",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] died< [Desc]>< [Date]>< [person:Age]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the death of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Christen",
+      "Abbreviation": "Chr",
+      "GedcomTag": "CHR",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was christened< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Burial",
+      "Abbreviation": "Burial",
+      "GedcomTag": "BURI",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was buried< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the burial of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Cremation",
+      "Abbreviation": "Cremation",
+      "GedcomTag": "CREM",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was cremated< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the creamation of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Adoption",
+      "Abbreviation": "Adoption",
+      "GedcomTag": "ADOP",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was adopted< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the adoption of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Baptism",
+      "Abbreviation": "Baptism",
+      "GedcomTag": "BAPM",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was baptized< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the baptism of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Bar Mitzvah",
+      "Abbreviation": "Bar Mitzvah",
+      "GedcomTag": "BARM",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] celebrated his bar mitzvah< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the bar mitzvah of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Bas Mitzvah",
+      "Abbreviation": "Bas Mitzvah",
+      "GedcomTag": "BASM",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] celebrated her bas mitzvah< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the bas mitzvah of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Blessing",
+      "Abbreviation": "Blessing",
+      "GedcomTag": "BLES",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was blessed< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the blessing of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Christen (adult)",
+      "Abbreviation": "Chr (adult)",
+      "GedcomTag": "CHRA",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was christened< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Confirmation",
+      "Abbreviation": "Confirmation",
+      "GedcomTag": "CONF",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was confirmed< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the confirmation of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "First communion",
+      "Abbreviation": "First comm",
+      "GedcomTag": "FCOM",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] received first communion< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the first communion of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Ordination",
+      "Abbreviation": "Ordination",
+      "GedcomTag": "ORDN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was ordained< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the ordination of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Naturalization",
+      "Abbreviation": "Naturalization",
+      "GedcomTag": "NATU",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was naturalized< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the naturalization of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Emigration",
+      "Abbreviation": "Emigration",
+      "GedcomTag": "EMIG",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] emigrated< [Date]>< from [Place:plain]>< [PlaceDetails]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the emigration of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Immigration",
+      "Abbreviation": "Immigration",
+      "GedcomTag": "IMMI",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] immigrated< [Date]>< to [Place:plain]>< [PlaceDetails]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the immigration of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Census",
+      "Abbreviation": "Census",
+      "GedcomTag": "CENS",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] appeared in the household of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Probate",
+      "Abbreviation": "Probate",
+      "GedcomTag": "PROB",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] had [person:hisher] estate probated< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the probate of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Will",
+      "Abbreviation": "Will",
+      "GedcomTag": "WILL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] signed a will< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the will of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        },
+        {
+          "Name": "Heir",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] was named an heir in the will of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        },
+        {
+          "Name": "Executor",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] was named an executor for the will of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Graduation",
+      "Abbreviation": "Graduation",
+      "GedcomTag": "GRAD",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] graduated< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the graduation of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Retirement",
+      "Abbreviation": "Retirement",
+      "GedcomTag": "RETI",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] retired< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the retirement of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Description",
+      "Abbreviation": "Description",
+      "GedcomTag": "DSCR",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was was described as [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the appearance of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Education",
+      "Abbreviation": "Education",
+      "GedcomTag": "EDUC",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was educated< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the education of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Nationality",
+      "Abbreviation": "Nationality",
+      "GedcomTag": "NATI",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the nationality of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Occupation",
+      "Abbreviation": "Occupation",
+      "GedcomTag": "OCCU",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[date] [person] was born [DescA]< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the occupation of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Property",
+      "Abbreviation": "Property",
+      "GedcomTag": "PROP",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] owned [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the property of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Religion",
+      "Abbreviation": "Religion",
+      "GedcomTag": "RELI",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the religion of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Residence",
+      "Abbreviation": "Residence",
+      "GedcomTag": "RESI",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] lived< [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] lived in the residence of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Soc Sec No",
+      "Abbreviation": "SSN",
+      "GedcomTag": "SSN",
+      "UseValue": true,
+      "UseDate": false,
+      "UsePlace": false,
+      "Sentence": "[person] had Social Security Number [Desc].",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "LDS Baptixm",
+      "Abbreviation": "LDS Bapt",
+      "GedcomTag": "BAPL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was baptized into the LDS Church< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the baptism of [person] into the LDS Church< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "LDS Endowment",
+      "Abbreviation": "LDS Endow",
+      "GedcomTag": "ENDL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was endowed< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the endowment of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "LDS Seal to parents",
+      "Abbreviation": "LDS SealPar",
+      "GedcomTag": "ALGC",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was sealed to [person:hisher] parents< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the sealed to parents of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Ancestral File Number",
+      "Abbreviation": "AFN",
+      "GedcomTag": "AFN",
+      "UseValue": true,
+      "UseDate": false,
+      "UsePlace": false,
+      "Sentence": "[person] has Ancestral File Number [Desc].",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Reference No",
+      "Abbreviation": "Ref #",
+      "GedcomTag": "REFN",
+      "UseValue": true,
+      "UseDate": false,
+      "UsePlace": false,
+      "Sentence": "[person] has reference number [Desc].",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Caste",
+      "Abbreviation": "Caste",
+      "GedcomTag": "CAST",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was associated with [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the assocated with [Desc] of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Title (Nobility)",
+      "Abbreviation": "Title",
+      "GedcomTag": "TITL",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] held the title of [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "LDS Confirmation",
+      "Abbreviation": "LDS Conf",
+      "GedcomTag": "CONL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was confirmed a member of the LED Church< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the confirmation of [person] as a member of the LDS Church< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "LDS Initiatory",
+      "Abbreviation": "LDS Init",
+      "GedcomTag": "WAC",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] received LDS initiatory< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the LDS initiatory of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Marriage",
+      "Abbreviation": "Marriage",
+      "GedcomTag": "MARR",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] <#Couple#was|were> married< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the marriage of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Annulment",
+      "Abbreviation": "Annulment",
+      "GedcomTag": "ANUL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] had their marriage annulled< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the annulment of the marriage of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Divorce",
+      "Abbreviation": "Divorce",
+      "GedcomTag": "DIV",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] <#Couple#was|were> divorced< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the divorce of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Divorce filed",
+      "Abbreviation": "Div. filed",
+      "GedcomTag": "DIVF",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] filed for divorce< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the divorce filing of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Engagement",
+      "Abbreviation": "Engagement",
+      "GedcomTag": "ENGA",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] <#Couple#was|were> engaged< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the engagement of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Marriage Bann",
+      "Abbreviation": "Marr Bann",
+      "GedcomTag": "MARB",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] had marriage banns published< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the publishing of the marriage banns of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Marriage Contract",
+      "Abbreviation": "Marr Contract",
+      "GedcomTag": "MARC",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] singed a marriage contract< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the marriage contract of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Marriage License",
+      "Abbreviation": "Marr Lic",
+      "GedcomTag": "MARL",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] obtained a marriage license< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the obtaining of the marriage license by [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Marriage Settlement",
+      "Abbreviation": "Marr Settlement",
+      "GedcomTag": "MARS",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] obtained a marriage settlement< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the marriage settlement of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "LDS Seal to spouse",
+      "Abbreviation": "LDS SealSp",
+      "GedcomTag": "SLGS",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] were sealed together< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the sealing of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Residence (family)",
+      "Abbreviation": "Residence (fam)",
+      "GedcomTag": "RESI",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] lived < [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Census (family)",
+      "Abbreviation": "Census (fam)",
+      "GedcomTag": "CENS",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] appeared in the census in the household of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Degree",
+      "Abbreviation": "Degree",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] received a< [desc]> degree< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the degree of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Military",
+      "Abbreviation": "Military",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was born < [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the military service of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Mission",
+      "Abbreviation": "Mission",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] served a mission< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the mission of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Stillborn",
+      "Abbreviation": "Stillborn",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was stillborn < [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the stillbirth of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Illness",
+      "Abbreviation": "Illness",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was ill<with [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the illness of [person] with [Desc]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Living",
+      "Abbreviation": "Living",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was living< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Election",
+      "Abbreviation": "Elected",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was elected< as [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the election of [person] as [Desc]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Excommunication",
+      "Abbreviation": "Excomm",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was excommunicated< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the excommunication of [person]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Namesake",
+      "Abbreviation": "Namesake",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person] was named after [Desc]< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 1,
+      "Name": "Separation",
+      "Abbreviation": "Separation",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[couple] were separated< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[ThisPerson] witnessed the separation of [couple]< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Alternate name",
+      "Abbreviation": "Alt. Name",
+      "GedcomTag": "EVEN",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": false,
+      "Sentence": "[person] was also known as [Desc]< [Date]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "DNA test",
+      "Abbreviation": "DNA",
+      "GedcomTag": "_DNA",
+      "UseValue": false,
+      "UseDate": true,
+      "UsePlace": false,
+      "Sentence": "[person] had a DNA test performed< [Date]>.",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Association",
+      "Abbreviation": "Association",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "",
+      "IsBuiltIn": true
+    },
+    {
+      "OwnerType": 0,
+      "Name": "Miscellaneous",
+      "Abbreviation": "Misc",
+      "GedcomTag": "EVEN",
+      "UseValue": true,
+      "UseDate": true,
+      "UsePlace": true,
+      "Sentence": "[person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.",
+      "IsBuiltIn": true,
+      "Roles": [
+        {
+          "Name": "Witness",
+          "RoleType": 0,
+          "Sentence": "[person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>."
+        }
+      ]
+    }
+  ]
+}

@@ -165,7 +165,7 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
         {
             saveCmd.CommandText = @"
                 INSERT INTO Role (Name, EventType, RoleType, Sentence, DateAdded, DateChanged)
-                VALUES (@Name, @EventType, @RoleType, @Sentence, @DateAdded, @DateChanged)
+                VALUES (@Name, @EventType, @RoleType, @Sentence, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
             saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }

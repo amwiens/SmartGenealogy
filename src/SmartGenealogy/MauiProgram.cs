@@ -48,6 +48,7 @@ public static class MauiProgram
     /// </summary>
     private static MauiAppBuilder ConfigureServices(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddSingleton<SeedDataService>();
         mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
 
         return mauiAppBuilder;

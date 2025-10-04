@@ -70,3 +70,8 @@ public class FactType
     /// </summary>
     public List<Role> Roles { get; set; } = [];
 }
+
+public class FactTypeJson
+{
+    public List<FactType> FactTypes { get; set; } = [];
+}
