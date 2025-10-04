@@ -59,7 +59,6 @@ public class SeedDataService(FactTypeRepository factTypeRepository, RoleReposito
                 factTypeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync()
                 );
-
         }
         catch (Exception ex)
         {

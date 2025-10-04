@@ -16,7 +16,7 @@ public partial class NewDatabasePopupViewModel(DatabaseSettings databaseSettings
     [NotifyCanExecuteChangedFor(nameof(CreateCommand))]
     private string _databasePath = string.Empty;
 
-    bool CanCreate() => string.IsNullOrWhiteSpace(DatabaseName) is false && string.IsNullOrWhiteSpace(DatabasePath) is false;
+    private bool CanCreate() => string.IsNullOrWhiteSpace(DatabaseName) is false && string.IsNullOrWhiteSpace(DatabasePath) is false;
 
     /// <summary>
     /// Select folder.

@@ -117,7 +117,7 @@ public partial class MainPageViewModel(
         if (sQLiteHeader.Length != fileHeader.Length)
             return false;
 
-        for (int i = 0; i <  sQLiteHeader.Length; i++)
+        for (int i = 0; i < sQLiteHeader.Length; i++)
         {
             if (sQLiteHeader[i] != fileHeader[i])
                 return false;
