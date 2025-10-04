@@ -25,12 +25,15 @@ public partial class MainPageViewModel(
     {
         try
         {
-            var result = await popupService.ShowPopupAsync<NewDatabasePopupViewModel>(Shell.Current);
-
-            if (!string.IsNullOrWhiteSpace(databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(databaseSettings.DatabasePath))
+            if (Shell.Current is Shell shell)
             {
-                await seedDataService.LoadSeedDataAsync();
-                DatabaseOpen = true;
+                var result = await popupService.ShowPopupAsync<NewDatabasePopupViewModel>(shell);
+
+                if (!string.IsNullOrWhiteSpace(databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(databaseSettings.DatabasePath))
+                {
+                    await seedDataService.LoadSeedDataAsync();
+                    DatabaseOpen = true;
+                }
             }
         }
         catch (Exception ex)
