@@ -3,13 +3,20 @@
     x:Class="SmartGenealogy.Views.Main.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
+    xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
-    xmlns:views="clr-namespace:SmartGenealogy.Views.Main"
     Title="{Binding Title}"
     x:DataType="viewModels:AppShellViewModel">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}"
+        ContentTemplate="{DataTemplate main:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate settings:SettingsPage}"
+        Route="SettingsPage" />
+
 </Shell>
