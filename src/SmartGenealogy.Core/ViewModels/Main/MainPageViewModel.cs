@@ -32,6 +32,7 @@ public partial class MainPageViewModel(
                 if (!string.IsNullOrWhiteSpace(databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(databaseSettings.DatabasePath))
                 {
                     await seedDataService.LoadSeedDataAsync();
+                    WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
                     DatabaseOpen = true;
                 }
             }
@@ -72,6 +73,7 @@ public partial class MainPageViewModel(
 
                     databaseSettings.DatabaseFilename = fileInfo.Name;
                     databaseSettings.DatabasePath = fileInfo.Directory!.FullName;
+                    WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
                     DatabaseOpen = true;
                 }
                 else
@@ -91,10 +93,11 @@ public partial class MainPageViewModel(
     /// Close the open database.
     /// </summary>
     [RelayCommand]
-    private async Task CloseDatabase()
+    private void CloseDatabase()
     {
         databaseSettings.DatabaseFilename = null;
         databaseSettings.DatabasePath = null;
+        WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(false));
         DatabaseOpen = false;
     }
 
