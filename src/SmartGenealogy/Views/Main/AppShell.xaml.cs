@@ -8,8 +8,10 @@ public partial class AppShell : Shell
     /// <summary>
     /// Constructor.
     /// </summary>
-    public AppShell()
+    /// <param name="viewModel">AppShell view model.</param>
+    public AppShell(AppShellViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
     }
 }

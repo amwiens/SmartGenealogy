@@ -60,6 +60,7 @@ public static class MauiProgram
     /// </summary>
     private static MauiAppBuilder ConfigureViewModels(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddSingleton<AppShellViewModel>();
         mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
 
         return mauiAppBuilder;
@@ -70,6 +71,7 @@ public static class MauiProgram
     /// </summary>
     private static MauiAppBuilder ConfigureViews(this MauiAppBuilder mauiAppBuilder)
     {
+        mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
 
         return mauiAppBuilder;
