@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy;
+﻿
+
+namespace SmartGenealogy;
 
 /// <summary>
 /// Application class.
@@ -26,5 +28,26 @@ public partial class App : Application
     {
         var appShell = _serviceProvider.GetService<AppShell>();
         return new Window(appShell!);
+    }
+
+    /// <summary>
+    /// On start.
+    /// </summary>
+    protected override void OnStart()
+    {
+        base.OnStart();
+
+        if (SmartGenealogySettings.OpenLastDatabaseOnStartup)
+        {
+            if (File.Exists(SmartGenealogySettings.LastOpenDatabase))
+            {
+                var fi = new FileInfo(SmartGenealogySettings.LastOpenDatabase);
+                var databaseSettings = _serviceProvider.GetRequiredService<DatabaseSettings>();
+                databaseSettings.DatabasePath = fi.DirectoryName;
+                databaseSettings.DatabaseFilename = fi.Name;
+
+                WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
+            }
+        }
     }
 }

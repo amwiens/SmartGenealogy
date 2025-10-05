@@ -10,6 +10,8 @@ public static class MauiProgram
     /// </summary>
     public static MauiApp CreateMauiApp()
     {
+        SmartGenealogySettings.LoadSettings();
+
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()

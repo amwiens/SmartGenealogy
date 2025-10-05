@@ -1,9 +1,12 @@
 ﻿global using CommunityToolkit.Maui;
 global using CommunityToolkit.Maui.Views;
+global using CommunityToolkit.Mvvm.Messaging;
 
 global using Microsoft.Extensions.Logging;
 
+global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Services;
+global using SmartGenealogy.Core.Settings;
 global using SmartGenealogy.Core.ViewModels.Main;
 global using SmartGenealogy.Core.ViewModels.Popups;
 global using SmartGenealogy.Core.ViewModels.Settings;
