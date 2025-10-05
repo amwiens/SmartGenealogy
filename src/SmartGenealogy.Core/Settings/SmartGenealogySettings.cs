@@ -11,7 +11,7 @@ public record SettingsRecord
 
 /// <summary>
 /// Provides application-wide settings management for the Smart Genealogy application.
-/// 
+///
 /// Handles the loading, saving, and updating of user preferences and settings.
 /// </summary>
 public static class SmartGenealogySettings
@@ -33,7 +33,9 @@ public static class SmartGenealogySettings
     /// </summary>
     public static SettingsRecord DefaultSettings => new();
 
-
+    /// <summary>
+    /// Current settings.
+    /// </summary>
     public static SettingsRecord CurrentSettings =>
         new()
         {
@@ -45,6 +47,7 @@ public static class SmartGenealogySettings
     /// The full path to settings.json.
     /// </summary>
     public static readonly string SettingsFilePath = Path.Combine(SettingsFileDir, "settings.json");
+
     private static string _previousSettingsJson = string.Empty;
 
     /// <summary>
@@ -59,7 +62,7 @@ public static class SmartGenealogySettings
 
     /// <summary>
     /// Loads settings from the settings file and applies them to the current session.
-    /// 
+    ///
     /// If the settings file does not exist or is invalid, default settings are used and settings.json is rewritten.
     /// </summary>
     public static void LoadSettings()

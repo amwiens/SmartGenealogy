@@ -1,6 +1,4 @@
-﻿
-
-namespace SmartGenealogy;
+﻿namespace SmartGenealogy;
 
 /// <summary>
 /// Application class.

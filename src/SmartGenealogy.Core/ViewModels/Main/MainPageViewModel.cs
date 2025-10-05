@@ -3,7 +3,7 @@
 /// <summary>
 /// Main Page View Model.
 /// </summary>
-public partial class MainPageViewModel: ObservableObject, IRecipient<OpenDatabaseMessage>
+public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDatabaseMessage>
 {
     private readonly SeedDataService _seedDataService;
     private readonly DatabaseSettings _databaseSettings;
