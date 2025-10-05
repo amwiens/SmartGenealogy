@@ -3,19 +3,54 @@
 /// <summary>
 /// Main Page View Model.
 /// </summary>
-/// <param name="seedDataService">Seed data service.</param>
-/// <param name="databaseSettings">Database settings.</param>
-/// <param name="popupService">Popup service.</param>
-/// <param name="modalErrorHandler">Modal error handler.</param>
-public partial class MainPageViewModel(
-    SeedDataService seedDataService,
-    DatabaseSettings databaseSettings,
-    IPopupService popupService,
-    ModalErrorHandler modalErrorHandler)
-    : ObservableObject
+public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDatabaseMessage>
 {
+    private readonly SeedDataService _seedDataService;
+    private readonly DatabaseSettings _databaseSettings;
+    private readonly IPopupService _popupService;
+    private readonly ModalErrorHandler _modalErrorHandler;
+
     [ObservableProperty]
     private bool _databaseOpen = false;
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="seedDataService">Seed data service.</param>
+    /// <param name="databaseSettings">Database settings.</param>
+    /// <param name="popupService">Popup service.</param>
+    /// <param name="modalErrorHandler">Modal error handler.</param>
+    public MainPageViewModel(
+        SeedDataService seedDataService,
+        DatabaseSettings databaseSettings,
+        IPopupService popupService,
+        ModalErrorHandler modalErrorHandler)
+    {
+        _seedDataService = seedDataService;
+        _databaseSettings = databaseSettings;
+        _popupService = popupService;
+        _modalErrorHandler = modalErrorHandler;
+
+        WeakReferenceMessenger.Default.Register<OpenDatabaseMessage>(this);
+    }
+
+    /// <summary>
+    /// Appearing.
+    /// </summary>
+    [RelayCommand]
+    private void Appearing()
+    {
+    }
+
+    /// <summary>
+    /// Receives Open Database messages
+    /// </summary>
+    /// <param name="message">Open database message</param>
+    public void Receive(OpenDatabaseMessage message)
+    {
+        if (_databaseSettings.DatabasePath is not null && !string.IsNullOrEmpty(_databaseSettings.DatabasePath))
+            DatabaseOpen = true;
+    }
 
     /// <summary>
     /// Create a new database.
@@ -27,19 +62,21 @@ public partial class MainPageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                var result = await popupService.ShowPopupAsync<NewDatabasePopupViewModel>(shell);
+                var result = await _popupService.ShowPopupAsync<NewDatabasePopupViewModel>(shell);
 
-                if (!string.IsNullOrWhiteSpace(databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(databaseSettings.DatabasePath))
+                if (!string.IsNullOrWhiteSpace(_databaseSettings.DatabaseFilename) && !string.IsNullOrWhiteSpace(_databaseSettings.DatabasePath))
                 {
-                    await seedDataService.LoadSeedDataAsync();
+                    await _seedDataService.LoadSeedDataAsync();
                     WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
                     DatabaseOpen = true;
+                    SmartGenealogySettings.LastOpenDatabase = Path.Combine(_databaseSettings.DatabasePath, _databaseSettings.DatabaseFilename);
+                    SmartGenealogySettings.SaveSettings();
                 }
             }
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            _modalErrorHandler.HandleError(ex);
         }
     }
 
@@ -71,10 +108,12 @@ public partial class MainPageViewModel(
                 {
                     var fileInfo = new FileInfo(result.FullPath);
 
-                    databaseSettings.DatabaseFilename = fileInfo.Name;
-                    databaseSettings.DatabasePath = fileInfo.Directory!.FullName;
+                    _databaseSettings.DatabaseFilename = fileInfo.Name;
+                    _databaseSettings.DatabasePath = fileInfo.Directory!.FullName;
                     WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
                     DatabaseOpen = true;
+                    SmartGenealogySettings.LastOpenDatabase = Path.Combine(_databaseSettings.DatabasePath, _databaseSettings.DatabaseFilename);
+                    SmartGenealogySettings.SaveSettings();
                 }
                 else
                 {
@@ -85,7 +124,7 @@ public partial class MainPageViewModel(
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            _modalErrorHandler.HandleError(ex);
         }
     }
 
@@ -95,10 +134,12 @@ public partial class MainPageViewModel(
     [RelayCommand]
     private void CloseDatabase()
     {
-        databaseSettings.DatabaseFilename = null;
-        databaseSettings.DatabasePath = null;
+        _databaseSettings.DatabaseFilename = null;
+        _databaseSettings.DatabasePath = null;
         WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(false));
         DatabaseOpen = false;
+        SmartGenealogySettings.LastOpenDatabase = string.Empty;
+        SmartGenealogySettings.SaveSettings();
     }
 
     private bool IsSQLiteDatabase(string fileName)

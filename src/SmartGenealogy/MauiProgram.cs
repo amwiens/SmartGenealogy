@@ -10,6 +10,8 @@ public static class MauiProgram
     /// </summary>
     public static MauiApp CreateMauiApp()
     {
+        SmartGenealogySettings.LoadSettings();
+
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
@@ -62,6 +64,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShellViewModel>();
         mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
 
         return mauiAppBuilder;
     }
@@ -73,6 +76,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
+        mauiAppBuilder.Services.AddTransient<SettingsPage>();
 
         return mauiAppBuilder;
     }
