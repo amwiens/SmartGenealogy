@@ -9,8 +9,9 @@
 
     <VerticalStackLayout>
         <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
+            HorizontalOptions="Start"
+            Text="Fact Types"
             VerticalOptions="Center" />
+        <Button Command="{Binding OpenFactTypesPageCommand}" Text="Manage fact types" />
     </VerticalStackLayout>
 </ContentPage>

@@ -1,15 +1,14 @@
 namespace SmartGenealogy.Views.Tools;
 
 /// <summary>
-/// Tools page.
+/// Fact types page.
 /// </summary>
-public partial class ToolsPage : ContentPage
+public partial class FactTypesPage : ContentPage
 {
 	/// <summary>
 	/// Constructor
 	/// </summary>
-	/// <param name="viewModel">Tools page view model</param>
-	public ToolsPage(ToolsPageViewModel viewModel)
+	public FactTypesPage(FactTypesPageViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

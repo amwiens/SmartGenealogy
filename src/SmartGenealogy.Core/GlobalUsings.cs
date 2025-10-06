@@ -1,4 +1,5 @@
-﻿global using System.Text;
+﻿global using System.Collections.ObjectModel;
+global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
 
@@ -14,5 +15,7 @@ global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Services;
 global using SmartGenealogy.Core.Settings;
 global using SmartGenealogy.Core.ViewModels.Popups;
+global using SmartGenealogy.Data.Models;
+global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;
 global using SmartGenealogy.Data.Settings;

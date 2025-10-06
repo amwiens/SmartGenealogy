@@ -79,6 +79,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<MainPage>();
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
 
         return mauiAppBuilder;
     }
@@ -89,6 +90,7 @@ public static class MauiProgram
     private static MauiAppBuilder ConfigurePopups(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddFactTypePopup, AddFactTypePopupViewModel>();
 
         return mauiAppBuilder;
     }
