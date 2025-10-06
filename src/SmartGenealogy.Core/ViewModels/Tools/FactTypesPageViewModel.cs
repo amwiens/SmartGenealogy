@@ -11,6 +11,9 @@ public partial class FactTypesPageViewModel(FactTypeRepository factTypeRepositor
     [ObservableProperty]
     private ObservableCollection<FactType> _factTypes = [];
 
+    [ObservableProperty]
+    private FactType? _selectedItem;
+
     /// <summary>
     /// Appearing
     /// </summary>
@@ -37,5 +40,15 @@ public partial class FactTypesPageViewModel(FactTypeRepository factTypeRepositor
         {
             modalErrorHandler.HandleError(ex);
         }
+    }
+
+    /// <summary>
+    /// Open Fact type details
+    /// </summary>
+    [RelayCommand]
+    private async Task OpenFactTypeDetails()
+    {
+        if (SelectedItem is not null)
+            await Shell.Current.GoToAsync($"factTypeDetails?id={SelectedItem.Id}");
     }
 }

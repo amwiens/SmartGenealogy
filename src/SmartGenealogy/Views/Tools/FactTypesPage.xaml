@@ -28,16 +28,21 @@
             Grid.Row="1"
             Grid.ColumnSpan="2"
             Orientation="Vertical">
-            <CollectionView ItemsSource="{Binding FactTypes}">
+            <CollectionView
+                ItemsSource="{Binding FactTypes}"
+                SelectedItem="{Binding SelectedItem}"
+                SelectionChangedCommand="{Binding OpenFactTypeDetailsCommand}"
+                SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:FactType">
-                        <StackLayout Padding="10" Orientation="Vertical">
+                        <Grid RowDefinitions="Auto,Auto">
                             <Label FontSize="18" Text="{Binding Name}" />
                             <Label
+                                Grid.Row="1"
                                 FontSize="14"
                                 Text="{Binding Sentence}"
                                 TextColor="Gray" />
-                        </StackLayout>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
