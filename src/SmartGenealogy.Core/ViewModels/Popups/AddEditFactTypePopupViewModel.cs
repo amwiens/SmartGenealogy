@@ -55,7 +55,6 @@ public partial class AddEditFactTypePopupViewModel(
     /// Load data.
     /// </summary>
     /// <param name="id">Record identifier</param>
-    /// <returns></returns>
     private async Task LoadData(int id)
     {
         try
@@ -99,7 +98,6 @@ public partial class AddEditFactTypePopupViewModel(
         _factType.UseDate = UseDate;
         _factType.UsePlace = UsePlace;
         _factType.Sentence = Sentence;
-        _factType.IsBuiltIn = IsBuiltIn;
 
         var factTypeId = await factTypeRepository.SaveItemAsync(_factType);
 

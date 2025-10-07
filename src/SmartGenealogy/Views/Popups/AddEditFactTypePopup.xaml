@@ -38,26 +38,32 @@
 
                 <Entry Text="{Binding GedcomTag}" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use value"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <CheckBox IsChecked="{Binding UseValue}" />
 
-                <CheckBox IsChecked="{Binding UseValue}" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use value"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use date"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <CheckBox IsChecked="{Binding UseDate}" />
 
-                <CheckBox IsChecked="{Binding UseDate}" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use date"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use place"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <CheckBox IsChecked="{Binding UsePlace}" />
 
-                <CheckBox IsChecked="{Binding UsePlace}" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use place"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <VerticalStackLayout

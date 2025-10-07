@@ -55,6 +55,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<SeedDataService>();
         mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+        mauiAppBuilder.Services.AddSingleton<IFactTypeService, FactTypeService>();
 
         return mauiAppBuilder;
     }
@@ -94,6 +95,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditFactTypePopup, AddEditFactTypePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditRolePopup, AddEditRolePopupViewModel>();
 
         return mauiAppBuilder;
     }

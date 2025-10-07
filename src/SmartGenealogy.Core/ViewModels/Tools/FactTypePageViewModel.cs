@@ -3,10 +3,18 @@
 /// <summary>
 /// Fact type page view model.
 /// </summary>
+/// <param name="factTypeService">Fact type service</param>
 /// <param name="factTypeRepository">Fact type repository</param>
+/// <param name="roleRepository">Role repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="modalErrorHandler">Modal error handler</param>
-public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository, IPopupService popupService, ModalErrorHandler modalErrorHandler) : ObservableObject, IQueryAttributable
+public partial class FactTypePageViewModel(
+    IFactTypeService factTypeService,
+    FactTypeRepository factTypeRepository,
+    RoleRepository roleRepository,
+    IPopupService popupService,
+    ModalErrorHandler modalErrorHandler)
+    : ObservableObject, IQueryAttributable
 {
     private FactType? _factType;
 
@@ -33,6 +41,18 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
 
     [ObservableProperty]
     private bool _isBuiltIn = false;
+
+    [ObservableProperty]
+    private ObservableCollection<Role> _roles = [];
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(EditRoleCommand))]
+    [NotifyCanExecuteChangedFor(nameof(DeleteRoleCommand))]
+    private Role? _selectedRole;
+
+    private bool CanEditRole() => SelectedRole != null && SelectedRole.Id != 0;
+
+    private bool CanDeleteRole() => SelectedRole != null && SelectedRole.Id != 0;
 
     /// <summary>
     /// Apply attributes.
@@ -72,6 +92,7 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
             UsePlace = _factType.UsePlace;
             Sentence = _factType.Sentence;
             IsBuiltIn = _factType.IsBuiltIn;
+            Roles = new ObservableCollection<Role>(_factType.Roles);
         }
         catch (Exception ex)
         {
@@ -79,12 +100,15 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
         }
     }
 
+    /// <summary>
+    /// Edit fact type.
+    /// </summary>
     [RelayCommand]
     private async Task EditFactType()
     {
         var queryAttributes = new Dictionary<string, object>
         {
-            { "id", _factType.Id }
+            { "id", _factType!.Id }
         };
 
         await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(
@@ -93,13 +117,68 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
             shellParameters: queryAttributes);
     }
 
+    /// <summary>
+    /// Delete fact type.
+    /// </summary>
     [RelayCommand]
     private async Task DeleteFactType()
     {
         try
         {
-            await factTypeRepository.DeleteItemAsync(_factType!);
+            await factTypeService.DeleteItemAsync(_factType!);
             await Shell.Current.GoToAsync("..");
+        }
+        catch (Exception ex)
+        {
+            modalErrorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Add role
+    /// </summary>
+    /// <returns></returns>
+    [RelayCommand]
+    private async Task AddRole()
+    {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "factTypeId", _factType!.Id }
+        };
+
+        await popupService.ShowPopupAsync<AddEditRolePopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
+    }
+
+    /// <summary>
+    /// Edit role
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanEditRole))]
+    private async Task EditRole()
+    {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "id", SelectedRole!.Id }
+        };
+
+        await popupService.ShowPopupAsync<AddEditRolePopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
+    }
+
+    /// <summary>
+    /// Delete role
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanDeleteRole))]
+    private async Task DeleteRole()
+    {
+        try
+        {
+            await roleRepository.DeleteItemAsync(SelectedRole!);
+            LoadData(_factType!.Id).FireAndForgetSafeAsync();
         }
         catch (Exception ex)
         {

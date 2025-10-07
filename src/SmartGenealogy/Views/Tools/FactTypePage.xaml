@@ -3,6 +3,7 @@
     x:Class="SmartGenealogy.Views.Tools.FactTypePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
     x:Name="factTypePage"
@@ -105,6 +106,36 @@
                 HorizontalOptions="Center"
                 Text="{Binding Sentence}"
                 VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding AddRoleCommand}" Text="Add role" />
+            <Button Command="{Binding EditRoleCommand}" Text="Edit role" />
+            <Button Command="{Binding DeleteRoleCommand}" Text="Delete role" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Roles:"
+                VerticalOptions="Center" />
+
+            <CollectionView
+                ItemsSource="{Binding Roles}"
+                SelectedItem="{Binding SelectedRole}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Role">
+                        <Grid RowDefinitions="Auto,Auto">
+                            <Label Text="{Binding Name}" />
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding Sentence}"
+                                TextColor="Gray" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
