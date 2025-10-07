@@ -3,8 +3,26 @@
 /// <summary>
 /// Tools page view model.
 /// </summary>
-public partial class ToolsPageViewModel : ObservableObject
+/// <param name="databaseTools">Database tools</param>
+/// <param name="errorHandler">Modal error handler</param>
+public partial class ToolsPageViewModel(DatabaseTools databaseTools, ModalErrorHandler errorHandler) : ObservableObject
 {
+    /// <summary>
+    /// Compact database.
+    /// </summary>
+    [RelayCommand]
+    private async Task CompactDatabase()
+    {
+        try
+        {
+            await databaseTools.CompactDatabase();
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
     /// <summary>
     /// Open Fact Types page.
     /// </summary>

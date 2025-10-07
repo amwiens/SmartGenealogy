@@ -10,6 +10,12 @@
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Start"
+            Text="Database Tools"
+            VerticalOptions="Center" />
+        <Button Command="{Binding CompactDatabaseCommand}" Text="Compact Database" />
+
+        <Label
+            HorizontalOptions="Start"
             Text="Fact Types"
             VerticalOptions="Center" />
         <Button Command="{Binding OpenFactTypesPageCommand}" Text="Manage fact types" />
