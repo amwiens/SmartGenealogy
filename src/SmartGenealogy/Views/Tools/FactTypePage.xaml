@@ -108,6 +108,12 @@
                 VerticalOptions="Center" />
         </HorizontalStackLayout>
 
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding AddRoleCommand}" Text="Add role" />
+            <Button Command="{Binding EditRoleCommand}" Text="Edit role" />
+            <Button Command="{Binding DeleteRoleCommand}" Text="Delete role" />
+        </HorizontalStackLayout>
+
         <HorizontalStackLayout>
             <Label
                 HorizontalOptions="Center"
@@ -117,7 +123,6 @@
             <CollectionView
                 ItemsSource="{Binding Roles}"
                 SelectedItem="{Binding SelectedRole}"
-                SelectionChangedCommand="{Binding OpenFactTypeDetailsCommand}"
                 SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Role">

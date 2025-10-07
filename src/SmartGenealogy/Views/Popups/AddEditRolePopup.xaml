@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditRolePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditRolePopupViewModel"
+    Background="Black">
+
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Start"
+            Text="Role"
+            VerticalOptions="Center" />
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Name"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding Name}" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="Sentence"
+                VerticalOptions="Center" />
+
+            <Editor HeightRequest="200" Text="{Binding Sentence}" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>

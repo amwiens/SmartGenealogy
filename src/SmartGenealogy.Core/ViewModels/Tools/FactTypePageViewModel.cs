@@ -5,9 +5,16 @@
 /// </summary>
 /// <param name="factTypeService">Fact type service</param>
 /// <param name="factTypeRepository">Fact type repository</param>
+/// <param name="roleRepository">Role repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="modalErrorHandler">Modal error handler</param>
-public partial class FactTypePageViewModel(IFactTypeService factTypeService, FactTypeRepository factTypeRepository, IPopupService popupService, ModalErrorHandler modalErrorHandler) : ObservableObject, IQueryAttributable
+public partial class FactTypePageViewModel(
+    IFactTypeService factTypeService,
+    FactTypeRepository factTypeRepository,
+    RoleRepository roleRepository,
+    IPopupService popupService,
+    ModalErrorHandler modalErrorHandler)
+    : ObservableObject, IQueryAttributable
 {
     private FactType? _factType;
 
@@ -39,7 +46,13 @@ public partial class FactTypePageViewModel(IFactTypeService factTypeService, Fac
     private ObservableCollection<Role> _roles = [];
 
     [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(EditRoleCommand))]
+    [NotifyCanExecuteChangedFor(nameof(DeleteRoleCommand))]
     private Role? _selectedRole;
+
+    private bool CanEditRole() => SelectedRole != null && SelectedRole.Id != 0;
+
+    private bool CanDeleteRole() => SelectedRole != null && SelectedRole.Id != 0;
 
     /// <summary>
     /// Apply attributes.
@@ -122,11 +135,54 @@ public partial class FactTypePageViewModel(IFactTypeService factTypeService, Fac
     }
 
     /// <summary>
+    /// Add role
+    /// </summary>
+    /// <returns></returns>
+    [RelayCommand]
+    private async Task AddRole()
+    {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "factTypeId", _factType!.Id }
+        };
+
+        await popupService.ShowPopupAsync<AddEditRolePopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
+    }
+
+    /// <summary>
     /// Edit role
     /// </summary>
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanEditRole))]
     private async Task EditRole()
     {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "id", SelectedRole!.Id }
+        };
 
+        await popupService.ShowPopupAsync<AddEditRolePopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
+    }
+
+    /// <summary>
+    /// Delete role
+    /// </summary>
+    [RelayCommand(CanExecute = nameof(CanDeleteRole))]
+    private async Task DeleteRole()
+    {
+        try
+        {
+            await roleRepository.DeleteItemAsync(SelectedRole!);
+            LoadData(_factType!.Id).FireAndForgetSafeAsync();
+        }
+        catch (Exception ex)
+        {
+            modalErrorHandler.HandleError(ex);
+        }
     }
 }
