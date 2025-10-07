@@ -1,6 +1,11 @@
 ﻿namespace SmartGenealogy.Core.ViewModels.Popups;
 
-
+/// <summary>
+/// Add/edit role popup view model.
+/// </summary>
+/// <param name="roleRepository">Role repository</param>
+/// <param name="popupService">Popup service</param>
+/// <param name="errorHandler">Error handler</param>
 public partial class AddEditRolePopupViewModel(
     RoleRepository roleRepository,
     IPopupService popupService,

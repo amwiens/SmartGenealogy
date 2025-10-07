@@ -136,7 +136,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
