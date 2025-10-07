@@ -10,6 +10,9 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
     [ObservableProperty]
     private string? _title = "Smart Genealogy";
 
+    [ObservableProperty]
+    private bool _databaseOpen = false;
+
     /// <summary>
     /// Constructor
     /// </summary>
@@ -35,5 +38,7 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
         {
             Title = $"Smart Genealogy - {Path.Combine(_databaseSettings.DatabasePath!, _databaseSettings.DatabaseFilename!)}";
         }
+
+        DatabaseOpen = message!.Value;
     }
 }

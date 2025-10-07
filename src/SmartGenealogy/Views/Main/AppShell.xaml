@@ -10,18 +10,18 @@
     Title="{Binding Title}"
     x:DataType="viewModels:AppShellViewModel">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate main:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Home">
+        <ShellContent ContentTemplate="{DataTemplate main:MainPage}" Route="MainPage" />
+    </FlyoutItem>
 
-    <ShellContent
-        Title="Tools"
-        ContentTemplate="{DataTemplate tools:ToolsPage}"
-        Route="ToolsPage" />
+    <FlyoutItem Title="Tools">
+        <ShellContent
+            ContentTemplate="{DataTemplate tools:ToolsPage}"
+            IsVisible="{Binding DatabaseOpen}"
+            Route="ToolsPage" />
+    </FlyoutItem>
 
-    <ShellContent
-        Title="Settings"
-        ContentTemplate="{DataTemplate settings:SettingsPage}"
-        Route="SettingsPage" />
+    <FlyoutItem Title="Settings">
+        <ShellContent ContentTemplate="{DataTemplate settings:SettingsPage}" Route="SettingsPage" />
+    </FlyoutItem>
 </Shell>
