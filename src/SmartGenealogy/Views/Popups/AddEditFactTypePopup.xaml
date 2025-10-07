@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <toolkit:Popup
-    x:Class="SmartGenealogy.Views.Popups.AddFactTypePopup"
+    x:Class="SmartGenealogy.Views.Popups.AddEditFactTypePopup"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
-    x:DataType="viewModels:AddFactTypePopupViewModel"
+    x:DataType="viewModels:AddEditFactTypePopupViewModel"
     Background="Black">
     <VerticalStackLayout>
         <Label
@@ -57,7 +57,7 @@
 
         <Entry Text="{Binding Sentence}" />
 
-        <Button Command="{Binding AddCommand}" Text="Add" />
+        <Button Command="{Binding SaveCommand}" Text="Save" />
         <Button Command="{Binding CancelCommand}" Text="Cancel" />
     </VerticalStackLayout>
 </toolkit:Popup>

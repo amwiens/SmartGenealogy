@@ -34,6 +34,10 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
     [ObservableProperty]
     private bool _isBuiltIn = false;
 
+    /// <summary>
+    /// Apply attributes.
+    /// </summary>
+    /// <param name="query">Query</param>
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("id"))
@@ -78,7 +82,15 @@ public partial class FactTypePageViewModel(FactTypeRepository factTypeRepository
     [RelayCommand]
     private async Task EditFactType()
     {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "id", _factType.Id }
+        };
 
+        await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
     }
 
     [RelayCommand]
