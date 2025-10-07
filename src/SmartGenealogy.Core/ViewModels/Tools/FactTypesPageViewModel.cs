@@ -5,8 +5,11 @@
 /// </summary>
 /// <param name="factTypeRepository">Fact Type repository</param>
 /// <param name="popupService">Popup service</param>
-/// <param name="modalErrorHandler">Modal error handler</param>
-public partial class FactTypesPageViewModel(FactTypeRepository factTypeRepository, IPopupService popupService, ModalErrorHandler modalErrorHandler) : ObservableObject
+/// <param name="errorHandler">Modal error handler</param>
+public partial class FactTypesPageViewModel(
+    FactTypeRepository factTypeRepository,
+    IPopupService popupService,
+    ModalErrorHandler errorHandler) : ObservableObject
 {
     [ObservableProperty]
     private ObservableCollection<FactType> _factTypes = [];
@@ -38,7 +41,7 @@ public partial class FactTypesPageViewModel(FactTypeRepository factTypeRepositor
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            errorHandler.HandleError(ex);
         }
     }
 

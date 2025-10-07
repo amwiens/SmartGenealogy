@@ -7,13 +7,13 @@
 /// <param name="factTypeRepository">Fact type repository</param>
 /// <param name="roleRepository">Role repository</param>
 /// <param name="popupService">Popup service</param>
-/// <param name="modalErrorHandler">Modal error handler</param>
+/// <param name="errorHandler">Modal error handler</param>
 public partial class FactTypePageViewModel(
     IFactTypeService factTypeService,
     FactTypeRepository factTypeRepository,
     RoleRepository roleRepository,
     IPopupService popupService,
-    ModalErrorHandler modalErrorHandler)
+    ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
     private FactType? _factType;
@@ -80,7 +80,7 @@ public partial class FactTypePageViewModel(
 
             if (_factType.IsNullOrNew())
             {
-                modalErrorHandler.HandleError(new Exception($"Fact type with id {id} could not be found."));
+                errorHandler.HandleError(new Exception($"Fact type with id {id} could not be found."));
                 return;
             }
 
@@ -96,7 +96,7 @@ public partial class FactTypePageViewModel(
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            errorHandler.HandleError(ex);
         }
     }
 
@@ -130,7 +130,7 @@ public partial class FactTypePageViewModel(
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            errorHandler.HandleError(ex);
         }
     }
 
@@ -182,7 +182,7 @@ public partial class FactTypePageViewModel(
         }
         catch (Exception ex)
         {
-            modalErrorHandler.HandleError(ex);
+            errorHandler.HandleError(ex);
         }
     }
 }

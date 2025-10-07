@@ -5,7 +5,9 @@
 /// </summary>
 /// <param name="databaseTools">Database tools</param>
 /// <param name="errorHandler">Modal error handler</param>
-public partial class ToolsPageViewModel(DatabaseTools databaseTools, ModalErrorHandler errorHandler) : ObservableObject
+public partial class ToolsPageViewModel(
+    DatabaseTools databaseTools,
+    ModalErrorHandler errorHandler) : ObservableObject
 {
     /// <summary>
     /// Compact database.

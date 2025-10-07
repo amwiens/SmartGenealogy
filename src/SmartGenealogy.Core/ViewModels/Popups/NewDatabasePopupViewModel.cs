@@ -5,7 +5,9 @@
 /// </summary>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="popupService">Popup service</param>
-public partial class NewDatabasePopupViewModel(DatabaseSettings databaseSettings, IPopupService popupService)
+public partial class NewDatabasePopupViewModel(
+    DatabaseSettings databaseSettings,
+    IPopupService popupService)
     : ObservableObject
 {
     [ObservableProperty]

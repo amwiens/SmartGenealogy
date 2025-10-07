@@ -8,7 +8,7 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
     private readonly SeedDataService _seedDataService;
     private readonly DatabaseSettings _databaseSettings;
     private readonly IPopupService _popupService;
-    private readonly ModalErrorHandler _modalErrorHandler;
+    private readonly ModalErrorHandler _errorHandler;
 
     [ObservableProperty]
     private bool _databaseOpen = false;
@@ -19,17 +19,17 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
     /// <param name="seedDataService">Seed data service.</param>
     /// <param name="databaseSettings">Database settings.</param>
     /// <param name="popupService">Popup service.</param>
-    /// <param name="modalErrorHandler">Modal error handler.</param>
+    /// <param name="errorHandler">Modal error handler.</param>
     public MainPageViewModel(
         SeedDataService seedDataService,
         DatabaseSettings databaseSettings,
         IPopupService popupService,
-        ModalErrorHandler modalErrorHandler)
+        ModalErrorHandler errorHandler)
     {
         _seedDataService = seedDataService;
         _databaseSettings = databaseSettings;
         _popupService = popupService;
-        _modalErrorHandler = modalErrorHandler;
+        _errorHandler = errorHandler;
 
         WeakReferenceMessenger.Default.Register<OpenDatabaseMessage>(this);
     }
@@ -76,7 +76,7 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
         }
         catch (Exception ex)
         {
-            _modalErrorHandler.HandleError(ex);
+            _errorHandler.HandleError(ex);
         }
     }
 
@@ -124,7 +124,7 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
         }
         catch (Exception ex)
         {
-            _modalErrorHandler.HandleError(ex);
+            _errorHandler.HandleError(ex);
         }
     }
 
