@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
+    xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
     Title="{Binding Title}"
     x:DataType="viewModels:AppShellViewModel">
@@ -13,6 +14,11 @@
         Title="Home"
         ContentTemplate="{DataTemplate main:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Tools"
+        ContentTemplate="{DataTemplate tools:ToolsPage}"
+        Route="ToolsPage" />
 
     <ShellContent
         Title="Settings"

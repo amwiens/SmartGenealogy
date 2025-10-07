@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditFactTypePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditFactTypePopupViewModel"
+    Background="Black">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Name"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding Name}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Abbreviation"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding Abbreviation}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Gedcom Tag"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding GedcomTag}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Use value"
+            VerticalOptions="Center" />
+
+        <CheckBox IsChecked="{Binding UseValue}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Use date"
+            VerticalOptions="Center" />
+
+        <CheckBox IsChecked="{Binding UseDate}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Use place"
+            VerticalOptions="Center" />
+
+        <CheckBox IsChecked="{Binding UsePlace}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Sentence"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding Sentence}" />
+
+        <Button Command="{Binding SaveCommand}" Text="Save" />
+        <Button Command="{Binding CancelCommand}" Text="Cancel" />
+    </VerticalStackLayout>
+</toolkit:Popup>

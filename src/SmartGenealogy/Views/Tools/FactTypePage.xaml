@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Tools.FactTypePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
+    x:Name="factTypePage"
+    x:DataType="viewModels:FactTypePageViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding EditFactTypeCommand}" Text="Edit" />
+            <Button
+                Command="{Binding DeleteFactTypeCommand}"
+                IsEnabled="{Binding IsBuiltIn, Converter={StaticResource InvertedBoolConverter}}"
+                Text="Delete" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Name:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Name}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Abbreviation:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Abbreviation}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Gedcom Tag:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding GedcomTag}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Use Value:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding UseValue}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Use Date:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding UseDate}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Use Place:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding UsePlace}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Sentence:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Sentence}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

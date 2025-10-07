@@ -65,6 +65,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<AppShellViewModel>();
         mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
 
         return mauiAppBuilder;
     }
@@ -77,6 +78,9 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
+        mauiAppBuilder.Services.AddTransient<ToolsPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypePage, FactTypePageViewModel>("factTypeDetails");
 
         return mauiAppBuilder;
     }
@@ -87,6 +91,7 @@ public static class MauiProgram
     private static MauiAppBuilder ConfigurePopups(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditFactTypePopup, AddEditFactTypePopupViewModel>();
 
         return mauiAppBuilder;
     }
