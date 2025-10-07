@@ -40,6 +40,8 @@ public static class MauiProgram
     private static MauiAppBuilder ConfigureRepositories(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddSingleton<DatabaseSettings>();
+        mauiAppBuilder.Services.AddSingleton<DatabaseTools>();
+
         mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
 
