@@ -5,8 +5,9 @@
 /// </summary>
 public partial class ToolsPageViewModel : ObservableObject
 {
-
-
+    /// <summary>
+    /// Open Fact Types page.
+    /// </summary>
     [RelayCommand]
     private async Task OpenFactTypesPage()
     {

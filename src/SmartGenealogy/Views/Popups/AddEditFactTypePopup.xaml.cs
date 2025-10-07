@@ -5,12 +5,12 @@ namespace SmartGenealogy.Views.Popups;
 /// </summary>
 public partial class AddEditFactTypePopup : Popup
 {
-	/// <summary>
-	/// Constructor
-	/// </summary>
-	public AddEditFactTypePopup(AddEditFactTypePopupViewModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext = viewModel;
-	}
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public AddEditFactTypePopup(AddEditFactTypePopupViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 }
