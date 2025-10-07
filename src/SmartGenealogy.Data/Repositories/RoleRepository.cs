@@ -216,6 +216,24 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     }
 
     /// <summary>
+    /// Deletes roles from the database by fact type Id.
+    /// </summary>
+    /// <param name="factTypeId">Fact type Id.</param>
+    /// <returns>The number of rows affected.</returns>
+    public async Task<int> DeleteItemAsync(int factTypeId)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var deleteCmd = connection.CreateCommand();
+        deleteCmd.CommandText = "DELETE FROM Role WHERE EventType = @eventType";
+        deleteCmd.Parameters.AddWithValue("@eventType", factTypeId);
+
+        return await deleteCmd.ExecuteNonQueryAsync();
+    }
+
+    /// <summary>
     /// Creates the Role table in the database.
     /// </summary>
     public async Task CreateTableAsync()
