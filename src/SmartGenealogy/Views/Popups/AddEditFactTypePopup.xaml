@@ -7,57 +7,75 @@
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
     x:DataType="viewModels:AddEditFactTypePopupViewModel"
     Background="Black">
+
     <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Name"
-            VerticalOptions="Center" />
+        <Label Text="Fact Type" />
 
-        <Entry Text="{Binding Name}" />
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*,Auto">
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Abbreviation"
-            VerticalOptions="Center" />
+            <VerticalStackLayout
+                Grid.Column="0"
+                Padding="20"
+                MinimumWidthRequest="380">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Name"
+                    VerticalOptions="Center" />
 
-        <Entry Text="{Binding Abbreviation}" />
+                <Entry Text="{Binding Name}" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Gedcom Tag"
-            VerticalOptions="Center" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Abbreviation"
+                    VerticalOptions="Center" />
 
-        <Entry Text="{Binding GedcomTag}" />
+                <Entry Text="{Binding Abbreviation}" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Use value"
-            VerticalOptions="Center" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Gedcom Tag"
+                    VerticalOptions="Center" />
 
-        <CheckBox IsChecked="{Binding UseValue}" />
+                <Entry Text="{Binding GedcomTag}" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Use date"
-            VerticalOptions="Center" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Use value"
+                    VerticalOptions="Center" />
 
-        <CheckBox IsChecked="{Binding UseDate}" />
+                <CheckBox IsChecked="{Binding UseValue}" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Use place"
-            VerticalOptions="Center" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Use date"
+                    VerticalOptions="Center" />
 
-        <CheckBox IsChecked="{Binding UsePlace}" />
+                <CheckBox IsChecked="{Binding UseDate}" />
 
-        <Label
-            HorizontalOptions="Center"
-            Text="Sentence"
-            VerticalOptions="Center" />
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Use place"
+                    VerticalOptions="Center" />
 
-        <Entry Text="{Binding Sentence}" />
+                <CheckBox IsChecked="{Binding UsePlace}" />
+            </VerticalStackLayout>
 
-        <Button Command="{Binding SaveCommand}" Text="Save" />
-        <Button Command="{Binding CancelCommand}" Text="Cancel" />
+            <VerticalStackLayout
+                Grid.Column="1"
+                Padding="20"
+                MinimumWidthRequest="380">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Sentence"
+                    VerticalOptions="Center" />
+
+                <Editor HeightRequest="200" Text="{Binding Sentence}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </toolkit:Popup>
