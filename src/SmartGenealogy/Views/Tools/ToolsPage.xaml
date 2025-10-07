@@ -13,6 +13,8 @@
             Text="Database Tools"
             VerticalOptions="Center" />
         <Button Command="{Binding CompactDatabaseCommand}" Text="Compact Database" />
+        <Button Command="{Binding ReindexDatabaseCommand}" Text="Rebuild indexes in Database" />
+        <Button Command="{Binding DatabaseIntegrityCheckCommand}" Text="Database Integrity check" />
 
         <Label
             HorizontalOptions="Start"
