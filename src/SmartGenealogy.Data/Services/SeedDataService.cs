@@ -1,6 +1,10 @@
 ﻿namespace SmartGenealogy.Data.Services;
 
-public class SeedDataService(FactTypeRepository factTypeRepository, RoleRepository roleRepository, ILogger<SeedDataService> logger)
+public class SeedDataService(
+    FactTypeRepository factTypeRepository,
+    PlaceRepository placeRepository,
+    RoleRepository roleRepository,
+    ILogger<SeedDataService> logger)
 {
     private readonly string _seedDataFilePath = "SeedData.json";
 
@@ -57,6 +61,7 @@ public class SeedDataService(FactTypeRepository factTypeRepository, RoleReposito
         {
             await Task.WhenAll(
                 factTypeRepository.CreateTableAsync(),
+                placeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync()
                 );
         }

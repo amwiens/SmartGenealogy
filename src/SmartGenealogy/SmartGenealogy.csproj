@@ -98,4 +98,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Places\" />
+	</ItemGroup>
+
 </Project>
