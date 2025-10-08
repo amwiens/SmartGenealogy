@@ -8,7 +8,7 @@ public static class RoleExtensions
     /// <summary>
     /// Check if the role is null or new.
     /// </summary>
-    /// <param name="role">Fact type.</param>
+    /// <param name="role">Role</param>
     /// <returns><see langword="true"> if null or new, otherwise <see langword="false"/>.</returns>
     public static bool IsNullOrNew([NotNullWhen(false)] this Role? role)
     {
