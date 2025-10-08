@@ -23,7 +23,8 @@ public partial class PlacesPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        Places = new ObservableCollection<Place>(await placeRepository.ListAsync());
+        var placeList = await placeRepository.ListAsync();
+        Places = new ObservableCollection<Place>(placeList.Where(x => x.MasterId == 0));
     }
 
     /// <summary>

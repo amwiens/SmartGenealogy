@@ -87,6 +87,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypePage, FactTypePageViewModel>("factTypeDetails");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<PlaceDetailsPage, PlaceDetailsPageViewModel>("placeDetails");
         mauiAppBuilder.Services.AddTransientWithShellRoute<PlacePage, PlacePageViewModel>("place");
 
         return mauiAppBuilder;

@@ -1,12 +1,14 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Places;
+﻿using System.Xml.Linq;
+
+namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
-/// Place page view model.
+/// Place details page view model
 /// </summary>
 /// <param name="placeRepository">Place repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
-public partial class PlacePageViewModel(
+public partial class PlaceDetailsPageViewModel(
     PlaceRepository placeRepository,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
