@@ -9,6 +9,7 @@ public enum PlaceType
     /// Master
     /// </summary>
     Master,
+
     /// <summary>
     /// Detail
     /// </summary>

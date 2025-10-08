@@ -82,7 +82,9 @@ public partial class AddEditPlacePopupViewModel(
         await popupService.ClosePopupAsync(Shell.Current);
     }
 
-
+    /// <summary>
+    /// Cancel
+    /// </summary>
     [RelayCommand]
     private async Task Cancel()
     {

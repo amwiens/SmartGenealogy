@@ -24,7 +24,6 @@
                 VerticalOptions="Center" />
 
             <Entry Text="{Binding Name}" />
-
         </VerticalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="End">
