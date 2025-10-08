@@ -84,6 +84,9 @@
 	  <MauiXaml Update="Views\Popups\AddEditFactTypePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Popups\AddEditPlacePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\AddEditRolePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

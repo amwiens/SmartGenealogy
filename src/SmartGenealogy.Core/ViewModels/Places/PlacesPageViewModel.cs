@@ -33,7 +33,17 @@ public partial class PlacesPageViewModel(
     [RelayCommand]
     private async Task AddPlace()
     {
-
+        try
+        {
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<AddEditPlacePopupViewModel>(shell);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
     }
 
     /// <summary>

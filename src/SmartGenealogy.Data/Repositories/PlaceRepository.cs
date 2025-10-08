@@ -192,7 +192,7 @@ public class PlaceRepository(DatabaseSettings databaseSettings, ILogger<PlaceRep
         {
             saveCmd.CommandText = @"
                 INSERT INTO Place (PlaceType, Name, Abbreviation, Normalized, Latitude, Longitude, MasterId, Note, Reverse, DateAdded, DateChanged)
-                VALUES (@PlaceType, @Name, @Abbreviation, @Normalized, @Latitude, @Longitude, @MasterId, @Note, @Reverse, @DateAdded, @DateChanged)
+                VALUES (@PlaceType, @Name, @Abbreviation, @Normalized, @Latitude, @Longitude, @MasterId, @Note, @Reverse, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
             saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }

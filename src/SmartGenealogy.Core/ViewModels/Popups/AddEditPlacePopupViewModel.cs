@@ -1,25 +1,22 @@
 ﻿namespace SmartGenealogy.Core.ViewModels.Popups;
 
 /// <summary>
-/// Add/edit role popup view model.
+/// Add/edit place popup view model.
 /// </summary>
-/// <param name="roleRepository">Role repository</param>
+/// <param name="placeRepository">Place repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
-public partial class AddEditRolePopupViewModel(
-    RoleRepository roleRepository,
+public partial class AddEditPlacePopupViewModel(
+    PlaceRepository placeRepository,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
-    private Role? _role;
-    private int _factTypeId;
+    private Place? _place;
+    private int _masterId;
 
     [ObservableProperty]
     public string? _name = string.Empty;
-
-    [ObservableProperty]
-    public string? _sentence = string.Empty;
 
     /// <summary>
     /// Apply attributes.
@@ -29,32 +26,31 @@ public partial class AddEditRolePopupViewModel(
     {
         if (query.ContainsKey("id"))
         {
-            int roleId = Convert.ToInt32(query["id"]);
-            LoadData(roleId).FireAndForgetSafeAsync();
+            int placeId = Convert.ToInt32(query["id"]);
+            LoadData(placeId).FireAndForgetSafeAsync();
         }
-        else if (query.ContainsKey("factTypeId"))
+        if (query.ContainsKey("masterId"))
         {
-            _factTypeId = Convert.ToInt32(query["factTypeId"]);
+            _masterId = Convert.ToInt32(query["masterId"]);
         }
     }
 
     /// <summary>
     /// Load data.
     /// </summary>
-    /// <param name="id">Role identifier</param>
+    /// <param name="id">Place identifier</param>
     private async Task LoadData(int id)
     {
         try
         {
-            _role = await roleRepository.GetAsync(id);
+            _place = await placeRepository.GetAsync(id);
 
-            if (_role.IsNullOrNew())
+            if (_place.IsNullOrNew())
             {
-                errorHandler.HandleError(new Exception($"Role with id {id} could not be found."));
+                errorHandler.HandleError(new Exception($"Place with id {id} could not be found."));
             }
 
-            Name = _role!.Name;
-            Sentence = _role.Sentence;
+            Name = _place!.Name;
         }
         catch (Exception ex)
         {
@@ -68,23 +64,25 @@ public partial class AddEditRolePopupViewModel(
     [RelayCommand]
     private async Task Save()
     {
-        if (_role is null)
+        if (_place is null)
+            _place = new Place();
+
+        _place.Name = Name;
+        if (_masterId != 0)
         {
-            _role = new Role();
-            _role.EventType = _factTypeId;
+            _place.PlaceType = PlaceType.Detail;
+            _place.MasterId = _masterId;
         }
+        if (_place.PlaceType == PlaceType.Master)
+            _place.Normalized = Name;
+        _place.Reverse = Name!.ReverseString();
 
-        _role.Name = Name;
-        _role.Sentence = Sentence;
-
-        var roleId = await roleRepository.SaveItemAsync(_role);
+        var placeId = await placeRepository.SaveItemAsync(_place);
 
         await popupService.ClosePopupAsync(Shell.Current);
     }
 
-    /// <summary>
-    /// Cancel
-    /// </summary>
+
     [RelayCommand]
     private async Task Cancel()
     {
