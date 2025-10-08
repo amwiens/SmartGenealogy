@@ -78,6 +78,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Places\PlacePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Places\PlacesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

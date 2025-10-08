@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SmartGenealogy.Views.Places.PlacePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Places;assembly=SmartGenealogy.Core"
+    x:Name="placePage"
+    x:DataType="viewModels:PlacePageViewModel">
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding EditPlaceCommand}" Text="Edit" />
+            <Button Command="{Binding DeletePlaceCommand}" Text="Delete" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Name:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Name}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Latitude:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Latitude}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Longitude:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Longitude}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Note:"
+                VerticalOptions="Center" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="{Binding Note}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding AddPlaceDetailsCommand}" Text="Add place detail" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Place details:"
+                VerticalOptions="Center" />
+
+            <CollectionView
+                ItemsSource="{Binding PlaceDetails}"
+                SelectedItem="{Binding SelectedPlaceDetail}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Place">
+                        <Label Text="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

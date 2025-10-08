@@ -144,6 +144,7 @@ public class PlaceRepository(DatabaseSettings databaseSettings, ILogger<PlaceRep
     {
         await Init();
         await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
 
         var selectCmd = connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM Place WHERE Id = @id";

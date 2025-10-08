@@ -52,6 +52,7 @@ public partial class PlacesPageViewModel(
     [RelayCommand]
     private async Task OpenPlaceDetails()
     {
-
+        if (SelectedItem is not null)
+            await Shell.Current.GoToAsync($"place?id={SelectedItem.Id}");
     }
 }
