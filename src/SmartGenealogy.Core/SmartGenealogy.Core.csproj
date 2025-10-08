@@ -16,8 +16,4 @@
     <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\Places\" />
-  </ItemGroup>
-
 </Project>

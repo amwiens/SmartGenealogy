@@ -68,6 +68,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShellViewModel>();
         mauiAppBuilder.Services.AddTransient<MainPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
 
@@ -81,6 +82,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddTransient<MainPage>();
+        mauiAppBuilder.Services.AddTransient<PlacesPage>();
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
