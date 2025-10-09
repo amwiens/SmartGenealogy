@@ -16,6 +16,7 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseOcr()
             .ConfigureRepositories()
             .ConfigureServices()
             .ConfigureViewModels()
@@ -58,6 +59,8 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<SeedDataService>();
         mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
         mauiAppBuilder.Services.AddSingleton<IFactTypeService, FactTypeService>();
+
+        mauiAppBuilder.Services.AddSingleton(OcrPlugin.Default);
 
         return mauiAppBuilder;
     }

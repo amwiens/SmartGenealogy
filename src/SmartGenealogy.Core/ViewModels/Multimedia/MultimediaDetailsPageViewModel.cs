@@ -1,14 +1,18 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Multimedia;
+﻿using Microsoft.Maui.Graphics.Platform;
+
+namespace SmartGenealogy.Core.ViewModels.Multimedia;
 
 /// <summary>
 /// Multimedia details page view model.
 /// </summary>
 /// <param name="multimediaRepository">Multimedia repository</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="ocrService">OCR Service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class MultimediaDetailsPageViewModel(
     MultimediaRepository multimediaRepository,
     IPopupService popupService,
+    IOcrService ocrService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -31,6 +35,9 @@ public partial class MultimediaDetailsPageViewModel(
 
     [ObservableProperty]
     private string? _refNumber = string.Empty;
+
+    [ObservableProperty]
+    private string? _documentText = string.Empty;
 
     /// <summary>
     /// Apply attributes.
@@ -107,5 +114,52 @@ public partial class MultimediaDetailsPageViewModel(
         {
             errorHandler.HandleError(ex);
         }
+    }
+
+
+    [RelayCommand]
+    private async Task ProcessImage()
+    {
+        var fileInfo = new FileInfo(FileName);
+
+        byte[] imageBytes = FileToByteArray(FileName);
+        var result = await ocrService.RecognizeTextAsync(imageBytes);
+
+        if (result != null && result.Success)
+        {
+            DocumentText = result.AllText;
+        }
+    }
+
+    private async Task<OcrResult> ProcessPhoto(FileResult photo)
+    {
+        // Open a stream to the photo
+        using var sourceStream = await photo.OpenReadAsync();
+
+        // Create a byte array to hold the image data
+        var imageData = new byte[sourceStream.Length];
+
+        // Read the stream into the byte array
+        await sourceStream.ReadAsync(imageData);
+
+        // Process the image data using the OCR service
+        return await ocrService.RecognizeTextAsync(imageData);
+    }
+
+    static byte[] FileToByteArray(string filePath)
+    {
+        // Validate the file path
+        if (string.IsNullOrWhiteSpace(filePath))
+        {
+            throw new ArgumentException("File path cannot be null or empty.");
+        }
+
+        if (!File.Exists(filePath))
+        {
+            throw new FileNotFoundException("The specified file does not exist.", filePath);
+        }
+
+        // Read the file into a byte array
+        return File.ReadAllBytes(filePath);
     }
 }
