@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
+    xmlns:multimedia="clr-namespace:SmartGenealogy.Views.Multimedia"
     xmlns:places="clr-namespace:SmartGenealogy.Views.Places"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
@@ -20,6 +21,13 @@
             ContentTemplate="{DataTemplate places:PlacesPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="PlacesPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Media">
+        <ShellContent
+            ContentTemplate="{DataTemplate multimedia:MultimediaPage}"
+            IsVisible="{Binding DatabaseOpen}"
+            Route="MultimediaPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="Tools">

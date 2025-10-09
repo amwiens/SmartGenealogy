@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditMultimediaPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditMultimediaPopupViewModel"
+    Background="Black">
+
+    <VerticalStackLayout>
+        <Label Text="Media" />
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*,Auto">
+            <Image
+                Aspect="AspectFit"
+                MaximumWidthRequest="280"
+                MinimumWidthRequest="280"
+                Source="{Binding FileName}" />
+
+            <VerticalStackLayout
+                Grid.Column="1"
+                Padding="20"
+                MinimumWidthRequest="380">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Name"
+                    VerticalOptions="Center" />
+
+                <Entry Text="{Binding Name}" />
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="File name"
+                    VerticalOptions="Center" />
+
+                <HorizontalStackLayout MinimumWidthRequest="280">
+                    <Entry Text="{Binding FileName}" />
+
+                    <Button Command="{Binding SelectMediaCommand}" Text="Image" />
+                </HorizontalStackLayout>
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Caption"
+                    VerticalOptions="Center" />
+
+                <Entry Text="{Binding Caption}" />
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Description"
+                    VerticalOptions="Center" />
+
+                <Editor HeightRequest="200" Text="{Binding Description}" />
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Date"
+                    VerticalOptions="Center" />
+
+                <Entry Text="{Binding Date}" />
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Reference Number"
+                    VerticalOptions="Center" />
+
+                <Entry Text="{Binding RefNumber}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>
