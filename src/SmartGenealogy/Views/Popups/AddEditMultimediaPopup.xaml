@@ -49,7 +49,7 @@
 
                 <Label
                     HorizontalOptions="Center"
-                    Text="Sentence"
+                    Text="Description"
                     VerticalOptions="Center" />
 
                 <Editor HeightRequest="200" Text="{Binding Description}" />
