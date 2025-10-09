@@ -69,6 +69,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShellViewModel>();
         mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
+        mauiAppBuilder.Services.AddSingleton<MultimediaPageViewModel>();
         mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
@@ -83,6 +84,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddSingleton<MainPage>();
+        mauiAppBuilder.Services.AddSingleton<MultimediaPage>();
         mauiAppBuilder.Services.AddTransient<PlacesPage>();
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransient<ToolsPage>();

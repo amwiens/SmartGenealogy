@@ -70,4 +70,29 @@ public class Multimedia
     /// </summary>
     public DateTime DateChanged { get; set; }
 
+    /// <summary>
+    /// Thumbnail bytes
+    /// </summary>
+    public ImageSource? ThumbnailBytes
+    {
+        get
+        {
+            if (Thumbnail == null)
+                return null;
+            return ImageSource.FromStream(() => new MemoryStream(Thumbnail));
+        }
+    }
+
+    /// <summary>
+    /// Full path
+    /// </summary>
+    public string? FullPath
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(MediaPath) || string.IsNullOrEmpty(MediaFile))
+                return null;
+            return Path.Combine(MediaPath, MediaFile);
+        }
+    }
 }
