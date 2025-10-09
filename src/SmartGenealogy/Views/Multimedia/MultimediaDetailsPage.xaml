@@ -89,7 +89,8 @@
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
 
-            <Label Text="{Binding DocumentText}" />
+            <Label Text="All Text" />
+            <Label Text="{Binding AllText}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

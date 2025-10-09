@@ -37,7 +37,7 @@ public partial class MultimediaDetailsPageViewModel(
     private string? _refNumber = string.Empty;
 
     [ObservableProperty]
-    private string? _documentText = string.Empty;
+    private string? _allText = string.Empty;
 
     /// <summary>
     /// Apply attributes.
@@ -75,6 +75,7 @@ public partial class MultimediaDetailsPageViewModel(
             Description = _multimedia.Description;
             Date = _multimedia.Date;
             RefNumber = _multimedia.RefNumber;
+            AllText = _multimedia.AllText;
         }
         catch (Exception ex)
         {
@@ -120,30 +121,15 @@ public partial class MultimediaDetailsPageViewModel(
     [RelayCommand]
     private async Task ProcessImage()
     {
-        var fileInfo = new FileInfo(FileName);
-
-        byte[] imageBytes = FileToByteArray(FileName);
+        byte[] imageBytes = FileToByteArray(FileName!);
         var result = await ocrService.RecognizeTextAsync(imageBytes);
 
         if (result != null && result.Success)
         {
-            DocumentText = result.AllText;
+            AllText = result.AllText;
         }
-    }
-
-    private async Task<OcrResult> ProcessPhoto(FileResult photo)
-    {
-        // Open a stream to the photo
-        using var sourceStream = await photo.OpenReadAsync();
-
-        // Create a byte array to hold the image data
-        var imageData = new byte[sourceStream.Length];
-
-        // Read the stream into the byte array
-        await sourceStream.ReadAsync(imageData);
-
-        // Process the image data using the OCR service
-        return await ocrService.RecognizeTextAsync(imageData);
+        _multimedia!.AllText = AllText;
+        await multimediaRepository.SaveItemAsync(_multimedia);
     }
 
     static byte[] FileToByteArray(string filePath)
