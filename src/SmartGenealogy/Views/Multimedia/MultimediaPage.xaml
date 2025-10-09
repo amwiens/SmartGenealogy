@@ -42,7 +42,10 @@
                                 HeightRequest="100"
                                 Source="{Binding ThumbnailBytes}"
                                 WidthRequest="150" />
-                            <Label Grid.Column="1" Text="{Binding FullPath}" />
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Caption}" />
+                                <Label Text="{Binding FullPath}" />
+                            </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

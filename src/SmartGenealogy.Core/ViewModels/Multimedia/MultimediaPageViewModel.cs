@@ -38,7 +38,7 @@ public partial class MultimediaPageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                //var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel>(shell);
+                var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel>(shell);
             }
         }
         catch (Exception ex)

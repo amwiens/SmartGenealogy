@@ -72,6 +72,9 @@
 	  <Compile Update="Views\Places\PlacesPage.xaml.cs">
 	    <DependentUpon>PlacesPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Popups\AddEditMultimediaPopup.xaml.cs">
+	    <DependentUpon>AddEditMultimediaPopup.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Popups\AddEditFactTypePopup.xaml.cs">
 	    <DependentUpon>AddEditFactTypePopup.xaml</DependentUpon>
 	  </Compile>
@@ -88,6 +91,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Places\PlacesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Popups\AddEditMultimediaPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\AddEditFactTypePopup.xaml">
