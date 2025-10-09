@@ -147,7 +147,6 @@ public partial class AddEditMultimediaPopupViewModel(
 
             await popupService.ClosePopupAsync(Shell.Current);
         }
-
     }
 
     /// <summary>
