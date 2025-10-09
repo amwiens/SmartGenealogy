@@ -44,6 +44,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<DatabaseTools>();
 
         mauiAppBuilder.Services.AddSingleton<FactTypeRepository>();
+        mauiAppBuilder.Services.AddSingleton<MultimediaLineRepository>();
         mauiAppBuilder.Services.AddSingleton<MultimediaRepository>();
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
