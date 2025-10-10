@@ -18,6 +18,9 @@ public interface IMultimediaService
     /// <returns>The Id of the saved multimedia.</returns>
     Task<int> SaveItemAsync(Multimedia multimedia, List<string> lines, List<OcrResult.OcrElement> ocrElement);
 
+
+    Task<int> SaveItemAsync(Multimedia multimedia, string fileName, MediaType mediaType, string? caption, string? description, string? date, string? refNumber);
+
     /// <summary>
     /// Delete Multimedia item.
     /// </summary>

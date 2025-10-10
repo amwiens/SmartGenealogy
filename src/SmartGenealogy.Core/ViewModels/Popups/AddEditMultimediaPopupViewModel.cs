@@ -138,38 +138,7 @@ public partial class AddEditMultimediaPopupViewModel(
 
         if (File.Exists(FileName))
         {
-            var fileInfo = new FileInfo(FileName);
-
-            if ((MediaType)MediaType == Data.Enums.MediaType.Image)
-            {
-                // Read the image as a stream
-                using var stream = File.OpenRead(FileName);
-                // Load the image using MAUI graphics
-                Microsoft.Maui.Graphics.IImage? image = PlatformImage.FromStream(stream);
-                byte[]? thumbnailBytes = null;
-                if (image != null)
-                {
-                    // Resize the image to 128x128
-                    var resized = image.Resize(128, 128, ResizeMode.Fit);
-                    // Save the resized image to a byte array (PNG format)
-                    using var ms = new MemoryStream();
-                    resized.Save(ms, ImageFormat.Png);
-                    thumbnailBytes = ms.ToArray();
-                }
-                _multimedia.Thumbnail = thumbnailBytes;
-            }
-
-            _multimedia.MediaType = (MediaType)MediaType;
-            _multimedia.MediaPath = fileInfo.DirectoryName;
-            _multimedia.MediaFile = fileInfo.Name;
-            _multimedia.Caption = Caption;
-            _multimedia.Description = Description;
-            _multimedia.Date = Date;
-            _multimedia.RefNumber = RefNumber;
-
-            var ocrResult = await ocrService.ProcessImage(FileName);
-
-            var multimediaId = await multimediaService.SaveItemAsync(_multimedia!, ocrResult!.Lines.ToList(), ocrResult.Elements.ToList());
+            var multimediaId = await multimediaService.SaveItemAsync(_multimedia!, FileName, (MediaType)MediaType, Caption, Description, Date, RefNumber);
 
             await popupService.ClosePopupAsync(Shell.Current);
         }
