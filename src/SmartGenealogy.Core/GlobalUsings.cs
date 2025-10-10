@@ -4,6 +4,7 @@ global using System.Text.Json;
 global using System.Text.Json.Serialization;
 
 global using CommunityToolkit.Maui;
+global using CommunityToolkit.Maui.Alerts;
 global using CommunityToolkit.Maui.Storage;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;

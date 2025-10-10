@@ -1,4 +1,5 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Tools;
+﻿
+namespace SmartGenealogy.Core.ViewModels.Tools;
 
 /// <summary>
 /// Tools page view model.
@@ -23,6 +24,7 @@ public partial class ToolsPageViewModel(
         {
             errorHandler.HandleError(ex);
         }
+        await Toast.Make("Database compact finished").Show();
     }
 
     /// <summary>
@@ -39,6 +41,7 @@ public partial class ToolsPageViewModel(
         {
             errorHandler.HandleError(ex);
         }
+        await Toast.Make("Re-indexing finished").Show();
     }
 
     /// <summary>
@@ -55,6 +58,7 @@ public partial class ToolsPageViewModel(
         {
             errorHandler.HandleError(ex);
         }
+        await Toast.Make("Integrity check finished").Show();
     }
 
     /// <summary>
