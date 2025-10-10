@@ -44,5 +44,4 @@ public static class StringExtensions
         // Read the file into a byte array
         return File.ReadAllBytes(filePath);
     }
-
 }

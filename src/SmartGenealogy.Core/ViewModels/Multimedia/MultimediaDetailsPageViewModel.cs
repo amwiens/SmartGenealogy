@@ -115,7 +115,9 @@ public partial class MultimediaDetailsPageViewModel(
         }
     }
 
-
+    /// <summary>
+    /// Process image.
+    /// </summary>
     [RelayCommand]
     private async Task ProcessImage()
     {

@@ -58,7 +58,7 @@ public class MultimediaService(
         }
         catch (Exception ex)
         {
-
+            throw;
         }
 
         return multimediaId;

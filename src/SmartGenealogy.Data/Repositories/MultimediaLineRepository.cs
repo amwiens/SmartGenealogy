@@ -78,7 +78,6 @@ public class MultimediaLineRepository(
         return multimediaLines;
     }
 
-
     /// <summary>
     /// Retrieves a list of all multimedia lines from the database.
     /// </summary>

@@ -86,7 +86,6 @@ public class MultimediaWordRepository(
         return multimediaWords;
     }
 
-
     /// <summary>
     /// Retrieves a list of all multimedia words from the database.
     /// </summary>
@@ -250,7 +249,6 @@ public class MultimediaWordRepository(
 
         return await deleteCmd.ExecuteNonQueryAsync();
     }
-
 
     /// <summary>
     /// Creates the MultimediaWord table in the database.
