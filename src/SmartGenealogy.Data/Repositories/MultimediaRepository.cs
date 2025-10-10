@@ -41,6 +41,7 @@ public class MultimediaRepository(
                     Date TEXT NULL,
                     SortDate INTEGER NOT NULL,
                     Description TEXT NULL,
+                    AllText TEXT NULL,
                     DateAdded TEXT NOT NULL,
                     DateChanged TEXT NOT NULL
                 );";
@@ -86,6 +87,7 @@ public class MultimediaRepository(
                 Date = reader.IsDBNull(reader.GetOrdinal("Date")) ? null : reader.GetString(reader.GetOrdinal("Date")),
                 SortDate = reader.GetInt32(reader.GetOrdinal("SortDate")),
                 Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                AllText = reader.IsDBNull(reader.GetOrdinal("AllText")) ? null : reader.GetString(reader.GetOrdinal("AllText")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             });
@@ -125,6 +127,7 @@ public class MultimediaRepository(
                 Date = reader.IsDBNull(reader.GetOrdinal("Date")) ? null : reader.GetString(reader.GetOrdinal("Date")),
                 SortDate = reader.GetInt32(reader.GetOrdinal("SortDate")),
                 Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                AllText = reader.IsDBNull(reader.GetOrdinal("AllText")) ? null : reader.GetString(reader.GetOrdinal("AllText")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
@@ -150,8 +153,8 @@ public class MultimediaRepository(
         if (item.Id == 0)
         {
             saveCmd.CommandText = @"
-                INSERT INTO Multimedia (MediaType, MediaPath, MediaFile, Url, Thumbnail, Caption, RefNumber, Date, SortDate, Description, DateAdded, DateChanged)
-                VALUES (@MediaType, @MediaPath, @MediaFile, @Url, @Thumbnail, @Caption, @RefNumber, @Date, @SortDate, @Description, @DateAdded, @DateChanged);
+                INSERT INTO Multimedia (MediaType, MediaPath, MediaFile, Url, Thumbnail, Caption, RefNumber, Date, SortDate, Description, AllText, DateAdded, DateChanged)
+                VALUES (@MediaType, @MediaPath, @MediaFile, @Url, @Thumbnail, @Caption, @RefNumber, @Date, @SortDate, @Description, @AllText, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
             saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
@@ -169,6 +172,7 @@ public class MultimediaRepository(
                     Date = @Date,
                     SortDate = @SortDate,
                     Description = @Description,
+                    AllText = @AllText,
                     DateChanged = @DateChanged
                 WHERE Id = @id";
             saveCmd.Parameters.AddWithValue("@id", item.Id);
@@ -184,6 +188,7 @@ public class MultimediaRepository(
         saveCmd.Parameters.AddWithValue("@Date", item.Date ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@SortDate", item.SortDate);
         saveCmd.Parameters.AddWithValue("@Description", item.Description ?? string.Empty);
+        saveCmd.Parameters.AddWithValue("@AllText", item.AllText ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@DateChanged", DateTime.UtcNow);
 
         var result = await saveCmd.ExecuteScalarAsync();

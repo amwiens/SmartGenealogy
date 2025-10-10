@@ -2,7 +2,9 @@
 
 public class SeedDataService(
     FactTypeRepository factTypeRepository,
+    MultimediaLineRepository multimediaLineRepository,
     MultimediaRepository multimediaRepository,
+    MultimediaWordRepository multimediaWordRepository,
     PlaceRepository placeRepository,
     RoleRepository roleRepository,
     ILogger<SeedDataService> logger)
@@ -62,6 +64,8 @@ public class SeedDataService(
         {
             await Task.WhenAll(
                 factTypeRepository.CreateTableAsync(),
+                multimediaLineRepository.CreateTableAsync(),
+                multimediaRepository.CreateTableAsync(),
                 multimediaRepository.CreateTableAsync(),
                 placeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync()

@@ -12,6 +12,8 @@ global using CommunityToolkit.Mvvm.Messaging.Messages;
 
 global using Microsoft.Extensions.Logging;
 
+global using Plugin.Maui.OCR;
+
 global using SmartGenealogy.Core.Extensions;
 global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Services;

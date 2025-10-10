@@ -4,6 +4,8 @@ global using CommunityToolkit.Mvvm.Messaging;
 
 global using Microsoft.Extensions.Logging;
 
+global using Plugin.Maui.OCR;
+
 global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Services;
 global using SmartGenealogy.Core.Settings;

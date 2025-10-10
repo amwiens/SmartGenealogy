@@ -14,6 +14,7 @@
             <HorizontalStackLayout HorizontalOptions="End">
                 <Button Command="{Binding EditMultimediaCommand}" Text="Edit" />
                 <Button Command="{Binding DeleteMultimediaCommand}" Text="Delete" />
+                <Button Command="{Binding ProcessImageCommand}" Text="Ocr Image" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout>
@@ -87,6 +88,9 @@
                     Text="{Binding RefNumber}"
                     VerticalOptions="Center" />
             </HorizontalStackLayout>
+
+            <Label Text="All Text" />
+            <Label Text="{Binding AllText}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

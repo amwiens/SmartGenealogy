@@ -3,12 +3,14 @@
 /// <summary>
 /// Multimedia details page view model.
 /// </summary>
-/// <param name="multimediaRepository">Multimedia repository</param>
+/// <param name="multimediaService">Multimedia service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="ocrService">OCR Service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class MultimediaDetailsPageViewModel(
-    MultimediaRepository multimediaRepository,
+    IMultimediaService multimediaService,
     IPopupService popupService,
+    OCRService ocrService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -32,6 +34,9 @@ public partial class MultimediaDetailsPageViewModel(
     [ObservableProperty]
     private string? _refNumber = string.Empty;
 
+    [ObservableProperty]
+    private string? _allText = string.Empty;
+
     /// <summary>
     /// Apply attributes.
     /// </summary>
@@ -54,7 +59,7 @@ public partial class MultimediaDetailsPageViewModel(
     {
         try
         {
-            _multimedia = await multimediaRepository.GetAsync(id);
+            _multimedia = await multimediaService.GetAsync(id);
 
             if (_multimedia.IsNullOrNew())
             {
@@ -68,6 +73,7 @@ public partial class MultimediaDetailsPageViewModel(
             Description = _multimedia.Description;
             Date = _multimedia.Date;
             RefNumber = _multimedia.RefNumber;
+            AllText = _multimedia.AllText;
         }
         catch (Exception ex)
         {
@@ -100,12 +106,28 @@ public partial class MultimediaDetailsPageViewModel(
     {
         try
         {
-            await multimediaRepository.DeleteItemAsync(_multimedia!);
+            await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
             await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)
         {
             errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Process image.
+    /// </summary>
+    [RelayCommand]
+    private async Task ProcessImage()
+    {
+        var result = await ocrService.ProcessImage(FileName);
+
+        if (result != null && result.Success)
+        {
+            AllText = result.AllText;
+            _multimedia!.AllText = AllText;
+            await multimediaService.SaveItemAsync(_multimedia, result.Lines.ToList(), result.Elements.ToList());
         }
     }
 }

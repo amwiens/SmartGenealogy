@@ -61,6 +61,11 @@ public class Multimedia
     public string? Description { get; set; }
 
     /// <summary>
+    /// All text
+    /// </summary>
+    public string? AllText { get; set; }
+
+    /// <summary>
     /// Date added to the database
     /// </summary>
     public DateTime DateAdded { get; set; }
