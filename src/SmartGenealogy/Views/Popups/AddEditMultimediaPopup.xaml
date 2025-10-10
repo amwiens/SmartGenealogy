@@ -21,23 +21,27 @@
             <VerticalStackLayout
                 Grid.Column="1"
                 Padding="20"
+                MaximumWidthRequest="380"
                 MinimumWidthRequest="380">
                 <Label
                     HorizontalOptions="Center"
-                    Text="Name"
+                    Text="Media Type"
                     VerticalOptions="Center" />
 
-                <Entry Text="{Binding Name}" />
+                <Picker ItemsSource="{Binding MediaTypes}" SelectedIndex="{Binding MediaType}" />
 
                 <Label
                     HorizontalOptions="Center"
                     Text="File name"
                     VerticalOptions="Center" />
 
-                <HorizontalStackLayout MinimumWidthRequest="280">
-                    <Entry Text="{Binding FileName}" />
+                <HorizontalStackLayout MaximumWidthRequest="380" MinimumWidthRequest="380">
+                    <Entry
+                        MaximumWidthRequest="255"
+                        MinimumWidthRequest="255"
+                        Text="{Binding FileName}" />
 
-                    <Button Command="{Binding SelectMediaCommand}" Text="Image" />
+                    <Button Command="{Binding SelectMediaCommand}" Text="File" />
                 </HorizontalStackLayout>
 
                 <Label

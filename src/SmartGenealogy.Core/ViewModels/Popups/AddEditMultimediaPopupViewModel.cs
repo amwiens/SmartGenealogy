@@ -17,7 +17,10 @@ public partial class AddEditMultimediaPopupViewModel(
     private Data.Models.Multimedia? _multimedia;
 
     [ObservableProperty]
-    private MediaType _mediaType = 0;
+    private int _mediaType = 0;
+
+    [ObservableProperty]
+    private List<string> _mediaTypes = Enum.GetNames<MediaType>().ToList();
 
     [ObservableProperty]
     private string? _fileName = string.Empty;
@@ -63,7 +66,7 @@ public partial class AddEditMultimediaPopupViewModel(
                 return;
             }
 
-            MediaType = _multimedia.MediaType;
+            MediaType = (int)_multimedia.MediaType;
             FileName = _multimedia.FullPath;
             Caption = _multimedia.Caption;
             Description = _multimedia.Description;
@@ -82,12 +85,28 @@ public partial class AddEditMultimediaPopupViewModel(
     [RelayCommand]
     private async Task SelectMedia()
     {
+        FilePickerFileType? fileTypes;
         try
         {
+            switch (MediaType)
+            {
+                case (int)Data.Enums.MediaType.Image:
+                    fileTypes = FilePickerFileType.Images;
+                    break;
+
+                case (int)Data.Enums.MediaType.Video:
+                    fileTypes = FilePickerFileType.Videos;
+                    break;
+
+                default:
+                    fileTypes = null;
+                    break;
+            }
+
             var options = new PickOptions
             {
                 PickerTitle = "Please select a file",
-                FileTypes = FilePickerFileType.Images
+                FileTypes = fileTypes
             };
 
             var result = await FilePicker.Default.PickAsync(options);
@@ -119,25 +138,28 @@ public partial class AddEditMultimediaPopupViewModel(
         {
             var fileInfo = new FileInfo(FileName);
 
-            // Read the image as a stream
-            using var stream = File.OpenRead(FileName);
-            // Load the image using MAUI graphics
-            Microsoft.Maui.Graphics.IImage? image = PlatformImage.FromStream(stream);
-            byte[]? thumbnailBytes = null;
-            if (image != null)
+            if ((MediaType)MediaType == Data.Enums.MediaType.Image)
             {
-                // Resize the image to 128x128
-                var resized = image.Resize(128, 128, ResizeMode.Fit);
-                // Save the resized image to a byte array (PNG format)
-                using var ms = new MemoryStream();
-                resized.Save(ms, ImageFormat.Png);
-                thumbnailBytes = ms.ToArray();
+                // Read the image as a stream
+                using var stream = File.OpenRead(FileName);
+                // Load the image using MAUI graphics
+                Microsoft.Maui.Graphics.IImage? image = PlatformImage.FromStream(stream);
+                byte[]? thumbnailBytes = null;
+                if (image != null)
+                {
+                    // Resize the image to 128x128
+                    var resized = image.Resize(128, 128, ResizeMode.Fit);
+                    // Save the resized image to a byte array (PNG format)
+                    using var ms = new MemoryStream();
+                    resized.Save(ms, ImageFormat.Png);
+                    thumbnailBytes = ms.ToArray();
+                }
+                _multimedia.Thumbnail = thumbnailBytes;
             }
 
-            _multimedia.MediaType = MediaType;
+            _multimedia.MediaType = (MediaType)MediaType;
             _multimedia.MediaPath = fileInfo.DirectoryName;
             _multimedia.MediaFile = fileInfo.Name;
-            _multimedia.Thumbnail = thumbnailBytes;
             _multimedia.Caption = Caption;
             _multimedia.Description = Description;
             _multimedia.Date = Date;
