@@ -112,6 +112,7 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
                     _databaseSettings.DatabasePath = fileInfo.Directory!.FullName;
                     WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
                     DatabaseOpen = true;
+                    await _seedDataService.UpdateDatabaseAsync();
                     SmartGenealogySettings.LastOpenDatabase = Path.Combine(_databaseSettings.DatabasePath, _databaseSettings.DatabaseFilename);
                     SmartGenealogySettings.SaveSettings();
                 }
@@ -142,6 +143,12 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<OpenDataba
         SmartGenealogySettings.SaveSettings();
     }
 
+    /// <summary>
+    /// Checks to see if the file being opened is a Sqlite database.
+    /// </summary>
+    /// <param name="fileName">File name</param>
+    /// <returns><see langword="true"/> if it is a Sqlite database; otherwise <see langword="false"/>.</returns>
+    /// <exception cref="FileNotFoundException">Thrown if the file doesn't exist.</exception>
     private bool IsSQLiteDatabase(string fileName)
     {
         var sQLiteHeader = System.Text.Encoding.ASCII.GetBytes("SQLite format 3\0");

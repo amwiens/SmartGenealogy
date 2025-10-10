@@ -11,6 +11,9 @@ public class SeedDataService(
 {
     private readonly string _seedDataFilePath = "SeedData.json";
 
+    /// <summary>
+    /// Creates the database.
+    /// </summary>
     public async Task LoadSeedDataAsync()
     {
         CreateTables();
@@ -58,6 +61,17 @@ public class SeedDataService(
         }
     }
 
+    /// <summary>
+    /// Update the database.
+    /// </summary>
+    public async Task UpdateDatabaseAsync()
+    {
+        CreateTables();
+    }
+
+    /// <summary>
+    /// Create the tables in the database.
+    /// </summary>
     private async void CreateTables()
     {
         try
@@ -66,7 +80,7 @@ public class SeedDataService(
                 factTypeRepository.CreateTableAsync(),
                 multimediaLineRepository.CreateTableAsync(),
                 multimediaRepository.CreateTableAsync(),
-                multimediaRepository.CreateTableAsync(),
+                multimediaWordRepository.CreateTableAsync(),
                 placeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync()
                 );
