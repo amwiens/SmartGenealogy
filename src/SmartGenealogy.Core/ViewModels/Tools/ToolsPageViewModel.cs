@@ -1,5 +1,4 @@
-﻿
-namespace SmartGenealogy.Core.ViewModels.Tools;
+﻿namespace SmartGenealogy.Core.ViewModels.Tools;
 
 /// <summary>
 /// Tools page view model.
