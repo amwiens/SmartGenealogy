@@ -1,22 +1,16 @@
-﻿using Microsoft.Maui.Graphics.Platform;
-
-namespace SmartGenealogy.Core.ViewModels.Multimedia;
+﻿namespace SmartGenealogy.Core.ViewModels.Multimedia;
 
 /// <summary>
 /// Multimedia details page view model.
 /// </summary>
-/// <param name="multimediaRepository">Multimedia repository</param>
-/// <param name="multimediaLineRepository">Multimedia line repository</param>
-/// <param name="multimediaWordRepository">Multimedia word repository</param>
+/// <param name="multimediaService">Multimedia service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="ocrService">OCR Service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class MultimediaDetailsPageViewModel(
-    MultimediaRepository multimediaRepository,
-    MultimediaLineRepository multimediaLineRepository,
-    MultimediaWordRepository multimediaWordRepository,
+    IMultimediaService multimediaService,
     IPopupService popupService,
-    IOcrService ocrService,
+    OCRService ocrService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -65,7 +59,7 @@ public partial class MultimediaDetailsPageViewModel(
     {
         try
         {
-            _multimedia = await multimediaRepository.GetAsync(id);
+            _multimedia = await multimediaService.GetAsync(id);
 
             if (_multimedia.IsNullOrNew())
             {
@@ -112,7 +106,7 @@ public partial class MultimediaDetailsPageViewModel(
     {
         try
         {
-            await multimediaRepository.DeleteItemAsync(_multimedia!);
+            await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
             await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)
@@ -125,57 +119,13 @@ public partial class MultimediaDetailsPageViewModel(
     [RelayCommand]
     private async Task ProcessImage()
     {
-        byte[] imageBytes = FileToByteArray(FileName!);
-        var result = await ocrService.RecognizeTextAsync(imageBytes);
+        var result = await ocrService.ProcessImage(FileName);
 
         if (result != null && result.Success)
         {
             AllText = result.AllText;
-            var lineNumber = 0;
-            foreach (var line in result.Lines)
-            {
-                var multimediaLine = new MultimediaLine
-                {
-                    MultimediaId = _multimedia!.Id,
-                    LineNumber = lineNumber,
-                    Text = line
-                };
-                await multimediaLineRepository.SaveItemAsync(multimediaLine);
-                lineNumber++;
-            }
-            foreach (var element in result.Elements)
-            {
-                var multimediaWord = new MultimediaWord
-                {
-                    MultimediaId = _multimedia!.Id,
-                    Confidence = element.Confidence,
-                    Height = element.Height,
-                    Text = element.Text,
-                    Width = element.Width,
-                    X = element.X,
-                    Y = element.Y
-                };
-                await multimediaWordRepository.SaveItemAsync(multimediaWord);
-            }
+            _multimedia!.AllText = AllText;
+            await multimediaService.SaveItemAsync(_multimedia, result.Lines.ToList(), result.Elements.ToList());
         }
-        _multimedia!.AllText = AllText;
-        await multimediaRepository.SaveItemAsync(_multimedia);
-    }
-
-    static byte[] FileToByteArray(string filePath)
-    {
-        // Validate the file path
-        if (string.IsNullOrWhiteSpace(filePath))
-        {
-            throw new ArgumentException("File path cannot be null or empty.");
-        }
-
-        if (!File.Exists(filePath))
-        {
-            throw new FileNotFoundException("The specified file does not exist.", filePath);
-        }
-
-        // Read the file into a byte array
-        return File.ReadAllBytes(filePath);
     }
 }

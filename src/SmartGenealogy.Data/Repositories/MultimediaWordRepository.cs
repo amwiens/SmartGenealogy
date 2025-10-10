@@ -227,11 +227,30 @@ public class MultimediaWordRepository(
         await connection.OpenAsync();
 
         var deleteCmd = connection.CreateCommand();
-        deleteCmd.CommandText = "DELETE FROM MultimdeiaWord WHERE Id = @id";
+        deleteCmd.CommandText = "DELETE FROM MultimediaWord WHERE Id = @id";
         deleteCmd.Parameters.AddWithValue("@id", item.Id);
 
         return await deleteCmd.ExecuteNonQueryAsync();
     }
+
+    /// <summary>
+    /// Deletes a multimedia word item from the database.
+    /// </summary>
+    /// <param name="multimediaId">The multimedia Id to delete.</param>
+    /// <returns>The number of rows affected.</returns>
+    public async Task<int> DeleteItemAsync(int multimediaId)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var deleteCmd = connection.CreateCommand();
+        deleteCmd.CommandText = "DELETE FROM MultimediaWord WHERE MultimediaId = @multimediaid";
+        deleteCmd.Parameters.AddWithValue("@multimediaid", multimediaId);
+
+        return await deleteCmd.ExecuteNonQueryAsync();
+    }
+
 
     /// <summary>
     /// Creates the MultimediaWord table in the database.

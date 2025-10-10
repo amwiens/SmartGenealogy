@@ -60,7 +60,9 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<SeedDataService>();
         mauiAppBuilder.Services.AddSingleton<ModalErrorHandler>();
+        mauiAppBuilder.Services.AddSingleton<OCRService>();
         mauiAppBuilder.Services.AddSingleton<IFactTypeService, FactTypeService>();
+        mauiAppBuilder.Services.AddSingleton<IMultimediaService, MultimediaService>();
 
         mauiAppBuilder.Services.AddSingleton(OcrPlugin.Default);
 
