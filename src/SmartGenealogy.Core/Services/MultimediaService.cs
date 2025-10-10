@@ -23,37 +23,53 @@ public class MultimediaService(
     /// <param name="lines">Lines from the image.</param>
     /// <param name="ocrElement">Words from the image.</param>
     /// <returns>The Id of the saved multimedia.</returns>
-    public async Task<int> SaveItemAsync(Multimedia multimedia, List<string> lines, List<OcrResult.OcrElement> ocrElement)
+    public async Task<int> SaveItemAsync(Multimedia multimedia, List<string>? lines = null, List<OcrResult.OcrElement>? ocrElement = null)
     {
         var multimediaId = 0;
         try
         {
+            if (multimedia.Id == 0)
+            {
+                var existingMultimedia = await multimediaRepository.GetAsync(multimedia.MediaPath!, multimedia.MediaFile!);
+                if (existingMultimedia != null && existingMultimedia.Id != 0)
+                {
+                    await Toast.Make("Multimedia item is already in the database.").Show();
+                    return existingMultimedia.Id;
+                }
+            }
+
             multimediaId = await multimediaRepository.SaveItemAsync(multimedia);
             var lineNumber = 0;
-            foreach (var line in lines)
+            if (lines != null)
             {
-                var multimediaLine = new MultimediaLine
+                foreach (var line in lines)
                 {
-                    MultimediaId = multimediaId,
-                    LineNumber = lineNumber,
-                    Text = line
-                };
-                await multimediaLineRepository.SaveItemAsync(multimediaLine);
-                lineNumber++;
+                    var multimediaLine = new MultimediaLine
+                    {
+                        MultimediaId = multimediaId,
+                        LineNumber = lineNumber,
+                        Text = line
+                    };
+                    await multimediaLineRepository.SaveItemAsync(multimediaLine);
+                    lineNumber++;
+                }
             }
-            foreach (var element in ocrElement)
+            if (ocrElement != null)
             {
-                var multimediaWord = new MultimediaWord
+                foreach (var element in ocrElement)
                 {
-                    MultimediaId = multimediaId,
-                    Confidence = element.Confidence,
-                    Height = element.Height,
-                    Text = element.Text,
-                    Width = element.Width,
-                    X = element.X,
-                    Y = element.Y
-                };
-                await multimediaWordRepository.SaveItemAsync(multimediaWord);
+                    var multimediaWord = new MultimediaWord
+                    {
+                        MultimediaId = multimediaId,
+                        Confidence = element.Confidence,
+                        Height = element.Height,
+                        Text = element.Text,
+                        Width = element.Width,
+                        X = element.X,
+                        Y = element.Y
+                    };
+                    await multimediaWordRepository.SaveItemAsync(multimediaWord);
+                }
             }
         }
         catch (Exception ex)

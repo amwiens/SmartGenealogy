@@ -5,11 +5,13 @@ namespace SmartGenealogy.Core.ViewModels.Popups;
 /// <summary>
 /// Add edit multimedia popup view model.
 /// </summary>
-/// <param name="multimediaRepository">Multimedia repository</param>
+/// <param name="multimediaService">Multimedia service</param>
+/// <param name="ocrService">OCR service</param>
 /// <param name="popupService">PopupService</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditMultimediaPopupViewModel(
-    MultimediaRepository multimediaRepository,
+    IMultimediaService multimediaService,
+    OCRService ocrService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -58,7 +60,7 @@ public partial class AddEditMultimediaPopupViewModel(
     {
         try
         {
-            _multimedia = await multimediaRepository.GetAsync(id);
+            _multimedia = await multimediaService.GetAsync(id);
 
             if (_multimedia.IsNullOrNew())
             {
@@ -165,7 +167,9 @@ public partial class AddEditMultimediaPopupViewModel(
             _multimedia.Date = Date;
             _multimedia.RefNumber = RefNumber;
 
-            var multimediaId = await multimediaRepository.SaveItemAsync(_multimedia!);
+            var ocrResult = await ocrService.ProcessImage(FileName);
+
+            var multimediaId = await multimediaService.SaveItemAsync(_multimedia!, ocrResult!.Lines.ToList(), ocrResult.Elements.ToList());
 
             await popupService.ClosePopupAsync(Shell.Current);
         }
