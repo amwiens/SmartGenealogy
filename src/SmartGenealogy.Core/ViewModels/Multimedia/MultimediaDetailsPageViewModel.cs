@@ -7,12 +7,14 @@ namespace SmartGenealogy.Core.ViewModels.Multimedia;
 /// </summary>
 /// <param name="multimediaRepository">Multimedia repository</param>
 /// <param name="multimediaLineRepository">Multimedia line repository</param>
+/// <param name="multimediaWordRepository">Multimedia word repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="ocrService">OCR Service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class MultimediaDetailsPageViewModel(
     MultimediaRepository multimediaRepository,
     MultimediaLineRepository multimediaLineRepository,
+    MultimediaWordRepository multimediaWordRepository,
     IPopupService popupService,
     IOcrService ocrService,
     ModalErrorHandler errorHandler)
@@ -140,6 +142,20 @@ public partial class MultimediaDetailsPageViewModel(
                 };
                 await multimediaLineRepository.SaveItemAsync(multimediaLine);
                 lineNumber++;
+            }
+            foreach (var element in result.Elements)
+            {
+                var multimediaWord = new MultimediaWord
+                {
+                    MultimediaId = _multimedia!.Id,
+                    Confidence = element.Confidence,
+                    Height = element.Height,
+                    Text = element.Text,
+                    Width = element.Width,
+                    X = element.X,
+                    Y = element.Y
+                };
+                await multimediaWordRepository.SaveItemAsync(multimediaWord);
             }
         }
         _multimedia!.AllText = AllText;
