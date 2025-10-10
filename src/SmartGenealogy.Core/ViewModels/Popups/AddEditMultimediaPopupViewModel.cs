@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics.Platform;
-
-namespace SmartGenealogy.Core.ViewModels.Popups;
+﻿namespace SmartGenealogy.Core.ViewModels.Popups;
 
 /// <summary>
 /// Add edit multimedia popup view model.

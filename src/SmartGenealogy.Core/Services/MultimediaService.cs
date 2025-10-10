@@ -1,16 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
-
-using Microsoft.Maui.Graphics.Platform;
-using Microsoft.Maui.Storage;
-
-using Plugin.Maui.OCR;
-
-using SmartGenealogy.Data.Models;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace SmartGenealogy.Core.Services;
+﻿namespace SmartGenealogy.Core.Services;
 
 public class MultimediaService(
     MultimediaRepository multimediaRepository,
@@ -96,10 +84,14 @@ public class MultimediaService(
     /// <summary>
     /// Saves a multimedia item to the database.
     /// </summary>
-    /// <param name="multimedia">Multimedia item.</param>
-    /// <param name="lines">Lines from the image.</param>
-    /// <param name="ocrElement">Words from the image.</param>
-    /// <returns>The Id of the saved multimedia.</returns>
+    /// <param name="multimedia">Multimedia item</param>
+    /// <param name="fileName">File name</param>
+    /// <param name="mediaType"><see cref="MediaType"/></param>
+    /// <param name="caption">Caption</param>
+    /// <param name="description">Description</param>
+    /// <param name="date">Date</param>
+    /// <param name="refNumber">Reference number</param>
+    /// <returns></returns>
     public async Task<int> SaveItemAsync(Multimedia multimedia, string fileName, MediaType mediaType, string? caption, string? description, string? date, string? refNumber)
     {
         var multimediaId = 0;
