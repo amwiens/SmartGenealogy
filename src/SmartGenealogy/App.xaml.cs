@@ -6,15 +6,18 @@
 public partial class App : Application
 {
     private readonly IServiceProvider _serviceProvider;
+    private readonly SeedDataService _seedDataService;
 
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="serviceProvider">Service provider</param>
-    public App(IServiceProvider serviceProvider)
+    /// <param name="seedDataService">Seed data service</param>
+    public App(IServiceProvider serviceProvider, SeedDataService seedDataService)
     {
         InitializeComponent();
         _serviceProvider = serviceProvider;
+        _seedDataService = seedDataService;
     }
 
     /// <summary>
@@ -45,6 +48,7 @@ public partial class App : Application
                 databaseSettings.DatabaseFilename = fi.Name;
 
                 WeakReferenceMessenger.Default.Send(new OpenDatabaseMessage(true));
+                _seedDataService.UpdateDatabaseAsync().Wait();
             }
         }
     }
