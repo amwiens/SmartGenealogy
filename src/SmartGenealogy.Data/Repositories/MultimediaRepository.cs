@@ -139,6 +139,50 @@ public class MultimediaRepository(
     }
 
     /// <summary>
+    /// Retrieves a specific multimedia item by its path and name.
+    /// </summary>
+    /// <param name="mediaPath">The path to the file.</param>
+    /// <param name="mediaFile">The name of the file.</param>
+    /// <returns>A <see cref="Multimedia"/> object if found; otherwise, null.</returns>
+    public async Task<Multimedia?> GetAsync(string mediaPath, string mediaFile)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var selectCmd = connection.CreateCommand();
+        selectCmd.CommandText = "SELECT * FROM Multimedia WHERE MediaPath = @mediapath and MediaFile = @mediafile";
+        selectCmd.Parameters.AddWithValue("@mediapath", mediaPath);
+        selectCmd.Parameters.AddWithValue("@mediafile", mediaFile);
+
+        await using var reader = await selectCmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            var multimedia = new Multimedia
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                MediaType = (MediaType)reader.GetInt64(reader.GetOrdinal("MediaType")),
+                MediaPath = reader.IsDBNull(reader.GetOrdinal("MediaPath")) ? null : reader.GetString(reader.GetOrdinal("MediaPath")),
+                MediaFile = reader.IsDBNull(reader.GetOrdinal("MediaFile")) ? null : reader.GetString(reader.GetOrdinal("MediaFile")),
+                Url = reader.IsDBNull(reader.GetOrdinal("Url")) ? null : reader.GetString(reader.GetOrdinal("Url")),
+                Thumbnail = reader.IsDBNull(reader.GetOrdinal("Thumbnail")) ? null : (byte[])reader.GetValue(reader.GetOrdinal("Thumbnail")),
+                Caption = reader.IsDBNull(reader.GetOrdinal("Caption")) ? null : reader.GetString(reader.GetOrdinal("Caption")),
+                RefNumber = reader.IsDBNull(reader.GetOrdinal("RefNumber")) ? null : reader.GetString(reader.GetOrdinal("RefNumber")),
+                Date = reader.IsDBNull(reader.GetOrdinal("Date")) ? null : reader.GetString(reader.GetOrdinal("Date")),
+                SortDate = reader.GetInt32(reader.GetOrdinal("SortDate")),
+                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                AllText = reader.IsDBNull(reader.GetOrdinal("AllText")) ? null : reader.GetString(reader.GetOrdinal("AllText")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
+            };
+
+            return multimedia;
+        }
+
+        return null;
+    }
+
+    /// <summary>
     /// Saves a multimedia item to the database. If the multimedia Id is 0, a new multimedia item is created; otherwise, the existing multimedia is updated.
     /// </summary>
     /// <param name="item">The multimedia to save.</param>

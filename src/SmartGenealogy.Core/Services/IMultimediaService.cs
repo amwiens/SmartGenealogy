@@ -19,6 +19,19 @@ public interface IMultimediaService
     Task<int> SaveItemAsync(Multimedia multimedia, List<string> lines, List<OcrResult.OcrElement> ocrElement);
 
     /// <summary>
+    /// Saves a multimedia item to the database.
+    /// </summary>
+    /// <param name="multimedia">Multimedia item</param>
+    /// <param name="fileName">File name</param>
+    /// <param name="mediaType"><see cref="MediaType"/></param>
+    /// <param name="caption">Caption</param>
+    /// <param name="description">Description</param>
+    /// <param name="date">Date</param>
+    /// <param name="refNumber">Reference number</param>
+    /// <returns></returns>
+    Task<int> SaveItemAsync(Multimedia multimedia, string fileName, MediaType mediaType, string? caption, string? description, string? date, string? refNumber);
+
+    /// <summary>
     /// Delete Multimedia item.
     /// </summary>
     /// <param name="item">Multimedia item.</param>
