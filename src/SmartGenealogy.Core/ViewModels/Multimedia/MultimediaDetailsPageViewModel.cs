@@ -5,11 +5,13 @@
 /// </summary>
 /// <param name="multimediaService">Multimedia service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="alertService">Alert service</param>
 /// <param name="ocrService">OCR Service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class MultimediaDetailsPageViewModel(
     IMultimediaService multimediaService,
     IPopupService popupService,
+    IAlertService alertService,
     OCRService ocrService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -106,8 +108,12 @@ public partial class MultimediaDetailsPageViewModel(
     {
         try
         {
-            await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
-            await Shell.Current.GoToAsync("..");
+            var isConfirmed = await alertService.ShowAlertAsync("Delete multimedia", "Are you sure you want to delete this multimedia item?", "Yes", "No");
+            if (isConfirmed)
+            {
+                await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
+                await Shell.Current.GoToAsync("..");
+            }
         }
         catch (Exception ex)
         {

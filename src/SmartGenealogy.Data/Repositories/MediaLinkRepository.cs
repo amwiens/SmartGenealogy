@@ -136,6 +136,46 @@ public class MediaLinkRepository(
     }
 
     /// <summary>
+    /// Retrieves a list of all media links for a multimedia item from the database.
+    /// </summary>
+    /// <param name="multimediaId">The multimedia id.</param>
+    /// <returns>A list of <see cref="MediaLink"/> objects.</returns>
+    public async Task<List<MediaLink>?> ListAsync(int multimediaId)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var selectCmd = connection.CreateCommand();
+        selectCmd.CommandText = "SELECT * FROM MediaLink WHERE MultimediaId = @multimediaid";
+        selectCmd.Parameters.AddWithValue("@multimediaid", multimediaId);
+        var mediaLinks = new List<MediaLink>();
+
+        await using var reader = await selectCmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            mediaLinks.Add(new MediaLink
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                MultimediaId = reader.GetInt32(reader.GetOrdinal("MultimediaId")),
+                OwnerType = (OwnerType)reader.GetInt32(reader.GetOrdinal("OwnerType")),
+                OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
+                IsPrimary = reader.GetBoolean(reader.GetOrdinal("IsPrimary")),
+                Comments = reader.IsDBNull(reader.GetOrdinal("Comments")) ? null : reader.GetString(reader.GetOrdinal("Comments")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
+            });
+        }
+
+        foreach (var mediaLink in mediaLinks)
+        {
+            mediaLink.Multimedia = await multimediaRepository.GetAsync(mediaLink.MultimediaId);
+        }
+
+        return mediaLinks;
+    }
+
+    /// <summary>
     /// Retrieves a specific media link item by its ID.
     /// </summary>
     /// <param name="id">The ID of the fact type.</param>
@@ -228,7 +268,7 @@ public class MediaLinkRepository(
     /// </summary>
     /// <param name="item">The media link to delete.</param>
     /// <returns>The number of rows affected.</returns>
-    public async Task<int> DeleteItemAsync(Multimedia item)
+    public async Task<int> DeleteItemAsync(MediaLink item)
     {
         await Init();
         await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
@@ -237,6 +277,24 @@ public class MediaLinkRepository(
         var deleteCmd = connection.CreateCommand();
         deleteCmd.CommandText = "DELETE FROM MediaLink WHERE Id = @id";
         deleteCmd.Parameters.AddWithValue("@id", item.Id);
+
+        return await deleteCmd.ExecuteNonQueryAsync();
+    }
+
+    /// <summary>
+    /// Deletes a media link item from the database.
+    /// </summary>
+    /// <param name="multimediaId">The multimedia id to delete.</param>
+    /// <returns>The number of rows affected.</returns>
+    public async Task<int> DeleteItemAsync(int multimediaId)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var deleteCmd = connection.CreateCommand();
+        deleteCmd.CommandText = "DELETE FROM MediaLink WHERE MultimediaId = @multimediaid";
+        deleteCmd.Parameters.AddWithValue("@multimediaid", multimediaId);
 
         return await deleteCmd.ExecuteNonQueryAsync();
     }

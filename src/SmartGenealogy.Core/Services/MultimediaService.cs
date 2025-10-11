@@ -1,9 +1,20 @@
 ﻿namespace SmartGenealogy.Core.Services;
 
+/// <summary>
+/// Multimedia Service
+/// </summary>
+/// <param name="multimediaRepository">Multimedia repository</param>
+/// <param name="multimediaLineRepository">Multimedia line repository</param>
+/// <param name="multimediaWordRepository">Multimedia word repository</param>
+/// <param name="mediaLinkRepository">Media link repository</param>
+/// <param name="alertService">Alert service</param>
+/// <param name="ocrService">OCR service</param>
 public class MultimediaService(
     MultimediaRepository multimediaRepository,
     MultimediaLineRepository multimediaLineRepository,
     MultimediaWordRepository multimediaWordRepository,
+    MediaLinkRepository mediaLinkRepository,
+    IAlertService alertService,
     OCRService ocrService)
     : IMultimediaService
 {
@@ -203,10 +214,21 @@ public class MultimediaService(
     /// <returns>The number of rows affected.</returns>
     public async Task<int> DeleteMultimediaItemAsync(Multimedia item)
     {
+        var mediaLinks = await mediaLinkRepository.ListAsync(item.Id);
+
+        if (mediaLinks!.Any())
+        {
+            var isConfirmed = await alertService.ShowAlertAsync("Delete Multimedia", "There are items linked to the multimedia item. Do you want to delete it?", "Yes", "No");
+
+            if (!isConfirmed)
+                return 0;
+        }
+
+        var linksDeleted = await mediaLinkRepository.DeleteItemAsync(item.Id);
         var linesDeleted = await multimediaLineRepository.DeleteItemAsync(item.Id);
         var wordsDeleted = await multimediaWordRepository.DeleteItemAsync(item.Id);
         var mediaDeleted = await multimediaRepository.DeleteItemAsync(item);
 
-        return linesDeleted + wordsDeleted + mediaDeleted;
+        return linesDeleted + wordsDeleted + mediaDeleted + linksDeleted;
     }
 }
