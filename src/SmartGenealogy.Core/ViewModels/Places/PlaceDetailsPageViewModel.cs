@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Repositories;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
