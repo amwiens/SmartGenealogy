@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.Data.Repositories;
+﻿namespace SmartGenealogy.Data.Repositories;
 
 /// <summary>
 /// Repository class for managing Media link entities in the database.
