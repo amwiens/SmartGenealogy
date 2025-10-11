@@ -14,4 +14,9 @@ public enum OwnerType
     /// Family
     /// </summary>
     Family = 1,
+
+    /// <summary>
+    /// Place
+    /// </summary>
+    Place = 14,
 }
