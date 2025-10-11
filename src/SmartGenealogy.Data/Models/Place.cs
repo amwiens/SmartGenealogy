@@ -69,4 +69,9 @@ public class Place
     /// Place details
     /// </summary>
     public List<Place>? PlaceDetails { get; set; }
+
+    /// <summary>
+    /// Media links
+    /// </summary>
+    public List<MediaLink>? MediaLinks { get; set; }
 }

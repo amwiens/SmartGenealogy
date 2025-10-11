@@ -44,4 +44,9 @@ public class MediaLink
     /// Date changed
     /// </summary>
     public DateTime DateChanged { get; set; }
+
+    /// <summary>
+    /// Multimedia
+    /// </summary>
+    public Multimedia? Multimedia { get; set; }
 }

@@ -85,5 +85,36 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding AddMediaLinkCommand}" Text="Add media link" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Text="Media links:"
+                VerticalOptions="Center" />
+
+            <CollectionView
+                ItemsSource="{Binding MediaLinks}"
+                SelectedItem="{Binding SelectedMediaLink}"
+                SelectionChangedCommand="{Binding OpenMultimediaCommand}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:MediaLink">
+                        <VerticalStackLayout>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                Source="{Binding Multimedia.ThumbnailBytes}"
+                                WidthRequest="150" />
+                            <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

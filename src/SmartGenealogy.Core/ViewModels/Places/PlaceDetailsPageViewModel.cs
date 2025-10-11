@@ -1,13 +1,17 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Places;
+﻿using SmartGenealogy.Data.Repositories;
+
+namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
 /// </summary>
 /// <param name="placeRepository">Place repository</param>
+/// <param name="mediaLinkRepository">Media link repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlaceDetailsPageViewModel(
     PlaceRepository placeRepository,
+    MediaLinkRepository mediaLinkRepository,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -31,6 +35,12 @@ public partial class PlaceDetailsPageViewModel(
 
     [ObservableProperty]
     private Place? _selectedPlaceDetail;
+
+    [ObservableProperty]
+    private ObservableCollection<MediaLink> _mediaLinks = [];
+
+    [ObservableProperty]
+    private MediaLink? _selectedMediaLink;
 
     /// <summary>
     /// Apply attributes.
@@ -66,6 +76,7 @@ public partial class PlaceDetailsPageViewModel(
             Longitude = _place.Longitude;
             Note = _place.Note;
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
+            MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
         }
         catch (Exception ex)
         {
@@ -132,5 +143,31 @@ public partial class PlaceDetailsPageViewModel(
     {
         if (SelectedPlaceDetail is not null)
             await Shell.Current.GoToAsync($"placeDetails?id={SelectedPlaceDetail.Id}");
+    }
+
+    /// <summary>
+    /// Add media link.
+    /// </summary>
+    [RelayCommand]
+    private async Task AddMediaLink()
+    {
+        await mediaLinkRepository.SaveItemAsync(new MediaLink
+        {
+            MultimediaId = 12,
+            OwnerType = OwnerType.Place,
+            OwnerId = _place!.Id,
+            IsPrimary = true,
+            Comments = "Test"
+        });
+    }
+
+    /// <summary>
+    /// Open multimedia details
+    /// </summary>
+    [RelayCommand]
+    private async Task OpenMultimedia()
+    {
+        if (SelectedMediaLink is not null)
+            await Shell.Current.GoToAsync($"multimediaDetails?id={SelectedMediaLink.MultimediaId}");
     }
 }

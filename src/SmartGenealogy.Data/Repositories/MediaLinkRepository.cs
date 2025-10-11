@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Data.Repositories;
+﻿using SmartGenealogy.Data.Models;
+
+namespace SmartGenealogy.Data.Repositories;
 
 /// <summary>
 /// Repository class for managing Media link entities in the database.
@@ -6,9 +8,11 @@
 /// <remarks>
 /// Initializes a new instance of the <see cref="MediaLinkRepository"/> class.
 /// </remarks>
+/// <param name="multimediaRepository">Multimedia repository</param>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="logger">Logger.</param>
 public class MediaLinkRepository(
+    MultimediaRepository multimediaRepository,
     DatabaseSettings databaseSettings,
     ILogger<MediaLinkRepository> logger)
 {
@@ -35,7 +39,6 @@ public class MediaLinkRepository(
                     OwnerType INTEGER NOT NULL,
                     OwnerId INTEGER NOT NULL,
                     IsPrimary INTEGER NULL,
-                    Thumbnail BLOB NULL,
                     Comments TEXT NULL,
                     DateAdded TEXT NOT NULL,
                     DateChanged TEXT NOT NULL
@@ -74,12 +77,17 @@ public class MediaLinkRepository(
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 MultimediaId = reader.GetInt32(reader.GetOrdinal("MultimediaId")),
                 OwnerType = (OwnerType)reader.GetInt32(reader.GetOrdinal("OwnerType")),
-                OwnerId = reader.GetInt32(reader.GetOrdinal("MediaFile")),
-                IsPrimary = bool.Parse(reader.GetString(reader.GetOrdinal("IsPrimary"))),
+                OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
+                IsPrimary = reader.GetBoolean(reader.GetOrdinal("IsPrimary")),
                 Comments = reader.IsDBNull(reader.GetOrdinal("Comments")) ? null : reader.GetString(reader.GetOrdinal("Comments")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             });
+        }
+
+        foreach (var mediaLink in mediaLinks)
+        {
+            mediaLink.Multimedia = await multimediaRepository.GetAsync(mediaLink.MultimediaId);
         }
 
         return mediaLinks;
@@ -99,8 +107,8 @@ public class MediaLinkRepository(
 
         var selectCmd = connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM MediaLink WHERE OwnerType = @ownertype and OwnerId = @ownerid";
-        selectCmd.Parameters.AddWithValue("@ownertype", ownerType);
-        selectCmd.Parameters.AddWithValue("@ownerid ", ownerId);
+        selectCmd.Parameters.AddWithValue("@ownertype", (int)ownerType);
+        selectCmd.Parameters.AddWithValue("@ownerid", ownerId);
         var mediaLinks = new List<MediaLink>();
 
         await using var reader = await selectCmd.ExecuteReaderAsync();
@@ -111,12 +119,17 @@ public class MediaLinkRepository(
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 MultimediaId = reader.GetInt32(reader.GetOrdinal("MultimediaId")),
                 OwnerType = (OwnerType)reader.GetInt32(reader.GetOrdinal("OwnerType")),
-                OwnerId = reader.GetInt32(reader.GetOrdinal("MediaFile")),
-                IsPrimary = bool.Parse(reader.GetString(reader.GetOrdinal("IsPrimary"))),
+                OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
+                IsPrimary = reader.GetBoolean(reader.GetOrdinal("IsPrimary")),
                 Comments = reader.IsDBNull(reader.GetOrdinal("Comments")) ? null : reader.GetString(reader.GetOrdinal("Comments")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             });
+        }
+
+        foreach (var mediaLink in mediaLinks)
+        {
+            mediaLink.Multimedia = await multimediaRepository.GetAsync(mediaLink.MultimediaId);
         }
 
         return mediaLinks;
@@ -145,12 +158,14 @@ public class MediaLinkRepository(
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 MultimediaId = reader.GetInt32(reader.GetOrdinal("MultimediaId")),
                 OwnerType = (OwnerType)reader.GetInt32(reader.GetOrdinal("OwnerType")),
-                OwnerId = reader.GetInt32(reader.GetOrdinal("MediaFile")),
-                IsPrimary = bool.Parse(reader.GetString(reader.GetOrdinal("IsPrimary"))),
+                OwnerId = reader.GetInt32(reader.GetOrdinal("OwnerId")),
+                IsPrimary = reader.GetBoolean(reader.GetOrdinal("IsPrimary")),
                 Comments = reader.IsDBNull(reader.GetOrdinal("Comments")) ? null : reader.GetString(reader.GetOrdinal("Comments")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
+
+            mediaLink.Multimedia = await multimediaRepository.GetAsync(mediaLink.MultimediaId);
 
             return mediaLink;
         }
