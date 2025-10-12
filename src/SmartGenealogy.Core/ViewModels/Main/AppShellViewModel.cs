@@ -13,6 +13,9 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
     [ObservableProperty]
     private bool _databaseOpen = false;
 
+    [ObservableProperty]
+    private bool _settingsVisible = false;
+
     /// <summary>
     /// Constructor
     /// </summary>
@@ -39,6 +42,8 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
             Title = $"Smart Genealogy - {Path.Combine(_databaseSettings.DatabasePath!, _databaseSettings.DatabaseFilename!)}";
         }
 
+        SettingsVisible = false;
         DatabaseOpen = message!.Value;
+        SettingsVisible = true;
     }
 }
