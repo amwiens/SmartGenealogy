@@ -51,18 +51,31 @@ public class PlaceService(
         if (place == null)
             return false;
 
-        bool isConfirmed = false;
+        bool isConfirmed = true;
 
+        var deletionMessage = new StringBuilder();
+
+        deletionMessage.AppendLine("This place has the following links:");
+        deletionMessage.AppendLine();
         if (place.PlaceDetails!.Any())
         {
-            isConfirmed = await alertService.ShowAlertAsync("Delete place", "This place has place details. Do you still want to delete this place?", "Yes", "No");
+            deletionMessage.AppendLine("* Place details");
+            isConfirmed = false;
         }
 
         if (place.MediaLinks!.Any() && isConfirmed)
         {
-            isConfirmed = await alertService.ShowAlertAsync("Delete place", "This place has media links. Do you still want to delete this place?", "Yes", "No");
+            deletionMessage.AppendLine("* Media links");
+            isConfirmed = false;
         }
+        deletionMessage.AppendLine();
+        deletionMessage.AppendLine("Do you still want to delete this place?");
 
+        // Check if confirmation box needs to surface
+        if (!isConfirmed)
+            isConfirmed = await alertService.ShowAlertAsync("Delete place", deletionMessage.ToString(), "Yes", "No");
+
+        // Delete items
         if (isConfirmed)
         {
             foreach (var mediaLink in place.MediaLinks!)
