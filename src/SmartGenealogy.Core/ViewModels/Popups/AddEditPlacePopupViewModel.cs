@@ -3,11 +3,11 @@
 /// <summary>
 /// Add/edit place popup view model.
 /// </summary>
-/// <param name="placeRepository">Place repository</param>
+/// <param name="placeService">Place service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditPlacePopupViewModel(
-    PlaceRepository placeRepository,
+    IPlaceService placeService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -43,7 +43,7 @@ public partial class AddEditPlacePopupViewModel(
     {
         try
         {
-            _place = await placeRepository.GetAsync(id);
+            _place = await placeService.GetPlaceAsync(id);
 
             if (_place.IsNullOrNew())
             {
@@ -77,7 +77,7 @@ public partial class AddEditPlacePopupViewModel(
             _place.Normalized = Name;
         _place.Reverse = Name!.ReverseString();
 
-        var placeId = await placeRepository.SaveItemAsync(_place);
+        var placeId = await placeService.SavePlaceAsync(_place);
 
         await popupService.ClosePopupAsync(Shell.Current);
     }
