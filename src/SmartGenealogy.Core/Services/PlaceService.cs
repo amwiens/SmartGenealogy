@@ -45,7 +45,7 @@ public class PlaceService(
     /// Deletes a place from the database.
     /// </summary>
     /// <param name="place">The <see cref="Place"/> to delete.</param>
-    /// <returns>Number of rows affected.</returns>
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
     public async Task<bool> DeletePlaceAsync(Place place)
     {
         if (place == null)
@@ -54,15 +54,17 @@ public class PlaceService(
         bool isConfirmed = true;
 
         var deletionMessage = new StringBuilder();
-
         deletionMessage.AppendLine("This place has the following links:");
         deletionMessage.AppendLine();
+
+        // Check for place details
         if (place.PlaceDetails!.Any())
         {
             deletionMessage.AppendLine("* Place details");
             isConfirmed = false;
         }
 
+        // Check for media links
         if (place.MediaLinks!.Any() && isConfirmed)
         {
             deletionMessage.AppendLine("* Media links");

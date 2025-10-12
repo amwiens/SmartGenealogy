@@ -111,8 +111,9 @@ public partial class MultimediaDetailsPageViewModel(
             var isConfirmed = await alertService.ShowAlertAsync("Delete multimedia", "Are you sure you want to delete this multimedia item?", "Yes", "No");
             if (isConfirmed)
             {
-                await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
-                await Shell.Current.GoToAsync("..");
+                var isDeleted = await multimediaService.DeleteMultimediaItemAsync(_multimedia!);
+                if (isDeleted)
+                    await Shell.Current.GoToAsync("..");
             }
         }
         catch (Exception ex)

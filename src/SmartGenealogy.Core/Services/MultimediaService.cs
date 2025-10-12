@@ -211,24 +211,45 @@ public class MultimediaService(
     /// Delete Multimedia item.
     /// </summary>
     /// <param name="item">Multimedia item.</param>
-    /// <returns>The number of rows affected.</returns>
-    public async Task<int> DeleteMultimediaItemAsync(Multimedia item)
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
+    public async Task<bool> DeleteMultimediaItemAsync(Multimedia item)
     {
+        if (item == null)
+            return false;
+
         var mediaLinks = await mediaLinkRepository.ListAsync(item.Id);
 
+        bool isConfirmed = true;
+
+        var deletionMessage = new StringBuilder();
+        deletionMessage.AppendLine("This multimedia item has the following links:");
+        deletionMessage.AppendLine();
+
+        // Check for media links
         if (mediaLinks!.Any())
         {
-            var isConfirmed = await alertService.ShowAlertAsync("Delete Multimedia", "There are items linked to the multimedia item. Do you want to delete it?", "Yes", "No");
-
-            if (!isConfirmed)
-                return 0;
+            deletionMessage.AppendLine("* Media links");
+            isConfirmed = false;
         }
 
-        var linksDeleted = await mediaLinkRepository.DeleteItemAsync(item.Id);
-        var linesDeleted = await multimediaLineRepository.DeleteItemAsync(item.Id);
-        var wordsDeleted = await multimediaWordRepository.DeleteItemAsync(item.Id);
-        var mediaDeleted = await multimediaRepository.DeleteItemAsync(item);
+        deletionMessage.AppendLine();
+        deletionMessage.AppendLine("Do you still want to delete this multimedia item?");
 
-        return linesDeleted + wordsDeleted + mediaDeleted + linksDeleted;
+        // Check if confirmation box needs to surface
+        if (!isConfirmed)
+            isConfirmed = await alertService.ShowAlertAsync("Delete multimedia", deletionMessage.ToString(), "Yes", "No");
+
+        // Delete items
+        if (isConfirmed)
+        {
+            var linksDeleted = await mediaLinkRepository.DeleteItemAsync(item.Id);
+            var linesDeleted = await multimediaLineRepository.DeleteItemAsync(item.Id);
+            var wordsDeleted = await multimediaWordRepository.DeleteItemAsync(item.Id);
+            var mediaDeleted = await multimediaRepository.DeleteItemAsync(item);
+
+            return true;
+        }
+
+        return false;
     }
 }
