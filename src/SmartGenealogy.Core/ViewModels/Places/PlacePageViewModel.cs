@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Core.Services;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place page view model.
