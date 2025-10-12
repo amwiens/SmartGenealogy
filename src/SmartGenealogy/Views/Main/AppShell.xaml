@@ -38,6 +38,9 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Settings">
-        <ShellContent ContentTemplate="{DataTemplate settings:SettingsPage}" Route="SettingsPage" />
+        <ShellContent
+            ContentTemplate="{DataTemplate settings:SettingsPage}"
+            IsVisible="{Binding SettingsVisible}"
+            Route="SettingsPage" />
     </FlyoutItem>
 </Shell>
