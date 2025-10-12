@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Tools;
+﻿using SmartGenealogy.Core.Services;
+
+namespace SmartGenealogy.Core.ViewModels.Tools;
 
 /// <summary>
 /// Fact type page view model.
@@ -6,12 +8,14 @@
 /// <param name="factTypeService">Fact type service</param>
 /// <param name="factTypeRepository">Fact type repository</param>
 /// <param name="roleRepository">Role repository</param>
+/// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class FactTypePageViewModel(
     IFactTypeService factTypeService,
     FactTypeRepository factTypeRepository,
     RoleRepository roleRepository,
+    IAlertService alertService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -125,8 +129,13 @@ public partial class FactTypePageViewModel(
     {
         try
         {
-            await factTypeService.DeleteItemAsync(_factType!);
-            await Shell.Current.GoToAsync("..");
+            var isConfirmed = await alertService.ShowAlertAsync("Delete fact type", "Are you sure you want to delete this fact type?", "Yes", "No");
+            if (isConfirmed)
+            {
+                var isDeleted = await factTypeService.DeleteItemAsync(_factType!);
+                if (isDeleted)
+                    await Shell.Current.GoToAsync("..");
+            }
         }
         catch (Exception ex)
         {
@@ -177,8 +186,12 @@ public partial class FactTypePageViewModel(
     {
         try
         {
-            await roleRepository.DeleteItemAsync(SelectedRole!);
-            LoadData(_factType!.Id).FireAndForgetSafeAsync();
+            var isConfirmed = await alertService.ShowAlertAsync("Delete role", "Are you sure you want to delete this role?", "Yes", "No");
+            if (isConfirmed)
+            {
+                await roleRepository.DeleteItemAsync(SelectedRole!);
+                LoadData(_factType!.Id).FireAndForgetSafeAsync();
+            }
         }
         catch (Exception ex)
         {

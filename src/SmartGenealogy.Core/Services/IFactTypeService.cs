@@ -9,5 +9,6 @@ public interface IFactTypeService
     /// Deletes a fact type.
     /// </summary>
     /// <param name="factType">Fact type</param>
-    Task DeleteItemAsync(FactType factType);
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
+    Task<bool> DeleteItemAsync(FactType factType);
 }

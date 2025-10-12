@@ -16,21 +16,17 @@ public class FactTypeService(
     /// Deletes a fact type.
     /// </summary>
     /// <param name="factType"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public async Task DeleteItemAsync(FactType factType)
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
+    public async Task<bool> DeleteItemAsync(FactType factType)
     {
-        try
-        {
-            // Deletes the roles associated with the fact type.
-            await roleRepository.DeleteItemAsync(factType.Id);
-            // Deletes the fact type
-            await factTypeRepository.DeleteItemAsync(factType);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Error deleting fact type");
-            throw;
-        }
+        if (factType is null)
+            return false;
+
+        // Deletes the roles associated with the fact type.
+        await roleRepository.DeleteItemAsync(factType.Id);
+        // Deletes the fact type
+        await factTypeRepository.DeleteItemAsync(factType);
+
+        return true;
     }
 }
