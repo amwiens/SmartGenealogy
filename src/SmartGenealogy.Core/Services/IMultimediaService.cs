@@ -35,6 +35,6 @@ public interface IMultimediaService
     /// Delete Multimedia item.
     /// </summary>
     /// <param name="item">Multimedia item.</param>
-    /// <returns>The number of rows affected.</returns>
-    Task<int> DeleteMultimediaItemAsync(Multimedia item);
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
+    Task<bool> DeleteMultimediaItemAsync(Multimedia item);
 }

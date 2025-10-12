@@ -9,7 +9,7 @@
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlaceDetailsPageViewModel(
-    PlaceService placeService,
+    IPlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
     IAlertService alertService,
     IPopupService popupService,
@@ -158,7 +158,7 @@ public partial class PlaceDetailsPageViewModel(
     {
         await mediaLinkRepository.SaveItemAsync(new MediaLink
         {
-            MultimediaId = 12,
+            MultimediaId = 13,
             OwnerType = OwnerType.Place,
             OwnerId = _place!.Id,
             IsPrimary = true,

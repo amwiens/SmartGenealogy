@@ -29,6 +29,6 @@ public interface IPlaceService
     /// Deletes a place from the database.
     /// </summary>
     /// <param name="place">The <see cref="Place"/> to delete.</param>
-    /// <returns>Number of rows affected.</returns>
+    /// <returns><see langword="true"> if deleted, otherwise <see langword="false"/>.</returns>
     Task<bool> DeletePlaceAsync(Place place);
 }
