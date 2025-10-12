@@ -68,6 +68,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<IAlertService, AlertService>();
         mauiAppBuilder.Services.AddSingleton<IFactTypeService, FactTypeService>();
         mauiAppBuilder.Services.AddSingleton<IMultimediaService, MultimediaService>();
+        mauiAppBuilder.Services.AddSingleton<Core.Services.IPlaceService, PlaceService>();
 
         mauiAppBuilder.Services.AddSingleton(OcrPlugin.Default);
 

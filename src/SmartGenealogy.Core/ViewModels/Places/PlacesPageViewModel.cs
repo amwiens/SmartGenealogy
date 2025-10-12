@@ -3,11 +3,11 @@
 /// <summary>
 /// Places page view model.
 /// </summary>
-/// <param name="placeRepository">Place repository</param>
+/// <param name="placeService">Place service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlacesPageViewModel(
-    PlaceRepository placeRepository,
+    IPlaceService placeService,
     IPopupService popupService,
     ModalErrorHandler errorHandler) : ObservableObject
 {
@@ -23,8 +23,8 @@ public partial class PlacesPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        var placeList = await placeRepository.ListAsync();
-        Places = new ObservableCollection<Place>(placeList.Where(x => x.MasterId == 0));
+        var placeList = await placeService.ListMasterPlacesAsync();
+        Places = new ObservableCollection<Place>(placeList!);
     }
 
     /// <summary>

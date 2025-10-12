@@ -3,13 +3,15 @@
 /// <summary>
 /// Place details page view model
 /// </summary>
-/// <param name="placeRepository">Place repository</param>
+/// <param name="placeService">Place service</param>
 /// <param name="mediaLinkRepository">Media link repository</param>
+/// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlaceDetailsPageViewModel(
-    PlaceRepository placeRepository,
+    PlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
+    IAlertService alertService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -61,7 +63,7 @@ public partial class PlaceDetailsPageViewModel(
     {
         try
         {
-            _place = await placeRepository.GetAsync(id);
+            _place = await placeService.GetPlaceAsync(id);
 
             if (_place.IsNullOrNew())
             {
@@ -107,8 +109,13 @@ public partial class PlaceDetailsPageViewModel(
     {
         try
         {
-            await placeRepository.DeleteItemAsync(_place!);
-            await Shell.Current.GoToAsync("..");
+            var isConfirmed = await alertService.ShowAlertAsync("Delete place", "Are you sure you want to delete this place?", "Yes", "No");
+            if (isConfirmed)
+            {
+                var isDeleted = await placeService.DeletePlaceAsync(_place!);
+                if (isDeleted)
+                    await Shell.Current.GoToAsync("..");
+            }
         }
         catch (Exception ex)
         {
