@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.SelectMultimediaPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:Name="selectMultimediaPopup"
+    x:DataType="viewModels:SelectMultimediaPopupViewModel"
+    x:TypeArguments="system:Int32"
+    Background="Black"
+    HeightRequest="500"
+    WidthRequest="1000">
+
+    <toolkit:Popup.Behaviors>
+        <toolkit:EventToCommandBehavior
+            BindingContext="{Binding Source={x:Reference selectMultimediaPopup}, Path=BindingContext}"
+            Command="{Binding AppearingCommand}"
+            EventName="Opened" />
+    </toolkit:Popup.Behaviors>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Label Text="Media" />
+
+        <ScrollView Grid.Row="1" Orientation="Vertical">
+            <CollectionView
+                ItemsSource="{Binding Multimedia}"
+                SelectedItem="{Binding SelectedItem}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Multimedia">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                Source="{Binding ThumbnailBytes}"
+                                WidthRequest="150" />
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Caption}" />
+                                <Label Text="{Binding FullPath}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="End">
+            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        </HorizontalStackLayout>
+    </Grid>
+</toolkit:Popup>

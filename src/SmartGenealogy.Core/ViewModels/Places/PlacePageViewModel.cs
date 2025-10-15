@@ -162,15 +162,18 @@ public partial class PlacePageViewModel(
             {
                 var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel, int>(shell);
 
-                await mediaLinkRepository.SaveItemAsync(new MediaLink
+                if (result.Result != 0)
                 {
-                    MultimediaId = result.Result,
-                    OwnerType = OwnerType.Place,
-                    OwnerId = _place!.Id,
-                    IsPrimary = false,
-                    Comments = string.Empty
-                });
-                LoadData(_place!.Id).FireAndForgetSafeAsync();
+                    await mediaLinkRepository.SaveItemAsync(new MediaLink
+                    {
+                        MultimediaId = result.Result,
+                        OwnerType = OwnerType.Place,
+                        OwnerId = _place!.Id,
+                        IsPrimary = false,
+                        Comments = string.Empty
+                    });
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
             }
         }
         catch (Exception ex)
@@ -189,7 +192,20 @@ public partial class PlacePageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel>(shell);
+                var result = await popupService.ShowPopupAsync<SelectMultimediaPopupViewModel, int>(shell);
+
+                if (result.Result != 0)
+                {
+                    await mediaLinkRepository.SaveItemAsync(new MediaLink
+                    {
+                        MultimediaId = result.Result,
+                        OwnerType = OwnerType.Place,
+                        OwnerId = _place!.Id,
+                        IsPrimary = false,
+                        Comments = string.Empty
+                    });
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
             }
         }
         catch (Exception ex)
