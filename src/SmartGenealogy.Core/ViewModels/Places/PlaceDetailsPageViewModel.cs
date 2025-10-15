@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
@@ -174,7 +172,8 @@ public partial class PlaceDetailsPageViewModel(
                         IsPrimary = false,
                         Comments = string.Empty
                     });
-                }            }
+                }
+            }
             LoadData(_place!.Id).FireAndForgetSafeAsync();
         }
         catch (Exception ex)

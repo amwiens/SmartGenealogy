@@ -1,7 +1,10 @@
-﻿using SmartGenealogy.Data.Repositories;
+﻿namespace SmartGenealogy.Core.ViewModels.Popups;
 
-namespace SmartGenealogy.Core.ViewModels.Popups;
-
+/// <summary>
+/// Select multimedia popup view model.
+/// </summary>
+/// <param name="multimediaRepository">Multimedia repository</param>
+/// <param name="popupService">Popup service</param>
 public partial class SelectMultimediaPopupViewModel(
     MultimediaRepository multimediaRepository,
     IPopupService popupService)
