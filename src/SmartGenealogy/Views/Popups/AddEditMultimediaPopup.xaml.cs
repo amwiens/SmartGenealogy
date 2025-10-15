@@ -3,7 +3,7 @@ namespace SmartGenealogy.Views.Popups;
 /// <summary>
 /// Add multimedia popup
 /// </summary>
-public partial class AddEditMultimediaPopup : Popup
+public partial class AddEditMultimediaPopup : Popup<int>
 {
     /// <summary>
     /// Constructor

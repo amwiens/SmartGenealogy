@@ -138,7 +138,7 @@ public partial class AddEditMultimediaPopupViewModel(
         {
             var multimediaId = await multimediaService.SaveItemAsync(_multimedia!, FileName, (MediaType)MediaType, Caption, Description, Date, RefNumber);
 
-            await popupService.ClosePopupAsync(Shell.Current);
+            await popupService.ClosePopupAsync(Shell.Current, multimediaId);
         }
     }
 

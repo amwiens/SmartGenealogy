@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Core.Services;
-
-namespace SmartGenealogy.Core.ViewModels.Tools;
+﻿namespace SmartGenealogy.Core.ViewModels.Tools;
 
 /// <summary>
 /// Fact type page view model.
