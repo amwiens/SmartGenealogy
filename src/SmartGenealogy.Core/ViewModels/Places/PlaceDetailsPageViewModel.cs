@@ -1,4 +1,6 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Places;
+﻿using SmartGenealogy.Data.Models;
+
+namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
@@ -151,19 +153,51 @@ public partial class PlaceDetailsPageViewModel(
     }
 
     /// <summary>
-    /// Add media link.
+    /// Add new media link.
     /// </summary>
     [RelayCommand]
-    private async Task AddMediaLink()
+    private async Task AddNewMediaLink()
     {
-        await mediaLinkRepository.SaveItemAsync(new MediaLink
+        try
         {
-            MultimediaId = 13,
-            OwnerType = OwnerType.Place,
-            OwnerId = _place!.Id,
-            IsPrimary = true,
-            Comments = "Test"
-        });
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel, int>(shell);
+
+                await mediaLinkRepository.SaveItemAsync(new MediaLink
+                {
+                    MultimediaId = result.Result,
+                    OwnerType = OwnerType.Place,
+                    OwnerId = _place!.Id,
+                    IsPrimary = false,
+                    Comments = string.Empty
+                });
+            }
+            LoadData(_place!.Id).FireAndForgetSafeAsync();
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Add existing media link.
+    /// </summary>
+    [RelayCommand]
+    private async Task AddExistingMediaLink()
+    {
+        try
+        {
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<AddEditMultimediaPopupViewModel>(shell);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
     }
 
     /// <summary>

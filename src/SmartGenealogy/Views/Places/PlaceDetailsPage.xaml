@@ -64,7 +64,8 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding AddMediaLinkCommand}" Text="Add media link" />
+            <Button Command="{Binding AddNewMediaLinkCommand}" Text="Add new media link" />
+            <Button Command="{Binding AddExistingMediaLinkCommand}" Text="Add existing media link" />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>
