@@ -15,8 +15,8 @@ public class PlaceService(
     /// <returns>A list of <see cref="Place"/> objects.</returns>
     public async Task<List<Place>?> ListMasterPlacesAsync()
     {
-        var placeList = await placeRepository.ListAsync();
-        return placeList!.Where(x => x.MasterId == 0).ToList();
+        var placeList = await placeRepository.ListMasterAsync();
+        return placeList;
     }
 
     /// <summary>

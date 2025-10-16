@@ -5,6 +5,7 @@
   </Folder>
   <Project Path="SmartGenealogy.Core/SmartGenealogy.Core.csproj" />
   <Project Path="SmartGenealogy.Data/SmartGenealogy.Data.csproj" Id="34fa5b81-2aa7-414e-93f9-e00e011a37fd" />
+  <Project Path="SmartGenealogy.LocationIQ/SmartGenealogy.LocationIQ.csproj" Id="ca427df3-b48a-4948-8233-842a722c2ce0" />
   <Project Path="SmartGenealogy/SmartGenealogy.csproj" Id="dbbb2a1f-1d09-41e6-a5c0-2a355c328ae2">
     <Deploy Solution="Debug|*" />
   </Project>

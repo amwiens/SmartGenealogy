@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SmartGenealogy.Data\SmartGenealogy.Data.csproj" />
+    <ProjectReference Include="..\SmartGenealogy.LocationIQ\SmartGenealogy.LocationIQ.csproj" />
   </ItemGroup>
 
 </Project>

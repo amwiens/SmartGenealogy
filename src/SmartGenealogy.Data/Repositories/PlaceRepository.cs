@@ -96,6 +96,54 @@ public class PlaceRepository(
         {
             place.PlaceDetails = await ListAsync(place.Id);
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            if (place.MasterId != 0)
+                place.MasterPlace = await GetAsync(place.MasterId);
+        }
+
+        return places;
+    }
+
+
+    /// <summary>
+    /// Retrieves a list of all places from the database.
+    /// </summary>
+    /// <returns>A list of <see cref="Place"/> objects.</returns>
+    public async Task<List<Place>> ListMasterAsync()
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var selectCmd = connection.CreateCommand();
+        selectCmd.CommandText = "SELECT * FROM Place WHERE MasterId = 0";
+        var places = new List<Place>();
+
+        await using var reader = await selectCmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            places.Add(new Place
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                PlaceType = (PlaceType)reader.GetInt64(reader.GetOrdinal("PlaceType")),
+                Name = reader.IsDBNull(reader.GetOrdinal("Name")) ? null : reader.GetString(reader.GetOrdinal("Name")),
+                Abbreviation = reader.IsDBNull(reader.GetOrdinal("Abbreviation")) ? null : reader.GetString(reader.GetOrdinal("Abbreviation")),
+                Normalized = reader.IsDBNull(reader.GetOrdinal("Normalized")) ? null : reader.GetString(reader.GetOrdinal("Normalized")),
+                Latitude = reader.GetDecimal(reader.GetOrdinal("Latitude")),
+                Longitude = reader.GetDecimal(reader.GetOrdinal("Longitude")),
+                MasterId = reader.GetInt32(reader.GetOrdinal("MasterId")),
+                Note = reader.IsDBNull(reader.GetOrdinal("Note")) ? null : reader.GetString(reader.GetOrdinal("Note")),
+                Reverse = reader.IsDBNull(reader.GetOrdinal("Reverse")) ? null : reader.GetString(reader.GetOrdinal("Reverse")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
+            });
+        }
+
+        foreach (var place in places)
+        {
+            place.PlaceDetails = await ListAsync(place.Id);
+            place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            //if (place.MasterId != 0)
+            //    place.MasterPlace = await GetAsync(place.MasterId);
         }
 
         return places;
@@ -140,6 +188,8 @@ public class PlaceRepository(
         foreach (var place in places)
         {
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            //if (place.MasterId != 0)
+            //    place.MasterPlace = await GetAsync(place.MasterId);
         }
 
         return places;
@@ -181,6 +231,8 @@ public class PlaceRepository(
 
             place.PlaceDetails = await ListAsync(place.Id);
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            if (place.MasterId != 0)
+                place.MasterPlace = await GetAsync(place.MasterId);
 
             return place;
         }

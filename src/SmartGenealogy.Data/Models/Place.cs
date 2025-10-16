@@ -74,4 +74,9 @@ public class Place
     /// Media links
     /// </summary>
     public List<MediaLink>? MediaLinks { get; set; }
+
+    /// <summary>
+    /// Master Place
+    /// </summary>
+    public Place? MasterPlace { get; set; }
 }
