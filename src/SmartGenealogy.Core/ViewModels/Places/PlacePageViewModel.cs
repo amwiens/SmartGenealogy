@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.LocationIQ;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place page view model.
@@ -146,7 +144,6 @@ public partial class PlacePageViewModel(
         }
         else
         {
-
         }
     }
 

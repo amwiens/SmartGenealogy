@@ -103,7 +103,6 @@ public class PlaceRepository(
         return places;
     }
 
-
     /// <summary>
     /// Retrieves a list of all places from the database.
     /// </summary>

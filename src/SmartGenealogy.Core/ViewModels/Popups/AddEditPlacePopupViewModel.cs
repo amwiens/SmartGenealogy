@@ -94,7 +94,6 @@ public partial class AddEditPlacePopupViewModel(
             }
             else
             {
-
             }
         }
 

@@ -144,7 +144,6 @@ public partial class PlaceDetailsPageViewModel(
         }
         else
         {
-
         }
     }
 
