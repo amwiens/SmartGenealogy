@@ -39,10 +39,16 @@ public partial class PlacePageViewModel(
     private ObservableCollection<MediaLink> _mediaLinks = [];
 
     [ObservableProperty]
+    private ObservableCollection<WebLink> _webLinks = [];
+
+    [ObservableProperty]
     private Place? _selectedPlaceDetail;
 
     [ObservableProperty]
     private MediaLink? _selectedMediaLink;
+
+    [ObservableProperty]
+    private WebLink? _selectedWebLink;
 
     /// <summary>
     /// Apply attributes.
@@ -79,6 +85,7 @@ public partial class PlacePageViewModel(
             Note = _place.Note;
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
+            WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
         }
         catch (Exception ex)
         {
@@ -135,7 +142,7 @@ public partial class PlacePageViewModel(
         locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
         var result = await locationIQService.GetFreeFormQuery(_place!.Name!);
 
-        if (result.Count == 1)
+        if (result!.Count == 1)
         {
             _place!.Latitude = decimal.Parse(result.FirstOrDefault()!.lat);
             _place!.Longitude = decimal.Parse(result.FirstOrDefault()!.lon);
@@ -246,5 +253,41 @@ public partial class PlacePageViewModel(
     {
         if (SelectedMediaLink is not null)
             await Shell.Current.GoToAsync($"multimediaDetails?id={SelectedMediaLink.MultimediaId}");
+    }
+
+    /// <summary>
+    /// Add new web link.
+    /// </summary>
+    [RelayCommand]
+    private async Task AddNewWebLink()
+    {
+        try
+        {
+            var queryAttributes = new Dictionary<string, object>
+            {
+                { "ownerId", _place!.Id },
+                { "ownerType", OwnerType.Place }
+            };
+
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<AddEditWebLinkPopupViewModel>(
+                    shell,
+                    options: PopupOptions.Empty,
+                    shellParameters: queryAttributes);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Open web link.
+    /// </summary>
+    [RelayCommand]
+    private async Task OpenWebLink()
+    {
     }
 }

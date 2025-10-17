@@ -6,6 +6,7 @@
 public class PlaceService(
     PlaceRepository placeRepository,
     MediaLinkRepository mediaLinkRepository,
+    WebLinkRepository webLinkRepository,
     IAlertService alertService)
     : IPlaceService
 {
@@ -70,6 +71,14 @@ public class PlaceService(
             deletionMessage.AppendLine("* Media links");
             isConfirmed = false;
         }
+
+        // Check for web links
+        if (place.WebLinks!.Any() && isConfirmed)
+        {
+            deletionMessage.AppendLine("* Web links");
+            isConfirmed = false;
+        }
+
         deletionMessage.AppendLine();
         deletionMessage.AppendLine("Do you still want to delete this place?");
 
@@ -87,6 +96,10 @@ public class PlaceService(
             foreach (var placeDetail in place.PlaceDetails!)
             {
                 await placeRepository.DeleteItemAsync(placeDetail);
+            }
+            foreach (var webLink in place.WebLinks!)
+            {
+                await webLinkRepository.DeleteItemAsync(webLink);
             }
             await placeRepository.DeleteItemAsync(place!);
             return true;
