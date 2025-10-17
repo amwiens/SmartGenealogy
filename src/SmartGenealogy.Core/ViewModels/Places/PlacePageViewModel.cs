@@ -9,12 +9,14 @@ namespace SmartGenealogy.Core.ViewModels.Places;
 /// <param name="mediaLinkRepository">Media link repository</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="locationIQService">LocationIQ service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlacePageViewModel(
     IPlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
     IAlertService alertService,
     IPopupService popupService,
+    LocationIQService locationIQService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -132,7 +134,7 @@ public partial class PlacePageViewModel(
     [RelayCommand]
     private async Task GeocodePlace()
     {
-        var locationIQService = new LocationIQService();
+        locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
         var result = await locationIQService.GetFreeFormQuery(_place!.Name!);
 
         if (result.Count == 1)

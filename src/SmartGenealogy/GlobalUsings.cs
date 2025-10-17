@@ -18,6 +18,7 @@ global using SmartGenealogy.Core.ViewModels.Tools;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;
 global using SmartGenealogy.Data.Settings;
+global using SmartGenealogy.LocationIQ;
 global using SmartGenealogy.Views.Main;
 global using SmartGenealogy.Views.Multimedia;
 global using SmartGenealogy.Views.Places;

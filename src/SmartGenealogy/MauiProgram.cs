@@ -71,6 +71,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<IPlaceService, PlaceService>();
 
         mauiAppBuilder.Services.AddSingleton(OcrPlugin.Default);
+        mauiAppBuilder.Services.AddSingleton<LocationIQService>();
 
         return mauiAppBuilder;
     }

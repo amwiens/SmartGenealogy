@@ -5,10 +5,12 @@
 /// </summary>
 /// <param name="placeService">Place service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="locationIQService">LocationIQ service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditPlacePopupViewModel(
     IPlaceService placeService,
     IPopupService popupService,
+    LocationIQService locationIQService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -76,6 +78,25 @@ public partial class AddEditPlacePopupViewModel(
         if (_place.PlaceType == PlaceType.Master)
             _place.Normalized = Name;
         _place.Reverse = Name!.ReverseString();
+
+        if (SmartGenealogySettings.GeocodePlaceOnSave)
+        {
+            var placeName = _place.Name + " " + ((_place.MasterPlace != null) ? _place.MasterPlace!.Name : string.Empty);
+            locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
+            var result = await locationIQService.GetFreeFormQuery(placeName);
+
+            if (result is not null && result!.Count == 1)
+            {
+                _place!.Latitude = decimal.Parse(result.FirstOrDefault()!.lat);
+                _place!.Longitude = decimal.Parse(result.FirstOrDefault()!.lon);
+                await placeService.SavePlaceAsync(_place!);
+                LoadData(_place!.Id).FireAndForgetSafeAsync();
+            }
+            else
+            {
+
+            }
+        }
 
         var placeId = await placeService.SavePlaceAsync(_place);
 

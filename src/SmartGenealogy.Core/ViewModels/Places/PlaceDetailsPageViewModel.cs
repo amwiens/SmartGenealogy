@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.LocationIQ;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
@@ -9,12 +7,14 @@ namespace SmartGenealogy.Core.ViewModels.Places;
 /// <param name="mediaLinkRepository">Media link repository</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="locationIQService">LocationIQ service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlaceDetailsPageViewModel(
     IPlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
     IAlertService alertService,
     IPopupService popupService,
+    LocationIQService locationIQService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -132,7 +132,7 @@ public partial class PlaceDetailsPageViewModel(
     [RelayCommand]
     private async Task GeocodePlace()
     {
-        var locationIQService = new LocationIQService();
+        locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
         var result = await locationIQService.GetFreeFormQuery($"{_place!.Name!}, {_place!.MasterPlace!.Name}");
 
         if (result is not null && result!.Count == 1)
