@@ -53,6 +53,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MultimediaWordRepository>();
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
+        mauiAppBuilder.Services.AddSingleton<WebLinkRepository>();
 
         return mauiAppBuilder;
     }
@@ -121,6 +122,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientPopup<AddEditMultimediaPopup, AddEditMultimediaPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditPlacePopup, AddEditPlacePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditRolePopup, AddEditRolePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditWebLinkPopup, AddEditWebLinkPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<SelectMultimediaPopup, SelectMultimediaPopupViewModel>();
 

@@ -79,4 +79,9 @@ public class Place
     /// Master Place
     /// </summary>
     public Place? MasterPlace { get; set; }
+
+    /// <summary>
+    /// Web links
+    /// </summary>
+    public List<WebLink>? WebLinks { get; set; }
 }

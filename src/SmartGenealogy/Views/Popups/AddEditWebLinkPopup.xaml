@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditWebLinkPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditWebLinkPopupViewModel"
+    Background="Black">
+
+    <VerticalStackLayout>
+        <Label Text="Web link" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Name"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding Name}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Url"
+            VerticalOptions="Center" />
+
+        <Entry Text="{Binding Url}" />
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Note"
+            VerticalOptions="Center" />
+
+        <Editor Text="{Binding Note}" />
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button Command="{Binding SaveCommand}" Text="Save" />
+            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>
