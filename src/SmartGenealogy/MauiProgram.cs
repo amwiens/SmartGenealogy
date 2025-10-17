@@ -68,9 +68,10 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<IAlertService, AlertService>();
         mauiAppBuilder.Services.AddSingleton<IFactTypeService, FactTypeService>();
         mauiAppBuilder.Services.AddSingleton<IMultimediaService, MultimediaService>();
-        mauiAppBuilder.Services.AddSingleton<Core.Services.IPlaceService, PlaceService>();
+        mauiAppBuilder.Services.AddSingleton<IPlaceService, PlaceService>();
 
         mauiAppBuilder.Services.AddSingleton(OcrPlugin.Default);
+        mauiAppBuilder.Services.AddSingleton<LocationIQService>();
 
         return mauiAppBuilder;
     }
@@ -97,15 +98,16 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<AppShell>();
         mauiAppBuilder.Services.AddSingleton<MainPage>();
-        mauiAppBuilder.Services.AddSingleton<MultimediaPage>();
         mauiAppBuilder.Services.AddTransient<PlacesPage>();
-        mauiAppBuilder.Services.AddTransient<SettingsPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<PlaceDetailsPage, PlaceDetailsPageViewModel>("placeDetails");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<PlacePage, PlacePageViewModel>("place");
+        mauiAppBuilder.Services.AddSingleton<MultimediaPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<MultimediaDetailsPage, MultimediaDetailsPageViewModel>("multimediaDetails");
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypePage, FactTypePageViewModel>("factTypeDetails");
-        mauiAppBuilder.Services.AddTransientWithShellRoute<MultimediaDetailsPage, MultimediaDetailsPageViewModel>("multimediaDetails");
-        mauiAppBuilder.Services.AddTransientWithShellRoute<PlaceDetailsPage, PlaceDetailsPageViewModel>("placeDetails");
-        mauiAppBuilder.Services.AddTransientWithShellRoute<PlacePage, PlacePageViewModel>("place");
+        mauiAppBuilder.Services.AddTransient<SettingsPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<GeocodeSettingsPage, GeocodeSettingsPageViewModel>("geocodeSettings");
 
         return mauiAppBuilder;
     }

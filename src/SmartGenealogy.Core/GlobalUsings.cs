@@ -27,3 +27,4 @@ global using SmartGenealogy.Data.Models;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;
 global using SmartGenealogy.Data.Settings;
+global using SmartGenealogy.LocationIQ;

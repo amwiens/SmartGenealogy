@@ -13,6 +13,7 @@
         <HorizontalStackLayout HorizontalOptions="End">
             <Button Command="{Binding EditPlaceCommand}" Text="Edit" />
             <Button Command="{Binding DeletePlaceCommand}" Text="Delete" />
+            <Button Command="{Binding GeocodePlaceCommand}" Text="Geocode" />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout>

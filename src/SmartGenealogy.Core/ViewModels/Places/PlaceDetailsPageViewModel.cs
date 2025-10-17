@@ -7,12 +7,14 @@
 /// <param name="mediaLinkRepository">Media link repository</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
+/// <param name="locationIQService">LocationIQ service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class PlaceDetailsPageViewModel(
     IPlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
     IAlertService alertService,
     IPopupService popupService,
+    LocationIQService locationIQService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
 {
@@ -120,6 +122,28 @@ public partial class PlaceDetailsPageViewModel(
         catch (Exception ex)
         {
             errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Geocode place
+    /// </summary>
+    /// <returns></returns>
+    [RelayCommand]
+    private async Task GeocodePlace()
+    {
+        locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
+        var result = await locationIQService.GetFreeFormQuery($"{_place!.Name!}, {_place!.MasterPlace!.Name}");
+
+        if (result is not null && result!.Count == 1)
+        {
+            _place!.Latitude = decimal.Parse(result.FirstOrDefault()!.lat);
+            _place!.Longitude = decimal.Parse(result.FirstOrDefault()!.lon);
+            await placeService.SavePlaceAsync(_place!);
+            LoadData(_place!.Id).FireAndForgetSafeAsync();
+        }
+        else
+        {
         }
     }
 
