@@ -7,6 +7,8 @@ public record SettingsRecord
 {
     public bool OpenLastDatabaseOnStartup { get; init; } = false;
     public string? LastOpenDatabase { get; init; } = string.Empty;
+    public bool GeocodePlaceOnSave { get; init; } = false;
+    public string? LocationIQAPIKey { get; init; } = string.Empty;
 }
 
 /// <summary>
@@ -41,6 +43,8 @@ public static class SmartGenealogySettings
         {
             OpenLastDatabaseOnStartup = OpenLastDatabaseOnStartup,
             LastOpenDatabase = LastOpenDatabase,
+            GeocodePlaceOnSave = GeocodePlaceOnSave,
+            LocationIQAPIKey = LocationIQAPIKey
         };
 
     /// <summary>
@@ -56,9 +60,19 @@ public static class SmartGenealogySettings
     public static bool OpenLastDatabaseOnStartup { get; set; }
 
     /// <summary>
-    /// Holds the value of the last oepn database.
+    /// Holds the value of the last open database.
     /// </summary>
     public static string? LastOpenDatabase { get; set; }
+
+    /// <summary>
+    /// INdicates whether the application should try to geocode the place on save. Defaults to <see langword="false"/>.
+    /// </summary>
+    public static bool GeocodePlaceOnSave { get; set; }
+
+    /// <summary>
+    /// Holds the value of the LocationIQ API key.
+    /// </summary>
+    public static string? LocationIQAPIKey { get; set; }
 
     /// <summary>
     /// Loads settings from the settings file and applies them to the current session.
@@ -98,6 +112,8 @@ public static class SmartGenealogySettings
     {
         OpenLastDatabaseOnStartup = settings.OpenLastDatabaseOnStartup;
         LastOpenDatabase = settings.LastOpenDatabase;
+        GeocodePlaceOnSave = settings.GeocodePlaceOnSave;
+        LocationIQAPIKey = settings.LocationIQAPIKey;
     }
 
     /// <summary>

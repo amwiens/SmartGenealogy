@@ -8,22 +8,28 @@
     x:Name="settingsPage"
     x:DataType="viewModels:SettingsPageViewModel">
 
-    <Grid ColumnDefinitions="*,Auto">
-        <Label Text="Open last database on startup:" VerticalOptions="Center" />
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Text="Open last database on startup:" VerticalOptions="Center" />
 
-        <Switch
-            x:Name="openLastDatabaseSwitch"
-            Grid.Column="1"
-            HorizontalOptions="End"
-            IsToggled="{Binding OpenLastDatabase}"
-            VerticalOptions="Center">
-            <Switch.Behaviors>
-                <toolkit:EventToCommandBehavior
-                    BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
-                    Command="{Binding ToggleOpenLastDatabaseCommand}"
-                    CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
-                    EventName="Toggled" />
-            </Switch.Behaviors>
-        </Switch>
-    </Grid>
+            <Switch
+                x:Name="openLastDatabaseSwitch"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                IsToggled="{Binding OpenLastDatabase}"
+                VerticalOptions="Center">
+                <Switch.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                        Command="{Binding ToggleOpenLastDatabaseCommand}"
+                        CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
+                        EventName="Toggled" />
+                </Switch.Behaviors>
+            </Switch>
+        </Grid>
+
+        <Label Text="Geocoding Settings" />
+
+        <Button Command="{Binding GoToGeocodeSettingsCommand}" Text="Geocoding Settings" />
+    </VerticalStackLayout>
 </ContentPage>

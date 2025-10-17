@@ -25,4 +25,13 @@ public partial class SettingsPageViewModel : ObservableObject
         SmartGenealogySettings.OpenLastDatabaseOnStartup = OpenLastDatabase;
         SmartGenealogySettings.SaveSettings();
     }
+
+    /// <summary>
+    /// Go to geocode settings page.
+    /// </summary>
+    [RelayCommand]
+    private async Task GoToGeocodeSettings()
+    {
+        await Shell.Current.GoToAsync("geocodeSettings");
+    }
 }
