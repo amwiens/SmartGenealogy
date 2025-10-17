@@ -289,6 +289,5 @@ public partial class PlacePageViewModel(
     [RelayCommand]
     private async Task OpenWebLink()
     {
-
     }
 }

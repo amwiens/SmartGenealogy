@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
@@ -291,6 +289,5 @@ public partial class PlaceDetailsPageViewModel(
     [RelayCommand]
     private async Task OpenWebLink()
     {
-
     }
 }
