@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Border
+    x:Class="SmartGenealogy.Controls.AppLogo"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    Padding="0"
+    Background="{DynamicResource PrimaryColor}"
+    HeightRequest="70"
+    HorizontalOptions="Start"
+    Stroke="{DynamicResource FrameBorder}"
+    StrokeShape="{RoundRectangle CornerRadius=14}"
+    StrokeThickness="3"
+    WidthRequest="70">
+
+    <controls:RoundedCornerImage
+        Background="{DynamicResource White}"
+        HeightRequest="50"
+        HorizontalOptions="Center"
+        Source="logo.png"
+        Stroke="Transparent"
+        StrokeShape="{RoundRectangle CornerRadius=25}"
+        VerticalOptions="Center"
+        WidthRequest="50" />
+</Border>

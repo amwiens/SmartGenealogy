@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Controls.FlyoutHeader"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations">
+
+    <StackLayout
+        Padding="30"
+        HorizontalOptions="Start"
+        Spacing="15"
+        VerticalOptions="Center">
+
+        <HorizontalStackLayout
+            Padding="0,15"
+            HorizontalOptions="Start"
+            Spacing="15">
+
+            <Border
+                Padding="0"
+                BackgroundColor="{DynamicResource Primary10Color}"
+                HeightRequest="70"
+                HorizontalOptions="Start"
+                Stroke="{StaticResource White}"
+                StrokeShape="{RoundRectangle CornerRadius=14}"
+                StrokeThickness="3"
+                WidthRequest="70">
+                <controls:RoundedCornerImage
+                    Background="{DynamicResource White}"
+                    HeightRequest="48"
+                    HorizontalOptions="Center"
+                    Source="logo.png"
+                    Stroke="Transparent"
+                    StrokeShape="{RoundRectangle CornerRadius=24}"
+                    VerticalOptions="Center"
+                    WidthRequest="48" />
+            </Border>
+
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource Title1}"
+                    Text="MAUI KIT"
+                    TextColor="{DynamicResource White}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource Footnote}"
+                    Text="App Design Studio"
+                    TextColor="{DynamicResource White}"
+                    TextTransform="Uppercase"
+                    VerticalOptions="Center" />
+            </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentView>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="SmartGenealogy.Controls.TintMask.DividerBottom2"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:tint="clr-namespace:SmartGenealogy.Controls.TintMask"
+    x:Name="this"
+    BackgroundColor="Transparent"
+    HeightRequest="{OnIdiom Phone='40',
+                            Tablet='60',
+                            Desktop='30'}"
+    VerticalOptions="End">
+
+    <Grid.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="MaskImageStyle"
+                ApplyToDerivedTypes="True"
+                TargetType="tint:TintColorMask">
+                <Setter Property="Margin" Value="-10" />
+                <Setter Property="Aspect" Value="AspectFill" />
+                <Setter Property="TintColor" Value="{Binding MaskColor, Source={x:Reference this}}" />
+                <Setter Property="Source" Value="divider_2_bottom.png" />
+            </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <Grid
+        x:Name="root"
+        Padding="0"
+        RowSpacing="0" />
+</Grid>
