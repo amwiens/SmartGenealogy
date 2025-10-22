@@ -1,25 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Tools.ToolsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
     x:Name="toolsPage"
-    x:DataType="viewModels:ToolsPageViewModel">
+    x:DataType="viewModels:ToolsPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Start"
-            Text="Database Tools"
-            VerticalOptions="Center" />
-        <Button Command="{Binding CompactDatabaseCommand}" Text="Compact Database" />
-        <Button Command="{Binding ReindexDatabaseCommand}" Text="Rebuild indexes in Database" />
-        <Button Command="{Binding DatabaseIntegrityCheckCommand}" Text="Database Integrity check" />
+    <base:BasePage.PageContent>
+        <VerticalStackLayout>
+            <Label
+                HorizontalOptions="Start"
+                Text="Database Tools"
+                VerticalOptions="Center" />
+            <Button
+                Command="{Binding CompactDatabaseCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Compact Database" />
+            <Button
+                Command="{Binding ReindexDatabaseCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Rebuild indexes in Database" />
+            <Button
+                Command="{Binding DatabaseIntegrityCheckCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Database Integrity check" />
 
-        <Label
-            HorizontalOptions="Start"
-            Text="Fact Types"
-            VerticalOptions="Center" />
-        <Button Command="{Binding OpenFactTypesPageCommand}" Text="Manage fact types" />
-    </VerticalStackLayout>
-</ContentPage>
+            <Label
+                HorizontalOptions="Start"
+                Text="Fact Types"
+                VerticalOptions="Center" />
+            <Button
+                Command="{Binding OpenFactTypesPageCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Manage fact types" />
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

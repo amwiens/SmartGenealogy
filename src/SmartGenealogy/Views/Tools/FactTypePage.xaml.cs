@@ -1,7 +1,13 @@
 namespace SmartGenealogy.Views.Tools;
 
-public partial class FactTypePage : ContentPage
+/// <summary>
+/// Fact type page.
+/// </summary>
+public partial class FactTypePage : BasePage
 {
+    /// <summary>
+    /// Constructor.
+    /// </summary>
     public FactTypePage(FactTypePageViewModel viewModel)
     {
         InitializeComponent();
