@@ -1,6 +1,6 @@
-﻿namespace SmartGenealogy.Extensions;
+﻿namespace SmartGenealogy.Core.Extensions;
 
-public static class ThemeUtil
+public static class ThemeExtensions
 {
     public static void ApplyDarkTheme(this ResourceDictionary resources)
     {

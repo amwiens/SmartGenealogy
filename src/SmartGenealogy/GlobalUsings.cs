@@ -20,6 +20,7 @@ global using Plugin.Maui.OCR;
 global using SkiaSharp.Views.Maui.Controls.Hosting;
 
 global using SmartGenealogy.Controls;
+global using SmartGenealogy.Core.Extensions;
 global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Services;
 global using SmartGenealogy.Core.Settings;

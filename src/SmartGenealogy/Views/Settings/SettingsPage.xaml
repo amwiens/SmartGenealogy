@@ -33,6 +33,25 @@
                 </Switch>
             </Grid>
 
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Use dark mode:" VerticalOptions="Center" />
+
+                <Switch
+                    x:Name="useDarkModeSwitch"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    IsToggled="{Binding UseDarkMode}"
+                    VerticalOptions="Center">
+                    <Switch.Behaviors>
+                        <toolkit:EventToCommandBehavior
+                            BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                            Command="{Binding ToggleUseDarkModeCommand}"
+                            CommandParameter="{Binding Source={x:Reference useDarkModeSwitch}, Path=IsToggled}"
+                            EventName="Toggled" />
+                    </Switch.Behaviors>
+                </Switch>
+            </Grid>
+
             <Label Text="Geocoding Settings" />
 
             <Button

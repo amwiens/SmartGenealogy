@@ -8,12 +8,16 @@ public partial class SettingsPageViewModel : ObservableObject
     [ObservableProperty]
     private bool _openLastDatabase;
 
+    [ObservableProperty]
+    private bool _useDarkMode;
+
     /// <summary>
     /// Constructor.
     /// </summary>
     public SettingsPageViewModel()
     {
         OpenLastDatabase = SmartGenealogySettings.OpenLastDatabaseOnStartup;
+        UseDarkMode = SmartGenealogySettings.UseDarkMode;
     }
 
     /// <summary>
@@ -23,6 +27,23 @@ public partial class SettingsPageViewModel : ObservableObject
     private void ToggleOpenLastDatabase()
     {
         SmartGenealogySettings.OpenLastDatabaseOnStartup = OpenLastDatabase;
+        SmartGenealogySettings.SaveSettings();
+    }
+
+
+    [RelayCommand]
+    private void ToggleUseDarkMode()
+    {
+        if (UseDarkMode)
+        {
+            Application.Current!.Resources.ApplyDarkTheme();
+            SmartGenealogySettings.UseDarkMode = true;
+        }
+        else
+        {
+            Application.Current!.Resources.ApplyLightTheme();
+            SmartGenealogySettings.UseDarkMode = false;
+        }
         SmartGenealogySettings.SaveSettings();
     }
 
