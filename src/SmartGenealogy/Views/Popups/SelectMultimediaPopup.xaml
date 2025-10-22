@@ -10,7 +10,7 @@
     x:Name="selectMultimediaPopup"
     x:DataType="viewModels:SelectMultimediaPopupViewModel"
     x:TypeArguments="system:Int32"
-    Background="Black"
+    Background="{DynamicResource BasePageColor}"
     HeightRequest="500"
     WidthRequest="1000">
 
@@ -49,8 +49,14 @@
         </ScrollView>
 
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="End">
-            <Button Command="{Binding SaveCommand}" Text="Save" />
-            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
         </HorizontalStackLayout>
     </Grid>
 </toolkit:Popup>

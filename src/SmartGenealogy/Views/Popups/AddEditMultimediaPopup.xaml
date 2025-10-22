@@ -8,7 +8,7 @@
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
     x:DataType="viewModels:AddEditMultimediaPopupViewModel"
     x:TypeArguments="system:Int32"
-    Background="Black">
+    Background="{DynamicResource BasePageColor}">
 
     <VerticalStackLayout>
         <Label Text="Media" />
@@ -43,7 +43,10 @@
                         MinimumWidthRequest="255"
                         Text="{Binding FileName}" />
 
-                    <Button Command="{Binding SelectMediaCommand}" Text="File" />
+                    <Button
+                        Command="{Binding SelectMediaCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}"
+                        Text="File" />
                 </HorizontalStackLayout>
 
                 <Label
@@ -77,8 +80,14 @@
         </Grid>
 
         <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding SaveCommand}" Text="Save" />
-            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </toolkit:Popup>

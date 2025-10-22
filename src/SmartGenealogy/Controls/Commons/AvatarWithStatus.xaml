@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Controls.AvatarWithStatus"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    x:Name="Root"
+    HeightRequest="{Binding AvatarHeight, Source={x:Reference Root}}"
+    WidthRequest="{Binding AvatarWidth, Source={x:Reference Root}}">
+
+    <Grid>
+        <!--  AVATAR  -->
+        <Border
+            Padding="0"
+            HorizontalOptions="Fill"
+            Stroke="{DynamicResource White}"
+            StrokeThickness="3"
+            VerticalOptions="Fill">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="{Binding CornerRadius, Source={x:Reference Root}}" />
+            </Border.StrokeShape>
+            <Image
+                Margin="0"
+                Aspect="AspectFill"
+                MaximumHeightRequest="{Binding AvatarHeight, Source={x:Reference Root}}"
+                MaximumWidthRequest="{Binding AvatarWidth, Source={x:Reference Root}}"
+                MinimumHeightRequest="{Binding AvatarHeight, Source={x:Reference Root}}"
+                MinimumWidthRequest="{Binding AvatarWidth, Source={x:Reference Root}}"
+                Source="{Binding Source, Source={x:Reference Root}}" />
+        </Border>
+
+        <!--  STATUS NOTIFICATION  -->
+        <Border
+            Padding="0"
+            Background="{Binding Status, Source={x:Reference Root}, Converter={StaticResource AvatarWithStatusColorConverter}}"
+            HeightRequest="14"
+            HorizontalOptions="End"
+            Stroke="{DynamicResource White}"
+            StrokeThickness="2"
+            VerticalOptions="End"
+            WidthRequest="14"
+            ZIndex="10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="7" />
+            </Border.StrokeShape>
+        </Border>
+    </Grid>
+</ContentView>

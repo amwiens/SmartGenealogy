@@ -1,148 +1,175 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Places.PlacePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Places;assembly=SmartGenealogy.Core"
     x:Name="placePage"
-    x:DataType="viewModels:PlacePageViewModel">
+    x:DataType="viewModels:PlacePageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <VerticalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding EditPlaceCommand}" Text="Edit" />
-            <Button Command="{Binding DeletePlaceCommand}" Text="Delete" />
-            <Button Command="{Binding GeocodePlaceCommand}" Text="Geocode" />
-        </HorizontalStackLayout>
+    <base:BasePage.PageContent>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="End">
+                <Button
+                    Command="{Binding EditPlaceCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Edit" />
+                <Button
+                    Command="{Binding DeletePlaceCommand}"
+                    Style="{DynamicResource DeleteButtonStyle}"
+                    Text="Delete" />
+                <Button
+                    Command="{Binding GeocodePlaceCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Geocode" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Name:"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Name:"
+                    VerticalOptions="Center" />
 
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Name}"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding Name}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Latitude:"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Latitude:"
+                    VerticalOptions="Center" />
 
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Latitude}"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding Latitude}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Longitude:"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Longitude:"
+                    VerticalOptions="Center" />
 
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Longitude}"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding Longitude}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Note:"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Note:"
+                    VerticalOptions="Center" />
 
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Note}"
-                VerticalOptions="Center" />
-        </HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding Note}"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding AddPlaceDetailsCommand}" Text="Add place detail" />
-        </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="End">
+                <Button
+                    Command="{Binding AddPlaceDetailsCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Add place detail" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Place details:"
-                VerticalOptions="Center" />
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Place details:"
+                    VerticalOptions="Center" />
 
-            <CollectionView
-                ItemsSource="{Binding PlaceDetails}"
-                SelectedItem="{Binding SelectedPlaceDetail}"
-                SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Place">
-                        <Label Text="{Binding Name}" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding AddNewMediaLinkCommand}" Text="Add new media link" />
-            <Button Command="{Binding AddExistingMediaLinkCommand}" Text="Add existing media link" />
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Media links:"
-                VerticalOptions="Center" />
-
-            <CollectionView
-                ItemsSource="{Binding MediaLinks}"
-                SelectedItem="{Binding SelectedMediaLink}"
-                SelectionChangedCommand="{Binding OpenMultimediaCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:MediaLink">
-                        <VerticalStackLayout>
-                            <Image
-                                Grid.Column="0"
-                                Aspect="AspectFit"
-                                HeightRequest="100"
-                                Source="{Binding Multimedia.ThumbnailBytes}"
-                                WidthRequest="150" />
-                            <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding AddNewWebLinkCommand}" Text="Add new web link" />
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout>
-            <Label
-                HorizontalOptions="Center"
-                Text="Web links:"
-                VerticalOptions="Center" />
-
-            <CollectionView
-                ItemsSource="{Binding WebLinks}"
-                SelectedItem="{Binding SelectedWebLink}"
-                SelectionChangedCommand="{Binding OpenWebLinkCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:WebLink">
-                        <HorizontalStackLayout>
+                <CollectionView
+                    ItemsSource="{Binding PlaceDetails}"
+                    SelectedItem="{Binding SelectedPlaceDetail}"
+                    SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Place">
                             <Label Text="{Binding Name}" />
-                            <Label Text="{Binding URL}" />
-                        </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
-</ContentPage>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="End">
+                <Button
+                    Command="{Binding AddNewMediaLinkCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Add new media link" />
+                <Button
+                    Command="{Binding AddExistingMediaLinkCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Add existing media link" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Media links:"
+                    VerticalOptions="Center" />
+
+                <CollectionView
+                    ItemsSource="{Binding MediaLinks}"
+                    SelectedItem="{Binding SelectedMediaLink}"
+                    SelectionChangedCommand="{Binding OpenMultimediaCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MediaLink">
+                            <VerticalStackLayout>
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    Source="{Binding Multimedia.ThumbnailBytes}"
+                                    WidthRequest="150" />
+                                <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="End">
+                <Button
+                    Command="{Binding AddNewWebLinkCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Add new web link" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Web links:"
+                    VerticalOptions="Center" />
+
+                <CollectionView
+                    ItemsSource="{Binding WebLinks}"
+                    SelectedItem="{Binding SelectedWebLink}"
+                    SelectionChangedCommand="{Binding OpenWebLinkCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WebLink">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding URL}" />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

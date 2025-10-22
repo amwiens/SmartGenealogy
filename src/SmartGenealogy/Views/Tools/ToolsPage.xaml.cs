@@ -3,7 +3,7 @@ namespace SmartGenealogy.Views.Tools;
 /// <summary>
 /// Tools page.
 /// </summary>
-public partial class ToolsPage : ContentPage
+public partial class ToolsPage : BasePage
 {
     /// <summary>
     /// Constructor

@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Tools.FactTypesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
     x:Name="factTypesPage"
-    x:DataType="viewModels:FactTypesPageViewModel">
+    x:DataType="viewModels:FactTypesPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <ContentPage.Behaviors>
+    <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
             BindingContext="{Binding Source={x:Reference factTypesPage}, Path=BindingContext}"
             Command="{Binding AppearingCommand}"
             EventName="Appearing" />
-    </ContentPage.Behaviors>
+    </base:BasePage.Behaviors>
 
-    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
-        <Label Text="Fact Types" />
+    <base:BasePage.PageContent>
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
+            <Label Text="Fact Types" />
 
-        <Button
-            Grid.Column="1"
-            Command="{Binding AddFactTypeCommand}"
-            Text="Add fact type" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding AddFactTypeCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Add fact type" />
 
-        <ScrollView
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Orientation="Vertical">
-            <CollectionView
-                ItemsSource="{Binding FactTypes}"
-                SelectedItem="{Binding SelectedItem}"
-                SelectionChangedCommand="{Binding OpenFactTypeDetailsCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:FactType">
-                        <Grid RowDefinitions="Auto,Auto">
-                            <Label FontSize="18" Text="{Binding Name}" />
-                            <Label
-                                Grid.Row="1"
-                                FontSize="14"
-                                Text="{Binding Sentence}"
-                                TextColor="Gray" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
-    </Grid>
-</ContentPage>
+            <ScrollView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Orientation="Vertical">
+                <CollectionView
+                    ItemsSource="{Binding FactTypes}"
+                    SelectedItem="{Binding SelectedItem}"
+                    SelectionChangedCommand="{Binding OpenFactTypeDetailsCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:FactType">
+                            <Grid RowDefinitions="Auto,Auto">
+                                <Label FontSize="18" Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="14"
+                                    Text="{Binding Sentence}"
+                                    TextColor="Gray" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Places.PlacesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Places;assembly=SmartGenealogy.Core"
     x:Name="placesPage"
-    x:DataType="viewModels:PlacesPageViewModel">
+    x:DataType="viewModels:PlacesPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <ContentPage.Behaviors>
+    <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
             BindingContext="{Binding Source={x:Reference placesPage}, Path=BindingContext}"
             Command="{Binding AppearingCommand}"
             EventName="Appearing" />
-    </ContentPage.Behaviors>
+    </base:BasePage.Behaviors>
 
-    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
-        <Label Text="Places" />
+    <base:BasePage.PageContent>
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
+            <Label Text="Places" />
 
-        <Button
-            Grid.Column="1"
-            Command="{Binding AddPlaceCommand}"
-            Text="Add place" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding AddPlaceCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Add place" />
 
-        <ScrollView
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Orientation="Vertical">
-            <CollectionView
-                ItemsSource="{Binding Places}"
-                SelectedItem="{Binding SelectedItem}"
-                SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Place">
-                        <Grid ColumnDefinitions="*,Auto,Auto">
-                            <Label Text="{Binding Name}" />
-                            <Label Grid.Column="1" Text="{Binding Latitude}" />
-                            <Label Grid.Column="2" Text="{Binding Longitude}" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
-    </Grid>
-</ContentPage>
+            <ScrollView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Orientation="Vertical">
+                <CollectionView
+                    ItemsSource="{Binding Places}"
+                    SelectedItem="{Binding SelectedItem}"
+                    SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Place">
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+                                <Label Text="{Binding Name}" />
+                                <Label Grid.Column="1" Text="{Binding Latitude}" />
+                                <Label Grid.Column="2" Text="{Binding Longitude}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

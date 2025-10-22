@@ -6,7 +6,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
     x:DataType="viewModels:AddEditFactTypePopupViewModel"
-    Background="Black">
+    Background="{DynamicResource BasePageColor}">
 
     <VerticalStackLayout>
         <Label Text="Fact Type" />
@@ -80,8 +80,14 @@
         </Grid>
 
         <HorizontalStackLayout HorizontalOptions="End">
-            <Button Command="{Binding SaveCommand}" Text="Save" />
-            <Button Command="{Binding CancelCommand}" Text="Cancel" />
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </toolkit:Popup>

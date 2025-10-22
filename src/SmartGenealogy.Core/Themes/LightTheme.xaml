@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="SmartGenealogy.Core.Themes.LightTheme"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="PrimaryColor">#1A73E8</Color>
+    <Color x:Key="PrimaryDarkColor">#1567d3</Color>
+    <Color x:Key="PrimaryDarkenColor">#135cbc</Color>
+    <Color x:Key="PrimaryLighterColor">#488fed</Color>
+    <Color x:Key="PrimaryGradient">#3E65FF</Color>
+    <Color x:Key="PrimaryLight">#A4CDFF</Color>
+    <Color x:Key="SecondaryColor">#7A68FA</Color>
+
+    <Color x:Key="Primary50Color">#801A73E8</Color>
+    <Color x:Key="Primary40Color">#661A73E8</Color>
+    <Color x:Key="Primary35Color">#591A73E8</Color>
+    <Color x:Key="Primary20Color">#381A73E8</Color>
+    <Color x:Key="Primary10Color">#1A1A73E8</Color>
+
+    <Color x:Key="SecondaryGradient">#9683FC</Color>
+    <Color x:Key="AccentColor">#FFE88F1A</Color>
+
+    <FileImageSource x:Key="MenuIcon">ic_menu_light.png</FileImageSource>
+
+    <Color x:Key="Gray100">#f6f7f8</Color>
+    <Color x:Key="Gray200">#ebecef</Color>
+    <Color x:Key="Gray300">#ced2d9</Color>
+    <Color x:Key="Gray400">#b2b8c2</Color>
+    <Color x:Key="Gray500">#959eac</Color>
+    <Color x:Key="Gray600">#788396</Color>
+    <Color x:Key="Gray700">#606a7b</Color>
+    <Color x:Key="Gray800">#4a515e</Color>
+    <Color x:Key="Gray900">#333942</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="White">#ffffff</Color>
+    <Color x:Key="GrayBg">#ffffff</Color>
+    <Color x:Key="GrayShadowColor">#ffffff</Color>
+    <Color x:Key="GrayShadowBackgroundColor">#ccd2d7</Color>
+    <Color x:Key="BaseButtonBorderColor">Transparent</Color>
+
+    <Color x:Key="NavigationBarBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="NavigationBarTextColor">#333942</Color>
+    <Color x:Key="NavigationBarIconColor">#333942</Color>
+    <Color x:Key="MainMenuOverlayBackgroundColor">#22F1F3F5</Color>
+
+    <!--  DIALOGS & POPUPS  -->
+    <!--<Color x:Key="DialogsShimBackgroundColor">#CC000000</Color>
+    <Color x:Key="CustomActionSheetShimBackgroundColor">#CC000000</Color>
+    <Color x:Key="CustomActionSheetBackgroundColor">#F1F3F5</Color>
+    <Color x:Key="CustomActionSheetTextColor">#666666</Color>-->
+
+    <!--  GENERAL COLORS  -->
+    <Color x:Key="InverseTextColor">#FFFFFF</Color>
+    <Color x:Key="BaseTextColor">#333942</Color>
+    <Color x:Key="BaseIconColor">#505050</Color>
+    <Color x:Key="BaseLightTextColor">#7B7B7B</Color>
+    <Color x:Key="OverImageTextColor">#FFFFFF</Color>
+
+    <Color x:Key="BasePageColor">#FFFFFF</Color>
+    <Color x:Key="BaseTabbedPageColor">#FAFAFA</Color>
+    <Color x:Key="MainWrapperBackgroundColor">#eef2f5</Color>
+
+    <!--  COMPLEMENT COLORS  -->
+    <Color x:Key="ComplementColor">#5D30F3</Color>
+    <Color x:Key="TranslucidBlack">#55000000</Color>
+    <Color x:Key="TranslucidWhite">#11ffffff</Color>
+
+    <!--  INDICATOR COLORS  -->
+    <Color x:Key="OkColor">#22C064</Color>
+    <Color x:Key="ErrorColor">#FF392B</Color>
+    <Color x:Key="WarningColor">#FFC107</Color>
+    <Color x:Key="NotificationColor">#1274d1</Color>
+    <Color x:Key="DisabledColor">#BBBBBB</Color>
+
+    <!--  BUTTONS COLORS  -->
+    <Color x:Key="PrimaryActionButtonStartColor">#6233ff</Color>
+    <Color x:Key="PrimaryActionButtonEndColor">#FF0C69</Color>
+
+    <Color x:Key="SaveColor">#22C064</Color>
+    <Color x:Key="DeleteColor">#D50000</Color>
+
+    <Color x:Key="TranslucidButtonColor">#33FFFFFF</Color>
+
+    <!--  ENTRIES AND EDITORS COMMON PROPERTIES  -->
+    <Color x:Key="PlaceholderColor">#7B7B7B</Color>
+    <Color x:Key="EntryAndEditorsBackgroundColor">#CBD6E2</Color>
+    <Color x:Key="EntryAndEditorsBorderColor">#F5F8Fa</Color>
+
+    <!--  MAIN MENU COLORS  -->
+    <Color x:Key="MainMenuHeaderBackgroundColor">Transparent</Color>
+    <Color x:Key="MainMenuBackgroundColor">Transparent</Color>
+    <Color x:Key="MainMenuSeparatorColor">Transparent</Color>
+    <Color x:Key="MainMenuTextColor">#333942</Color>
+    <Color x:Key="MainMenuIconColor">#333942</Color>
+
+    <!--  SEPARATORS COLORS  -->
+    <Color x:Key="ListViewSeparatorColor">#D3D3D3</Color>
+    <Color x:Key="BaseSeparatorColor">#7B7B7B</Color>
+
+    <Color x:Key="FrameBorder">#fcfcfd</Color>
+    <Color x:Key="DefaultBorder">#d0d7de</Color>
+</ResourceDictionary>

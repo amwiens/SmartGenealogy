@@ -1,96 +1,111 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Multimedia.MultimediaDetailsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Multimedia;assembly=SmartGenealogy.Core"
     x:Name="multimediaDetailsPage"
-    x:DataType="viewModels:MultimediaDetailsPageViewModel">
+    x:DataType="viewModels:MultimediaDetailsPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <Grid ColumnDefinitions="*,*">
-        <Image Aspect="AspectFit" Source="{Binding FileName}" />
+    <base:BasePage.PageContent>
+        <Grid ColumnDefinitions="*,*">
+            <Image Aspect="AspectFit" Source="{Binding FileName}" />
 
-        <VerticalStackLayout Grid.Column="1">
-            <HorizontalStackLayout HorizontalOptions="End">
-                <Button Command="{Binding EditMultimediaCommand}" Text="Edit" />
-                <Button Command="{Binding DeleteMultimediaCommand}" Text="Delete" />
-                <Button Command="{Binding ProcessImageCommand}" Text="Ocr Image" />
-            </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Column="1">
+                <HorizontalStackLayout HorizontalOptions="End">
+                    <Button
+                        Command="{Binding EditMultimediaCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}"
+                        Text="Edit" />
+                    <Button
+                        Command="{Binding DeleteMultimediaCommand}"
+                        Style="{DynamicResource DeleteButtonStyle}"
+                        Text="Delete" />
+                    <Button
+                        Command="{Binding ProcessImageCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}"
+                        Text="Ocr Image" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Media type:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Media type:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding MediaType}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding MediaType}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Full name:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Full name:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding FileName}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding FileName}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Caption:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Caption:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Caption}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Caption}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Description:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Description:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Description}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Description}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Date:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Date:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Date}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Date}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Reference Number:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Reference Number:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding RefNumber}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding RefNumber}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <Label Text="All Text" />
-            <Label Text="{Binding AllText}" />
-        </VerticalStackLayout>
-    </Grid>
-</ContentPage>
+                <Label Text="All Text" />
+                <Label Text="{Binding AllText}" />
+            </VerticalStackLayout>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

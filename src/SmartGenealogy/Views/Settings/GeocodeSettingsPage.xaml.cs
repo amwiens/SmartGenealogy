@@ -1,7 +1,13 @@
 namespace SmartGenealogy.Views.Settings;
 
-public partial class GeocodeSettingsPage : ContentPage
+/// <summary>
+/// Geocode settings page.
+/// </summary>
+public partial class GeocodeSettingsPage : BasePage
 {
+    /// <summary>
+    /// Constructor.
+    /// </summary>
     public GeocodeSettingsPage(GeocodeSettingsPageViewModel viewModel)
     {
         InitializeComponent();

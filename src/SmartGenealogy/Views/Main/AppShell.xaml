@@ -3,41 +3,102 @@
     x:Class="SmartGenealogy.Views.Main.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:main="clr-namespace:SmartGenealogy.Views.Main"
     xmlns:multimedia="clr-namespace:SmartGenealogy.Views.Multimedia"
     xmlns:places="clr-namespace:SmartGenealogy.Views.Places"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
-    Title="{Binding Title}"
-    x:DataType="viewModels:AppShellViewModel">
+    Title="AppShell"
+    x:DataType="viewModels:AppShellViewModel"
+    FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
+    FlyoutBehavior="{OnIdiom Desktop=Locked,
+                             Default=Flyout}"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutWidth="300">
 
-    <FlyoutItem Title="Home">
+    <!--<Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>-->
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <Shell.ItemTemplate>
+        <DataTemplate x:DataType="FlyoutItem">
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate x:DataType="FlyoutItem">
+            <Grid
+                Padding="30,10"
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="20">
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="Start"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    Style="{StaticResource Title2}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource White}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <FlyoutItem Title="Home" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Home}, Size=50, Color={StaticResource White}}">
         <ShellContent ContentTemplate="{DataTemplate main:MainPage}" Route="MainPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Places">
+    <FlyoutItem Title="Places" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate places:PlacesPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="PlacesPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Media">
+    <FlyoutItem Title="Media" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate multimedia:MultimediaPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="MultimediaPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Tools">
+    <FlyoutItem Title="Tools" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate tools:ToolsPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="ToolsPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings">
+    <FlyoutItem Title="Settings" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate settings:SettingsPage}"
             IsVisible="{Binding SettingsVisible}"

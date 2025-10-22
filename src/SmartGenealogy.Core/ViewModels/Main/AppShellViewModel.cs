@@ -8,9 +8,6 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
     private readonly DatabaseSettings _databaseSettings;
 
     [ObservableProperty]
-    private string? _title = "Smart Genealogy";
-
-    [ObservableProperty]
     private bool _databaseOpen = false;
 
     [ObservableProperty]
@@ -33,15 +30,6 @@ public partial class AppShellViewModel : ObservableObject, IRecipient<OpenDataba
     /// <param name="message">Open database message</param>
     public void Receive(OpenDatabaseMessage message)
     {
-        if (message is null || message.Value == false)
-        {
-            Title = "Smart Genealogy";
-        }
-        else
-        {
-            Title = $"Smart Genealogy - {Path.Combine(_databaseSettings.DatabasePath!, _databaseSettings.DatabaseFilename!)}";
-        }
-
         SettingsVisible = false;
         DatabaseOpen = message!.Value;
         SettingsVisible = true;

@@ -18,8 +18,10 @@ global using Plugin.Maui.OCR;
 
 global using SmartGenealogy.Core.Extensions;
 global using SmartGenealogy.Core.Messages;
+global using SmartGenealogy.Core.Models;
 global using SmartGenealogy.Core.Services;
 global using SmartGenealogy.Core.Settings;
+global using SmartGenealogy.Core.Themes;
 global using SmartGenealogy.Core.ViewModels.Popups;
 global using SmartGenealogy.Data.Enums;
 global using SmartGenealogy.Data.Extensions;

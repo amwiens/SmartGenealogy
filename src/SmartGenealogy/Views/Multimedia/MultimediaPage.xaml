@@ -1,55 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Multimedia.MultimediaPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Multimedia;assembly=SmartGenealogy.Core"
     x:Name="multimediaPage"
-    x:DataType="viewModels:MultimediaPageViewModel">
+    x:DataType="viewModels:MultimediaPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <ContentPage.Behaviors>
+    <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
             BindingContext="{Binding Source={x:Reference multimediaPage}, Path=BindingContext}"
             Command="{Binding AppearingCommand}"
             EventName="Appearing" />
-    </ContentPage.Behaviors>
+    </base:BasePage.Behaviors>
 
-    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
-        <Label Text="Multimedia" />
+    <base:BasePage.PageContent>
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
+            <Label Text="Multimedia" />
 
-        <Button
-            Grid.Column="1"
-            Command="{Binding AddMultimediaCommand}"
-            Text="Add media" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding AddMultimediaCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Add media" />
 
-        <ScrollView
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Orientation="Vertical">
-            <CollectionView
-                ItemsSource="{Binding Multimedia}"
-                SelectedItem="{Binding SelectedItem}"
-                SelectionChangedCommand="{Binding OpenMultimediaDetailsCommand}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Multimedia">
-                        <Grid ColumnDefinitions="Auto,*">
-                            <Image
-                                Grid.Column="0"
-                                Aspect="AspectFit"
-                                HeightRequest="100"
-                                Source="{Binding ThumbnailBytes}"
-                                WidthRequest="150" />
-                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
-                                <Label Text="{Binding Caption}" />
-                                <Label Text="{Binding FullPath}" />
-                            </VerticalStackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
-    </Grid>
-</ContentPage>
+            <ScrollView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Orientation="Vertical">
+                <CollectionView
+                    ItemsSource="{Binding Multimedia}"
+                    SelectedItem="{Binding SelectedItem}"
+                    SelectionChangedCommand="{Binding OpenMultimediaDetailsCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Multimedia">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    Source="{Binding ThumbnailBytes}"
+                                    WidthRequest="150" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding Caption}" />
+                                    <Label Text="{Binding FullPath}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

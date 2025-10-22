@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="SmartGenealogy.Controls.ButtonGoogleLogin"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border
+        Padding="20,10"
+        Background="{DynamicResource MainWrapperBackgroundColor}"
+        Stroke="{DynamicResource DefaultBorder}"
+        StrokeShape="{RoundRectangle CornerRadius='8'}"
+        StrokeThickness="1">
+
+        <Image
+            Aspect="AspectFit"
+            HeightRequest="20"
+            Source="google.png"
+            VerticalOptions="Center" />
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnButtonTapped" />
+        </Border.GestureRecognizers>
+    </Border>
+</ContentView>
