@@ -6,7 +6,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
     x:DataType="viewModels:NewDatabasePopupViewModel"
-    BackgroundColor="Black">
+    BackgroundColor="{DynamicResource BasePageColor}">
 
     <VerticalStackLayout>
         <Label
@@ -22,9 +22,18 @@
             VerticalOptions="Center" />
 
         <Entry IsReadOnly="True" Text="{Binding DatabasePath}" />
-        <Button Command="{Binding SelectFolderCommand}" Text="Select Folder" />
+        <Button
+            Command="{Binding SelectFolderCommand}"
+            Style="{DynamicResource PrimaryButtonStyle}"
+            Text="Select Folder" />
 
-        <Button Command="{Binding CreateCommand}" Text="Create" />
-        <Button Command="{Binding CancelCommand}" Text="Cancel" />
+        <Button
+            Command="{Binding CreateCommand}"
+            Style="{DynamicResource PrimaryButtonStyle}"
+            Text="Create" />
+        <Button
+            Command="{Binding CancelCommand}"
+            Style="{DynamicResource PrimaryButtonStyle}"
+            Text="Cancel" />
     </VerticalStackLayout>
 </toolkit:Popup>
