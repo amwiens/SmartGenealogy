@@ -3,7 +3,7 @@ namespace SmartGenealogy.Views.Places;
 /// <summary>
 /// Place details page.
 /// </summary>
-public partial class PlaceDetailsPage : ContentPage
+public partial class PlaceDetailsPage : BasePage
 {
     /// <summary>
     /// Constructor
