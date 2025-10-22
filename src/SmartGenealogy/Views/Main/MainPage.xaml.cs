@@ -3,7 +3,7 @@
 /// <summary>
 /// MainPage class.
 /// </summary>
-public partial class MainPage : ContentPage
+public partial class MainPage : BasePage
 {
     /// <summary>
     /// Constructor.

@@ -40,6 +40,7 @@ global using SmartGenealogy.LocationIQ;
 global using SmartGenealogy.Resources.FontIcons;
 global using SmartGenealogy.Resources.Translations;
 global using SmartGenealogy.Resources.Themes;
+global using SmartGenealogy.Views.Base;
 global using SmartGenealogy.Views.Main;
 global using SmartGenealogy.Views.Multimedia;
 global using SmartGenealogy.Views.Places;
