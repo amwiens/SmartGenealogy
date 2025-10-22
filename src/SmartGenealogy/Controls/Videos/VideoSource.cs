@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace SmartGenealogy.Controls.Videos;
+﻿namespace SmartGenealogy.Controls.Videos;
 
 [TypeConverter(typeof(VideoSourceConverter))]
 public abstract class VideoSource : Element

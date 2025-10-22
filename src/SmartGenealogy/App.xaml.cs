@@ -9,7 +9,9 @@ using Windows.Graphics;
 #endif
 
 #if ANDROID
+
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+
 #endif
 
 #if IOS || MACCATALYST
@@ -36,6 +38,7 @@ public partial class App : Application
     public App(IServiceProvider serviceProvider, SeedDataService seedDataService)
     {
         InitializeComponent();
+
         #region Handlers
 
         //Borderless entry
@@ -44,8 +47,8 @@ public partial class App : Application
             if (view is BorderlessEntry)
             {
 #if __ANDROID__
-            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-            handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.Layer.BorderWidth = 0;
@@ -65,8 +68,8 @@ public partial class App : Application
             if (view is BorderlessEditor)
             {
 #if __ANDROID__
-            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-            handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.Layer.BorderWidth = 0;
@@ -85,8 +88,8 @@ public partial class App : Application
             if (view is BorderlessPicker)
             {
 #if ANDROID
-            handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                 handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                 handler.PlatformView.Layer.BorderWidth = 0;
@@ -100,6 +103,7 @@ public partial class App : Application
         });
 
         #endregion Handlers
+
         _serviceProvider = serviceProvider;
         _seedDataService = seedDataService;
     }

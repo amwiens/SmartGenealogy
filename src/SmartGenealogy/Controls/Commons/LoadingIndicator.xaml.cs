@@ -32,7 +32,7 @@ public partial class LoadingIndicator : ContentView
         control.actIndicator.IsRunning = (bool)newValue;
     }
 
-    public static new BindableProperty BackgroundColorProperty =
+    public new static BindableProperty BackgroundColorProperty =
         BindableProperty.Create(
             nameof(BackgroundColor),
             typeof(Color),

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Globalization;
-
-namespace SmartGenealogy.Resources.Translations;
+﻿namespace SmartGenealogy.Resources.Translations;
 
 public class LocalizationResourceManager : INotifyPropertyChanged
 {

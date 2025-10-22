@@ -30,7 +30,9 @@ public partial class SettingsPageViewModel : ObservableObject
         SmartGenealogySettings.SaveSettings();
     }
 
-
+    /// <summary>
+    /// Handles the toggle of the Use Dark Mode switch.
+    /// </summary>
     [RelayCommand]
     private void ToggleUseDarkMode()
     {

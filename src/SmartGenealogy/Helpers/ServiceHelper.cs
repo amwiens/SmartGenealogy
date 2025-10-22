@@ -9,6 +9,7 @@ public static class ServiceHelper
                 MauiWinUIApplication.Current.Services;
 #elif ANDROID
             MauiApplication.Current.Services;
+
 #elif IOS || MACCATALYST
             MauiUIApplicationDelegate.Current.Services;
 
