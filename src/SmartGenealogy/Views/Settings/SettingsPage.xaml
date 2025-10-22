@@ -4,60 +4,132 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Settings;assembly=SmartGenealogy.Core"
     x:Name="settingsPage"
     x:DataType="viewModels:SettingsPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Grid ColumnDefinitions="*,Auto">
-                <Label Text="Open last database on startup:" VerticalOptions="Center" />
+        <Grid RowDefinitions="Auto,Auto,Auto">
 
-                <Switch
-                    x:Name="openLastDatabaseSwitch"
-                    Grid.Column="1"
-                    HorizontalOptions="End"
-                    IsToggled="{Binding OpenLastDatabase}"
-                    VerticalOptions="Center">
-                    <Switch.Behaviors>
-                        <toolkit:EventToCommandBehavior
-                            BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
-                            Command="{Binding ToggleOpenLastDatabaseCommand}"
-                            CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
-                            EventName="Toggled" />
-                    </Switch.Behaviors>
-                </Switch>
-            </Grid>
+            <!--  OPTIONS  -->
+            <StackLayout Grid.Row="1" Margin="20">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="Geocode Settings"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
 
-            <Grid ColumnDefinitions="*,Auto">
-                <Label Text="Use dark mode:" VerticalOptions="Center" />
+                <!--  Geocode Settings  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
 
-                <Switch
-                    x:Name="useDarkModeSwitch"
-                    Grid.Column="1"
-                    HorizontalOptions="End"
-                    IsToggled="{Binding UseDarkMode}"
-                    VerticalOptions="Center">
-                    <Switch.Behaviors>
-                        <toolkit:EventToCommandBehavior
-                            BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
-                            Command="{Binding ToggleUseDarkModeCommand}"
-                            CommandParameter="{Binding Source={x:Reference useDarkModeSwitch}, Path=IsToggled}"
-                            EventName="Toggled" />
-                    </Switch.Behaviors>
-                </Switch>
-            </Grid>
+                    <Label
+                        FontFamily="IonIcons"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonticons:IonIcons.Location}"
+                        TextColor="#FF3E8EED"
+                        VerticalOptions="Center" />
 
-            <Label Text="Geocoding Settings" />
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="Geocode settings"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
 
-            <Button
-                Command="{Binding GoToGeocodeSettingsCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Geocoding Settings" />
-        </VerticalStackLayout>
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToGeocodeSettingsCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </StackLayout>
+
+            <!--  SETTINGS  -->
+            <StackLayout
+                Grid.Row="2"
+                Margin="20"
+                VerticalOptions="Fill">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="App Settings"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Grid Padding="0,7" ColumnDefinitions="*,Auto">
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Title2}"
+                        Text="Open last database on startup"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Switch
+                        x:Name="openLastDatabaseSwitch"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding OpenLastDatabase}"
+                        VerticalOptions="Center">
+                        <Switch.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                                Command="{Binding ToggleOpenLastDatabaseCommand}"
+                                CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
+                                EventName="Toggled" />
+                        </Switch.Behaviors>
+                    </Switch>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Title2}"
+                        Text="Dark mode"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Switch
+                        x:Name="useDarkModeSwitch"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding UseDarkMode}"
+                        VerticalOptions="Center">
+                        <Switch.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                                Command="{Binding ToggleUseDarkModeCommand}"
+                                CommandParameter="{Binding Source={x:Reference useDarkModeSwitch}, Path=IsToggled}"
+                                EventName="Toggled" />
+                        </Switch.Behaviors>
+                    </Switch>
+                </Grid>
+
+            </StackLayout>
+
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

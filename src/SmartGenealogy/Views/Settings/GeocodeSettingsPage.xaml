@@ -8,44 +8,57 @@
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Settings;assembly=SmartGenealogy.Core"
     x:Name="geocodeSettingsPage"
     x:DataType="viewModels:GeocodeSettingsPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
-                <Label Text="Geocode Place on save:" VerticalOptions="Center" />
+        <Grid RowDefinitions="Auto,Auto">
 
-                <Switch
-                    x:Name="geocodePlaceOnSaveSwitch"
-                    Grid.Column="1"
-                    HorizontalOptions="End"
-                    IsToggled="{Binding GeocodePlaceOnSave}"
-                    VerticalOptions="Center">
-                    <Switch.Behaviors>
-                        <toolkit:EventToCommandBehavior
-                            BindingContext="{Binding Source={x:Reference geocodeSettingsPage}, Path=BindingContext}"
-                            Command="{Binding ToggleGeocodePlaceOnSaveCommand}"
-                            CommandParameter="{Binding Source={x:Reference geocodePlaceOnSaveSwitch}, Path=IsToggled}"
-                            EventName="Toggled" />
-                    </Switch.Behaviors>
-                </Switch>
+            <!--  GEOCODE SETTINGS  -->
+            <StackLayout Margin="20">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="Geocode Settings"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
 
-                <Label Grid.Row="1" Text="LocationIQ API Key" />
+                <Grid Padding="0,7" ColumnDefinitions="*,Auto">
+                    <Label Text="Geocode Place on save:" VerticalOptions="Center" />
 
-                <Entry
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Text="{Binding LocationIQAPIKey}">
-                    <Entry.Behaviors>
-                        <toolkit:EventToCommandBehavior
-                            BindingContext="{Binding Source={x:Reference geocodeSettingsPage}, Path=BindingContext}"
-                            Command="{Binding LocationIQAPIKeyChangedCommand}"
-                            EventName="TextChanged" />
-                    </Entry.Behaviors>
-                </Entry>
-            </Grid>
-        </VerticalStackLayout>
+                    <Switch
+                        x:Name="geocodePlaceOnSaveSwitch"
+                        Grid.Column="1"
+                        HorizontalOptions="End"
+                        IsToggled="{Binding GeocodePlaceOnSave}"
+                        VerticalOptions="Center">
+                        <Switch.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference geocodeSettingsPage}, Path=BindingContext}"
+                                Command="{Binding ToggleGeocodePlaceOnSaveCommand}"
+                                CommandParameter="{Binding Source={x:Reference geocodePlaceOnSaveSwitch}, Path=IsToggled}"
+                                EventName="Toggled" />
+                        </Switch.Behaviors>
+                    </Switch>
+                </Grid>
+
+                <Grid Padding="0,7" ColumnDefinitions="*,Auto">
+                    <Label Grid.Row="1" Text="LocationIQ API Key" />
+
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding LocationIQAPIKey}">
+                        <Entry.Behaviors>
+                            <toolkit:EventToCommandBehavior
+                                BindingContext="{Binding Source={x:Reference geocodeSettingsPage}, Path=BindingContext}"
+                                Command="{Binding LocationIQAPIKeyChangedCommand}"
+                                EventName="TextChanged" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </Grid>
+            </StackLayout>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>
