@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="SmartGenealogy.Views.Settings.SettingsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Settings;assembly=SmartGenealogy.Core"
     x:Name="settingsPage"
-    x:DataType="viewModels:SettingsPageViewModel">
+    x:DataType="viewModels:SettingsPageViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
 
-    <VerticalStackLayout>
-        <Grid ColumnDefinitions="*,Auto">
-            <Label Text="Open last database on startup:" VerticalOptions="Center" />
+    <base:BasePage.PageContent>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Open last database on startup:" VerticalOptions="Center" />
 
-            <Switch
-                x:Name="openLastDatabaseSwitch"
-                Grid.Column="1"
-                HorizontalOptions="End"
-                IsToggled="{Binding OpenLastDatabase}"
-                VerticalOptions="Center">
-                <Switch.Behaviors>
-                    <toolkit:EventToCommandBehavior
-                        BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
-                        Command="{Binding ToggleOpenLastDatabaseCommand}"
-                        CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
-                        EventName="Toggled" />
-                </Switch.Behaviors>
-            </Switch>
-        </Grid>
+                <Switch
+                    x:Name="openLastDatabaseSwitch"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    IsToggled="{Binding OpenLastDatabase}"
+                    VerticalOptions="Center">
+                    <Switch.Behaviors>
+                        <toolkit:EventToCommandBehavior
+                            BindingContext="{Binding Source={x:Reference settingsPage}, Path=BindingContext}"
+                            Command="{Binding ToggleOpenLastDatabaseCommand}"
+                            CommandParameter="{Binding Source={x:Reference openLastDatabaseSwitch}, Path=IsToggled}"
+                            EventName="Toggled" />
+                    </Switch.Behaviors>
+                </Switch>
+            </Grid>
 
-        <Label Text="Geocoding Settings" />
+            <Label Text="Geocoding Settings" />
 
-        <Button Command="{Binding GoToGeocodeSettingsCommand}" Text="Geocoding Settings" />
-    </VerticalStackLayout>
-</ContentPage>
+            <Button
+                Command="{Binding GoToGeocodeSettingsCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Geocoding Settings" />
+        </VerticalStackLayout>
+    </base:BasePage.PageContent>
+</base:BasePage>

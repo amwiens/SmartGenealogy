@@ -3,7 +3,7 @@ namespace SmartGenealogy.Views.Settings;
 /// <summary>
 /// Settings page.
 /// </summary>
-public partial class SettingsPage : ContentPage
+public partial class SettingsPage : BasePage
 {
     /// <summary>
     /// Constructor
