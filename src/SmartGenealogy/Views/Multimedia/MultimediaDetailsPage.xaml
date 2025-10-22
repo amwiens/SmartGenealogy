@@ -8,6 +8,7 @@
     x:Name="multimediaDetailsPage"
     x:DataType="viewModels:MultimediaDetailsPageViewModel"
     BackgroundColor="{DynamicResource BasePageColor}"
+    BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.PageContent>
