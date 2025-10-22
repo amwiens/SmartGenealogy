@@ -15,6 +15,7 @@
     <Grid RowDefinitions="Auto, *">
         <Grid
             Padding="15,5"
+            BackgroundColor="{DynamicResource BasePageColor}"
             ColumnDefinitions="Auto,*"
             ColumnSpacing="15"
             IsVisible="{OnPlatform WinUI='True',
