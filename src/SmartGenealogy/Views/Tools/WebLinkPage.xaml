@@ -23,7 +23,7 @@
     <base:BasePage.PageContent>
         <Grid
             ColumnDefinitions="*,Auto"
-            RowDefinitions="Auto,*"
+            RowDefinitions="Auto,Auto,*"
             RowSpacing="15">
             <controls:HeaderTemplate
                 Margin="25,30,25,0"
@@ -39,11 +39,11 @@
                 Margin="0,30,20,0"
                 HorizontalOptions="End">
                 <Button
-                    Command="{Binding EditFactTypeCommand}"
+                    Command="{Binding EditWebLinkCommand}"
                     Style="{DynamicResource PrimaryButtonStyle}"
                     Text="Edit" />
                 <Button
-                    Command="{Binding DeleteFactTypeCommand}"
+                    Command="{Binding DeleteWebLinkCommand}"
                     IsEnabled="{Binding IsBuiltIn, Converter={StaticResource InvertedBoolConverter}}"
                     Style="{DynamicResource DeleteButtonStyle}"
                     Text="Delete" />
@@ -76,8 +76,12 @@
                         Text="{Binding Note}"
                         VerticalOptions="Center" />
                 </HorizontalStackLayout>
-
             </VerticalStackLayout>
+
+            <WebView
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Source="{Binding Url}" />
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

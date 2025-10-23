@@ -51,7 +51,7 @@ public partial class WebLinkPageViewModel(
 
             if (_webLink.IsNullOrNew())
             {
-                errorHandler.HandleError(new Exception($"Fact type with id {id} could not be found."));
+                errorHandler.HandleError(new Exception($"Web link with id {id} could not be found."));
                 return;
             }
 
@@ -66,36 +66,36 @@ public partial class WebLinkPageViewModel(
     }
 
     /// <summary>
-    /// Edit fact type.
+    /// Edit web link.
     /// </summary>
     [RelayCommand]
-    private async Task EditFactType()
+    private async Task EditWebLink()
     {
         var queryAttributes = new Dictionary<string, object>
         {
             { "id", _webLink!.Id }
         };
 
-        await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(
-            Shell.Current,
-            options: PopupOptions.Empty,
-            shellParameters: queryAttributes);
+        //await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(
+        //    Shell.Current,
+        //    options: PopupOptions.Empty,
+        //    shellParameters: queryAttributes);
     }
 
     /// <summary>
-    /// Delete fact type.
+    /// Delete web link.
     /// </summary>
     [RelayCommand]
-    private async Task DeleteFactType()
+    private async Task DeleteWebLink()
     {
         try
         {
-            var isConfirmed = await alertService.ShowAlertAsync("Delete fact type", "Are you sure you want to delete this fact type?", "Yes", "No");
+            var isConfirmed = await alertService.ShowAlertAsync("Delete web link", "Are you sure you want to delete this web link?", "Yes", "No");
             if (isConfirmed)
             {
-                //var isDeleted = await factTypeService.DeleteItemAsync(_factType!);
-                //if (isDeleted)
-                //    await Shell.Current.GoToAsync("..");
+                var isDeleted = await webLinkRepository.DeleteItemAsync(_webLink!);
+                if (isDeleted == 1)
+                    await Shell.Current.GoToAsync("..");
             }
         }
         catch (Exception ex)

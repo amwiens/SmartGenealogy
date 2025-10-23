@@ -36,7 +36,7 @@ public partial class WebLinksPageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                var result = await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(shell);
+                //var result = await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(shell);
             }
         }
         catch (Exception ex)
