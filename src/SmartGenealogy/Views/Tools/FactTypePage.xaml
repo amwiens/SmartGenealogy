@@ -4,12 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
     x:Name="factTypePage"
     x:DataType="viewModels:FactTypePageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
@@ -20,8 +21,23 @@
     </base:BasePage.Resources>
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="End">
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="IonIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:IonIcons.IosCalendarOutline}"
+                Text="{Binding Name}"
+                TextSize="25" />
+
+            <HorizontalStackLayout
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                HorizontalOptions="End">
                 <Button
                     Command="{Binding EditFactTypeCommand}"
                     Style="{DynamicResource PrimaryButtonStyle}"
@@ -33,128 +49,121 @@
                     Text="Delete" />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Name:"
-                    VerticalOptions="Center" />
+            <VerticalStackLayout
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="20">
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Abbreviation:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Name}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Abbreviation}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Abbreviation:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Gedcom Tag:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Abbreviation}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding GedcomTag}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Gedcom Tag:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use Value:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding GedcomTag}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding UseValue}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use Value:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use Date:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding UseValue}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding UseDate}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use Date:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Use Place:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding UseDate}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding UsePlace}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Use Place:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Sentence:"
+                        VerticalOptions="Center" />
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding UsePlace}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Sentence}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Sentence:"
-                    VerticalOptions="Center" />
+                <HorizontalStackLayout HorizontalOptions="End">
+                    <Button
+                        Command="{Binding AddRoleCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}"
+                        Text="Add role" />
+                    <Button
+                        Command="{Binding EditRoleCommand}"
+                        Style="{DynamicResource PrimaryButtonStyle}"
+                        Text="Edit role" />
+                    <Button
+                        Command="{Binding DeleteRoleCommand}"
+                        Style="{DynamicResource DeleteButtonStyle}"
+                        Text="Delete role" />
+                </HorizontalStackLayout>
 
-                <Label
-                    HorizontalOptions="Center"
-                    Text="{Binding Sentence}"
-                    VerticalOptions="Center" />
-            </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Roles:"
+                        VerticalOptions="Center" />
 
-            <HorizontalStackLayout HorizontalOptions="End">
-                <Button
-                    Command="{Binding AddRoleCommand}"
-                    Style="{DynamicResource PrimaryButtonStyle}"
-                    Text="Add role" />
-                <Button
-                    Command="{Binding EditRoleCommand}"
-                    Style="{DynamicResource PrimaryButtonStyle}"
-                    Text="Edit role" />
-                <Button
-                    Command="{Binding DeleteRoleCommand}"
-                    Style="{DynamicResource DeleteButtonStyle}"
-                    Text="Delete role" />
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout>
-                <Label
-                    HorizontalOptions="Center"
-                    Text="Roles:"
-                    VerticalOptions="Center" />
-
-                <CollectionView
-                    ItemsSource="{Binding Roles}"
-                    SelectedItem="{Binding SelectedRole}"
-                    SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Role">
-                            <Grid RowDefinitions="Auto,Auto">
-                                <Label Text="{Binding Name}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Text="{Binding Sentence}"
-                                    TextColor="Gray" />
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+                    <CollectionView
+                        ItemsSource="{Binding Roles}"
+                        SelectedItem="{Binding SelectedRole}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Role">
+                                <Grid RowDefinitions="Auto,Auto">
+                                    <Label Text="{Binding Name}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Text="{Binding Sentence}"
+                                        TextColor="Gray" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

@@ -4,40 +4,88 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
     x:Name="toolsPage"
     x:DataType="viewModels:ToolsPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Label
-                HorizontalOptions="Start"
-                Text="Database Tools"
-                VerticalOptions="Center" />
-            <Button
-                Command="{Binding CompactDatabaseCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Compact Database" />
-            <Button
-                Command="{Binding ReindexDatabaseCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Rebuild indexes in Database" />
-            <Button
-                Command="{Binding DatabaseIntegrityCheckCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Database Integrity check" />
+        <Grid RowDefinitions="Auto,Auto">
 
-            <Label
-                HorizontalOptions="Start"
-                Text="Fact Types"
-                VerticalOptions="Center" />
-            <Button
-                Command="{Binding OpenFactTypesPageCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Manage fact types" />
-        </VerticalStackLayout>
+            <!--  DATABASE TOOLS  -->
+            <StackLayout Grid.Row="0" Margin="20">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="Database Tools"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+                <Button
+                    Command="{Binding CompactDatabaseCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Compact Database" />
+                <Button
+                    Command="{Binding ReindexDatabaseCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Rebuild indexes in Database" />
+                <Button
+                    Command="{Binding DatabaseIntegrityCheckCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Database Integrity check" />
+            </StackLayout>
+
+            <!--  FACT TYPE TOOLS  -->
+            <StackLayout Grid.Row="1" Margin="20">
+                <Label
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title2}"
+                    Text="Fact Types"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <!--  Fact types  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        FontFamily="IonIcons"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonticons:IonIcons.IosCalendarOutline}"
+                        TextColor="#FF3E8EED"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="Manage fact types"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenFactTypesPageCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </StackLayout>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>
