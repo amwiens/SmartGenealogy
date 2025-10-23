@@ -68,4 +68,13 @@ public partial class ToolsPageViewModel(
     {
         await Shell.Current.GoToAsync("factTypes");
     }
+
+    /// <summary>
+    /// Open Web Links page.
+    /// </summary>
+    [RelayCommand]
+    private async Task OpenWebLinksPage()
+    {
+        await Shell.Current.GoToAsync("webLinks");
+    }
 }

@@ -179,6 +179,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypePage, FactTypePageViewModel>("factTypeDetails");
+        mauiAppBuilder.Services.AddTransientWithShellRoute<WebLinksPage, WebLinksPageViewModel>("webLinks");
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<GeocodeSettingsPage, GeocodeSettingsPageViewModel>("geocodeSettings");
 
