@@ -4,108 +4,163 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Multimedia;assembly=SmartGenealogy.Core"
     x:Name="multimediaDetailsPage"
     x:DataType="viewModels:MultimediaDetailsPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.PageContent>
-        <Grid ColumnDefinitions="*,*">
-            <Image Aspect="AspectFit" Source="{Binding FileName}" />
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
 
-            <VerticalStackLayout Grid.Column="1">
-                <HorizontalStackLayout HorizontalOptions="End">
-                    <Button
-                        Command="{Binding EditMultimediaCommand}"
-                        Style="{DynamicResource PrimaryButtonStyle}"
-                        Text="Edit" />
-                    <Button
-                        Command="{Binding DeleteMultimediaCommand}"
-                        Style="{DynamicResource DeleteButtonStyle}"
-                        Text="Delete" />
-                    <Button
-                        Command="{Binding ProcessImageCommand}"
-                        Style="{DynamicResource PrimaryButtonStyle}"
-                        Text="Ocr Image" />
-                </HorizontalStackLayout>
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="IonIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:IonIcons.Image}"
+                Text="{Binding Caption}"
+                TextSize="25" />
 
-                <HorizontalStackLayout>
+            <HorizontalStackLayout
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                HorizontalOptions="End">
+                <Button
+                    Command="{Binding EditMultimediaCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Edit" />
+                <Button
+                    Command="{Binding DeleteMultimediaCommand}"
+                    Style="{DynamicResource DeleteButtonStyle}"
+                    Text="Delete" />
+                <Button
+                    Command="{Binding ProcessImageCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Ocr Image" />
+            </HorizontalStackLayout>
+            <Grid
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                ColumnDefinitions="*,*">
+                <Image Aspect="AspectFit" Source="{Binding FileName}" />
+
+                <VerticalStackLayout Grid.Column="1">
+
+                    <!--  Media type  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="Media type:"
-                        VerticalOptions="Center" />
+                        Margin="20,0,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="Media Type" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding MediaType}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
+                    <!--  File name  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding MediaType}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
+                        Margin="20,20,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="File name" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding FileName}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
-                <HorizontalStackLayout>
+                    <!--  Description  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="Full name:"
-                        VerticalOptions="Center" />
+                        Margin="20,20,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="Description" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding Description}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
+                    <!--  Date  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding FileName}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
+                        Margin="20,20,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="Date" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding Date}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
-                <HorizontalStackLayout>
+                    <!--  Reference Number  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="Caption:"
-                        VerticalOptions="Center" />
+                        Margin="20,20,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="Reference number" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding RefNumber}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
 
+                    <!--  All text  -->
                     <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding Caption}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="Description:"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding Description}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="Date:"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding Date}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="Reference Number:"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        HorizontalOptions="Center"
-                        Text="{Binding RefNumber}"
-                        VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <Label Text="All Text" />
-                <Label Text="{Binding AllText}" />
-            </VerticalStackLayout>
+                        Margin="20,20,20,0"
+                        Style="{StaticResource Title2}"
+                        Text="All text" />
+                    <Border
+                        Margin="20,0,20,0"
+                        Padding="20,16"
+                        Stroke="{DynamicResource FrameBorder}"
+                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                        <Grid ColumnDefinitions="*" RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding AllText}"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

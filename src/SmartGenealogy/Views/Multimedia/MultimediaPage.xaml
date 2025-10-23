@@ -4,12 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Multimedia;assembly=SmartGenealogy.Core"
     x:Name="multimediaPage"
     x:DataType="viewModels:MultimediaPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
@@ -21,11 +22,22 @@
     </base:BasePage.Behaviors>
 
     <base:BasePage.PageContent>
-        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,*">
-            <Label Text="Multimedia" />
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="IonIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:IonIcons.Image}"
+                Text="Media"
+                TextSize="25" />
 
             <Button
                 Grid.Column="1"
+                Margin="0,30,20,0"
                 Command="{Binding AddMultimediaCommand}"
                 Style="{DynamicResource PrimaryButtonStyle}"
                 Text="Add media" />
@@ -33,6 +45,7 @@
             <ScrollView
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
+                Margin="20"
                 Orientation="Vertical">
                 <CollectionView
                     ItemsSource="{Binding Multimedia}"

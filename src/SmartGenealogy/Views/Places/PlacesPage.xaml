@@ -45,6 +45,7 @@
             <ScrollView
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
+                Margin="20"
                 Orientation="Vertical">
                 <CollectionView
                     ItemsSource="{Binding Places}"
