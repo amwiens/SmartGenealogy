@@ -3,12 +3,13 @@
     x:Class="SmartGenealogy.Views.Main.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:AlohaKit.Animations;assembly=AlohaKit.Animations"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
     x:Name="mainPage"
     x:DataType="viewModels:MainPageViewModel"
-    BackgroundColor="{DynamicResource BasePageColor}"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
@@ -20,20 +21,184 @@
     </base:BasePage.Behaviors>
 
     <base:BasePage.PageContent>
-        <VerticalStackLayout>
-            <Button
-                Command="{Binding CreateDatabaseCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Create Database" />
-            <Button
-                Command="{Binding OpenDatabaseCommand}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Open Database" />
-            <Button
-                Command="{Binding CloseDatabaseCommand}"
-                IsVisible="{Binding DatabaseOpen}"
-                Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Close Database" />
-        </VerticalStackLayout>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <VisualElement.Behaviors>
+                    <animations:ScrollViewScrollBehavior x:Name="ScrollBehavior" />
+                </VisualElement.Behaviors>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Margin="0"
+                        Padding="{OnIdiom Phone='0,0,0,30',
+                                          Tablet='30,0,30,30',
+                                          Desktop='30,0,30,30'}"
+                        Stroke="Transparent"
+                        StrokeShape="{RoundRectangle CornerRadius='1'}" />
+
+                    <Border
+                        Grid.Row="1"
+                        Padding="{OnIdiom Phone='5,5,5,10',
+                                          Tablet='15,10',
+                                          Desktop='30,10'}"
+                        Background="{DynamicResource MainWrapperBackgroundColor}"
+                        TranslationY="-30">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="30,30,0,0" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout
+                            Margin="{OnIdiom Phone='10,15,10,10',
+                                             Tablet='15,10',
+                                             Desktop='30,10'}"
+                            Padding="5,5"
+                            Spacing="15"
+                            VerticalOptions="Center">
+                            <VisualElement.Behaviors>
+                                <animations:AnimateProgressDouble
+                                    Maximum="280"
+                                    Minimum="0"
+                                    Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                    TargetProperty="VerticalStackLayout.Spacing"
+                                    From="15"
+                                    To="5" />
+                            </VisualElement.Behaviors>
+
+                            <Grid
+                                ColumnDefinitions="0.5*,0.5*"
+                                ColumnSpacing="15"
+                                RowDefinitions="Auto,Auto"
+                                RowSpacing="15">
+                                <VisualElement.Behaviors>
+                                    <animations:AnimateProgressDouble
+                                        Maximum="280"
+                                        Minimum="0"
+                                        Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                        TargetProperty="Grid.RowSpacing"
+                                        From="15"
+                                        To="5" />
+                                    <animations:AnimateProgressDouble
+                                        Maximum="280"
+                                        Minimum="0"
+                                        Progress="{Binding ScrollY, Source={x:Reference ScrollBehavior}}"
+                                        TargetProperty="Grid.ColumnSpacing"
+                                        From="15"
+                                        To="5" />
+                                </VisualElement.Behaviors>
+
+                                <!--  Create Database  -->
+                                <Border x:Name="createBorder" Style="{StaticResource FeatureBorder}">
+                                    <!--<Border.Behaviors>
+                                        <toolkit:EventToCommandBehavior
+                                            BindingContext="{Binding Source={x:Reference createBorder}, Path=BindingContext}"
+                                            Command="{Binding CreateDatabaseCommand}"
+                                            EventName="Tap" />
+                                    </Border.Behaviors>-->
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CreateDatabaseCommand}" />
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                        <Border
+                                            Padding="0"
+                                            Background="{DynamicResource PrimaryColor}"
+                                            HeightRequest="52"
+                                            HorizontalOptions="Center"
+                                            Stroke="{DynamicResource DefaultBorder}"
+                                            StrokeShape="{RoundRectangle CornerRadius=12}"
+                                            StrokeThickness="0"
+                                            WidthRequest="52">
+                                            <controls:RoundedCornerImage
+                                                Background="{DynamicResource White}"
+                                                HeightRequest="40"
+                                                HorizontalOptions="Center"
+                                                Source="logo_tree.png"
+                                                Stroke="Transparent"
+                                                StrokeShape="{RoundRectangle CornerRadius=20}"
+                                                VerticalOptions="Center"
+                                                WidthRequest="40" />
+                                        </Border>
+                                        <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{StaticResource Title2}"
+                                                Text="Create Database" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{StaticResource Footnote}"
+                                                Text="Create a new Smart Genealogy Database" />
+                                        </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!--  Open Database  -->
+                                <Border Grid.Column="1" Style="{StaticResource FeatureBorder}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenDatabaseCommand}" />
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="50"
+                                            Source="cog.png"
+                                            VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource Title2}"
+                                                Text="Open Database" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{StaticResource Footnote}"
+                                                Text="Open an existing Smart Genealogy Database" />
+                                        </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!--  Close Database  -->
+                                <Border
+                                    Grid.Row="1"
+                                    IsVisible="{Binding DatabaseOpen}"
+                                    Style="{StaticResource FeatureBorder}">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CloseDatabaseCommand}" />
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="50"
+                                            Source="cog.png"
+                                            VerticalOptions="Center" />
+                                        <VerticalStackLayout Spacing="3" VerticalOptions="Center">
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                Style="{StaticResource Title2}"
+                                                Text="Close Database" />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{StaticResource Footnote}"
+                                                Text="Close an open Smart Genealogy Database" />
+                                        </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </ScrollView>
+        </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>
