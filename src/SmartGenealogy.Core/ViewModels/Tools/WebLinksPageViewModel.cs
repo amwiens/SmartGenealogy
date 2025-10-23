@@ -52,6 +52,6 @@ public partial class WebLinksPageViewModel(
     private async Task OpenWebLinkDetails()
     {
         if (SelectedItem is not null)
-            await Shell.Current.GoToAsync($"factTypeDetails?id={SelectedItem.Id}");
+            await Shell.Current.GoToAsync($"webLink?id={SelectedItem.Id}");
     }
 }

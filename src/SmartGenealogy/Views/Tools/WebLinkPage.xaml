@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage
+    x:Class="SmartGenealogy.Views.Tools.WebLinkPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
+    x:Name="webLinkPage"
+    x:DataType="viewModels:WebLinkPageViewModel"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
+
+    <base:BasePage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </base:BasePage.Resources>
+
+    <base:BasePage.PageContent>
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="SmartGenealogyIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:SmartGenealogyIcons.Web}"
+                Text="{Binding Name}"
+                TextSize="25" />
+
+            <HorizontalStackLayout
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                HorizontalOptions="End">
+                <Button
+                    Command="{Binding EditFactTypeCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Edit" />
+                <Button
+                    Command="{Binding DeleteFactTypeCommand}"
+                    IsEnabled="{Binding IsBuiltIn, Converter={StaticResource InvertedBoolConverter}}"
+                    Style="{DynamicResource DeleteButtonStyle}"
+                    Text="Delete" />
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="20">
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="URL:"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Url}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Note:"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Note}"
+                        VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>
