@@ -77,14 +77,14 @@
         <ShellContent ContentTemplate="{DataTemplate main:MainPage}" Route="MainPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Places" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
+    <FlyoutItem Title="Places" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Map}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate places:PlacesPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="PlacesPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Media" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
+    <FlyoutItem Title="Media" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Image}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate multimedia:MultimediaPage}"
             IsVisible="{Binding DatabaseOpen}"
@@ -98,7 +98,7 @@
             Route="ToolsPage" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">
+    <FlyoutItem Title="Settings" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Settings}, Size=50, Color={StaticResource White}}">
         <ShellContent
             ContentTemplate="{DataTemplate settings:SettingsPage}"
             IsVisible="{Binding SettingsVisible}"
