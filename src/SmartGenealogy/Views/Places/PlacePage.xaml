@@ -213,7 +213,7 @@
                     </Border>
                 </VerticalStackLayout>
 
-                <!--  Map  -->                
+                <!--  Map  -->
                 <mapsui:MapView Grid.Column="1" Map="{Binding Map}" />
             </Grid>
         </Grid>

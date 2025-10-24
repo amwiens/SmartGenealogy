@@ -1,7 +1,6 @@
 ﻿using Mapsui;
 using Mapsui.Layers;
 using Mapsui.Projections;
-using Mapsui.Styles;
 using Mapsui.Tiling;
 
 namespace SmartGenealogy.Core.ViewModels.Places;
