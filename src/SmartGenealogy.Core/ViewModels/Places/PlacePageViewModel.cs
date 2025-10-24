@@ -1,4 +1,10 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Places;
+﻿using Mapsui;
+using Mapsui.Layers;
+using Mapsui.Projections;
+using Mapsui.Styles;
+using Mapsui.Tiling;
+
+namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place page view model.
@@ -50,6 +56,9 @@ public partial class PlacePageViewModel(
     [ObservableProperty]
     private WebLink? _selectedWebLink;
 
+    [ObservableProperty]
+    private Mapsui.Map? _map;
+
     /// <summary>
     /// Apply attributes.
     /// </summary>
@@ -86,6 +95,28 @@ public partial class PlacePageViewModel(
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
             WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
+
+            Map = new Mapsui.Map();
+            Map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            var features = new List<PointFeature>
+            {
+                new PointFeature(SphericalMercator.FromLonLat((double)Longitude, (double)Latitude)),
+            };
+            foreach (var detail in PlaceDetails)
+            {
+                if (detail.Latitude != 0 && detail.Longitude != 0)
+                {
+                    features.Add(new PointFeature(SphericalMercator.FromLonLat((double)detail.Longitude, (double)detail.Latitude)));
+                }
+            }
+            Map.Layers.Add(new MemoryLayer
+            {
+                Name = "Place Layer",
+                Features = features,
+                //Style = new ImageStyle { }
+            });
+            var center = new MPoint(SphericalMercator.FromLonLat((double)Longitude, (double)Latitude));
+            Map.Navigator.CenterOnAndZoomTo(center, Map.Navigator.Resolutions[12]);
         }
         catch (Exception ex)
         {

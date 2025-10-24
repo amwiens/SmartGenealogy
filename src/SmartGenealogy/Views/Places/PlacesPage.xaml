@@ -37,6 +37,7 @@
 
             <Button
                 Grid.Column="1"
+                Margin="0,30,20,0"
                 Command="{Binding AddPlaceCommand}"
                 Style="{DynamicResource PrimaryButtonStyle}"
                 Text="Add place"
