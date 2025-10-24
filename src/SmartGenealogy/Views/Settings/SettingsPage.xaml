@@ -127,9 +127,7 @@
                         </Switch.Behaviors>
                     </Switch>
                 </Grid>
-
             </StackLayout>
-
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

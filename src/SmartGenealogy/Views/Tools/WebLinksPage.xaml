@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage
-    x:Class="SmartGenealogy.Views.Tools.FactTypesPage"
+    x:Class="SmartGenealogy.Views.Tools.WebLinksPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
@@ -9,14 +9,14 @@
     xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
-    x:Name="factTypesPage"
-    x:DataType="viewModels:FactTypesPageViewModel"
+    x:Name="webLinksPage"
+    x:DataType="viewModels:WebLinksPageViewModel"
     BaseTitle=""
     BaseTitleColor="{DynamicResource BaseTextColor}">
 
     <base:BasePage.Behaviors>
         <toolkit:EventToCommandBehavior
-            BindingContext="{Binding Source={x:Reference factTypesPage}, Path=BindingContext}"
+            BindingContext="{Binding Source={x:Reference webLinksPage}, Path=BindingContext}"
             Command="{Binding AppearingCommand}"
             EventName="Appearing" />
     </base:BasePage.Behaviors>
@@ -29,18 +29,18 @@
             <controls:HeaderTemplate
                 Margin="25,30,25,0"
                 IconColor="#FF3E8EED"
-                IconFontFamily="IonIcons"
+                IconFontFamily="SmartGenealogyIcons"
                 IconSize="35"
-                IconText="{x:Static fonticons:IonIcons.IosCalendarOutline}"
-                Text="Fact Types"
+                IconText="{x:Static fonticons:SmartGenealogyIcons.Web}"
+                Text="Web Links"
                 TextSize="25" />
 
             <Button
                 Grid.Column="1"
-                Margin="25,30,20,0"
-                Command="{Binding AddFactTypeCommand}"
+                Margin="0,30,20,0"
+                Command="{Binding AddWebLinkCommand}"
                 Style="{DynamicResource PrimaryButtonStyle}"
-                Text="Add fact type" />
+                Text="Add web link" />
 
             <ScrollView
                 Grid.Row="1"
@@ -48,18 +48,18 @@
                 Margin="20"
                 Orientation="Vertical">
                 <CollectionView
-                    ItemsSource="{Binding FactTypes}"
+                    ItemsSource="{Binding WebLinks}"
                     SelectedItem="{Binding SelectedItem}"
-                    SelectionChangedCommand="{Binding OpenFactTypeDetailsCommand}"
+                    SelectionChangedCommand="{Binding OpenWebLinkDetailsCommand}"
                     SelectionMode="Single">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:FactType">
+                        <DataTemplate x:DataType="models:WebLink">
                             <Grid RowDefinitions="Auto,Auto">
                                 <Label FontSize="18" Text="{Binding Name}" />
                                 <Label
                                     Grid.Row="1"
                                     FontSize="14"
-                                    Text="{Binding Sentence}"
+                                    Text="{Binding URL}"
                                     TextColor="Gray" />
                             </Grid>
                         </DataTemplate>
