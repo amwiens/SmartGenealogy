@@ -282,4 +282,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Sources\" />
+	</ItemGroup>
+
 </Project>
