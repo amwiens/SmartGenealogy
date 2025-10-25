@@ -9,6 +9,7 @@
     xmlns:multimedia="clr-namespace:SmartGenealogy.Views.Multimedia"
     xmlns:places="clr-namespace:SmartGenealogy.Views.Places"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
+    xmlns:sources="clr-namespace:SmartGenealogy.Views.Sources"
     xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
     Title="AppShell"
@@ -19,9 +20,9 @@
     FlyoutHeaderBehavior="Fixed"
     FlyoutWidth="300">
 
-    <!--<Shell.BackButtonBehavior>
+    <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" />
-    </Shell.BackButtonBehavior>-->
+    </Shell.BackButtonBehavior>
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader />
@@ -82,6 +83,13 @@
             ContentTemplate="{DataTemplate places:PlacesPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="PlacesPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Sources" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Edit}, Size=50, Color={StaticResource White}}">
+        <ShellContent
+            ContentTemplate="{DataTemplate sources:SourcesPage}"
+            IsVisible="{Binding DatabaseOpen}"
+            Route="SourcesPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="Media" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Image}, Size=50, Color={StaticResource White}}">
