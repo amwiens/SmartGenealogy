@@ -28,7 +28,9 @@ public partial class SourcesPageViewModel(
         Sources = new ObservableCollection<Source>(sourceList!);
     }
 
-
+    /// <summary>
+    /// Add source
+    /// </summary>
     [RelayCommand]
     private async Task AddSource()
     {
@@ -45,6 +47,9 @@ public partial class SourcesPageViewModel(
         }
     }
 
+    /// <summary>
+    /// Open source details
+    /// </summary>
     [RelayCommand]
     private async Task OpenSourceDetails()
     {

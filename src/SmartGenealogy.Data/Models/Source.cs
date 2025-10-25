@@ -54,5 +54,4 @@ public class Source
     /// Date changed
     /// </summary>
     public DateTime DateChanged { get; set; }
-
 }
