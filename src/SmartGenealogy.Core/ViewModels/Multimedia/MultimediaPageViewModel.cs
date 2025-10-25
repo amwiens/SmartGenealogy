@@ -24,7 +24,8 @@ public partial class MultimediaPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        Multimedia = new ObservableCollection<Data.Models.Multimedia>(await multimediaRepository.ListAsync());
+        var multimedia = await multimediaRepository.ListAsync();
+        Multimedia = new ObservableCollection<Data.Models.Multimedia>(multimedia.OrderBy(x => x.Caption));
     }
 
     /// <summary>

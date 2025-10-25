@@ -33,7 +33,6 @@ public partial class GeocodeSettingsPageViewModel : ObservableObject
     /// <summary>
     /// Handles the text changed event of the LocationIQ API Key text box.
     /// </summary>
-    /// <param name="newText"></param>
     [RelayCommand]
     private void LocationIQAPIKeyChanged()
     {

@@ -24,7 +24,7 @@ public partial class PlacesPageViewModel(
     private async Task Appearing()
     {
         var placeList = await placeService.ListMasterPlacesAsync();
-        Places = new ObservableCollection<Place>(placeList!);
+        Places = new ObservableCollection<Place>(placeList!.OrderBy(x => x.Name));
     }
 
     /// <summary>
