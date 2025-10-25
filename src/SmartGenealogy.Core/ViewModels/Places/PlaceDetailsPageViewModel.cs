@@ -186,6 +186,23 @@ public partial class PlaceDetailsPageViewModel(
     }
 
     /// <summary>
+    /// Edit the coordinates for a place.
+    /// </summary>
+    [RelayCommand]
+    private async Task EditCoordinates()
+    {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "id", _place!.Id }
+        };
+
+        await popupService.ShowPopupAsync<AddEditPlaceCoordinatesPopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
+    }
+
+    /// <summary>
     /// Add place details.
     /// </summary>
     [RelayCommand]

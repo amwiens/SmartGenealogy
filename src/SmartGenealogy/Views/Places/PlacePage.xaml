@@ -67,10 +67,23 @@
 
                     <!--  Coordinates  -->
                     <VerticalStackLayout Grid.Row="0">
-                        <Label
-                            Margin="20,0,20,0"
-                            Style="{StaticResource Title2}"
-                            Text="Coordinates" />
+                        <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
+                            <Label
+                                Margin="20,20,20,0"
+                                Style="{StaticResource Title2}"
+                                Text="Coordinates"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Button
+                                    Command="{Binding EditCoordinatesCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource PrimaryButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.EditLocation}"
+                                    ToolTipProperties.Text="Edit coordinates" />
+                            </HorizontalStackLayout>
+                        </Grid>
+
                         <Border
                             Margin="20,0,20,0"
                             Padding="20,16"
@@ -103,12 +116,13 @@
                     </VerticalStackLayout>
 
                     <!--  Note  -->
-                    <VerticalStackLayout Grid.Row="1">
+                    <Grid Grid.Row="1" RowDefinitions="Auto,*">
                         <Label
                             Margin="20,20,20,0"
                             Style="{StaticResource Title2}"
                             Text="Note" />
                         <Border
+                            Grid.Row="1"
                             Margin="20,0,20,0"
                             Padding="20,16"
                             Stroke="{DynamicResource FrameBorder}"
@@ -118,10 +132,10 @@
                                 Text="{Binding Note}"
                                 VerticalOptions="Center" />
                         </Border>
-                    </VerticalStackLayout>
+                    </Grid>
 
                     <!--  Place Details  -->
-                    <VerticalStackLayout Grid.Row="2">
+                    <Grid Grid.Row="2" RowDefinitions="Auto,*">
                         <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
                             <Label
                                 Margin="20,20,20,0"
@@ -140,26 +154,29 @@
                         </Grid>
 
                         <Border
+                            Grid.Row="1"
                             Margin="20,0,20,0"
                             Padding="20,16"
                             Stroke="{DynamicResource FrameBorder}"
                             StrokeShape="{RoundRectangle CornerRadius=20}">
-                            <CollectionView
-                                ItemsSource="{Binding PlaceDetails}"
-                                SelectedItem="{Binding SelectedPlaceDetail}"
-                                SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
-                                SelectionMode="Single">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="models:Place">
-                                        <Label Text="{Binding Name}" />
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                            <ScrollView>
+                                <CollectionView
+                                    ItemsSource="{Binding PlaceDetails}"
+                                    SelectedItem="{Binding SelectedPlaceDetail}"
+                                    SelectionChangedCommand="{Binding OpenPlaceDetailsCommand}"
+                                    SelectionMode="Single">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:Place">
+                                            <Label Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </ScrollView>
                         </Border>
-                    </VerticalStackLayout>
+                    </Grid>
 
                     <!--  Media Links  -->
-                    <VerticalStackLayout Grid.Row="3">
+                    <Grid Grid.Row="3" RowDefinitions="Auto,*">
                         <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
                             <Label
                                 Margin="20,20,20,0"
@@ -184,6 +201,7 @@
                         </Grid>
 
                         <Border
+                            Grid.Row="1"
                             Margin="20,0,20,0"
                             Padding="20,16"
                             Stroke="{DynamicResource FrameBorder}"
@@ -211,10 +229,10 @@
                                 </CollectionView>
                             </ScrollView>
                         </Border>
-                    </VerticalStackLayout>
+                    </Grid>
 
                     <!--  Web Links  -->
-                    <VerticalStackLayout Grid.Row="4">
+                    <Grid Grid.Row="4" RowDefinitions="Auto,*">
                         <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
                             <Label
                                 Margin="20,20,20,0"
@@ -231,26 +249,29 @@
                         </Grid>
 
                         <Border
+                            Grid.Row="1"
                             Margin="20,0,20,0"
                             Padding="20,16"
                             Stroke="{DynamicResource FrameBorder}"
                             StrokeShape="{RoundRectangle CornerRadius=20}">
-                            <CollectionView
-                                ItemsSource="{Binding WebLinks}"
-                                SelectedItem="{Binding SelectedWebLink}"
-                                SelectionChangedCommand="{Binding OpenWebLinkCommand}"
-                                SelectionMode="Single">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="models:WebLink">
-                                        <HorizontalStackLayout>
-                                            <Label Text="{Binding Name}" />
-                                            <Label Text="{Binding URL}" />
-                                        </HorizontalStackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                            <ScrollView>
+                                <CollectionView
+                                    ItemsSource="{Binding WebLinks}"
+                                    SelectedItem="{Binding SelectedWebLink}"
+                                    SelectionChangedCommand="{Binding OpenWebLinkCommand}"
+                                    SelectionMode="Single">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:WebLink">
+                                            <HorizontalStackLayout>
+                                                <Label Text="{Binding Name}" />
+                                                <Label Text="{Binding URL}" />
+                                            </HorizontalStackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </ScrollView>
                         </Border>
-                    </VerticalStackLayout>
+                    </Grid>
 
                     <!--  Last Edited  -->
                     <VerticalStackLayout Grid.Row="5">

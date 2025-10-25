@@ -97,7 +97,7 @@ public partial class PlacePageViewModel(
             Latitude = _place.Latitude;
             Longitude = _place.Longitude;
             Note = _place.Note;
-            PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
+            PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!.OrderBy(x => x.Name));
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
             WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
             DateAdded = _place.DateAdded.ToLocalTime();
@@ -190,6 +190,23 @@ public partial class PlacePageViewModel(
         else
         {
         }
+    }
+
+    /// <summary>
+    /// Edit the coordinates for a place.
+    /// </summary>
+    [RelayCommand]
+    private async Task EditCoordinates()
+    {
+        var queryAttributes = new Dictionary<string, object>
+        {
+            { "id", _place!.Id }
+        };
+
+        await popupService.ShowPopupAsync<AddEditPlaceCoordinatesPopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
     }
 
     /// <summary>
