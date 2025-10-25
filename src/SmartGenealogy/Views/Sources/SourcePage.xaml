@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage
+    x:Class="SmartGenealogy.Views.Sources.SourcePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Sources;assembly=SmartGenealogy.Core"
+    x:Name="sourcePage"
+    x:DataType="viewModels:SourcePageViewModel"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
+
+    <base:BasePage.PageContent>
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+
+            <controls:HeaderTemplate
+                Grid.Row="0"
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="IonIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:IonIcons.Edit}"
+                Text="{Binding Name}"
+                TextSize="25" />
+
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                HorizontalOptions="End">
+                <Button
+                    Command="{Binding EditSourceCommand}"
+                    Style="{DynamicResource PrimaryButtonStyle}"
+                    Text="Edit" />
+                <Button
+                    Command="{Binding DeleteSourceCommand}"
+                    Style="{DynamicResource DeleteButtonStyle}"
+                    Text="Delete" />
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+
+                <!--  Ref Number  -->
+                <Label
+                    Margin="20,0,20,0"
+                    Style="{StaticResource Title2}"
+                    Text="Reference Number" />
+                <Border
+                    Margin="20,0,20,0"
+                    Padding="20,16"
+                    Stroke="{DynamicResource FrameBorder}"
+                    StrokeShape="{RoundRectangle CornerRadius=20}">
+                    <Label
+                        Grid.Row="1"
+                        Text="{Binding RefNumber}"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <!--  Actual Text  -->
+                <Label
+                    Margin="20,20,20,0"
+                    Style="{StaticResource Title2}"
+                    Text="Actual Text" />
+                <Border
+                    Margin="20,0,20,0"
+                    Padding="20,16"
+                    Stroke="{DynamicResource FrameBorder}"
+                    StrokeShape="{RoundRectangle CornerRadius=20}">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding ActualText}"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <!--  Comments  -->
+                <Label
+                    Margin="20,20,20,0"
+                    Style="{StaticResource Title2}"
+                    Text="Comments" />
+                <Border
+                    Margin="20,0,20,0"
+                    Padding="20,16"
+                    Stroke="{DynamicResource FrameBorder}"
+                    StrokeShape="{RoundRectangle CornerRadius=20}">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Comments}"
+                        VerticalOptions="Center" />
+                </Border>
+
+                <!--  Is private  -->
+                <Label
+                    Margin="20,20,20,0"
+                    Style="{StaticResource Title2}"
+                    Text="Is Private" />
+                <Border
+                    Margin="20,0,20,0"
+                    Padding="20,16"
+                    Stroke="{DynamicResource FrameBorder}"
+                    StrokeShape="{RoundRectangle CornerRadius=20}">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding IsPrivate}"
+                        VerticalOptions="Center" />
+                </Border>
+            </VerticalStackLayout>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

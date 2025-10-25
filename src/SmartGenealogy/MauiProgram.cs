@@ -186,6 +186,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<GeocodeSettingsPage, GeocodeSettingsPageViewModel>("geocodeSettings");
         mauiAppBuilder.Services.AddTransient<SourcesPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<SourcePage, SourcePageViewModel>("source");
 
         return mauiAppBuilder;
     }

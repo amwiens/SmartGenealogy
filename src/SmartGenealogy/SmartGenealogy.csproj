@@ -91,6 +91,9 @@
 	  <Compile Update="Views\Popups\AddEditSourcePopup.xaml.cs">
 	    <DependentUpon>AddEditSourcePopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Sources\SourcePage.xaml.cs">
+	    <DependentUpon>SourcePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Sources\SourcesPage.xaml.cs">
 	    <DependentUpon>SourcesPage.xaml</DependentUpon>
 	  </Compile>
@@ -272,6 +275,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Settings\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Sources\SourcePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Sources\SourcesPage.xaml">
