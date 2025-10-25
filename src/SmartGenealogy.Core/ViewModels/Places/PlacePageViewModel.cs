@@ -38,6 +38,12 @@ public partial class PlacePageViewModel(
     private string? _note = string.Empty;
 
     [ObservableProperty]
+    private DateTime? _dateAdded;
+
+    [ObservableProperty]
+    private DateTime? _dateChanged;
+
+    [ObservableProperty]
     private ObservableCollection<Place> _placeDetails = [];
 
     [ObservableProperty]
@@ -94,6 +100,8 @@ public partial class PlacePageViewModel(
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
             WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
+            DateAdded = _place.DateAdded.ToLocalTime();
+            DateChanged = _place.DateChanged.ToLocalTime();
 
             Map = new Mapsui.Map();
             Map.Layers.Add(OpenStreetMap.CreateTileLayer());

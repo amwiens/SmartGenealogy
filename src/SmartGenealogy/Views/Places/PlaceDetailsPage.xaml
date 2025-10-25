@@ -37,150 +37,216 @@
                 HorizontalOptions="End">
                 <Button
                     Command="{Binding EditPlaceCommand}"
+                    FontFamily="MaterialDesign"
                     Style="{DynamicResource PrimaryButtonStyle}"
-                    Text="Edit" />
+                    Text="{x:Static fonticons:MaterialDesignIcons.Edit}"
+                    ToolTipProperties.Text="Edit place" />
                 <Button
                     Command="{Binding DeletePlaceCommand}"
+                    FontFamily="MaterialDesign"
                     Style="{DynamicResource DeleteButtonStyle}"
-                    Text="Delete" />
+                    Text="{x:Static fonticons:MaterialDesignIcons.Delete}"
+                    ToolTipProperties.Text="Delete place" />
                 <Button
                     Command="{Binding GeocodePlaceCommand}"
+                    FontFamily="MaterialDesign"
                     Style="{DynamicResource PrimaryButtonStyle}"
-                    Text="Geocode" />
+                    Text="{x:Static fonticons:MaterialDesignIcons.EditLocation}"
+                    ToolTipProperties.Text="Geocode" />
             </HorizontalStackLayout>
 
             <Grid
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
                 ColumnDefinitions="*,*">
-                <VerticalStackLayout Grid.Column="0">
+                <Grid
+                    Grid.Column="0"
+                    Margin="0,0,0,20"
+                    RowDefinitions="Auto,*,4*,*,Auto">
 
                     <!--  Coordinates  -->
-                    <Label
-                        Margin="20,0,20,0"
-                        Style="{StaticResource Title2}"
-                        Text="Coordinates" />
-                    <Border
-                        Margin="20,0,20,0"
-                        Padding="20,16"
-                        Stroke="{DynamicResource FrameBorder}"
-                        StrokeShape="{RoundRectangle CornerRadius=20}">
-                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
-                            <Label
-                                Style="{StaticResource Footnote}"
-                                Text="Latitude"
-                                VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Row="0">
+                        <Label
+                            Margin="20,0,20,0"
+                            Style="{StaticResource Title2}"
+                            Text="Coordinates" />
+                        <Border
+                            Margin="20,0,20,0"
+                            Padding="20,16"
+                            Stroke="{DynamicResource FrameBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius=20}">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                <Label
+                                    Style="{StaticResource Footnote}"
+                                    Text="Latitude"
+                                    VerticalOptions="Center" />
 
-                            <Label
-                                Grid.Row="1"
-                                Text="{Binding Latitude}"
-                                VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="1"
+                                    Text="{Binding Latitude}"
+                                    VerticalOptions="Center" />
 
-                            <Label
-                                Grid.Column="1"
-                                Style="{StaticResource Footnote}"
-                                Text="Longitude"
-                                VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Style="{StaticResource Footnote}"
+                                    Text="Longitude"
+                                    VerticalOptions="Center" />
 
-                            <Label
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{Binding Longitude}"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Longitude}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
 
                     <!--  Note  -->
-                    <Label
-                        Margin="20,20,20,0"
-                        Style="{StaticResource Title2}"
-                        Text="Note" />
-                    <Border
-                        Margin="20,0,20,0"
-                        Padding="20,16"
-                        Stroke="{DynamicResource FrameBorder}"
-                        StrokeShape="{RoundRectangle CornerRadius=20}">
+                    <VerticalStackLayout Grid.Row="1">
                         <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Note}"
-                            VerticalOptions="Center" />
-                    </Border>
+                            Margin="20,20,20,0"
+                            Style="{StaticResource Title2}"
+                            Text="Note" />
+                        <Border
+                            Margin="20,0,20,0"
+                            Padding="20,16"
+                            Stroke="{DynamicResource FrameBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius=20}">
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{Binding Note}"
+                                VerticalOptions="Center" />
+                        </Border>
+                    </VerticalStackLayout>
 
                     <!--  Media Links  -->
-                    <Label
-                        Margin="20,20,20,0"
-                        Style="{StaticResource Title2}"
-                        Text="Media Links" />
-                    <HorizontalStackLayout HorizontalOptions="End">
-                        <Button
-                            Command="{Binding AddNewMediaLinkCommand}"
-                            Style="{DynamicResource PrimaryButtonStyle}"
-                            Text="Add new media link" />
-                        <Button
-                            Command="{Binding AddExistingMediaLinkCommand}"
-                            Style="{DynamicResource PrimaryButtonStyle}"
-                            Text="Add existing media link" />
-                    </HorizontalStackLayout>
+                    <VerticalStackLayout Grid.Row="2">
+                        <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
+                            <Label
+                                Margin="20,20,20,0"
+                                Style="{StaticResource Title2}"
+                                Text="Media Links"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Button
+                                    Command="{Binding AddNewMediaLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource PrimaryButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.AddAPhoto}"
+                                    ToolTipProperties.Text="Add new media link" />
+                                <Button
+                                    Command="{Binding AddExistingMediaLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource PrimaryButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.AddCircleOutline}"
+                                    ToolTipProperties.Text="Add existing media link" />
+                            </HorizontalStackLayout>
+                        </Grid>
 
-                    <Border
-                        Margin="20,0,20,0"
-                        Padding="20,16"
-                        Stroke="{DynamicResource FrameBorder}"
-                        StrokeShape="{RoundRectangle CornerRadius=20}">
-                        <CollectionView
-                            ItemsSource="{Binding MediaLinks}"
-                            SelectedItem="{Binding SelectedMediaLink}"
-                            SelectionChangedCommand="{Binding OpenMultimediaCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:MediaLink">
-                                    <VerticalStackLayout>
-                                        <Image
-                                            Grid.Column="0"
-                                            Aspect="AspectFit"
-                                            HeightRequest="100"
-                                            Source="{Binding Multimedia.ThumbnailBytes}"
-                                            WidthRequest="150" />
-                                        <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Border>
+                        <Border
+                            Margin="20,0,20,0"
+                            Padding="20,16"
+                            Stroke="{DynamicResource FrameBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius=20}">
+                            <CollectionView
+                                ItemsSource="{Binding MediaLinks}"
+                                SelectedItem="{Binding SelectedMediaLink}"
+                                SelectionChangedCommand="{Binding OpenMultimediaCommand}"
+                                SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:MediaLink">
+                                        <VerticalStackLayout>
+                                            <Image
+                                                Grid.Column="0"
+                                                Aspect="AspectFit"
+                                                HeightRequest="100"
+                                                Source="{Binding Multimedia.ThumbnailBytes}"
+                                                WidthRequest="150" />
+                                            <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
+                                        </VerticalStackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Border>
+                    </VerticalStackLayout>
 
                     <!--  Web Links  -->
-                    <Label
-                        Margin="20,20,20,0"
-                        Style="{StaticResource Title2}"
-                        Text="Web Links" />
-                    <HorizontalStackLayout HorizontalOptions="End">
-                        <Button
-                            Command="{Binding AddNewWebLinkCommand}"
-                            Style="{DynamicResource PrimaryButtonStyle}"
-                            Text="Add new web link" />
-                    </HorizontalStackLayout>
+                    <VerticalStackLayout Grid.Row="3">
+                        <Grid Margin="0,20,20,0" ColumnDefinitions="*,Auto">
+                            <Label
+                                Margin="20,20,20,0"
+                                Style="{StaticResource Title2}"
+                                Text="Web Links" />
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Button
+                                    Command="{Binding AddNewWebLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource PrimaryButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.AddCircleOutline}"
+                                    ToolTipProperties.Text="Add web link" />
+                            </HorizontalStackLayout>
+                        </Grid>
 
-                    <Border
-                        Margin="20,0,20,0"
-                        Padding="20,16"
-                        Stroke="{DynamicResource FrameBorder}"
-                        StrokeShape="{RoundRectangle CornerRadius=20}">
-                        <CollectionView
-                            ItemsSource="{Binding WebLinks}"
-                            SelectedItem="{Binding SelectedWebLink}"
-                            SelectionChangedCommand="{Binding OpenWebLinkCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:WebLink">
-                                    <HorizontalStackLayout>
-                                        <Label Text="{Binding Name}" />
-                                        <Label Text="{Binding URL}" />
-                                    </HorizontalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Border>
-                </VerticalStackLayout>
+                        <Border
+                            Margin="20,0,20,0"
+                            Padding="20,16"
+                            Stroke="{DynamicResource FrameBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius=20}">
+                            <CollectionView
+                                ItemsSource="{Binding WebLinks}"
+                                SelectedItem="{Binding SelectedWebLink}"
+                                SelectionChangedCommand="{Binding OpenWebLinkCommand}"
+                                SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:WebLink">
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Name}" />
+                                            <Label Text="{Binding URL}" />
+                                        </HorizontalStackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!--  Last Edited  -->
+                    <VerticalStackLayout Grid.Row="4">
+                        <Label
+                            Margin="20,20,20,0"
+                            Style="{StaticResource Title2}"
+                            Text="Last Edited" />
+                        <Border
+                            Margin="20,0,20,0"
+                            Padding="20,16"
+                            Stroke="{DynamicResource FrameBorder}"
+                            StrokeShape="{RoundRectangle CornerRadius=20}">
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                                <Label
+                                    Style="{StaticResource Footnote}"
+                                    Text="Change Date"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Text="{Binding DateChanged}"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    Style="{StaticResource Footnote}"
+                                    Text="Creation Date"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding DateAdded}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+                </Grid>
 
                 <!--  Map  -->
                 <mapsui:MapView Grid.Column="1" Map="{Binding Map}" />
