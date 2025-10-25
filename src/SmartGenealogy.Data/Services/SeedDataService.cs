@@ -10,6 +10,7 @@
 /// <param name="multimediaWordRepository">Multimedia word repository</param>
 /// <param name="placeRepository">Place repository</param>
 /// <param name="roleRepository">Role repository</param>
+/// <param name="sourceRepository">Source repository</param>
 /// <param name="webLinkRepository">Web link repository</param>
 /// <param name="logger">Logger</param>
 public class SeedDataService(
@@ -20,6 +21,7 @@ public class SeedDataService(
     MultimediaWordRepository multimediaWordRepository,
     PlaceRepository placeRepository,
     RoleRepository roleRepository,
+    SourceRepository sourceRepository,
     WebLinkRepository webLinkRepository,
     ILogger<SeedDataService> logger)
 {
@@ -98,6 +100,7 @@ public class SeedDataService(
                 multimediaWordRepository.CreateTableAsync(),
                 placeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync(),
+                sourceRepository.CreateTableAsync(),
                 webLinkRepository.CreateTableAsync()
                 );
         }

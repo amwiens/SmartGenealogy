@@ -125,6 +125,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MultimediaWordRepository>();
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
+        mauiAppBuilder.Services.AddSingleton<SourceRepository>();
         mauiAppBuilder.Services.AddSingleton<WebLinkRepository>();
 
         return mauiAppBuilder;
@@ -159,6 +160,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MultimediaPageViewModel>();
         mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<SourcesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
 
         return mauiAppBuilder;
@@ -183,6 +185,8 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientWithShellRoute<WebLinkPage, WebLinkPageViewModel>("webLink");
         mauiAppBuilder.Services.AddTransient<SettingsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<GeocodeSettingsPage, GeocodeSettingsPageViewModel>("geocodeSettings");
+        mauiAppBuilder.Services.AddTransient<SourcesPage>();
+        mauiAppBuilder.Services.AddTransientWithShellRoute<SourcePage, SourcePageViewModel>("source");
 
         return mauiAppBuilder;
     }
@@ -196,6 +200,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientPopup<AddEditMultimediaPopup, AddEditMultimediaPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditPlacePopup, AddEditPlacePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditRolePopup, AddEditRolePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditSourcePopup, AddEditSourcePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditWebLinkPopup, AddEditWebLinkPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<SelectMultimediaPopup, SelectMultimediaPopupViewModel>();
