@@ -1,6 +1,4 @@
-﻿using SmartGenealogy.Data.Models;
-
-namespace SmartGenealogy.Data.Repositories;
+﻿namespace SmartGenealogy.Data.Repositories;
 
 /// <summary>
 /// Repository class for managing Source entities in the database.
@@ -138,7 +136,7 @@ public class SourceRepository(DatabaseSettings databaseSettings, ILogger<SourceR
         await connection.OpenAsync();
 
         var saveCmd = connection.CreateCommand();
-        if  (item.Id == 0)
+        if (item.Id == 0)
         {
             saveCmd.CommandText = @"
                 INSERT INTO Source (Name, RefNumber, ActualText, Comments, IsPrivate, TemplateId, Fields, DateAdded, DateChanged)
