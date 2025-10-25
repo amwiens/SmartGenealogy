@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditSourcePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditSourcePopupViewModel"
+    Background="{DynamicResource BasePageColor}">
+
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Start"
+            Text="Source"
+            VerticalOptions="Center" />
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Name"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding Name}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Reference Number"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding RefNumber}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Actual Text"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding ActualText}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Comments"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding Comments}" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout>
+            <CheckBox IsChecked="{Binding IsPrivate}" />
+
+            <Label
+                HorizontalOptions="Center"
+                Text="Private"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>

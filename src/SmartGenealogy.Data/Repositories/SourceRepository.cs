@@ -33,7 +33,7 @@ public class SourceRepository(DatabaseSettings databaseSettings, ILogger<SourceR
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT NOT NULL,
                     RefNumber TEXT,
-                    AcutalText TEXT,
+                    ActualText TEXT,
                     Comments TEXT,
                     IsPrivate INTEGER,
                     TemplateId INTEGER,
@@ -141,8 +141,8 @@ public class SourceRepository(DatabaseSettings databaseSettings, ILogger<SourceR
         if  (item.Id == 0)
         {
             saveCmd.CommandText = @"
-                INSERT INTO Source (Name, RefNumber, AcutalText, Comments, IsPrivate, TemplateId, Fields, DateAdded, DateChanged)
-                VALUES (@Name, @RefNumber, @AcutalText, @Comments, @IsPrivate, @TemplateId, @Fields, @DateAdded, @DateChanged);
+                INSERT INTO Source (Name, RefNumber, ActualText, Comments, IsPrivate, TemplateId, Fields, DateAdded, DateChanged)
+                VALUES (@Name, @RefNumber, @ActualText, @Comments, @IsPrivate, @TemplateId, @Fields, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
             saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
@@ -164,7 +164,7 @@ public class SourceRepository(DatabaseSettings databaseSettings, ILogger<SourceR
 
         saveCmd.Parameters.AddWithValue("@Name", item.Name ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@RefNumber", item.RefNumber ?? string.Empty);
-        saveCmd.Parameters.AddWithValue("@AcutalText", item.ActualText ?? string.Empty);
+        saveCmd.Parameters.AddWithValue("@ActualText", item.ActualText ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@Comments", item.Comments ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@IsPrivate", item.IsPrivate ? 1 : 0);
         saveCmd.Parameters.AddWithValue("@TemplateId", item.TemplateId);

@@ -36,7 +36,7 @@ public partial class SourcesPageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                //var result = await popupService.ShowPopupAsync<AddEditSourceViewModel>(shell);
+                var result = await popupService.ShowPopupAsync<AddEditSourcePopupViewModel>(shell);
             }
         }
         catch (Exception ex)

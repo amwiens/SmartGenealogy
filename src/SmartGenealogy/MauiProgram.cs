@@ -199,6 +199,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientPopup<AddEditMultimediaPopup, AddEditMultimediaPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditPlacePopup, AddEditPlacePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditRolePopup, AddEditRolePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditSourcePopup, AddEditSourcePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditWebLinkPopup, AddEditWebLinkPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<SelectMultimediaPopup, SelectMultimediaPopupViewModel>();
