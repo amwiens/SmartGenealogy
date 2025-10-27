@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.SelectLocationPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SmartGenealogy.LocationIQ.Models;assembly=SmartGenealogy.LocationIQ"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:Name="selectLocationPopup"
+    x:DataType="viewModels:SelectLocationPopupViewModel"
+    x:TypeArguments="system:Int32"
+    Background="{DynamicResource BasePageColor}"
+    HeightRequest="500"
+    WidthRequest="1000">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Label Text="Location" />
+
+        <ScrollView Grid.Row="1" Orientation="Vertical">
+            <CollectionView
+                ItemsSource="{Binding Locations}"
+                SelectedItem="{Binding SelectedLocation}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FreeFormQueryResponse">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding address.house_number}" />
+                                    <Label Text=" " />
+                                    <Label Text="{Binding address.road}" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding address.city}" />
+                                    <Label Text=", " />
+                                    <Label Text="{Binding address.state}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="End">
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
+        </HorizontalStackLayout>
+    </Grid>
+</toolkit:Popup>

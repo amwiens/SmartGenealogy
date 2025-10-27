@@ -1,9 +1,4 @@
-﻿using Mapsui;
-using Mapsui.Layers;
-using Mapsui.Projections;
-using Mapsui.Tiling;
-
-namespace SmartGenealogy.Core.ViewModels.Places;
+﻿namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place page view model.
@@ -180,7 +175,11 @@ public partial class PlacePageViewModel(
         locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
         var result = await locationIQService.GetFreeFormQuery(_place!.Name!);
 
-        if (result!.Count == 1)
+        if (result!.Count == 0)
+        {
+            await alertService.ShowAlertAsync("Geocode Place", "No results found for the place.", "Ok");
+        }
+        else if (result!.Count == 1)
         {
             _place!.Latitude = decimal.Parse(result.FirstOrDefault()!.lat);
             _place!.Longitude = decimal.Parse(result.FirstOrDefault()!.lon);
@@ -189,6 +188,21 @@ public partial class PlacePageViewModel(
         }
         else
         {
+            var queryAttributes = new Dictionary<string, object>
+                {
+                    { "result", result }
+                };
+
+            IPopupResult<FreeFormQueryResponse> popupResult = await popupService.ShowPopupAsync<SelectLocationPopupViewModel, FreeFormQueryResponse>(
+                Shell.Current,
+                options: PopupOptions.Empty,
+                shellParameters: queryAttributes);
+
+            if (popupResult is not null)
+            {
+                _place!.Latitude = decimal.Parse(popupResult.Result!.lat);
+                _place!.Longitude = decimal.Parse(popupResult.Result!.lon);
+            }
         }
     }
 
