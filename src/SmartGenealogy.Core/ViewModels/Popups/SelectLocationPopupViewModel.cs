@@ -9,10 +9,10 @@ public partial class SelectLocationPopupViewModel(
     : ObservableObject, IQueryAttributable
 {
     [ObservableProperty]
-    List<FreeFormQueryResponse> _locations = new();
+    private List<FreeFormQueryResponse> _locations = new();
 
     [ObservableProperty]
-    FreeFormQueryResponse? _selectedLocation;
+    private FreeFormQueryResponse? _selectedLocation;
 
     /// <summary>
     /// Apply attributes.
@@ -22,7 +22,7 @@ public partial class SelectLocationPopupViewModel(
     {
         if (query.ContainsKey("result"))
         {
-            Locations  = (List<FreeFormQueryResponse>)query["result"];
+            Locations = (List<FreeFormQueryResponse>)query["result"];
             //LoadData(placeId).FireAndForgetSafeAsync();
         }
     }
