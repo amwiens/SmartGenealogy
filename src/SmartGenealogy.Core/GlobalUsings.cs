@@ -5,11 +5,17 @@ global using System.Text.Json.Serialization;
 
 global using CommunityToolkit.Maui;
 global using CommunityToolkit.Maui.Alerts;
+global using CommunityToolkit.Maui.Core;
 global using CommunityToolkit.Maui.Storage;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.Messaging;
 global using CommunityToolkit.Mvvm.Messaging.Messages;
+
+global using Mapsui;
+global using Mapsui.Layers;
+global using Mapsui.Projections;
+global using Mapsui.Tiling;
 
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Maui.Graphics.Platform;
@@ -30,3 +36,4 @@ global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;
 global using SmartGenealogy.Data.Settings;
 global using SmartGenealogy.LocationIQ;
+global using SmartGenealogy.LocationIQ.Models;
