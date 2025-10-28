@@ -155,6 +155,12 @@
                                     Style="{DynamicResource PrimaryButtonStyle}"
                                     Text="{x:Static fonticons:MaterialDesignIcons.AddCircleOutline}"
                                     ToolTipProperties.Text="Add existing media link" />
+                                <Button
+                                    Command="{Binding DeleteMediaLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource DeleteButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.Delete}"
+                                    ToolTipProperties.Text="Delete media link" />
                             </HorizontalStackLayout>
                         </Grid>
 
@@ -168,7 +174,6 @@
                                 ItemsLayout="VerticalGrid, 3"
                                 ItemsSource="{Binding MediaLinks}"
                                 SelectedItem="{Binding SelectedMediaLink}"
-                                SelectionChangedCommand="{Binding OpenMultimediaCommand}"
                                 SelectionMode="Single">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate x:DataType="models:MediaLink">
@@ -180,6 +185,12 @@
                                                 Source="{Binding Multimedia.ThumbnailBytes}"
                                                 WidthRequest="150" />
                                             <Label HorizontalOptions="Center" Text="{Binding Multimedia.Caption}" />
+                                            <!--<VerticalStackLayout.Behaviors>
+                                                <toolkit:EventToCommandBehavior
+                                                    Command="{Binding BindingContext.OpenMultimediaCommand, Source={RelativeSource AncestorType=Page}}"
+                                                    CommandParameter="{Binding .}"
+                                                    EventName="DoubleTapped" />
+                                            </VerticalStackLayout.Behaviors>-->
                                         </VerticalStackLayout>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>

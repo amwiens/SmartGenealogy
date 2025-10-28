@@ -315,6 +315,30 @@ public partial class PlacePageViewModel(
     }
 
     /// <summary>
+    /// Delete media link
+    /// </summary>
+    [RelayCommand]
+    private async Task DeleteMediaLink()
+    {
+        try
+        {
+            if (SelectedMediaLink is not null)
+            {
+                var isConfirmed = await alertService.ShowAlertAsync("Delete media link", "Are you sure you want to delete this media link?", "Yes", "No");
+                if (isConfirmed)
+                {
+                    await mediaLinkRepository.DeleteItemAsync(SelectedMediaLink);
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
     /// Open multimedia details
     /// </summary>
     [RelayCommand]
