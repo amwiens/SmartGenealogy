@@ -85,7 +85,8 @@ public partial class AddEditPlacePopupViewModel(
 
         if (SmartGenealogySettings.GeocodePlaceOnSave)
         {
-            var placeName = _place.Name + " " + ((_place.MasterPlace != null) ? _place.MasterPlace!.Name : string.Empty);
+            var masterPlace = (_place.PlaceType == PlaceType.Detail) ? await placeService.GetPlaceAsync(_place.MasterId) : null;
+            var placeName = _place.Name + ", " + ((masterPlace != null) ? masterPlace!.Name : string.Empty);
             locationIQService.LocationIQAPIKey = SmartGenealogySettings.LocationIQAPIKey;
             var result = await locationIQService.GetFreeFormQuery(placeName);
 
