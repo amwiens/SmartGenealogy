@@ -308,13 +308,37 @@ public partial class PlaceDetailsPageViewModel(
     }
 
     /// <summary>
+    /// Delete media link
+    /// </summary>
+    [RelayCommand]
+    private async Task DeleteMediaLink()
+    {
+        try
+        {
+            if (SelectedMediaLink is not null)
+            {
+                var isConfirmed = await alertService.ShowAlertAsync("Delete media link", "Are you sure you want to delete this media link?", "Yes", "No");
+                if (isConfirmed)
+                {
+                    await mediaLinkRepository.DeleteItemAsync(SelectedMediaLink);
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
     /// Open multimedia details
     /// </summary>
     [RelayCommand]
-    private async Task OpenMultimedia()
+    private async Task OpenMultimedia(MediaLink mediaLink)
     {
-        if (SelectedMediaLink is not null)
-            await Shell.Current.GoToAsync($"multimediaDetails?id={SelectedMediaLink.MultimediaId}");
+        if (mediaLink is not null)
+            await Shell.Current.GoToAsync($"multimediaDetails?id={mediaLink.MultimediaId}");
     }
 
     /// <summary>
