@@ -83,5 +83,5 @@ public class Place
     /// <summary>
     /// Web links
     /// </summary>
-    public List<WebLink>? WebLinks { get; set; }
+    public List<WebLinkLink>? WebLinks { get; set; }
 }

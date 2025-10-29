@@ -76,10 +76,10 @@ public partial class WebLinkPageViewModel(
             { "id", _webLink!.Id }
         };
 
-        //await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(
-        //    Shell.Current,
-        //    options: PopupOptions.Empty,
-        //    shellParameters: queryAttributes);
+        await popupService.ShowPopupAsync<AddEditWebLinkPopupViewModel>(
+            Shell.Current,
+            options: PopupOptions.Empty,
+            shellParameters: queryAttributes);
     }
 
     /// <summary>

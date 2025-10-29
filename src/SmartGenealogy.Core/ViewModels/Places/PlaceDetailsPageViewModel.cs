@@ -48,13 +48,13 @@ public partial class PlaceDetailsPageViewModel(
     private ObservableCollection<MediaLink> _mediaLinks = [];
 
     [ObservableProperty]
-    private ObservableCollection<WebLink> _webLinks = [];
+    private ObservableCollection<WebLinkLink> _webLinks = [];
 
     [ObservableProperty]
     private MediaLink? _selectedMediaLink;
 
     [ObservableProperty]
-    private WebLink? _selectedWebLink;
+    private WebLinkLink? _selectedWebLink;
 
     [ObservableProperty]
     private Mapsui.Map? _map;
@@ -96,7 +96,7 @@ public partial class PlaceDetailsPageViewModel(
             DateChanged = _place.DateChanged.ToLocalTime();
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!);
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
-            WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
+            WebLinks = new ObservableCollection<WebLinkLink>(_place.WebLinks!);
 
             Map = new Mapsui.Map();
             Map.Layers.Add(OpenStreetMap.CreateTileLayer());

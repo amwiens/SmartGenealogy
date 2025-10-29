@@ -45,7 +45,7 @@ public partial class PlacePageViewModel(
     private ObservableCollection<MediaLink> _mediaLinks = [];
 
     [ObservableProperty]
-    private ObservableCollection<WebLink> _webLinks = [];
+    private ObservableCollection<WebLinkLink> _webLinks = [];
 
     [ObservableProperty]
     private Place? _selectedPlaceDetail;
@@ -54,7 +54,7 @@ public partial class PlacePageViewModel(
     private MediaLink? _selectedMediaLink;
 
     [ObservableProperty]
-    private WebLink? _selectedWebLink;
+    private WebLinkLink? _selectedWebLink;
 
     [ObservableProperty]
     private Mapsui.Map? _map;
@@ -94,7 +94,7 @@ public partial class PlacePageViewModel(
             Note = _place.Note;
             PlaceDetails = new ObservableCollection<Place>(_place.PlaceDetails!.OrderBy(x => x.Name));
             MediaLinks = new ObservableCollection<MediaLink>(_place.MediaLinks!);
-            WebLinks = new ObservableCollection<WebLink>(_place.WebLinks!);
+            WebLinks = new ObservableCollection<WebLinkLink>(_place.WebLinks!);
             DateAdded = _place.DateAdded.ToLocalTime();
             DateChanged = _place.DateChanged.ToLocalTime();
 
