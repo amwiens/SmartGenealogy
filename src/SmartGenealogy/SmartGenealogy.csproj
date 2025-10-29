@@ -97,6 +97,9 @@
 	  <Compile Update="Views\Popups\SelectLocationPopup.xaml.cs">
 	    <DependentUpon>SelectLocationPopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Popups\SelectWebLinkPopup.xaml.cs">
+	    <DependentUpon>SelectWebLinkPopup.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Sources\SourcePage.xaml.cs">
 	    <DependentUpon>SourcePage.xaml</DependentUpon>
 	  </Compile>
@@ -278,6 +281,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\SelectLocationPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Popups\SelectWebLinkPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\SelectMultimediaPopup.xaml">

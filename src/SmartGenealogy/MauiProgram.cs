@@ -207,6 +207,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientPopup<NewDatabasePopup, NewDatabasePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<SelectLocationPopup, SelectLocationPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<SelectMultimediaPopup, SelectMultimediaPopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<SelectWebLinkPopup, SelectWebLinkPopupViewModel>();
 
         return mauiAppBuilder;
     }

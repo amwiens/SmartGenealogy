@@ -212,6 +212,18 @@
                                     Style="{DynamicResource PrimaryButtonStyle}"
                                     Text="{x:Static fonticons:MaterialDesignIcons.AddCircleOutline}"
                                     ToolTipProperties.Text="Add web link" />
+                                <Button
+                                    Command="{Binding AddExistingWebLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource PrimaryButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.AddCircleOutline}"
+                                    ToolTipProperties.Text="Add existing web link" />
+                                <Button
+                                    Command="{Binding DeleteWebLinkCommand}"
+                                    FontFamily="MaterialDesign"
+                                    Style="{DynamicResource DeleteButtonStyle}"
+                                    Text="{x:Static fonticons:MaterialDesignIcons.Delete}"
+                                    ToolTipProperties.Text="Delete web link" />
                             </HorizontalStackLayout>
                         </Grid>
 
