@@ -4,10 +4,12 @@
 /// Add edit web link popup view model.
 /// </summary>
 /// <param name="webLinkRepository">Web link repository</param>
+/// <param name="webLinkLinkRepository">Weblink link repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditWebLinkPopupViewModel(
     WebLinkRepository webLinkRepository,
+    WebLinkLinkRepository webLinkLinkRepository,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -81,8 +83,6 @@ public partial class AddEditWebLinkPopupViewModel(
         if (_webLink is null)
         {
             _webLink = new WebLink();
-            _webLink.OwnerId = _ownerId;
-            _webLink.OwnerType = _ownerType;
             _webLink.LinkType = 0;
         }
 
@@ -91,6 +91,19 @@ public partial class AddEditWebLinkPopupViewModel(
         _webLink.Note = Note;
 
         var webLinkId = await webLinkRepository.SaveItemAsync(_webLink);
+
+        if (_ownerId > 0)
+        {
+            var webLinkLink = new WebLinkLink
+            {
+                WebLinkId = webLinkId,
+                OwnerType = _ownerType,
+                OwnerId = _ownerId,
+                DateAdded = DateTime.UtcNow,
+                DateChanged = DateTime.UtcNow
+            };
+            await webLinkLinkRepository.SaveItemAsync(webLinkLink);
+        }
 
         await popupService.ClosePopupAsync(Shell.Current);
     }

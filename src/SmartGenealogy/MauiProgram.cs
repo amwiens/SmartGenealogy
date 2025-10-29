@@ -126,6 +126,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
         mauiAppBuilder.Services.AddSingleton<SourceRepository>();
+        mauiAppBuilder.Services.AddSingleton<WebLinkLinkRepository>();
         mauiAppBuilder.Services.AddSingleton<WebLinkRepository>();
 
         return mauiAppBuilder;

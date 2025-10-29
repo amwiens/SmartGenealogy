@@ -23,7 +23,8 @@ public partial class WebLinksPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        WebLinks = new ObservableCollection<WebLink>(await webLinkRepository.ListAsync());
+        var webLinks = await webLinkRepository.ListAsync();
+        WebLinks = new ObservableCollection<WebLink>(webLinks.OrderBy(x => x.Name));
     }
 
     /// <summary>
@@ -36,7 +37,7 @@ public partial class WebLinksPageViewModel(
         {
             if (Shell.Current is Shell shell)
             {
-                //var result = await popupService.ShowPopupAsync<AddEditFactTypePopupViewModel>(shell);
+                var result = await popupService.ShowPopupAsync<AddEditWebLinkPopupViewModel>(shell);
             }
         }
         catch (Exception ex)

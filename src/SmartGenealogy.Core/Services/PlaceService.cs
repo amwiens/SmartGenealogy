@@ -6,7 +6,7 @@
 public class PlaceService(
     PlaceRepository placeRepository,
     MediaLinkRepository mediaLinkRepository,
-    WebLinkRepository webLinkRepository,
+    WebLinkLinkRepository webLinkLinkRepository,
     IAlertService alertService)
     : IPlaceService
 {
@@ -99,7 +99,7 @@ public class PlaceService(
             }
             foreach (var webLink in place.WebLinks!)
             {
-                await webLinkRepository.DeleteItemAsync(webLink);
+                await webLinkLinkRepository.DeleteItemAsync(webLink);
             }
             await placeRepository.DeleteItemAsync(place!);
             return true;

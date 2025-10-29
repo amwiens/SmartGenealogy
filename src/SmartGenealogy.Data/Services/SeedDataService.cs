@@ -11,6 +11,7 @@
 /// <param name="placeRepository">Place repository</param>
 /// <param name="roleRepository">Role repository</param>
 /// <param name="sourceRepository">Source repository</param>
+/// <param name="webLinkLinkRepository">Weblink link repository</param>
 /// <param name="webLinkRepository">Web link repository</param>
 /// <param name="logger">Logger</param>
 public class SeedDataService(
@@ -22,6 +23,7 @@ public class SeedDataService(
     PlaceRepository placeRepository,
     RoleRepository roleRepository,
     SourceRepository sourceRepository,
+    WebLinkLinkRepository webLinkLinkRepository,
     WebLinkRepository webLinkRepository,
     ILogger<SeedDataService> logger)
 {
@@ -101,6 +103,7 @@ public class SeedDataService(
                 placeRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync(),
                 sourceRepository.CreateTableAsync(),
+                webLinkLinkRepository.CreateTableAsync(),
                 webLinkRepository.CreateTableAsync()
                 );
         }

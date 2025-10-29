@@ -8,12 +8,12 @@
 /// </remarks>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="mediaLinkRepository">Media link repository.</param>
-/// <param name="webLinkRepository">Web link repository.</param>
+/// <param name="webLinkLinkRepository">Weblink link repository.</param>
 /// <param name="logger">Logger.</param>
 public class PlaceRepository(
     DatabaseSettings databaseSettings,
     MediaLinkRepository mediaLinkRepository,
-    WebLinkRepository webLinkRepository,
+    WebLinkLinkRepository webLinkLinkRepository,
     ILogger<PlaceRepository> logger)
 {
     private bool _hasBeenInitialized = false;
@@ -98,7 +98,7 @@ public class PlaceRepository(
         {
             place.PlaceDetails = await ListAsync(place.Id);
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
-            place.WebLinks = await webLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            place.WebLinks = await webLinkLinkRepository.ListAsync(OwnerType.Place, place.Id);
             if (place.MasterId != 0)
                 place.MasterPlace = await GetAsync(place.MasterId);
         }
@@ -144,7 +144,7 @@ public class PlaceRepository(
         {
             place.PlaceDetails = await ListAsync(place.Id);
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
-            place.WebLinks = await webLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            place.WebLinks = await webLinkLinkRepository.ListAsync(OwnerType.Place, place.Id);
             //if (place.MasterId != 0)
             //    place.MasterPlace = await GetAsync(place.MasterId);
         }
@@ -191,7 +191,7 @@ public class PlaceRepository(
         foreach (var place in places)
         {
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
-            place.WebLinks = await webLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            place.WebLinks = await webLinkLinkRepository.ListAsync(OwnerType.Place, place.Id);
             //if (place.MasterId != 0)
             //    place.MasterPlace = await GetAsync(place.MasterId);
         }
@@ -235,7 +235,7 @@ public class PlaceRepository(
 
             place.PlaceDetails = await ListAsync(place.Id);
             place.MediaLinks = await mediaLinkRepository.ListAsync(OwnerType.Place, place.Id);
-            place.WebLinks = await webLinkRepository.ListAsync(OwnerType.Place, place.Id);
+            place.WebLinks = await webLinkLinkRepository.ListAsync(OwnerType.Place, place.Id);
             if (place.MasterId != 0)
                 place.MasterPlace = await GetAsync(place.MasterId);
 

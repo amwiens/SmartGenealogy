@@ -1,9 +1,9 @@
 ﻿namespace SmartGenealogy.Data.Models;
 
 /// <summary>
-/// Web link
+/// Web link link
 /// </summary>
-public class WebLink
+public class WebLinkLink
 {
     /// <summary>
     /// Id.
@@ -11,24 +11,19 @@ public class WebLink
     public int Id { get; set; }
 
     /// <summary>
-    /// Link type
+    /// Web link Id
     /// </summary>
-    public int LinkType { get; set; }
+    public int WebLinkId { get; set; }
 
     /// <summary>
-    /// Name
+    /// Owner type
     /// </summary>
-    public string? Name { get; set; }
+    public OwnerType OwnerType { get; set; }
 
     /// <summary>
-    /// URL
+    /// Owner Id
     /// </summary>
-    public string? URL { get; set; }
-
-    /// <summary>
-    /// Note
-    /// </summary>
-    public string? Note { get; set; }
+    public int OwnerId { get; set; }
 
     /// <summary>
     /// Date added to the database
@@ -39,4 +34,9 @@ public class WebLink
     /// Date changed
     /// </summary>
     public DateTime DateChanged { get; set; }
+
+    /// <summary>
+    /// Web link
+    /// </summary>
+    public WebLink? WebLink { get; set; }
 }

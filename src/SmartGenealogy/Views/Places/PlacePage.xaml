@@ -272,10 +272,10 @@
                                     SelectionChangedCommand="{Binding OpenWebLinkCommand}"
                                     SelectionMode="Single">
                                     <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="models:WebLink">
+                                        <DataTemplate x:DataType="models:WebLinkLink">
                                             <HorizontalStackLayout>
-                                                <Label Text="{Binding Name}" />
-                                                <Label Text="{Binding URL}" />
+                                                <Label Text="{Binding WebLink.Name}" />
+                                                <Label Text="{Binding WebLink.URL}" />
                                             </HorizontalStackLayout>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
