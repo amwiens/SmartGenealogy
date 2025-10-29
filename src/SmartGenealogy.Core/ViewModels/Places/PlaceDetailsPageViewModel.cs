@@ -1,10 +1,13 @@
-﻿namespace SmartGenealogy.Core.ViewModels.Places;
+﻿using SmartGenealogy.Data.Repositories;
+
+namespace SmartGenealogy.Core.ViewModels.Places;
 
 /// <summary>
 /// Place details page view model
 /// </summary>
 /// <param name="placeService">Place service</param>
 /// <param name="mediaLinkRepository">Media link repository</param>
+/// <param name="webLinkLinkRepository">Weblink Link repository</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="locationIQService">LocationIQ service</param>
@@ -12,6 +15,7 @@
 public partial class PlaceDetailsPageViewModel(
     IPlaceService placeService,
     MediaLinkRepository mediaLinkRepository,
+    WebLinkLinkRepository webLinkLinkRepository,
     IAlertService alertService,
     IPopupService popupService,
     LocationIQService locationIQService,
@@ -361,6 +365,60 @@ public partial class PlaceDetailsPageViewModel(
                     shell,
                     options: PopupOptions.Empty,
                     shellParameters: queryAttributes);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Add an existing web link.
+    /// </summary>
+    [RelayCommand]
+    private async Task AddExistingWebLink()
+    {
+        try
+        {
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<SelectWebLinkPopupViewModel, int>(shell);
+
+                if (result.Result != 0)
+                {
+                    await webLinkLinkRepository.SaveItemAsync(new WebLinkLink
+                    {
+                        WebLinkId = result.Result,
+                        OwnerType = OwnerType.Place,
+                        OwnerId = _place!.Id,
+                    });
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
+    /// Delete web link.
+    /// </summary>
+    [RelayCommand]
+    private async Task DeleteWebLink()
+    {
+        try
+        {
+            if (SelectedWebLink is not null)
+            {
+                var isConfirmed = await alertService.ShowAlertAsync("Delete web link", "Are you sure you want to delete this web link?", "Yes", "No");
+                if (isConfirmed)
+                {
+                    await webLinkLinkRepository.DeleteItemAsync(SelectedWebLink);
+                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                }
             }
         }
         catch (Exception ex)
