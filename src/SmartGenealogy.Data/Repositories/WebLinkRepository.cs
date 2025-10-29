@@ -151,6 +151,42 @@ public class WebLinkRepository(DatabaseSettings databaseSettings, ILogger<WebLin
         return null;
     }
 
+
+    /// <summary>
+    /// Retrieves a specific web links by its ID.
+    /// </summary>
+    /// <param name="url">The Url of the web link.</param>
+    /// <returns>A <see cref="WebLink"/> object if found; otherwise, null.</returns>
+    public async Task<WebLink?> GetAsync(string url)
+    {
+        await Init();
+        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+        await connection.OpenAsync();
+
+        var selectCmd = connection.CreateCommand();
+        selectCmd.CommandText = "SELECT * FROM WebLink WHERE URL = @url";
+        selectCmd.Parameters.AddWithValue("@url", url);
+
+        await using var reader = await selectCmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            var webLink = new WebLink
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                LinkType = reader.GetInt32(reader.GetOrdinal("LinkType")),
+                Name = reader.GetString(reader.GetOrdinal("Name")),
+                URL = reader.GetString(reader.GetOrdinal("URL")),
+                Note = reader.GetString(reader.GetOrdinal("Note")),
+                DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
+                DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
+            };
+
+            return webLink;
+        }
+
+        return null;
+    }
+
     /// <summary>
     /// Saves a web link to the database. If the web link id is 0, a new web link is created; otherwise, the existing web link is updated.
     /// </summary>

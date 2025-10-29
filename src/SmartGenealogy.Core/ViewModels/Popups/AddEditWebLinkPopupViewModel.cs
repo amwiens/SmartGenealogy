@@ -80,17 +80,27 @@ public partial class AddEditWebLinkPopupViewModel(
     [RelayCommand]
     private async Task Save()
     {
-        if (_webLink is null)
+        var webLink = await webLinkRepository.GetAsync(Url ?? string.Empty);
+        var webLinkId = 0;
+
+        if (webLink is null)
         {
-            _webLink = new WebLink();
-            _webLink.LinkType = 0;
+            if (_webLink is null)
+            {
+                _webLink = new WebLink();
+                _webLink.LinkType = 0;
+            }
+
+            _webLink.Name = Name;
+            _webLink.URL = Url;
+            _webLink.Note = Note;
+
+            webLinkId = await webLinkRepository.SaveItemAsync(_webLink);
         }
-
-        _webLink.Name = Name;
-        _webLink.URL = Url;
-        _webLink.Note = Note;
-
-        var webLinkId = await webLinkRepository.SaveItemAsync(_webLink);
+        else
+                {
+            webLinkId = webLink.Id;
+        }
 
         if (_ownerId > 0)
         {
