@@ -12,7 +12,7 @@
     xmlns:sources="clr-namespace:SmartGenealogy.Views.Sources"
     xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
-    Title="AppShell"
+    Title="Smart Genealogy"
     x:DataType="viewModels:AppShellViewModel"
     FlyoutBackgroundColor="{DynamicResource PrimaryColor}"
     FlyoutBehavior="{OnIdiom Desktop=Locked,

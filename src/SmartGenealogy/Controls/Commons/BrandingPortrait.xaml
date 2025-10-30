@@ -23,7 +23,7 @@
                 Background="{DynamicResource White}"
                 HeightRequest="40"
                 HorizontalOptions="Center"
-                Source="logo.png"
+                Source="logo_tree.png"
                 Stroke="Transparent"
                 StrokeShape="{RoundRectangle CornerRadius=20}"
                 VerticalOptions="Center"
@@ -34,14 +34,14 @@
             <Label
                 x:Name="brandName"
                 Style="{StaticResource Title2}"
-                Text="Maui Kit"
+                Text="Smart Genealogy"
                 TextColor="{DynamicResource PrimaryColor}"
                 VerticalOptions="Start" />
 
             <Label
                 x:Name="sloganText"
                 Style="{StaticResource Footnote}"
-                Text="App Design Studio"
+                Text="Family History Software"
                 VerticalOptions="Start" />
         </VerticalStackLayout>
     </VerticalStackLayout>
