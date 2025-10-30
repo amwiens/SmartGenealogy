@@ -77,4 +77,13 @@ public partial class ToolsPageViewModel(
     {
         await Shell.Current.GoToAsync("webLinks");
     }
+
+    /// <summary>
+    /// Check Web Links page.
+    /// </summary>
+    [RelayCommand]
+    private async Task CheckWebLinksPage()
+    {
+        await Shell.Current.GoToAsync("checkWebLinks");
+    }
 }
