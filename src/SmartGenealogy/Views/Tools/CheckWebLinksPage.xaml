@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage
+    x:Class="SmartGenealogy.Views.Tools.CheckWebLinksPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:converters="clr-namespace:SmartGenealogy.Converters"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Tools;assembly=SmartGenealogy.Core"
+    x:Name="checkWebLinksPage"
+    x:DataType="viewModels:CheckWebLinksPageViewModel"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
+
+    <base:BasePage.PageContent>
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="SmartGenealogyIcons"
+                IconSize="35"
+                IconText="{x:Static fonticons:SmartGenealogyIcons.Web}"
+                Text="Check Web Links"
+                TextSize="25" />
+
+            <Button
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                Command="{Binding CheckWebLinksCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Check web links" />
+
+            <ScrollView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="20"
+                IsVisible="{Binding IsBusy, Converter={converters:InverseBooleanConverter}}"
+                Orientation="Vertical">
+                <CollectionView
+                    ItemsSource="{Binding WebLinks}"
+                    SelectedItem="{Binding SelectedItem}"
+                    SelectionChangedCommand="{Binding OpenWebLinkDetailsCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:WebLink">
+                            <Grid RowDefinitions="Auto,Auto">
+                                <Label FontSize="18" Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="14"
+                                    Text="{Binding URL}"
+                                    TextColor="Gray" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+
+            <controls:LoadingIndicator
+                Grid.Row="1"
+                BackgroundColor="{DynamicResource BasePageColor}"
+                HorizontalOptions="Center"
+                IndicatorColor="{DynamicResource AccentColor}"
+                IsBusy="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                LoadingText="Checking links..."
+                LoadingTextColor="{DynamicResource AccentColor}"
+                VerticalOptions="Center" />
+
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

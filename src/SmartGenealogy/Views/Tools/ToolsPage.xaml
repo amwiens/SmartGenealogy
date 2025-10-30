@@ -135,6 +135,45 @@
                         <TapGestureRecognizer Command="{Binding OpenWebLinksPageCommand}" />
                     </Grid.GestureRecognizers>
                 </Grid>
+
+                <!--  Check web links  -->
+                <Grid Padding="0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        FontFamily="IonIcons"
+                        FontSize="22"
+                        HorizontalOptions="Start"
+                        Text="{x:Static fonticons:IonIcons.IosCalendarOutline}"
+                        TextColor="#FF3E8EED"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Text="Check for broken web links"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        FontFamily="IonIcons"
+                        FontSize="15"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fonticons:IonIcons.ChevronRight}"
+                        TextColor="{DynamicResource BaseIconColor}"
+                        VerticalOptions="Center" />
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CheckWebLinksPageCommand}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
             </StackLayout>
         </Grid>
     </base:BasePage.PageContent>

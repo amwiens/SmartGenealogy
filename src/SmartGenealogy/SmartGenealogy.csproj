@@ -109,6 +109,9 @@
 	  <Compile Update="Views\Tools\WebLinkPage.xaml.cs">
 	    <DependentUpon>WebLinkPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Tools\CheckWebLinksPage.xaml.cs">
+	    <DependentUpon>CheckWebLinksPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Tools\WebLinksPage.xaml.cs">
 	    <DependentUpon>WebLinksPage.xaml</DependentUpon>
 	  </Compile>
@@ -305,6 +308,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tools\FactTypePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tools\CheckWebLinksPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tools\WebLinksPage.xaml">
