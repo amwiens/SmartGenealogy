@@ -72,7 +72,6 @@
                 LoadingText="Checking links..."
                 LoadingTextColor="{DynamicResource AccentColor}"
                 VerticalOptions="Center" />
-
         </Grid>
     </base:BasePage.PageContent>
 </base:BasePage>

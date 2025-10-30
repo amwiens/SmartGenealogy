@@ -151,7 +151,6 @@ public class WebLinkRepository(DatabaseSettings databaseSettings, ILogger<WebLin
         return null;
     }
 
-
     /// <summary>
     /// Retrieves a specific web links by its ID.
     /// </summary>

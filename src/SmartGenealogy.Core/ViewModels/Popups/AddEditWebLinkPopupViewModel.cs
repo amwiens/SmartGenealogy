@@ -98,7 +98,7 @@ public partial class AddEditWebLinkPopupViewModel(
             webLinkId = await webLinkRepository.SaveItemAsync(_webLink);
         }
         else
-                {
+        {
             webLinkId = webLink.Id;
         }
 
