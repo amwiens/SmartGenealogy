@@ -22,7 +22,7 @@
                 CornerRadius="20"
                 HeightRequest="40"
                 HorizontalOptions="Center"
-                Source="logo.png"
+                Source="logo_tree.png"
                 Stroke="Transparent"
                 VerticalOptions="Center"
                 WidthRequest="40" />
@@ -32,14 +32,14 @@
             <Label
                 HorizontalTextAlignment="Start"
                 Style="{StaticResource Title2}"
-                Text="Maui Kit"
+                Text="Smart Genealogy"
                 TextColor="{DynamicResource PrimaryColor}"
                 VerticalOptions="Center" />
 
             <Label
                 HorizontalTextAlignment="Start"
                 Style="{StaticResource Footnote}"
-                Text="App Design Studio"
+                Text="Family History Software"
                 VerticalOptions="Center" />
         </VerticalStackLayout>
     </HorizontalStackLayout>

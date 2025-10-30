@@ -25,7 +25,7 @@
                 VerticalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{localization:Translate LabelVersion}" />
+                        <Span Text="Version" />
                         <Span Text=" " />
                         <Span Text="{Binding AppVersion}" />
                     </FormattedString>

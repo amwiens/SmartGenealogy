@@ -17,7 +17,7 @@
         Background="{DynamicResource White}"
         HeightRequest="50"
         HorizontalOptions="Center"
-        Source="logo.png"
+        Source="logo_tree.png"
         Stroke="Transparent"
         StrokeShape="{RoundRectangle CornerRadius=25}"
         VerticalOptions="Center"

@@ -7,7 +7,7 @@
     xmlns:localization="clr-namespace:SmartGenealogy.Resources.Translations">
 
     <StackLayout
-        Padding="30"
+        Padding="12,30"
         HorizontalOptions="Start"
         Spacing="15"
         VerticalOptions="Center">
@@ -30,7 +30,7 @@
                     Background="{DynamicResource White}"
                     HeightRequest="48"
                     HorizontalOptions="Center"
-                    Source="logo.png"
+                    Source="logo_tree.png"
                     Stroke="Transparent"
                     StrokeShape="{RoundRectangle CornerRadius=24}"
                     VerticalOptions="Center"
@@ -41,14 +41,14 @@
                 <Label
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource Title1}"
-                    Text="MAUI KIT"
+                    Text="Smart Genealogy"
                     TextColor="{DynamicResource White}"
                     VerticalOptions="Center" />
 
                 <Label
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource Footnote}"
-                    Text="App Design Studio"
+                    Text="Family History Software"
                     TextColor="{DynamicResource White}"
                     TextTransform="Uppercase"
                     VerticalOptions="Center" />
