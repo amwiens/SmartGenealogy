@@ -30,6 +30,7 @@ global using SmartGenealogy.Core.ViewModels.Places;
 global using SmartGenealogy.Core.ViewModels.Popups;
 global using SmartGenealogy.Core.ViewModels.Settings;
 global using SmartGenealogy.Core.ViewModels.Sources;
+global using SmartGenealogy.Core.ViewModels.Tasks;
 global using SmartGenealogy.Core.ViewModels.Tools;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;

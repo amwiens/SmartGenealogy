@@ -10,6 +10,7 @@
     xmlns:places="clr-namespace:SmartGenealogy.Views.Places"
     xmlns:settings="clr-namespace:SmartGenealogy.Views.Settings"
     xmlns:sources="clr-namespace:SmartGenealogy.Views.Sources"
+    xmlns:tasks="clr-namespace:SmartGenealogy.Views.Tasks"
     xmlns:tools="clr-namespace:SmartGenealogy.Views.Tools"
     xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Main;assembly=SmartGenealogy.Core"
     Title="Smart Genealogy"
@@ -97,6 +98,13 @@
             ContentTemplate="{DataTemplate multimedia:MultimediaPage}"
             IsVisible="{Binding DatabaseOpen}"
             Route="MultimediaPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Tasks" Icon="{FontImageSource FontFamily=FaPro, Glyph={x:Static fonticons:FaPro.Tasks}, Size=15, Color={StaticResource White}}">
+        <ShellContent
+            ContentTemplate="{DataTemplate tasks:TasksDashboardPage}"
+            IsVisible="{Binding DatabaseOpen}"
+            Route="TasksDashboardPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="Tools" Icon="{FontImageSource FontFamily=MaterialDesign, Glyph={x:Static fonticons:MaterialDesignIcons.Explore}, Size=50, Color={StaticResource White}}">

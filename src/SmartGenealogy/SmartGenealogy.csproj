@@ -304,6 +304,9 @@
 	  <MauiXaml Update="Views\Sources\SourcesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Tasks\TasksDashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Tools\WebLinkPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
