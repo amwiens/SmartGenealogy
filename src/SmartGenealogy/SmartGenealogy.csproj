@@ -100,6 +100,9 @@
 	  <Compile Update="Views\Popups\SelectWebLinkPopup.xaml.cs">
 	    <DependentUpon>SelectWebLinkPopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Projects\ProjectsDashboardPage.xaml.cs">
+	    <DependentUpon>ProjectsDashboardPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Sources\SourcePage.xaml.cs">
 	    <DependentUpon>SourcePage.xaml</DependentUpon>
 	  </Compile>
@@ -304,7 +307,7 @@
 	  <MauiXaml Update="Views\Sources\SourcesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Tasks\TasksDashboardPage.xaml">
+	  <MauiXaml Update="Views\Projects\ProjectsDashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tools\WebLinkPage.xaml">

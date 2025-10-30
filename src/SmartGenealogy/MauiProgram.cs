@@ -162,7 +162,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SourcesPageViewModel>();
-        mauiAppBuilder.Services.AddTransient<TasksDashboardPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<ProjectsDashboardPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
 
         return mauiAppBuilder;
