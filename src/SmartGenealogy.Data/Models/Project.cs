@@ -20,12 +20,12 @@ public class Project
     /// <summary>
     /// Priority
     /// </summary>
-    public string? Priority { get; set; }
+    public Priority? Priority { get; set; }
 
     /// <summary>
     /// Status
     /// </summary>
-    public ProjectStatus Status { get; set; }
+    public ProjectStatus? Status { get; set; }
     
     /// <summary>
     /// Start date

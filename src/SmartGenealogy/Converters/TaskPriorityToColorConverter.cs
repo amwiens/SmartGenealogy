@@ -1,3 +1,5 @@
+using SmartGenealogy.Data.Enums;
+
 namespace SmartGenealogy.Converters;
 
 public class TaskPriorityToColorConverter : IValueConverter
@@ -8,17 +10,17 @@ public class TaskPriorityToColorConverter : IValueConverter
 
         var stringValue = value != null ? value.ToString() : "";
 
-        switch (stringValue)
+        switch (value)
         {
-            case "Low":
+            case Priority.Low:
                 resourceName = "Green";
                 break;
 
-            case "High":
+            case Priority.High:
                 resourceName = "Red";
                 break;
 
-            case "Mid":
+            case Priority.Mid:
                 resourceName = "Orange";
                 break;
 
