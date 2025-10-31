@@ -30,7 +30,7 @@ public class ProjectRepository(
             var createTableCommand = connection.CreateCommand();
             createTableCommand.CommandText =
                 @"CREATE TABLE IF NOT EXISTS Project (
-                    Id TEXT PRIMARY KEY,
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT NOT NULL,
                     Description TEXT,
                     Priority INTEGER,

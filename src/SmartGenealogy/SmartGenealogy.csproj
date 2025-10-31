@@ -91,6 +91,9 @@
 	  <Compile Update="Views\Popups\AddEditPlaceCoordinatesPopup.xaml.cs">
 	    <DependentUpon>AddEditPlaceCoordinatesPopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Popups\AddEditProjectPopup.xaml.cs">
+	    <DependentUpon>AddEditProjectPopup.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Popups\AddEditSourcePopup.xaml.cs">
 	    <DependentUpon>AddEditSourcePopup.xaml</DependentUpon>
 	  </Compile>
@@ -269,6 +272,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\AddEditPlaceCoordinatesPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Popups\AddEditProjectPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\AddEditSourcePopup.xaml">

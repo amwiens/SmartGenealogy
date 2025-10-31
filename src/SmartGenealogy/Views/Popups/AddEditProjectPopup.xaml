@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="SmartGenealogy.Views.Popups.AddEditProjectPopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Popups;assembly=SmartGenealogy.Core"
+    x:DataType="viewModels:AddEditProjectPopupViewModel"
+    Background="{DynamicResource BasePageColor}">
+
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Start"
+            Text="Project"
+            VerticalOptions="Center" />
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Name"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding Name}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Description"
+                VerticalOptions="Center" />
+
+            <Entry Text="{Binding Description}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Priority"
+                VerticalOptions="Center" />
+
+            <Picker ItemsSource="{Binding Priorities}" SelectedIndex="{Binding Priority}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Status"
+                VerticalOptions="Center" />
+
+            <Picker ItemsSource="{Binding Statuses}" SelectedIndex="{Binding Status}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="Start date"
+                VerticalOptions="Center" />
+
+            <DatePicker Date="{Binding StartDate}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
+                Text="End date"
+                VerticalOptions="Center" />
+
+            <DatePicker Date="{Binding EndDate}" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="End">
+            <Button
+                Command="{Binding SaveCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Save" />
+            <Button
+                Command="{Binding CancelCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Cancel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</toolkit:Popup>

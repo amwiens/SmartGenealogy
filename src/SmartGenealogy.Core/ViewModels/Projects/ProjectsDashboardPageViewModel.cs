@@ -3,8 +3,13 @@
 /// <summary>
 /// Projects Dashboard Page View Model
 /// </summary>
+/// <param name="projectRepository">Project repository</param>
+/// <param name="popupService">Popup service</param>
+/// <param name="errorHandler">Modal error handler</param>
 public partial class ProjectsDashboardPageViewModel(
-    ProjectRepository projectRepository)
+    ProjectRepository projectRepository,
+    IPopupService popupService,
+    ModalErrorHandler errorHandler)
     : ObservableObject
 {
     public ObservableCollection<Project> ProjectList { get; } = [];
@@ -72,6 +77,25 @@ public partial class ProjectsDashboardPageViewModel(
     }
 
     /// <summary>
+    /// Add project.
+    /// </summary>
+    [RelayCommand]
+    private async Task AddProject()
+    {
+        try
+        {
+            if (Shell.Current is Shell shell)
+            {
+                var result = await popupService.ShowPopupAsync<AddEditProjectPopupViewModel>(shell);
+            }
+        }
+        catch (Exception ex)
+        {
+            errorHandler.HandleError(ex);
+        }
+    }
+
+    /// <summary>
     /// Project tapped command.
     /// </summary>
     /// <param name="project">Project</param>
@@ -124,6 +148,8 @@ public partial class ProjectsDashboardPageViewModel(
         {
             var currentItem = _allProjects.Where(f => f.Id == _draggedItem.Id).FirstOrDefault();
             currentItem!.Status = (ProjectStatus)option;
+
+            var projectId = await projectRepository.SaveItemAsync(currentItem);
 
             AddProjectList();
         }
