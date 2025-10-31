@@ -13,12 +13,22 @@
     <VerticalStackLayout>
         <Label Text="Media" />
 
-        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,*,Auto">
-            <Image
-                Aspect="AspectFit"
-                MaximumWidthRequest="280"
-                MinimumWidthRequest="280"
-                Source="{Binding FileName}" />
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,Auto">
+            <Border>
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="280"
+                    Source="{Binding FileName}"
+                    WidthRequest="280">
+                    <!--<Image.GestureRecognizers>
+                        <DropGestureRecognizer AllowDrop="True" Drop="OnImageDrop" />
+                    </Image.GestureRecognizers>-->
+                </Image>
+
+                <Border.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True" Drop="OnImageDrop" />
+                </Border.GestureRecognizers>
+            </Border>
 
             <VerticalStackLayout
                 Grid.Column="1"
