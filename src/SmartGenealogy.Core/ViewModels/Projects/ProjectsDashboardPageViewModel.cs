@@ -3,7 +3,9 @@
 /// <summary>
 /// Projects Dashboard Page View Model
 /// </summary>
-public partial class ProjectsDashboardPageViewModel : ObservableObject
+public partial class ProjectsDashboardPageViewModel(
+    ProjectRepository projectRepository)
+    : ObservableObject
 {
     public ObservableCollection<Project> ProjectList { get; } = [];
 
@@ -37,12 +39,7 @@ public partial class ProjectsDashboardPageViewModel : ObservableObject
     [RelayCommand]
     private async Task Appearing()
     {
-        _allProjects.Add(new Project() { Id = 1, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.High, Status=ProjectStatus.New, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
-        _allProjects.Add(new Project() { Id = 2, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.High, Status= ProjectStatus.New, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
-        _allProjects.Add(new Project() { Id = 3, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.Mid, Status= ProjectStatus.InProgress, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
-        _allProjects.Add(new Project() { Id = 4, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.High, Status= ProjectStatus.InProgress, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
-        _allProjects.Add(new Project() { Id = 5, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.Low, Status= ProjectStatus.InReview, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
-        _allProjects.Add(new Project() { Id = 6, Name = "Project Alpha", Description = "Description for Project Alpha", Priority = Priority.High, Status= ProjectStatus.Completed, StartDate = DateTime.Now.AddDays(-10), EndDate = DateTime.Now.AddDays(20), DateAdded = DateTime.Now.AddDays(-15), DateChanged = DateTime.Now.AddDays(-5) });
+        _allProjects = await projectRepository.ListAsync();
 
         AddProjectList();
     }

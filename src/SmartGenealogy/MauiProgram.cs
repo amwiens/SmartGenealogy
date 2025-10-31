@@ -124,6 +124,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MultimediaRepository>();
         mauiAppBuilder.Services.AddSingleton<MultimediaWordRepository>();
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
+        mauiAppBuilder.Services.AddSingleton<ProjectRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
         mauiAppBuilder.Services.AddSingleton<SourceRepository>();
         mauiAppBuilder.Services.AddSingleton<WebLinkLinkRepository>();
@@ -160,9 +161,9 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
         mauiAppBuilder.Services.AddSingleton<MultimediaPageViewModel>();
         mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<ProjectsDashboardPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SourcesPageViewModel>();
-        mauiAppBuilder.Services.AddTransient<ProjectsDashboardPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
 
         return mauiAppBuilder;
