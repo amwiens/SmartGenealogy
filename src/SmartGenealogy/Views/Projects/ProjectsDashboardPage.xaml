@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage
+    x:Class="SmartGenealogy.Views.Projects.ProjectsDashboardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:SmartGenealogy.Views.Base"
+    xmlns:controls="clr-namespace:SmartGenealogy.Controls"
+    xmlns:fonticons="clr-namespace:SmartGenealogy.Resources.FontIcons"
+    xmlns:models="clr-namespace:SmartGenealogy.Data.Models;assembly=SmartGenealogy.Data"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:SmartGenealogy.Core.ViewModels.Projects;assembly=SmartGenealogy.Core"
+    x:Name="projectsDashboardPage"
+    x:DataType="viewModels:ProjectsDashboardPageViewModel"
+    BaseTitle=""
+    BaseTitleColor="{DynamicResource BaseTextColor}">
+
+    <base:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            BindingContext="{Binding Source={x:Reference projectsDashboardPage}, Path=BindingContext}"
+            Command="{Binding AppearingCommand}"
+            EventName="Appearing" />
+    </base:BasePage.Behaviors>
+
+    <base:BasePage.PageContent>
+        <Grid
+            ColumnDefinitions="*,Auto"
+            RowDefinitions="Auto,*"
+            RowSpacing="15">
+            <controls:HeaderTemplate
+                Margin="25,30,25,0"
+                IconColor="#FF3E8EED"
+                IconFontFamily="FaPro"
+                IconSize="35"
+                IconText="{x:Static fonticons:FaPro.Tasks}"
+                Text="Projects"
+                TextSize="25" />
+
+            <Button
+                Grid.Column="1"
+                Margin="0,30,20,0"
+                Command="{Binding AddProjectCommand}"
+                Style="{DynamicResource PrimaryButtonStyle}"
+                Text="Add project"
+                VerticalOptions="Center" />
+
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
+                <VerticalStackLayout Padding="10">
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="10">
+
+                        <!--  New Projects Group  -->
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="10,7">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Border
+                                    Background="#acfff7"
+                                    HeightRequest="40"
+                                    HorizontalOptions="Start"
+                                    Stroke="#acfff7"
+                                    StrokeShape="{RoundRectangle CornerRadius=20}"
+                                    WidthRequest="40">
+                                    <Label
+                                        FontFamily="SmartGenealogyIcons"
+                                        FontSize="26"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static fonticons:SmartGenealogyIcons.NewBox}"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding NewProjectCount}" />
+                                    <Label
+                                        Style="{StaticResource CardDescriptionLabelStyle}"
+                                        Text="New Projects"
+                                        TextColor="#009688" />
+                                </StackLayout>
+                            </Grid>
+
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="0">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary20Color}" />
+                                    <Setter Property="Stroke" Value="{DynamicResource Primary35Color}" />
+                                    <Setter Property="StrokeThickness" Value="1" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="-1">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterProjectListCommand}" CommandParameter="0" />
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    DropCommand="{Binding ProjectDroppedCommand}"
+                                    DropCommandParameter="0" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <!--  In Progress Projects Group  -->
+                        <Border
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Padding="10">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Border
+                                    Background="#e6f0ff"
+                                    HeightRequest="40"
+                                    HorizontalOptions="Start"
+                                    Stroke="#e6f0ff"
+                                    StrokeShape="{RoundRectangle CornerRadius=20}"
+                                    WidthRequest="40">
+                                    <Label
+                                        FontFamily="SmartGenealogyIcons"
+                                        FontSize="26"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static fonticons:SmartGenealogyIcons.ProgressCheck}"
+                                        TextColor="#1b55e2"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding InProgressCount}" />
+                                    <Label
+                                        Style="{StaticResource CardDescriptionLabelStyle}"
+                                        Text="In Progress"
+                                        TextColor="#1b55e2" />
+                                </StackLayout>
+                            </Grid>
+
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="1">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary20Color}" />
+                                    <Setter Property="Stroke" Value="{DynamicResource Primary35Color}" />
+                                    <Setter Property="StrokeThickness" Value="1" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="-1">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterProjectListCommand}" CommandParameter="1" />
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    DropCommand="{Binding ProjectDroppedCommand}"
+                                    DropCommandParameter="1" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <!--  In Review Projects Group  -->
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Padding="10">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Border
+                                    Background="#ffebd2"
+                                    HeightRequest="40"
+                                    HorizontalOptions="Start"
+                                    Stroke="#ffebd2"
+                                    StrokeShape="{RoundRectangle CornerRadius=20}"
+                                    WidthRequest="40">
+                                    <Label
+                                        FontFamily="SmartGenealogyIcons"
+                                        FontSize="26"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static fonticons:SmartGenealogyIcons.EyeCheck}"
+                                        TextColor="#e2a03f"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding InReviewCount}" />
+                                    <Label
+                                        Style="{StaticResource CardDescriptionLabelStyle}"
+                                        Text="In Review"
+                                        TextColor="#e2a03f" />
+                                </StackLayout>
+                            </Grid>
+
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="2">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary20Color}" />
+                                    <Setter Property="Stroke" Value="{DynamicResource Primary35Color}" />
+                                    <Setter Property="StrokeThickness" Value="1" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="-1">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterProjectListCommand}" CommandParameter="2" />
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    DropCommand="{Binding ProjectDroppedCommand}"
+                                    DropCommandParameter="2" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        <!--  Completed Projects Group  -->
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="10">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <Border
+                                    Background="#dbc4ff"
+                                    HeightRequest="40"
+                                    HorizontalOptions="Start"
+                                    Stroke="#dbc4ff"
+                                    StrokeShape="{RoundRectangle CornerRadius=20}"
+                                    WidthRequest="40">
+                                    <Label
+                                        FontFamily="SmartGenealogyIcons"
+                                        FontSize="26"
+                                        HorizontalOptions="Center"
+                                        Text="{x:Static fonticons:SmartGenealogyIcons.Check}"
+                                        TextColor="#5c1ac3"
+                                        VerticalOptions="Center" />
+                                </Border>
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding DoneCount}" />
+                                    <Label
+                                        Style="{StaticResource CardDescriptionLabelStyle}"
+                                        Text="Completed"
+                                        TextColor="#5c1ac3" />
+                                </StackLayout>
+                            </Grid>
+
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="3">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary20Color}" />
+                                    <Setter Property="Stroke" Value="{DynamicResource Primary35Color}" />
+                                    <Setter Property="StrokeThickness" Value="1" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding SelectedOption}"
+                                    TargetType="Border"
+                                    Value="-1">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource BasePageColor}" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterProjectListCommand}" CommandParameter="3" />
+                                <DropGestureRecognizer
+                                    AllowDrop="True"
+                                    DropCommand="{Binding ProjectDroppedCommand}"
+                                    DropCommandParameter="3" />
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </Grid>
+
+                    <controls:LoadingIndicator
+                        Grid.Row="1"
+                        BackgroundColor="{DynamicResource BasePageColor}"
+                        HorizontalOptions="Center"
+                        IndicatorColor="{DynamicResource AccentColor}"
+                        IsBusy="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        LoadingText="Loading..."
+                        LoadingTextColor="{DynamicResource AccentColor}"
+                        VerticalOptions="Center" />
+
+                    <!--  Tasks List  -->
+                    <CollectionView
+                        Margin="0,20,0,0"
+                        ItemsSource="{Binding ProjectList}"
+                        SelectionMode="Single"
+                        VerticalOptions="Fill">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout
+                                HorizontalItemSpacing="{OnIdiom Phone=0,
+                                                                Tablet=0,
+                                                                Desktop=8}"
+                                Orientation="Vertical"
+                                Span="{OnIdiom Phone=1,
+                                               Tablet=1,
+                                               Desktop=2}"
+                                VerticalItemSpacing="{OnIdiom Phone=10,
+                                                              Tablet=10,
+                                                              Desktop=8}" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Project">
+                                <Border
+                                    Padding="15,10"
+                                    Stroke="{DynamicResource DefaultBorder}"
+                                    StrokeThickness="1">
+                                    <Border.GestureRecognizers>
+                                        <DragGestureRecognizer
+                                            CanDrag="True"
+                                            DragStartingCommand="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ProjectsDashboardPageViewModel}}, Path=DragStartedCommand}"
+                                            DragStartingCommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ProjectsDashboardPageViewModel}}, Path=ProjectTappedCommand}" CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Grid RowDefinitions="Auto,Auto,Auto,1,Auto" RowSpacing="3">
+                                        <!--  Task Priority  -->
+                                        <Border
+                                            Padding="8,2"
+                                            BackgroundColor="{DynamicResource MainWrapperBackgroundColor}"
+                                            HorizontalOptions="Start"
+                                            Stroke="Transparent"
+                                            StrokeShape="{RoundRectangle CornerRadius=8}"
+                                            VerticalOptions="Center">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="13"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Priority}"
+                                                TextColor="{Binding Priority, Converter={StaticResource TaskPriorityToColorConverter}}"
+                                                VerticalOptions="Center" />
+                                        </Border>
+
+                                        <!--  Task Name  -->
+                                        <Label
+                                            Grid.Row="1"
+                                            Style="{StaticResource Title2}"
+                                            Text="{Binding Name}" />
+
+                                        <!--  Task Description  -->
+                                        <Label
+                                            Grid.Row="2"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            Style="{StaticResource Body}"
+                                            Text="{Binding Description}" />
+
+                                        <StackLayout
+                                            Grid.Row="3"
+                                            Margin="-15,0"
+                                            BackgroundColor="LightGrey"
+                                            HeightRequest="0.5" />
+
+                                        <Grid Grid.Row="4" ColumnDefinitions="*,Auto" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </base:BasePage.PageContent>
+</base:BasePage>

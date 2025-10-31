@@ -4,7 +4,7 @@
 /// Repository class for managing Place entities in the database.
 /// </summary>
 /// <remarks>
-/// Initializes a new instance of the <see cref="IPlaceService"/> class.
+/// Initializes a new instance of the <see cref="PlaceRepository"/> class.
 /// </remarks>
 /// <param name="databaseSettings">Database settings.</param>
 /// <param name="mediaLinkRepository">Media link repository.</param>
@@ -56,7 +56,7 @@ public class PlaceRepository(
             throw;
         }
 
-        // Initizliation logic for the Place table would go here.
+        // Initialization logic for the Place table would go here.
         _hasBeenInitialized = true;
     }
 

@@ -9,6 +9,7 @@
 /// <param name="multimediaRepository">Multimedia repository</param>
 /// <param name="multimediaWordRepository">Multimedia word repository</param>
 /// <param name="placeRepository">Place repository</param>
+/// <param name="projectRepository">Project repository</param>
 /// <param name="roleRepository">Role repository</param>
 /// <param name="sourceRepository">Source repository</param>
 /// <param name="webLinkLinkRepository">Weblink link repository</param>
@@ -21,6 +22,7 @@ public class SeedDataService(
     MultimediaRepository multimediaRepository,
     MultimediaWordRepository multimediaWordRepository,
     PlaceRepository placeRepository,
+    ProjectRepository projectRepository,
     RoleRepository roleRepository,
     SourceRepository sourceRepository,
     WebLinkLinkRepository webLinkLinkRepository,
@@ -101,6 +103,7 @@ public class SeedDataService(
                 multimediaRepository.CreateTableAsync(),
                 multimediaWordRepository.CreateTableAsync(),
                 placeRepository.CreateTableAsync(),
+                projectRepository.CreateTableAsync(),
                 roleRepository.CreateTableAsync(),
                 sourceRepository.CreateTableAsync(),
                 webLinkLinkRepository.CreateTableAsync(),

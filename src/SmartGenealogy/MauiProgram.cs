@@ -1,5 +1,7 @@
 ﻿using Microsoft.Maui.LifecycleEvents;
 
+using SmartGenealogy.Views.Projects;
+
 #if WINDOWS
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -124,6 +126,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MultimediaRepository>();
         mauiAppBuilder.Services.AddSingleton<MultimediaWordRepository>();
         mauiAppBuilder.Services.AddSingleton<PlaceRepository>();
+        mauiAppBuilder.Services.AddSingleton<ProjectRepository>();
         mauiAppBuilder.Services.AddSingleton<RoleRepository>();
         mauiAppBuilder.Services.AddSingleton<SourceRepository>();
         mauiAppBuilder.Services.AddSingleton<WebLinkLinkRepository>();
@@ -160,6 +163,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
         mauiAppBuilder.Services.AddSingleton<MultimediaPageViewModel>();
         mauiAppBuilder.Services.AddTransient<PlacesPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<ProjectsDashboardPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SettingsPageViewModel>();
         mauiAppBuilder.Services.AddTransient<SourcesPageViewModel>();
         mauiAppBuilder.Services.AddTransient<ToolsPageViewModel>();
@@ -179,6 +183,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientWithShellRoute<PlacePage, PlacePageViewModel>("place");
         mauiAppBuilder.Services.AddSingleton<MultimediaPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<MultimediaDetailsPage, MultimediaDetailsPageViewModel>("multimediaDetails");
+        mauiAppBuilder.Services.AddTransient<ProjectsDashboardPage>();
         mauiAppBuilder.Services.AddTransient<ToolsPage>();
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypesPage, FactTypesPageViewModel>("factTypes");
         mauiAppBuilder.Services.AddTransientWithShellRoute<FactTypePage, FactTypePageViewModel>("factTypeDetails");
@@ -202,6 +207,7 @@ public static class MauiProgram
         mauiAppBuilder.Services.AddTransientPopup<AddEditMultimediaPopup, AddEditMultimediaPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditPlaceCoordinatesPopup, AddEditPlaceCoordinatesPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditPlacePopup, AddEditPlacePopupViewModel>();
+        mauiAppBuilder.Services.AddTransientPopup<AddEditProjectPopup, AddEditProjectPopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditRolePopup, AddEditRolePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditSourcePopup, AddEditSourcePopupViewModel>();
         mauiAppBuilder.Services.AddTransientPopup<AddEditWebLinkPopup, AddEditWebLinkPopupViewModel>();

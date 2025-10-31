@@ -91,6 +91,9 @@
 	  <Compile Update="Views\Popups\AddEditPlaceCoordinatesPopup.xaml.cs">
 	    <DependentUpon>AddEditPlaceCoordinatesPopup.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Popups\AddEditProjectPopup.xaml.cs">
+	    <DependentUpon>AddEditProjectPopup.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Popups\AddEditSourcePopup.xaml.cs">
 	    <DependentUpon>AddEditSourcePopup.xaml</DependentUpon>
 	  </Compile>
@@ -99,6 +102,9 @@
 	  </Compile>
 	  <Compile Update="Views\Popups\SelectWebLinkPopup.xaml.cs">
 	    <DependentUpon>SelectWebLinkPopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Projects\ProjectsDashboardPage.xaml.cs">
+	    <DependentUpon>ProjectsDashboardPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Sources\SourcePage.xaml.cs">
 	    <DependentUpon>SourcePage.xaml</DependentUpon>
@@ -268,6 +274,9 @@
 	  <MauiXaml Update="Views\Popups\AddEditPlaceCoordinatesPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Popups\AddEditProjectPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Popups\AddEditSourcePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -302,6 +311,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Sources\SourcesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Projects\ProjectsDashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tools\WebLinkPage.xaml">
