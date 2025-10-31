@@ -259,14 +259,20 @@ public partial class PlaceDetailsPageViewModel(
 
                 if (result.Result != 0)
                 {
-                    await mediaLinkRepository.SaveItemAsync(new MediaLink
+                    var ownerType = OwnerType.Place;
+                    var mediaLinks = await mediaLinkRepository.ListAsync(ownerType, _place!.Id);
+
+                    if (!mediaLinks!.Where(x => x.MultimediaId == result.Result).Any())
                     {
-                        MultimediaId = result.Result,
-                        OwnerType = OwnerType.Place,
-                        OwnerId = _place!.Id,
-                        IsPrimary = false,
-                        Comments = string.Empty
-                    });
+                        await mediaLinkRepository.SaveItemAsync(new MediaLink
+                        {
+                            MultimediaId = result.Result,
+                            OwnerType = OwnerType.Place,
+                            OwnerId = _place!.Id,
+                            IsPrimary = false,
+                            Comments = string.Empty
+                        });
+                    }
                 }
             }
             LoadData(_place!.Id).FireAndForgetSafeAsync();
@@ -291,15 +297,21 @@ public partial class PlaceDetailsPageViewModel(
 
                 if (result.Result != 0)
                 {
-                    await mediaLinkRepository.SaveItemAsync(new MediaLink
+                    var ownerType = OwnerType.Place;
+                    var mediaLinks = await mediaLinkRepository.ListAsync(ownerType, _place!.Id);
+
+                    if (!mediaLinks!.Where(x => x.MultimediaId == result.Result).Any())
                     {
-                        MultimediaId = result.Result,
-                        OwnerType = OwnerType.Place,
-                        OwnerId = _place!.Id,
-                        IsPrimary = false,
-                        Comments = string.Empty
-                    });
-                    LoadData(_place!.Id).FireAndForgetSafeAsync();
+                        await mediaLinkRepository.SaveItemAsync(new MediaLink
+                        {
+                            MultimediaId = result.Result,
+                            OwnerType = OwnerType.Place,
+                            OwnerId = _place!.Id,
+                            IsPrimary = false,
+                            Comments = string.Empty
+                        });
+                        LoadData(_place!.Id).FireAndForgetSafeAsync();
+                    }
                 }
             }
         }
