@@ -1,5 +1,8 @@
 ﻿namespace SmartGenealogy.Data.Models;
 
+/// <summary>
+/// Project
+/// </summary>
 public class Project
 {
     /// <summary>
@@ -11,7 +14,7 @@ public class Project
     /// Name
     /// </summary>
     public string? Name { get; set; }
-    
+
     /// <summary>
     /// Description
     /// </summary>
@@ -26,12 +29,12 @@ public class Project
     /// Status
     /// </summary>
     public ProjectStatus? Status { get; set; }
-    
+
     /// <summary>
     /// Start date
     /// </summary>
     public DateTime StartDate { get; set; }
-    
+
     /// <summary>
     /// End date
     /// </summary>
