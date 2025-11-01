@@ -35,6 +35,7 @@ public class ProjectRepository(
                     Description TEXT,
                     Priority INTEGER,
                     Status INTEGER,
+                    Category INTEGER,
                     StartDate TEXT,
                     EndDate TEXT,
                     DateAdded TEXT NOT NULL,
@@ -76,6 +77,7 @@ public class ProjectRepository(
                 Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
                 Priority = reader.IsDBNull(reader.GetOrdinal("Priority")) ? null : (Priority?)reader.GetInt32(reader.GetOrdinal("Priority")),
                 Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : (ProjectStatus?)reader.GetInt32(reader.GetOrdinal("Status")),
+                Category = reader.IsDBNull(reader.GetOrdinal("Category")) ? null : (ProjectCategory?)reader.GetInt32(reader.GetOrdinal("Category")),
                 StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
                 EndDate = reader.GetDateTime(reader.GetOrdinal("EndDate")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
@@ -110,6 +112,7 @@ public class ProjectRepository(
                 Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
                 Priority = reader.IsDBNull(reader.GetOrdinal("Priority")) ? null : (Priority?)reader.GetInt32(reader.GetOrdinal("Priority")),
                 Status = reader.IsDBNull(reader.GetOrdinal("Status")) ? null : (ProjectStatus?)reader.GetInt32(reader.GetOrdinal("Status")),
+                Category = reader.IsDBNull(reader.GetOrdinal("Category")) ? null : (ProjectCategory?)reader.GetInt32(reader.GetOrdinal("Category")),
                 StartDate = reader.GetDateTime(reader.GetOrdinal("StartDate")),
                 EndDate = reader.GetDateTime(reader.GetOrdinal("EndDate")),
                 DateAdded = reader.GetDateTime(reader.GetOrdinal("DateAdded")),
@@ -137,8 +140,8 @@ public class ProjectRepository(
         if (item.Id == 0)
         {
             saveCmd.CommandText = @"
-                INSERT INTO Project (Name, Description, Priority, Status, StartDate, EndDate, DateAdded, DateChanged)
-                VALUES (@Name, @Description, @Priority, @Status, @StartDate, @EndDate, @DateAdded, @DateChanged);
+                INSERT INTO Project (Name, Description, Priority, Status, Category, StartDate, EndDate, DateAdded, DateChanged)
+                VALUES (@Name, @Description, @Priority, @Status, @Category, @StartDate, @EndDate, @DateAdded, @DateChanged);
                 SELECT last_insert_rowid();";
             saveCmd.Parameters.AddWithValue("@DateAdded", DateTime.UtcNow);
         }
@@ -150,6 +153,7 @@ public class ProjectRepository(
                     Description = @Description,
                     Priority = @Priority,
                     Status = @Status,
+                    Category = @Category,
                     StartDate = @StartDate,
                     EndDate = @EndDate,
                     DateChanged = @DateChanged
@@ -161,6 +165,7 @@ public class ProjectRepository(
         saveCmd.Parameters.AddWithValue("@Description", item.Description ?? string.Empty);
         saveCmd.Parameters.AddWithValue("@Priority", item.Priority.HasValue ? (int)item.Priority.Value : (object)DBNull.Value);
         saveCmd.Parameters.AddWithValue("@Status", item.Status.HasValue ? (int)item.Status.Value : (object)DBNull.Value);
+        saveCmd.Parameters.AddWithValue("@Category", item.Category.HasValue ? (int)item.Category.Value : (object)DBNull.Value);
         saveCmd.Parameters.AddWithValue("@StartDate", item.StartDate);
         saveCmd.Parameters.AddWithValue("@EndDate", item.EndDate);
         saveCmd.Parameters.AddWithValue("@DateChanged", DateTime.UtcNow);

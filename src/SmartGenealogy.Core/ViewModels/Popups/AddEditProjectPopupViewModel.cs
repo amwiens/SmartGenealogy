@@ -37,6 +37,12 @@ public partial class AddEditProjectPopupViewModel(
     private List<string> _statuses = Enum.GetNames<ProjectStatus>().ToList();
 
     [ObservableProperty]
+    private int _category;
+
+    [ObservableProperty]
+    private List<string> _categories = EnumHelper.GetEnumDescriptionsWithBlank<ProjectCategory>();
+
+    [ObservableProperty]
     private DateTime _startDate;
 
     [ObservableProperty]
@@ -91,6 +97,7 @@ public partial class AddEditProjectPopupViewModel(
         _project.Description = Description?.Trim() ?? string.Empty;
         _project.Priority = (Priority)Priority;
         _project.Status = (ProjectStatus)Status;
+        _project.Category = (ProjectCategory)Category;
         _project.StartDate = StartDate;
         _project.EndDate = EndDate;
 
