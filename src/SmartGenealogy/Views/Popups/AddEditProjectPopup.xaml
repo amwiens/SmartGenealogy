@@ -68,6 +68,18 @@
             MinimumWidthRequest="380">
             <Label
                 HorizontalOptions="Center"
+                Text="Category"
+                VerticalOptions="Center" />
+
+            <Picker ItemsSource="{Binding Categories}" SelectedIndex="{Binding Category}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="0"
+            Padding="20"
+            MinimumWidthRequest="380">
+            <Label
+                HorizontalOptions="Center"
                 Text="Start date"
                 VerticalOptions="Center" />
 

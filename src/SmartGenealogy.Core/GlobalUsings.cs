@@ -1,4 +1,5 @@
 ﻿global using System.Collections.ObjectModel;
+global using System.ComponentModel;
 global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
@@ -31,6 +32,7 @@ global using SmartGenealogy.Core.Themes;
 global using SmartGenealogy.Core.ViewModels.Popups;
 global using SmartGenealogy.Data.Enums;
 global using SmartGenealogy.Data.Extensions;
+global using SmartGenealogy.Data.Helpers;
 global using SmartGenealogy.Data.Models;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;

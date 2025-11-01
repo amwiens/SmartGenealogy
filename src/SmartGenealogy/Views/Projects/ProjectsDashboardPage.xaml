@@ -382,7 +382,41 @@
                                             BackgroundColor="LightGrey"
                                             HeightRequest="0.5" />
 
-                                        <Grid Grid.Row="4" ColumnDefinitions="*,Auto" />
+                                        <Grid Grid.Row="4" ColumnDefinitions="*,Auto">
+
+                                            <!--  Category  -->
+                                            <HorizontalStackLayout Grid.Column="0" Spacing="5">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource Footnote}"
+                                                    Text="{Binding CategoryDescription}"
+                                                    TextColor="{DynamicResource BaseTextColor}"
+                                                    VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+
+                                            <!--  Created Date  -->
+                                            <HorizontalStackLayout
+                                                Grid.Column="1"
+                                                HorizontalOptions="End"
+                                                Spacing="3"
+                                                VerticalOptions="Center">
+                                                <!--  Icon  -->
+                                                <Label
+                                                    FontFamily="SmartGenealogyIcons"
+                                                    FontSize="17"
+                                                    Text="{x:Static fonticons:SmartGenealogyIcons.ClockOutline}"
+                                                    TextColor="{DynamicResource DisabledColor}"
+                                                    VerticalOptions="Center" />
+
+                                                <!--  Value  -->
+                                                <Label
+                                                    Style="{StaticResource Footnote}"
+                                                    Text="{Binding DateAddedRelative}"
+                                                    TextColor="{DynamicResource BaseTextColor}"
+                                                    TranslationY="1"
+                                                    VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
