@@ -1,4 +1,4 @@
-﻿namespace SmartGenealogy.Data.Extensions;
+﻿namespace SmartGenealogy.Core.Extensions;
 
 /// <summary>
 /// Project model extensions.

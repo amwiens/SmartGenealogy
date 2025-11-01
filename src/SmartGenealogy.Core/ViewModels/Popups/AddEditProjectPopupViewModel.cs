@@ -3,13 +3,13 @@
 /// <summary>
 /// Add/edit project popup view model.
 /// </summary>
-/// <param name="projectRepository">Project repository</param>
+/// <param name="projectService">Project service</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="serviceProvider">Service provider</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditProjectPopupViewModel(
-    ProjectRepository projectRepository,
+    IProjectService projectService,
     IAlertService alertService,
     IPopupService popupService,
     IServiceProvider serviceProvider,
@@ -69,7 +69,7 @@ public partial class AddEditProjectPopupViewModel(
     {
         try
         {
-            _project = await projectRepository.GetAsync(id);
+            _project = await projectService.GetProjectAsync(id);
 
             if (_project.IsNullOrNew())
             {
@@ -101,7 +101,7 @@ public partial class AddEditProjectPopupViewModel(
         _project.StartDate = StartDate;
         _project.EndDate = EndDate;
 
-        var projectId = await projectRepository.SaveItemAsync(_project);
+        var projectId = await projectService.SaveProjectAsync(_project);
 
         await popupService.ClosePopupAsync(Shell.Current);
     }

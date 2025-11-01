@@ -1,13 +1,9 @@
-﻿using Humanizer;
-
-using SmartGenealogy.Data.Helpers;
-
-namespace SmartGenealogy.Data.Models;
+﻿namespace SmartGenealogy.Data.Models;
 
 /// <summary>
 /// Project
 /// </summary>
-public class Project
+public class ProjectDTO
 {
     /// <summary>
     /// Id
@@ -39,9 +35,6 @@ public class Project
     /// </summary>
     public ProjectCategory? Category { get; set; }
 
-
-    public string? CategoryDescription => EnumHelper.GetEnumDescription(Category!) ?? string.Empty;
-
     /// <summary>
     /// Start date
     /// </summary>
@@ -58,20 +51,7 @@ public class Project
     public DateTime DateAdded { get; set; }
 
     /// <summary>
-    /// Local date added to the database
-    /// </summary>
-    public DateTime DateAddedLocal => DateAdded.ToLocalTime();
-
-
-    public string DateAddedRelative => DateAddedLocal.Humanize();
-
-    /// <summary>
     /// Date changed
     /// </summary>
     public DateTime DateChanged { get; set; }
-
-    /// <summary>
-    /// Local date changed
-    /// </summary>
-    public DateTime DateChangedLocal => DateChanged.ToLocalTime();
 }

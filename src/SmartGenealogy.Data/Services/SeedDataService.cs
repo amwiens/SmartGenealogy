@@ -27,6 +27,7 @@ public class SeedDataService(
     SourceRepository sourceRepository,
     WebLinkLinkRepository webLinkLinkRepository,
     WebLinkRepository webLinkRepository,
+    DatabaseSettings databaseSettings,
     ILogger<SeedDataService> logger)
 {
     private readonly string _seedDataFilePath = "SeedData.json";
@@ -96,6 +97,10 @@ public class SeedDataService(
     {
         try
         {
+            await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
+            await connection.OpenAsync();
+            projectRepository.Connection = connection;
+
             await Task.WhenAll(
                 factTypeRepository.CreateTableAsync(),
                 mediaLinkRepository.CreateTableAsync(),

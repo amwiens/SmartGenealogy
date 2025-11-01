@@ -3,11 +3,11 @@
 /// <summary>
 /// Projects Dashboard Page View Model
 /// </summary>
-/// <param name="projectRepository">Project repository</param>
+/// <param name="projectService">Project repository</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class ProjectsDashboardPageViewModel(
-    ProjectRepository projectRepository,
+    IProjectService projectService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject
@@ -44,7 +44,7 @@ public partial class ProjectsDashboardPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        _allProjects = await projectRepository.ListAsync();
+        _allProjects = await projectService.ListProjectsAsync();
 
         AddProjectList();
     }
@@ -65,7 +65,7 @@ public partial class ProjectsDashboardPageViewModel(
     /// </summary>
     private void AddProjectList()
     {
-        var filterTaskList = _allProjects.Where(f => f.Status == (ProjectStatus)SelectedOption).ToList();
+        var filterTaskList = _allProjects.Where(f => f!.Status == (ProjectStatus)SelectedOption).ToList();
 
         ProjectList.Clear();
         foreach (var project in filterTaskList)
@@ -149,7 +149,7 @@ public partial class ProjectsDashboardPageViewModel(
             var currentItem = _allProjects.Where(f => f.Id == _draggedItem.Id).FirstOrDefault();
             currentItem!.Status = (ProjectStatus)option;
 
-            var projectId = await projectRepository.SaveItemAsync(currentItem);
+            var projectId = await projectService.SaveProjectAsync(currentItem);
 
             AddProjectList();
         }

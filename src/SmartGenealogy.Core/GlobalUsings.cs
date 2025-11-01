@@ -1,5 +1,6 @@
 ﻿global using System.Collections.ObjectModel;
 global using System.ComponentModel;
+global using System.Diagnostics.CodeAnalysis;
 global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
@@ -13,17 +14,22 @@ global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.Messaging;
 global using CommunityToolkit.Mvvm.Messaging.Messages;
 
+global using Humanizer;
+
 global using Mapsui;
 global using Mapsui.Layers;
 global using Mapsui.Projections;
 global using Mapsui.Tiling;
 
+global using Microsoft.Data.Sqlite;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Maui.Graphics.Platform;
 
 global using Plugin.Maui.OCR;
 
 global using SmartGenealogy.Core.Extensions;
+global using SmartGenealogy.Core.Helpers;
+global using SmartGenealogy.Core.Mappers;
 global using SmartGenealogy.Core.Messages;
 global using SmartGenealogy.Core.Models;
 global using SmartGenealogy.Core.Services;
@@ -32,7 +38,6 @@ global using SmartGenealogy.Core.Themes;
 global using SmartGenealogy.Core.ViewModels.Popups;
 global using SmartGenealogy.Data.Enums;
 global using SmartGenealogy.Data.Extensions;
-global using SmartGenealogy.Data.Helpers;
 global using SmartGenealogy.Data.Models;
 global using SmartGenealogy.Data.Repositories;
 global using SmartGenealogy.Data.Services;
