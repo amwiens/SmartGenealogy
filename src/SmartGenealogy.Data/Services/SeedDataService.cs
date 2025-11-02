@@ -99,7 +99,11 @@ public class SeedDataService(
         {
             await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
             await connection.OpenAsync();
+
+            // Set connections
+            factTypeRepository.Connection = connection;
             projectRepository.Connection = connection;
+            roleRepository.Connection = connection;
 
             await Task.WhenAll(
                 factTypeRepository.CreateTableAsync(),

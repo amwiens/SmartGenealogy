@@ -3,11 +3,11 @@
 /// <summary>
 /// Add edit fact type popup view model.
 /// </summary>
-/// <param name="factTypeRepository">Fact type repository</param>
+/// <param name="factTypeService">Fact type service</param>
 /// <param name="popupService">PopupService</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditFactTypePopupViewModel(
-    FactTypeRepository factTypeRepository,
+    IFactTypeService factTypeService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -59,7 +59,7 @@ public partial class AddEditFactTypePopupViewModel(
     {
         try
         {
-            _factType = await factTypeRepository.GetAsync(id);
+            _factType = await factTypeService.GetFactTypeAsync(id);
 
             if (_factType.IsNullOrNew())
             {
@@ -99,7 +99,7 @@ public partial class AddEditFactTypePopupViewModel(
         _factType.UsePlace = UsePlace;
         _factType.Sentence = Sentence;
 
-        var factTypeId = await factTypeRepository.SaveItemAsync(_factType);
+        var factTypeId = await factTypeService.SaveFactTypeAsync(_factType);
 
         await popupService.ClosePopupAsync(Shell.Current);
     }

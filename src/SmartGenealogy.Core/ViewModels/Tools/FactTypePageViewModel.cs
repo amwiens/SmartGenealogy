@@ -4,14 +4,12 @@
 /// Fact type page view model.
 /// </summary>
 /// <param name="factTypeService">Fact type service</param>
-/// <param name="factTypeRepository">Fact type repository</param>
 /// <param name="roleRepository">Role repository</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class FactTypePageViewModel(
     IFactTypeService factTypeService,
-    FactTypeRepository factTypeRepository,
     RoleRepository roleRepository,
     IAlertService alertService,
     IPopupService popupService,
@@ -78,7 +76,7 @@ public partial class FactTypePageViewModel(
     {
         try
         {
-            _factType = await factTypeRepository.GetAsync(id);
+            _factType = await factTypeService.GetFactTypeAsync(id);
 
             if (_factType.IsNullOrNew())
             {

@@ -7,11 +7,14 @@
 /// Initializes a new instance of the <see cref="FactTypeRepository"/> class.
 /// </remarks>
 /// <param name="roleRepository">Role repository.</param>
-/// <param name="databaseSettings">Database settings.</param>
 /// <param name="logger">Logger.</param>
-public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings databaseSettings, ILogger<FactTypeRepository> logger)
+public class FactTypeRepository(
+    RoleRepository roleRepository,
+    ILogger<FactTypeRepository> logger)
 {
     private bool _hasBeenInitialized = false;
+
+    public SqliteConnection Connection { get; set; }
 
     /// <summary>
     /// Initializes the database connection and creates the FactType table if it does not exist.
@@ -21,12 +24,9 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
         if (_hasBeenInitialized)
             return;
 
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
-
         try
         {
-            var createTableCommand = connection.CreateCommand();
+            var createTableCommand = Connection.CreateCommand();
             createTableCommand.CommandText =
                 @"CREATE TABLE IF NOT EXISTS FactType (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,10 +61,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
     public async Task<List<FactType>> ListAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var selectCmd = connection.CreateCommand();
+        var selectCmd = Connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM FactType";
         var factTypes = new List<FactType>();
 
@@ -88,6 +86,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
             });
         }
 
+        roleRepository.Connection = Connection;
+
         foreach (var factType in factTypes)
         {
             factType.Roles = await roleRepository.ListAsync(factType.Id);
@@ -104,10 +104,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
     public async Task<FactType?> GetAsync(int id)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var selectCmd = connection.CreateCommand();
+        var selectCmd = Connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM FactType WHERE Id = @id";
         selectCmd.Parameters.AddWithValue("@id", id);
 
@@ -130,6 +128,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
                 DateChanged = reader.GetDateTime(reader.GetOrdinal("DateChanged"))
             };
 
+            roleRepository.Connection = Connection;
+
             factType.Roles = await roleRepository.ListAsync(factType.Id);
 
             return factType;
@@ -146,10 +146,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
     public async Task<int> SaveItemAsync(FactType item)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var saveCmd = connection.CreateCommand();
+        var saveCmd = Connection.CreateCommand();
         if (item.Id == 0)
         {
             saveCmd.CommandText = @"
@@ -204,10 +202,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
     public async Task<int> DeleteItemAsync(FactType item)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var deleteCmd = connection.CreateCommand();
+        var deleteCmd = Connection.CreateCommand();
         deleteCmd.CommandText = "DELETE FROM FactType WHERE Id = @id";
         deleteCmd.Parameters.AddWithValue("@id", item.Id);
 
@@ -228,10 +224,8 @@ public class FactTypeRepository(RoleRepository roleRepository, DatabaseSettings 
     public async Task DropTableAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var dropCmd = connection.CreateCommand();
+        var dropCmd = Connection.CreateCommand();
         dropCmd.CommandText = "DROP TABLE IF EXISTS FactType";
         await dropCmd.ExecuteNonQueryAsync();
 
