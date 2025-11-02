@@ -79,7 +79,10 @@ public partial class AddEditMultimediaPopupViewModel(
         }
     }
 
-
+    /// <summary>
+    /// Drop media
+    /// </summary>
+    /// <param name="fileName">File name</param>
     [RelayCommand]
     private async Task DropMedia(string fileName)
     {

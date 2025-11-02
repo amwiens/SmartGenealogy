@@ -27,7 +27,9 @@ public partial class AddEditMultimediaPopup : Popup<int>
         _viewModel = viewModel;
     }
 
-
+    /// <summary>
+    /// Image drop
+    /// </summary>
     private async void OnImageDrop(object sender, DropEventArgs e)
     {
         var filePaths = new List<string>();

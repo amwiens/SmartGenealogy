@@ -35,7 +35,9 @@ public class Project
     /// </summary>
     public ProjectCategory? Category { get; set; }
 
-
+    /// <summary>
+    /// Category description
+    /// </summary>
     public string? CategoryDescription => EnumHelper.GetEnumDescription(Category!) ?? string.Empty;
 
     /// <summary>
