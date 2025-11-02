@@ -3,11 +3,11 @@
 /// <summary>
 /// Add/edit role popup view model.
 /// </summary>
-/// <param name="roleRepository">Role repository</param>
+/// <param name="roleService">Role service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class AddEditRolePopupViewModel(
-    RoleRepository roleRepository,
+    IRoleService roleService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
     : ObservableObject, IQueryAttributable
@@ -46,7 +46,7 @@ public partial class AddEditRolePopupViewModel(
     {
         try
         {
-            _role = await roleRepository.GetAsync(id);
+            _role = await roleService.GetRoleAsync(id);
 
             if (_role.IsNullOrNew())
             {
@@ -77,7 +77,7 @@ public partial class AddEditRolePopupViewModel(
         _role.Name = Name;
         _role.Sentence = Sentence;
 
-        var roleId = await roleRepository.SaveItemAsync(_role);
+        var roleId = await roleService.SaveRoleAsync(_role);
 
         await popupService.ClosePopupAsync(Shell.Current);
     }

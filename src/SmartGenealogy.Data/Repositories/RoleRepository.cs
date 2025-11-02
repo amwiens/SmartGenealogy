@@ -6,11 +6,13 @@
 /// <remarks>
 /// Initializes a new instance of the <see cref="RoleRepository"/> class.
 /// </remarks>
-/// <param name="databaseSettings">Database settings.</param>
 /// <param name="logger">Logger.</param>
-public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepository> logger)
+public class RoleRepository(
+    ILogger<RoleRepository> logger)
 {
     private bool _hasBeenInitialized = false;
+
+    public SqliteConnection Connection { get; set; }
 
     /// <summary>
     /// Initializes the database connection and creates the Role table if it does not exist.
@@ -20,12 +22,9 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
         if (_hasBeenInitialized)
             return;
 
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
-
         try
         {
-            var createTableCommand = connection.CreateCommand();
+            var createTableCommand = Connection.CreateCommand();
             createTableCommand.CommandText =
                 @"CREATE TABLE IF NOT EXISTS Role (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,10 +54,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<List<Role>> ListAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var selectCmd = connection.CreateCommand();
+        var selectCmd = Connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM Role";
         var roles = new List<Role>();
 
@@ -88,10 +85,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<List<Role>> ListAsync(int eventType)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var selectCmd = connection.CreateCommand();
+        var selectCmd = Connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM Role WHERE EventType = @eventType";
         selectCmd.Parameters.AddWithValue("@eventType", eventType);
         var roles = new List<Role>();
@@ -122,10 +117,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<Role?> GetAsync(int id)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var selectCmd = connection.CreateCommand();
+        var selectCmd = Connection.CreateCommand();
         selectCmd.CommandText = "SELECT * FROM Role WHERE Id = @id";
         selectCmd.Parameters.AddWithValue("@id", id);
 
@@ -157,10 +150,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<int> SaveItemAsync(Role item)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var saveCmd = connection.CreateCommand();
+        var saveCmd = Connection.CreateCommand();
         if (item.Id == 0)
         {
             saveCmd.CommandText = @"
@@ -205,10 +196,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<int> DeleteItemAsync(Role item)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var deleteCmd = connection.CreateCommand();
+        var deleteCmd = Connection.CreateCommand();
         deleteCmd.CommandText = "DELETE FROM Role WHERE Id = @id";
         deleteCmd.Parameters.AddWithValue("@id", item.Id);
 
@@ -223,10 +212,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task<int> DeleteItemAsync(int factTypeId)
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var deleteCmd = connection.CreateCommand();
+        var deleteCmd = Connection.CreateCommand();
         deleteCmd.CommandText = "DELETE FROM Role WHERE EventType = @eventType";
         deleteCmd.Parameters.AddWithValue("@eventType", factTypeId);
 
@@ -247,10 +234,8 @@ public class RoleRepository(DatabaseSettings databaseSettings, ILogger<RoleRepos
     public async Task DropTableAsync()
     {
         await Init();
-        await using var connection = new SqliteConnection(databaseSettings.ConnectionString);
-        await connection.OpenAsync();
 
-        var dropCmd = connection.CreateCommand();
+        var dropCmd = Connection.CreateCommand();
         dropCmd.CommandText = "DROP TABLE IF EXISTS Role";
         await dropCmd.ExecuteNonQueryAsync();
 

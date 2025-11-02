@@ -4,15 +4,13 @@
 /// Fact type page view model.
 /// </summary>
 /// <param name="factTypeService">Fact type service</param>
-/// <param name="factTypeRepository">Fact type repository</param>
-/// <param name="roleRepository">Role repository</param>
+/// <param name="roleService">Role service</param>
 /// <param name="alertService">Alert service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class FactTypePageViewModel(
     IFactTypeService factTypeService,
-    FactTypeRepository factTypeRepository,
-    RoleRepository roleRepository,
+    IRoleService roleService,
     IAlertService alertService,
     IPopupService popupService,
     ModalErrorHandler errorHandler)
@@ -78,7 +76,7 @@ public partial class FactTypePageViewModel(
     {
         try
         {
-            _factType = await factTypeRepository.GetAsync(id);
+            _factType = await factTypeService.GetFactTypeAsync(id);
 
             if (_factType.IsNullOrNew())
             {
@@ -187,7 +185,7 @@ public partial class FactTypePageViewModel(
             var isConfirmed = await alertService.ShowAlertAsync("Delete role", "Are you sure you want to delete this role?", "Yes", "No");
             if (isConfirmed)
             {
-                await roleRepository.DeleteItemAsync(SelectedRole!);
+                await roleService.DeleteRoleAsync(SelectedRole!);
                 LoadData(_factType!.Id).FireAndForgetSafeAsync();
             }
         }

@@ -3,11 +3,11 @@
 /// <summary>
 /// Fact types page view model
 /// </summary>
-/// <param name="factTypeRepository">Fact Type repository</param>
+/// <param name="factTypeService">Fact Type service</param>
 /// <param name="popupService">Popup service</param>
 /// <param name="errorHandler">Modal error handler</param>
 public partial class FactTypesPageViewModel(
-    FactTypeRepository factTypeRepository,
+    IFactTypeService factTypeService,
     IPopupService popupService,
     ModalErrorHandler errorHandler) : ObservableObject
 {
@@ -23,7 +23,7 @@ public partial class FactTypesPageViewModel(
     [RelayCommand]
     private async Task Appearing()
     {
-        FactTypes = new ObservableCollection<FactType>(await factTypeRepository.ListAsync());
+        FactTypes = new ObservableCollection<FactType>(await factTypeService.ListAsync());
     }
 
     /// <summary>
